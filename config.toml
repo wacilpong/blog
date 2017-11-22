@@ -2,7 +2,7 @@ baseURL = "https://wacilpong.github.io/"
 languageCode = "en-us"
 contentDir = "content"
 title = "Roomy"
-theme = "minimal"
+theme = "themes/minimal"
 
 [params]
     author = "Roomy Han"
