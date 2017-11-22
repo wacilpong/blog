@@ -1,6 +1,5 @@
 baseURL = "https://wacilpong.github.io/"
 languageCode = "en-us"
-contentDir = "content"
 title = "Roomy"
 theme = "minimal"
 disqusShortname = "wacilpong" # delete this to disable disqus comments
