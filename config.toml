@@ -1,3 +1,46 @@
 baseURL = "http://wacilpong.github.io/"
 languageCode = "en-us"
-title = "roomy - nation"
+title = "Roomy"
+theme = "minimal"
+
+[params]
+    author = "Roomy Han"
+    description = "Audio, Video, Disco"
+    githubUsername = "#wacilpong"
+    accent = "yellowgreen"
+    showBorder = true
+    backgroundColor = "white"
+    font = "Raleway" # should match the name on Google Fonts!
+    highlight = true
+    highlightStyle = "solarized-dark"
+    highlightLanguages = ["go", "haskell", "kotlin", "scala", "swift"]
+
+[[menu.main]]
+    url = "/"
+    name = "Home"
+    weight = 1
+
+[[menu.main]]
+    url = "/post/"
+    name = "Posts"
+    weight = 2
+
+[[menu.main]]
+    url = "/project/"
+    name = "Projects"
+    weight = 3
+
+[[menu.icon]]
+    url = "https://github.com/wacilpong/"
+    name = "github"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://www.facebook.com/areum.han.7967"
+    name = "facebook"
+    weight = 2
+
+[[menu.icon]]
+    url = "https://www.linkedin.com/in/areum-han-a10645118/"
+    name = "linkedin"
+    weight = 3
