@@ -1,7 +1,6 @@
-baseURL = "http://wacilpong.github.io/"
+baseURL = "https://wacilpong.github.io/"
 languageCode = "en-us"
 contentDir = "content"
-layoutDir = "themes/minimal/layouts"
 title = "Roomy"
 theme = "minimal"
 
@@ -15,7 +14,7 @@ theme = "minimal"
     font = "Raleway" # should match the name on Google Fonts!
     highlight = true
     highlightStyle = "solarized-dark"
-    highlightLanguages = ["go", "haskell", "kotlin", "scala", "swift"]
+    highlightLanguages = ["go", "java", "javascript", "scala", "swift"]
 
 [[menu.main]]
     url = "/"
