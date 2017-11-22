@@ -2,12 +2,13 @@ baseURL = "https://wacilpong.github.io/"
 languageCode = "en-us"
 contentDir = "content"
 title = "Roomy"
-theme = "themes/minimal"
+theme = "minimal"
+disqusShortname = "wacilpong" # delete this to disable disqus comments
 
 [params]
     author = "Roomy Han"
     description = "Audio, Video, Disco"
-    githubUsername = "#wacilpong"
+    githubUsername = "#"
     accent = "yellowgreen"
     showBorder = true
     backgroundColor = "white"
