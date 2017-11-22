@@ -1,5 +1,7 @@
 baseURL = "http://wacilpong.github.io/"
 languageCode = "en-us"
+contentDir = "content"
+layoutDir = "themes/minimal/layouts"
 title = "Roomy"
 theme = "minimal"
 
