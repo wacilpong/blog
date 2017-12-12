@@ -144,19 +144,20 @@
 <h2 id="what-questions-i-ve-got">what questions I&rsquo;ve got?</h2>
 
 <ol>
-<li>스레드 vs 프로세스 Thread vs Process</li>
-<li>자바스크립트 호이스팅 Javascript Hoisting</li>
-<li>자바스크립트 클로저 Javascript Closure</li>
-<li>디자인 패턴 설명 Explain about design pattern</li>
-<li>node.js가 동작하는 내부원리 The inner logic of node.js</li>
-<li>URI를 쳤을 때 웹브라우저에서는 어떤 일들이? What happens when I type the URI in the web browser?</li>
-<li>관계형 DB 아키텍처 그려보기 Design RDBMS architecture</li>
-<li>주로 이용하는 웹사이트 개선사항 말해보기 Tell a plan for improving the one of website</li>
-<li>NoSql 동작원리와 확장성 설명하기 Explain the mechanism and the scalability of NoSql</li>
-<li>객체지향 vs 함수형 패러다임 Objective oriented vs functional paradigm</li>
-<li>로컬, 세션, 쿠키영역에 대해 각각 설명 Explain each of these local, session, cookies field</li>
-<li>API server를 사용하는 이유? Why using API server, not a socket network? even with API is slower!</li>
-<li>RESTful에 대해 설명 Explain RESTful</li>
+<li>Thread vs Process</li>
+<li>Javascript Hoisting</li>
+<li>Javascript Closure</li>
+<li>What determines <code>this</code> in Javascript?</li>
+<li>Explain about design pattern</li>
+<li>The inner logic of node.js</li>
+<li>What happens when I type the URI in the web browser?</li>
+<li>Design RDBMS architecture</li>
+<li>Tell a plan for improving the one of website</li>
+<li>Explain the mechanism and the scalability of NoSql</li>
+<li>Objective oriented vs functional paradigm</li>
+<li>Explain each of these local, session, cookies field</li>
+<li>Why using API server, not a socket network? even with API is slower!</li>
+<li>Explain RESTful</li>
 <li>Coding test - string to integer, find the missing number, DP(Collatz, BFS)</li>
 <li>Html vs Xhtml</li>
 <li>Css flex</li>
@@ -173,7 +174,7 @@ First of all, we must know the relationship among the application, process and t
 
 <p><img src="http://2.bp.blogspot.com/-iztLs3xTqWU/Wi4sBc3soxI/AAAAAAAABy8/GtHdXcPMizwow61EPnRnkucGj-qzv7QZwCK4BGAYYCw/s1600/processvsthread.png" alt="program" /></p>
 
-<p>(1) <strong><em>Process</em></strong> 는 단일스레드와 시작되며, 이를 primary 스레드라고도 한다. 그리고 추후 스레드를 더 생성할 수 있다. 프로세스는 이처럼 적어도 하나의 스레드가 반드시 필요하다.</p>
+<p>(1) <strong><em>Process</em></strong> 는 단일스레드와 시작되며, 이를 <code>primary thread</code>라고도 한다. 그리고 추후 스레드를 더 생성할 수 있다. 프로세스는 이처럼 적어도 하나의 스레드가 반드시 필요하다.</p>
 
 <p>Process starts with a single thread(<code>primary thread</code>), and can create more later. So process has at least one thread.</p>
 
@@ -183,11 +184,11 @@ First of all, we must know the relationship among the application, process and t
 
 <h3 id="javascript-hoisting">Javascript Hoisting</h3>
 
-<dl>
-<dd>자바스크립트는 초기화가 아니라 선언만 상단부로 끌어올려 컨텍스트에 적용한다. 즉, 물리적으로 작성한 코드가 스코프 상단으로 옮겨지는 것은 아니다. 어떠한 선언은 컴파일 단계에서 메모리에 저장되지만, 코드에서 입력한 위치에 그대로 있다. 이러한 개념을 호이스팅이라고 한다.</dd>
-</dl>
+<blockquote>
+<p>일반적으로 호이스팅을 변수가 스코프 맨 위로 올려지는 것으로 말하곤 한다. 하지만 물리적으로 작성한 코드가 스코프 상단으로 옮겨지는 것은 아니다. 자바스크립트는 초기화가 아니라 선언만 상단부로 끌어올려 컨텍스트에 적용한다. 이러한 개념을 호이스팅이라고 한다.</p>
 
-<p>Javascript only hoists declarations, not initializations. It&rsquo;s not physically moved to the top of code. This is a term, hoisting.</p>
+<p>Javascript only hoists declarations, not initializations. It’s not physically moved to the top of code. This is a term, hoisting.</p>
+</blockquote>
 
 <pre><code>// It gives no error
 n = 1;
@@ -199,6 +200,61 @@ let a = 1, b;
 console.log(a + &quot; &quot; + b);
 b = 2;
 </code></pre>
+
+<p><br><br></p>
+
+<h3 id="javascript-closure">Javascript Closure</h3>
+
+<blockquote>
+<p>클로저는 <code>free variables</code>(어떤 함수의 로컬변수나 매개변수가 아닌 변수를 참조할 때 부르는 변수, 스코프와 연관있는 상대적 개념이므로 global과는 다름)를 참조할 수 있는 함수들로 구성된 일종의 환경이라고 보면 된다. 그러니까, 클로저 환경(범위) 안에 선언된 함수는 그 환경을 기억할 수 있다는 개념이다.</p>
+
+<p>It is a term like a sort of environment, consists of functions that refer to <code>free variables</code>(is a relative to a scope, refers to variables used in a function that are not local variables nor parameters of that function). In other words, the function defined in the closure is able to remember the environment in which it was created.</p>
+</blockquote>
+
+<pre><code>function whoPennywise() {
+  function _who() {
+    console.log(job);
+  }
+  let job = &quot;the dancing clown!&quot;;
+
+  return _who;
+}
+
+let sayItDo = whoPennywise();
+sayItDo();  // &quot;the dancing clown!&quot;
+</code></pre>
+
+<p>위에서 <strong>job</strong> 변수는 <strong>_who</strong> 함수와 같은 스코프에 선언되어 참조되고 있다. 따라서 <strong>whoPennywais</strong> 함수는 클로저 환경을 구성하고 있다. 마찬가지로 <strong>sayItDo</strong> 변수는 <strong>whoPennywise</strong> 함수를 참조해 사용했으므로 클로저 환경을 구성한다. 따라서 sayItDo를 실행하면 &ldquo;the dancing clown!&ldquo;이 찍힌다. 이때 whoPennywais 함수를 그대로 실행하려고 하면 콘솔에 아무것도 찍히지 않는다. 실행하는 스코프가 클로저 환경이 아니게 되기 때문에 해당 함수객체를 참조하는 셈이 된다.</p>
+
+<p><strong>job</strong>  variable is referd to <strong>who</strong> function in the same scope. So <strong>whoPennywise</strong> function has an environment called closure. Likewise <strong>sayItDo</strong> variable refers to <strong>whoPennywise</strong> and execute itself, so it is also closure. And then &ldquo;the dancing clown&rdquo; wrote in log. At this point, there is nothing in log when execute whoPennywise function as it is, because that scope would not be closure.</p>
+
+<pre><code>function foo(a) {
+  let b = 3;
+
+  function _bar() {
+    return _booq(a + b);
+  }
+
+  function _booq(c) {
+    return c*2;
+  }
+
+  return _bar;
+}
+
+let foo2 = foo(2);
+let foo5 = foo(5);
+console.log(foo2());  // 10
+console.log(foo5());  // 16
+</code></pre>
+
+<p>그렇다면 클로저 환경에서는 함수실행이 어떻게 처리되는 지 알아야 하는데, 알다시피 자바스크립트는 단일 스레드 환경이다. 즉, <strong>foo</strong> 함수를 실행하라고 명령을 날리면 한 번의 실행만 한다. 함수 안에 함수가 있다고 해서 여러 번 실행되는 게 아니라는 것이다. 이것이 가능한 이유는 보통 브라우저는 스택을 이용해 실행단위를 처리하기 때문이다. 그래서 <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> 함수 순으로 참조하면서 스택에 차곡차곡 쌓아 리턴(pop)하므로 <strong>_booq</strong> 함수의 리턴값을 최종적으로 가져올 수 있다.</p>
+
+<p>And we have to know the process of executing functions in closure, as you all know, javascript is <code>single threaded</code>. That is, one command like executing <strong>foo</strong> function, can be processed at a time. The reason that possible, typically the browser maintain execution context with a stack, the data structure. So, It saves a value in stack and return(pop) with <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> ordering, and finally get the <strong>_booq</strong> function&rsquo;s return value.</p>
+
+<p><br><br></p>
+
+<h3 id="this-in-javascript"><strong><code>this</code></strong> in Javascript</h3>
 </div>
 
     
@@ -223,7 +279,7 @@ b = 2;
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "wacilpong" + '.disqus.com/embed.js';
+        s.src = '//' + "@disqus_SDumnkPwZd" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
