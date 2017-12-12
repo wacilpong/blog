@@ -2,7 +2,7 @@ baseURL = "https://wacilpong.github.io/roomycode"
 languageCode = "en-us"
 title = "Roomy"
 theme = "minimal"
-disqusShortname = "wacilpong" # delete this to disable disqus comments
+disqusShortname = "@disqus_SDumnkPwZd" # delete this to disable disqus comments
 
 [params]
     author = "Roomy Han"
