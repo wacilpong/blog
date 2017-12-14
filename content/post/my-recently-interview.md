@@ -11,23 +11,23 @@ draft: false
 I apply to 7 different startups that developing web like blockchain, fintech, cloud IDE, traslating AI, medical AI. The most of them are based on nodeJs. I was an interviewee during 2017. 12. 04 ~ 2017. 12. 08.
 
 # what questions I've got?
-1. Thread vs Process
-2. Javascript Hoisting
-3. Javascript Closure
-4. What determines `this` in Javascript?
-5. Explain about design pattern
-6. The inner logic of node.js
-7. What happens when I type the URI in the web browser?
-8. Design RDBMS architecture
-9. Tell a plan for improving the one of website
-10. Explain the mechanism and the scalability of NoSql
-11. Objective oriented vs functional paradigm
-12. Explain each of these local, session, cookies field
-13. Why using API server, not a socket network? even with API is slower!
-14. Explain RESTful
-15. Coding test - string to integer, find the missing number, DP(Collatz, BFS)
-16. Html vs Xhtml
-17. Css flex
+1. [Thread vs Process](#thread-vs-process)
+2. [Javascript Hoisting](#javascript-hoisting)
+3. [Javascript Closure](#javascript-closure)
+4. [What determines `this` in Javascript?](#this-in-javascript)
+5. [Explain about design pattern](#design-pattern)
+6. [The inner logic of node.js](#)
+7. [What happens when I type the URI in the web browser?](#)
+8. [Design RDBMS architecture](#)
+9. [Tell a plan for improving the one of website](#)
+10. [Explain the mechanism and the scalability of NoSql](#)
+11. [Objective oriented vs functional paradigm](#)
+12. [Explain each of these local, session, cookies field](#)
+13. [Why using API server, not a socket network? even with API is slower!](#)
+14. [Explain RESTful](#)
+15. [Coding test - string to integer, find the missing number, DP(Collatz, BFS)](#)
+16. [Html vs Xhtml](#)
+17. [Css flex](#)
 
 # Let's solve those questions!
 ## Thread vs Process
@@ -142,7 +142,7 @@ console.log(test3().call(obj) === 7);
 
 그렇다면 함수가 호출되는 방법에 따라 달라지는 `this`를 알 필요가 있다. test2 함수처럼 strict mode인 함수에서의 this값은 실행될 때 할당되어 유지된다. 따라서 test2 함수는 실행할 때 아무것도 정의하지 않았으므로 undefined을 리턴한다. 이때 자바스크립트의 Function.prototype에서 상속되는 call(), apply() 함수를 이용하면 특정 객체와 `this`를 연결할 수 있다. 그래서 test2에 전역의 this(window)를 보내 함수를 실행시키면 window를 리턴하게 된다. 마찬가지로 test3 함수에 obj라는 특정 객체를 보내 실행시키면 함수 내부에서 해당 객체를 `this`로 참조할 수 있게 된다.
 
-Then how `this` can be different when call the function? The return value of the function in strict mode like test2 function will be assigned in execution. So test2 function returns undefined, because nothing was defined in execution. At this point, It is possible to connect specific object to `this` with call() and apply(), that inherited from Function.prototype in javascript. Thus, test2 function with `call(this)` will return window. Likewise, `this` keyword in test3 function can refers to the `obj`(object) with `call(obj)`.
+Then how `this` can be different when call the function? The return value of the function in strict mode like test2 function will be assigned in execution. So test2 function returns undefined, because nothing was defined in execution. At this point, It is possible to connect specific object to `this` with call() and apply(), that inherited from Function.prototype in javascript. Thus, test2 function with **call(this)** will return window. Likewise, `this` keyword in test3 function can refers to the **obj**(object) with **call(obj)**.
 
 
 ```
@@ -158,4 +158,23 @@ console.log(me.callName()); // roomy
 
 또한 `this`는 객체에서의 호출되는 방법에 따라 바뀔 수 있다. 객체(me) 내부에 함수(myName)를 정의하고 프로퍼티(callName)로 부르면 해당 객체 환경을 `this`로 참조하는 것을 볼 수 있다. 즉, `this`의 동작방식은 함수가 정의된 방법이나 위치가 아닌 호출방식에 영향을 받는다.
 
-Also targets of `this` can be changing according to the method of calling `this` in object. It refers to the object's environment after defining `myName` function in `me` object that called with `callName` property. That is, `this` behavior is not at all affected by how or where the function was defined. Like upper example, It matters only that the function was invoked from `callName` member of `me`.
+Also targets of `this` can be changing according to the method of calling `this` in object. It refers to the object's environment after defining **myName** function in **me** object that called with **callName** property. That is, `this` behavior is not at all affected by how or where the function was defined. Like upper example, It matters only that the function was invoked from **callName** member of **me**.
+
+<br>
+#### ***Execution context***
+
+##### - The structure of execution context in javascript -
+* Variable object : { variables(const, let, var -each has scope), function declarations, arguments... }
+* Scope chain : { variable object, parent scopes }
+* `this` : context object
+
+<br>
+사실 `this`, 호이스팅, 클로저 등은 자바스크립트의 실행 컨텍스트를 이해하고 있어야 와닿을 것이다. 컨텍스트는 문맥이라는 뜻으로, 실행할 코드의 맥락 정도로 해석하면 될 것 같다. 그러면 스코프와 컨텍스트가 같은 의미같지만, 아니다. **스코프** 는 함수가 변수를 어떻게 접근하는 지를 알려주는 범위로써 호출할 때마다 고유하지만, **컨텍스트** 는 실행할 때 타겟이 달라지는 `this` 키워드의 값을 가리킨다. 그래서 컨텍스트는 함수가 어떻게 호출되는 지에 따라 결정되곤 한다.
+
+We have to get into the `execution context` in javascript for understanding terms such as `this` keyword, hoisting and closure. It is not same the scope and context. **scope** is like a range which let know us how the function access to variables, so it is unique to each invocation. But **context** contains a value of `this` keyword which could be different in execution. So, context defined according to how the function invoked.
+
+<br><br>
+## Design pattern
+> 자바스크립트는 전통적인 객체지향 언어가 아니기 때문에 디자인패턴에 접근하기가 어렵지만, 불가능한 건 아니다. 디자인 패턴은 개발자들이 일반적인 문제들을 가장 좋은 방식으로 해결하기 위해 고안된 패턴들이다. 그래서 이를 이해하고 적용해보는 것이 중요하다.
+
+> [javascript design patterns, by patrick simpson](https://seesparkbox.com/foundry/javascript_design_patterns) 를 일부번역
