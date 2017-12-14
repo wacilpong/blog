@@ -144,23 +144,23 @@
 <h1 id="what-questions-i-ve-got">what questions I&rsquo;ve got?</h1>
 
 <ol>
-<li>Thread vs Process</li>
-<li>Javascript Hoisting</li>
-<li>Javascript Closure</li>
-<li>What determines <code>this</code> in Javascript?</li>
-<li>Explain about design pattern</li>
-<li>The inner logic of node.js</li>
-<li>What happens when I type the URI in the web browser?</li>
-<li>Design RDBMS architecture</li>
-<li>Tell a plan for improving the one of website</li>
-<li>Explain the mechanism and the scalability of NoSql</li>
-<li>Objective oriented vs functional paradigm</li>
-<li>Explain each of these local, session, cookies field</li>
-<li>Why using API server, not a socket network? even with API is slower!</li>
-<li>Explain RESTful</li>
-<li>Coding test - string to integer, find the missing number, DP(Collatz, BFS)</li>
-<li>Html vs Xhtml</li>
-<li>Css flex</li>
+<li><a href="#thread-vs-process">Thread vs Process</a></li>
+<li><a href="#javascript-hoisting">Javascript Hoisting</a></li>
+<li><a href="#javascript-closure">Javascript Closure</a></li>
+<li><a href="#this-in-javascript">What determines <code>this</code> in Javascript?</a></li>
+<li><a href="#design-pattern">Explain about design pattern</a></li>
+<li><a href="#">The inner logic of node.js</a></li>
+<li><a href="#">What happens when I type the URI in the web browser?</a></li>
+<li><a href="#">Design RDBMS architecture</a></li>
+<li><a href="#">Tell a plan for improving the one of website</a></li>
+<li><a href="#">Explain the mechanism and the scalability of NoSql</a></li>
+<li><a href="#">Objective oriented vs functional paradigm</a></li>
+<li><a href="#">Explain each of these local, session, cookies field</a></li>
+<li><a href="#">Why using API server, not a socket network? even with API is slower!</a></li>
+<li><a href="#">Explain RESTful</a></li>
+<li><a href="#">Coding test - string to integer, find the missing number, DP(Collatz, BFS)</a></li>
+<li><a href="#">Html vs Xhtml</a></li>
+<li><a href="#">Css flex</a></li>
 </ol>
 
 <h1 id="let-s-solve-those-questions">Let&rsquo;s solve those questions!</h1>
@@ -287,7 +287,7 @@ console.log(test3().call(obj) === 7);
 
 <p>그렇다면 함수가 호출되는 방법에 따라 달라지는 <code>this</code>를 알 필요가 있다. test2 함수처럼 strict mode인 함수에서의 this값은 실행될 때 할당되어 유지된다. 따라서 test2 함수는 실행할 때 아무것도 정의하지 않았으므로 undefined을 리턴한다. 이때 자바스크립트의 Function.prototype에서 상속되는 call(), apply() 함수를 이용하면 특정 객체와 <code>this</code>를 연결할 수 있다. 그래서 test2에 전역의 this(window)를 보내 함수를 실행시키면 window를 리턴하게 된다. 마찬가지로 test3 함수에 obj라는 특정 객체를 보내 실행시키면 함수 내부에서 해당 객체를 <code>this</code>로 참조할 수 있게 된다.</p>
 
-<p>Then how <code>this</code> can be different when call the function? The return value of the function in strict mode like test2 function will be assigned in execution. So test2 function returns undefined, because nothing was defined in execution. At this point, It is possible to connect specific object to <code>this</code> with call() and apply(), that inherited from Function.prototype in javascript. Thus, test2 function with <code>call(this)</code> will return window. Likewise, <code>this</code> keyword in test3 function can refers to the <code>obj</code>(object) with <code>call(obj)</code>.</p>
+<p>Then how <code>this</code> can be different when call the function? The return value of the function in strict mode like test2 function will be assigned in execution. So test2 function returns undefined, because nothing was defined in execution. At this point, It is possible to connect specific object to <code>this</code> with call() and apply(), that inherited from Function.prototype in javascript. Thus, test2 function with <strong>call(this)</strong> will return window. Likewise, <code>this</code> keyword in test3 function can refers to the <strong>obj</strong>(object) with <strong>call(obj)</strong>.</p>
 
 <pre><code>let me = { name: 'roomy' };
 
@@ -301,7 +301,34 @@ console.log(me.callName()); // roomy
 
 <p>또한 <code>this</code>는 객체에서의 호출되는 방법에 따라 바뀔 수 있다. 객체(me) 내부에 함수(myName)를 정의하고 프로퍼티(callName)로 부르면 해당 객체 환경을 <code>this</code>로 참조하는 것을 볼 수 있다. 즉, <code>this</code>의 동작방식은 함수가 정의된 방법이나 위치가 아닌 호출방식에 영향을 받는다.</p>
 
-<p>Also targets of <code>this</code> can be changing according to the method of calling <code>this</code> in object. It refers to the object&rsquo;s environment after defining <code>myName</code> function in <code>me</code> object that called with <code>callName</code> property. That is, <code>this</code> behavior is not at all affected by how or where the function was defined. Like upper example, It matters only that the function was invoked from <code>callName</code> member of <code>me</code>.</p>
+<p>Also targets of <code>this</code> can be changing according to the method of calling <code>this</code> in object. It refers to the object&rsquo;s environment after defining <strong>myName</strong> function in <strong>me</strong> object that called with <strong>callName</strong> property. That is, <code>this</code> behavior is not at all affected by how or where the function was defined. Like upper example, It matters only that the function was invoked from <strong>callName</strong> member of <strong>me</strong>.</p>
+
+<p><br></p>
+
+<h4 id="execution-context"><strong><em>Execution context</em></strong></h4>
+
+<h5 id="the-structure-of-execution-context-in-javascript">- The structure of execution context in javascript -</h5>
+
+<ul>
+<li>Variable object : { variables(const, let, var -each has scope), function declarations, arguments&hellip; }</li>
+<li>Scope chain : { variable object, parent scopes }</li>
+<li><code>this</code> : context object</li>
+</ul>
+
+<p><br>
+사실 <code>this</code>, 호이스팅, 클로저 등은 자바스크립트의 실행 컨텍스트를 이해하고 있어야 와닿을 것이다. 컨텍스트는 문맥이라는 뜻으로, 실행할 코드의 맥락 정도로 해석하면 될 것 같다. 그러면 스코프와 컨텍스트가 같은 의미같지만, 아니다. <strong>스코프</strong> 는 함수가 변수를 어떻게 접근하는 지를 알려주는 범위로써 호출할 때마다 고유하지만, <strong>컨텍스트</strong> 는 실행할 때 타겟이 달라지는 <code>this</code> 키워드의 값을 가리킨다. 그래서 컨텍스트는 함수가 어떻게 호출되는 지에 따라 결정되곤 한다.</p>
+
+<p>We have to get into the <code>execution context</code> in javascript for understanding terms such as <code>this</code> keyword, hoisting and closure. It is not same the scope and context. <strong>scope</strong> is like a range which let know us how the function access to variables, so it is unique to each invocation. But <strong>context</strong> contains a value of <code>this</code> keyword which could be different in execution. So, context defined according to how the function invoked.</p>
+
+<p><br><br></p>
+
+<h2 id="design-pattern">Design pattern</h2>
+
+<blockquote>
+<p>자바스크립트는 전통적인 객체지향 언어가 아니기 때문에 디자인패턴에 접근하기가 어렵지만, 불가능한 건 아니다. 디자인 패턴은 개발자들이 일반적인 문제들을 가장 좋은 방식으로 해결하기 위해 고안된 패턴들이다. 그래서 이를 이해하고 적용해보는 것이 중요하다.</p>
+
+<p><a href="https://seesparkbox.com/foundry/javascript_design_patterns">javascript design patterns, by patrick simpson</a> 를 일부번역</p>
+</blockquote>
 </div>
 
     
