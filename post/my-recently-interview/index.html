@@ -148,7 +148,7 @@
 <li><a href="#javascript-hoisting">Javascript Hoisting</a></li>
 <li><a href="#javascript-closure">Javascript Closure</a></li>
 <li><a href="#this-in-javascript">What determines <code>this</code> in Javascript?</a></li>
-<li><a href="#design-pattern">Explain about design pattern</a></li>
+<li><a href="#design-pattern-in-javascript">Explain about design pattern</a></li>
 <li><a href="#">The inner logic of node.js</a></li>
 <li><a href="#">What happens when I type the URI in the web browser?</a></li>
 <li><a href="#">Design RDBMS architecture</a></li>
@@ -322,13 +322,72 @@ console.log(me.callName()); // roomy
 
 <p><br><br></p>
 
-<h2 id="design-pattern">Design pattern</h2>
+<h2 id="design-pattern-in-javascript">Design pattern in javascript</h2>
 
 <blockquote>
+<p><a href="https://seesparkbox.com/foundry/javascript_design_patterns">ref : javascript design patterns, by patrick simpson</a></p>
+
 <p>자바스크립트는 전통적인 객체지향 언어가 아니기 때문에 디자인패턴에 접근하기가 어렵지만, 불가능한 건 아니다. 디자인 패턴은 개발자들이 일반적인 문제들을 가장 좋은 방식으로 해결하기 위해 고안된 패턴들이다. 그래서 이를 이해하고 적용해보는 것이 중요하다.</p>
 
-<p><a href="https://seesparkbox.com/foundry/javascript_design_patterns">javascript design patterns, by patrick simpson</a> 를 일부번역</p>
+<p>JavaScript is not a traditional Object Oriented programming language, design patterns are harder to discern, but not impossible to accomplish. Design patterns are structured best practices that the programmer can use to solve common problems when developing (or designing) an application or system.</p>
 </blockquote>
+
+<h4 id="1-prototype"><strong>(1) Prototype</strong></h4>
+
+<pre><code>let dream = { 1: 'rich', 2: 'happy' };
+let now = { 1: 'hungry', 2: 'sleepy' };
+
+function Life(status) {
+  this.status = status || dream;
+}
+
+Life.prototype.reality = function(hope) {
+  let realAttr = hope || this.status;
+  return realAttr;
+}
+
+let me = new Life(now);
+
+console.log(me.reality());  // { 1: 'hungry', 2: 'sleepy' }
+console.log(me.reality(dream)); // { 1: 'rich', 2: 'happy' }
+</code></pre>
+
+<p>ES2015부터 <code>class</code>를 지원하기는 하지만, 이는 코드를 쉽게 쓰기 위한 수단일 뿐이다. 결국 자바스크립트는 프로토타입 기반의 언어이므로 이를 이해하는 것이 중요하다. 자바스크립트에서는 유일하게 객체로 값을 상속시키며, 모든 객체는 기본적으로 프로토타입([[Prototype]]) 객체를 <code>private</code> 하게 가지고 있다. 이는 객체 자신의 부모역할을 하는 객체를 의미하며, 그 다른 객체가 또 다른 프로토타입을 가지고 있는 것이 반복되다가 프로토타입이 null인 객체에서 끝난다. 이를 프로토타입 체인이라고도 한다. 그런데 크롬과 같은 브라우저에 객체를 출력해보면 <code>__proto__</code> 라는 프로퍼티를 볼 수 있다. 이는 다음의 개념들과 비교할 수 있다.</p>
+
+<p>The <code>class</code> keyword is introduced in ES2015, but is syntactical sugar, JavaScript remains prototype-based. It is important to understand prototype for this reason. In javascript, the only way to inherit something is objects, and each object has a <code>private</code> property called [[Prototype]] as a default. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. By definition, null has no prototype, and acts as the final link in this prototype chain. But we can check <code>__proto__</code> property on web browser such as a chrome. What is it?</p>
+
+<p><br><br>
+<strong><em>&ndash; <code>[[Prototype]]</code> vs <code>__proto__</code></em></strong><br></p>
+
+<pre><code>console.log(Life.__proto__ === Function.prototype); // true
+</code></pre>
+
+<p><strong>[[Prototype]]</strong> 은 모든 객체가 가진 프로퍼티로, 연결된 상위의 값이 객체일 수도 있고 null일 수도 있다.  <code>__proto__</code>는 숨겨진 <strong>[[Prototype]]</strong> 을 노출시키는 프로퍼티이다. 즉, 둘은 같은 개념이다. 따라서 위의 <strong>Life()</strong> 함수의 <code>__proto__</code> 는 <strong>Function.prototype</strong> 이 된다. 자바스크립트는 인터프리터 언어이면서 Jit(Just-in-time) 방식으로 실행 직전에 컴파일되는 언어이기도 하다. 그래서 코드를 실행시킬 때 <code>__proto__</code> 프로퍼티로 객체끼리의 연결관계를 노출시킬 수 있는 것이다.</p>
+
+<p><strong>[[Prototype]]</strong> is all objects&rsquo; property and its parent can be an object or null. <code>__proto__</code> is a property which exposing the private <strong>[[Prototype]]</strong>. Both of it them are same. Javascript is an interpreted language and also a compiled language with jit(Just-in-time) way that compiling right before the execution. Thus, <code>__proto__</code> property can exposing the relationship of objects when compile the code.</p>
+
+<p><br>
+<strong><em>&ndash; <code>prototype</code></em></strong><br></p>
+
+<pre><code>console.log(Life.prototype === me.__proto__);  // true
+</code></pre>
+
+<p><strong>prototype</strong> 은 위의 <strong>Life()</strong> 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 <strong>Life()</strong> 함수의 <strong>prototype</strong> 은 자신을 통해 생성자(<code>new</code> 키워드)로 생성된 <strong>me</strong> 객체의 <code>__proto__</code> 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다.</p>
+
+<p><strong>prototype</strong> is a property that only function object can has. So <strong>prototype</strong> of <strong>Life()</strong> function will be same with <code>__proto__</code> of <strong>me</strong> object which created by <code>new</code> keyword. That is, a parent object of an object which will be created with specific function.</p>
+
+<p><br></p>
+
+<pre><code>// all true
+console.log(Life.prototype.constructor === Life);
+console.log(Life.constructor === Function);
+console.log(Life.__proto__.constructor === Function);
+console.log(me.constructor === Life);
+</code></pre>
+
+<p>또한 함수객체는 <strong>constructor</strong> 라는 프로퍼티도 갖고 있다. 이는 쉽게 말하면 자신을 생성시킨 함수를 의미한다.</p>
+
+<p>Also the function object has a <strong>constructor</strong> property. In short, this means the parent function of the function that called with constructor.</p>
 </div>
 
     
