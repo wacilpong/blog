@@ -219,10 +219,9 @@ console.log(Life.__proto__ === Function.prototype); // true
 ```
 console.log(Life.prototype === me.__proto__);  // true
 ```
-**prototype** 은 위의 **Life()** 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 **Life()** 함수의 **prototype** 은 자신을 통해 생성자(`new` 키워드)로 생성된 **me** 객체의 `__proto__` 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다.
+**prototype** 은 위의 **Life()** 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 **Life()** 함수의 **prototype** 은 자신을 통해 생성자(`new` 키워드)로 생성된 **me** 객체의 `__proto__` 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다. Life.prototype을 그대로 출력하면, Life 객체 자신이 나오게 된다. 자기자신이 생성할 객체들의 부모이기 때문이다.
 
-**prototype** is a property that only function object can has. So **prototype** of **Life()** function will be same with `__proto__` of **me** object which created by `new` keyword. That is, a parent object of an object which will be created with specific function.
-
+**prototype** is a property that only function object can has. So **prototype** of **Life()** function will be same with `__proto__` of **me** object which created by `new` keyword. That is, a parent object of an object which will be created with specific function. If call **Life.prototype**, **Life** object itself will be written on the console, because it is a parent of the object that will be created by **Life** object.
 <br>
 ```
 // all true
