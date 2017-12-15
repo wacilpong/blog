@@ -15,7 +15,7 @@ I apply to 7 different startups that developing web like blockchain, fintech, cl
 2. [Javascript Hoisting](#javascript-hoisting)
 3. [Javascript Closure](#javascript-closure)
 4. [What determines `this` in Javascript?](#this-in-javascript)
-5. [Explain about design pattern](#design-pattern)
+5. [Explain about design pattern](#design-pattern-in-javascript)
 6. [The inner logic of node.js](#)
 7. [What happens when I type the URI in the web browser?](#)
 8. [Design RDBMS architecture](#)
@@ -174,7 +174,63 @@ Also targets of `this` can be changing according to the method of calling `this`
 We have to get into the `execution context` in javascript for understanding terms such as `this` keyword, hoisting and closure. It is not same the scope and context. **scope** is like a range which let know us how the function access to variables, so it is unique to each invocation. But **context** contains a value of `this` keyword which could be different in execution. So, context defined according to how the function invoked.
 
 <br><br>
-## Design pattern
+## Design pattern in javascript
+> [ref : javascript design patterns, by patrick simpson](https://seesparkbox.com/foundry/javascript_design_patterns)
+
 > 자바스크립트는 전통적인 객체지향 언어가 아니기 때문에 디자인패턴에 접근하기가 어렵지만, 불가능한 건 아니다. 디자인 패턴은 개발자들이 일반적인 문제들을 가장 좋은 방식으로 해결하기 위해 고안된 패턴들이다. 그래서 이를 이해하고 적용해보는 것이 중요하다.
 
-> [javascript design patterns, by patrick simpson](https://seesparkbox.com/foundry/javascript_design_patterns) 를 일부번역
+>JavaScript is not a traditional Object Oriented programming language, design patterns are harder to discern, but not impossible to accomplish. Design patterns are structured best practices that the programmer can use to solve common problems when developing (or designing) an application or system.
+
+#### **(1) Prototype**
+```
+let dream = { 1: 'rich', 2: 'happy' };
+let now = { 1: 'hungry', 2: 'sleepy' };
+
+function Life(status) {
+  this.status = status || dream;
+}
+
+Life.prototype.reality = function(hope) {
+  let realAttr = hope || this.status;
+  return realAttr;
+}
+
+let me = new Life(now);
+
+console.log(me.reality());  // { 1: 'hungry', 2: 'sleepy' }
+console.log(me.reality(dream)); // { 1: 'rich', 2: 'happy' }
+```
+
+ES2015부터 `class`를 지원하기는 하지만, 이는 코드를 쉽게 쓰기 위한 수단일 뿐이다. 결국 자바스크립트는 프로토타입 기반의 언어이므로 이를 이해하는 것이 중요하다. 자바스크립트에서는 유일하게 객체로 값을 상속시키며, 모든 객체는 기본적으로 프로토타입([[Prototype]]) 객체를 `private` 하게 가지고 있다. 이는 객체 자신의 부모역할을 하는 객체를 의미하며, 그 다른 객체가 또 다른 프로토타입을 가지고 있는 것이 반복되다가 프로토타입이 null인 객체에서 끝난다. 이를 프로토타입 체인이라고도 한다. 그런데 크롬과 같은 브라우저에 객체를 출력해보면 `__proto__` 라는 프로퍼티를 볼 수 있다. 이는 다음의 개념들과 비교할 수 있다.
+
+The `class` keyword is introduced in ES2015, but is syntactical sugar, JavaScript remains prototype-based. It is important to understand prototype for this reason. In javascript, the only way to inherit something is objects, and each object has a `private` property called [[Prototype]] as a default. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. By definition, null has no prototype, and acts as the final link in this prototype chain. But we can check `__proto__` property on web browser such as a chrome. What is it?
+
+<br><br>
+***-- `[[Prototype]]` vs `__proto__ `***<br>
+```
+console.log(Life.__proto__ === Function.prototype); // true
+```
+**[[Prototype]]** 은 모든 객체가 가진 프로퍼티로, 연결된 상위의 값이 객체일 수도 있고 null일 수도 있다.  `__proto__`는 숨겨진 **[[Prototype]]** 을 노출시키는 프로퍼티이다. 즉, 둘은 같은 개념이다. 따라서 위의 **Life()** 함수의 `__proto__` 는 **Function.prototype** 이 된다. 자바스크립트는 인터프리터 언어이면서 Jit(Just-in-time) 방식으로 실행 직전에 컴파일되는 언어이기도 하다. 그래서 코드를 실행시킬 때 `__proto__` 프로퍼티로 객체끼리의 연결관계를 노출시킬 수 있는 것이다.
+
+**[[Prototype]]** is all objects' property and its parent can be an object or null. `__proto__` is a property which exposing the private **[[Prototype]]**. Both of it them are same. Javascript is an interpreted language and also a compiled language with jit(Just-in-time) way that compiling right before the execution. Thus, `__proto__` property can exposing the relationship of objects when compile the code.
+
+<br>
+***-- `prototype`***<br>
+```
+console.log(Life.prototype === me.__proto__);  // true
+```
+**prototype** 은 위의 **Life()** 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 **Life()** 함수의 **prototype** 은 자신을 통해 생성자(`new` 키워드)로 생성된 **me** 객체의 `__proto__` 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다.
+
+**prototype** is a property that only function object can has. So **prototype** of **Life()** function will be same with `__proto__` of **me** object which created by `new` keyword. That is, a parent object of an object which will be created with specific function.
+
+<br>
+```
+// all true
+console.log(Life.prototype.constructor === Life);
+console.log(Life.constructor === Function);
+console.log(Life.__proto__.constructor === Function);
+console.log(me.constructor === Life);
+```
+또한 함수객체는 **constructor** 라는 프로퍼티도 갖고 있다. 이는 쉽게 말하면 자신을 생성시킨 함수를 의미한다.
+
+Also the function object has a **constructor** property. In short, this means the parent function of the function that called with constructor.
