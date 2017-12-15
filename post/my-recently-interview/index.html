@@ -372,11 +372,10 @@ console.log(me.reality(dream)); // { 1: 'rich', 2: 'happy' }
 <pre><code>console.log(Life.prototype === me.__proto__);  // true
 </code></pre>
 
-<p><strong>prototype</strong> 은 위의 <strong>Life()</strong> 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 <strong>Life()</strong> 함수의 <strong>prototype</strong> 은 자신을 통해 생성자(<code>new</code> 키워드)로 생성된 <strong>me</strong> 객체의 <code>__proto__</code> 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다.</p>
+<p><strong>prototype</strong> 은 위의 <strong>Life()</strong> 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 <strong>Life()</strong> 함수의 <strong>prototype</strong> 은 자신을 통해 생성자(<code>new</code> 키워드)로 생성된 <strong>me</strong> 객체의 <code>__proto__</code> 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다. Life.prototype을 그대로 출력하면, Life 객체 자신이 나오게 된다. 자기자신이 생성할 객체들의 부모이기 때문이다.</p>
 
-<p><strong>prototype</strong> is a property that only function object can has. So <strong>prototype</strong> of <strong>Life()</strong> function will be same with <code>__proto__</code> of <strong>me</strong> object which created by <code>new</code> keyword. That is, a parent object of an object which will be created with specific function.</p>
-
-<p><br></p>
+<p><strong>prototype</strong> is a property that only function object can has. So <strong>prototype</strong> of <strong>Life()</strong> function will be same with <code>__proto__</code> of <strong>me</strong> object which created by <code>new</code> keyword. That is, a parent object of an object which will be created with specific function. If call <strong>Life.prototype</strong>, <strong>Life</strong> object itself will be written on the console, because it is a parent of the object that will be created by <strong>Life</strong> object.
+<br></p>
 
 <pre><code>// all true
 console.log(Life.prototype.constructor === Life);
