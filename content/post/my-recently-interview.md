@@ -233,3 +233,25 @@ console.log(me.constructor === Life);
 또한 함수객체는 **constructor** 라는 프로퍼티도 갖고 있다. 이는 쉽게 말하면 자신을 생성시킨 함수를 의미한다.
 
 Also the function object has a **constructor** property. In short, this means the parent function of the function that called with constructor.
+
+#### **(2) Module**
+```
+window.config = function() {
+  let getType = function(code) {
+    let type;
+    if(code === 0) type = 'A' ;
+    else type = 'B';
+
+    return type;
+  }
+
+  return {
+    getType: getType;
+  }
+}();
+
+config.getType(0);  // 'A'
+config.getType(23); // 'B'
+```
+
+모듈패턴은 달리 말하면 클래스와 같은 동작을 한다. 그래서 모듈은 private 접근을 설정할 수 있게 된다. 달리 말하면 모듈은 클로저 안에서만 존재할 수 있고, 즉시실행함수로 표현되어야 한다.
