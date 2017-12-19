@@ -234,6 +234,7 @@ console.log(me.constructor === Life);
 
 Also the function object has a **constructor** property. In short, this means the parent function of the function that called with constructor.
 
+<br>
 #### **(2) Module**
 ```
 window.config = function() {
@@ -246,7 +247,7 @@ window.config = function() {
   }
 
   return {
-    getType: getType;
+    getType: getType
   }
 }();
 
@@ -254,4 +255,33 @@ config.getType(0);  // 'A'
 config.getType(23); // 'B'
 ```
 
-모듈패턴은 달리 말하면 클래스와 같은 동작을 한다. 그래서 모듈은 private 접근을 설정할 수 있게 된다. 달리 말하면 모듈은 클로저 안에서만 존재할 수 있고, 즉시실행함수로 표현되어야 한다.
+모듈패턴은 달리 말하면 `class`와 같은 동작을 하기 때문에 `private` 접근을 설정할 수 있게 된다. 그래서 모듈은 [클로저](#javascript-closure) 안에서만 존재할 수 있고, 즉시실행함수로 표현되어야 한다. 변수를 함수의 [실행 컨텍스트](#execution-context) 에서 데이터가 흐를 때 설정하고, 이를 오브젝트로 리턴하는 형식으로 값을 노출시키는 것이다. 그래서 위의 예제처럼 **getType** 변수는 함수가 실행될 때 private 하게 선언되며, return 된 값으로만 접근이 가능하다.
+
+Can access to `private` with module pattern, because it operates like a `class`. So, modules should be Immediately Invoked Function Expressions (IIFE), and all of the module code exists within a [closure](#javascript-closure). Import variables by passing in values through the function [execution](#execution-context). Export variables (expose variables) by returning an object. Thus, **getType** variable can be initialized like private and only accessed the returned value.
+
+#### **(3) Singleton**
+```
+const BOT = (() => {
+	  let instance;
+
+	  function create(str) {
+	    let name = str
+	    return {
+	      name: name
+	    };
+	  }
+
+	  return {
+	    getInstance: (str) => {
+	      if(!instance) instance = create(str);
+	      return instance;
+	    }
+	  };
+	})();
+
+let roomyBot = BOT.getInstance('roomy');
+
+console.log(roomyBot);  // { name; 'roomy' }
+
+```
+싱글톤은 첫 번째 객체가 생성되면, 그 이후에는 계속 그 객체를 반환하는 패턴이다. 그래서 클라이언트가 여러 객체를 생성하지 못하게 제한할 수 있다. 객체의 선언부에서 해당 인스턴스를 실행하고 저장시키기 때문에 모듈과 마찬가지로 즉시실행함수로 표현되어야 한다. 위의 예제의 **BOT** 의 **getInstance** 처럼 객체가 생성된 적이 없다면 **create()** 로 새로운 객체를 만들고, 이후에는 그 객체를 리턴해주는 것이 싱글톤 패턴이다.
