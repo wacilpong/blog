@@ -149,7 +149,7 @@
 <li><a href="#javascript-closure">Javascript Closure</a></li>
 <li><a href="#this-in-javascript">What determines <code>this</code> in Javascript?</a></li>
 <li><a href="#design-pattern-in-javascript">Explain about design pattern</a></li>
-<li><a href="#">The inner logic of node.js</a></li>
+<li><a href="#mechanism-of-nodejs">The mechanism of node.js</a></li>
 <li><a href="#">What happens when I type the URI in the web browser?</a></li>
 <li><a href="#">Design RDBMS architecture</a></li>
 <li><a href="#">Tell a plan for improving the one of website</a></li>
@@ -374,8 +374,9 @@ console.log(me.reality(dream)); // { 1: 'rich', 2: 'happy' }
 
 <p><strong>prototype</strong> 은 위의 <strong>Life()</strong> 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 <strong>Life()</strong> 함수의 <strong>prototype</strong> 은 자신을 통해 생성자(<code>new</code> 키워드)로 생성된 <strong>me</strong> 객체의 <code>__proto__</code> 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다. Life.prototype을 그대로 출력하면, Life 객체 자신이 나오게 된다. 자기자신이 생성할 객체들의 부모이기 때문이다.</p>
 
-<p><strong>prototype</strong> is a property that only function object can has. So <strong>prototype</strong> of <strong>Life()</strong> function will be same with <code>__proto__</code> of <strong>me</strong> object which created by <code>new</code> keyword. That is, a parent object of an object which will be created with specific function. If call <strong>Life.prototype</strong>, <strong>Life</strong> object itself will be written on the console, because it is a parent of the object that will be created by <strong>Life</strong> object.
-<br></p>
+<p><strong>prototype</strong> is a property that only function object can has. So <strong>prototype</strong> of <strong>Life()</strong> function will be same with <code>__proto__</code> of <strong>me</strong> object which created by <code>new</code> keyword. That is, a parent object of an object which will be created with specific function. If call <strong>Life.prototype</strong>, <strong>Life</strong> object itself will be written on the console, because it is a parent of the object that will be created by <strong>Life</strong> object.</p>
+
+<p><br></p>
 
 <pre><code>// all true
 console.log(Life.prototype.constructor === Life);
@@ -414,33 +415,55 @@ config.getType(23); // 'B'
 
 <p>Can access to <code>private</code> with module pattern, because it operates like a <code>class</code>. So, modules should be Immediately Invoked Function Expressions (IIFE), and all of the module code exists within a <a href="#javascript-closure">closure</a>. Import variables by passing in values through the function <a href="#execution-context">execution</a>. Export variables (expose variables) by returning an object. Thus, <strong>getType</strong> variable can be initialized like private and only accessed the returned value.</p>
 
+<p><br></p>
+
 <h4 id="3-singleton"><strong>(3) Singleton</strong></h4>
 
 <pre><code>const BOT = (() =&gt; {
       let instance;
 
-      function create(str) {
-        let name = str
+      function create() {
+        let name = 'roomy, age = 3;
         return {
-          name: name
+          name: name,
+        age: age
         };
       }
 
       return {
         getInstance: (str) =&gt; {
+          // if instance be never created, execute create()
           if(!instance) instance = create(str);
           return instance;
         }
       };
     })();
 
-let roomyBot = BOT.getInstance('roomy');
+let roomy = BOT.getInstance();
+let roomy2 = BOT.getInstance();
 
-console.log(roomyBot);  // { name; 'roomy' }
+console.log(roomy);  // { name: 'roomy', age: 3 }
+console.log(roomy2);  // { name: 'roomy', age: 3 }
 
 </code></pre>
 
-<p>싱글톤은 첫 번째 객체가 생성되면, 그 이후에는 계속 그 객체를 반환하는 패턴이다. 그래서 클라이언트가 여러 객체를 생성하지 못하게 제한할 수 있다. 객체의 선언부에서 해당 인스턴스를 실행하고 저장시키기 때문에 모듈과 마찬가지로 즉시실행함수로 표현되어야 한다. 위의 예제의 <strong>BOT</strong> 의 <strong>getInstance</strong> 처럼 객체가 생성된 적이 없다면 <strong>create()</strong> 로 새로운 객체를 만들고, 이후에는 그 객체를 리턴해주는 것이 싱글톤 패턴이다.</p>
+<p>싱글톤은 첫 번째 객체가 생성되면, 그 이후에는 계속 그 객체를 반환하는 패턴이다. 그래서 클라이언트가 여러 객체를 생성하지 못하게 제한할 수 있다. 객체의 선언부에서 해당 인스턴스를 실행하고 저장시키기 때문에 모듈과 마찬가지로 즉시실행함수로 표현되어야 한다. 위의 예제의 <strong>BOT</strong> 의 <strong>getInstance</strong> 처럼 객체가 생성된 적이 없다면 <strong>create()</strong> 로 새로운 객체를 만들고, 이후에는 그 객체를 리턴해준다. 따라서 <strong>roomy</strong> 와 <strong>roomy2</strong> 는 같은 인스턴스를 바라보게 된다.</p>
+
+<p>In singleton pattern, if the first object is created, then it will constantly returns the same object. So clients can create only that object. Singleton object also should be self-invoked like a module pattern, because it will execute and store the instance at the time of definition. Thus, <strong>roomy</strong> and <strong>roomy2</strong> will access the same instance.</p>
+
+<p><br>
+이외에도 <a href="http://www.dofactory.com/javascript/observer-design-pattern">Observer</a>, <a href="http://www.dofactory.com/javascript/adapter-design-pattern">Adapter</a> 와 같은 디자인 패턴들이 있다.</p>
+
+<p><br></p>
+
+<h2 id="mechanism-of-nodejs">Mechanism of nodeJs</h2>
+
+<ul>
+<li>single threaded event loop model</li>
+<li>built on top of V8 engine (chrome)</li>
+<li>non-blocking IO</li>
+<li>scalable</li>
+</ul>
 </div>
 
     
