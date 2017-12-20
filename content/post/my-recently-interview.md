@@ -16,7 +16,7 @@ I apply to 7 different startups that developing web like blockchain, fintech, cl
 3. [Javascript Closure](#javascript-closure)
 4. [What determines `this` in Javascript?](#this-in-javascript)
 5. [Explain about design pattern](#design-pattern-in-javascript)
-6. [The inner logic of node.js](#)
+6. [The mechanism of node.js](#mechanism-of-nodejs)
 7. [What happens when I type the URI in the web browser?](#)
 8. [Design RDBMS architecture](#)
 9. [Tell a plan for improving the one of website](#)
@@ -222,6 +222,7 @@ console.log(Life.prototype === me.__proto__);  // true
 **prototype** 은 위의 **Life()** 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 **Life()** 함수의 **prototype** 은 자신을 통해 생성자(`new` 키워드)로 생성된 **me** 객체의 `__proto__` 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다. Life.prototype을 그대로 출력하면, Life 객체 자신이 나오게 된다. 자기자신이 생성할 객체들의 부모이기 때문이다.
 
 **prototype** is a property that only function object can has. So **prototype** of **Life()** function will be same with `__proto__` of **me** object which created by `new` keyword. That is, a parent object of an object which will be created with specific function. If call **Life.prototype**, **Life** object itself will be written on the console, because it is a parent of the object that will be created by **Life** object.
+
 <br>
 ```
 // all true
@@ -259,29 +260,47 @@ config.getType(23); // 'B'
 
 Can access to `private` with module pattern, because it operates like a `class`. So, modules should be Immediately Invoked Function Expressions (IIFE), and all of the module code exists within a [closure](#javascript-closure). Import variables by passing in values through the function [execution](#execution-context). Export variables (expose variables) by returning an object. Thus, **getType** variable can be initialized like private and only accessed the returned value.
 
+<br>
 #### **(3) Singleton**
 ```
 const BOT = (() => {
 	  let instance;
 
-	  function create(str) {
-	    let name = str
+	  function create() {
+	    let name = 'roomy, age = 3;
 	    return {
-	      name: name
+	      name: name,
+        age: age
 	    };
 	  }
 
 	  return {
 	    getInstance: (str) => {
+          // if instance be never created, execute create()
 	      if(!instance) instance = create(str);
 	      return instance;
 	    }
 	  };
 	})();
 
-let roomyBot = BOT.getInstance('roomy');
+let roomy = BOT.getInstance();
+let roomy2 = BOT.getInstance();
 
-console.log(roomyBot);  // { name; 'roomy' }
+console.log(roomy);  // { name: 'roomy', age: 3 }
+console.log(roomy2);  // { name: 'roomy', age: 3 }
 
 ```
-싱글톤은 첫 번째 객체가 생성되면, 그 이후에는 계속 그 객체를 반환하는 패턴이다. 그래서 클라이언트가 여러 객체를 생성하지 못하게 제한할 수 있다. 객체의 선언부에서 해당 인스턴스를 실행하고 저장시키기 때문에 모듈과 마찬가지로 즉시실행함수로 표현되어야 한다. 위의 예제의 **BOT** 의 **getInstance** 처럼 객체가 생성된 적이 없다면 **create()** 로 새로운 객체를 만들고, 이후에는 그 객체를 리턴해주는 것이 싱글톤 패턴이다.
+싱글톤은 첫 번째 객체가 생성되면, 그 이후에는 계속 그 객체를 반환하는 패턴이다. 그래서 클라이언트가 여러 객체를 생성하지 못하게 제한할 수 있다. 객체의 선언부에서 해당 인스턴스를 실행하고 저장시키기 때문에 모듈과 마찬가지로 즉시실행함수로 표현되어야 한다. 위의 예제의 **BOT** 의 **getInstance** 처럼 객체가 생성된 적이 없다면 **create()** 로 새로운 객체를 만들고, 이후에는 그 객체를 리턴해준다. 따라서 **roomy** 와 **roomy2** 는 같은 인스턴스를 바라보게 된다.
+
+In singleton pattern, if the first object is created, then it will constantly returns the same object. So clients can create only that object. Singleton object also should be self-invoked like a module pattern, because it will execute and store the instance at the time of definition. Thus, **roomy** and **roomy2** will access the same instance.
+
+<br>
+이외에도 [Observer](http://www.dofactory.com/javascript/observer-design-pattern), [Adapter](http://www.dofactory.com/javascript/adapter-design-pattern) 와 같은 디자인 패턴들이 있다.
+
+<br>
+
+## Mechanism of nodeJs
+- single threaded event loop model
+- built on top of V8 engine (chrome)
+- non-blocking IO
+- scalable
