@@ -58,11 +58,16 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.30.2" />
+ <meta name="generator" content="Hugo 0.36" />
         
         
         
     </head>
+
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
 
     <body>
          
@@ -128,7 +133,11 @@
 
     <h4><a href="/roomycode/post/my-recently-interview/">My recently junior web developer interview</a></h4>
     <h5>December 11, 2017</h5>
-     <kbd class="item-tag">web-development</kbd>  <kbd class="item-tag">interview</kbd> 
+    
+    <a href="https://wacilpong.github.io/roomycodetags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    
+    <a href="https://wacilpong.github.io/roomycodetags/interview"><kbd class="item-tag">interview</kbd></a>
+    
 
 </div>
 
@@ -420,24 +429,24 @@ config.getType(23); // 'B'
 <h4 id="3-singleton"><strong>(3) Singleton</strong></h4>
 
 <pre><code>const BOT = (() =&gt; {
-      let instance;
+	  let instance;
 
-      function create() {
-        let name = 'roomy, age = 3;
-        return {
-          name: name,
+	  function create() {
+	    let name = 'roomy, age = 3;
+	    return {
+	      name: name,
         age: age
-        };
-      }
+	    };
+	  }
 
-      return {
-        getInstance: (str) =&gt; {
+	  return {
+	    getInstance: (str) =&gt; {
           // if instance be never created, execute create()
-          if(!instance) instance = create(str);
-          return instance;
-        }
-      };
-    })();
+	      if(!instance) instance = create(str);
+	      return instance;
+	    }
+	  };
+	})();
 
 let roomy = BOT.getInstance();
 let roomy2 = BOT.getInstance();
@@ -468,6 +477,34 @@ console.log(roomy2);  // { name: 'roomy', age: 3 }
 
     
     
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/roomycode/post/virtual-pyvenv-with-mongodb/">How to set virtual python environment with mongoDB</a></h4>
+    <h5>February 9, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/roomycodetags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    
+    <a href="https://wacilpong.github.io/roomycodetags/python"><kbd class="item-tag">python</kbd></a>
+    
+    <a href="https://wacilpong.github.io/roomycodetags/mongodb"><kbd class="item-tag">mongoDB</kbd></a>
+    
+    <a href="https://wacilpong.github.io/roomycodetags/configuration"><kbd class="item-tag">configuration</kbd></a>
+    
+
+</div>
+ 
 
     
 

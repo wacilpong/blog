@@ -6,10 +6,23 @@
     <description>Recent content in Web Development on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/roomycode/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to set virtual python environment with mongoDB</title>
+      <link>https://wacilpong.github.io/roomycode/post/virtual-pyvenv-with-mongodb/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/roomycode/post/virtual-pyvenv-with-mongodb/</guid>
+      <description>Step 1. Install python and mongoDB I am using homebrew. So it can be possible to use brew command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it.
+brew install python3  
+And install mongoDB too.
+brew install mongodb  
+Step 2. Run mongoDB Now we can use mongod command which is a command to run mongoDB ! but there is no dbpath on mongoDB, so we need to set dbpath, and it needs to contain data/db.</description>
+    </item>
     
     <item>
       <title>My recently junior web developer interview</title>
