@@ -16,7 +16,7 @@ git worktree prune
 rm -rf .git/worktree/public
 
 # making worktree and link to gh-pages
-git worktree add -B gh-pages public origin/gh-page
+git worktree add -B gh-pages public origin/gh-pages
 rm -rf public/*
 
 # Build the project. if you set submodule, run git submodule init for the first.
@@ -26,10 +26,10 @@ hugo -t minimal
 cd public
 
 # Add changes to git.
-git add -all
+git add .
 
 # Commit changes.
-msg="publishing to gh-pages `date`"
+msg="publishing to gh-pages (`date +%Y-%m-%d`)"
 git commit -m "$msg"
 
 # Push source and build repos.
