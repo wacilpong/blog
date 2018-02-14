@@ -102,5 +102,10 @@ autoenv: Are you sure you want to allow this? (y/N) y
 (grape) Roomyui-MacBook-Pro:grape roomy $ 
 ```
 
+<br>
+If you want to exit the env, type `deactivate`.
+<br><br>
+가상환경을 끄고 싶으면 `deactivate` 커맨드를 날리면 된다.
+
 <br><br>
 ### AND... DONE !
