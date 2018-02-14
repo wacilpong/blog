@@ -42,6 +42,11 @@ theme = "minimal"
     weight = 2
 
 [[menu.icon]]
+    url = "https://www.instagram.com/roomy_nation/"
+    name = "instagram"
+    weight = 3
+
+[[menu.icon]]
     url = "https://www.linkedin.com/in/areum-han-a10645118/"
     name = "linkedin"
-    weight = 3
+    weight = 4
