@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on Roomy</title>
-    <link>https://wacilpong.github.io/roomycode/tags/go/</link>
+    <link>https://wacilpong.github.io/blog/tags/go/</link>
     <description>Recent content in Go on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://wacilpong.github.io/roomycode/tags/go/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Project 1</title>
-      <link>https://wacilpong.github.io/roomycode/project/project1/</link>
+      <link>https://wacilpong.github.io/blog/project/project1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/project/project1/</guid>
+      <guid>https://wacilpong.github.io/blog/project/project1/</guid>
       <description></description>
     </item>
     

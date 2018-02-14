@@ -2,21 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web Development on Roomy</title>
-    <link>https://wacilpong.github.io/roomycode/tags/web-development/</link>
+    <link>https://wacilpong.github.io/blog/tags/web-development/</link>
     <description>Recent content in Web Development on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wacilpong.github.io/roomycode/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>How to set virtual python environment with mongoDB</title>
-      <link>https://wacilpong.github.io/roomycode/post/pyvenv-with-mongodb/</link>
+      <title>To configure https with AWS</title>
+      <link>https://wacilpong.github.io/blog/post/set-https-with-aws/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/post/pyvenv-with-mongodb/</guid>
+      <guid>https://wacilpong.github.io/blog/post/set-https-with-aws/</guid>
+      <description>flow  Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that created while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect that IP in shell.</description>
+    </item>
+    
+    <item>
+      <title>To set virtual python environment with mongoDB</title>
+      <link>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</guid>
       <description>Step 1. Install python and mongoDB I am using homebrew. So it can be possible to use brew command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it. 맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로 설치했다. 그리고 모든 설치는 homebrew로 했다.
 brew install python3  
 And install mongoDB too.
@@ -26,10 +35,10 @@ Step 2. Run mongoDB Now we can use mongod command which is a command to run mong
     
     <item>
       <title>My recently junior web developer interview</title>
-      <link>https://wacilpong.github.io/roomycode/post/my-recently-interview/</link>
+      <link>https://wacilpong.github.io/blog/post/my-recently-interview/</link>
       <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/post/my-recently-interview/</guid>
+      <guid>https://wacilpong.github.io/blog/post/my-recently-interview/</guid>
       <description>what kind of companies? 힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다. 블록체인, 핀테크, 클라우드IDE, AI 등등 다양한 분야의 회사에 신입 개발자로 지원했다. 프론트엔드/백엔드 가릴 것 없이 넣었고, 주로 nodeJs 기반의 회사로 넣었다. 12월 4일부터 12월 8일까지 일주일 간 인터뷰만 보러 다녔다.
 I apply to 7 different startups that developing web like blockchain, fintech, cloud IDE, traslating AI, medical AI. The most of them are based on nodeJs. I was an interviewee during 2017.</description>
     </item>

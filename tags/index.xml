@@ -2,147 +2,165 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Roomy</title>
-    <link>https://wacilpong.github.io/roomycode/tags/</link>
+    <link>https://wacilpong.github.io/blog/tags/</link>
     <description>Recent content in Tags on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wacilpong.github.io/roomycode/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Aws</title>
+      <link>https://wacilpong.github.io/blog/tags/aws/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Bootstrap</title>
-      <link>https://wacilpong.github.io/roomycode/tags/bootstrap/</link>
+      <link>https://wacilpong.github.io/blog/tags/bootstrap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/bootstrap/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/bootstrap/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Configuration</title>
-      <link>https://wacilpong.github.io/roomycode/tags/configuration/</link>
+      <link>https://wacilpong.github.io/blog/tags/configuration/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/configuration/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/configuration/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Css</title>
-      <link>https://wacilpong.github.io/roomycode/tags/css/</link>
+      <link>https://wacilpong.github.io/blog/tags/css/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/css/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Go</title>
-      <link>https://wacilpong.github.io/roomycode/tags/go/</link>
+      <link>https://wacilpong.github.io/blog/tags/go/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/go/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>https://wacilpong.github.io/roomycode/tags/golang/</link>
+      <link>https://wacilpong.github.io/blog/tags/golang/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/golang/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Highlight Js</title>
-      <link>https://wacilpong.github.io/roomycode/tags/highlight-js/</link>
+      <link>https://wacilpong.github.io/blog/tags/highlight-js/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/highlight-js/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/highlight-js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Html</title>
-      <link>https://wacilpong.github.io/roomycode/tags/html/</link>
+      <link>https://wacilpong.github.io/blog/tags/html/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/html/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Https</title>
+      <link>https://wacilpong.github.io/blog/tags/https/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/https/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://wacilpong.github.io/roomycode/tags/hugo/</link>
+      <link>https://wacilpong.github.io/blog/tags/hugo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/hugo/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Interview</title>
-      <link>https://wacilpong.github.io/roomycode/tags/interview/</link>
+      <link>https://wacilpong.github.io/blog/tags/interview/</link>
       <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/interview/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/interview/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Js</title>
-      <link>https://wacilpong.github.io/roomycode/tags/js/</link>
+      <link>https://wacilpong.github.io/blog/tags/js/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/js/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mongodb</title>
-      <link>https://wacilpong.github.io/roomycode/tags/mongodb/</link>
+      <link>https://wacilpong.github.io/blog/tags/mongodb/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/mongodb/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/mongodb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://wacilpong.github.io/roomycode/tags/python/</link>
+      <link>https://wacilpong.github.io/blog/tags/python/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/python/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Responsive</title>
-      <link>https://wacilpong.github.io/roomycode/tags/responsive/</link>
+      <link>https://wacilpong.github.io/blog/tags/responsive/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/responsive/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/responsive/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Syntax Highlighting</title>
-      <link>https://wacilpong.github.io/roomycode/tags/syntax-highlighting/</link>
+      <link>https://wacilpong.github.io/blog/tags/syntax-highlighting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/syntax-highlighting/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/syntax-highlighting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web Development</title>
-      <link>https://wacilpong.github.io/roomycode/tags/web-development/</link>
+      <link>https://wacilpong.github.io/blog/tags/web-development/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/roomycode/tags/web-development/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/web-development/</guid>
       <description></description>
     </item>
     
