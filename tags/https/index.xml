@@ -17,7 +17,7 @@
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/set-https-with-aws/</guid>
-      <description>flow  Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that created while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect that IP in shell.</description>
+      <description>flow  Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect that IP in shell.</description>
     </item>
     
   </channel>
