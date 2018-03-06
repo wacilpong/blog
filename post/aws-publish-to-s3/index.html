@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tags</title>
+        <title>Publish to aws s3 with s3cmd</title>
         <style>
 
     html body {
@@ -60,9 +60,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.36" />
         
-        <link href="https://wacilpong.github.io/blog/tags/index.xml" rel="alternate" type="application/rss+xml" title="Roomy" />
-        <link href="https://wacilpong.github.io/blog/tags/index.xml" rel="feed" type="application/rss+xml" title="Roomy" />
-        
         
         
     </head>
@@ -80,7 +77,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Tags</a>
+                    <a class="navbar-brand visible-xs" href="#">Publish to aws s3 with s3cmd</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -127,9 +124,7 @@
 
 <main>
 
-    <h2>Tags</h2>
-
-     <div class="item">
+    <div class="item">
 
     
     
@@ -138,88 +133,154 @@
     
     
 
-    <h4><a href="/blog/tags/interview/">Interview</a></h4>
+    <h4><a href="/blog/post/aws-publish-to-s3/">Publish to aws s3 with s3cmd</a></h4>
+    <h5>February 9, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/aws"><kbd class="item-tag">aws</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/publish"><kbd class="item-tag">publish</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h2 id="create-s3-bucket">Create S3 bucket</h2>
+
+<p>Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with <code>index.html</code> (entry point).</p>
+
+<p><br><br></p>
+
+<h2 id="create-cloudfront-distributions">Create CloudFront Distributions</h2>
+
+<p>Create in aws CloudFront console. And Just keep all settings.</p>
+
+<p><br><br></p>
+
+<h2 id="connect-domain-with-cloudfront">Connect domain with CloudFront</h2>
+
+<p>If you don&rsquo;t have routing domain in aws Route 53 console, create it first like <code>test.example.com</code>. It just depends on your url rules. Then connect with IPv4 with the CloudFront that you created.</p>
+
+<p><br><br></p>
+
+<h2 id="install-s3cmd">Install s3cmd</h2>
+
+<p>s3cmd is a command line for s3 client or backup in linux and mac. s3express is for windows user, check it. I installed it using homebrew.</p>
+
+<pre><code>brew install s3cmd
+</code></pre>
+
+<p><br>
+Type <code>s3cmd</code> on command line, then command list (help) will be appear.</p>
+
+<p><br><br></p>
+
+<h2 id="configure-s3cmd-s3cfg">Configure s3cmd (.s3cfg)</h2>
+
+<p>We need to set aws access key to s3cmd to access s3 bucket.</p>
+
+<pre><code>s3cmd --configure
+</code></pre>
+
+<p><br>
+Many properties can be set. but now we just need to type aws access key and secret key that can be generated in aws. Then check s3 buckets that connected with your key.</p>
+
+<pre><code>s3cmd ls
+</code></pre>
+
+<p><br><br></p>
+
+<h2 id="publish-to-s3-from-local">Publish to S3 from local</h2>
+
+<p>First of all, we need to build our source code. I am dealing with angular5 project, so I am using <code>ng</code> command.</p>
+
+<pre><code>ng serve --env prod --aot
+s3cmd { put, sync } --cf-invalidate -P -r project-path/dist/* s3://test.example.com
+</code></pre>
+
+<p><br>
+If you publish for the first time, use <code>put</code> command. It will publish all files and directories. And <code>sync</code> command will publish the files and directories that only be changed.</p>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/pyvenv-with-mongodb/">To set virtual python environment with mongoDB</a></h4>
+    <h5>February 9, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/python"><kbd class="item-tag">python</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/mongodb"><kbd class="item-tag">mongoDB</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/configuration"><kbd class="item-tag">configuration</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/set-https-with-aws/">To configure https with AWS</a></h4>
+    <h5>February 9, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/https"><kbd class="item-tag">https</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/aws"><kbd class="item-tag">aws</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/configuration"><kbd class="item-tag">configuration</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/my-recently-interview/">My recently junior web developer interview</a></h4>
     <h5>December 11, 2017</h5>
     
-
-</div>
-  <div class="item">
-
+    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
     
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/tags/js/">Js</a></h4>
-    <h5>January 1, 0001</h5>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/tags/mongodb/">Mongodb</a></h4>
-    <h5>February 9, 2018</h5>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/tags/publish/">Publish</a></h4>
-    <h5>February 9, 2018</h5>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/tags/python/">Python</a></h4>
-    <h5>February 9, 2018</h5>
+    <a href="https://wacilpong.github.io/blogtags/interview"><kbd class="item-tag">interview</kbd></a>
     
 
 </div>
  
 
+    
+
+    
+
 </main>
-
-
-
-<div class="pages">
-
-    
-    <a class="icon pages-icon" href="/blog/tags/page/2/" rel="prev">
-        <i class="fa fa-arrow-left"></i>
-    </a>
-     
-    <a class="icon pages-icon" href="/blog/tags/page/4/" rel="next">
-        <i class="fa fa-arrow-right"></i>
-    </a>
-    
-
-</div>
-
-
 
         <footer>
 
