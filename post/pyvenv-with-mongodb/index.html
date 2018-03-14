@@ -181,13 +181,26 @@ There are many ways to set dbpath. I just set alias when running it in my case.
 <br><br>
 되게 많은 방법이 있는데, 나는 그냥 해당 커맨드에 alias를 지정해줬다.</p>
 
-<pre><code>alias mongodb=&quot;mongod --dbpath ~your/path/data/db&quot;
+<pre><code>alias mongod=&quot;mongod --dbpath ~/your/path/data/db&quot;
 </code></pre>
 
 <p><br>
 And just type <code>mongod</code> command. Now your db is running.
 <br><br>
 이제 <code>mongod</code> 커맨드를 실행하면 db가 동작될 것이다.</p>
+
+<p><br>
+That command can be set in <code>.bashrc</code> file, and it will be loaded whenever bash command is executed. Command <code>source</code> if you want to execute it.
+<br><br>
+위의 커맨드를 배쉬가 실행될 때마다 커맨드가 로드되는 <code>.bashrc</code>파일에 써도 된다. 이에 대한 실행은 <code>source</code> 커맨드를 날리면 된다.</p>
+
+<pre><code>echo &quot;alias mongod='mongod --dbpath ~/your/path/data/db' &gt; ~/.bashrc
+source ~/.bashrc
+mongod
+</code></pre>
+
+<p><br>
+Then mongodb will be running.</p>
 
 <p><br><br></p>
 
