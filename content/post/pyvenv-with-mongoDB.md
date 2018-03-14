@@ -34,14 +34,29 @@ mkdir your/path/data/db
 There are many ways to set dbpath. I just set alias when running it in my case.
 <br><br>
 되게 많은 방법이 있는데, 나는 그냥 해당 커맨드에 alias를 지정해줬다.
+
 ```
-alias mongodb="mongod --dbpath ~your/path/data/db"
+alias mongod="mongod --dbpath ~/your/path/data/db"
 ```
 
 <br>
 And just type `mongod` command. Now your db is running.
 <br><br>
 이제 `mongod` 커맨드를 실행하면 db가 동작될 것이다.
+
+<br>
+That command can be set in `.bashrc` file, and it will be loaded whenever bash command is executed. Command `source` if you want to execute it.
+<br><br>
+위의 커맨드를 배쉬가 실행될 때마다 커맨드가 로드되는 `.bashrc`파일에 써도 된다. 이에 대한 실행은 `source` 커맨드를 날리면 된다.
+
+```
+echo "alias mongod='mongod --dbpath ~/your/path/data/db' > ~/.bashrc
+source ~/.bashrc
+mongod
+```
+
+<br>
+Then mongodb will be running.
 
 <br><br>
 ### Step 3. Set up the virtual python environmemt
