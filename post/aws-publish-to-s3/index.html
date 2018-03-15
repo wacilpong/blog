@@ -197,12 +197,12 @@ Many properties can be set. but now we just need to type aws access key and secr
 
 <p>First of all, we need to build our source code. I am dealing with angular5 project, so I am using <code>ng</code> command.</p>
 
-<pre><code>ng serve --env prod --aot
+<pre><code>ng build : --env prod --aot
 s3cmd { put, sync } --cf-invalidate -P -r project-path/dist/* s3://test.example.com
 </code></pre>
 
 <p><br>
-If you publish for the first time, use <code>put</code> command. It will publish all files and directories. And <code>sync</code> command will publish the files and directories that only be changed.</p>
+If you publish for the first time, use <code>put</code> command. It will publish all files and directories. And <code>sync</code> command will publish the files and directories that only be changed. And <code>:</code> means builds all our files. <code>--aot</code>(&lt;-&gt; <code>jit</code>) option means ahead-of-time;build files during the build phase before the browser downloads and runs that code. <code>--cf</code> means remove all chached files in CloudFront.</p>
 </div>
 
     
