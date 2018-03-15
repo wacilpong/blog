@@ -43,8 +43,8 @@ s3cmd ls
 ## Publish to S3 from local
 First of all, we need to build our source code. I am dealing with angular5 project, so I am using `ng` command.
 ```
-ng serve --env prod --aot
+ng build : --env prod --aot
 s3cmd { put, sync } --cf-invalidate -P -r project-path/dist/* s3://test.example.com
 ```
 <br>
-If you publish for the first time, use `put` command. It will publish all files and directories. And `sync` command will publish the files and directories that only be changed.
+If you publish for the first time, use `put` command. It will publish all files and directories. And `sync` command will publish the files and directories that only be changed. And `:` means builds all our files. `--aot`(<-> `jit`) option means ahead-of-time;build files during the build phase before the browser downloads and runs that code. `--cf` means remove all chached files in CloudFront.
