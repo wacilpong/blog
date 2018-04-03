@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tags</title>
+        <title>When we connect ssh with .pem</title>
         <style>
 
     html body {
@@ -60,9 +60,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.36" />
         
-        <link href="https://wacilpong.github.io/blog/tags/index.xml" rel="alternate" type="application/rss+xml" title="Roomy" />
-        <link href="https://wacilpong.github.io/blog/tags/index.xml" rel="feed" type="application/rss+xml" title="Roomy" />
-        
         
         
     </head>
@@ -80,7 +77,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Tags</a>
+                    <a class="navbar-brand visible-xs" href="#">When we connect ssh with .pem</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -127,9 +124,7 @@
 
 <main>
 
-    <h2>Tags</h2>
-
-     <div class="item">
+    <div class="item">
 
     
     
@@ -138,88 +133,90 @@
     
     
 
-    <h4><a href="/blog/tags/interview/">Interview</a></h4>
-    <h5>December 11, 2017</h5>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/tags/js/">Js</a></h4>
-    <h5>January 1, 0001</h5>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/tags/linux/">Linux</a></h4>
+    <h4><a href="/blog/post/when-connect-ssh/">When we connect ssh with .pem</a></h4>
     <h5>April 3, 2018</h5>
     
-
-</div>
-  <div class="item">
-
+    <a href="https://wacilpong.github.io/blogtags/linux"><kbd class="item-tag">linux</kbd></a>
     
+    <a href="https://wacilpong.github.io/blogtags/ssh"><kbd class="item-tag">ssh</kbd></a>
     
-    
-
-    
-    
-
-    <h4><a href="/blog/tags/mongodb/">Mongodb</a></h4>
-    <h5>February 9, 2018</h5>
+    <a href="https://wacilpong.github.io/blogtags/pem"><kbd class="item-tag">pem</kbd></a>
     
 
 </div>
-  <div class="item">
 
-    
-    
-    
 
-    
-    
+    <br> <div class="text-justify">
 
-    <h4><a href="/blog/tags/pem/">Pem</a></h4>
-    <h5>April 3, 2018</h5>
-    
+<p>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.</p>
 
+<p><br><br></p>
+
+<h2 id="flow"><em>flow</em></h2>
+
+<ol>
+<li>Generate <code>.pem</code> key (I am using AWS).</li>
+<li>Change mode of <code>.pem</code> file to 400 to read it.</li>
+<li>Identify file and connect to ssh (AWS linux for me).</li>
+<li>DONE</li>
+</ol>
+
+<p><br><br><hr></p>
+
+<h2 id="change-permission-of-file">Change permission of file</h2>
+
+<p>I will change mode of key file and connect to ssh with it.</p>
+
+<p><br></p>
+
+<pre><code>~ $ ls -alh
+
+drwxr-xr-x   6 roomy  staff   192B Apr  3 10:09 .
+drwxr-xr-x+ 41 roomy  staff   1.3K Apr  3 10:10 ..
+-rw-r--r--@  1 roomy  staff   1.7K Apr  3 10:54 test.pem
+-r--------@  1 roomy  staff   1.7K Feb 13 18:02 dev.pem
+</code></pre>
+
+<p><code>test.pem</code> file has -rw-r&ndash;r&ndash; permission. It can be separated like -, rw-, r&ndash;, r&ndash;. The first <code>-</code> means a file. and <code>d</code> is for directory. Then second 3 bits are for owner, third is for group, and the last is for other. So all users can read <code>test.pem</code> file, as <code>r</code> means read, <code>w</code> means write and <code>x</code> means execute.
+<br><br></p>
+
+<pre><code>~ $ chmod 400 test.pem
+~ $ ls -alh
+
+drwxr-xr-x   6 roomy  staff   192B Apr  3 10:09 .
+drwxr-xr-x+ 41 roomy  staff   1.3K Apr  3 10:10 ..
+-r--------@  1 roomy  staff   1.7K Apr  3 10:54 test.pem
+-r--------@  1 roomy  staff   1.7K Feb 13 18:02 dev.pem
+</code></pre>
+
+<p><br>
+Now the only owner can read that private key file.</p>
+
+<p><br><br><hr></p>
+
+<h2 id="connect-to-ssh">Connect to ssh</h2>
+
+<p>I simply connect to server with ssh command. <code>-i</code> option means identify file using key.</p>
+
+<pre><code>~ $ ssh -i ~/.ssh/test.pem ec2-user@example.com
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+$ 
+</code></pre>
 </div>
- 
+
+    
+    
+
+    
+
+    
 
 </main>
-
-
-
-<div class="pages">
-
-    
-    <a class="icon pages-icon" href="/blog/tags/page/2/" rel="prev">
-        <i class="fa fa-arrow-left"></i>
-    </a>
-     
-    <a class="icon pages-icon" href="/blog/tags/page/4/" rel="next">
-        <i class="fa fa-arrow-right"></i>
-    </a>
-    
-
-</div>
-
-
 
         <footer>
 
