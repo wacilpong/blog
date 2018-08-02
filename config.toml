@@ -7,14 +7,14 @@ theme = "minimal"
 [params]
     author = "Roomy Han"
     description = "Audio, Video, Disco"
-    githubUsername = "#"
+    githubUsername = "wacilpong"
     accent = "green"
     showBorder = true
     backgroundColor = "white"
     font = "Raleway" # should match the name on Google Fonts!
     highlight = true
     highlightStyle = "solarized-dark"
-    highlightLanguages = ["go", "java", "javascript", "scala", "swift"]
+    highlightLanguages = ["web-development"]
 
 [[menu.main]]
     url = "/"
