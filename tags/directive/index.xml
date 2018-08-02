@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Directive on Roomy</title>
+    <link>https://wacilpong.github.io/blog/tags/directive/</link>
+    <description>Recent content in Directive on Roomy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wacilpong.github.io/blog/tags/directive/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Angular directive example</title>
+      <link>https://wacilpong.github.io/blog/post/angular-directive/</link>
+      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/angular-directive/</guid>
+      <description>What is directive ? Use it to attach custom behavior to elements in the DOM. Basic Example  This is a simple directive to change chevron background-image as clicking the element.  (1) HTML &amp;lt;label appChevron class=&amp;quot;chevron&amp;quot; style=&amp;quot;background-image: url(&#39;/assets/images/arrow-down.svg&#39;);&amp;quot;&amp;gt;&amp;lt;/label&amp;gt;  
+(2) TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &#39;@angular/core&#39;; @Directive({ selector: &#39;[appChevron]&#39; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
+    </item>
+    
+  </channel>
+</rss>

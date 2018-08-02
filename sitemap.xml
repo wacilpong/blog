@@ -3,19 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://wacilpong.github.io/blog/project/project1/</loc>
+    <loc>https://wacilpong.github.io/blog/project/tkit-service/</loc>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/project/project2/</loc>
+    <loc>https://wacilpong.github.io/blog/project/dumbledore/</loc>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/project/project3/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/project/project4/</loc>
+    <loc>https://wacilpong.github.io/blog/post/angular-directive/</loc>
+    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -44,18 +41,29 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/tags/angular/</loc>
+    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/tags/aws/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/bootstrap/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/bot/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/chatbot/</loc>
     <priority>0</priority>
   </url>
   
@@ -66,27 +74,8 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/css/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/go/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/golang/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/highlight-js/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/html/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/directive/</loc>
+    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -97,18 +86,8 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/hugo/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/tags/interview/</loc>
     <lastmod>2017-12-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/js/</loc>
     <priority>0</priority>
   </url>
   
@@ -132,7 +111,7 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/post/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -154,13 +133,13 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/responsive/</loc>
+    <loc>https://wacilpong.github.io/blog/</loc>
+    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/tags/slack/</loc>
     <priority>0</priority>
   </url>
   
@@ -171,19 +150,24 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/syntax-highlighting/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/</loc>
+    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/tags/tkit/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/typescript/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/web-development/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

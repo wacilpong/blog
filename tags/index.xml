@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Angular</title>
+      <link>https://wacilpong.github.io/blog/tags/angular/</link>
+      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/angular/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Aws</title>
@@ -21,11 +30,20 @@
     </item>
     
     <item>
-      <title>Bootstrap</title>
-      <link>https://wacilpong.github.io/blog/tags/bootstrap/</link>
+      <title>Bot</title>
+      <link>https://wacilpong.github.io/blog/tags/bot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/bootstrap/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/bot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chatbot</title>
+      <link>https://wacilpong.github.io/blog/tags/chatbot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/chatbot/</guid>
       <description></description>
     </item>
     
@@ -39,47 +57,11 @@
     </item>
     
     <item>
-      <title>Css</title>
-      <link>https://wacilpong.github.io/blog/tags/css/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Directive</title>
+      <link>https://wacilpong.github.io/blog/tags/directive/</link>
+      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>https://wacilpong.github.io/blog/tags/go/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>https://wacilpong.github.io/blog/tags/golang/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Highlight Js</title>
-      <link>https://wacilpong.github.io/blog/tags/highlight-js/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/highlight-js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Html</title>
-      <link>https://wacilpong.github.io/blog/tags/html/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/html/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/directive/</guid>
       <description></description>
     </item>
     
@@ -93,29 +75,11 @@
     </item>
     
     <item>
-      <title>Hugo</title>
-      <link>https://wacilpong.github.io/blog/tags/hugo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Interview</title>
       <link>https://wacilpong.github.io/blog/tags/interview/</link>
       <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/tags/interview/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Js</title>
-      <link>https://wacilpong.github.io/blog/tags/js/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/js/</guid>
       <description></description>
     </item>
     
@@ -165,11 +129,11 @@
     </item>
     
     <item>
-      <title>Responsive</title>
-      <link>https://wacilpong.github.io/blog/tags/responsive/</link>
+      <title>Slack</title>
+      <link>https://wacilpong.github.io/blog/tags/slack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/responsive/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/slack/</guid>
       <description></description>
     </item>
     
@@ -183,18 +147,27 @@
     </item>
     
     <item>
-      <title>Syntax Highlighting</title>
-      <link>https://wacilpong.github.io/blog/tags/syntax-highlighting/</link>
+      <title>Tkit</title>
+      <link>https://wacilpong.github.io/blog/tags/tkit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/syntax-highlighting/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/tkit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typescript</title>
+      <link>https://wacilpong.github.io/blog/tags/typescript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/typescript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web Development</title>
       <link>https://wacilpong.github.io/blog/tags/web-development/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/tags/web-development/</guid>
       <description></description>

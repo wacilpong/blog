@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Angular directive example</title>
+      <link>https://wacilpong.github.io/blog/post/angular-directive/</link>
+      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/angular-directive/</guid>
+      <description>What is directive ? Use it to attach custom behavior to elements in the DOM. Basic Example  This is a simple directive to change chevron background-image as clicking the element.  (1) HTML &amp;lt;label appChevron class=&amp;quot;chevron&amp;quot; style=&amp;quot;background-image: url(&#39;/assets/images/arrow-down.svg&#39;);&amp;quot;&amp;gt;&amp;lt;/label&amp;gt;  
+(2) TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &#39;@angular/core&#39;; @Directive({ selector: &#39;[appChevron]&#39; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
+    </item>
     
     <item>
       <title>When we connect ssh with .pem</title>
