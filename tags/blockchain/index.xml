@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blockchain on Roomy</title>
+    <link>https://wacilpong.github.io/blog/tags/blockchain/</link>
+    <description>Recent content in Blockchain on Roomy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wacilpong.github.io/blog/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mushroomy&#39;s dapping blockchain story</title>
+      <link>https://wacilpong.github.io/blog/project/blockchain/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
+      <description> Class  What is Blockchain?  </description>
+    </item>
+    
+    <item>
+      <title>Mushroomy&#39;s 1st Blockcahin Story</title>
+      <link>https://wacilpong.github.io/blog/post/blockchain-1/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/blockchain-1/</guid>
+      <description>Blockchain  Database 기반의 장부라고 보면 된다. 트랜잭션을 해쉬값과 함께 블록(비트코인은 대략 1MB정도의 데이터를 1블록에 담음)에 저장하고, 그 다음 블록은 이전 해쉬값과 해당 해쉬값을 같이 담아서 연결시킨다. 이것이 블록체인이다.
+ 참고1 blockchain demo
+참고2 blockchain .com
+
+Mining  보통 Nounce값과 데이터값을 함께 조합하여 해쉬값을 만들어낸다. 이때 0으로 시작되는 해쉬값의 nounce값을 찾는 일종의 퀴즈가 바로 &amp;lsquo;채굴&amp;rsquo;이다. 난이도는 그때그때 달라진다. 많은 사람이 모여 range를 정하고 채굴하면 더 효과적일 수 있어, 마이닝풀을 통해 채굴한다.</description>
+    </item>
+    
+  </channel>
+</rss>
