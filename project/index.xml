@@ -25,7 +25,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/tkit-service/</guid>
-      <description> Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack. http://m.us.tkit.me
+      <description> Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack. http://tkit.me
 
 Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornado 4.x / MongoDB (pymongo 3.x)  </description>
     </item>
