@@ -6,5 +6,6 @@ weight: 1
 draft: false
 ---
 
-## Class
+## Lecture
 1. [What is Blockchain?](https://wacilpong.github.io/blog/post/blockchain-1/)
+2. [Bitcoin? Altcoin? ICO?](https://wacilpong.github.io/post/blockchain-2)
