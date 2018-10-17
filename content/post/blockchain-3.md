@@ -37,3 +37,58 @@ draft: false
 #### 5. TPS
 - 속도가 굉장히 빠르다. 거의 2초만에 트랜잭션 처리가 완료된다.
 - 그래서 주사위 굴리기 ~~(도박...)~~ 사이트인 `eosflare.io`는 보상을 이더리움으로 시작했다가 EOS로 바꾸기도 하였다.
+
+## Install Guide
+#### (1) Ganache
+> 스마트컨트랙트 개발을 위한 CLI가 아닌 GUI 도구
+```
+https://truffleframework.com/ganache
+```
+<br>
+#### (2) Geth (Geth & Tools)
+> 이더리움을 CLI로 제어, `golang`으로 쓰여졌다.
+```
+https://ethereum.github.io/go-ethereum/downloads/
+
+$ cd geth-alltools-darwin-amd64-1.8.17-8bbe7207/
+$ pwd
+$ vi ~/.bash_profile
+
+# geth path
+export PATH=$PATH:/Users/roomy/dev/geth/geth-alltools-darwin-amd64-1.8.17-8bbe7207
+~
+~
+~
+
+$ source ~/.bash_profile
+```
+
+<br>
+#### (3) Truffle
+> 이더리움 개발환경부터 테스팅 및 배포까지 편하게 할 수 있도록 돕는 툴이다.
+```
+A development environment, testing framework and asset pipeline for Ethereum, aiming to make life as an Ethereum developer easier. With Truffle, you get: Built-in smart contract compilation, linking, deployment and binary management.
+
+$ npm  install  -g  truffle”
+$ truffle version
+```
+
+<br>
+#### (4) VS Code Solidity Plugin
+> Ethereum Solidity Language for Visual Studio Code, by Juan Blanco
+
+<br>
+#### (5) Metamask
+> 브라우저에서 이더리움 트랜잭션을 처리하기 위한 플러그인이다. 실제 주소값을 가진 지갑이다.
+```
+A bridge that allows you to visit the distributed web of tomorrow in your browser today. It allows you to run Ethereum dApps right in your browser without running a full Ethereum node.
+
+https://metamask.io/
+```
+
+<br>
+#### (6) Mist
+> 이더리움은 가스비용이 있기 때문에 디버깅 및 테스트를 위해 private network에 붙어서 지갑 역할을 수행하려고 만들어진 개발자용 지갑이다.
+```
+https://github.com/ethereum/mist/releases
+```
