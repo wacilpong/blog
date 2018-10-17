@@ -199,6 +199,84 @@
 <li>속도가 굉장히 빠르다. 거의 2초만에 트랜잭션 처리가 완료된다.</li>
 <li>그래서 주사위 굴리기 <del>(도박&hellip;)</del> 사이트인 <code>eosflare.io</code>는 보상을 이더리움으로 시작했다가 EOS로 바꾸기도 하였다.</li>
 </ul>
+
+<h2 id="install-guide">Install Guide</h2>
+
+<h4 id="1-ganache">(1) Ganache</h4>
+
+<blockquote>
+<p>스마트컨트랙트 개발을 위한 CLI가 아닌 GUI 도구</p>
+
+<pre><code>https://truffleframework.com/ganache
+</code></pre>
+
+<p><br></p>
+
+<h4 id="2-geth-geth-tools">(2) Geth (Geth &amp; Tools)</h4>
+
+<p>이더리움을 CLI로 제어, <code>golang</code>으로 쓰여졌다.</p>
+
+<pre><code>https://ethereum.github.io/go-ethereum/downloads/
+
+$ cd geth-alltools-darwin-amd64-1.8.17-8bbe7207/
+$ pwd
+$ vi ~/.bash_profile
+
+# geth path
+export PATH=$PATH:/Users/roomy/dev/geth/geth-alltools-darwin-amd64-1.8.17-8bbe7207
+~
+~
+~
+
+$ source ~/.bash_profile
+</code></pre>
+</blockquote>
+
+<p><br></p>
+
+<h4 id="3-truffle">(3) Truffle</h4>
+
+<blockquote>
+<p>이더리움 개발환경부터 테스팅 및 배포까지 편하게 할 수 있도록 돕는 툴이다.</p>
+
+<pre><code>A development environment, testing framework and asset pipeline for Ethereum, aiming to make life as an Ethereum developer easier. With Truffle, you get: Built-in smart contract compilation, linking, deployment and binary management.
+
+$ npm  install  -g  truffle”
+$ truffle version
+</code></pre>
+</blockquote>
+
+<p><br></p>
+
+<h4 id="4-vs-code-solidity-plugin">(4) VS Code Solidity Plugin</h4>
+
+<blockquote>
+<p>Ethereum Solidity Language for Visual Studio Code, by Juan Blanco</p>
+</blockquote>
+
+<p><br></p>
+
+<h4 id="5-metamask">(5) Metamask</h4>
+
+<blockquote>
+<p>브라우저에서 이더리움 트랜잭션을 처리하기 위한 플러그인이다. 실제 주소값을 가진 지갑이다.</p>
+
+<pre><code>A bridge that allows you to visit the distributed web of tomorrow in your browser today. It allows you to run Ethereum dApps right in your browser without running a full Ethereum node.
+
+https://metamask.io/
+</code></pre>
+</blockquote>
+
+<p><br></p>
+
+<h4 id="6-mist">(6) Mist</h4>
+
+<blockquote>
+<p>이더리움은 가스비용이 있기 때문에 디버깅 및 테스트를 위해 private network에 붙어서 지갑 역할을 수행하려고 만들어진 개발자용 지갑이다.</p>
+
+<pre><code>https://github.com/ethereum/mist/releases
+</code></pre>
+</blockquote>
 </div>
 
     
