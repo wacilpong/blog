@@ -6,7 +6,7 @@
     <description>Recent content in Blockchain on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,19 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
-      <description> Lecture  What is Blockchain? Bitcoin? Altcoin? ICO?  </description>
+      <description> Lecture  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain !  </description>
+    </item>
+    
+    <item>
+      <title>Mushroomy&#39;s 3rd Blockcahin Story</title>
+      <link>https://wacilpong.github.io/blog/post/blockchain-3/</link>
+      <pubDate>Wed, 17 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/blockchain-3/</guid>
+      <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉!
+
+3rd generation blockchain: EOS  Steemit, bitshare를 만든 댄 라리머가 리딩하는 암호화폐이다.
+ 1. Governance Process  21명의 대표를 투표를 통해 선출해 Governance를 진행한다. 비트코인이나 이더리움은 Foundation을 통해 관리되는 반면, EOS는 21명(팀)의 BP(Block Producer)들이 한다. 진정한 Decentralization을 표방한다. 지만 21명(팀)의 BP가 진정한 탈중앙화인가? 고민. 대의 민주주의라는 점은 훌륭해보이지만 실제 국회는 그렇지 않다. 고민. 막강한 중국파워 때문에 EOS 공식 언어는 영어이지만, 중국 BP들은 중국어를 사용한다.</description>
     </item>
     
     <item>
@@ -27,8 +39,9 @@
       
       <guid>https://wacilpong.github.io/blog/post/blockchain-2/</guid>
       <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo;  교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&amp;rsquo;의 목적을 모두 충족하면서 암호화된 화폐이다.
- - Bitcoin  &amp;ldquo;P2P버전의 전자화폐로 은행같은 금융기관을 거치지 않고 한 대상이 다른 대상에게 직접 전달하는 온라인 지불&amp;rdquo;(Satoshi)을 위해 만들어진 코인  - Altcoin  비트코인을 제외한 모든 코인  (1) 그렇다면 이더리움은 왜 존재하는가? -&amp;gt; 먼저 스팀의 수익모델을 알아야 한다. -&amp;gt; dApp(Decentralized Application)
- Steemit에 글을 올리면 보팅하여 글쓴이에게 스팀파워를 줄 수 있다. 스팀파워는 스팀달러와 같은 영향력을 행사하며, 가입하면 조금씩 유저에게 쌓인다.</description>
+ - Bitcoin  &amp;ldquo;P2P버전의 전자화폐로 은행같은 금융기관을 거치지 않고 한 대상이 다른 대상에게 직접 전달하는 온라인 지불&amp;rdquo;(Satoshi)을 위해 만들어진 코인  - Altcoin  비트코인을 제외한 모든 코인  
+그렇다면 Ethereum은 왜 존재하는가? -&amp;gt; 먼저 스팀의 수익모델을 알아야 한다. -&amp;gt; dApp (Decentralized Application)
+ Steemit에 글을 올리면 보팅하여 글쓴이에게 스팀파워를 줄 수 있다.</description>
     </item>
     
     <item>
