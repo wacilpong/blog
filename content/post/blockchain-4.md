@@ -8,7 +8,7 @@ draft: false
 ***추신: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)***
 
 <br>
-## * Just make genesis of your block: Genesis Block
+## * Make Genesis Block Now
 ### - puppeth
 `geth`설치 및 환경변수 설정까지 끝났다면 `puppeth`커맨드를 쓸 수 있다.
 
@@ -91,7 +91,7 @@ Account #0: {block-hash} keystore:///Users/test/keystore/UTC--2018-10-18T11-00-0
 ```
 
 <br>
-## * Just make your blockchain now (macOS)
+## * Make Blockchain Now (macOS)
 ### - startblockchain.sh
 
 ```
@@ -133,7 +133,7 @@ geth attach ipc:/Users/test/MyTest/geth.ipc
 ```
 
 1. Directory is the IPC endpoint url of geth
-2. just copy it from terminal (startblockchain.sh)
+2. Copy it from terminal (startblockchain.sh)
 
 <br>
 ### - startmist.sh
@@ -149,5 +149,5 @@ geth attach ipc:/Users/test/MyTest/geth.ipc
 ~test $ sh startmist.sh or ./startmist.sh
 ```
 
-1. can use `--ipc` option instead of `--rpc`
-2. but sometimes got error for that, IDK yet!
+1. can use `--ipc` option instead of `--rpc`.
+2. But! sometimes got error for `--ipc`, IDK yet!
