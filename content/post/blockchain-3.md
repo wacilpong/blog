@@ -7,7 +7,7 @@ draft: false
 ***추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉!***
 
 <br>
-## 3rd generation blockchain: EOS
+## 3G blockchain: EOS
 > Steemit, bitshare를 만든 댄 라리머가 리딩하는 암호화폐이다.
 
 #### 1. Governance Process
@@ -36,8 +36,9 @@ draft: false
 
 #### 5. TPS
 - 속도가 굉장히 빠르다. 거의 2초만에 트랜잭션 처리가 완료된다.
-- 그래서 주사위 굴리기 ~~(도박...)~~ 사이트인 `eosflare.io`는 보상을 이더리움으로 시작했다가 EOS로 바꾸기도 하였다.
+- 그래서 현재 EOS메인넷인 `eosflare.io`에 있는 주사위 굴리기 ~~(도박...)~~ 게임을 이더리움으로 시작했다가 EOS로 바꾸기도 하였다.
 
+<br>
 ## Install Guide
 #### (1) Ganache
 > 스마트컨트랙트 개발을 위한 CLI가 아닌 GUI 도구
