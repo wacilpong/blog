@@ -6,7 +6,7 @@
     <description>Recent content in Blockchain on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,19 @@
       
       <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
       <description> Lecture  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain !  </description>
+    </item>
+    
+    <item>
+      <title>Mushroomy&#39;s 4th Blockcahin Story</title>
+      <link>https://wacilpong.github.io/blog/post/blockchain-4/</link>
+      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/blockchain-4/</guid>
+      <description>추신: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)
+
+* Just make genesis of your block: Genesis Block - puppeth geth설치 및 환경변수 설정까지 끝났다면 puppeth커맨드를 쓸 수 있다.
+
+$ mkdir test $ cd test ~test $ puppeth +-----------------------------------------------------------+ | Welcome to puppeth, your Ethereum private network manager | | | | This tool lets you create a new Ethereum network down to | | the genesis block, bootnodes, miners and ethstats servers | | without the hassle that it would normally entail.</description>
     </item>
     
     <item>
