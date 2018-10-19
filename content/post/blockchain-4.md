@@ -5,7 +5,7 @@ tags: ["blockchain"]
 draft: false
 ---
 
-***추신: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)***
+***참고: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)***
 
 <br>
 ## * Make Genesis Block Now

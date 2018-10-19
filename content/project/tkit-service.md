@@ -9,7 +9,7 @@ draft: false
 ## Overview
 Global Ticketing system service, TKIT. I created front web for TKIT in full-stack.
 <br><br>
-http://tkit.me
+https://tkit.me
 
 <br>
 ## Tech Stack
