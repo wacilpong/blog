@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mushroomy&#39;s 5th Blockcahin Story</title>
+      <link>https://wacilpong.github.io/blog/post/blockchain-5/</link>
+      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/blockchain-5/</guid>
+      <description>* geth REPL (Read Eval Print Loop)  REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands.
+ miner.start() eth.pendingTransactions eth.getTransaction(&amp;quot;{transaction-hash-id}&amp;quot;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1])   pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account.  
+- web3  Ethereum javascript API, so, can manage ethereum blockchain transactions in web browser.</description>
+    </item>
     
     <item>
       <title>Mushroomy&#39;s 4th Blockcahin Story</title>
@@ -17,7 +28,7 @@
       <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain-4/</guid>
-      <description>추신: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)
+      <description>참고: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)
 
 * Make Genesis Block Now - puppeth geth설치 및 환경변수 설정까지 끝났다면 puppeth커맨드를 쓸 수 있다.
 

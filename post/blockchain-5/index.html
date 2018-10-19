@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Mushroomy&#39;s 3rd Blockcahin Story</title>
+        <title>Mushroomy&#39;s 5th Blockcahin Story</title>
         
         <style>
 
@@ -80,7 +80,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Mushroomy&#39;s 3rd Blockcahin Story</a>
+                    <a class="navbar-brand visible-xs" href="#">Mushroomy&#39;s 5th Blockcahin Story</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -136,8 +136,8 @@
     
     
 
-    <h4><a href="/blog/post/blockchain-3/">Mushroomy&#39;s 3rd Blockcahin Story</a></h4>
-    <h5>October 17, 2018</h5>
+    <h4><a href="/blog/post/blockchain-5/">Mushroomy&#39;s 5th Blockcahin Story</a></h4>
+    <h5>October 19, 2018</h5>
     
     <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
     
@@ -147,137 +147,184 @@
 
     <br> <div class="text-justify">
 
-<p><strong><em>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉!</em></strong></p>
-
-<p><br></p>
-
-<h2 id="3g-blockchain-eos">3G blockchain: EOS</h2>
+<h2 id="geth-repl-read-eval-print-loop">* geth REPL (Read Eval Print Loop)</h2>
 
 <blockquote>
-<p>Steemit, bitshare를 만든 댄 라리머가 리딩하는 암호화폐이다.</p>
+<p>REPL will be appeared to you if you start <code>startgethconsole.sh</code>. Practice these geth commands.</p>
 </blockquote>
 
-<h4 id="1-governance-process">1. Governance Process</h4>
+<pre><code>miner.start()
+eth.pendingTransactions
+eth.getTransaction(&quot;{transaction-hash-id}&quot;)
+eth.blockNumber
+miner.stop()
+
+personal.newAccount()
+miner.setEtherbase(eth.accounts[1])
+</code></pre>
 
 <ul>
-<li>21명의 대표를 투표를 통해 선출해 <code>Governance</code>를 진행한다.</li>
-<li>비트코인이나 이더리움은 Foundation을 통해 관리되는 반면, EOS는 21명(팀)의 BP(Block Producer)들이 한다.</li>
-<li>진정한 <code>Decentralization</code>을 표방한다.</li>
-<li>지만 21명(팀)의 BP가 진정한 탈중앙화인가? 고민.</li>
-<li>대의 민주주의라는 점은 훌륭해보이지만 실제 국회는 그렇지 않다. 고민.</li>
-<li>막강한 중국파워 때문에 EOS 공식 언어는 영어이지만, 중국 BP들은 중국어를 사용한다. 고민.</li>
-</ul>
-
-<h4 id="2-bp-block-producer">2. BP (Block Producer)</h4>
-
-<ul>
-<li>121명의 BP 후보가 있으며, 이중 21명(팀)이 BP가 되고 100명(팀)은 백업 BP가 된다.</li>
-<li>EOS 홀더들의 투표로 BP가 선정된다.</li>
-<li>EOS 보유량에 따라 투표권이 생성된다.</li>
-<li>한번에 30명(팀)에게 투표 가능하며, 몰표는 불가능하다.</li>
-</ul>
-
-<h4 id="3-dpos-delegated-proof-of-stake">3. DPos (Delegated Proof of Stake)</h4>
-
-<ul>
-<li>지분을 위임하여 관리하는 시스템이다.</li>
-<li>그래서 BP 21명(팀)만이 해당 블록체인의 안건에 대해 투표해 결정할 수 있다.</li>
-<li>Steem, Bitshares, EOS 가 해당된다.</li>
-</ul>
-
-<h4 id="4-private-blockchain">4. Private Blockchain</h4>
-
-<ul>
-<li>EOS는 public과 private의 중간에 위치한 블록체인이다.</li>
-<li>public blockchain: Bitcoin, Ethereum</li>
-<li>private blockchain: Ripple, Hyper Ledger (IBM)</li>
-</ul>
-
-<h4 id="5-tps">5. TPS</h4>
-
-<ul>
-<li>속도가 굉장히 빠르다. 거의 2초만에 트랜잭션 처리가 완료된다.</li>
-<li>그래서 현재 EOS메인넷인 <code>eosflare.io</code>에 있는 주사위 굴리기 <del>(도박&hellip;)</del> 게임을 이더리움으로 시작했다가 EOS로 바꾸기도 하였다.</li>
+<li><code>pendingTransacrtions</code>: Look at the list of pending transactions.</li>
+<li><code>blockNumber</code>: Look at the current block number.</li>
+<li><code>setEtherbase()</code>: Change the default account.</li>
 </ul>
 
 <p><br></p>
 
-<h2 id="install-guide">Install Guide</h2>
-
-<h4 id="1-ganache">(1) Ganache</h4>
+<h3 id="web3">- web3</h3>
 
 <blockquote>
-<p>스마트컨트랙트 개발을 위한 CLI가 아닌 GUI 도구</p>
+<p>Ethereum javascript API, so, can manage ethereum blockchain transactions in web browser.</p>
+</blockquote>
 
-<pre><code>https://truffleframework.com/ganache
+<pre><code>Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db: e.exports, shh: s, …}
 </code></pre>
 
 <p><br></p>
 
-<h4 id="2-geth-geth-tools">(2) Geth (Geth &amp; Tools)</h4>
+<h2 id="solidity-language">* Solidity (language)</h2>
 
-<p>이더리움을 CLI로 제어, <code>golang</code>으로 쓰여졌다.</p>
-
-<pre><code>https://ethereum.github.io/go-ethereum/downloads/
-
-$ cd geth-alltools-darwin-amd64-1.8.17-8bbe7207/
-$ pwd
-$ vi ~/.bash_profile
-
-# geth path
-export PATH=$PATH:/Users/roomy/dev/geth/geth-alltools-darwin-amd64-1.8.17-8bbe7207
-~
-~
-~
-
-$ source ~/.bash_profile
-</code></pre>
+<blockquote>
+<p>A computer language for <code>smart contract</code> of blockchain.<br><a href="http://remix.ethereum.org">참고: remix.ethereum.org</a></p>
 </blockquote>
 
 <p><br></p>
 
-<h4 id="3-truffle">(3) Truffle</h4>
+<pre><code>pragma solidity ^0.4.25;
 
-<blockquote>
-<p>이더리움 개발환경부터 테스팅 및 배포까지 편하게 할 수 있도록 돕는 툴이다.</p>
-
-<pre><code>A development environment, testing framework and asset pipeline for Ethereum, aiming to make life as an Ethereum developer easier. With Truffle, you get: Built-in smart contract compilation, linking, deployment and binary management.
-
-$ npm  install  -g  truffle”
-$ truffle version
+contract MyName {
+    string myName = &quot;Roomy&quot;;
+    
+    function getMyName() view public returns(string) {
+        return myName;
+    }
+    
+    function setMyName(string name) public {
+        myName = name;
+    } 
+}
 </code></pre>
-</blockquote>
 
 <p><br></p>
 
-<h4 id="4-vs-code-solidity-plugin">(4) VS Code Solidity Plugin</h4>
+<h4 id="1-access-modifier-접근제어자">1. Access Modifier (접근제어자)</h4>
 
-<blockquote>
-<p>Ethereum Solidity Language for Visual Studio Code, by Juan Blanco</p>
-</blockquote>
-
-<p><br></p>
-
-<h4 id="5-metamask">(5) Metamask</h4>
-
-<blockquote>
-<p>브라우저에서 이더리움 트랜잭션을 처리하기 위한 플러그인이다. 실제 주소값을 가진 지갑이다.</p>
-
-<pre><code>A bridge that allows you to visit the distributed web of tomorrow in your browser today. It allows you to run Ethereum dApps right in your browser without running a full Ethereum node.
-
-https://metamask.io/
-</code></pre>
-</blockquote>
+<ul>
+<li><code>public</code>: Call from all internal/external/inharitance.</li>
+<li><code>private</code>: Call only from internal.</li>
+<li><code>external</code>: Call only from external contract. Variables can&rsquo;t set as this.</li>
+<li><code>internal</code>: Call from internal/inharitance.</li>
+</ul>
 
 <p><br></p>
 
-<h4 id="6-mist">(6) Mist</h4>
+<h4 id="2-function-type-함수타입">2. Function Type (함수타입)</h4>
+
+<ul>
+<li><code>view</code>: Read-Only. Gas fee will be free.</li>
+<li><code>pure</code>: Read (X). Gas fee will be free. Returned value will be define by argument.</li>
+<li><code>constant</code>: It used instead of view/pure before <code>0.4.17v</code>.</li>
+<li><code>payable</code>: have to set this when managing ethereum function. Gas fee will be surely paid.</li>
+</ul>
+
+<dl>
+<dt><br></dt>
+<dd>이 타입을 쓰면 <code>msg</code>라는 객체를 받을 수 있다. 해당 트랜잭션을 발생시킨 사람이 <code>msg</code>가 된다.</dd>
+</dl>
+
+<pre><code>pragma solidity ^0.4.25;
+
+contract account {
+    uint private amount = 100;
+    
+    function plus() payable public {
+        amount += msg.value;
+    }
+}
+</code></pre>
+
+<p><br></p>
+
+<h4 id="3-variable-type">3. Variable Type</h4>
+
+<ul>
+<li><code>bool</code>: true / false</li>
+<li><code>int</code>: + / -</li>
+<li><code>uint</code>: unsigned int. only positive number.</li>
+<li><code>address</code>: ethereum account address. 0x + 40 characters. Object.</li>
+</ul>
+
+<p><br></p>
+
+<h4 id="4-simple-example-smart-contract">4. Simple example: Smart contract</h4>
+
+<pre><code>pragma solidity ^0.4.24;
+
+contract Bank {
+    uint private balance = 100;
+    address public myAddress;
+    
+    constructor() public {
+        myAddress = msg.sender;
+    }
+    
+    function deposit() payable public {
+        balance += msg.value;
+    }
+    
+    function withdraw(uint n) public {
+        if ((balance &gt;= n) &amp;&amp; (msg.sender == myAddress)) {
+            balance -= n;
+            msg.sender.transfer(n);
+        }
+    }
+    
+    function getBalance() view public returns(uint) {
+        return balance;
+    }
+}
+</code></pre>
+
+<ul>
+<li><code>constructor</code> must be public or internal. And it runs only once at initializing.</li>
+<li><code>msg</code> is who generated the transaction.</li>
+</ul>
+
+<p><br></p>
+
+<h2 id="creating-token-in-your-network">* Creating token in your network</h2>
+
+<pre><code>pragma solidity ^0.4.24;
+
+contract MyToken {
+    string public name;
+    string public symbol;
+    uint8 public decimals;  
+
+    mapping (address =&gt; uint256) public balanceOf;
+    event Transfer(address _from, address _to, uint _value);
+
+    constructor(string tokenName,string tokenSymbol,uint8 decimalUnits,uint256 initialSupply) public {
+        name = tokenName;
+        symbol = tokenSymbol;
+        decimals = decimalUnits;
+        balanceOf[msg.sender] = initialSupply;
+    }
+
+    function transfer(address _to, uint256 _value) public {
+        balanceOf[msg.sender] -= _value;
+        balanceOf[_to] += _value;
+        emit Transfer(msg.sender,_to,_value);
+    }
+}
+</code></pre>
+
+<p><br></p>
+
+<h4 id="good-ref-for-erc20token">- Good Ref for ERC20Token</h4>
 
 <blockquote>
-<p>이더리움은 가스비용이 있기 때문에 디버깅 및 테스트를 위해 private network에 붙어서 지갑 역할을 수행하려고 만들어진 개발자용 지갑이다.</p>
-
-<pre><code>https://github.com/ethereum/mist/releases
-</code></pre>
+<p><a href="https://github.com/OpenZeppelin/openzeppelin-solidity/tree/master/contracts/token/ERC20">참고: Open Zeppelin</a></p>
 </blockquote>
 </div>
 
@@ -297,8 +344,8 @@ https://metamask.io/
     
     
 
-    <h4><a href="/blog/post/blockchain-5/">Mushroomy&#39;s 5th Blockcahin Story</a></h4>
-    <h5>October 19, 2018</h5>
+    <h4><a href="/blog/post/blockchain-4/">Mushroomy&#39;s 4th Blockcahin Story</a></h4>
+    <h5>October 18, 2018</h5>
     
     <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
     
@@ -313,8 +360,8 @@ https://metamask.io/
     
     
 
-    <h4><a href="/blog/post/blockchain-4/">Mushroomy&#39;s 4th Blockcahin Story</a></h4>
-    <h5>October 18, 2018</h5>
+    <h4><a href="/blog/post/blockchain-3/">Mushroomy&#39;s 3rd Blockcahin Story</a></h4>
+    <h5>October 17, 2018</h5>
     
     <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
     
