@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mushroomy&#39;s 6th Blockcahin Story</title>
+      <link>https://wacilpong.github.io/blog/post/blockchain-6/</link>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/blockchain-6/</guid>
+      <description>* Gas Fee  트랜잭션을 처리하는 데 사용되는 수수료 (송금 / 스마트컨트랙트 배포 및 수정) 채굴자가 받게 된다. GWEI라는 단위를 사용한다. 사용한 gas x gas price, 하지만 gas limit이 존재하여 이를 넘지 못한다.  
+채굴자가 받는 보상 ?
+ 블록 생성 보상 엉클 블록 보상 gas fee  
+* Token 1. ERC20  이더리움의 토큰으로서 지녀야 할 필수 기능들을 정의한 것이다. 대체 가능하다. 즉, 두 사람이 ERC20 토큰을 갖고 있다면 서로 교환가능하다.</description>
+    </item>
     
     <item>
       <title>Mushroomy&#39;s 5th Blockcahin Story</title>
