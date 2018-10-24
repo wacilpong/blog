@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
-      <description> Lecture  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub  </description>
+      <description> Lecture  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain  </description>
     </item>
     
     <item>
@@ -38,6 +38,17 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Mushroomy&#39;s 8th Blockcahin Story</title>
+      <link>https://wacilpong.github.io/blog/post/blockchain-8/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/blockchain-8/</guid>
+      <description># 해결되기 어려운 블록체인 문제, Oracle Problem?
+Cosmos  Interchain: 수많은 코인이 있고, 이들을 연결하려고 하는 개념 BIA: Blockchain Interoperablility Alliance ex) Aion, iCon, wanchain Cosmos: internet of interchain  
+- dApp --------------------------- - [dApp] [dApp]... - - Application(EVM) - - Consensus - - Networking - ---------------------------   이렇게 dApp을 EVM에 올려서 만들다보니 의존성이 생긴다. Networking, Consensus 레이어를 만드는 것이 힘들었다. 이 레이어들은 자원을 투자한다고 빨리 만들 수 있는 부분이 아니다.</description>
     </item>
     
     <item>
