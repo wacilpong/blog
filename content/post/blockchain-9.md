@@ -202,3 +202,33 @@ Eth {
 <br>
 ## Ganache
 <center>![ganache](/blog/ganache.png)</center>
+
+<br>
+- 사진에서 보여주듯, `RPC(Remote Procedure Call)`서버로 연결되어 있다.
+- RPC는 별도의 원격제어를 위해 다른 주소에서 함수나 프로시저를 실행할 수 있게 해주는 프로세스 간 통신기술이다.
+- 가나슈는 `127.0.0.1:7545`로 연결되어 있다.
+- 127.0.0.1은 IPv4에서 본인의 컴퓨터를 의미하는 `루프백(loop back)` 호스트명이다.
+- 이때 루프백이란 라우팅, 스트림 등의 흐름이 별도 가공없이 원래의 장치로 돌아간다는 의미이다.
+
+<br>
+1. 가나슈에 트러플 연결
+- truffle-config.js
+```
+module.exports = {
+  networks: {
+    development: {
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "*" // Match any network id
+    }
+  }
+};
+```
+
+<br>
+```
+truffle  console  --network development
+migrate  --compile-all  —reset
+```
+
+: 1개 블록에 1개의 트랜잭션만 담는다.
