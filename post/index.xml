@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mushroomy&#39;s 9th Blockcahin Story</title>
+      <link>https://wacilpong.github.io/blog/post/blockchain-9/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/blockchain-9/</guid>
+      <description>Truffle Command  설치 및 버전 확인: 아래의 버전내용이 뜨지 않으면 npm i -g truffle로 설치하자.  
+test $ truffle --version Truffle v4.1.14 (core: 4.1.14) Solidity v0.4.24 (solc-js)  
+2. 트러플 프로젝트 초기화 과정
+test $ truffle init Downloading... Unpacking... Setting up... Unbox successful. Sweet! Commands: Compile: truffle compile Migrate: truffle migrate Test contracts: truffle test test $ ls -al drwxr-xr-x 7 test staff 224B Oct 25 19:54 .</description>
+    </item>
     
     <item>
       <title>Mushroomy&#39;s 8th Blockcahin Story</title>

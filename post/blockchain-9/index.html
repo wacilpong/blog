@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Blockchain</title>
+        <title>Mushroomy&#39;s 9th Blockcahin Story</title>
         
         <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -63,9 +63,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.48" />
         
-        <link href="https://wacilpong.github.io/blog/tags/blockchain/index.xml" rel="alternate" type="application/rss+xml" title="Roomy" />
-        <link href="https://wacilpong.github.io/blog/tags/blockchain/index.xml" rel="feed" type="application/rss+xml" title="Roomy" />
-        
 
         
     </head>
@@ -85,7 +82,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Blockchain</a>
+                    <a class="navbar-brand visible-xs" href="#">Mushroomy&#39;s 9th Blockcahin Story</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -132,25 +129,7 @@
 
 <main>
 
-    <h2>Blockchain</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-      
-
-    <h4><a href="/blog/project/blockchain/">Mushroomy&#39;s dapping blockchain story</a></h4>
-    <h5>blockchain class</h5>
-    
-    <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
-    
-
-</div>
-  <div class="item">
+    <div class="item">
 
     
     
@@ -166,7 +145,226 @@
     
 
 </div>
-  <div class="item">
+
+
+    <br> <div class="text-justify">
+
+<h2 id="truffle-command">Truffle Command</h2>
+
+<ol>
+<li>설치 및 버전 확인: 아래의 버전내용이 뜨지 않으면 <code>npm i -g truffle</code>로 설치하자.</li>
+</ol>
+
+<p><br></p>
+
+<pre><code>test $ truffle --version
+
+Truffle v4.1.14 (core: 4.1.14)
+Solidity v0.4.24 (solc-js)
+</code></pre>
+
+<p><br>
+2. 트러플 프로젝트 초기화 과정</p>
+
+<pre><code>test $ truffle init
+
+Downloading...
+Unpacking...
+Setting up...
+Unbox successful. Sweet!
+
+Commands:
+
+Compile:        truffle compile
+Migrate:        truffle migrate
+Test contracts: truffle test
+
+test $ ls -al
+
+drwxr-xr-x  7 test  staff   224B Oct 25 19:54 .
+drwxr-xr-x  4 test  staff   128B Oct 25 19:31 ..
+drwxr-xr-x  3 test  staff    96B Oct 25 19:54 build
+drwxr-xr-x  4 test  staff   128B Oct 25 19:54 contracts
+drwxr-xr-x  4 test  staff   128B Oct 25 19:44 migrations
+drwxr-xr-x  2 test  staff    64B Oct 25 19:31 test
+-rw-r--r--  1 test  staff   545B Oct 25 19:31 truffle-config.js
+-rw-r--r--  1 test  staff   545B Oct 25 19:31 truffle.js
+</code></pre>
+
+<p><br>
+3. 스마트 컨트랙트 생성</p>
+
+<pre><code>test $ cd contracts
+contracts $ vi MyName.sol
+
+
+pragma solidity ^0.4.24;
+
+contract MyName {
+    string myName = &quot;JongKwang Coin&quot;;
+
+    function getMyName() constant public returns(string) {
+        return myName;
+    }
+
+    function setMyName(string newMyName) public {
+        myName = newMyName;
+    }
+}
+~
+~
+~
+~
+:wq
+
+contracts $ ls -al
+
+drwxr-xr-x  4 test  staff  128 Oct 25 19:54 .
+drwxr-xr-x  7 test  staff  224 Oct 25 20:05 ..
+-rw-r--r--  1 test  staff  507 Oct 25 19:31 Migrations.sol
+-rw-r--r--  1 test  staff  244 Oct 25 19:54 MyName.sol
+</code></pre>
+
+<p><br>
+4. 마이그레이션 파일 생성 (for deploying)</p>
+
+<pre><code>test $ cd migrations
+migrations $ vi 2_deploy_myname.js
+
+var myName = artifacts.require(&quot;./MyName.sol&quot;);
+module.exports = function(deployer) {
+        deployer.deploy(myName);
+};
+~
+~
+~
+~
+~
+:wq
+
+migrations $ ls -al
+
+drwxr-xr-x  4 test  staff  128 Oct 25 20:09 .
+drwxr-xr-x  7 test  staff  224 Oct 25 20:05 ..
+-rw-r--r--  1 test  staff  129 Oct 25 19:31 1_initial_migration.js
+-rw-r--r--  1 test  staff  116 Oct 25 19:44 2_deploy_myname.js
+</code></pre>
+
+<p><br>
+- 마이그레이션 파일은 반드시 순서대로 만들어져야 한다. <code>1, 2, 3...</code>
+- 대소문자는 상관없지만 <code>under bar(_)</code>로 이루어져야 한다.</p>
+
+<p><br>
+5. 개발환경 구성</p>
+
+<pre><code>test $ truffle develop
+
+Truffle Develop started at http://127.0.0.1:9545/
+
+Accounts:
+{10개 생성됨}
+
+Private Keys:
+{10개 생성됨}
+
+Mnemonic: candy maple cake sugar pudding cream honey rich smooth crumble sweet treat
+
+⚠️  Important ⚠️  : This mnemonic was created for you by Truffle. It is not secure.
+Ensure you do not use it on production blockchains, or else you risk losing funds.
+
+truffle(develop)&gt;
+truffle(develop)&gt;
+</code></pre>
+
+<p><br>
+6. 배포 (한 번만 하면 됨)</p>
+
+<pre><code>truffle(develop)&gt; migrate
+
+Compiling ./contracts/Migrations.sol...
+Compiling ./contracts/MyName.sol...
+Writing artifacts to ./build/contracts
+
+Using network 'develop'.
+
+Running migration: 1_initial_migration.js
+  Deploying Migrations...
+  ... {hash}
+  Migrations: {hash}
+Saving successful migration to network...
+  ... {hash}
+Saving artifacts...
+Running migration: 2_deploy_myname.js
+  Deploying MyName...
+  ... {hash}
+  MyName: {hash}
+Saving successful migration to network...
+  ... {hash}
+Saving artifacts...
+</code></pre>
+
+<p><br></p>
+
+<h2 id="truffle-with-web3-api">Truffle (with Web3 API)</h2>
+
+<pre><code>ttruffle(develop)&gt; web3.eth
+
+Eth {
+  _requestManager:
+   RequestManager {
+     provider:
+      HttpProvider {
+        host: 'http://127.0.0.1:9545/',
+        timeout: 0,
+        user: undefined,
+        password: undefined,
+        headers: undefined,
+        send: [Function],
+        sendAsync: [Function],
+        _alreadyWrapped: true },
+     polls: {},
+     timeout: null },
+  getBalance:
+
+  ... (생략)...
+
+</code></pre>
+
+<p><br></p>
+
+<ul>
+<li>truffle은 <code>web3</code> API를 사용하므로 해당 명령어 사용가능</li>
+<li>command ex)</li>
+</ul>
+
+<pre><code>1. MyName.deployed().then(function(instance) { app = nstance; })
+2. web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]), &quot;ether&quot;)
+3. app.setMyName(&quot;Han&quot;, {from: web3.eth.accounts[1]})
+4. app.getMyName()
+</code></pre>
+
+<ul>
+<li>MyName 컨트랙트를 <code>app</code>이라는 전역변수로 설정</li>
+<li>두번째 지갑 잔액 보기</li>
+<li>컨트랙트 내부 함수설정 + 가스비 지불은 2번째 지갑에서</li>
+<li>컨트랙트 내부 함수호출</li>
+</ul>
+
+<p><br></p>
+
+<h2 id="ganache">Ganache</h2>
+
+<p><center><img src="/blog/ganache.png" alt="ganache" /></center></p>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
 
     
     
@@ -216,21 +414,11 @@
 </div>
  
 
-</main>
-
-
-
-<div class="pages">
-
-     
-    <a class="icon pages-icon" href="/blog/tags/blockchain/page/2/" rel="next">
-        <i class="fa fa-arrow-right"></i>
-    </a>
     
 
-</div>
+    
 
-
+</main>
 
         <footer>
 
