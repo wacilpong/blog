@@ -238,5 +238,5 @@ migrate  --compile-all  —reset
 
 ***Truffle pet shop***
 
-- (Ref: truffle pet shop)[https://truffleframework.com/tutorials/pet-shop]
-- (참고: 트러플 펫샵 튜토리얼)[https://steemit.com/etherum/%40dongshik/ethereum-pet-shop-and-truffle]
+- [Ref: truffle pet shop](https://truffleframework.com/tutorials/pet-shop)
+- [참고: 트러플 펫샵 튜토리얼](https://steemit.com/etherum/%40dongshik/ethereum-pet-shop-and-truffle)
