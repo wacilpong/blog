@@ -211,8 +211,7 @@ Eth {
 - 이때 루프백이란 라우팅, 스트림 등의 흐름이 별도 가공없이 원래의 장치로 돌아간다는 의미이다.
 
 <br>
-1. 가나슈에 트러플 연결
-- truffle-config.js
+1. truffle-config.js: ganache에 트러플 연결
 ```
 module.exports = {
   networks: {
@@ -226,7 +225,7 @@ module.exports = {
 ```
 
 <br>
-- command
+2. command
 ```
 truffle  console  --network development
 migrate  --compile-all  —reset
@@ -236,6 +235,8 @@ migrate  --compile-all  —reset
 => 1개 블록에 1개의 트랜잭션만 담는다.
 
 <br>
+
 ***Truffle pet shop***
-(Ref: truffle pet shop tutorial)[https://truffleframework.com/tutorials/pet-shop]
+
+(Ref: truffle pet shop)[https://truffleframework.com/tutorials/pet-shop]
 (참고: 트러플 펫샵 튜토리얼)[https://steemit.com/etherum/%40dongshik/ethereum-pet-shop-and-truffle]
