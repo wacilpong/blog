@@ -226,9 +226,16 @@ module.exports = {
 ```
 
 <br>
+- command
 ```
 truffle  console  --network development
 migrate  --compile-all  —reset
 ```
 
-: 1개 블록에 1개의 트랜잭션만 담는다.
+<br>
+=> 1개 블록에 1개의 트랜잭션만 담는다.
+
+<br>
+***Truffle pet shop***
+(Ref: truffle pet shop tutorial)[https://truffleframework.com/tutorials/pet-shop]
+(참고: 트러플 펫샵 튜토리얼)[https://steemit.com/etherum/%40dongshik/ethereum-pet-shop-and-truffle]
