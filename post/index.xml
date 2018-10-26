@@ -44,7 +44,7 @@ test $ truffle init Downloading... Unpacking... Setting up... Unbox successful. 
       <guid>https://wacilpong.github.io/blog/post/blockchain-8/</guid>
       <description># 해결되기 어려운 블록체인 문제, Oracle Problem?
 Cosmos  Interchain: 수많은 코인이 있고, 이들을 연결하려고 하는 개념 BIA: Blockchain Interoperablility Alliance ex) Aion, iCon, wanchain Cosmos: internet of interchain  
-- dApp --------------------------- - [dApp] [dApp]... - - Application(EVM) - - Consensus - - Networking - ---------------------------   이렇게 dApp을 EVM에 올려서 만들다보니 의존성이 생긴다. Networking, Consensus 레이어를 만드는 것이 힘들었다. 이 레이어들은 자원을 투자한다고 빨리 만들 수 있는 부분이 아니다.</description>
+dApp --------------------------- - [dApp] [dApp]... - - Application(EVM) - - Consensus - - Networking - ---------------------------   이렇게 dApp을 EVM에 올려서 만들다보니 의존성이 생긴다. Networking, Consensus 레이어를 만드는 것이 힘들었다. 이 레이어들은 자원을 투자한다고 빨리 만들 수 있는 부분이 아니다.</description>
     </item>
     
     <item>
