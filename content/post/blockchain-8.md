@@ -13,7 +13,7 @@ draft: false
 - `Cosmos`: internet of interchain
 
 <br>
-### - dApp
+### dApp
 ```
 ---------------------------
 - [dApp] [dApp]...        -
@@ -34,7 +34,7 @@ draft: false
 - `Cosmos SDK`: 쉽게 dApp을 만들 수 있도록 해주는 일종의 프레임워크
 - [참고: Cosmos document - KR](https://cosmos.network/docs/resources/whitepaper-ko.html#%EC%BD%94%EC%8A%A4%EB%AA%A8%EC%8A%A4-%EA%B0%9C%EC%9A%94-cosmos-overview)
 
-### 1. 만들어진 이유?
+#### 1. 만들어진 이유?
 - 복잡한 가상머신(VM) 블록체인
   - call stack limit (DAO bug) / DelegateCall (parity bug) / Contract suicide (parity bug)
   - 개발할 수 있는 언어가 제한적 `ex) Solidity, Serpent`
@@ -48,7 +48,7 @@ draft: false
       - `POS`: 확률적인 블록 생산 / `POA`: Hashing power game
 
 <br>
-### 3. Ethereum problem
+#### 2. Ethereum problem
 ***- Nothing-at-stake problem***
 
 - 블록체인에 포크가 발생하여 노드가 선택할 때, 두 체인에 모두 투표해도 이 노드가 손실되는 부분이 없는 문제
@@ -67,12 +67,12 @@ draft: false
 => 코스모스는 반드시 2개의 노드 중 하나만이 선택되는 구조이다.
 
 <br>
-### 2. Hard Spoon 개념 (<-> Hard Fork)
+#### 3. Hard Spoon 개념 (<-> Hard Fork)
 - 기존의 블록체인 계정 잔고를 복제하여 새로운 암호화폐 발행
 - 즉, two chain + same ledger + but, the other consensus algorithm each other
 
 <br>
-### 3. Cosmos Ecosystem
+#### 4. Cosmos Ecosystem
 - 코스모스는 Pool 개념이다.
 - 코스모스의 최초 블록체인이 곧 `Cosmos Hub`가 된다. 이후에 형성될 허브들은 `Peer Hubs`
 - `Go-Ethereum`, `ZCash` 등의 임의의 블록체인 시스템으로부터 파생된 존들이 이 허브에 연결될 수 있다.
@@ -84,18 +84,22 @@ draft: false
   - 이더민트는 Tendermint 위에서 돌아가는 이더리움이다.
 
 <br>
-### 4. Atom Token
+#### 45. Atom Token
 - 코스모스 허브는 아톰토큰을 가지며, 이는 코스모스 허브의 유일한 지분토큰(staking token)이
 - 아톰은 보유자가 투표 및 검증 또는 다른 검증인들에게 위임을 하기 위해 필요
 
 <br>
-### 5. 검증인 (Validators)
+#### 6. 검증인 (Validators)
 - 100명(팀)
 - 가지고 있는 `atom`코인 물량에 비례하여 선정
 
-### 6. on-chain governance
+<br>
+#### 7. on-chain governance
 - 과반수 이상의 찬성 또는 'yea with force' 시 제안서가 통과된다.
 - 그러나 1/3+는 'nay with force'를 통해 다수결을 거부할 수 있다.
 - 이렇게 거부된 경우 모두가 `거부권 패널티 수수료 블록(VetoPenaltyFeeBlocks)`을 통해 수수료를 상실한다.
 - 따라서 '처벌(slashing)' 받음: 디폴트 1일 가치의 블록
 - 당사자는 `거부권 패널티 아톰(VetoPenaltyAtoms)`를 추가로 상실: 디폴트 0.1%
+
+<br>
+<center>![cosmos-internet-of-interchain](/blog/cosmos-interchain.png)</center>
