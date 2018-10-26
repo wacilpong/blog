@@ -94,8 +94,8 @@ draft: false
 - 가지고 있는 `atom`코인 물량에 비례하여 선정
 
 ### 6. on-chain governance
-- 과반수 이상의 찬성 또는 `yea with force` 시 제안서가 통과된다.
-- 그러나 1/3+는 `nay with force`를 통해 다수결을 거부할 수 있다.
+- 과반수 이상의 찬성 또는 'yea with force' 시 제안서가 통과된다.
+- 그러나 1/3+는 'nay with force'를 통해 다수결을 거부할 수 있다.
 - 이렇게 거부된 경우 모두가 `거부권 패널티 수수료 블록(VetoPenaltyFeeBlocks)`을 통해 수수료를 상실한다.
-- 따라서 `처벌(slashing)` 받음: 디폴트 1일 가치의 블록
+- 따라서 '처벌(slashing)' 받음: 디폴트 1일 가치의 블록
 - 당사자는 `거부권 패널티 아톰(VetoPenaltyAtoms)`를 추가로 상실: 디폴트 0.1%

@@ -6,7 +6,7 @@ weight: 1
 draft: false
 ---
 
-## Lecture
+## Lectures
 1. [What is Blockchain?](https://wacilpong.github.io/blog/post/blockchain-1/)
 2. [Bitcoin? Altcoin? ICO?](https://wacilpong.github.io/post/blockchain-2/)
 3. [3rd Generation Blockchain & Just Starting Blockchain !](https://wacilpong.github.io/post/blockchain-3/)
@@ -15,4 +15,5 @@ draft: false
 6. [Blockchain MUST BE associated with Open Source](https://wacilpong.github.io/post/blockchain-6/)
 7. [My token economy example project: Toon Hub](https://github.com/wacilpong/toon-hub)
 8. [Cosmos Blockchain: internet of interchain](https://wacilpong.github.io/post/blockchain-8/)
-9. (Truffle with ganache)[https://wacilpong.github.io/post/blockchain-9/]
+9. [Truffle with ganache](https://wacilpong.github.io/post/blockchain-9/)
+10. [Truffle Tutorial: Pet Shop](https://wacilpong.github.io/post/blockchain-10/)
