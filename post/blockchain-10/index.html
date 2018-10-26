@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Mushroomy&#39;s 4th Blockcahin Story</title>
+        <title>Mushroomy&#39;s Last Blockcahin Story</title>
         
         <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -82,7 +82,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Mushroomy&#39;s 4th Blockcahin Story</a>
+                    <a class="navbar-brand visible-xs" href="#">Mushroomy&#39;s Last Blockcahin Story</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -138,8 +138,8 @@
     
     
 
-    <h4><a href="/blog/post/blockchain-4/">Mushroomy&#39;s 4th Blockcahin Story</a></h4>
-    <h5>October 18, 2018</h5>
+    <h4><a href="/blog/post/blockchain-10/">Mushroomy&#39;s Last Blockcahin Story</a></h4>
+    <h5>October 26, 2018</h5>
     
     <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
     
@@ -149,167 +149,91 @@
 
     <br> <div class="text-justify">
 
-<p><strong><em>참고: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)</em></strong></p>
+<h2 id="truffle-tutorial-pet-shop">Truffle Tutorial: Pet Shop</h2>
+
+<p>솔직히 문서가 너무 잘되어 있어서 주요 내용+커맨드만 정리한다.
+<br>
+<a href="https://truffleframework.com/tutorials/pet-shop">https://truffleframework.com/tutorials/pet-shop</a></p>
 
 <p><br></p>
 
-<h2 id="make-genesis-block-now">* Make Genesis Block Now</h2>
+<h4 id="1-init-vs-unbox">1. init vs unbox</h4>
 
-<h3 id="puppeth">- puppeth</h3>
-
-<p><code>geth</code>설치 및 환경변수 설정까지 끝났다면 <code>puppeth</code>커맨드를 쓸 수 있다.</p>
+<ul>
+<li><code>truffle init</code>: Create empty truffle project without example contracts.</li>
+<li><code>truffle unbox</code>: Unpack the exising truffle project.</li>
+</ul>
 
 <p><br></p>
 
-<pre><code>$ mkdir test
-$ cd test
-~test $ puppeth
+<h4 id="2-pragma">2. pragma^ ?</h4>
 
-+-----------------------------------------------------------+
-| Welcome to puppeth, your Ethereum private network manager |
-|                                                           |
-| This tool lets you create a new Ethereum network down to  |
-| the genesis block, bootnodes, miners and ethstats servers |
-| without the hassle that it would normally entail.         |
-|                                                           |
-| Puppeth uses SSH to dial in to remote servers, and builds |
-| its network components out of Docker containers using the |
-| docker-compose toolset.                                   |
-+-----------------------------------------------------------+
+<ul>
+<li>means &ldquo;additional information that only the compiler cares about&rdquo;.</li>
+<li>the caret symbol (^) means &ldquo;the version indicated or higher.</li>
+</ul>
 
-lease specify a network name to administer (no spaces or hyphens, please)
-&gt; MyTest
+<p><br></p>
 
-What would you like to do? (default = stats)
- 1. Show network stats
- 2. Manage existing genesis
- 3. Track new remote server
- 4. Deploy network components
-&gt; 2
+<h4 id="3-need-to-compile">3. Need to compile ?</h4>
 
-(설정 중략)
+<ul>
+<li>솔리디티는 컴파일된 언어이므로, <code>EVM</code>이 이해하도록 만들어야 한다.</li>
+<li>따라서 솔리디티를 바이트코드로 변환하는 과정이 필요하다.</li>
+<li>Translating our human-readable Solidity into something the EVM understands.</li>
+</ul>
 
-~test $ ls
+<p><br></p>
 
-MyTest.json
+<h4 id="4-migration">4. migration</h4>
 
-</code></pre>
+<ul>
+<li>means deployment script meant to alter the state of your application&rsquo;s contracts.</li>
+<li>최초 한번만 하면 되고, 이후에는 데이터를 이동시키거나 새로 덮어쓴다.</li>
+<li>이후 테스트:</li>
+</ul>
 
 <p><br>
-<strong><em>Network ID</em></strong></p>
+<center><img src="/blog/truffle-test.png" alt="truffle-test" /></center></p>
+
+<p><br></p>
+
+<h4 id="5-meta-mask">5. Meta Mask</h4>
 
 <ul>
-<li><code>1</code>: Ethereum  Main  Network</li>
-<li><code>2</code>: Modern  Test  Network</li>
-<li><code>3</code>: Ropsten  Test  Network</li>
-<li><code>4</code>: Rinkeby  Test  Network</li>
-<li><code>42</code>: Kovan  Test  Network</li>
+<li>가입할 때 wallet seed에 ganache에서 만들어진 <code>mnemonic</code>을 넣어야 한다.</li>
+
+<li><p><code>mnemonic</code>: A special secret created for you by Ganache.
+<br>
+<center><img src="/blog/mnemonic.png" alt="mnemonic" /></center></p></li>
+
+<li><p><code>custom RPC (http://127.0.0.1:7545)</code>를 설정하는 이유는 메인넷이 아닌 private net에서 테스트하기 위함이다.</p></li>
 </ul>
 
 <p><br></p>
 
-<h3 id="geth">- geth</h3>
-
-<h4 id="1-init">1. Init</h4>
-
-<pre><code>~test $ geth --datadir . init MyNetwork.json
-~test $ ls
-
-MyTest.json geth keystore
-</code></pre>
+<h4 id="6-run-dapp-pet-shop">6. Run dapp (pet shop)</h4>
 
 <ul>
-<li>geth: 블록체인에 관한 정보 디렉토리</li>
-<li>keystore: 계정 키 디렉토리 (private key)</li>
+<li><code>npm run dev</code> in root dir</li>
 </ul>
 
-<p><br></p>
+<p><br>
+<center><img src="/blog/truffle-run.png" alt="truffle-run" /></center></p>
 
-<h4 id="2-create-and-look-at-the-accounts-list">2. Create and look at the accounts list</h4>
-
-<pre><code>~test $ geth --datadir . account new
-Password:
-Repeat passphrase:
-
-~test $ cd keystore
-~test keystore $ ls
-
-UTC--2018-10-18T11-00-04.313586000Z--{key}
-
-~test keystore $ cd ..
-~test $ geth --datadir . account list
-
-Account #0: {block-hash} keystore:///Users/test/keystore/UTC--2018-10-18T11-00-04.313586000Z--{key}
-</code></pre>
+<p><br>
+<center><img src="/blog/pet-shop.png" alt="truffle-test" /></center></p>
 
 <p><br></p>
 
-<h2 id="make-blockchain-now-macos">* Make Blockchain Now (macOS)</h2>
+<h2 id="open-zeppelin">Open Zeppelin</h2>
 
-<h3 id="startblockchain-sh">- startblockchain.sh</h3>
+<blockquote>
+<p>Zeppelin Solutions, a smart contract auditing service, has recognized this need. Using their experience, they&rsquo;ve put together a set of vetted smart contracts called OpenZeppelin.</p>
+</blockquote>
 
-<pre><code>~test $ vi startblockchain.sh
-
-geth --datadir . --networkid 9999 --nodiscover --rpc --rpcport 8545 --rpccorsdomain &quot;*&quot; --rpcapi &quot;eth,web3,personal,net&quot; --nat any --unlock 0 --password ./password.txt
-~
-~
-~
-
-~test $ chmod 755 startblockchain.sh
-~test $ sh startblockchain.sh or ./startblockchain.sh
-
-INFO [10-18|21:38:19.756] Starting P2P networking
-INFO [10-18|21:38:19.760] IPC endpoint opened
-url=/Users/test/MyTest/geth.ipc
-
-INFO [10-18|21:38:19.761] HTTP endpoint opened
-url=http://127.0.0.1:8545
-
-cors=* vhosts=localhost
-</code></pre>
-
-<ol>
-<li><code>755</code> means allows all W, R, E</li>
-<li>W, R, E means Writing, Reading, Executing</li>
-</ol>
-
-<p><br></p>
-
-<h3 id="startgethconsole-sh">- startgethconsole.sh</h3>
-
-<pre><code>~test $ vi startgethconsole.sh
-
-geth attach ipc:/Users/test/MyTest/geth.ipc
-~
-~
-~
-
-~test $ sh startgethconsole.sh or ./startgethconsole.sh
-</code></pre>
-
-<ol>
-<li>Directory is the IPC endpoint url of geth</li>
-<li>Copy it from terminal (startblockchain.sh)</li>
-</ol>
-
-<p><br></p>
-
-<h3 id="startmist-sh">- startmist.sh</h3>
-
-<pre><code>~test $ vi startmist.sh
-
-/Applications/Mist.app/Contents/MacOS/Mist --rpc /Users/test/MyTest/geth.ipc
-~
-~
-~
-
-~test $ sh startmist.sh or ./startmist.sh
-</code></pre>
-
-<ol>
-<li>can use <code>--ipc</code> option instead of <code>--rpc</code>.</li>
-<li>But! sometimes got error for <code>--ipc</code>, IDK yet!</li>
-</ol>
+<p><br>
+<a href="https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin">참고: Robust Smart Contracts with Openzeppelin</a></p>
 </div>
 
     
@@ -320,22 +244,6 @@ geth attach ipc:/Users/test/MyTest/geth.ipc
         <h4 class="page-header">Related</h4>
 
          <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/blockchain-10/">Mushroomy&#39;s Last Blockcahin Story</a></h4>
-    <h5>October 26, 2018</h5>
-    
-    <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
-    
-
-</div>
-  <div class="item">
 
     
     
@@ -362,6 +270,22 @@ geth attach ipc:/Users/test/MyTest/geth.ipc
 
     <h4><a href="/blog/post/blockchain-8/">Mushroomy&#39;s 8th Blockcahin Story</a></h4>
     <h5>October 24, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain-7/">Mushroomy&#39;s 7th Blockcahin Story</a></h4>
+    <h5>October 23, 2018</h5>
     
     <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
     
