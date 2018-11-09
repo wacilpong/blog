@@ -16,6 +16,7 @@ theme = "minimal"
     highlightStyle = "solarized-dark"
     highlightLanguages = ["web-development"]
     favicon = "favicon.ico"
+    css = ["css/custom.css"]
 
 [[menu.main]]
     url = "/"
