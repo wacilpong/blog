@@ -15,6 +15,11 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/post/shadow-or-virtual/</loc>
+    <lastmod>2018-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/post/blockchain-10/</loc>
     <lastmod>2018-10-26T00:00:00+00:00</lastmod>
   </url>
@@ -140,6 +145,12 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/tags/dom/</loc>
+    <lastmod>2018-11-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/tags/https/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -171,7 +182,7 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/post/</loc>
-    <lastmod>2018-10-26T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -194,7 +205,7 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2018-10-26T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -227,7 +238,7 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/web-development/</loc>
-    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

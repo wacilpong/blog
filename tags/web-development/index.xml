@@ -6,10 +6,21 @@
     <description>Recent content in Web Development on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Shadow DOM vs Virtual DOM</title>
+      <link>https://wacilpong.github.io/blog/post/shadow-or-virtual/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/shadow-or-virtual/</guid>
+      <description>DOM, Die Or March ? :P DOM(Document Object Model), is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (reflow and repaint).
+
+DOM은 말 그대로 오브젝트들로 구성된 모델이다. 달리 말하면, DOM은 웹페이지에 대한 객체지향적 표현이다.</description>
+    </item>
     
     <item>
       <title>Angular directive example</title>

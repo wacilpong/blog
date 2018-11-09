@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>To configure https with AWS</title>
+        <title>Shadow DOM vs Virtual DOM</title>
         
         <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -82,7 +82,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">To configure https with AWS</a>
+                    <a class="navbar-brand visible-xs" href="#">Shadow DOM vs Virtual DOM</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -138,16 +138,12 @@
     
     
 
-    <h4><a href="/blog/post/set-https-with-aws/">To configure https with AWS</a></h4>
-    <h5>February 9, 2018</h5>
+    <h4><a href="/blog/post/shadow-or-virtual/">Shadow DOM vs Virtual DOM</a></h4>
+    <h5>November 9, 2018</h5>
     
     <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
     
-    <a href="https://wacilpong.github.io/blogtags/https"><kbd class="item-tag">https</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/aws"><kbd class="item-tag">aws</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/configuration"><kbd class="item-tag">configuration</kbd></a>
+    <a href="https://wacilpong.github.io/blogtags/dom"><kbd class="item-tag">DOM</kbd></a>
     
 
 </div>
@@ -155,42 +151,77 @@
 
     <br> <div class="text-justify">
 
-<h2 id="flow"><em>flow</em></h2>
+<h2 id="dom-die-or-march">DOM, Die Or March ?</h2>
 
-<ol>
-<li>Request a certification for SSL/TLS in ACM (AWS Certificate Manager).</li>
-<li>Create ELB (Elastic Load Balancer) from EC2 management console.</li>
-<li>Create EC2 instance, and connect to ELB.</li>
-<li>Create record set or new hosted zone, and set alias the ELB in Route53.</li>
-<li>Access SSH with the keypair that can be generated while creating EC2 instance.</li>
-<li>Now we can access public IP if we didn&rsquo;t configure anything in AWS console. So, connect that IP in shell.</li>
-<li>Create server, routing configuration and mark-up files.</li>
-<li>DONE</li>
-</ol>
+<h3 id="p">:P</h3>
 
-<p><br><br></p>
+<p><code>DOM(Document Object Model)</code>, is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (<code>reflow</code> and <code>repaint</code>).</p>
 
-<h3 id="step-1-get-certification-for-ssl-tls">Step 1. Get certification for SSL/TLS</h3>
+<p><br>
+DOM은 말 그대로 오브젝트들로 구성된 모델이다. 달리 말하면, DOM은 웹페이지에 대한 객체지향적 표현이다. 웹 브라우저가 이 DOM을 조작하고, 우리는 Javascript와 CSS를 이용해 통신(조작)할 수 있다. 그런데 DOM을 조작할 때 <code>reflow</code>와 <code>repaint</code>에 대한 렌더링 계산 때문에 속도가 늦어진다.</p>
 
-<p><strong>(1)</strong> Add domain names which would be protected. I set <code>asteric(*)</code> as I have similiar domains.
-<br>
-인증서를 적용할 도메인을 입력한다. 나는 <code>*.example.com</code>처럼 동일한 형식의 도메인이 있었기에 <code>asteric(*)</code>을 지정했다.</p>
+<p><br></p>
 
-<p><br><br>
-<strong>(2)</strong> Select validation method, but I think people usually select Email. Then AWS will send the validation email to Domain registrant, Technical contact, Administrative contact, not an IAM (Identity and Access Management) account.
-<br><br>
-입력한 도메인의 유효검사 방식을 선택하는데, 보통 이메일로 하는 것 같다. 체크한 후에는 IAM (Identity and Access Management) 계정이 아니라 도메인 등록자, 기술담당자, 관리자 계정으로 이메일이 발송되니까 유의하자.</p>
+<h4 id="1-reflow">1. reflow</h4>
 
-<p><br><br>
-<strong>(3)</strong> Check email validation, then certificate will be issued successfully.
-<br>
-이메일에서 유효검사를 마치면 입력한 도메인에 대한 인증서가 발급된다.</p>
+<ul>
+<li>it triggerd when calculate the node size of <code>Render Tree</code>.</li>
+<li>it triggerd once at least at the beggining of the webpage.</li>
+</ul>
 
-<p><br><br></p>
+<h4 id="2-repaint">2. repaint</h4>
 
-<h3 id="step-2-create-load-balancer">Step 2. Create Load Balancer</h3>
+<ul>
+<li>it triggerd when update the DOM.</li>
+</ul>
 
-<p><strong>(1)</strong> writing&hellip;</p>
+<h4 id="3-what-triggers-those">3. What triggers those ?</h4>
+
+<ul>
+<li>Adding, Removing and Updating DOM node.</li>
+<li>Moving and animating the DOM node on the page.</li>
+<li><code>display:none, visibility:hidden</code></li>
+<li>User action like scrolling and resizing the window.</li>
+</ul>
+
+<p><br>
+So, We need to reduce DOM manipulation.</p>
+
+<p><br>
+그래서 위와 같은 이유로 DOM 조작 자체를 최소화해야 한다.</p>
+
+<p><br></p>
+
+<h2 id="virtual-dom">Virtual DOM</h2>
+
+<p>This is one of the way to avoid the unnecessary DOM manipulation. It avoids re-rendering page, and represents UI that is kept in memory and synced with the REAL DOM. It is a concept implemented by libraries in JavaScript on top of browser APIs. such as <code>ReactJs</code> and <code>VueJs</code>. In react, the virtual DOM called <code>React DOM</code>.</p>
+
+<p><br>
+이는 불필요한 DOM 조작을 피하기 위한 방법 중의 하나이다. 페이지를 다시 렌더링하는 것을 피하고, UI 자체를 표현하여 메모리 상에 저장되고 실제 DOM과 동기화한다. 이는 리액트나 뷰와 같은 브라우저 API들에 기반하여 자바스크립트로 구현된 컨셉이다. 참고로 리액트에서는 이러한 가상 DOM을 <code>React DOM</code>이라고 부른다.</p>
+
+<p><br></p>
+
+<p><strong><em>Then, How about Angular2+ ?</em></strong></p>
+
+<ul>
+<li><code>Angular2+</code> manipulates DOM directly, but it has <code>ChangeDetectionRef</code>, is the base class of angular view.</li>
+<li>it is a tree collects all views that are to be checked for changes.</li>
+<li>So we can also reduce the DOM manipulation.</li>
+</ul>
+
+<p><br></p>
+
+<h2 id="shadow-dom">Shadow DOM</h2>
+
+<p>This is a browser technology designed primarily for scoping variables and CSS in web components. and is mostly about encapsulation of the implementation. It refers to the ability of the browser to include a subtree of DOM elements into the rendering of a document, but not into the main document DOM tree.</p>
+
+<p><br>
+이는 웹 컴포넌트들에서 변수들과 CSS의 범위를 지정하기 위해 설계된 브라우저 기술이다. 주로 캡슐화를 위해 사용된다. DOM 엘리먼트들의 서브 트리를 렌더링 영역에 포함시키지만, 메인 DOM 트리에는 포함시키지 않는 브라우저의 한 스킬이다.</p>
+
+<p><br>
+<p style="font-size: 2rem">
+  <a href="https://developer.mozilla.org/ko/docs/Web/Web_Components/Using_shadow_DOM">Ref: Using Shadow DOM (Javascript)</a>
+</p></p>
 </div>
 
     
@@ -201,24 +232,6 @@
         <h4 class="page-header">Related</h4>
 
          <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/shadow-or-virtual/">Shadow DOM vs Virtual DOM</a></h4>
-    <h5>November 9, 2018</h5>
-    
-    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/dom"><kbd class="item-tag">DOM</kbd></a>
-    
-
-</div>
-  <div class="item">
 
     
     
@@ -255,6 +268,28 @@
     <a href="https://wacilpong.github.io/blogtags/python"><kbd class="item-tag">python</kbd></a>
     
     <a href="https://wacilpong.github.io/blogtags/mongodb"><kbd class="item-tag">mongoDB</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/configuration"><kbd class="item-tag">configuration</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/set-https-with-aws/">To configure https with AWS</a></h4>
+    <h5>February 9, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/https"><kbd class="item-tag">https</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/aws"><kbd class="item-tag">aws</kbd></a>
     
     <a href="https://wacilpong.github.io/blogtags/configuration"><kbd class="item-tag">configuration</kbd></a>
     
