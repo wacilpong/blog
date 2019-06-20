@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mushroomy&#39;s Last Blockcahin Story</title>
+        
+        <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.55.2" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Mushroomy&#39;s Last Blockcahin Story</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain/blockchain-10/">Mushroomy&#39;s Last Blockcahin Story</a></h4>
+    <h5>October 26, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h2 id="truffle-tutorial-pet-shop">Truffle Tutorial: Pet Shop</h2>
+
+<p>솔직히 문서가 너무 잘되어 있어서 주요 내용+커맨드만 정리한다.
+<br>
+<a href="https://truffleframework.com/tutorials/pet-shop">https://truffleframework.com/tutorials/pet-shop</a></p>
+
+<p><br></p>
+
+<h4 id="1-init-vs-unbox">1. init vs unbox</h4>
+
+<ul>
+<li><code>truffle init</code>: Create empty truffle project without example contracts.</li>
+<li><code>truffle unbox</code>: Unpack the exising truffle project.</li>
+</ul>
+
+<p><br></p>
+
+<h4 id="2-pragma">2. pragma^ ?</h4>
+
+<ul>
+<li>means &ldquo;additional information that only the compiler cares about&rdquo;.</li>
+<li>the caret symbol (^) means &ldquo;the version indicated or higher.</li>
+</ul>
+
+<p><br></p>
+
+<h4 id="3-need-to-compile">3. Need to compile ?</h4>
+
+<ul>
+<li>솔리디티는 컴파일된 언어이므로, <code>EVM</code>이 이해하도록 만들어야 한다.</li>
+<li>따라서 솔리디티를 바이트코드로 변환하는 과정이 필요하다.</li>
+<li>Translating our human-readable Solidity into something the EVM understands.</li>
+</ul>
+
+<p><br></p>
+
+<h4 id="4-migration">4. migration</h4>
+
+<ul>
+<li>means deployment script meant to alter the state of your application&rsquo;s contracts.</li>
+<li>최초 한번만 하면 되고, 이후에는 데이터를 이동시키거나 새로 덮어쓴다.</li>
+<li>이후 테스트:</li>
+</ul>
+
+<p><br>
+<center><img src="/blog/truffle-test.png" alt="truffle-test" /></center></p>
+
+<p><br></p>
+
+<h4 id="5-meta-mask">5. Meta Mask</h4>
+
+<ul>
+<li>가입할 때 wallet seed에 ganache에서 만들어진 <code>mnemonic</code>을 넣어야 한다.</li>
+
+<li><p><code>mnemonic</code>: A special secret created for you by Ganache.
+<br>
+<center><img src="/blog/mnemonic.png" alt="mnemonic" /></center></p></li>
+
+<li><p><code>custom RPC (http://127.0.0.1:7545)</code>를 설정하는 이유는 메인넷이 아닌 private net에서 테스트하기 위함이다.</p></li>
+</ul>
+
+<p><br></p>
+
+<h4 id="6-run-dapp-pet-shop">6. Run dapp (pet shop)</h4>
+
+<ul>
+<li><code>npm run dev</code> in root dir</li>
+</ul>
+
+<p><br>
+<center><img src="/blog/truffle-run.png" alt="truffle-run" /></center></p>
+
+<p><br>
+<center><img src="/blog/pet-shop.png" alt="truffle-test" /></center></p>
+
+<p><br></p>
+
+<h2 id="open-zeppelin">Open Zeppelin</h2>
+
+<blockquote>
+<p>Zeppelin Solutions, a smart contract auditing service, has recognized this need. Using their experience, they&rsquo;ve put together a set of vetted smart contracts called OpenZeppelin.</p>
+</blockquote>
+
+<p><br>
+<a href="https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin">참고: Robust Smart Contracts with Openzeppelin</a></p>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain/blockchain-9/">Mushroomy&#39;s 9th Blockcahin Story</a></h4>
+    <h5>October 25, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain/blockchain-8/">Mushroomy&#39;s 8th Blockcahin Story</a></h4>
+    <h5>October 24, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain/blockchain-7/">Mushroomy&#39;s 7th Blockcahin Story</a></h4>
+    <h5>October 23, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+ 
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

@@ -6,76 +6,67 @@
     <description>Recent content in Tags on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Angular</title>
-      <link>https://wacilpong.github.io/blog/tags/angular/</link>
-      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
+      <title>microservicearchitecture</title>
+      <link>https://wacilpong.github.io/blog/tags/microservicearchitecture/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/angular/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/microservicearchitecture/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Aws</title>
-      <link>https://wacilpong.github.io/blog/tags/aws/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      <title>monolith</title>
+      <link>https://wacilpong.github.io/blog/tags/monolith/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/aws/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/monolith/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Blockchain</title>
-      <link>https://wacilpong.github.io/blog/tags/blockchain/</link>
-      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      <title>web-development</title>
+      <link>https://wacilpong.github.io/blog/tags/web-development/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/blockchain/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/web-development/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Bot</title>
-      <link>https://wacilpong.github.io/blog/tags/bot/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>directory-structure</title>
+      <link>https://wacilpong.github.io/blog/tags/directory-structure/</link>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/bot/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/directory-structure/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Chatbot</title>
-      <link>https://wacilpong.github.io/blog/tags/chatbot/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>javascript</title>
+      <link>https://wacilpong.github.io/blog/tags/javascript/</link>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/chatbot/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Configuration</title>
-      <link>https://wacilpong.github.io/blog/tags/configuration/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      <title>react</title>
+      <link>https://wacilpong.github.io/blog/tags/react/</link>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/configuration/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/react/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Directive</title>
-      <link>https://wacilpong.github.io/blog/tags/directive/</link>
-      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/directive/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dom</title>
+      <title>DOM</title>
       <link>https://wacilpong.github.io/blog/tags/dom/</link>
       <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
       
@@ -84,25 +75,34 @@
     </item>
     
     <item>
-      <title>Https</title>
-      <link>https://wacilpong.github.io/blog/tags/https/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      <title>blockchain</title>
+      <link>https://wacilpong.github.io/blog/tags/blockchain/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/https/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/blockchain/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Interview</title>
-      <link>https://wacilpong.github.io/blog/tags/interview/</link>
-      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
+      <title>angular</title>
+      <link>https://wacilpong.github.io/blog/tags/angular/</link>
+      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/interview/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/angular/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Linux</title>
+      <title>directive</title>
+      <link>https://wacilpong.github.io/blog/tags/directive/</link>
+      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/directive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
       <link>https://wacilpong.github.io/blog/tags/linux/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
@@ -111,16 +111,7 @@
     </item>
     
     <item>
-      <title>Mongodb</title>
-      <link>https://wacilpong.github.io/blog/tags/mongodb/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/mongodb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pem</title>
+      <title>pem</title>
       <link>https://wacilpong.github.io/blog/tags/pem/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
@@ -129,34 +120,7 @@
     </item>
     
     <item>
-      <title>Publish</title>
-      <link>https://wacilpong.github.io/blog/tags/publish/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/publish/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://wacilpong.github.io/blog/tags/python/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Slack</title>
-      <link>https://wacilpong.github.io/blog/tags/slack/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/slack/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ssh</title>
+      <title>ssh</title>
       <link>https://wacilpong.github.io/blog/tags/ssh/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
@@ -165,7 +129,97 @@
     </item>
     
     <item>
-      <title>Tkit</title>
+      <title>aws</title>
+      <link>https://wacilpong.github.io/blog/tags/aws/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>configuration</title>
+      <link>https://wacilpong.github.io/blog/tags/configuration/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/configuration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>https</title>
+      <link>https://wacilpong.github.io/blog/tags/https/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/https/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mongoDB</title>
+      <link>https://wacilpong.github.io/blog/tags/mongodb/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>publish</title>
+      <link>https://wacilpong.github.io/blog/tags/publish/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/publish/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://wacilpong.github.io/blog/tags/python/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>interview</title>
+      <link>https://wacilpong.github.io/blog/tags/interview/</link>
+      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/interview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bot</title>
+      <link>https://wacilpong.github.io/blog/tags/bot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/bot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chatbot</title>
+      <link>https://wacilpong.github.io/blog/tags/chatbot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/chatbot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slack</title>
+      <link>https://wacilpong.github.io/blog/tags/slack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/slack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tkit</title>
       <link>https://wacilpong.github.io/blog/tags/tkit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -174,20 +228,11 @@
     </item>
     
     <item>
-      <title>Typescript</title>
+      <title>typescript</title>
       <link>https://wacilpong.github.io/blog/tags/typescript/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/tags/typescript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Development</title>
-      <link>https://wacilpong.github.io/blog/tags/web-development/</link>
-      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/web-development/</guid>
       <description></description>
     </item>
     
