@@ -1,5 +1,5 @@
 ---
-title: "Directory structure with React"
+title: "file structure with React"
 date: 2019-07-10
 tags: ["web-development", "react", "file-structure", "javascript"]
 draft: false
