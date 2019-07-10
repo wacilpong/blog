@@ -134,14 +134,14 @@
     
     
 
-    <h4><a href="/blog/post/react-directory-structure/">Directory structure with React</a></h4>
-    <h5>April 22, 2019</h5>
+    <h4><a href="/blog/post/react-file-structure/">Directory structure with React</a></h4>
+    <h5>July 10, 2019</h5>
     
     <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
     
     <a href="https://wacilpong.github.io/blogtags/react"><kbd class="item-tag">react</kbd></a>
     
-    <a href="https://wacilpong.github.io/blogtags/directory-structure"><kbd class="item-tag">directory-structure</kbd></a>
+    <a href="https://wacilpong.github.io/blogtags/file-structure"><kbd class="item-tag">file-structure</kbd></a>
     
     <a href="https://wacilpong.github.io/blogtags/javascript"><kbd class="item-tag">javascript</kbd></a>
     
@@ -162,8 +162,81 @@
 <p>기본적으로 리액트는 다음과 같이 말한다.</p>
 
 <blockquote>
-<p>React doesn’t have opinions on how you put files into folders. That said there are a few common approaches popular in the ecosystem you may want to consider.</p>
+<p>React doesn’t have opinions on how you put files into folders. That said there are a few common approaches popular in the ecosystem you may want to consider: Grouping by features or routes, Grouping by file type.</p>
 </blockquote>
+
+<p>일단 리액트는 파일을 어떻게 나열하고 구조를 잡는지에 대해 딱히 정석이 없다. 다만 고려할만한 아주 일반적인 예시를 들어주는데, 기능 혹은 라우트에 따라 한 폴더에 <code>js, html, css</code>를 모두 두는 것, 그리고 컴포넌트나 API와 같은 비슷한 파일타입별로 폴더를 만들어 두는 방법이 있다. 이렇게 일반적인 얘기를 친절히 해주며 리액트는 한마디 덧붙인다. Don’t overthink it!</p>
+
+<p>Well, there is not a perfect guide for file structuring in react ecosystem. But, very general examples here: grouping all <code>js, html, css</code> by features or routes, or, grouping by file type such as components and API.</p>
+
+<h2 id="what-i-am-using-and-will-considering-to-use">What I am using and will considering to use ?</h2>
+
+<p>우선 이번에 이직한 회사는 다음과 같은 구조를 갖고 있었다.</p>
+
+<p>I moved to another company, and they structured like this:</p>
+
+<pre><code>src/
+  api/
+  actions/
+  reducers/
+  services/
+  utils/
+  typings/
+  components/
+  styles/
+  assets/
+</code></pre>
+
+<p>회사에서 <code>typescript</code>를 도입해 사용하고 있었기 때문에 typings 폴더에서 해당 프로젝트에서 사용되는 인터페이스를 만들어 쓰고 있다. ts를 쓰고 있다는 점은 마음에 들었지만, 컴포넌트 폴더에 <code>js</code>파일만 두고 <code>(s)css</code>파일을 모두 따로 뺀 것이 마음에 들지는 않았다. 일반적인 방식에 의해도 확장자가 같다고 한번에 모아두는 것이 좋지는 않은 것 같다고 느꼈다. 그래서 차츰차츰 아래와 같은 구조를 만들어보려고 하고 있다.</p>
+
+<p>It using <code>typescript</code>, so managing all types about the interfaces in this project in typings folder. I pretty happy that they using ts, but it isn&rsquo;t that about all <code>js</code> files in components folder and all <code>(s)css</code> files in styles folder. I think It looks complicated, why all files set aside in same folder even if it has same file extension ? So, I gradually make this structure like this:</p>
+
+<pre><code>src/
+  api/
+  actions/
+  modules/
+  services/
+  view-model-creator/
+  utils/
+  typings/
+  components/
+    atoms/
+      ButtomComponent/
+        .ts
+        .css
+    molecules/
+    organisms/
+    pages/
+      TestPageComponent/
+        .ts
+        .css
+  assets/
+    _exampleReset.css
+    _exampleBase.css
+    img/
+</code></pre>
+
+<ol>
+<li><p>우선 함께 일하는 동료의 제안으로 <code>view-model-creator</code>라는 녀석을 두게 되었는데, 컴포넌트 내에서 데이터를 파싱해 보여주기 보다는, 뷰모델을 만들어서 미리 파싱된 데이터를 컴포넌트에서 쓰기 위해 만들었다.
+<br>
+My coworker suggest <code>view-model-creator</code>. Instead of parsing and displaying data in a component, we created pre-parsed data for using it in a component.</p></li>
+
+<li><p>그리고 <a href="http://bradfrost.com/blog/post/atomic-web-design/">아토믹 디자인(atomic design)</a>을 적용해 컴포넌트를 나누기로 했다. 이를 통해 공통 단위의 컴포넌트들에 대한 재사용성이 좀 더 강화되었으면 좋겠다.
+<br>
+We devide the components units by atomic design rule. I expect the small unit component will be more reusable.</p></li>
+
+<li><p>리덕스 상태에 대한 관리 뿐만 아니라 인증이나 UI 조작 등, 전역으로 조작되어야 하는 것들에 대한 관리를 포함한다는 의미에서 리듀서가 아닌 모듈이라는 이름을 채택했다.
+<br>
+We choose <code>modules</code>, not a <code>reducers</code>, in regards to not only the redux state managing, but also the managing global state and functions like UI or authentication.</p></li>
+
+<li><p>외부 API에 대한 통신 (후에는 내부 API 통신까지도)을 담당하는 의미에서 서비스를 두었다.
+<br>
+<code>Service</code> managing API communication.</p></li>
+</ol>
+
+<h2 id="umm">Umm</h2>
+
+<p>리액트가 정확한 가이드를 내려주지 않으니 어려운 점도 있지만, 개발자 각자만의 구조를 만들어간다는 점이 좋은 것 같..지만 매우 혼돈의 카오스적인 아이임은 분명하다.</p>
 </div>
 
     
@@ -174,26 +247,6 @@
         <h4 class="page-header">Related</h4>
 
          <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/micro-service-architecture/">Micro service architecture example</a></h4>
-    <h5>May 1, 2019</h5>
-    
-    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/microservicearchitecture"><kbd class="item-tag">microservicearchitecture</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/monolith"><kbd class="item-tag">monolith</kbd></a>
-    
-
-</div>
-  <div class="item">
 
     
     
@@ -228,6 +281,28 @@
     <a href="https://wacilpong.github.io/blogtags/angular"><kbd class="item-tag">angular</kbd></a>
     
     <a href="https://wacilpong.github.io/blogtags/directive"><kbd class="item-tag">directive</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/pyvenv-with-mongodb/">To set virtual python environment with mongoDB</a></h4>
+    <h5>February 9, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/python"><kbd class="item-tag">python</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/mongodb"><kbd class="item-tag">mongoDB</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/configuration"><kbd class="item-tag">configuration</kbd></a>
     
 
 </div>
