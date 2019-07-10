@@ -11,6 +11,7 @@ draft: false
 
 I was dealing with angular framwork that calls `Declarative Template` itself, supports the patterns like `MVW(Model-View-Whatever)`, and I recently start to managing react project. Moreover `angular-cli` command generates .css/.ts/.test.js/.html files to each components. So I didn't considering about directory structure deeply, but now I move to react and it much more depends on programmer.
 
+<br>
 ## What React says about it ?
 
 기본적으로 리액트는 다음과 같이 말한다.
@@ -21,6 +22,7 @@ I was dealing with angular framwork that calls `Declarative Template` itself, su
 
 Well, there is not a perfect guide for file structuring in react ecosystem. But, very general examples here: grouping all `js, html, css` by features or routes, or, grouping by file type such as components and API.
 
+<br>
 ## What I am using and will considering to use ?
 
 우선 이번에 이직한 회사는 다음과 같은 구조를 갖고 있었다.
@@ -86,6 +88,7 @@ src/
    <br>
    `Service` managing API communication.
 
+<br>
 ## Umm
 
 리액트가 정확한 가이드를 내려주지 않으니 어려운 점도 있지만, 개발자 각자만의 구조를 만들어간다는 점이 좋은 것 같..지만 매우 혼돈의 카오스적인 아이임은 분명하다.
