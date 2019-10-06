@@ -13,6 +13,13 @@ draft: false
 그러면 먼저 헤드리스 브라우저가 무엇인지 알아야 하는데, 쉽게 말하면 아무 UI도 없는 웹브라우저다. 즉, CLI(Command Line Interface)을 통해서만 네트워킹될 수 있는 웹브라우저다. 하지만 브라우저와 똑같이 js, css, HTML을 인식하고 렌더링할 수 있기 때문에 웹사이트 데이터를 스크랩하거나 테스트로 사용될 수 있다. 근데 머리없는 브라우저라니 이름 약간 무서운데 나만 그렇게 느끼나...? 마치 `목 없는 기사` 이런 느낌.
 <br><br>
 
+## Prerendering ?
+
+[ref: netlify prerender](https://www.netlify.com/blog/2016/11/22/prerendering-explained/)
+<br>
+
+> Prerendering is a process to preload all elements on the page in preparation for a web crawler to see it. A prerender service will intercept a page request to see if the user-agent viewing your site is a bot and if the user-agent is a bot, the prerender middleware will send a cached version of you site to show with all JavaScript, Images, etc are rendered statically. If the user-agent is anything but a bot, then everything is loaded as normal, prerendering is only used to optimize the experience for bots only.
+
 ## so, what is Prerender Status Code ?
 
 어쨌든 프리렌더를 사용하면 봇은 각 페이지의 meta태그를 바라보고 크롤링하게 되는데, 프리렌더봇이 자꾸 `404 Not Found` 페이지를 긁어가서 이를 막아야할 일이 생겼다. 이때 메타에 아래처럼 써두면 봇이 404로 인식해 크롤링하지 않게 된다.
