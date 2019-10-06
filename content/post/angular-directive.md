@@ -1,17 +1,19 @@
 ---
 title: "Angular directive example"
 date: "2018-08-02"
-tags: ["web-development", "angular", "directive"]
+tags: ["web", "angular"]
 draft: false
 ---
 
 ## What is directive ?
+
 Use it to attach custom behavior to elements in the DOM.
 <br><br>
 
 ## Basic Example
+
 > This is a simple directive to change chevron background-image as clicking the element.
-<br>
+> <br>
 
 (1) HTML
 <br>
@@ -19,6 +21,7 @@ Use it to attach custom behavior to elements in the DOM.
 ```
 <label appChevron class="chevron" style="background-image: url('/assets/images/arrow-down.svg');"></label>
 ```
+
 <br><br>
 
 (2) TS (Of course it needs to be imported to app.module.ts declarations)
@@ -50,6 +53,7 @@ export class ChevronValidate {
   }
 }
 ```
+
 Someone think like "why did make stupid div in directive?". The reason why is because angular directive is not officially allow sending other element except the one marked that directive selector.
 <br><br>
 
@@ -68,4 +72,5 @@ export class ChevronValidate {
   }
 }
 ```
+
 There is actually no syntax error. But you got `undefined` or error when you try attach to nativeElement with received element in directive. So I think it is better to use directive to only marked element in HTML.

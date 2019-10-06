@@ -1,12 +1,14 @@
 ---
 title: "Shadow DOM vs Virtual DOM"
 date: "2018-11-09"
-tags: ["web-development", "DOM",]
+tags: ["web", "HTML"]
 draft: false
 ---
 
 ## DOM, Die Or March ?
+
 ### :P
+
 `DOM(Document Object Model)`, is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (`reflow` and `repaint`).
 
 <br>
@@ -18,13 +20,15 @@ DOM은 말 그대로 오브젝트들로 구성된 모델이다. 달리 말하면
   - it triggerd once at least at the beggining of the webpage.
 
 #### 2. repaint
-  - it triggerd when update the DOM.
+
+- it triggerd when update the DOM.
 
 #### 3. What triggers those ?
-  - Adding, Removing and Updating DOM node.
-  - Moving and animating the DOM node on the page.
-  - `display:none, visibility:hidden`
-  - User action like scrolling and resizing the window.
+
+- Adding, Removing and Updating DOM node.
+- Moving and animating the DOM node on the page.
+- `display:none, visibility:hidden`
+- User action like scrolling and resizing the window.
 
 <br>
 So, We need to reduce DOM manipulation.
@@ -41,7 +45,7 @@ This is one of the way to avoid the unnecessary DOM manipulation. It avoids re-r
 
 <br>
 
-***Then, How about Angular2+ ?***
+**_Then, How about Angular2+ ?_**
 
 - `Angular2+` manipulates DOM directly, but it has `ChangeDetectionRef`, is the base class of angular view.
 - it is a tree collects all views that are to be checked for changes.

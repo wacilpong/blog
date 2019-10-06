@@ -1,11 +1,12 @@
 ---
 title: "To configure https with AWS"
 date: 2018-02-09
-tags: ["web-development", "https", "aws", "configuration"]
+tags: ["web", "aws"]
 draft: false
 ---
 
-## *flow*
+## _flow_
+
 1. Request a certification for SSL/TLS in ACM (AWS Certificate Manager).
 2. Create ELB (Elastic Load Balancer) from EC2 management console.
 3. Create EC2 instance, and connect to ELB.
@@ -16,7 +17,9 @@ draft: false
 8. DONE
 
 <br><br>
+
 ### Step 1. Get certification for SSL/TLS
+
 **(1)** Add domain names which would be protected. I set `asteric(*)` as I have similiar domains.
 <br>
 인증서를 적용할 도메인을 입력한다. 나는 `*.example.com`처럼 동일한 형식의 도메인이 있었기에 `asteric(*)`을 지정했다.
@@ -32,5 +35,7 @@ draft: false
 이메일에서 유효검사를 마치면 입력한 도메인에 대한 인증서가 발급된다.
 
 <br><br>
+
 ### Step 2. Create Load Balancer
+
 **(1)** writing...
