@@ -16,20 +16,32 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/post/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/post/prerender-status-code/</loc>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/seo/</loc>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/web/</loc>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -38,33 +50,13 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/file-structure/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/tags/react/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/web-development/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/dom/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/html/</loc>
     <lastmod>2018-11-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -73,14 +65,13 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-10/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/blockchain/</loc>
     <lastmod>2018-10-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/blockchain/</loc>
+    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-10/</loc>
     <lastmod>2018-10-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -129,20 +120,23 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/tags/angular/</loc>
+    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/post/angular-directive/</loc>
     <lastmod>2018-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/angular/</loc>
-    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://wacilpong.github.io/blog/tags/linux/</loc>
+    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/directive/</loc>
-    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://wacilpong.github.io/blog/tags/ssh/</loc>
+    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -151,25 +145,22 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/linux/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://wacilpong.github.io/blog/tags/aws/</loc>
+    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/pem/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/ssh/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://wacilpong.github.io/blog/tags/mongodb/</loc>
+    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</loc>
+    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/python/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -184,39 +175,8 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/aws/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/configuration/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/https/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/mongodb/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/publish/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/python/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://wacilpong.github.io/blog/tags/interview/</loc>
+    <lastmod>2017-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -225,44 +185,31 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/interview/</loc>
-    <lastmod>2017-12-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://wacilpong.github.io/blog/tags/bot/</loc>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/project/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/bot/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/chatbot/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/project/</loc>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/slack/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/tkit/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/typescript/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

@@ -135,7 +135,8 @@ $ mkdir test $ cd test ~test $ puppeth +----------------------------------------
  참고1 blockchain demo
 참고2 blockchain .com
 
-Mining  보통 Nounce값과 데이터값을 함께 조합하여 해쉬값을 만들어낸다. 이때 0으로 시작되는 해쉬값의 nounce값을 찾는 일종의 퀴즈가 바로 &amp;lsquo;채굴&amp;rsquo;이다.  ex) 000000000000000...(중략)   난이도는 그때그때 달라진다. 많은 사람이 모여 range를 정하고 채굴하면 더 효과적일 수 있어, 마이닝풀을 통해 채굴한다.</description>
+Mining  보통 Nounce값과 데이터값을 함께 조합하여 해쉬값을 만들어낸다. 이때 0으로 시작되는 해쉬값의 nounce값을 찾는 일종의 퀴즈가 바로 &amp;lsquo;채굴&amp;rsquo;이다.
+ex) 000000000000000...(중략)  난이도는 그때그때 달라진다. 많은 사람이 모여 range를 정하고 채굴하면 더 효과적일 수 있어, 마이닝풀을 통해 채굴한다.</description>
     </item>
     
   </channel>

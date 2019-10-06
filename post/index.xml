@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 06 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prerender Status Code</title>
+      <link>https://wacilpong.github.io/blog/post/prerender-status-code/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/prerender-status-code/</guid>
+      <description>재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다. SSR(Server Side Rendering)을 도입할 수 없는 상황이었기 때문에 CSR(Client Side Rendering)로 잘 핸들링해야 했다. 회사에서 netlify라는 static deploy 서비스를 사용중이었는데, 유료회원이면 prerender라는 내장된 서비스를 옵션으로 사용할 수 있었다. prerender는 헤드리스 브라우저를 통해 페이지의 정적 정보들을 저장해놓고, 크롤러가 해당 정보들을 긁어갈 수 있도록 해주는 SEO를 돕는 일종의 기술이다. netlify는 이를 내장시켜서 사용할 수 있도록 만든 것이다. Headless browser ? 그러면 먼저 헤드리스 브라우저가 무엇인지 알아야 하는데, 쉽게 말하면 아무 UI도 없는 웹브라우저다.</description>
+    </item>
     
     <item>
       <title>file structure with React</title>
@@ -147,7 +156,8 @@ $ mkdir test $ cd test ~test $ puppeth +----------------------------------------
  참고1 blockchain demo
 참고2 blockchain .com
 
-Mining  보통 Nounce값과 데이터값을 함께 조합하여 해쉬값을 만들어낸다. 이때 0으로 시작되는 해쉬값의 nounce값을 찾는 일종의 퀴즈가 바로 &amp;lsquo;채굴&amp;rsquo;이다.  ex) 000000000000000...(중략)   난이도는 그때그때 달라진다. 많은 사람이 모여 range를 정하고 채굴하면 더 효과적일 수 있어, 마이닝풀을 통해 채굴한다.</description>
+Mining  보통 Nounce값과 데이터값을 함께 조합하여 해쉬값을 만들어낸다. 이때 0으로 시작되는 해쉬값의 nounce값을 찾는 일종의 퀴즈가 바로 &amp;lsquo;채굴&amp;rsquo;이다.
+ex) 000000000000000...(중략)  난이도는 그때그때 달라진다. 많은 사람이 모여 range를 정하고 채굴하면 더 효과적일 수 있어, 마이닝풀을 통해 채굴한다.</description>
     </item>
     
     <item>

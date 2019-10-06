@@ -61,7 +61,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.55.2" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -227,19 +227,19 @@ contract MyName {
 
 <dl>
 <dt><br></dt>
-<dd>이 타입을 쓰면 <code>msg</code>라는 객체를 받을 수 있다. 해당 트랜잭션을 발생시킨 사람이 <code>msg</code>가 된다.</dd>
-</dl>
+<dd><p>이 타입을 쓰면 <code>msg</code>라는 객체를 받을 수 있다. 해당 트랜잭션을 발생시킨 사람이 <code>msg</code>가 된다.</p>
 
 <pre><code>pragma solidity ^0.4.25;
 
 contract account {
-    uint private amount = 100;
+uint private amount = 100;
     
-    function plus() payable public {
-        amount += msg.value;
-    }
+function plus() payable public {
+    amount += msg.value;
 }
-</code></pre>
+}
+</code></pre></dd>
+</dl>
 
 <p><br></p>
 

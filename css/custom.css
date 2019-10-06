@@ -1,3 +1,8 @@
+html {
+  font-size: 16px;
+}
 body {
-    font-size: 1.55rem;
+  font-size: 1.55rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

@@ -61,7 +61,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.55.2" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -141,8 +141,6 @@
     
     <a href="https://wacilpong.github.io/blogtags/ssh"><kbd class="item-tag">ssh</kbd></a>
     
-    <a href="https://wacilpong.github.io/blogtags/pem"><kbd class="item-tag">pem</kbd></a>
-    
 
 </div>
 
@@ -172,22 +170,25 @@
 
 <pre><code>~ $ ls -alh
 
-drwxr-xr-x   6 roomy  staff   192B Apr  3 10:09 .
-drwxr-xr-x+ 41 roomy  staff   1.3K Apr  3 10:10 ..
--rw-r--r--@  1 roomy  staff   1.7K Apr  3 10:54 test.pem
--r--------@  1 roomy  staff   1.7K Feb 13 18:02 dev.pem
+drwxr-xr-x 6 roomy staff 192B Apr 3 10:09 .
+drwxr-xr-x+ 41 roomy staff 1.3K Apr 3 10:10 ..
+-rw-r--r--@ 1 roomy staff 1.7K Apr 3 10:54 test.pem
+-r--------@ 1 roomy staff 1.7K Feb 13 18:02 dev.pem
+
 </code></pre>
 
 <p><code>test.pem</code> file has -rw-r&ndash;r&ndash; permission. It can be separated like -, rw-, r&ndash;, r&ndash;. The first <code>-</code> means a file. and <code>d</code> is for directory. Then second 3 bits are for owner, third is for group, and the last is for other. So all users can read <code>test.pem</code> file, as <code>r</code> means read, <code>w</code> means write and <code>x</code> means execute.
 <br><br></p>
 
-<pre><code>~ $ chmod 400 test.pem
+<pre><code>
+~ $ chmod 400 test.pem
 ~ $ ls -alh
 
-drwxr-xr-x   6 roomy  staff   192B Apr  3 10:09 .
-drwxr-xr-x+ 41 roomy  staff   1.3K Apr  3 10:10 ..
--r--------@  1 roomy  staff   1.7K Apr  3 10:54 test.pem
--r--------@  1 roomy  staff   1.7K Feb 13 18:02 dev.pem
+drwxr-xr-x 6 roomy staff 192B Apr 3 10:09 .
+drwxr-xr-x+ 41 roomy staff 1.3K Apr 3 10:10 ..
+-r--------@ 1 roomy staff 1.7K Apr 3 10:54 test.pem
+-r--------@ 1 roomy staff 1.7K Feb 13 18:02 dev.pem
+
 </code></pre>
 
 <p><br>
@@ -199,15 +200,19 @@ Now the only owner can read that private key file.</p>
 
 <p>I simply connect to server with ssh command. <code>-i</code> option means identify file using key.</p>
 
-<pre><code>~ $ ssh -i ~/.ssh/test.pem ec2-user@example.com
+<pre><code>
+~ \$ ssh -i ~/.ssh/test.pem ec2-user@example.com
 
        __|  __|_  )
        _|  (     /   Amazon Linux 2 AMI
       ___|\___|___|
 
 https://aws.amazon.com/amazon-linux-2/
-$ 
+\$
+
 </code></pre>
+
+<p>```</p>
 </div>
 
     

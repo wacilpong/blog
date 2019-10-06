@@ -61,7 +61,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.55.2" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -137,7 +137,7 @@
     <h4><a href="/blog/post/my-recently-interview/">My recently junior web developer interview</a></h4>
     <h5>December 11, 2017</h5>
     
-    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    <a href="https://wacilpong.github.io/blogtags/web"><kbd class="item-tag">web</kbd></a>
     
     <a href="https://wacilpong.github.io/blogtags/interview"><kbd class="item-tag">interview</kbd></a>
     
@@ -238,7 +238,7 @@ sayItDo();  // &quot;the dancing clown!&quot;
 
 <p>위에서 <strong>job</strong> 변수는 <strong>_who</strong> 함수와 같은 스코프에 선언되어 참조되고 있다. 따라서 <strong>whoPennywais</strong> 함수는 클로저 환경을 구성하고 있다. 마찬가지로 <strong>sayItDo</strong> 변수는 <strong>whoPennywise</strong> 함수를 참조해 사용했으므로 클로저 환경을 구성한다. 따라서 sayItDo를 실행하면 &ldquo;the dancing clown!&ldquo;이 찍힌다. 이때 whoPennywais 함수를 그대로 실행하려고 하면 콘솔에 아무것도 찍히지 않는다. 실행하는 스코프가 클로저 환경이 아니게 되기 때문에 해당 함수객체를 참조하는 셈이 된다.</p>
 
-<p><strong>job</strong>  variable is referd to <strong>who</strong> function in the same scope. So <strong>whoPennywise</strong> function has an environment called closure. Likewise <strong>sayItDo</strong> variable refers to <strong>whoPennywise</strong> and execute itself, so it is also closure. And then &ldquo;the dancing clown&rdquo; wrote in log. At this point, there is nothing in log when execute whoPennywise function as it is, because that scope would not be closure.</p>
+<p><strong>job</strong> variable is referd to <strong>who</strong> function in the same scope. So <strong>whoPennywise</strong> function has an environment called closure. Likewise <strong>sayItDo</strong> variable refers to <strong>whoPennywise</strong> and execute itself, so it is also closure. And then &ldquo;the dancing clown&rdquo; wrote in log. At this point, there is nothing in log when execute whoPennywise function as it is, because that scope would not be closure.</p>
 
 <pre><code>function foo(a) {
   let b = 3;
@@ -374,7 +374,7 @@ console.log(me.reality(dream)); // { 1: 'rich', 2: 'happy' }
 <pre><code>console.log(Life.__proto__ === Function.prototype); // true
 </code></pre>
 
-<p><strong>[[Prototype]]</strong> 은 모든 객체가 가진 프로퍼티로, 연결된 상위의 값이 객체일 수도 있고 null일 수도 있다.  <code>__proto__</code>는 숨겨진 <strong>[[Prototype]]</strong> 을 노출시키는 프로퍼티이다. 즉, 둘은 같은 개념이다. 따라서 위의 <strong>Life()</strong> 함수의 <code>__proto__</code> 는 <strong>Function.prototype</strong> 이 된다. 자바스크립트는 인터프리터 언어이면서 Jit(Just-in-time) 방식으로 실행 직전에 컴파일되는 언어이기도 하다. 그래서 코드를 실행시킬 때 <code>__proto__</code> 프로퍼티로 객체끼리의 연결관계를 노출시킬 수 있는 것이다.</p>
+<p><strong>[[Prototype]]</strong> 은 모든 객체가 가진 프로퍼티로, 연결된 상위의 값이 객체일 수도 있고 null일 수도 있다. <code>__proto__</code>는 숨겨진 <strong>[[Prototype]]</strong> 을 노출시키는 프로퍼티이다. 즉, 둘은 같은 개념이다. 따라서 위의 <strong>Life()</strong> 함수의 <code>__proto__</code> 는 <strong>Function.prototype</strong> 이 된다. 자바스크립트는 인터프리터 언어이면서 Jit(Just-in-time) 방식으로 실행 직전에 컴파일되는 언어이기도 하다. 그래서 코드를 실행시킬 때 <code>__proto__</code> 프로퍼티로 객체끼리의 연결관계를 노출시킬 수 있는 것이다.</p>
 
 <p><strong>[[Prototype]]</strong> is all objects&rsquo; property and its parent can be an object or null. <code>__proto__</code> is a property which exposing the private <strong>[[Prototype]]</strong>. Both of it them are same. Javascript is an interpreted language and also a compiled language with jit(Just-in-time) way that compiling right before the execution. Thus, <code>__proto__</code> property can exposing the relationship of objects when compile the code.</p>
 
@@ -412,15 +412,17 @@ console.log(me.constructor === Life);
     else type = 'B';
 
     return type;
-  }
 
-  return {
-    getType: getType
-  }
+}
+
+return {
+getType: getType
+}
 }();
 
-config.getType(0);  // 'A'
+config.getType(0); // 'A'
 config.getType(23); // 'B'
+
 </code></pre>
 
 <p>모듈패턴은 달리 말하면 <code>class</code>와 같은 동작을 하기 때문에 <code>private</code> 접근을 설정할 수 있게 된다. 그래서 모듈은 <a href="#javascript-closure">클로저</a> 안에서만 존재할 수 있고, 즉시실행함수로 표현되어야 한다. 변수를 함수의 <a href="#execution-context">실행 컨텍스트</a> 에서 데이터가 흐를 때 설정하고, 이를 오브젝트로 리턴하는 형식으로 값을 노출시키는 것이다. 그래서 위의 예제처럼 <strong>getType</strong> 변수는 함수가 실행될 때 private 하게 선언되며, return 된 값으로만 접근이 가능하다.</p>
@@ -431,31 +433,32 @@ config.getType(23); // 'B'
 
 <h4 id="3-singleton"><strong>(3) Singleton</strong></h4>
 
-<pre><code>const BOT = (() =&gt; {
-	  let instance;
+<pre><code>
+const BOT = (() =&gt; {
+let instance;
 
-	  function create() {
-	    let name = 'roomy, age = 3;
-	    return {
-	      name: name,
+      function create() {
+        let name = 'roomy, age = 3;
+        return {
+          name: name,
         age: age
-	    };
-	  }
+        };
+      }
 
-	  return {
-	    getInstance: (str) =&gt; {
+      return {
+        getInstance: (str) =&gt; {
           // if instance be never created, execute create()
-	      if(!instance) instance = create(str);
-	      return instance;
-	    }
-	  };
-	})();
+          if(!instance) instance = create(str);
+          return instance;
+        }
+      };
+    })();
 
 let roomy = BOT.getInstance();
 let roomy2 = BOT.getInstance();
 
-console.log(roomy);  // { name: 'roomy', age: 3 }
-console.log(roomy2);  // { name: 'roomy', age: 3 }
+console.log(roomy); // { name: 'roomy', age: 3 }
+console.log(roomy2); // { name: 'roomy', age: 3 }
 
 </code></pre>
 
@@ -474,7 +477,8 @@ console.log(roomy2);  // { name: 'roomy', age: 3 }
 <li>single threaded event loop model</li>
 <li>built on top of V8 engine (chrome)</li>
 <li>non-blocking IO</li>
-<li>scalable</li>
+<li>scalable
+```</li>
 </ul>
 </div>
 
@@ -494,16 +498,30 @@ console.log(roomy2);  // { name: 'roomy', age: 3 }
     
     
 
+    <h4><a href="/blog/post/prerender-status-code/">Prerender Status Code</a></h4>
+    <h5>October 6, 2019</h5>
+    
+    <a href="https://wacilpong.github.io/blogtags/web"><kbd class="item-tag">web</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blogtags/seo"><kbd class="item-tag">seo</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
     <h4><a href="/blog/post/react-file-structure/">file structure with React</a></h4>
     <h5>July 10, 2019</h5>
     
-    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    <a href="https://wacilpong.github.io/blogtags/web"><kbd class="item-tag">web</kbd></a>
     
     <a href="https://wacilpong.github.io/blogtags/react"><kbd class="item-tag">react</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/file-structure"><kbd class="item-tag">file-structure</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/javascript"><kbd class="item-tag">javascript</kbd></a>
     
 
 </div>
@@ -519,29 +537,9 @@ console.log(roomy2);  // { name: 'roomy', age: 3 }
     <h4><a href="/blog/post/shadow-or-virtual/">Shadow DOM vs Virtual DOM</a></h4>
     <h5>November 9, 2018</h5>
     
-    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
+    <a href="https://wacilpong.github.io/blogtags/web"><kbd class="item-tag">web</kbd></a>
     
-    <a href="https://wacilpong.github.io/blogtags/dom"><kbd class="item-tag">DOM</kbd></a>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/angular-directive/">Angular directive example</a></h4>
-    <h5>August 2, 2018</h5>
-    
-    <a href="https://wacilpong.github.io/blogtags/web-development"><kbd class="item-tag">web-development</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/angular"><kbd class="item-tag">angular</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blogtags/directive"><kbd class="item-tag">directive</kbd></a>
+    <a href="https://wacilpong.github.io/blogtags/html"><kbd class="item-tag">HTML</kbd></a>
     
 
 </div>
