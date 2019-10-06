@@ -1,4 +1,4 @@
-baseURL = "https://wacilpong.github.io/blog"
+baseURL = "https://wacilpong.github.io/blog/"
 languageCode = "en-us"
 title = "Roomy"
 theme = "minimal"
