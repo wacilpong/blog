@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -38,6 +38,15 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Splice Array</title>
+      <link>https://wacilpong.github.io/blog/post/javascript/splice-your-array/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript/splice-your-array/</guid>
+      <description>가끔 Array.prototype.splice()가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때! Sometimes I confused about Array.prototype.splice() function, especially when assign the returned value from this ! Array.prototype.splice() do &amp;hellip; what ? splice는 아래처럼 특정 인덱스에서 특정 개수만큼 뽑아낼 수 있는 함수이다. splice can select(remove) the item with specific index to certain index. var array = [1,2,3,4]; array.splice(0, 1) // array === [2,3,4]  then what is confusing point ?</description>
     </item>
     
     <item>
