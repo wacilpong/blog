@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hoisting about function</title>
+      <link>https://wacilpong.github.io/blog/post/javascript/hoisting-about-function/</link>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript/hoisting-about-function/</guid>
+      <description>First of all, what is execution context ? 자바스크립트는 실행하는 코드가 기억하고 있는 환경이 존재하는데, 이 환경정보가 바로 실행 컨텍스트다. 이 컨텍스트를 구성할 수 있는 방법은 전역 혹은 함수실행 정도가 있겠다. 자바스크립트 엔진은 컨텍스트가 실행될 때마다 변수부(VariableEnvironment) 객체와 어휘부(LexicalEnvironment) 객체를 저장한다. 간단히 말하면 변수부는 정적부의 특정부분이라고 할 수 있다. 둘 모두 현재 컨텍스트 내부의 식별자(변수명)와 외부 환경정보들을 기억하고 있다. 그러나 변수부는 최초 시점의 스냅샷일 뿐이고 어휘부는 컨텍스트가 실행(execution)될 때마다 변경사항이 반영된다.</description>
+    </item>
     
     <item>
       <title>Splice Array</title>
