@@ -1,6 +1,6 @@
 ---
 title: "Splice Array"
-date: 2019-11-01
+date: "2019-11-01"
 tags: ["javascript"]
 draft: false
 ---

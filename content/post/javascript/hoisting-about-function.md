@@ -1,6 +1,6 @@
 ---
 title: "Hoisting about function"
-date: 2019-12-04
+date: "2019-12-04"
 tags: ["javascript"]
 draft: false
 ---

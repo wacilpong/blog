@@ -1,7 +1,7 @@
 ---
 title: "To set virtual python environment with mongoDB"
-date: 2018-02-09
-tags: ["web", "python", "mongoDB"]
+date: "2018-02-09"
+tags: ["python", "mongoDB"]
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Angular directive example"
 date: "2018-08-02"
-tags: ["web", "angular"]
+tags: ["angular"]
 draft: false
 ---
 

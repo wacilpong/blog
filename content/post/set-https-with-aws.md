@@ -1,7 +1,7 @@
 ---
 title: "To configure https with AWS"
-date: 2018-02-09
-tags: ["web", "aws"]
+date: "2018-02-09"
+tags: ["aws", "https"]
 draft: false
 ---
 
