@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>deploy on Roomy</title>
+    <link>https://wacilpong.github.io/blog/tags/deploy/</link>
+    <description>Recent content in deploy on Roomy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wacilpong.github.io/blog/tags/deploy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Publish to aws s3 with s3cmd</title>
+      <link>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</guid>
+      <description>Create S3 bucket Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with index.html (entry point).
+
+Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
+
+Connect domain with CloudFront If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
+    </item>
+    
+  </channel>
+</rss>
