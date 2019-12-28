@@ -17,9 +17,7 @@
       <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/html/shadow-or-virtual/</guid>
-      <description>DOM, Die Or March ? :P DOM(Document Object Model), is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (reflow and repaint).
-
-DOM은 말 그대로 오브젝트들로 구성된 모델이다. 달리 말하면, DOM은 웹페이지에 대한 객체지향적 표현이다.</description>
+      <description>DOM, Die Or March ? :P DOM(Document Object Model), is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (reflow and repaint). DOM은 말 그대로 오브젝트</description>
     </item>
     
   </channel>
