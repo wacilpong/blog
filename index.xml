@@ -2,114 +2,114 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Roomy</title>
-    <link>https://wacilpong.github.io/blog/</link>
+    <link>https://wacilpong.github.io/</link>
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mushroomy&#39;s dapping blockchain story</title>
-      <link>https://wacilpong.github.io/blog/project/blockchain/</link>
+      <link>https://wacilpong.github.io/project/blockchain/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
+      <guid>https://wacilpong.github.io/project/blockchain/</guid>
       <description>Lectures  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain Truffle with ganache Truffle Tutorial: Pet Shop  </description>
     </item>
     
     <item>
       <title>TKIT service</title>
-      <link>https://wacilpong.github.io/blog/project/tkit-service/</link>
+      <link>https://wacilpong.github.io/project/tkit-service/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/project/tkit-service/</guid>
+      <guid>https://wacilpong.github.io/project/tkit-service/</guid>
       <description>Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack. https://tkit.me</description>
     </item>
     
     <item>
       <title>SlackBot: Dumbledore</title>
-      <link>https://wacilpong.github.io/blog/project/dumbledore/</link>
+      <link>https://wacilpong.github.io/project/dumbledore/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
+      <guid>https://wacilpong.github.io/project/dumbledore/</guid>
       <description></description>
     </item>
     
     <item>
       <title>After reading clean architecture, by Robert C. Martine</title>
-      <link>https://wacilpong.github.io/blog/post/after-reading-clean-architecture/</link>
+      <link>https://wacilpong.github.io/post/after-reading-clean-architecture/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/after-reading-clean-architecture/</guid>
+      <guid>https://wacilpong.github.io/post/after-reading-clean-architecture/</guid>
       <description>클린 아키텍쳐를 읽고 내맘대로 정리해보았다. 컴포넌트 모든 언어에서 컴포넌트는 배포할 수 있는 단위 입자  동일한 시점에 동일한 이유로 변경되는 것들을 한데 묶고, 서로 다른 시점에 다른 이유로 변경되는 것들은 서로 분리하자. 필요하지 않는 것에 의존하지 말자. 컴포넌트에 대한 균형적인 응집 : 프로젝트 초기에 재사용성을 고민하는 것은 비효율적이다. 컴포넌트가 의존하는 그래프에 순환이 있으면 안된다. 순환이 생기면 그 순환 속에 있는 모든 컴포넌트가 동일한 릴리즈를 사용해야 한다. 그러나 프로젝트 초기부터 설계할 수 있는 대상이 아니기 때문에, 여러 순환 고리가 생기는 시점에 드디어 재사용성(!</description>
     </item>
     
     <item>
       <title>Hoisting about function</title>
-      <link>https://wacilpong.github.io/blog/post/javascript/hoisting-about-function/</link>
+      <link>https://wacilpong.github.io/post/javascript/hoisting-about-function/</link>
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/javascript/hoisting-about-function/</guid>
+      <guid>https://wacilpong.github.io/post/javascript/hoisting-about-function/</guid>
       <description>First of all, what is execution context ? 자바스크립트는 실행하는 코드가 기억하고 있는 환경이 존재하는데, 이 환경정보가 바로 실행 컨텍스트다. 이 컨텍스트를 구성할 수 있는 방법은 전역 혹은 함수실행 정도가 있겠다. 자바스크립트 엔진은 컨텍스트가 실행될 때마다 변수부(VariableEnvironment) 객체와 어휘부(LexicalEnvironment) 객체를 저장한다. 간단히 말하면 변수부는 정적부의 특정부분이라고 할 수 있다. 둘 모두 현재 컨텍스트 내부의 식별자(변수명)와 외부 환경정보들을 기억하고 있다. 그러나 변수부는 최초 시점의 스냅샷일 뿐이고 어휘부는 컨텍스트가 실행(execution)될 때마다 변경사항이 반영된다.</description>
     </item>
     
     <item>
       <title>Splice Array</title>
-      <link>https://wacilpong.github.io/blog/post/javascript/splice-your-array/</link>
+      <link>https://wacilpong.github.io/post/javascript/splice-your-array/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/javascript/splice-your-array/</guid>
+      <guid>https://wacilpong.github.io/post/javascript/splice-your-array/</guid>
       <description>가끔 Array.prototype.splice()가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때! Sometimes I confused about Array.prototype.splice() function, especially when assign the returned value from this ! Array.prototype.splice() do &amp;hellip; what ? splice는 아래처럼 특정 인덱스에서 특정 개수만큼 뽑아낼 수 있는 함수이다. splice can select(remove) the item with specific index to certain index. var array = [1,2,3,4]; array.splice(0, 1) // array === [2,3,4] then what is confusing point ? 그런데 이 값을 어떠한 값에 할당하면 아래처럼 제거된 배열이 아니라 제거한 해당 값을 반환한다.</description>
     </item>
     
     <item>
       <title>Prerender Status Code</title>
-      <link>https://wacilpong.github.io/blog/post/prerender-status-code/</link>
+      <link>https://wacilpong.github.io/post/prerender-status-code/</link>
       <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/prerender-status-code/</guid>
+      <guid>https://wacilpong.github.io/post/prerender-status-code/</guid>
       <description>재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다. SSR(Server Side Rendering)을 도입할 수 없는 상황이었기 때문에 CSR(Client Side Rendering)로 잘 핸들링해야 했다. 회사에서 **netlify**라는 static deploy 서비스를 사용중이었는데, 유료회원이면 prerender라는 내장된 서비스를 옵션으로 사용할 수 있었다. **prerender**는 헤드리스 브라우저를 통해 페이지의 정적 정보들을 저장해놓고, 크롤러가 해당 정보들을 긁어갈 수 있도록 해주는 SEO를 돕는 일종의 기술이다. netlify는 이를 내장시켜서 사용할 수 있도록 만든 것이다. Headless browser ? 그러면 먼저 헤드리스 브라우저가 무엇인지 알아야 하는데, 쉽게 말하면 아무 UI도 없는 웹브라우저다.</description>
     </item>
     
     <item>
       <title>file structure with React</title>
-      <link>https://wacilpong.github.io/blog/post/react-file-structure/</link>
+      <link>https://wacilpong.github.io/post/react-file-structure/</link>
       <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/react-file-structure/</guid>
+      <guid>https://wacilpong.github.io/post/react-file-structure/</guid>
       <description>Why I am considering it 앵귤러 5+로 프로젝트를 진행하다가 리액트를 쓰게 되었는데, 앵귤러는 처음 1.x버전부터 본인을 MVW(Model-View-Whatever)와 같은 패턴을 지원하는 Declarative Template이라고 지칭한다. 그리고 angular-cli 커맨드를 사용하게 되면, 컴포넌트 1개당 관련 .css/.ts/.test.js/.html 파일들이 폴더로 생성되는 구조이다. 따라서 비교적 폴더구조에 대해서는 크게 고민하지 않았는데, 리액트를 해보니 굉장히 자유도가 높았고 폴더 구조도 쓰는 사람마다 천차만별이었다. 그러다보니 이에 대해 자연스럽게 고민하고 찾아봤다.
 I was dealing with angular framwork that calls Declarative Template itself, supports the patterns like MVW(Model-View-Whatever), and I recently start to managing react project.</description>
     </item>
     
     <item>
       <title>Shadow DOM vs Virtual DOM</title>
-      <link>https://wacilpong.github.io/blog/post/html/shadow-or-virtual/</link>
+      <link>https://wacilpong.github.io/post/html/shadow-or-virtual/</link>
       <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/html/shadow-or-virtual/</guid>
+      <guid>https://wacilpong.github.io/post/html/shadow-or-virtual/</guid>
       <description>DOM, Die Or March ? :P DOM(Document Object Model), is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (reflow and repaint).
 2. repaint  it triggerd when update the DOM.  3. What triggers those ?</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s Last Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-10/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-10/</link>
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-10/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-10/</guid>
       <description>Truffle Tutorial: Pet Shop 솔직히 문서가 너무 잘되어 있어서 주요 내용+커맨드만 정리한다. https://truffleframework.com/tutorials/pet-shop
  custom RPC (http://127.0.0.1:7545)를 설정하는 이유는 메인넷이 아닌 private net에서 테스트하기 위함이다.  </description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 9th Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-9/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-9/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-9/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-9/</guid>
       <description>Truffle Command  설치 및 버전 확인: 아래의 버전내용이 뜨지 않으면 npm i -g truffle로 설치하자.  Truffle v4.1.14 (core: 4.1.14) Solidity v0.4.24 (solc-js)
  &amp;lt;br&amp;gt; 2. 트러플 프로젝트 초기화 과정 test $ truffle init
 Downloading&amp;hellip; Unpacking&amp;hellip; Setting up&amp;hellip; Unbox successful. Sweet!
@@ -121,68 +121,68 @@ drwxr-xr-x 7 test staff 224B Oct 25 19:54 . drwxr-xr-x 4 test staff 128B Oct 25 
     
     <item>
       <title>Mushroomy&#39;s 8th Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-8/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-8/</link>
       <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-8/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-8/</guid>
       <description># 해결되기 어려운 블록체인 문제, Oracle Problem?
 Cosmos  Interchain: 수많은 코인이 있고, 이들을 연결하려고 하는 개념 BIA: Blockchain Interoperablility Alliance ex) Aion, iCon, wanchain Cosmos: internet of interchain   이렇게 dApp을 EVM에 올려서 만들다보니 의존성이 생긴다. Networking, Consensus 레이어를 만드는 것이 힘들었다. 이 레이어들은 자원을 투자한다고 빨리 만들 수 있는 부분이 아니다. 따라서 코스모스는 1dApp = 1Blockchain을 실현시키기 위해 만들었다.  1. 만들어진 이유?   복잡한 가상머신(VM) 블록체인</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 7th Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-7/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-7/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-7/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-7/</guid>
       <description>Token economy project example : (example: Toon Hub)[https://github.com/wacilpong/toon-hub]</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 6th Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-6/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-6/</link>
       <pubDate>Mon, 22 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-6/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-6/</guid>
       <description>* Gas Fee  트랜잭션을 처리하는 데 사용되는 수수료 (송금 / 스마트컨트랙트 배포 및 수정) 채굴자가 받게 된다. GWEI라는 단위를 사용한다. 사용한 gas x gas price, 하지만 gas limit이 존재하여 이를 넘지 못한다.   블록 생성 보상 엉클 블록 보상 gas fee   개발의 패러다임이 바뀌고 있다. &amp;lsquo;나의 코드를 더 많은 사람이 쓰는 것&#39;이 좋다. 1명보다 10억 명이 보는 것이 더 정확, 집단지성의 힘! Github의 오픈소스 사례  서울 정보소통광장 행정정보 백악관 각종 정보 고위 공부원 재산정보    </description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 5th Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-5/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-5/</link>
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-5/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-5/</guid>
       <description>* geth REPL (Read Eval Print Loop)  REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands.
  miner.start() eth.pendingTransactions eth.getTransaction(&amp;quot;{transaction-hash-id}&amp;quot;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1])  pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account.  Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db: e.exports, shh: s, …} contract MyName { string myName = &amp;ldquo;Roomy&amp;rdquo;;</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 4th Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-4/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-4/</link>
       <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-4/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-4/</guid>
       <description>참고: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)
 +&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;+ | Welcome to puppeth, your Ethereum private network manager | | | | This tool lets you create a new Ethereum network down to | | the genesis block, bootnodes, miners and ethstats servers | | without the hassle that it would normally entail. | | | | Puppeth uses SSH to dial in to remote servers, and builds | | its network components out of Docker containers using the | | docker-compose toolset.</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 3rd Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-3/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-3/</link>
       <pubDate>Wed, 17 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-3/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-3/</guid>
       <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉!
 1. Governance Process  21명의 대표를 투표를 통해 선출해 Governance를 진행한다. 비트코인이나 이더리움은 Foundation을 통해 관리되는 반면, EOS는 21명(팀)의 BP(Block Producer)들이 한다. 진정한 Decentralization을 표방한다. 지만 21명(팀)의 BP가 진정한 탈중앙화인가? 고민. 대의 민주주의라는 점은 훌륭해보이지만 실제 국회는 그렇지 않다. 고민. 막강한 중국파워 때문에 EOS 공식 언어는 영어이지만, 중국 BP들은 중국어를 사용한다. 고민.  2. BP (Block Producer)  121명의 BP 후보가 있으며, 이중 21명(팀)이 BP가 되고 100명(팀)은 백업 BP가 된다.</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 2nd Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-2/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-2/</link>
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-2/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-2/</guid>
       <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo;  교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&#39;의 목적을 모두 충족하면서 암호화된 화폐이다.
  - Bitcoin : &amp;ldquo;P2P버전의 전자화폐로 은행같은 금융기관을 거치지 않고 한 대상이 다른 대상에게 직접 전달하는 온라인 지불&amp;rdquo;(Satoshi)을 위해 만들어진 코인
 - Altcoin : 비트코인을 제외한 모든 코인
@@ -191,10 +191,10 @@ Cosmos  Interchain: 수많은 코인이 있고, 이들을 연결하려고 하는
     
     <item>
       <title>Mushroomy&#39;s 1st Blockcahin Story</title>
-      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-1/</link>
+      <link>https://wacilpong.github.io/post/blockchain/blockchain-1/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-1/</guid>
+      <guid>https://wacilpong.github.io/post/blockchain/blockchain-1/</guid>
       <description>Blockchain  Database 기반의 장부라고 보면 된다. 트랜잭션을 해쉬값과 함께 블록(비트코인은 대략 1MB정도의 데이터를 1블록에 담음)에 저장하고, 그 다음 블록은 이전 해쉬값과 해당 해쉬값을 같이 담아서 연결시킨다. 이것이 블록체인이다.
  참고1 blockchain demo참고2 blockchain .com
 ex) 000000000000000...(중략)  난이도는 그때그때 달라진다. 많은 사람이 모여 range를 정하고 채굴하면 더 효과적일 수 있어, 마이닝풀을 통해 채굴한다. 참고로 이더리움은 SHA256 복호뿐 아니라, RAM끼리 그 값을 복사해야 해서 코어 계산만으로 빠르게 독점할 수 없다. 그래서 비트코인은 해당 해쉬값만 찾으면 되어서 ASIC이라는 SHA256 암호값을 풀기 위해 만들어진 변형 CPU가 독점해 판매되는 반면, 이더리움에는 그런 것이 없다.</description>
@@ -202,29 +202,29 @@ ex) 000000000000000...(중략)  난이도는 그때그때 달라진다. 많은 �
     
     <item>
       <title>Angular directive example</title>
-      <link>https://wacilpong.github.io/blog/post/angular-directive/</link>
+      <link>https://wacilpong.github.io/post/angular-directive/</link>
       <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/angular-directive/</guid>
+      <guid>https://wacilpong.github.io/post/angular-directive/</guid>
       <description>What is directive ? Use it to attach custom behavior to elements in the DOM. Basic Example  This is a simple directive to change chevron background-image as clicking the element.  (1) HTML &amp;lt;label appChevron class=&amp;quot;chevron&amp;quot; style=&amp;quot;background-image: url(&#39;/assets/images/arrow-down.svg&#39;);&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; (2) TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &#39;@angular/core&#39;; @Directive({ selector: &#39;[appChevron]&#39; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
     </item>
     
     <item>
       <title>When we connect ssh with .pem</title>
-      <link>https://wacilpong.github.io/blog/post/when-connect-ssh/</link>
+      <link>https://wacilpong.github.io/post/when-connect-ssh/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/when-connect-ssh/</guid>
+      <guid>https://wacilpong.github.io/post/when-connect-ssh/</guid>
       <description>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.
 flow  Generate .pem key (I am using AWS). Change mode of .pem file to 400 to read it. Identify file and connect to ssh (AWS linux for me). DONE  Change permission of file I will change mode of key file and connect to ssh with it.</description>
     </item>
     
     <item>
       <title>Publish to aws s3 with s3cmd</title>
-      <link>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</link>
+      <link>https://wacilpong.github.io/post/aws-publish-to-s3/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</guid>
+      <guid>https://wacilpong.github.io/post/aws-publish-to-s3/</guid>
       <description>Create S3 bucket Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with index.html (entry point).
 Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
 Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules. Then connect with IPv4 with the CloudFront that you created.</description>
@@ -232,29 +232,29 @@ Connect domain with CloudFront If you don&#39;t have routing domain in aws Route
     
     <item>
       <title>To configure https with AWS</title>
-      <link>https://wacilpong.github.io/blog/post/set-https-with-aws/</link>
+      <link>https://wacilpong.github.io/post/set-https-with-aws/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/set-https-with-aws/</guid>
+      <guid>https://wacilpong.github.io/post/set-https-with-aws/</guid>
       <description>flow  Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&#39;t configure anything in AWS console. So, connect that IP in shell.</description>
     </item>
     
     <item>
       <title>To set virtual python environment with mongoDB</title>
-      <link>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</link>
+      <link>https://wacilpong.github.io/post/pyvenv-with-mongodb/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</guid>
+      <guid>https://wacilpong.github.io/post/pyvenv-with-mongodb/</guid>
       <description>Step 1. Install python and mongoDB I am using homebrew. So it can be possible to use brew command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it. 맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로 설치했다. 그리고 모든 설치는 homebrew로 했다.
 brew install python3 Step 2. Run mongoDB Now we can use mongod command which is a command to run mongoDB !</description>
     </item>
     
     <item>
       <title>My recently junior web developer interview</title>
-      <link>https://wacilpong.github.io/blog/post/my-recently-interview/</link>
+      <link>https://wacilpong.github.io/post/my-recently-interview/</link>
       <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/my-recently-interview/</guid>
+      <guid>https://wacilpong.github.io/post/my-recently-interview/</guid>
       <description>what kind of companies? 힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다. 블록체인, 핀테크, 클라우드IDE, AI 등등 다양한 분야의 회사에 신입 개발자로 지원했다. 프론트엔드/백엔드 가릴 것 없이 넣었고, 주로 nodeJs 기반의 회사로 넣었다. 12월 4일부터 12월 8일까지 일주일 간 인터뷰만 보러 다녔다.
 I apply to 7 different startups that developing web like blockchain, fintech, cloud IDE, traslating AI, medical AI. The most of them are based on nodeJs. I was an interviewee during 2017.</description>
     </item>

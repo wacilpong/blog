@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HTML on Roomy</title>
-    <link>https://wacilpong.github.io/blog/tags/html/</link>
+    <link>https://wacilpong.github.io/tags/html/</link>
     <description>Recent content in HTML on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Nov 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wacilpong.github.io/blog/tags/html/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/tags/html/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Shadow DOM vs Virtual DOM</title>
-      <link>https://wacilpong.github.io/blog/post/html/shadow-or-virtual/</link>
+      <link>https://wacilpong.github.io/post/html/shadow-or-virtual/</link>
       <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/html/shadow-or-virtual/</guid>
+      <guid>https://wacilpong.github.io/post/html/shadow-or-virtual/</guid>
       <description>DOM, Die Or March ? :P DOM(Document Object Model), is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (reflow and repaint).
 2. repaint  it triggerd when update the DOM.  3. What triggers those ?</description>
     </item>
