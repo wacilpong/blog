@@ -42,7 +42,7 @@ https://truffleframework.com/tutorials/pet-shop
 
 <br />
 
-<center>![truffle-test](/images/truffle-test.png)</center>
+![truffle-test](/blog/images/truffle-test.png)
 
 <br />
 
@@ -52,7 +52,7 @@ https://truffleframework.com/tutorials/pet-shop
 - `mnemonic`: A special secret created for you by Ganache.
   <br />
 
-<center>![mnemonic](/images/mnemonic.png)</center>
+![mnemonic](/blog/images/mnemonic.png)
 
 - `custom RPC (http://127.0.0.1:7545)`를 설정하는 이유는 메인넷이 아닌 private net에서 테스트하기 위함이다.
 
@@ -64,10 +64,11 @@ https://truffleframework.com/tutorials/pet-shop
 
 <br />
 
-<center>![truffle-run](/images/truffle-run.png)</center>
+![truffle-run](/blog/images/truffle-run.png)
 
-<br>
-<center>![truffle-test](/images/pet-shop.png)</center>
+<br />
+
+![truffle-test](/blog/images/pet-shop.png)
 
 <br />
 

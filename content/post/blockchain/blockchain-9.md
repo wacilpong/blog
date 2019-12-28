@@ -214,7 +214,7 @@ Eth {
 
 ## Ganache
 
-<center>![ganache](/images/ganache.png)</center>
+![ganache](/blog/images/ganache.png)
 
 <br />
 

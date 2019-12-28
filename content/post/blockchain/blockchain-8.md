@@ -123,4 +123,4 @@ draft: false
 
 <br />
 
-![cosmos-internet-of-interchain](/images/cosmos-interchain.png)
+![cosmos-internet-of-interchain](/blog/images/cosmos-interchain.png)
