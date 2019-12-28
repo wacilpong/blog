@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>When we connect ssh with .pem</title>
+        
+        <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">When we connect ssh with .pem</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/when-connect-ssh/">When we connect ssh with .pem</a></h4>
+    <h5>April 3, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blog/tags/linux"><kbd class="item-tag">linux</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blog/tags/ssh"><kbd class="item-tag">ssh</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><p>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="-flow-"><em>flow</em></h2>
+<ol>
+<li>Generate <code>.pem</code> key (I am using AWS).</li>
+<li>Change mode of <code>.pem</code> file to 400 to read it.</li>
+<li>Identify file and connect to ssh (AWS linux for me).</li>
+<li>DONE</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="change-permission-of-file">Change permission of file</h2>
+<p>I will change mode of key file and connect to ssh with it.</p>
+<!-- raw HTML omitted -->
+<p>drwxr-xr-x 6 roomy staff 192B Apr 3 10:09 .
+drwxr-xr-x+ 41 roomy staff 1.3K Apr 3 10:10 ..
+-rw-r&ndash;r&ndash;@ 1 roomy staff 1.7K Apr 3 10:54 test.pem
+-r&mdash;&mdash;&ndash;@ 1 roomy staff 1.7K Feb 13 18:02 dev.pem</p>
+<pre><code>
+`test.pem` file has -rw-r--r-- permission. It can be separated like -, rw-, r--, r--. The first `-` means a file. and `d` is for directory. Then second 3 bits are for owner, third is for group, and the last is for other. So all users can read `test.pem` file, as `r` means read, `w` means write and `x` means execute.
+&lt;br&gt;&lt;br&gt;
+
+</code></pre><p>~ $ chmod 400 test.pem
+~ $ ls -alh</p>
+<p>drwxr-xr-x 6 roomy staff 192B Apr 3 10:09 .
+drwxr-xr-x+ 41 roomy staff 1.3K Apr 3 10:10 ..
+-r&mdash;&mdash;&ndash;@ 1 roomy staff 1.7K Apr 3 10:54 test.pem
+-r&mdash;&mdash;&ndash;@ 1 roomy staff 1.7K Feb 13 18:02 dev.pem</p>
+<pre><code>
+&lt;br&gt;
+Now the only owner can read that private key file.
+
+&lt;br&gt;&lt;br&gt;&lt;hr&gt;
+## Connect to ssh
+I simply connect to server with ssh command. `-i` option means identify file using key.
+
+</code></pre><p>~ $ ssh -i ~/.ssh/test.pem <a href="mailto:ec2-user@example.com">ec2-user@example.com</a></p>
+<pre><code>   __|  __|_  )
+   _|  (     /   Amazon Linux 2 AMI
+  ___|\___|___|
+</code></pre>
+<p><a href="https://aws.amazon.com/amazon-linux-2/">https://aws.amazon.com/amazon-linux-2/</a>
+$</p>
+<pre><code>
+</code></pre></div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mushroomy&#39;s 4th Blockcahin Story</title>
+        
+        <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Mushroomy&#39;s 4th Blockcahin Story</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain/blockchain-4/">Mushroomy&#39;s 4th Blockcahin Story</a></h4>
+    <h5>October 18, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blog/tags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><p><em><strong>참고: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)</strong></em></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| Welcome to puppeth, your Ethereum private network manager |
+|                                                           |
+| This tool lets you create a new Ethereum network down to  |
+| the genesis block, bootnodes, miners and ethstats servers |
+| without the hassle that it would normally entail.         |
+|                                                           |
+| Puppeth uses SSH to dial in to remote servers, and builds |
+| its network components out of Docker containers using the |
+| docker-compose toolset.                                   |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+</p>
+<p>lease specify a network name to administer (no spaces or hyphens, please)</p>
+<blockquote>
+<p>MyTest</p>
+</blockquote>
+<p>What would you like to do? (default = stats)</p>
+<ol>
+<li>Show network stats</li>
+<li>Manage existing genesis</li>
+<li>Track new remote server</li>
+<li>Deploy network components</li>
+</ol>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p>(설정 중략)</p>
+<p>~test $ ls</p>
+<p>MyTest.json</p>
+<pre><code>
+&lt;br&gt;
+***Network ID***
+
+- `1`: Ethereum  Main  Network 
+- `2`: Modern  Test  Network
+- `3`: Ropsten  Test  Network
+- `4`: Rinkeby  Test  Network
+- `42`: Kovan  Test  Network
+
+&lt;br&gt;
+### - geth
+#### 1. Init
+
+</code></pre><p>~test $ geth &ndash;datadir . init MyNetwork.json
+~test $ ls</p>
+<p>MyTest.json geth keystore</p>
+<pre><code>
+- geth: 블록체인에 관한 정보 디렉토리
+- keystore: 계정 키 디렉토리 (private key)
+
+&lt;br&gt;
+#### 2. Create and look at the accounts list
+
+</code></pre><p>~test $ geth &ndash;datadir . account new
+Password:
+Repeat passphrase:</p>
+<p>~test $ cd keystore
+~test keystore $ ls</p>
+<p>UTC&ndash;2018-10-18T11-00-04.313586000Z&ndash;{key}</p>
+<p>~test keystore $ cd ..
+~test $ geth &ndash;datadir . account list</p>
+<p>Account #0: {block-hash} keystore:///Users/test/keystore/UTC&ndash;2018-10-18T11-00-04.313586000Z&ndash;{key}</p>
+<pre><code>
+&lt;br&gt;
+## * Make Blockchain Now (macOS)
+### - startblockchain.sh
+
+</code></pre><p>~test $ vi startblockchain.sh</p>
+<p>geth &ndash;datadir . &ndash;networkid 9999 &ndash;nodiscover &ndash;rpc &ndash;rpcport 8545 &ndash;rpccorsdomain &ldquo;*&rdquo; &ndash;rpcapi &ldquo;eth,web3,personal,net&rdquo; &ndash;nat any &ndash;unlock 0 &ndash;password ./password.txt
+~
+~
+~</p>
+<p>~test $ chmod 755 startblockchain.sh
+~test $ sh startblockchain.sh or ./startblockchain.sh</p>
+<p>INFO [10-18|21:38:19.756] Starting P2P networking
+INFO [10-18|21:38:19.760] IPC endpoint opened
+url=/Users/test/MyTest/geth.ipc</p>
+<p>INFO [10-18|21:38:19.761] HTTP endpoint opened
+url=http://127.0.0.1:8545</p>
+<p>cors=* vhosts=localhost</p>
+<pre><code>
+1. `755` means allows all W, R, E
+2. W, R, E means Writing, Reading, Executing
+
+&lt;br&gt;
+### - startgethconsole.sh
+
+</code></pre><p>~test $ vi startgethconsole.sh</p>
+<p>geth attach ipc:/Users/test/MyTest/geth.ipc
+~
+~
+~</p>
+<p>~test $ sh startgethconsole.sh or ./startgethconsole.sh</p>
+<pre><code>
+1. Directory is the IPC endpoint url of geth
+2. Copy it from terminal (startblockchain.sh)
+
+&lt;br&gt;
+### - startmist.sh
+
+</code></pre><p>~test $ vi startmist.sh</p>
+<p>/Applications/Mist.app/Contents/MacOS/Mist &ndash;rpc /Users/test/MyTest/geth.ipc
+~
+~
+~</p>
+<p>~test $ sh startmist.sh or ./startmist.sh</p>
+<pre><code>
+1. can use `--ipc` option instead of `--rpc`.
+2. But! sometimes got error for `--ipc`, IDK yet!</code></pre></div>
+
+    
+    
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain/blockchain-10/">Mushroomy&#39;s Last Blockcahin Story</a></h4>
+    <h5>October 26, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blog/tags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain/blockchain-9/">Mushroomy&#39;s 9th Blockcahin Story</a></h4>
+    <h5>October 25, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blog/tags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/blockchain/blockchain-8/">Mushroomy&#39;s 8th Blockcahin Story</a></h4>
+    <h5>October 24, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blog/tags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+    
+
+</div>
+ 
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

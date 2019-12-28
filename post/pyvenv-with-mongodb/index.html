@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>To set virtual python environment with mongoDB</title>
+        
+        <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">To set virtual python environment with mongoDB</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/pyvenv-with-mongodb/">To set virtual python environment with mongoDB</a></h4>
+    <h5>February 9, 2018</h5>
+    
+    <a href="https://wacilpong.github.io/blog/tags/python"><kbd class="item-tag">python</kbd></a>
+    
+    <a href="https://wacilpong.github.io/blog/tags/mongodb"><kbd class="item-tag">mongoDB</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><h3 id="step-1-install-python-and-mongodb">Step 1. Install python and mongoDB</h3>
+<p>I am using homebrew. So it can be possible to use <code>brew</code> command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it.
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로 설치했다. 그리고 모든 설치는 homebrew로 했다.</p>
+<pre><code>brew install python3
+</code></pre><!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="step-2-run-mongodb">Step 2. Run mongoDB</h3>
+<p>Now we can use <code>mongod</code> command which is a command to run mongoDB ! but there is no dbpath on mongoDB, so we need to set dbpath, and it needs to contain <code>data/db</code>.
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+여기까지 하면 몽고디비를 실행할 수 있는 <code>mongod</code> 커맨드를 사용할 수 있다. 근데 아직 디비경로를 설정하지 않아서 에러가 뜰 것이다. 그래서 <code>data/db</code>를 포함한 디비경로를 설정해주어야 한다.</p>
+<pre><code>mkdir your/path/data/db
+</code></pre><!-- raw HTML omitted -->
+<pre><code>alias mongod=&quot;mongod --dbpath ~/your/path/data/db&quot;
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>echo &quot;alias mongod='mongod --dbpath ~/your/path/data/db' &gt; ~/.bashrc
+source ~/.bashrc
+mongod
+</code></pre><!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="step-3-set-up-the-virtual-python-environmemt">Step 3. Set up the virtual python environmemt</h3>
+<p>First of all, clone your project to local. and make directory which will be used the virtual env. example is like this :
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+먼저, 로컬로 자기 프로젝트를 받아오자. 그 후에 그 프로젝트의 가상환경으로 사용할 폴더를 하나 만들어준다.</p>
+<pre><code>~/dev $ git clone blahblahblah/grape
+~/dev $ mkdir ~/dev/pyvenv/grape
+~/dev $ python3 -m venv ~/dev/pyvenv/grape
+</code></pre><!-- raw HTML omitted -->
+<pre><code>~/dev $ cd grape
+~/dev/grape $ ~/dev/pyvenv/grape/bin/python app.py
+</code></pre><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="step-4-set-up-auto-environment-to-the-project">Step 4. Set up auto environment to the project</h3>
+<p>Thoese makes a bit annoying us, so I set up the autoenv. you need <code>.env</code> in your project directory and <code>.bash_profile</code> in your root(~).
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+위의 과정들은 좀 짜증나니까 이제 자동으로 우리가 설정한 가상환경으로 프로젝트를 접속할 수 있는 커맨드를 써보자. 먼저 <code>.env</code> 파일이 실제 프로젝트 경로에 있어야 하고, <code>.bash_profile</code> 파일이 루트에 있어야 한다.</p>
+<ul>
+<li>real cloned project path: ~/dev/grape</li>
+<li>virtual project environment path: ~/dev/pyvenv/grape</li>
+</ul>
+<pre><code>~/dev/grape $ brew install autoenv
+~/dev/grape $ echo &quot;source $(brew --prefix autoenv)/activate.sh&quot; &gt;&gt; ~/.bash_profile
+~/dev/grape $ cd ..
+~/dev $ echo &quot;source $(pwd)/pyvenv/grape/bin/activate&quot; &gt;&gt; ~/dev/grape/.env
+</code></pre><!-- raw HTML omitted -->
+<pre><code>~/dev $ cd grape
+~/dev $
+~/dev $
+autoenv: This is the first time you are about to source /Users/roomy/dev/grape/.env:
+autoenv:
+autoenv:   --- (begin contents) ---------------------------------------
+autoenv:     $ source /Users/roomy/dev/pyvenv/grape/bin/activate $
+autoenv:
+autoenv:   --- (end contents) -----------------------------------------
+autoenv:
+autoenv: Are you sure you want to allow this? (y/N) y
+(grape) Roomyui-MacBook-Pro:grape roomy $
+</code></pre><!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="and-done-">AND&hellip; DONE !</h3>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
