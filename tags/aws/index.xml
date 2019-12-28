@@ -17,9 +17,11 @@
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</guid>
-      <description>Create S3 bucket Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with index.html (entry point).
-Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
-Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules. Then connect with IPv4 with the CloudFront that you created.</description>
+      <description>1. Create S3 bucket Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with index.html (entry point).
+
+2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
+
+3. Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
     </item>
     
     <item>

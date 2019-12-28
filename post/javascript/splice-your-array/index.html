@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-         
+        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Splice Array</title>
         
-        <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
         <style>
 
@@ -41,11 +42,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
  
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
     
-
     <script>hljs.initHighlightingOnLoad();</script>
 
 
@@ -53,8 +51,7 @@
 
 
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -65,35 +62,29 @@
         
 
         
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
     </head>
 
-    
-    
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    
-
     <body>
-         
+        
+
         <nav class="navbar navbar-default navbar-fixed-top">
-
             <div class="container">
-
                 <div class="navbar-header">
-
                     <a class="navbar-brand visible-xs" href="#">Splice Array</a>
-
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                 </div>
-
                 <div class="collapse navbar-collapse">
-
                     
                         <ul class="nav navbar-nav">
                             
@@ -105,7 +96,6 @@
                             
                         </ul>
                     
-
                     
                         <ul class="nav navbar-nav navbar-right">
                             
@@ -115,61 +105,46 @@
                             
                         </ul>
                     
-
                 </div>
-
             </div>
-
         </nav>
 
 
 <main>
 
-    <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/javascript/splice-your-array/">Splice Array</a></h4>
-    <h5>November 1, 2019</h5>
-    
-    <a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
-    
-
-</div>
+    <div>
+        <h2>Splice Array</h2>
+        <h5>November 1, 2019</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
 
 
-    <br> <div class="text-justify"><p>가끔 <code>Array.prototype.splice()</code>가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때!
-<!-- raw HTML omitted --><!-- raw HTML omitted -->
-Sometimes I confused about <code>Array.prototype.splice()</code> function, especially when assign the returned value from this !
-<!-- raw HTML omitted --></p>
+    </div>
+
+    <div align="start" class="content"><p>가끔 <code>Array.prototype.splice()</code>가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때!</p>
+<p>Sometimes I confused about <code>Array.prototype.splice()</code> function, especially when assign the returned value from this !
+<br /><br /></p>
 <h3 id="arrayprototypesplice-do--what-">Array.prototype.splice() do &hellip; what ?</h3>
-<p>splice는 아래처럼 특정 인덱스에서 특정 개수만큼 뽑아낼 수 있는 함수이다.
-splice can select(remove) the item with specific index to certain index.
-<!-- raw HTML omitted --></p>
-<pre><code>var array = [1,2,3,4];
-array.splice(0, 1)    // array === [2,3,4]
-</code></pre><h3 id="then-what-is-confusing-point-">then what is confusing point ?</h3>
-<p>그런데 이 값을 어떠한 값에 할당하면 아래처럼 제거된 배열이 아니라 제거한 해당 값을 반환한다.
-<!-- raw HTML omitted -->
-But, this function return the removed value with specific index.
-<!-- raw HTML omitted --></p>
-<pre><code>var array = [1,2,3,4];
-var array2 = array.splice(0, 1)    // array2 === [1]
-</code></pre><!-- raw HTML omitted -->
+<p>splice는 아래처럼 특정 인덱스에서 특정 개수만큼 뽑아낼 수 있는 함수이다.</p>
+<p>splice can select(remove) the item with specific index to certain index.
+<br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
+<span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// array === [2,3,4]
+</span></code></pre></div><p><br /></p>
+<h3 id="then-what-is-confusing-point-">then what is confusing point ?</h3>
+<p>그런데 이 값을 어떠한 값에 할당하면 아래처럼 제거된 배열이 아니라 제거한 해당 값을 반환한다.</p>
+<p>But, this function return the removed value with specific index.
+<br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// array2 === [1]
+</span></code></pre></div><p><br />
+따라서 그냥 특정 인덱스 요소를 제거하고 싶으면 할당하지 말고 그냥 쓰면 되는데, 가끔 헷갈리더라&hellip; 나만 그럴수도&hellip;</p>
 </div>
 
     
     
-
     
-
         <h4 class="page-header">Related</h4>
-
          <div class="item">
 
     
@@ -182,24 +157,26 @@ var array2 = array.splice(0, 1)    // array2 === [1]
     <h4><a href="/blog/post/javascript/hoisting-about-function/">Hoisting about function</a></h4>
     <h5>December 4, 2019</h5>
     
-    <a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
-    
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+
+
 
 </div>
  
-
     
 
+    
     
 
 </main>
 
         <footer>
-
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
-
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
-       
+
+        
+
+        
     </body>
 
 </html>

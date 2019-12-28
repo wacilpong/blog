@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-         
+        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>When we connect ssh with .pem</title>
         
-        <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
         <style>
 
@@ -41,11 +42,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
  
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
     
-
     <script>hljs.initHighlightingOnLoad();</script>
 
 
@@ -53,8 +51,7 @@
 
 
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -65,35 +62,29 @@
         
 
         
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
     </head>
 
-    
-    
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    
-
     <body>
-         
+        
+
         <nav class="navbar navbar-default navbar-fixed-top">
-
             <div class="container">
-
                 <div class="navbar-header">
-
                     <a class="navbar-brand visible-xs" href="#">When we connect ssh with .pem</a>
-
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                 </div>
-
                 <div class="collapse navbar-collapse">
-
                     
                         <ul class="nav navbar-nav">
                             
@@ -105,7 +96,6 @@
                             
                         </ul>
                     
-
                     
                         <ul class="nav navbar-nav navbar-right">
                             
@@ -115,38 +105,26 @@
                             
                         </ul>
                     
-
                 </div>
-
             </div>
-
         </nav>
 
 
 <main>
 
-    <div class="item">
+    <div>
+        <h2>When we connect ssh with .pem</h2>
+        <h5>April 3, 2018</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/linux"><kbd class="item-tag">linux</kbd></a>
 
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/when-connect-ssh/">When we connect ssh with .pem</a></h4>
-    <h5>April 3, 2018</h5>
-    
-    <a href="https://wacilpong.github.io/blog/tags/linux"><kbd class="item-tag">linux</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blog/tags/ssh"><kbd class="item-tag">ssh</kbd></a>
-    
-
-</div>
+<a href="https://wacilpong.github.io/blog/tags/ssh"><kbd class="item-tag">ssh</kbd></a>
 
 
-    <br> <div class="text-justify"><p>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.</p>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+    </div>
+
+    <div align="start" class="content"><p>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.</p>
+<p><br /></p>
 <h2 id="-flow-"><em>flow</em></h2>
 <ol>
 <li>Generate <code>.pem</code> key (I am using AWS).</li>
@@ -154,57 +132,58 @@
 <li>Identify file and connect to ssh (AWS linux for me).</li>
 <li>DONE</li>
 </ol>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><br /><hr></p>
 <h2 id="change-permission-of-file">Change permission of file</h2>
 <p>I will change mode of key file and connect to ssh with it.</p>
-<!-- raw HTML omitted -->
-<p>drwxr-xr-x 6 roomy staff 192B Apr 3 10:09 .
-drwxr-xr-x+ 41 roomy staff 1.3K Apr 3 10:10 ..
--rw-r&ndash;r&ndash;@ 1 roomy staff 1.7K Apr 3 10:54 test.pem
--r&mdash;&mdash;&ndash;@ 1 roomy staff 1.7K Feb 13 18:02 dev.pem</p>
-<pre><code>
-`test.pem` file has -rw-r--r-- permission. It can be separated like -, rw-, r--, r--. The first `-` means a file. and `d` is for directory. Then second 3 bits are for owner, third is for group, and the last is for other. So all users can read `test.pem` file, as `r` means read, `w` means write and `x` means execute.
-&lt;br&gt;&lt;br&gt;
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span> <span style="color:#f92672">$</span> ls <span style="color:#f92672">-</span>alh
 
-</code></pre><p>~ $ chmod 400 test.pem
-~ $ ls -alh</p>
-<p>drwxr-xr-x 6 roomy staff 192B Apr 3 10:09 .
-drwxr-xr-x+ 41 roomy staff 1.3K Apr 3 10:10 ..
--r&mdash;&mdash;&ndash;@ 1 roomy staff 1.7K Apr 3 10:54 test.pem
--r&mdash;&mdash;&ndash;@ 1 roomy staff 1.7K Feb 13 18:02 dev.pem</p>
-<pre><code>
-&lt;br&gt;
-Now the only owner can read that private key file.
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">6</span> roomy staff <span style="color:#ae81ff">192</span>B Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span> .
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x<span style="color:#f92672">+</span> <span style="color:#ae81ff">41</span> roomy staff <span style="color:#ae81ff">1.3</span>K Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span> ..
+<span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">@</span> <span style="color:#ae81ff">1</span> roomy staff <span style="color:#ae81ff">1.7</span>K Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> test.pem
+<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">@</span> <span style="color:#ae81ff">1</span> roomy staff <span style="color:#ae81ff">1.7</span>K Feb <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">18</span><span style="color:#f92672">:</span><span style="color:#ae81ff">02</span> dev.pem
 
-&lt;br&gt;&lt;br&gt;&lt;hr&gt;
-## Connect to ssh
-I simply connect to server with ssh command. `-i` option means identify file using key.
+</code></pre></div><p><code>test.pem</code> file has -rw-r&ndash;r&ndash; permission. It can be separated like -, rw-, r&ndash;, r&ndash;. The first <code>-</code> means a file. and <code>d</code> is for directory. Then second 3 bits are for owner, third is for group, and the last is for other. So all users can read <code>test.pem</code> file, as <code>r</code> means read, <code>w</code> means write and <code>x</code> means execute.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span> <span style="color:#f92672">$</span> chmod <span style="color:#ae81ff">400</span> test.pem
+<span style="color:#f92672">~</span> <span style="color:#f92672">$</span> ls <span style="color:#f92672">-</span>alh
 
-</code></pre><p>~ $ ssh -i ~/.ssh/test.pem <a href="mailto:ec2-user@example.com">ec2-user@example.com</a></p>
-<pre><code>   __|  __|_  )
-   _|  (     /   Amazon Linux 2 AMI
-  ___|\___|___|
-</code></pre>
-<p><a href="https://aws.amazon.com/amazon-linux-2/">https://aws.amazon.com/amazon-linux-2/</a>
-$</p>
-<pre><code>
-</code></pre></div>
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">6</span> roomy staff <span style="color:#ae81ff">192</span>B Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span> .
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x<span style="color:#f92672">+</span> <span style="color:#ae81ff">41</span> roomy staff <span style="color:#ae81ff">1.3</span>K Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span> ..
+<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">@</span> <span style="color:#ae81ff">1</span> roomy staff <span style="color:#ae81ff">1.7</span>K Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> test.pem
+<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">@</span> <span style="color:#ae81ff">1</span> roomy staff <span style="color:#ae81ff">1.7</span>K Feb <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">18</span><span style="color:#f92672">:</span><span style="color:#ae81ff">02</span> dev.pem
 
+</code></pre></div><p>Now the only owner can read that private key file.</p>
+<p><br /><br /><hr></p>
+<h2 id="connect-to-ssh">Connect to ssh</h2>
+<p>I simply connect to server with ssh command. <code>-i</code> option means identify file using key.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span> \<span style="color:#f92672">$</span> ssh <span style="color:#f92672">-</span>i <span style="color:#f92672">~</span><span style="color:#f92672">/</span>.ssh<span style="color:#f92672">/</span>test.pem ec2<span style="color:#f92672">-</span>user<span style="color:#f92672">@</span>example.com
+
+       __<span style="color:#f92672">|</span>  __<span style="color:#f92672">|</span>_  )
+       <span style="color:#a6e22e">_|  </span>(     <span style="color:#f92672">/</span>   Amazon Linux <span style="color:#ae81ff">2</span> AMI
+      ___<span style="color:#f92672">|</span>\___<span style="color:#f92672">|</span>___<span style="color:#f92672">|</span>
+
+https<span style="color:#f92672">:</span><span style="color:#f92672">/</span><span style="color:#f92672">/</span>aws.amazon.com<span style="color:#f92672">/</span>amazon<span style="color:#f92672">-</span>linux<span style="color:#ae81ff">-2</span><span style="color:#f92672">/</span>
+\<span style="color:#f92672">$</span>
+
+</code></pre></div></div>
+
+    
     
     
 
     
-
     
 
 </main>
 
         <footer>
-
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
-
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
-       
+
+        
+
+        
     </body>
 
 </html>

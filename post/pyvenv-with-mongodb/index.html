@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-         
+        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>To set virtual python environment with mongoDB</title>
         
-        <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
         <style>
 
@@ -41,11 +42,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
  
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
     
-
     <script>hljs.initHighlightingOnLoad();</script>
 
 
@@ -53,8 +51,7 @@
 
 
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -65,35 +62,29 @@
         
 
         
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
     </head>
 
-    
-    
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    
-
     <body>
-         
+        
+
         <nav class="navbar navbar-default navbar-fixed-top">
-
             <div class="container">
-
                 <div class="navbar-header">
-
                     <a class="navbar-brand visible-xs" href="#">To set virtual python environment with mongoDB</a>
-
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                 </div>
-
                 <div class="collapse navbar-collapse">
-
                     
                         <ul class="nav navbar-nav">
                             
@@ -105,7 +96,6 @@
                             
                         </ul>
                     
-
                     
                         <ul class="nav navbar-nav navbar-right">
                             
@@ -115,113 +105,116 @@
                             
                         </ul>
                     
-
                 </div>
-
             </div>
-
         </nav>
 
 
 <main>
 
-    <div class="item">
+    <div>
+        <h2>To set virtual python environment with mongoDB</h2>
+        <h5>February 9, 2018</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/python"><kbd class="item-tag">python</kbd></a>
 
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/pyvenv-with-mongodb/">To set virtual python environment with mongoDB</a></h4>
-    <h5>February 9, 2018</h5>
-    
-    <a href="https://wacilpong.github.io/blog/tags/python"><kbd class="item-tag">python</kbd></a>
-    
-    <a href="https://wacilpong.github.io/blog/tags/mongodb"><kbd class="item-tag">mongoDB</kbd></a>
-    
-
-</div>
+<a href="https://wacilpong.github.io/blog/tags/mongodb"><kbd class="item-tag">mongoDB</kbd></a>
 
 
-    <br> <div class="text-justify"><h3 id="step-1-install-python-and-mongodb">Step 1. Install python and mongoDB</h3>
-<p>I am using homebrew. So it can be possible to use <code>brew</code> command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it.
-<!-- raw HTML omitted --><!-- raw HTML omitted -->
-맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로 설치했다. 그리고 모든 설치는 homebrew로 했다.</p>
-<pre><code>brew install python3
-</code></pre><!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+    </div>
+
+    <div align="start" class="content"><h3 id="step-1-install-python-and-mongodb">Step 1. Install python and mongoDB</h3>
+<p>I am using homebrew. So it can be possible to use <code>brew</code> command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it.</p>
+<p>맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로 설치했다. 그리고 모든 설치는 homebrew로 했다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">brew install python3
+</code></pre></div><p>And install mongoDB too.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">brew install mongodb
+</code></pre></div><p><br /><br /></p>
 <h3 id="step-2-run-mongodb">Step 2. Run mongoDB</h3>
-<p>Now we can use <code>mongod</code> command which is a command to run mongoDB ! but there is no dbpath on mongoDB, so we need to set dbpath, and it needs to contain <code>data/db</code>.
-<!-- raw HTML omitted --><!-- raw HTML omitted -->
-여기까지 하면 몽고디비를 실행할 수 있는 <code>mongod</code> 커맨드를 사용할 수 있다. 근데 아직 디비경로를 설정하지 않아서 에러가 뜰 것이다. 그래서 <code>data/db</code>를 포함한 디비경로를 설정해주어야 한다.</p>
-<pre><code>mkdir your/path/data/db
-</code></pre><!-- raw HTML omitted -->
-<pre><code>alias mongod=&quot;mongod --dbpath ~/your/path/data/db&quot;
-</code></pre><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<pre><code>echo &quot;alias mongod='mongod --dbpath ~/your/path/data/db' &gt; ~/.bashrc
-source ~/.bashrc
+<p>Now we can use <code>mongod</code> command which is a command to run mongoDB ! but there is no dbpath on mongoDB, so we need to set dbpath, and it needs to contain <code>data/db</code>.</p>
+<p>여기까지 하면 몽고디비를 실행할 수 있는 <code>mongod</code> 커맨드를 사용할 수 있다. 근데 아직 디비경로를 설정하지 않아서 에러가 뜰 것이다. 그래서 <code>data/db</code>를 포함한 디비경로를 설정해주어야 한다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">mkdir your<span style="color:#f92672">/</span>path<span style="color:#f92672">/</span>data<span style="color:#f92672">/</span>db
+</code></pre></div><p>There are many ways to set dbpath. I just set alias when running it in my case.</p>
+<p>되게 많은 방법이 있는데, 나는 그냥 해당 커맨드에 alias를 지정해줬다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">alias mongod<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">mongod --dbpath ~/your/path/data/db&#34;</span>
+</code></pre></div><p>And just type <code>mongod</code> command. Now your db is running.</p>
+<p>이제 <code>mongod</code> 커맨드를 실행하면 db가 동작될 것이다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">echo <span style="color:#e6db74">&#34;</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">l</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">m</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">g</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010">m</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">n</span><span style="color:#960050;background-color:#1e0010">g</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">h</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">~</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">y</span><span style="color:#960050;background-color:#1e0010">o</span><span style="color:#960050;background-color:#1e0010">u</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">p</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">h</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">t</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">&gt;</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#960050;background-color:#1e0010">~</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">b</span><span style="color:#960050;background-color:#1e0010">a</span><span style="color:#960050;background-color:#1e0010">s</span><span style="color:#960050;background-color:#1e0010">h</span><span style="color:#960050;background-color:#1e0010">r</span><span style="color:#960050;background-color:#1e0010">c</span>
+source <span style="color:#f92672">~</span><span style="color:#f92672">/</span>.bashrc
 mongod
-</code></pre><!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</code></pre></div><p>That command can be set in <code>.bashrc</code> file, and it will be loaded whenever bash command is executed. Command <code>source</code> if you want to execute it.
+<br /></p>
+<p>위의 커맨드를 배쉬가 실행될 때마다 커맨드가 로드되는 <code>.bashrc</code>파일에 써도 된다. 이에 대한 실행은 <code>source</code> 커맨드를 날리면 된다.</p>
+<p><br /></p>
+<p>Then mongodb will be running.</p>
+<p><br /><br /></p>
 <h3 id="step-3-set-up-the-virtual-python-environmemt">Step 3. Set up the virtual python environmemt</h3>
-<p>First of all, clone your project to local. and make directory which will be used the virtual env. example is like this :
-<!-- raw HTML omitted --><!-- raw HTML omitted -->
-먼저, 로컬로 자기 프로젝트를 받아오자. 그 후에 그 프로젝트의 가상환경으로 사용할 폴더를 하나 만들어준다.</p>
-<pre><code>~/dev $ git clone blahblahblah/grape
-~/dev $ mkdir ~/dev/pyvenv/grape
-~/dev $ python3 -m venv ~/dev/pyvenv/grape
-</code></pre><!-- raw HTML omitted -->
-<pre><code>~/dev $ cd grape
-~/dev/grape $ ~/dev/pyvenv/grape/bin/python app.py
-</code></pre><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>First of all, clone your project to local. and make directory which will be used the virtual env.</p>
+<p>먼저, 로컬로 자기 프로젝트를 받아오자. 그 후에 그 프로젝트의 가상환경으로 사용할 폴더를 하나 만들어준다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev <span style="color:#f92672">$</span> git clone blahblahblah<span style="color:#f92672">/</span>grape
+<span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev <span style="color:#f92672">$</span> mkdir <span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>pyvenv<span style="color:#f92672">/</span>grape
+<span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev <span style="color:#f92672">$</span> python3 <span style="color:#f92672">-</span>m venv <span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>pyvenv<span style="color:#f92672">/</span>grape
+</code></pre></div><p>Now, <code>grape</code> folder is a virtual environment. So, we can run the python project with the command in virtual env folder. In addition to, &lsquo;-m&rsquo; option means that run library module as a script.</p>
+<p>이제, <code>grape</code> 폴더는 가상환경으로 쓰일 것이다. 참고로 <code>-m</code>은 스크립트로 해당 모듈을 실행하라는 옵션이다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev <span style="color:#f92672">$</span> cd grape
+<span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>grape <span style="color:#f92672">$</span> <span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>pyvenv<span style="color:#f92672">/</span>grape<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>python app.py
+</code></pre></div><p><br /><br /></p>
 <h3 id="step-4-set-up-auto-environment-to-the-project">Step 4. Set up auto environment to the project</h3>
-<p>Thoese makes a bit annoying us, so I set up the autoenv. you need <code>.env</code> in your project directory and <code>.bash_profile</code> in your root(~).
-<!-- raw HTML omitted --><!-- raw HTML omitted -->
-위의 과정들은 좀 짜증나니까 이제 자동으로 우리가 설정한 가상환경으로 프로젝트를 접속할 수 있는 커맨드를 써보자. 먼저 <code>.env</code> 파일이 실제 프로젝트 경로에 있어야 하고, <code>.bash_profile</code> 파일이 루트에 있어야 한다.</p>
+<p>Thoese makes a bit annoying us, so I set up the autoenv. you need <code>.env</code> in your project directory and <code>.bash_profile</code> in your root(~).</p>
+<p>위의 과정들은 좀 짜증나니까 이제 자동으로 우리가 설정한 가상환경으로 프로젝트를 접속할 수 있는 커맨드를 써보자. 먼저 <code>.env</code> 파일이 실제 프로젝트 경로에 있어야 하고, <code>.bash_profile</code> 파일이 루트에 있어야 한다.</p>
 <ul>
 <li>real cloned project path: ~/dev/grape</li>
 <li>virtual project environment path: ~/dev/pyvenv/grape</li>
 </ul>
-<pre><code>~/dev/grape $ brew install autoenv
-~/dev/grape $ echo &quot;source $(brew --prefix autoenv)/activate.sh&quot; &gt;&gt; ~/.bash_profile
-~/dev/grape $ cd ..
-~/dev $ echo &quot;source $(pwd)/pyvenv/grape/bin/activate&quot; &gt;&gt; ~/dev/grape/.env
-</code></pre><!-- raw HTML omitted -->
-<pre><code>~/dev $ cd grape
-~/dev $
-~/dev $
-autoenv: This is the first time you are about to source /Users/roomy/dev/grape/.env:
-autoenv:
-autoenv:   --- (begin contents) ---------------------------------------
-autoenv:     $ source /Users/roomy/dev/pyvenv/grape/bin/activate $
-autoenv:
-autoenv:   --- (end contents) -----------------------------------------
-autoenv:
-autoenv: Are you sure you want to allow this? (y/N) y
-(grape) Roomyui-MacBook-Pro:grape roomy $
-</code></pre><!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>grape <span style="color:#f92672">$</span> brew install autoenv
+<span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>grape <span style="color:#f92672">$</span> echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">source $(brew --prefix autoenv)/activate.sh&#34;</span> <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">~</span><span style="color:#f92672">/</span>.bash_profile
+<span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>grape <span style="color:#f92672">$</span> cd ..
+<span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev <span style="color:#f92672">$</span> echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">source $(pwd)/pyvenv/grape/bin/activate&#34;</span> <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>grape<span style="color:#f92672">/</span>.env
+</code></pre></div><p>Go to the real cloned project path, then you can generate autoenv now.</p>
+<p>실제 프로젝트 경로로 가보자. 이제 자동으로 가상환경을 통해 그 프로젝트를 들어갈 수 있을 것이다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev <span style="color:#f92672">$</span> cd grape
+<span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev <span style="color:#f92672">$</span>
+<span style="color:#f92672">~</span><span style="color:#f92672">/</span>dev <span style="color:#f92672">$</span>
+autoenv<span style="color:#f92672">:</span> This is the first time you are about to source <span style="color:#f92672">/</span>Users<span style="color:#f92672">/</span>roomy<span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>grape<span style="color:#f92672">/</span>.env<span style="color:#f92672">:</span>
+autoenv<span style="color:#f92672">:</span>
+autoenv<span style="color:#f92672">:</span>   <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> (begin contents) <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+autoenv<span style="color:#f92672">:</span>     <span style="color:#f92672">$</span> source <span style="color:#f92672">/</span>Users<span style="color:#f92672">/</span>roomy<span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>pyvenv<span style="color:#f92672">/</span>grape<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>activate <span style="color:#f92672">$</span>
+autoenv<span style="color:#f92672">:</span>
+autoenv<span style="color:#f92672">:</span>   <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> (end contents) <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+autoenv<span style="color:#f92672">:</span>
+autoenv<span style="color:#f92672">:</span> Are you sure you want to allow this<span style="color:#f92672">?</span> (y<span style="color:#f92672">/</span>N) <span style="color:#a6e22e">y
+</span><span style="color:#a6e22e"></span>(grape) Roomyui<span style="color:#f92672">-</span>MacBook<span style="color:#f92672">-</span>Pro<span style="color:#f92672">:</span>grape roomy <span style="color:#f92672">$</span>
+</code></pre></div><p>If you want to exit the env, type <code>deactivate</code>.</p>
+<p>가상환경을 끄고 싶으면 <code>deactivate</code> 커맨드를 날리면 된다.</p>
+<p><br /><br /></p>
 <h3 id="and-done-">AND&hellip; DONE !</h3>
 </div>
 
     
     
-
     
 
+    
     
 
 </main>
 
         <footer>
-
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
-
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
-       
+
+        
+
+        
     </body>
 
 </html>

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-         
+        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Shadow DOM vs Virtual DOM</title>
         
-        <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
         <style>
 
@@ -41,11 +42,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
  
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
     
-
     <script>hljs.initHighlightingOnLoad();</script>
 
 
@@ -53,8 +51,7 @@
 
 
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -65,35 +62,29 @@
         
 
         
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
     </head>
 
-    
-    
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    
-
     <body>
-         
+        
+
         <nav class="navbar navbar-default navbar-fixed-top">
-
             <div class="container">
-
                 <div class="navbar-header">
-
                     <a class="navbar-brand visible-xs" href="#">Shadow DOM vs Virtual DOM</a>
-
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                 </div>
-
                 <div class="collapse navbar-collapse">
-
                     
                         <ul class="nav navbar-nav">
                             
@@ -105,7 +96,6 @@
                             
                         </ul>
                     
-
                     
                         <ul class="nav navbar-nav navbar-right">
                             
@@ -115,39 +105,33 @@
                             
                         </ul>
                     
-
                 </div>
-
             </div>
-
         </nav>
 
 
 <main>
 
-    <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/html/shadow-or-virtual/">Shadow DOM vs Virtual DOM</a></h4>
-    <h5>November 9, 2018</h5>
-    
-    <a href="https://wacilpong.github.io/blog/tags/html"><kbd class="item-tag">HTML</kbd></a>
-    
-
-</div>
+    <div>
+        <h2>Shadow DOM vs Virtual DOM</h2>
+        <h5>November 9, 2018</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/html"><kbd class="item-tag">HTML</kbd></a>
 
 
-    <br> <div class="text-justify"><h2 id="dom-die-or-march-">DOM, Die Or March ?</h2>
+    </div>
+
+    <div align="start" class="content"><h2 id="dom-die-or-march-">DOM, Die Or March ?</h2>
 <h3 id="p">:P</h3>
 <p><code>DOM(Document Object Model)</code>, is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (<code>reflow</code> and <code>repaint</code>).</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p><br /></p>
+<p>DOM은 말 그대로 오브젝트들로 구성된 모델이다. 달리 말하면, DOM은 웹페이지에 대한 객체지향적 표현이다. 웹 브라우저가 이 DOM을 조작하고, 우리는 Javascript와 CSS를 이용해 통신(조작)할 수 있다. 그런데 DOM을 조작할 때 <code>reflow</code>와 <code>repaint</code>에 대한 렌더링 계산 때문에 속도가 늦어진다.</p>
+<p><br /></p>
+<h4 id="1-reflow">1. reflow</h4>
+<ul>
+<li>it triggerd when calculate the node size of <code>Render Tree</code>.</li>
+<li>it triggerd once at least at the beggining of the webpage.</li>
+</ul>
 <h4 id="2-repaint">2. repaint</h4>
 <ul>
 <li>it triggerd when update the DOM.</li>
@@ -159,37 +143,48 @@
 <li><code>display:none, visibility:hidden</code></li>
 <li>User action like scrolling and resizing the window.</li>
 </ul>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p><br /></p>
+<p>So, We need to reduce DOM manipulation.
+<br /></p>
+<p>그래서 위와 같은 이유로 DOM 조작 자체를 최소화해야 한다.
+<br /></p>
+<hr>
+<h2 id="virtual-dom">Virtual DOM</h2>
+<p>This is one of the way to avoid the unnecessary DOM manipulation. It avoids re-rendering page, and represents UI that is kept in memory and synced with the REAL DOM. It is a concept implemented by libraries in JavaScript on top of browser APIs. such as <code>ReactJs</code> and <code>VueJs</code>. In react, the virtual DOM called <code>React DOM</code>.
+<br /></p>
+<p>이는 불필요한 DOM 조작을 피하기 위한 방법 중의 하나이다. 페이지를 다시 렌더링하는 것을 피하고, UI 자체를 표현하여 메모리 상에 저장되고 실제 DOM과 동기화한다. 이는 리액트나 뷰와 같은 브라우저 API들에 기반하여 자바스크립트로 구현된 컨셉이다. 참고로 리액트에서는 이러한 가상 DOM을 <code>React DOM</code>이라고 부른다.
+<br /></p>
 <p><strong><em>Then, How about Angular2+ ?</em></strong></p>
 <ul>
 <li><code>Angular2+</code> manipulates DOM directly, but it has <code>ChangeDetectionRef</code>, is the base class of angular view.</li>
 <li>it is a tree collects all views that are to be checked for changes.</li>
 <li>So we can also reduce the DOM manipulation.</li>
 </ul>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p><br /></p>
+<h2 id="shadow-dom">Shadow DOM</h2>
+<p>This is a browser technology designed primarily for scoping variables and CSS in web components. and is mostly about encapsulation of the implementation. It refers to the ability of the browser to include a subtree of DOM elements into the rendering of a document, but not into the main document DOM tree.</p>
+<p><br /></p>
+<p>이는 웹 컴포넌트들에서 변수들과 CSS의 범위를 지정하기 위해 설계된 브라우저 기술이다. 주로 캡슐화를 위해 사용된다. DOM 엘리먼트들의 서브 트리를 렌더링 영역에 포함시키지만, 메인 DOM 트리에는 포함시키지 않는 브라우저의 한 스킬이다.</p>
+<p><br /></p>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/Web_Components/Using_shadow_DOM">Ref: Using Shadow DOM (Javascript)</a></p>
 </div>
 
     
     
-
     
 
+    
     
 
 </main>
 
         <footer>
-
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
-
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
-       
+
+        
+
+        
     </body>
 
 </html>
