@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blockchain on Roomy</title>
-    <link>blog/tags/blockchain/</link>
+    <link>https://wacilpong.github.io/blog/tags/blockchain/</link>
     <description>Recent content in blockchain on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 26 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="blog/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mushroomy&#39;s dapping blockchain story</title>
-      <link>blog/project/blockchain/</link>
+      <link>https://wacilpong.github.io/blog/project/blockchain/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>blog/project/blockchain/</guid>
+      <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
       <description>Lectures  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain Truffle with ganache Truffle Tutorial: Pet Shop  </description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s Last Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-10/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-10/</link>
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-10/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-10/</guid>
       <description>Truffle Tutorial: Pet Shop 솔직히 문서가 너무 잘되어 있어서 주요 내용+커맨드만 정리한다. https://truffleframework.com/tutorials/pet-shop
  custom RPC (http://127.0.0.1:7545)를 설정하는 이유는 메인넷이 아닌 private net에서 테스트하기 위함이다.  </description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 9th Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-9/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-9/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-9/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-9/</guid>
       <description>Truffle Command  설치 및 버전 확인: 아래의 버전내용이 뜨지 않으면 npm i -g truffle로 설치하자.  Truffle v4.1.14 (core: 4.1.14) Solidity v0.4.24 (solc-js)
  &amp;lt;br&amp;gt; 2. 트러플 프로젝트 초기화 과정 test $ truffle init
 Downloading&amp;hellip; Unpacking&amp;hellip; Setting up&amp;hellip; Unbox successful. Sweet!
@@ -47,68 +47,68 @@ drwxr-xr-x 7 test staff 224B Oct 25 19:54 . drwxr-xr-x 4 test staff 128B Oct 25 
     
     <item>
       <title>Mushroomy&#39;s 8th Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-8/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-8/</link>
       <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-8/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-8/</guid>
       <description># 해결되기 어려운 블록체인 문제, Oracle Problem?
 Cosmos  Interchain: 수많은 코인이 있고, 이들을 연결하려고 하는 개념 BIA: Blockchain Interoperablility Alliance ex) Aion, iCon, wanchain Cosmos: internet of interchain   이렇게 dApp을 EVM에 올려서 만들다보니 의존성이 생긴다. Networking, Consensus 레이어를 만드는 것이 힘들었다. 이 레이어들은 자원을 투자한다고 빨리 만들 수 있는 부분이 아니다. 따라서 코스모스는 1dApp = 1Blockchain을 실현시키기 위해 만들었다.  1. 만들어진 이유?   복잡한 가상머신(VM) 블록체인</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 7th Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-7/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-7/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-7/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-7/</guid>
       <description>Token economy project example : (example: Toon Hub)[https://github.com/wacilpong/toon-hub]</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 6th Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-6/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-6/</link>
       <pubDate>Mon, 22 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-6/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-6/</guid>
       <description>* Gas Fee  트랜잭션을 처리하는 데 사용되는 수수료 (송금 / 스마트컨트랙트 배포 및 수정) 채굴자가 받게 된다. GWEI라는 단위를 사용한다. 사용한 gas x gas price, 하지만 gas limit이 존재하여 이를 넘지 못한다.   블록 생성 보상 엉클 블록 보상 gas fee   개발의 패러다임이 바뀌고 있다. &amp;lsquo;나의 코드를 더 많은 사람이 쓰는 것&#39;이 좋다. 1명보다 10억 명이 보는 것이 더 정확, 집단지성의 힘! Github의 오픈소스 사례  서울 정보소통광장 행정정보 백악관 각종 정보 고위 공부원 재산정보    </description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 5th Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-5/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-5/</link>
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-5/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-5/</guid>
       <description>* geth REPL (Read Eval Print Loop)  REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands.
  miner.start() eth.pendingTransactions eth.getTransaction(&amp;quot;{transaction-hash-id}&amp;quot;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1])  pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account.  Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db: e.exports, shh: s, …} contract MyName { string myName = &amp;ldquo;Roomy&amp;rdquo;;</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 4th Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-4/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-4/</link>
       <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-4/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-4/</guid>
       <description>참고: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)
 +&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;+ | Welcome to puppeth, your Ethereum private network manager | | | | This tool lets you create a new Ethereum network down to | | the genesis block, bootnodes, miners and ethstats servers | | without the hassle that it would normally entail. | | | | Puppeth uses SSH to dial in to remote servers, and builds | | its network components out of Docker containers using the | | docker-compose toolset.</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 3rd Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-3/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-3/</link>
       <pubDate>Wed, 17 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-3/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-3/</guid>
       <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉!
 1. Governance Process  21명의 대표를 투표를 통해 선출해 Governance를 진행한다. 비트코인이나 이더리움은 Foundation을 통해 관리되는 반면, EOS는 21명(팀)의 BP(Block Producer)들이 한다. 진정한 Decentralization을 표방한다. 지만 21명(팀)의 BP가 진정한 탈중앙화인가? 고민. 대의 민주주의라는 점은 훌륭해보이지만 실제 국회는 그렇지 않다. 고민. 막강한 중국파워 때문에 EOS 공식 언어는 영어이지만, 중국 BP들은 중국어를 사용한다. 고민.  2. BP (Block Producer)  121명의 BP 후보가 있으며, 이중 21명(팀)이 BP가 되고 100명(팀)은 백업 BP가 된다.</description>
     </item>
     
     <item>
       <title>Mushroomy&#39;s 2nd Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-2/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-2/</link>
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-2/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-2/</guid>
       <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo;  교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&#39;의 목적을 모두 충족하면서 암호화된 화폐이다.
  - Bitcoin : &amp;ldquo;P2P버전의 전자화폐로 은행같은 금융기관을 거치지 않고 한 대상이 다른 대상에게 직접 전달하는 온라인 지불&amp;rdquo;(Satoshi)을 위해 만들어진 코인
 - Altcoin : 비트코인을 제외한 모든 코인
@@ -117,10 +117,10 @@ Cosmos  Interchain: 수많은 코인이 있고, 이들을 연결하려고 하는
     
     <item>
       <title>Mushroomy&#39;s 1st Blockcahin Story</title>
-      <link>blog/post/blockchain/blockchain-1/</link>
+      <link>https://wacilpong.github.io/blog/post/blockchain/blockchain-1/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/blockchain/blockchain-1/</guid>
+      <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-1/</guid>
       <description>Blockchain  Database 기반의 장부라고 보면 된다. 트랜잭션을 해쉬값과 함께 블록(비트코인은 대략 1MB정도의 데이터를 1블록에 담음)에 저장하고, 그 다음 블록은 이전 해쉬값과 해당 해쉬값을 같이 담아서 연결시킨다. 이것이 블록체인이다.
  참고1 blockchain demo참고2 blockchain .com
 ex) 000000000000000...(중략)  난이도는 그때그때 달라진다. 많은 사람이 모여 range를 정하고 채굴하면 더 효과적일 수 있어, 마이닝풀을 통해 채굴한다. 참고로 이더리움은 SHA256 복호뿐 아니라, RAM끼리 그 값을 복사해야 해서 코어 계산만으로 빠르게 독점할 수 없다. 그래서 비트코인은 해당 해쉬값만 찾으면 되어서 ASIC이라는 SHA256 암호값을 풀기 위해 만들어진 변형 CPU가 독점해 판매되는 반면, 이더리움에는 그런 것이 없다.</description>

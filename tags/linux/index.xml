@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on Roomy</title>
-    <link>blog/tags/linux/</link>
+    <link>https://wacilpong.github.io/blog/tags/linux/</link>
     <description>Recent content in linux on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="blog/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>When we connect ssh with .pem</title>
-      <link>blog/post/when-connect-ssh/</link>
+      <link>https://wacilpong.github.io/blog/post/when-connect-ssh/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/when-connect-ssh/</guid>
+      <guid>https://wacilpong.github.io/blog/post/when-connect-ssh/</guid>
       <description>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.
 flow  Generate .pem key (I am using AWS). Change mode of .pem file to 400 to read it. Identify file and connect to ssh (AWS linux for me). DONE  Change permission of file I will change mode of key file and connect to ssh with it.</description>
     </item>

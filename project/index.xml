@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Roomy</title>
-    <link>blog/project/</link>
+    <link>https://wacilpong.github.io/blog/project/</link>
     <description>Recent content in Projects on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="blog/project/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mushroomy&#39;s dapping blockchain story</title>
-      <link>blog/project/blockchain/</link>
+      <link>https://wacilpong.github.io/blog/project/blockchain/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>blog/project/blockchain/</guid>
+      <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
       <description>Lectures  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain Truffle with ganache Truffle Tutorial: Pet Shop  </description>
     </item>
     
     <item>
       <title>TKIT service</title>
-      <link>blog/project/tkit-service/</link>
+      <link>https://wacilpong.github.io/blog/project/tkit-service/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>blog/project/tkit-service/</guid>
+      <guid>https://wacilpong.github.io/blog/project/tkit-service/</guid>
       <description>Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack. https://tkit.me</description>
     </item>
     
     <item>
       <title>SlackBot: Dumbledore</title>
-      <link>blog/project/dumbledore/</link>
+      <link>https://wacilpong.github.io/blog/project/dumbledore/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>blog/project/dumbledore/</guid>
+      <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
     </item>
     

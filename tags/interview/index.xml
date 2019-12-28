@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>interview on Roomy</title>
-    <link>blog/tags/interview/</link>
+    <link>https://wacilpong.github.io/blog/tags/interview/</link>
     <description>Recent content in interview on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="blog/tags/interview/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/interview/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My recently junior web developer interview</title>
-      <link>blog/post/my-recently-interview/</link>
+      <link>https://wacilpong.github.io/blog/post/my-recently-interview/</link>
       <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/my-recently-interview/</guid>
+      <guid>https://wacilpong.github.io/blog/post/my-recently-interview/</guid>
       <description>what kind of companies? 힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다. 블록체인, 핀테크, 클라우드IDE, AI 등등 다양한 분야의 회사에 신입 개발자로 지원했다. 프론트엔드/백엔드 가릴 것 없이 넣었고, 주로 nodeJs 기반의 회사로 넣었다. 12월 4일부터 12월 8일까지 일주일 간 인터뷰만 보러 다녔다.
 I apply to 7 different startups that developing web like blockchain, fintech, cloud IDE, traslating AI, medical AI. The most of them are based on nodeJs. I was an interviewee during 2017.</description>
     </item>

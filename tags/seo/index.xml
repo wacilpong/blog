@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SEO on Roomy</title>
-    <link>blog/tags/seo/</link>
+    <link>https://wacilpong.github.io/blog/tags/seo/</link>
     <description>Recent content in SEO on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 06 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="blog/tags/seo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/seo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Prerender Status Code</title>
-      <link>blog/post/prerender-status-code/</link>
+      <link>https://wacilpong.github.io/blog/post/prerender-status-code/</link>
       <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/prerender-status-code/</guid>
+      <guid>https://wacilpong.github.io/blog/post/prerender-status-code/</guid>
       <description>재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다. SSR(Server Side Rendering)을 도입할 수 없는 상황이었기 때문에 CSR(Client Side Rendering)로 잘 핸들링해야 했다. 회사에서 **netlify**라는 static deploy 서비스를 사용중이었는데, 유료회원이면 prerender라는 내장된 서비스를 옵션으로 사용할 수 있었다. **prerender**는 헤드리스 브라우저를 통해 페이지의 정적 정보들을 저장해놓고, 크롤러가 해당 정보들을 긁어갈 수 있도록 해주는 SEO를 돕는 일종의 기술이다. netlify는 이를 내장시켜서 사용할 수 있도록 만든 것이다. Headless browser ? 그러면 먼저 헤드리스 브라우저가 무엇인지 알아야 하는데, 쉽게 말하면 아무 UI도 없는 웹브라우저다.</description>
     </item>
     

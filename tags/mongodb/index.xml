@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mongoDB on Roomy</title>
-    <link>blog/tags/mongodb/</link>
+    <link>https://wacilpong.github.io/blog/tags/mongodb/</link>
     <description>Recent content in mongoDB on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="blog/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>To set virtual python environment with mongoDB</title>
-      <link>blog/post/pyvenv-with-mongodb/</link>
+      <link>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/pyvenv-with-mongodb/</guid>
+      <guid>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</guid>
       <description>Step 1. Install python and mongoDB I am using homebrew. So it can be possible to use brew command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it. 맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로 설치했다. 그리고 모든 설치는 homebrew로 했다.
 brew install python3 Step 2. Run mongoDB Now we can use mongod command which is a command to run mongoDB !</description>
     </item>

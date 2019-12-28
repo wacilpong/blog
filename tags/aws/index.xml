@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>aws on Roomy</title>
-    <link>blog/tags/aws/</link>
+    <link>https://wacilpong.github.io/blog/tags/aws/</link>
     <description>Recent content in aws on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="blog/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wacilpong.github.io/blog/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Publish to aws s3 with s3cmd</title>
-      <link>blog/post/aws-publish-to-s3/</link>
+      <link>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/aws-publish-to-s3/</guid>
+      <guid>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</guid>
       <description>Create S3 bucket Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with index.html (entry point).
 Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
 Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules. Then connect with IPv4 with the CloudFront that you created.</description>
@@ -24,10 +24,10 @@ Connect domain with CloudFront If you don&#39;t have routing domain in aws Route
     
     <item>
       <title>To configure https with AWS</title>
-      <link>blog/post/set-https-with-aws/</link>
+      <link>https://wacilpong.github.io/blog/post/set-https-with-aws/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>blog/post/set-https-with-aws/</guid>
+      <guid>https://wacilpong.github.io/blog/post/set-https-with-aws/</guid>
       <description>flow  Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&#39;t configure anything in AWS console. So, connect that IP in shell.</description>
     </item>
     
