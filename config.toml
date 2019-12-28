@@ -4,6 +4,25 @@ title = "Roomy"
 theme = "minimal"
 # disqusShortname = "@disqus_SDumnkPwZd" delete this to disable disqus comments
 
+# Goldmark is from Hugo 0.60 the default library used for Markdown.
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xHTML = false
+
 [params]
     author = "Roomy Han"
     description = "Audio, Video, Disco"

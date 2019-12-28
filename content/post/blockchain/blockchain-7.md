@@ -5,5 +5,6 @@ tags: ["blockchain"]
 draft: false
 ---
 
-## Token economy project example
-: (example: Toon Hub)[https://github.com/wacilpong/toon-hub]
+#### Token economy project example
+
+: [example: Toon Hub](https://github.com/wacilpong/toon-hub)

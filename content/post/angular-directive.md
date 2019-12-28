@@ -5,49 +5,50 @@ tags: ["angular"]
 draft: false
 ---
 
-## What is directive ?
+### What is directive ?
 
 Use it to attach custom behavior to elements in the DOM.
-<br><br>
+<br /><br /><hr>
 
-## Basic Example
+### Basic Example
 
 > This is a simple directive to change chevron background-image as clicking the element.
-> <br>
 
-(1) HTML
-<br>
+#### 1. HTML
 
+```html
+<label
+  appChevron
+  class="chevron"
+  style="background-image: url('/assets/images/arrow-down.svg');"
+></label>
 ```
-<label appChevron class="chevron" style="background-image: url('/assets/images/arrow-down.svg');"></label>
-```
 
-<br><br>
+<br /><br />
 
-(2) TS (Of course it needs to be imported to app.module.ts declarations)
-<br>
+#### 2. TS (Of course it needs to be imported to app.module.ts declarations)
 
-```
-import { Directive, ElementRef } from '@angular/core';
+```typescript
+import { Directive, ElementRef } from "@angular/core";
 
 @Directive({
-  selector: '[appChevron]'
+  selector: "[appChevron]"
 })
 export class ChevronValidate {
   constructor(el: ElementRef) {
-    const div = document.createElement('div');
+    const div = document.createElement("div");
 
-    div.style.width = '100%';
-    div.style.height = '100%';
+    div.style.width = "100%";
+    div.style.height = "100%";
     div.onclick = () => {
       let bg = el.nativeElement.style.backgroundImage;
 
-      if (bg.indexOf('down') !== -1) {
+      if (bg.indexOf("down") !== -1) {
         el.nativeElement.style.backgroundImage = `url('/assets/images/chevron-up.svg')`;
       } else {
         el.nativeElement.style.backgroundImage = `url('/assets/images/chevron-down.svg')`;
       }
-    }
+    };
 
     el.nativeElement.appendChild(div);
   }
@@ -55,9 +56,9 @@ export class ChevronValidate {
 ```
 
 Someone think like "why did make stupid div in directive?". The reason why is because angular directive is not officially allow sending other element except the one marked that directive selector.
-<br><br>
+<br /><br />
 
-```
+```s
 // HTML
 <label [appChevron]="clickElem" ...>
     <div #clickElem click="something"></div>

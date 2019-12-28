@@ -6,19 +6,21 @@ draft: false
 ---
 
 ## Truffle Command
-1. 설치 및 버전 확인: 아래의 버전내용이 뜨지 않으면 `npm i -g truffle`로 설치하자.
 
-<br>
-```
+#### 1. 설치 및 버전 확인: 아래의 버전내용이 뜨지 않으면 `npm i -g truffle`로 설치하자.
+
+```s
 test $ truffle --version
 
 Truffle v4.1.14 (core: 4.1.14)
 Solidity v0.4.24 (solc-js)
 ```
 
-<br>
-2. 트러플 프로젝트 초기화 과정
-```
+<br />
+
+#### 2. 트러플 프로젝트 초기화 과정
+
+```s
 test $ truffle init
 
 Downloading...
@@ -44,12 +46,13 @@ drwxr-xr-x  2 test  staff    64B Oct 25 19:31 test
 -rw-r--r--  1 test  staff   545B Oct 25 19:31 truffle.js
 ```
 
-<br>
-3. 스마트 컨트랙트 생성
-```
+<br />
+
+#### 3. 스마트 컨트랙트 생성
+
+```s
 test $ cd contracts
 contracts $ vi MyName.sol
-
 
 pragma solidity ^0.4.24;
 
@@ -78,9 +81,11 @@ drwxr-xr-x  7 test  staff  224 Oct 25 20:05 ..
 -rw-r--r--  1 test  staff  244 Oct 25 19:54 MyName.sol
 ```
 
-<br>
-4. 마이그레이션 파일 생성 (for deploying)
-```
+<br />
+
+#### 4. 마이그레이션 파일 생성 (for deploying)
+
+```s
 test $ cd migrations
 migrations $ vi 2_deploy_myname.js
 
@@ -103,13 +108,16 @@ drwxr-xr-x  7 test  staff  224 Oct 25 20:05 ..
 -rw-r--r--  1 test  staff  116 Oct 25 19:44 2_deploy_myname.js
 ```
 
-<br>
+<br />
+
 - 마이그레이션 파일은 반드시 순서대로 만들어져야 한다. `1, 2, 3...`
 - 대소문자는 상관없지만 `under bar(_)`로 이루어져야 한다.
 
-<br>
-5. 개발환경 구성
-```
+<br />
+
+#### 5. 개발환경 구성
+
+```s
 test $ truffle develop
 
 Truffle Develop started at http://127.0.0.1:9545/
@@ -129,9 +137,11 @@ truffle(develop)>
 truffle(develop)>
 ```
 
-<br>
-6. 배포 (한 번만 하면 됨)
-```
+<br />
+
+#### 6. 배포 (한 번만 하면 됨)
+
+```s
 truffle(develop)> migrate
 
 Compiling ./contracts/Migrations.sol...
@@ -156,9 +166,11 @@ Saving successful migration to network...
 Saving artifacts...
 ```
 
-<br>
+<br />
+
 ## Truffle (with Web3 API)
-```
+
+```s
 ttruffle(develop)> web3.eth
 
 Eth {
@@ -179,15 +191,14 @@ Eth {
   getBalance:
 
   ... (생략)...
-
 ```
-
-<br>
 
 - truffle은 `web3` API를 사용하므로 해당 명령어 사용가능
 - command ex)
 
-```
+<br />
+
+```s
 1. MyName.deployed().then(function(instance) { app = nstance; })
 2. web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]), "ether")
 3. app.setMyName("Han", {from: web3.eth.accounts[1]})
@@ -199,20 +210,25 @@ Eth {
 - 컨트랙트 내부 함수설정 + 가스비 지불은 2번째 지갑에서
 - 컨트랙트 내부 함수호출
 
-<br>
-## Ganache
-<center>![ganache](/blog/ganache.png)</center>
+<br />
 
-<br>
+## Ganache
+
+<center>![ganache](/images/ganache.png)</center>
+
+<br />
+
 - 사진에서 보여주듯, `RPC(Remote Procedure Call)`서버로 연결되어 있다.
 - RPC는 별도의 원격제어를 위해 다른 주소에서 함수나 프로시저를 실행할 수 있게 해주는 프로세스 간 통신기술이다.
 - 가나슈는 `127.0.0.1:7545`로 연결되어 있다.
 - 127.0.0.1은 IPv4에서 본인의 컴퓨터를 의미하는 `루프백(loop back)` 호스트명이다.
 - 이때 루프백이란 라우팅, 스트림 등의 흐름이 별도 가공없이 원래의 장치로 돌아간다는 의미이다.
 
-<br>
-1. truffle-config.js: ganache에 트러플 연결
-```
+<br />
+
+#### 1. truffle-config.js: ganache에 트러플 연결
+
+```s
 module.exports = {
   networks: {
     development: {
@@ -224,19 +240,20 @@ module.exports = {
 };
 ```
 
-<br>
-2. command
-```
+<br />
+
+#### 2. command
+
+```s
 truffle  console  --network development
 migrate  --compile-all  —reset
 ```
 
-<br>
-=> 1개 블록에 1개의 트랜잭션만 담는다.
+-> 1개 블록에 1개의 트랜잭션만 담는다.
 
-<br>
+<br />
 
-***Truffle pet shop***
+**_Truffle pet shop_**
 
 - [Ref: truffle pet shop](https://truffleframework.com/tutorials/pet-shop)
 - [참고: 트러플 펫샵 튜토리얼](https://steemit.com/etherum/%40dongshik/ethereum-pet-shop-and-truffle)
