@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Good bye 2019</title>
+      <link>https://wacilpong.github.io/blog/post/good-bye-2019/</link>
+      <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/good-bye-2019/</guid>
+      <description>난생 처음 쓰는 회고. 아주 간단하게 월별로 내가 뭘 했는지 한번 기록해보자.
+1월, 2월 프론트엔드 개발자로 한 걸음 이때는 초대권 기반의 티켓 전달 서비스 회사에 다녔는데, 처음으로 프론트엔드 개발자 포지션으로 1년여간 일했다. Angular 프레임워크로 된 기존 프로젝트를 유지보수 및 개발했고, 굉장히 규모가 작은 스타트업이어서 프론트엔드 전담개발, 서비스 기획, UI/UX, 심지어 IR까지 했던&amp;hellip; 나는 언론정보학과(!)를 전공하여 발표에 그나마 능했던 직원으로서, VC 앞에서 발표까지 했다. 발표가 나쁘진 않았던 모양인지, 성공적으로 투자유치까지 했었다. 3월 이직을 결심하게 된 이유 1년여간 다녔던 회사에서 처음으로 마크업도 제대로 해보고, SPA도 처음 다뤄봐서 의미는 있었지만, 협업에 대한 갈망이 커졌다.</description>
+    </item>
     
     <item>
       <title>After reading clean architecture, by Robert C. Martine</title>
