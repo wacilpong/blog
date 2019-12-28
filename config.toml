@@ -2,7 +2,9 @@ baseURL = "https://wacilpong.github.io/blog/"
 languageCode = "en-us"
 title = "Roomy"
 theme = "minimal"
+hasCJKLanguage = true
 # disqusShortname = "@disqus_SDumnkPwZd" delete this to disable disqus comments
+
 
 # Goldmark is from Hugo 0.60 the default library used for Markdown.
 [markup]
