@@ -21,9 +21,9 @@ hasCJKLanguage = true
       attribute = true
       autoHeadingID = true
     [markup.goldmark.renderer]
-      hardWraps = false
+      hardWraps = true
       unsafe = true
-      xHTML = false
+      xHTML = true
 
 [params]
     author = "Roomy Han"
