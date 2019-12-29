@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Good bye 2019</title>
+      <link>https://wacilpong.github.io/blog/post/good-bye-2019/</link>
+      <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/good-bye-2019/</guid>
+      <description>난생 처음 쓰는 회고. 간단하게 월별로 내가 뭘 했는지 한번 기록해보자. 월별기록 1월, 2월 프론트엔드 개발자, 혹은 팬케이크형 인간으로의 진화 이직을 결심하게 된</description>
+    </item>
     
     <item>
       <title>After reading clean architecture, by Robert C. Martine</title>
@@ -161,7 +170,8 @@
       <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/angular-directive/</guid>
-      <description>What is directive ? Use it to attach custom behavior to elements in the DOM. 
+      <description>What is directive ? Use it to attach custom behavior to elements in the DOM.
+
 Basic Example  This is a simple directive to change chevron background-image as clicking the element.
  1. HTML &amp;lt;label appChevron class=&amp;#34;chevron&amp;#34; style=&amp;#34;background-image: url(&amp;#39;/assets/images/arrow-down.svg&amp;#39;);&amp;#34; &amp;gt;&amp;lt;/label&amp;gt; 
 2. TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &amp;#34;@angular/core&amp;#34;; @Directive({ selector: &amp;#34;[appChevron]&amp;#34; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>

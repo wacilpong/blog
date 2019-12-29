@@ -17,7 +17,7 @@
     }
 
     :root {
-        --accent: green;
+        --accent: #d10e3c;
         --border-width:  5px ;
     }
 
@@ -149,7 +149,7 @@
 <h3 id="thread-vs-process">#Thread vs Process</h3>
 <p>: 먼저, 어플리케이션, 프로세스, 스레드 간의 관계를 알 필요가 있다.</p>
 <p>First of all, we must know the relationship among the application, process and thread.</p>
-<p><img src="http://2.bp.blogspot.com/-iztLs3xTqWU/Wi4sBc3soxI/AAAAAAAABy8/GtHdXcPMizwow61EPnRnkucGj-qzv7QZwCK4BGAYYCw/s1600/processvsthread.png" alt="program"></p>
+<p><img src="http://2.bp.blogspot.com/-iztLs3xTqWU/Wi4sBc3soxI/AAAAAAAABy8/GtHdXcPMizwow61EPnRnkucGj-qzv7QZwCK4BGAYYCw/s1600/processvsthread.png" alt="program" /></p>
 <p>(1) <strong><em>Process</em></strong> 는 단일스레드와 시작되며, 이를 <code>primary thread</code>라고도 한다. 그리고 추후 스레드를 더 생성할 수 있다. 프로세스는 이처럼 적어도 하나의 스레드가 반드시 필요하다.</p>
 <p>Process starts with a single thread(<code>primary thread</code>), and can create more later. So process has at least one thread.</p>
 <p>(2) <strong><em>Thread</em></strong> 는 computer system에서 프로세서가 시간을 할당하는 최소 실행 단위이다. 이는 다음 실행될 명령어 주소를 가진 프로그램 카운터, 중앙처리장치(CPU)에 빠르게 접근할 수 있는 레지스터들, 고유한 ID를 가진다. 하지만 스레드는 그 자체만으로 프로그램이 아니고, 프로그램 안에서 동작할 수 있다. 모든 스레드는 각자의 메모리를 가지며 시스템 자원에도 접근할 수 있다.</p>

@@ -17,7 +17,7 @@
     }
 
     :root {
-        --accent: green;
+        --accent: #d10e3c;
         --border-width:  5px ;
     }
 
@@ -177,23 +177,23 @@
     img<span style="color:#f92672">/</span>
 </code></pre></div><ol>
 <li>
-<p>우선 함께 일하는 동료의 제안으로 <code>view-model-creator</code>라는 녀석을 두게 되었는데, 컴포넌트 내에서 데이터를 파싱해 보여주기 보다는, 뷰모델을 만들어서 미리 파싱된 데이터를 컴포넌트에서 쓰기 위해 만들었다.
-<br>
+<p>우선 함께 일하는 동료의 제안으로 <code>view-model-creator</code>라는 녀석을 두게 되었는데, 컴포넌트 내에서 데이터를 파싱해 보여주기 보다는, 뷰모델을 만들어서 미리 파싱된 데이터를 컴포넌트에서 쓰기 위해 만들었다.<br />
+<br><br />
 My coworker suggest <code>view-model-creator</code>. Instead of parsing and displaying data in a component, we created pre-parsed data for using it in a component.</p>
 </li>
 <li>
-<p>그리고 <a href="http://bradfrost.com/blog/post/atomic-web-design/">아토믹 디자인(atomic design)</a>을 적용해 컴포넌트를 나누기로 했다. 이를 통해 공통 단위의 컴포넌트들에 대한 재사용성이 좀 더 강화되었으면 좋겠다.
-<br>
+<p>그리고 <a href="http://bradfrost.com/blog/post/atomic-web-design/">아토믹 디자인(atomic design)</a>을 적용해 컴포넌트를 나누기로 했다. 이를 통해 공통 단위의 컴포넌트들에 대한 재사용성이 좀 더 강화되었으면 좋겠다.<br />
+<br><br />
 We devide the components units by atomic design rule. I expect the small unit component will be more reusable.</p>
 </li>
 <li>
-<p>리덕스 상태에 대한 관리 뿐만 아니라 인증이나 UI 조작 등, 전역으로 조작되어야 하는 것들에 대한 관리를 포함한다는 의미에서 리듀서가 아닌 모듈이라는 이름을 채택했다.
-<br>
+<p>리덕스 상태에 대한 관리 뿐만 아니라 인증이나 UI 조작 등, 전역으로 조작되어야 하는 것들에 대한 관리를 포함한다는 의미에서 리듀서가 아닌 모듈이라는 이름을 채택했다.<br />
+<br><br />
 We choose <code>modules</code>, not a <code>reducers</code>, in regards to not only the redux state managing, but also the managing global state and functions like UI or authentication.</p>
 </li>
 <li>
-<p>외부 API에 대한 통신 (후에는 내부 API 통신까지도)을 담당하는 의미에서 서비스를 두었다.
-<br>
+<p>외부 API에 대한 통신 (후에는 내부 API 통신까지도)을 담당하는 의미에서 서비스를 두었다.<br />
+<br><br />
 <code>Service</code> managing API communication.</p>
 </li>
 </ol>
