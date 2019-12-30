@@ -17,7 +17,7 @@
     }
 
     :root {
-        --accent: #d10e3c;
+        --accent: #C70039;
         --border-width:  5px ;
     }
 
@@ -125,22 +125,19 @@
 <p><br /></p>
 <h2 id="heading">월별기록</h2>
 <ul>
-<li>
-<p><a href="#1-2">1월, 2월</a></p>
+<li><a href="#1-2">1월, 2월</a>
 <ul>
 <li>프론트엔드 개발자, 혹은 팬케이크형 인간으로의 진화</li>
 <li>이직을 결심하게 된 이유</li>
 </ul>
 </li>
-<li>
-<p><a href="#3">3월</a></p>
+<li><a href="#3">3월</a>
 <ul>
 <li>React? Angular? 채용과정에서의 과제</li>
 <li>공부, 공부, 공부!</li>
 </ul>
 </li>
-<li>
-<p><a href="#4-5">4월, 5월</a></p>
+<li><a href="#4-5">4월, 5월</a>
 <ul>
 <li>React 묻고 리팩토링 더블로 가!</li>
 <li>Typescript에 대한 얇고 쓸모있는 깨달음</li>
@@ -148,56 +145,57 @@
 <li>협업 컨벤션 만들기</li>
 </ul>
 </li>
-<li>
-<p><a href="#6">6월</a></p>
+<li><a href="#6">6월</a>
 <ul>
 <li>css도 모듈화가 필요하다구요!</li>
 <li>🏊‍♀️ 어푸어푸, 물이 너무 좋은데 왜 수영을 못하지?</li>
 </ul>
 </li>
-<li>
-<p><a href="#7">7월</a></p>
+<li><a href="#7">7월</a>
 <ul>
 <li>모여서 각자 코딩하지만 지식은 같이 올라가는 magic ☆</li>
 <li>실무에서의 첫 테스트 코드</li>
 </ul>
 </li>
-<li>
-<p><a href="#8">8월</a></p>
+<li><a href="#8">8월</a>
 <ul>
 <li>SEO 삽질</li>
-<li>Ruby on rails, Javascript(?) 삽질</li>
+<li>Ruby on rails, 혹은 Javascript(?) 삽질</li>
 <li>flex 로 grid 해버렸자너, 나만의 공식</li>
 <li>🎐 동해에는 해파리가 많아요</li>
 </ul>
 </li>
-<li>
-<p><a href="#9">9월</a></p>
+<li><a href="#9">9월</a>
 <ul>
 <li>프로젝트에 디버깅 툴 적용해보기, ft. sentry</li>
 </ul>
 </li>
-<li>
-<p><a href="#10">10월</a></p>
+<li><a href="#10">10월</a>
 <ul>
 <li>Webpack 직접 설정해본 소감</li>
 <li>새로운 프로젝트 = react + redux-saga + typescript</li>
 <li>✏️ 대한민국 편지쓰기 공모전 참가</li>
 </ul>
 </li>
-<li>
-<p><a href="#11">11월</a></p>
+<li><a href="#11">11월</a>
 <ul>
 <li>별건 아니고, 나의 첫 오픈소스 라이브러리 final-flex</li>
 <li>🧘 내일은 요가왕</li>
 </ul>
 </li>
-<li>
-<p><a href="#12">12월</a></p>
+<li><a href="#12">12월</a>
 <ul>
 <li>사내 연말파티 MC!?</li>
 </ul>
 </li>
+</ul>
+<p><br /></p>
+<h4 id="-">그밖의 기록들</h4>
+<ul>
+<li><a href="#read">독서</a></li>
+<li><a href="#watch">영화</a></li>
+<li><a href="#trip">여행</a></li>
+<li><a href="#algorithm">알고리즘</a></li>
 </ul>
 <p><br /></p>
 <hr />
@@ -268,7 +266,7 @@
 <h4 id="-seo--"><strong><em>SEO 삽질</em></strong></h4>
 <p>프로젝트 SEO 관련해서 삽질을 좀 했었다. 클라이언트 사이드 렌더링 기반에서 헤드리스 브라우저를 이용한 SEO 작업을 했는데, 뭔가 개발 테스트에서와 라이브에서 의도하는 바가 맞지 않았다. 여러 삽질을 하다가 이런 포스트도 작성했었다. <a href="https://wacilpong.github.io/blog/post/prerender-status-code/">prerendering</a> 물론 삽질을 한 부분은 해당 포스트에서 작성한 프리렌더와는 무관하게 코드 내에 특정 케이스에 대한 문제였다. 그래도 삽질을 하면서 SEO에 대해 좀 더 알게 되었다!</p>
 <p><br /></p>
-<h4 id="-ruby-on-rails--javascript--"><strong><em>Ruby on rails, 혹은 Javascript(..?) 삽질</em></strong></h4>
+<h4 id="-ruby-on-rails--javascript--"><strong><em>Ruby on rails, 혹은 Javascript(?) 삽질</em></strong></h4>
 <p>기존 백오피스 페이지에서 이미지를 업로드할 때 S3로 직접 태우는 방식이었는데, 회사에서 이미지 용량을 줄이기 위해 중간에 사내 API로 한번 보내기로 했다. 그래서 업로드하는 부분을 수정해야 했다. 사실 자바스크립트 ajax로 보내도록 수정하는 게 가장 쉬울 거라고 예상할 수 있겠지만, 해당 프로젝트는 자바스크립트쪽 코드가 훨씬 보기가 힘들었다. 게다가 업로드하는 rails쪽 코드만 <em>샥</em> 바꿔서 여러군데 수정하지 않아도 되니까 아예 업로드 관련 모듈로 따로 만들었다.</p>
 <p>해당 프로젝트에서 사용중이었던 http 관련 모듈 gem에서 multipart로 post 요청 시 파일을 자꾸 스트링으로 바꾸는 이슈가 있었다. 그래서 multipart 관련 gem을 사용하여 해결했다. 업로드 모듈은 class로 빼고 생성자 함수를 만들어 공통 컨트롤러에서 세션정보를 주입받도록 했다. 그래서 비교적 깔끔하게 해결하리라 생각했지만, 정말 이해가 안되는 문제가 발생했다.</p>
 <p><br /></p>
@@ -301,18 +299,19 @@
 <li>Files are incorrectly versioned or missing versions</li>
 </ol>
 <p><br /></p>
-<p>내 생각에는 배포를 aws 등을 통해 자체적으로 구축하면 해결될 수 있을 것 같았다. 프로젝트 자체도 <a href="https://github.com/facebook/create-react-app">Create-react-app</a>으로 되어 있어 번들링을 제어하기 쉽지 않고, <a href="https://www.netlify.com/">Netlify</a>로 배포하여 해당 툴을 거쳐서 cdn으로 가기 때문에 중간에서 여러 transformation이 일어나기 때문이다. 그래서 아쉽지만 당장 해결되기 힘들다고 판단하고 보류해두고 있다. 그래도 센트리를 적용해서 많은 에러를 고친 것은 사실이다! 특히 IE, IE, IE&hellip;</p>
+<p>내 생각에는 배포를 aws 등을 통해 자체적으로 구축하면 해결될 수 있을 것 같았다. 프로젝트 자체도 <a href="https://github.com/facebook/create-react-app">Create-react-app</a>으로 되어 있어 번들링을 제어하기 쉽지 않고, <a href="https://www.netlify.com/">Netlify</a>로 배포하여 해당 툴을 거쳐서 cdn으로 가기 때문에 중간에서 여러 transformation이 일어나기 때문이다. 그래서 아쉽지만 당장 해결되기 힘들다고 판단하고 보류해두고 있다. 그래도 센트리를 적용해서 많은 에러를 고친 것은 사실이다!</p>
+<p>특히 IE, IE, IE&hellip;</p>
 <p><br /><br /></p>
 <hr />
 <h2 id="10">10월</h2>
 <h4 id="-webpack----"><strong><em>Webpack 직접 설정해본 소감</em></strong></h4>
-<p>7월부터 꾸준히 수요일마다 갔던 모각코 모임에서 나만의 무언가를 만들고 싶어서 프로젝트를 시작했다. 특정 영상을 크롤링해서 보여주는 웹앱을 만들고 싶었고, 이를 위해 프로젝트를 세팅했다. 이름하야 <a href="https://github.com/wacilpong/videowl">videowl</a>. 그동안 보일러플레이트 등을 활용해 프로젝트를 구성했어서, <a href="https://webpack.js.org/">webpack</a>과 같은 트랜스파일링 및 번들링 툴을 직접 설정해본 적이 없다. 그래서 웹팩부터 천천히 적용해봤다. 수요일에만 해서 그런지 한 달동안 웹팩 설정만 한 건 함정&hellip;</p>
+<p>7월부터 꾸준히 수요일마다 갔던 모각코 모임에서 나만의 무언가를 만들고 싶어서 프로젝트를 시작했다. 특정 영상을 크롤링해서 보여주는 웹앱을 만들고 싶었고, 이를 위해 프로젝트를 세팅했다. 이름하야 <a href="https://github.com/wacilpong/videowl">videowl</a>. 그동안 보일러플레이트 등을 활용해 프로젝트를 구성했어서, <a href="https://webpack.js.org/">webpack</a>과 같은 트랜스파일링 및 번들링 툴을 직접 설정해본 적이 없다. 그래서 웹팩부터 천천히 적용해봤다. 수요일에만 해서 그런지 한 달동안 웹팩 설정만 한 건 함정.</p>
 <p>특히 백엔드와 프론트엔드 configuration을 한 프로젝트 내에서 함께 번들링하는 것을 시도했기에 여러 삽질을 했다. 이 과정에서 웹팩의 로더들, 엔트리와 아웃풋을 지정해 번들링되는 과정 등을 이해할 수 있었다. 물론 아직도 모르는 것 투성이지만! 해당 프로젝트 세팅을 마치고 실제로 크롤러를 구현하다보니 깨달은 점은, 그냥 유튜브 API를 이용해 유튜브의 영상만 크롤링해보는 것이 낫겠다는 것이었다. 그래서 유튜브 API를 클라이언트 사이드에서 활용해 구현해보려고 했..는데 내가 게으른 탓에 방치중. 내년에는 다시 잡아서 잘 해보자!</p>
 <p><br /></p>
 <h2 id="heading-4">😆</h2>
 <h5 id="----react--redux-saga--typescript-"><strong><em>새로운 프로젝트 = react + redux-saga + typescript</em></strong></h5>
 <p>드디어 회사에서 백오피스 페이지를 React 기반으로 다시 만들기로 하여, 차근차근 설정을 시작했다. Create-react-app으로 시작했고, 예측가능하게 만들 상태를 관리하기 위헤 <code>redux</code>를 적용하고, 이에 따른 비동기 상태를 관리하기 위해 <code>redux-saga</code>를 적용했다. 물론 리덕스 스토어로 관리될 필요가 없는 비동기 상태는 각 사용처에서 프로미스로 상태관리하도록 했다.</p>
-<p>사실 사가를 사용한 결정적 이유는 테스트코드 작성이 비교적 쉬우므로, 테스트 코드를 작성하고 싶어서였다. 그러나 밀린 일이 너무나 많고&hellip; 혼자서 처리하다보니 시간이 없다. 그래도 http 통신부를 mocking해서 요청 및 응답, 인터셉터와 관련해 비교적 광범위하게 쓰이는 부분에 대한 테스트 코드를 작성했다. 내년에는 각 사가 미들웨어 코드에 대해서도 견고하게 테스트 코드를 조금씩 작성해보자!</p>
+<p>사실 사가를 사용한 결정적 이유는 테스트코드 작성이 비교적 쉬우므로, 테스트 코드를 작성하고 싶어서였다. 그러나 밀린 일이 너무나 많고&hellip; 혼자서 처리하다보니 시간이 없다. 그래도 http 통신부를 mocking해서 요청 및 응답, 인터셉터와 관련해 비교적 광범위하게 쓰이는 부분에 대해서는 테스트 코드를 작성했다. 내년에는 각 사가 미들웨어 코드에 대해서도 견고하게 테스트 코드를 조금씩 작성해보자!</p>
 <p><br /></p>
 <h2 id="heading-5">✏️</h2>
 <h5 id="------3"><strong><em>대한민국 편지쓰기 공모전 참가</em></strong></h5>
@@ -329,7 +328,8 @@
 <h2 id="heading-6">🧘</h2>
 <h5 id="---"><strong><em>내일은 요가왕</em></strong></h5>
 <p>평소에 헬스장에서 근력운동을 하거나 수영을 하며 운동했는데, 수영장이 공사해서 1월까지 못가게 되었다. 그래서 친언니가 갑자기 요가영상을 공유해줘서 따라해봤는데, 완전 신세계였다. 엄청나게 시원했다! 심지어 에러 및 버그들로 더러워진(?) 나의 정신을 수련하기에도 적합했다. 이렇게 정적인 운동이 잘 맞을 거라고 생각 못했는데 너무 잘맞아서 놀랐다. 이후로 거의 매일매일 짧게는 30분, 길게는 2시간동안 요가하는 삶을 보내고 있다.</p>
-<p>특히 나의 최애 요가는 <a href="https://www.youtube.com/watch?v=WwwAdze4HDA">이것</a>인데, 30분짜리여서 매일매일 하기에도 적합하다. 요가를 하다보니 평소에 자세도 좋아지고, 몸도 유연해지고, 근육도 붙고, 심지어 의도치 않았는데 체중감량도 했다. 뭐 내가 재밌어서 많이 하니까 효과가 좀더 나왔겠지만. 모두들 요가하세요.. 요가는 좋은 운동입니다&hellip;</p>
+<p>특히 나의 최애 요가는 <a href="https://www.youtube.com/watch?v=WwwAdze4HDA">이것</a>인데, 30분짜리여서 매일매일 하기에도 적합하다. 요가를 하다보니 평소에 자세도 좋아지고, 몸도 유연해지고, 근육도 붙고, 심지어 의도치 않았는데 체중감량도 했다. 뭐 내가 재밌어서 많이 하니까 효과가 좀더 나왔겠지만.</p>
+<p>모두들 요가하세요.. 요가는 좋은 운동입니다&hellip;</p>
 <p>언젠가 기회가 되면 요가자격증도 따볼 생각이다!</p>
 <p><br /><br /></p>
 <hr />
@@ -342,13 +342,13 @@
 <li><strong><em>나는 누구일까요?</em></strong> : 모든 동료에게 10문 10답을 받아서, 파티 당일에 스무고개 형식으로 문제를 내고 누구인지 맞춘다.</li>
 <li><strong><em>어워즈</em></strong> : 동료들의 특징이나 많이 뱉는 말 등을 이용해 관련된 상품을 주면서 상장을 수여한다.</li>
 </ol>
-<p>특히 2번 게임의 경우 서로를 많이 알 수 있어서 의미는 있지만, 재미가 있을까 싶었다. 그런데 생각보다 누구인지 맞춰보면서 대화도 많이 나누고, 서로 재미있어하는 모습을 보고 안도했다! 이날 드레스코드도 정해서 베스트 드레서도 뽑았는데 진짜 의도한 건 아닌데 내가 뽑혔다. 걱정도 많았고 준비나 MC본 것도 힘들었지만 모든 동료들을 서로서로 더 알 수 있게 되어 뿌듯했다.</p>
+<p>특히 2번 게임의 경우 서로를 많이 알 수 있어서 의미는 있지만, 재미가 있을까 싶었다. 그런데 생각보다 누구인지 맞춰보면서 대화도 많이 나누고, 서로 재미있어하는 모습을 보고 안도했다! 이날 드레스코드도 정해서 베스트 드레서도 뽑았는데 진짜 의도한 건 아닌데 내가 뽑혔다. 걱정도 많았고 준비나 MC본 것도 힘들었지만 모든 동료들이 서로서로 더 알 수 있게 되어 뿌듯했다.</p>
 <p><br /></p>
 <p>12월은 쉬는 날도 껴있고, 가족행사도 있어서 마무리하는 느낌으로 보내고 있다.</p>
 <p><br /><br /></p>
 <hr />
 <h2 id="heading-8">📚</h2>
-<h2 id="heading-9">독서</h2>
+<h2 id="read">Read</h2>
 <p>독서는 많이는 못했다. 특히 <em>죄와 벌</em> 을 작년부터 읽고 있었는데 거의 뭐, 작년 내내 읽다가 올해 드디어 다 읽었다. 다 읽은 달을 기준으로 작성했다. 요즘은 http 도서를 읽어보고자 <em>러닝 HTTP/2</em> 를 읽고 있다. 내년 1월까지는 다 읽어보자!</p>
 <ul>
 <li>(2019-02) <strong>[죄와 벌]</strong>, 도스토예프스키</li>
@@ -359,12 +359,13 @@
 <li>(2019-09) <strong>[실전 리액트 프로그래밍]</strong>, 이재승</li>
 <li>(2019-11) <strong>[타르튀프]</strong>, 몰리에르</li>
 <li>(2019-11) <strong>[클린 아키텍쳐]</strong>, 로버트 C. 마틴</li>
+<li>(2019-12) <strong>[코어 자바스크립트]</strong>, 정재남</li>
 <li>(2019-12 ~) <strong>[러닝 HTTP/2]</strong>, 스티븐 루딘</li>
 </ul>
 <p><br /></p>
-<h2 id="heading-10">🎥</h2>
-<h2 id="heading-11">영화</h2>
-<p><a href="https://watcha.com/ko-KR/users/Mr95n9n1dvZPG/contents/movies">나의 왓챠기록</a></p>
+<h2 id="heading-9">🎥</h2>
+<h2 id="watch">Watch</h2>
+<p><a href="https://watcha.com/ko-KR/users/Mr95n9n1dvZPG/contents/movies">나의 왓챠기록 click!</a></p>
 <p>올해도 여름에 <em><a href="https://www.bifan.kr/">부천 국제 판타스틱 영화제</a></em> 를 다녀왔다. 부천영화제는 특이한 소재의 영화가 많이 걸려서 2014년도부터 매년 가는 중이다. 특히 심야에 3~4개를 연달아 상영해주는 심야공포 패키지가 정말 재밌다! 내년에도 꼭 가야지.</p>
 <ul>
 <li>(2019-01) <strong>[극한직업]</strong>, 이병헌, 2018</li>
@@ -389,45 +390,111 @@
 <li>(2019-05) <strong>[호텔 뭄바이]</strong>, 안소니 마라스, 2018</li>
 <li>(2019-05) <strong>[서스페리아]</strong>, 루카 구아다니노, 2018</li>
 <li>(2019-05) <strong>[오퍼나지 - 비밀의 게단]</strong>, 후안 안토니오 바요나, 2007</li>
-<li>명탐정 피카츄</li>
-<li>더 보이</li>
-<li>걸캅스</li>
-<li>기생충</li>
-<li>어쩌다 로맨스</li>
-<li>알라딘</li>
-<li>몬스터</li>
-<li>종말 - 그 후</li>
-<li>아홉번째 걸음</li>
-<li>컨덕트</li>
-<li>나이트메어 - 야간근무자</li>
-<li>오버로드</li>
-<li>나이트메어 시네마</li>
-<li>주디와 펀치의 위험한 대결</li>
-<li>히비키</li>
-<li>돌연변이 대격돌</li>
-<li>어느날 갑자기 세 번째 이야기 - D-day</li>
-<li>달링</li>
-<li>온다</li>
-<li>늑대의 아이들</li>
-<li>더 퍼스트 타임</li>
-<li>스파이더맨: 파 프롬 홈</li>
-<li>마이펫의 이중생활 2</li>
-<li>비카인드 리와인드</li>
-<li>분노의 질주: 홉스 &amp; 쇼</li>
-<li>존 윅 3: 파라벨룸</li>
-<li>더 웨이 홈</li>
-<li>무서운 이야기</li>
-<li>매직 마이크</li>
-<li>더 비지트</li>
-<li>애드 아스트라</li>
-<li>다크 스카이</li>
-<li>조커</li>
-<li>스위트하트</li>
-<li>노크 노크</li>
-<li>블라인드 앨리</li>
-<li>겨울왕국 2</li>
-<li>더 허슬</li>
-<li>무비 43</li>
+<li>(2019-05) <strong>[명탐정 피카츄]</strong>, 롭 레터맨, 2019</li>
+<li>(2019-05) <strong>[더 보이]</strong>, 데이빗 야로베스키, 2019</li>
+<li>(2019-05) <strong>[걸캅스]</strong>, 정다원, 2018</li>
+<li>(2019-06) <strong>[기생충]</strong>, 봉준호, 2019</li>
+<li>(2019-06) <strong>[어쩌다 로맨스]</strong>, 토드 스트라우스-슐슨, 2019</li>
+<li>(2019-06) <strong>[알라딘]</strong>, 가이 리치, 2019</li>
+<li>(2019-06) <strong>[몬스터]</strong>, 패티 젠킨스, 2003</li>
+</ul>
+<hr />
+<p><em>부천영화제 상영작</em></p>
+<ul>
+<li>(2019-06) <strong>[종말 - 그 후]</strong>, 캐롤라이나 헬스가드, 2018</li>
+<li>(2019-06) <strong>[아홉번째 걸음]</strong>, 마리사 크레스포 아브릴 &amp; 모아세즈 로메라 페레즈, 2017</li>
+<li>(2019-06) <strong>[컨덕트]</strong>, 알리야 막시모프, 2018</li>
+<li>(2019-06) <strong>[나이트메어 - 야간근무자]</strong>, 데니슨 라말호, 2018</li>
+<li>(2019-06) <strong>[나이트메어 시네마]</strong>, 믹 개리스 &amp; 죠 단테 &amp; 데이비드 슬레이드 &amp; 기타무라 류헤이 &amp; 알레한드로 브루게스, 2018</li>
+<li>(2019-07) <strong>[오버로드]</strong>, 줄리어스 에이버리, 2018</li>
+<li>(2019-07) <strong>[주디와 펀치의 위험한 대결]</strong>, 미라 폴크스, 2019</li>
+<li>(2019-07) <strong>[히비키]</strong>, 츠키가와 쇼, 2018</li>
+<li>(2019-07) <strong>[돌연변이 대격돌]</strong>, 페르난도 알리, 2018</li>
+<li>(2019-07) <strong>[달링]</strong>, 폴리애너 맥킨토시, 2019</li>
+<li>(2019-07) <strong>[온다]</strong>, 나카시마 테츠야, 2018</li>
+<li>(2019-07) <strong>[늑대의 아이들]</strong>, 아드리안 파네크, 2018</li>
+</ul>
+<hr />
+<ul>
+<li>(2019-07) <strong>[어느날 갑자기 세 번째 이야기 - D-day]</strong>, 김은경, 2006</li>
+<li>(2019-07) <strong>[더 퍼스트 타임]</strong>, 존 캐스단, 2011</li>
+<li>(2019-07) <strong>[스파이더맨: 파 프롬 홈]</strong>, 존 왓츠, 2019</li>
+<li>(2019-08) <strong>[마이펫의 이중생활 2]</strong>, 크리스 리노드, 2019</li>
+<li>(2019-08) <strong>[비카인드 리와인드]</strong>, 미셸 공드리, 2007</li>
+<li>(2019-08) <strong>[분노의 질주: 홉스 &amp; 쇼]</strong>, 데이빗 리이치, 2019</li>
+<li>(2019-08) <strong>[존 윅 3: 파라벨룸]</strong>, 채드 스타헬스키, 2019</li>
+<li>(2019-08) <strong>[더 웨이 홈]</strong>, 찰스 마틴 스미스, 2019</li>
+<li>(2019-08) <strong>[무서운 이야기]</strong>, 임대웅 &amp; 민규동 &amp; 홍지영 &amp; 김곡 &amp; 김선 &amp; 정범식, 2012</li>
+<li>(2019-08) <strong>[매직 마이크]</strong>, 스티븐 소더버그, 2012</li>
+<li>(2019-09) <strong>[다크 스카이]</strong>, 스콧 찰스 스튜어트, 2013</li>
+<li>(2019-09) <strong>[더 비지트]</strong>, M. 나이트 샤말란, 2015</li>
+<li>(2019-09) <strong>[애드 아스트라]</strong>, 제임스 그레이, 2019</li>
+<li>(2019-10) <strong>[조커]</strong>, 토드 필립스, 2019</li>
+<li>(2019-10) <strong>[스위트하트]</strong>, J.D. 딜라드, 2019</li>
+<li>(2019-10) <strong>[노크 노크]</strong>, 일라이 로스, 2015</li>
+<li>(2019-11) <strong>[블라인드 앨리]</strong>, 안토니오 트라쇼라스, 2011</li>
+<li>(2019-11) <strong>[겨울왕국 2]</strong>, 크리스 벅 &amp; 제니퍼 리, 2019</li>
+<li>(2019-12) <strong>[더 허슬]</strong>, 크리스 에디슨, 2019</li>
+<li>(2019-12) <strong>[무비 43]</strong>, 엘리자베스 뱅크스 &amp; 그리핀 던 &amp; 스티브 카 &amp; 피터 패럴리 &amp; 제임스 더피 &amp; 스티븐 브릴 &amp; 제임스 건 &amp; 패트릭 포스버그 &amp; 밥 오든커크 &amp; 브렛 래트너, 2013</li>
+</ul>
+<p><br /></p>
+<h2 id="heading-10">🧳</h2>
+<h2 id="trip">Trip</h2>
+<p>이렇게 기록해보니 한달에 한번은 여행을 갔구나&hellip; 내년에는 조금 더 먼 곳들도 가보고 싶다!</p>
+<ul>
+<li>(2019-04) 2박 3일 <strong>[도쿄, 일본]</strong></li>
+<li>(2019-05) 3박 4일 <strong>[오키나와, 일본]</strong></li>
+<li>(2019-06) 1박 2일 호캉스 <strong>[노보텔 앰배새더 독산 호텔 서울]</strong></li>
+<li>(2019-06) 1박 2일 호캉스 <strong>[프레이저 플레이스 센트럴 서울]</strong></li>
+<li>(2019-07) 1박 2일 호캉스 <strong>[스탠포드 호텔 서울]</strong></li>
+<li>(2019-08) 1박 2일 <strong>[동해, 대한민국]</strong></li>
+<li>(2019-09) 1박 2일 <strong>[양평, 대한민국]</strong></li>
+<li>(2019-10) 1박 2일 <strong>[인천, 대한민국]</strong></li>
+<li>(2019-11) 2박 3일 <strong>[제주, 대한민국]</strong></li>
+<li>(2019-11) 1박 2일 <strong>[부산, 대한민국]</strong></li>
+</ul>
+<p><br /></p>
+<h2 id="heading-11">🤖</h2>
+<h2 id="algorithm">Algorithm</h2>
+<p>올해 8월 즈음부터 알고리즘의 부족함을 느끼고 조금씩 풀어본 문제들. 기초를 위한 연습문제는 기록하지 않았다. 내년에는 더 열심히 풀어보며 뇌를 말랑말랑하게 해보자.</p>
+<p><a href="https://gist.github.com/wacilpong/78647b1ba830aa5a100a9f4392a0f0f5">나의 알고리즘 문제풀이 기록 click!</a></p>
+<ul>
+<li><em>Capture infinite string</em> : 주어지는 초에서 전광판에 찍힐 문자열 구하기</li>
+<li><a href="https://leetcode.com/problems/add-two-numbers/">Add Two Numbers linked lists</a></li>
+<li><a href="https://leetcode.com/problems/reverse-integer/">Reverse Integer</a></li>
+<li><a href="https://leetcode.com/problems/longest-common-prefix/">Longest Common Prefix</a></li>
+<li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a></li>
+<li><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">Median of Two Sorted Arrays</a></li>
+<li><a href="https://leetcode.com/problems/longest-palindromic-substring/">Longest Palindromic Substring</a></li>
+<li><a href="https://leetcode.com/problems/palindrome-number/">Palindrome Number</a></li>
+<li><a href="https://leetcode.com/problems/string-to-integer-atoi/">String to Integer (atoi)</a></li>
+<li><a href="https://leetcode.com/problems/container-with-most-water/">Container With Most Water</a></li>
+<li><a href="https://leetcode.com/problems/two-sum/">Two Sum</a></li>
+<li><a href="https://leetcode.com/problems/integer-to-roman/">Integer to Roman</a></li>
+<li><a href="https://leetcode.com/problems/roman-to-integer/">Roman to Integer</a></li>
+<li><a href="https://leetcode.com/problems/valid-parentheses/">Valid Parentheses</a></li>
+<li><a href="https://leetcode.com/problems/merge-two-sorted-lists/">Merge Two Sorted Lists</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/18/lessons/1878">나머지 한 점</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/18/lessons/1879">가장 큰 정사각형</a>
+<ul>
+<li><a href="https://leetcode.com/problems/maximal-square/">Maximal square</a></li>
+</ul>
+</li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/12987">숫자 게임</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/18/lessons/1881">스티커 모으기</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/12913">땅따먹기</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42578">위장</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/12922">수박수박수?</a></li>
+<li><em>소수 (prime number)</em> : 숫자 n까지의 모든 소수 구하기</li>
+<li><em>약수 (divisor)</em> : 숫자 n의 모든 약수 구하기</li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42862">체육복</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/12943">콜라츠 추측</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/12930">이상한 문자 만들기</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/12982">예산</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42576">완주하지 못한 선수</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42840">모의고사</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/12933">정수 내림차순</a></li>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/12981">영어 끝말잇기</a></li>
 </ul>
 </div>
 
