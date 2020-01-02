@@ -1,7 +1,7 @@
 ---
 title: "Shadow DOM vs Virtual DOM"
 date: "2018-11-09"
-tags: ["HTML"]
+tags: ["html"]
 draft: false
 ---
 
