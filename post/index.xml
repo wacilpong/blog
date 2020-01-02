@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>test with jest the untranspiled external libraries</title>
+      <link>https://wacilpong.github.io/blog/post/solve/untranspiled-published-external-library/</link>
+      <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/solve/untranspiled-published-external-library/</guid>
+      <description>jest in CRA // react-scripts/config/jest/babelTransform.js const babelJest = require(&amp;#34;babel-jest&amp;#34;); module.exports = babelJest.createTransformer({ presets: [require.resolve(&amp;#34;babel-preset-react-app&amp;#34;)], babelrc: false, configFile: false }); create-react-app 로 만들어진 리액트 프로젝트에는 jest가 이미 적용되어 있는데, react-scripts 의 jest 설정부분을 보면 알 수 있다. 그런데 jes</description>
+    </item>
     
     <item>
       <title>Good bye 2019</title>
