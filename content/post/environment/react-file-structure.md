@@ -1,7 +1,7 @@
 ---
 title: "File structure with React"
 date: 2019-07-10
-tags: ["web", "react"]
+tags: ["react", "environment"]
 draft: false
 ---
 

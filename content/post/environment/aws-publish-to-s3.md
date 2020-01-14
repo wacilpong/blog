@@ -1,7 +1,7 @@
 ---
 title: "Publish to aws s3 with s3cmd"
 date: "2018-02-09"
-tags: ["aws", "deploy"]
+tags: ["aws", "deploy", "environment"]
 draft: false
 ---
 

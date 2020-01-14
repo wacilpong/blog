@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Roomy"
 theme = "minimal"
 hasCJKLanguage = true
-# disqusShortname = "@disqus_SDumnkPwZd" delete this to disable disqus comments
+disqusShortname = "roomy-han"
 
 
 # Goldmark is from Hugo 0.60 the default library used for Markdown.
@@ -29,7 +29,7 @@ hasCJKLanguage = true
     author = "Roomy Han"
     description = "Audio, Video, Disco"
     githubUsername = "wacilpong"
-    accent = "#cc3333"
+    accent = "#469160"
     showBorder = true
     backgroundColor = "white"
     font = "Raleway" # should match the name on Google Fonts!
