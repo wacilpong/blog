@@ -13,10 +13,10 @@
     
     <item>
       <title>To set virtual python environment with mongoDB</title>
-      <link>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</link>
+      <link>https://wacilpong.github.io/blog/post/environment/pyvenv-with-mongodb/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</guid>
+      <guid>https://wacilpong.github.io/blog/post/environment/pyvenv-with-mongodb/</guid>
       <description>Step 1. Install python and mongoDB I am using homebrew. So it can be possible to use brew command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it. 맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로</description>
     </item>
     

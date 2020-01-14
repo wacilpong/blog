@@ -48,11 +48,38 @@
     </item>
     
     <item>
+      <title>read</title>
+      <link>https://wacilpong.github.io/blog/tags/read/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/read/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>javascript</title>
       <link>https://wacilpong.github.io/blog/tags/javascript/</link>
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>environment</title>
+      <link>https://wacilpong.github.io/blog/tags/environment/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/environment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prerender</title>
+      <link>https://wacilpong.github.io/blog/tags/prerender/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/prerender/</guid>
       <description></description>
     </item>
     
@@ -71,15 +98,6 @@
       <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/tags/react/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>web</title>
-      <link>https://wacilpong.github.io/blog/tags/web/</link>
-      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/web/</guid>
       <description></description>
     </item>
     

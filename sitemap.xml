@@ -55,12 +55,17 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/after-reading-clean-architecture/</loc>
+    <loc>https://wacilpong.github.io/blog/post/read/after-reading-clean-architecture/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/architecture/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/read/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -80,7 +85,17 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/prerender-status-code/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/environment/</loc>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/prerender/</loc>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/post/environment/prerender-status-code/</loc>
     <lastmod>2019-10-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -90,17 +105,12 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/react-file-structure/</loc>
+    <loc>https://wacilpong.github.io/blog/post/environment/react-file-structure/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/react/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/web/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -190,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/when-connect-ssh/</loc>
+    <loc>https://wacilpong.github.io/blog/post/environment/when-connect-ssh/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -215,7 +225,7 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</loc>
+    <loc>https://wacilpong.github.io/blog/post/environment/aws-publish-to-s3/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -225,12 +235,12 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/set-https-with-aws/</loc>
+    <loc>https://wacilpong.github.io/blog/post/environment/set-https-with-aws/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/pyvenv-with-mongodb/</loc>
+    <loc>https://wacilpong.github.io/blog/post/environment/pyvenv-with-mongodb/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   

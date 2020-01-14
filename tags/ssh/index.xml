@@ -13,10 +13,10 @@
     
     <item>
       <title>When we connect ssh with .pem</title>
-      <link>https://wacilpong.github.io/blog/post/when-connect-ssh/</link>
+      <link>https://wacilpong.github.io/blog/post/environment/when-connect-ssh/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/when-connect-ssh/</guid>
+      <guid>https://wacilpong.github.io/blog/post/environment/when-connect-ssh/</guid>
       <description>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.
 
 flow  Generate .pem key (I am using AWS). Change mode of .pem file to 400 to read it. Identify file and connect to ssh (AWS linux for me). DONE  

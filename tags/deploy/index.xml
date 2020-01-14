@@ -13,10 +13,10 @@
     
     <item>
       <title>Publish to aws s3 with s3cmd</title>
-      <link>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</link>
+      <link>https://wacilpong.github.io/blog/post/environment/aws-publish-to-s3/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/aws-publish-to-s3/</guid>
+      <guid>https://wacilpong.github.io/blog/post/environment/aws-publish-to-s3/</guid>
       <description>1. Create S3 bucket Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with index.html (entry point).
 
 2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.

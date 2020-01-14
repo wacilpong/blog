@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>environment on Roomy</title>
+    <link>https://wacilpong.github.io/blog/tags/environment/</link>
+    <description>Recent content in environment on Roomy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wacilpong.github.io/blog/tags/environment/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Prerender Status Code</title>
+      <link>https://wacilpong.github.io/blog/post/environment/prerender-status-code/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/environment/prerender-status-code/</guid>
+      <description>재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다. SSR(Server Side Rendering)을</description>
+    </item>
+    
+    <item>
+      <title>File structure with React</title>
+      <link>https://wacilpong.github.io/blog/post/environment/react-file-structure/</link>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/environment/react-file-structure/</guid>
+      <description>Why I am considering it 앵귤러 5+로 프로젝트를 진행하다가 리액트를 쓰게 되었는데, 앵귤러는 처음 1.x버전부터 본인을 MVW(Model-View-Whateve</description>
+    </item>
+    
+    <item>
+      <title>When we connect ssh with .pem</title>
+      <link>https://wacilpong.github.io/blog/post/environment/when-connect-ssh/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/environment/when-connect-ssh/</guid>
+      <description>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.
+
+flow  Generate .pem key (I am using AWS). Change mode of .pem file to 400 to read it. Identify file and connect to ssh (AWS linux for me). DONE  
+
+Change permission of file I will change mode of key file and connect to ssh with it.</description>
+    </item>
+    
+    <item>
+      <title>Publish to aws s3 with s3cmd</title>
+      <link>https://wacilpong.github.io/blog/post/environment/aws-publish-to-s3/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/environment/aws-publish-to-s3/</guid>
+      <description>1. Create S3 bucket Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with index.html (entry point).
+
+2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
+
+3. Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
+    </item>
+    
+    <item>
+      <title>To configure https with AWS</title>
+      <link>https://wacilpong.github.io/blog/post/environment/set-https-with-aws/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/environment/set-https-with-aws/</guid>
+      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&#39;t configure anything in AWS console. So, connect</description>
+    </item>
+    
+    <item>
+      <title>To set virtual python environment with mongoDB</title>
+      <link>https://wacilpong.github.io/blog/post/environment/pyvenv-with-mongodb/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/environment/pyvenv-with-mongodb/</guid>
+      <description>Step 1. Install python and mongoDB I am using homebrew. So it can be possible to use brew command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it. 맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로</description>
+    </item>
+    
+  </channel>
+</rss>

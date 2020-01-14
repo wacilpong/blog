@@ -13,10 +13,10 @@
     
     <item>
       <title>Prerender Status Code</title>
-      <link>https://wacilpong.github.io/blog/post/prerender-status-code/</link>
+      <link>https://wacilpong.github.io/blog/post/environment/prerender-status-code/</link>
       <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/prerender-status-code/</guid>
+      <guid>https://wacilpong.github.io/blog/post/environment/prerender-status-code/</guid>
       <description>재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다. SSR(Server Side Rendering)을</description>
     </item>
     

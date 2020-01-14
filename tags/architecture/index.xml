@@ -13,10 +13,10 @@
     
     <item>
       <title>After reading clean architecture, by Robert C. Martine</title>
-      <link>https://wacilpong.github.io/blog/post/after-reading-clean-architecture/</link>
+      <link>https://wacilpong.github.io/blog/post/read/after-reading-clean-architecture/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/after-reading-clean-architecture/</guid>
+      <guid>https://wacilpong.github.io/blog/post/read/after-reading-clean-architecture/</guid>
       <description>클린 아키텍쳐를 읽고 내맘대로 정리해보았다. 컴포넌트 모든 언어에서 컴포넌트는 배포할 수 있는 단위 입자 동일한 시점에 동일한 이유로 변경되는 것들을 한데 묶고, 서</description>
     </item>
     
