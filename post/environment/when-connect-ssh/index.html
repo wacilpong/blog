@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -125,56 +125,96 @@
 
     </div>
 
-    <div align="start" class="content"><p>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.</p>
+    <div align="start" class="content">
+
+<p>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.</p>
+
 <p><br /></p>
-<h2 id="-flow-"><em>flow</em></h2>
+
+<h2 id="flow"><em>flow</em></h2>
+
 <ol>
 <li>Generate <code>.pem</code> key (I am using AWS).</li>
 <li>Change mode of <code>.pem</code> file to 400 to read it.</li>
 <li>Identify file and connect to ssh (AWS linux for me).</li>
 <li>DONE</li>
 </ol>
+
 <p><br /><hr></p>
+
 <h2 id="change-permission-of-file">Change permission of file</h2>
+
 <p>I will change mode of key file and connect to ssh with it.</p>
+
 <p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span> <span style="color:#f92672">$</span> ls <span style="color:#f92672">-</span>alh
 
-drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">6</span> roomy staff <span style="color:#ae81ff">192</span>B Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span> .
-drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x<span style="color:#f92672">+</span> <span style="color:#ae81ff">41</span> roomy staff <span style="color:#ae81ff">1.3</span>K Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span> ..
-<span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">@</span> <span style="color:#ae81ff">1</span> roomy staff <span style="color:#ae81ff">1.7</span>K Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> test.pem
-<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">@</span> <span style="color:#ae81ff">1</span> roomy staff <span style="color:#ae81ff">1.7</span>K Feb <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">18</span><span style="color:#f92672">:</span><span style="color:#ae81ff">02</span> dev.pem
+<pre><code class="language-s">~ $ ls -alh
 
-</code></pre></div><p><code>test.pem</code> file has -rw-r&ndash;r&ndash; permission. It can be separated like -, rw-, r&ndash;, r&ndash;. The first <code>-</code> means a file. and <code>d</code> is for directory. Then second 3 bits are for owner, third is for group, and the last is for other. So all users can read <code>test.pem</code> file, as <code>r</code> means read, <code>w</code> means write and <code>x</code> means execute.</p>
+drwxr-xr-x 6 roomy staff 192B Apr 3 10:09 .
+drwxr-xr-x+ 41 roomy staff 1.3K Apr 3 10:10 ..
+-rw-r--r--@ 1 roomy staff 1.7K Apr 3 10:54 test.pem
+-r--------@ 1 roomy staff 1.7K Feb 13 18:02 dev.pem
+
+</code></pre>
+
+<p><code>test.pem</code> file has -rw-r&ndash;r&ndash; permission. It can be separated like -, rw-, r&ndash;, r&ndash;. The first <code>-</code> means a file. and <code>d</code> is for directory. Then second 3 bits are for owner, third is for group, and the last is for other. So all users can read <code>test.pem</code> file, as <code>r</code> means read, <code>w</code> means write and <code>x</code> means execute.</p>
+
 <p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span> <span style="color:#f92672">$</span> chmod <span style="color:#ae81ff">400</span> test.pem
-<span style="color:#f92672">~</span> <span style="color:#f92672">$</span> ls <span style="color:#f92672">-</span>alh
 
-drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">6</span> roomy staff <span style="color:#ae81ff">192</span>B Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span> .
-drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x<span style="color:#f92672">+</span> <span style="color:#ae81ff">41</span> roomy staff <span style="color:#ae81ff">1.3</span>K Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span> ..
-<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">@</span> <span style="color:#ae81ff">1</span> roomy staff <span style="color:#ae81ff">1.7</span>K Apr <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> test.pem
-<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">@</span> <span style="color:#ae81ff">1</span> roomy staff <span style="color:#ae81ff">1.7</span>K Feb <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">18</span><span style="color:#f92672">:</span><span style="color:#ae81ff">02</span> dev.pem
+<pre><code class="language-s">~ $ chmod 400 test.pem
+~ $ ls -alh
 
-</code></pre></div><p>Now the only owner can read that private key file.</p>
+drwxr-xr-x 6 roomy staff 192B Apr 3 10:09 .
+drwxr-xr-x+ 41 roomy staff 1.3K Apr 3 10:10 ..
+-r--------@ 1 roomy staff 1.7K Apr 3 10:54 test.pem
+-r--------@ 1 roomy staff 1.7K Feb 13 18:02 dev.pem
+
+</code></pre>
+
+<p>Now the only owner can read that private key file.</p>
+
 <p><br /><br /><hr></p>
+
 <h2 id="connect-to-ssh">Connect to ssh</h2>
+
 <p>I simply connect to server with ssh command. <code>-i</code> option means identify file using key.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span> \<span style="color:#f92672">$</span> ssh <span style="color:#f92672">-</span>i <span style="color:#f92672">~</span><span style="color:#f92672">/</span>.ssh<span style="color:#f92672">/</span>test.pem ec2<span style="color:#f92672">-</span>user<span style="color:#f92672">@</span>example.com
 
-       __<span style="color:#f92672">|</span>  __<span style="color:#f92672">|</span>_  )
-       <span style="color:#a6e22e">_|  </span>(     <span style="color:#f92672">/</span>   Amazon Linux <span style="color:#ae81ff">2</span> AMI
-      ___<span style="color:#f92672">|</span>\___<span style="color:#f92672">|</span>___<span style="color:#f92672">|</span>
+<pre><code class="language-s">~ \$ ssh -i ~/.ssh/test.pem ec2-user@example.com
 
-https<span style="color:#f92672">:</span><span style="color:#f92672">/</span><span style="color:#f92672">/</span>aws.amazon.com<span style="color:#f92672">/</span>amazon<span style="color:#f92672">-</span>linux<span style="color:#ae81ff">-2</span><span style="color:#f92672">/</span>
-\<span style="color:#f92672">$</span>
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
 
-</code></pre></div></div>
+https://aws.amazon.com/amazon-linux-2/
+\$
+
+</code></pre>
+</div>
 
     
     
     
         <h4 class="page-header">Related</h4>
          <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/environment/babel-polyfill-and-babel-runtime/">Babel polyfill and babel runtime</a></h4>
+    <h5>January 17, 2020</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/babel"><kbd class="item-tag">babel</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/environment"><kbd class="item-tag">environment</kbd></a>
+
+
+
+</div>
+  <div class="item">
 
     
     
@@ -214,27 +254,6 @@ https<span style="color:#f92672">:</span><span style="color:#f92672">/</span><sp
 
 
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/environment/pyvenv-with-mongodb/">To set virtual python environment with mongoDB</a></h4>
-    <h5>February 9, 2018</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/python"><kbd class="item-tag">python</kbd></a>
-
-<a href="https://wacilpong.github.io/blog/tags/mongodb"><kbd class="item-tag">mongoDB</kbd></a>
-
-<a href="https://wacilpong.github.io/blog/tags/environment"><kbd class="item-tag">environment</kbd></a>
-
-
-
-</div>
  
     
 
@@ -266,7 +285,7 @@ https<span style="color:#f92672">:</span><span style="color:#f92672">/</span><sp
 </main>
 
         <footer>
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         

@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -121,64 +121,97 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="truffle-tutorial-pet-shop">Truffle Tutorial: Pet Shop</h2>
-<p>솔직히 문서가 너무 잘되어 있어서 주요 내용+커맨드만 정리한다.<br />
-<br /><br />
+    <div align="start" class="content">
+
+<h2 id="truffle-tutorial-pet-shop">Truffle Tutorial: Pet Shop</h2>
+
+<p>솔직히 문서가 너무 잘되어 있어서 주요 내용+커맨드만 정리한다.
+<br />
 <a href="https://truffleframework.com/tutorials/pet-shop">https://truffleframework.com/tutorials/pet-shop</a></p>
+
 <p><br /></p>
+
 <h4 id="1-init-vs-unbox">1. init vs unbox</h4>
+
 <ul>
 <li><code>truffle init</code>: Create empty truffle project without example contracts.</li>
 <li><code>truffle unbox</code>: Unpack the exising truffle project.</li>
 </ul>
+
 <p><br /></p>
-<h4 id="2-pragma-">2. pragma^ ?</h4>
+
+<h4 id="2-pragma">2. pragma^ ?</h4>
+
 <ul>
 <li>means &ldquo;additional information that only the compiler cares about&rdquo;.</li>
-<li>the caret symbol (^) means &ldquo;the version indicated or higher.<br />
+<li>the caret symbol (^) means &ldquo;the version indicated or higher.
 <br /></li>
 </ul>
-<h4 id="3-need-to-compile-">3. Need to compile ?</h4>
+
+<h4 id="3-need-to-compile">3. Need to compile ?</h4>
+
 <ul>
 <li>솔리디티는 컴파일된 언어이므로, <code>EVM</code>이 이해하도록 만들어야 한다.</li>
 <li>따라서 솔리디티를 바이트코드로 변환하는 과정이 필요하다.</li>
 <li>Translating our human-readable Solidity into something the EVM understands.</li>
 </ul>
+
 <p><br /></p>
+
 <h4 id="4-migration">4. migration</h4>
+
 <ul>
-<li>means deployment script meant to alter the state of your application's contracts.</li>
+<li>means deployment script meant to alter the state of your application&rsquo;s contracts.</li>
 <li>최초 한번만 하면 되고, 이후에는 데이터를 이동시키거나 새로 덮어쓴다.</li>
 <li>이후 테스트:</li>
 </ul>
+
 <p><br /></p>
+
 <p><img src="/blog/images/truffle-test.png" alt="truffle-test" /></p>
+
 <p><br /></p>
+
 <h4 id="5-meta-mask">5. Meta Mask</h4>
+
 <ul>
 <li>가입할 때 wallet seed에 ganache에서 만들어진 <code>mnemonic</code>을 넣어야 한다.</li>
-<li><code>mnemonic</code>: A special secret created for you by Ganache.<br />
+<li><code>mnemonic</code>: A special secret created for you by Ganache.
 <br /></li>
 </ul>
+
 <p><img src="/blog/images/mnemonic.png" alt="mnemonic" /></p>
+
 <ul>
 <li><code>custom RPC (http://127.0.0.1:7545)</code>를 설정하는 이유는 메인넷이 아닌 private net에서 테스트하기 위함이다.</li>
 </ul>
+
 <p><br /></p>
+
 <h4 id="6-run-dapp-pet-shop">6. Run dapp (pet shop)</h4>
+
 <ul>
 <li><code>npm run dev</code> in root dir</li>
 </ul>
+
 <p><br /></p>
+
 <p><img src="/blog/images/truffle-run.png" alt="truffle-run" /></p>
+
 <p><br /></p>
+
 <p><img src="/blog/images/pet-shop.png" alt="truffle-test" /></p>
+
 <p><br /></p>
+
 <h2 id="open-zeppelin">Open Zeppelin</h2>
+
 <blockquote>
-<p>Zeppelin Solutions, a smart contract auditing service, has recognized this need. Using their experience, they've put together a set of vetted smart contracts called OpenZeppelin.</p>
+<p>Zeppelin Solutions, a smart contract auditing service, has recognized this need. Using their experience, they&rsquo;ve put together a set of vetted smart contracts called OpenZeppelin.</p>
 </blockquote>
+
 <p><br /></p>
+
 <p><a href="https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin">참고: Robust Smart Contracts with Openzeppelin</a></p>
 </div>
 
@@ -268,7 +301,7 @@
 </main>
 
         <footer>
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         

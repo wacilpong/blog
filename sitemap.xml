@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -15,27 +15,42 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/tags/babel/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/post/environment/babel-polyfill-and-babel-runtime/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/environment/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/post/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/tags/jest/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/</loc>
-    <lastmod>2020-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2020-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/tags/solve/</loc>
-    <lastmod>2020-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -82,11 +97,6 @@
   <url>
     <loc>https://wacilpong.github.io/blog/post/javascript/splice-your-array/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/environment/</loc>
-    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>

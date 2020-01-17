@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>environment on Roomy</title>
@@ -6,10 +6,19 @@
     <description>Recent content in environment on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/environment/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Babel polyfill and babel runtime</title>
+      <link>https://wacilpong.github.io/blog/post/environment/babel-polyfill-and-babel-runtime/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/environment/babel-polyfill-and-babel-runtime/</guid>
+      <description>Babel ? 바벨은 Javascript ES6+ 문법을 ES5로 변환해서 ES6+ 문법을 지원하지 않는 브라우저에서도 동작하도록 만들어주는 컴파일러 이다. 그리고 Javascript라는 같은 언</description>
+    </item>
     
     <item>
       <title>Prerender Status Code</title>
@@ -52,7 +61,7 @@ Change permission of file I will change mode of key file and connect to ssh with
 
 2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
 
-3. Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
+3. Connect domain with CloudFront If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
     </item>
     
     <item>
@@ -61,7 +70,7 @@ Change permission of file I will change mode of key file and connect to ssh with
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/environment/set-https-with-aws/</guid>
-      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&#39;t configure anything in AWS console. So, connect</description>
+      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect</description>
     </item>
     
     <item>

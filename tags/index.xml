@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Roomy</title>
@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>babel</title>
+      <link>https://wacilpong.github.io/blog/tags/babel/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/babel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>environment</title>
+      <link>https://wacilpong.github.io/blog/tags/environment/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/environment/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>jest</title>
@@ -62,15 +80,6 @@
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>environment</title>
-      <link>https://wacilpong.github.io/blog/tags/environment/</link>
-      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/environment/</guid>
       <description></description>
     </item>
     

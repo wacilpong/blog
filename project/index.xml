@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Roomy</title>
@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
-      <description>Lectures  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain Truffle with ganache Truffle Tutorial: Pet Shop  </description>
+      <description> Lectures  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain Truffle with ganache Truffle Tutorial: Pet Shop  </description>
     </item>
     
     <item>
@@ -25,9 +25,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/tkit-service/</guid>
-      <description>Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack.
-https://tkit.me
-## Tech Stack - Front-end : Angular 6.x / SCSS - Back-end (APIs) : Python 3.x / Tornado 4.x / MongoDB (pymongo 3.</description>
+      <description> Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack. https://tkit.me
+
+Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornado 4.x / MongoDB (pymongo 3.x)  </description>
     </item>
     
     <item>

@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -125,31 +125,61 @@
 
     </div>
 
-    <div align="start" class="content"><h3 id="1-create-s3-bucket">1. Create S3 bucket</h3>
+    <div align="start" class="content">
+
+<h3 id="1-create-s3-bucket">1. Create S3 bucket</h3>
+
 <p>Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with <code>index.html</code> (entry point).</p>
+
 <p><br /></p>
+
 <h3 id="2-create-cloudfront-distributions">2. Create CloudFront Distributions</h3>
+
 <p>Create in aws CloudFront console. And Just keep all settings.</p>
+
 <p><br /></p>
+
 <h3 id="3-connect-domain-with-cloudfront">3. Connect domain with CloudFront</h3>
-<p>If you don't have routing domain in aws Route 53 console, create it first like <code>test.example.com</code>. It just depends on your url rules. Then connect with IPv4 with the CloudFront that you created.</p>
+
+<p>If you don&rsquo;t have routing domain in aws Route 53 console, create it first like <code>test.example.com</code>. It just depends on your url rules. Then connect with IPv4 with the CloudFront that you created.</p>
+
 <p><br /></p>
+
 <h3 id="4-install-s3cmd">4. Install s3cmd</h3>
+
 <p>s3cmd is a command line for s3 client or backup in linux and mac. s3express is for windows user, check it. I installed it using homebrew.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">brew install s3cmd
-</code></pre></div><p>Type <code>s3cmd</code> on command line, then command list (help) will be appear.</p>
+
+<pre><code class="language-s">brew install s3cmd
+</code></pre>
+
+<p>Type <code>s3cmd</code> on command line, then command list (help) will be appear.</p>
+
 <p><br /></p>
+
 <h3 id="5-configure-s3cmd-s3cfg">5. Configure s3cmd (.s3cfg)</h3>
+
 <p>We need to set aws access key to s3cmd to access s3 bucket.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">s3cmd <span style="color:#f92672">-</span><span style="color:#f92672">-</span>configure
-</code></pre></div><p>Many properties can be set. but now we just need to type aws access key and secret key that can be generated in aws. Then check s3 buckets that connected with your key.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">s3cmd ls
-</code></pre></div><p><br /></p>
+
+<pre><code class="language-s">s3cmd --configure
+</code></pre>
+
+<p>Many properties can be set. but now we just need to type aws access key and secret key that can be generated in aws. Then check s3 buckets that connected with your key.</p>
+
+<pre><code class="language-s">s3cmd ls
+</code></pre>
+
+<p><br /></p>
+
 <h3 id="6-publish-to-s3-from-local">6. Publish to S3 from local</h3>
+
 <p>First of all, we need to build our source code. I am dealing with angular5 project, so I am using <code>ng</code> command.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">ng build <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#f92672">-</span>env prod <span style="color:#f92672">-</span><span style="color:#f92672">-</span>aot
-s3cmd { put, sync } <span style="color:#f92672">-</span><span style="color:#f92672">-</span>cf<span style="color:#f92672">-</span>invalidate <span style="color:#f92672">-</span>P <span style="color:#f92672">-</span>r project<span style="color:#f92672">-</span>path<span style="color:#f92672">/</span>dist<span style="color:#f92672">/</span><span style="color:#f92672">*</span> s3<span style="color:#f92672">:</span><span style="color:#f92672">/</span><span style="color:#f92672">/</span>test.example.com
-</code></pre></div><p><br /></p>
+
+<pre><code class="language-s">ng build : --env prod --aot
+s3cmd { put, sync } --cf-invalidate -P -r project-path/dist/* s3://test.example.com
+</code></pre>
+
+<p><br /></p>
+
 <p>If you publish for the first time, use <code>put</code> command. It will publish all files and directories. And <code>sync</code> command will publish the files and directories that only be changed. And <code>:</code> means builds all our files. <code>--aot</code>(&lt;-&gt; <code>jit</code>) option means ahead-of-time;build files during the build phase before the browser downloads and runs that code. <code>--cf</code> means remove all chached files in CloudFront.</p>
 </div>
 
@@ -158,6 +188,25 @@ s3cmd { put, sync } <span style="color:#f92672">-</span><span style="color:#f926
     
         <h4 class="page-header">Related</h4>
          <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/environment/babel-polyfill-and-babel-runtime/">Babel polyfill and babel runtime</a></h4>
+    <h5>January 17, 2020</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/babel"><kbd class="item-tag">babel</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/environment"><kbd class="item-tag">environment</kbd></a>
+
+
+
+</div>
+  <div class="item">
 
     
     
@@ -197,27 +246,6 @@ s3cmd { put, sync } <span style="color:#f92672">-</span><span style="color:#f926
 
 
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/environment/when-connect-ssh/">When we connect ssh with .pem</a></h4>
-    <h5>April 3, 2018</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/linux"><kbd class="item-tag">linux</kbd></a>
-
-<a href="https://wacilpong.github.io/blog/tags/ssh"><kbd class="item-tag">ssh</kbd></a>
-
-<a href="https://wacilpong.github.io/blog/tags/environment"><kbd class="item-tag">environment</kbd></a>
-
-
-
-</div>
  
     
 
@@ -249,7 +277,7 @@ s3cmd { put, sync } <span style="color:#f92672">-</span><span style="color:#f926
 </main>
 
         <footer>
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         

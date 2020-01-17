@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>deploy on Roomy</title>
@@ -21,7 +21,7 @@
 
 2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
 
-3. Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
+3. Connect domain with CloudFront If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
     </item>
     
   </channel>

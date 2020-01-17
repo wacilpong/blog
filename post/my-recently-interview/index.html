@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -121,10 +121,16 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="what-kind-of-companies">what kind of companies?</h2>
+    <div align="start" class="content">
+
+<h2 id="what-kind-of-companies">what kind of companies?</h2>
+
 <p>힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다. 블록체인, 핀테크, 클라우드IDE, AI 등등 다양한 분야의 회사에 신입 개발자로 지원했다. 프론트엔드/백엔드 가릴 것 없이 넣었고, 주로 nodeJs 기반의 회사로 넣었다. 12월 4일부터 12월 8일까지 일주일 간 인터뷰만 보러 다녔다.</p>
+
 <p>I apply to 7 different startups that developing web like blockchain, fintech, cloud IDE, traslating AI, medical AI. The most of them are based on nodeJs. I was an interviewee during 2017. 12. 04 ~ 2017. 12. 08.</p>
-<h2 id="what-questions-ive-got">what questions I've got?</h2>
+
+<h2 id="what-questions-i-ve-got">what questions I&rsquo;ve got?</h2>
+
 <ol>
 <li><a href="#thread-vs-process">Thread vs Process</a></li>
 <li><a href="#javascript-hoisting">Javascript Hoisting</a></li>
@@ -144,234 +150,323 @@
 <li><a href="#">Html vs Xhtml</a></li>
 <li><a href="#">Css flex</a></li>
 </ol>
+
 <hr>
-<h2 id="lets-solve-those-questions">Let's solve those questions!</h2>
+
+<h2 id="let-s-solve-those-questions">Let&rsquo;s solve those questions!</h2>
+
 <h3 id="thread-vs-process">#Thread vs Process</h3>
-<p>: 먼저, 어플리케이션, 프로세스, 스레드 간의 관계를 알 필요가 있다.</p>
+
+<dl>
+<dd>먼저, 어플리케이션, 프로세스, 스레드 간의 관계를 알 필요가 있다.</dd>
+</dl>
+
 <p>First of all, we must know the relationship among the application, process and thread.</p>
+
 <p><img src="http://2.bp.blogspot.com/-iztLs3xTqWU/Wi4sBc3soxI/AAAAAAAABy8/GtHdXcPMizwow61EPnRnkucGj-qzv7QZwCK4BGAYYCw/s1600/processvsthread.png" alt="program" /></p>
+
 <p>(1) <strong><em>Process</em></strong> 는 단일스레드와 시작되며, 이를 <code>primary thread</code>라고도 한다. 그리고 추후 스레드를 더 생성할 수 있다. 프로세스는 이처럼 적어도 하나의 스레드가 반드시 필요하다.</p>
+
 <p>Process starts with a single thread(<code>primary thread</code>), and can create more later. So process has at least one thread.</p>
+
 <p>(2) <strong><em>Thread</em></strong> 는 computer system에서 프로세서가 시간을 할당하는 최소 실행 단위이다. 이는 다음 실행될 명령어 주소를 가진 프로그램 카운터, 중앙처리장치(CPU)에 빠르게 접근할 수 있는 레지스터들, 고유한 ID를 가진다. 하지만 스레드는 그 자체만으로 프로그램이 아니고, 프로그램 안에서 동작할 수 있다. 모든 스레드는 각자의 메모리를 가지며 시스템 자원에도 접근할 수 있다.</p>
+
 <p>Thread is the smallest unit of execution to which processor allocates time. It consists <code>program counter, a stack, set of registers</code>, id. But thread itself is not a program. it can runs within a program. All threads can access to their own memory and system resources.</p>
+
 <p><br /><br /><hr></p>
+
 <h3 id="javascript-hoisting">#Javascript Hoisting</h3>
+
 <blockquote>
 <p>일반적으로 호이스팅을 변수가 스코프 맨 위로 올려지는 것으로 말하곤 한다. 하지만 물리적으로 작성한 코드가 스코프 상단으로 옮겨지는 것은 아니다. 자바스크립트는 초기화가 아니라 선언만 상단부로 끌어올려 컨텍스트에 적용한다. 이러한 개념을 호이스팅이라고 한다.</p>
-</blockquote>
-<blockquote>
+
 <p>Javascript only hoists declarations, not initializations. It’s not physically moved to the top of code. This is a term, hoisting.</p>
 </blockquote>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// It gives no error
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-<span style="color:#a6e22e">n</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span>;
 
-<span style="color:#75715e">// &#39;b&#39; is undefined in log
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
-  <span style="color:#a6e22e">b</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>);
-<span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-</code></pre></div><p><br /><br /><hr></p>
+<p><br /></p>
+
+<pre><code class="language-javascript">// It gives no error
+n = 1;
+n + 1;
+let n;
+
+// 'b' is undefined in log
+let a = 1,
+  b;
+console.log(a + &quot; &quot; + b);
+b = 2;
+</code></pre>
+
+<p><br /><br /><hr></p>
+
 <h3 id="javascript-closure">#Javascript Closure</h3>
+
 <blockquote>
 <p>클로저는 <code>free variables</code>(어떤 함수의 로컬변수나 매개변수가 아닌 변수를 참조할 때 부르는 변수, 스코프와 연관있는 상대적 개념이므로 global과는 다름)를 참조할 수 있는 함수들로 구성된 일종의 환경이라고 보면 된다. 그러니까, 클로저 환경(범위) 안에 선언된 함수는 그 환경을 기억할 수 있다는 개념이다.</p>
-</blockquote>
-<blockquote>
+
 <p>It is a term like a sort of environment, consists of functions that refer to <code>free variables</code>(is a relative to a scope, refers to variables used in a function that are not local variables nor parameters of that function). In other words, the function defined in the closure is able to remember the environment in which it was created.</p>
 </blockquote>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">whoPennywise</span>() {
-  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">_who</span>() {
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">job</span>);
-  }
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;the dancing clown!&#34;</span>;
 
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">_who</span>;
+<p><br /></p>
+
+<pre><code class="language-javascript">function whoPennywise() {
+  function _who() {
+    console.log(job);
+  }
+  let job = &quot;the dancing clown!&quot;;
+
+  return _who;
 }
 
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sayItDo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">whoPennywise</span>();
-<span style="color:#a6e22e">sayItDo</span>(); <span style="color:#75715e">// &#34;the dancing clown!&#34;
-</span></code></pre></div><p>위에서 <strong>job</strong> 변수는 <strong>_who</strong> 함수와 같은 스코프에 선언되어 참조되고 있다. 따라서 <strong>whoPennywais</strong> 함수는 클로저 환경을 구성하고 있다. 마찬가지로 <strong>sayItDo</strong> 변수는 <strong>whoPennywise</strong> 함수를 참조해 사용했으므로 클로저 환경을 구성한다. 따라서 sayItDo를 실행하면 &ldquo;the dancing clown!&ldquo;이 찍힌다. 이때 whoPennywais 함수를 그대로 실행하려고 하면 콘솔에 아무것도 찍히지 않는다. 실행하는 스코프가 클로저 환경이 아니게 되기 때문에 해당 함수객체를 참조하는 셈이 된다.</p>
+let sayItDo = whoPennywise();
+sayItDo(); // &quot;the dancing clown!&quot;
+</code></pre>
+
+<p>위에서 <strong>job</strong> 변수는 <strong>_who</strong> 함수와 같은 스코프에 선언되어 참조되고 있다. 따라서 <strong>whoPennywais</strong> 함수는 클로저 환경을 구성하고 있다. 마찬가지로 <strong>sayItDo</strong> 변수는 <strong>whoPennywise</strong> 함수를 참조해 사용했으므로 클로저 환경을 구성한다. 따라서 sayItDo를 실행하면 &ldquo;the dancing clown!&ldquo;이 찍힌다. 이때 whoPennywais 함수를 그대로 실행하려고 하면 콘솔에 아무것도 찍히지 않는다. 실행하는 스코프가 클로저 환경이 아니게 되기 때문에 해당 함수객체를 참조하는 셈이 된다.</p>
+
 <p><strong>job</strong> variable is referd to <strong>who</strong> function in the same scope. So <strong>whoPennywise</strong> function has an environment called closure. Likewise <strong>sayItDo</strong> variable refers to <strong>whoPennywise</strong> and execute itself, so it is also closure. And then &ldquo;the dancing clown&rdquo; wrote in log. At this point, there is nothing in log when execute whoPennywise function as it is, because that scope would not be closure.</p>
+
 <p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">foo</span>(<span style="color:#a6e22e">a</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
 
-  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">_bar</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">_booq</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>);
+<pre><code class="language-javascript">function foo(a) {
+  let b = 3;
+
+  function _bar() {
+    return _booq(a + b);
   }
 
-  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">_booq</span>(<span style="color:#a6e22e">c</span>) {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+  function _booq(c) {
+    return c * 2;
   }
 
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">_bar</span>;
+  return _bar;
 }
 
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">foo2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">foo</span>(<span style="color:#ae81ff">2</span>);
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">foo5</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">foo</span>(<span style="color:#ae81ff">5</span>);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">foo2</span>()); <span style="color:#75715e">// 10
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">foo5</span>()); <span style="color:#75715e">// 16
-</span></code></pre></div><p>그렇다면 클로저 환경에서는 함수실행이 어떻게 처리되는 지 알아야 하는데, 알다시피 자바스크립트는 단일 스레드 환경이다. 즉, <strong>foo</strong> 함수를 실행하라고 명령을 날리면 한 번의 실행만 한다. 함수 안에 함수가 있다고 해서 여러 번 실행되는 게 아니라는 것이다. 이것이 가능한 이유는 보통 브라우저는 스택을 이용해 실행단위를 처리하기 때문이다. 그래서 <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> 함수 순으로 참조하면서 스택에 차곡차곡 쌓아 리턴(pop)하므로 <strong>_booq</strong> 함수의 리턴값을 최종적으로 가져올 수 있다.</p>
-<p>And we have to know the process of executing functions in closure, as you all know, javascript is <code>single threaded</code>. That is, one command like executing <strong>foo</strong> function, can be processed at a time. The reason that possible, typically the browser maintain execution context with a stack, the data structure. So, It saves a value in stack and return(pop) with <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> ordering, and finally get the <strong>_booq</strong> function's return value.</p>
+let foo2 = foo(2);
+let foo5 = foo(5);
+console.log(foo2()); // 10
+console.log(foo5()); // 16
+</code></pre>
+
+<p>그렇다면 클로저 환경에서는 함수실행이 어떻게 처리되는 지 알아야 하는데, 알다시피 자바스크립트는 단일 스레드 환경이다. 즉, <strong>foo</strong> 함수를 실행하라고 명령을 날리면 한 번의 실행만 한다. 함수 안에 함수가 있다고 해서 여러 번 실행되는 게 아니라는 것이다. 이것이 가능한 이유는 보통 브라우저는 스택을 이용해 실행단위를 처리하기 때문이다. 그래서 <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> 함수 순으로 참조하면서 스택에 차곡차곡 쌓아 리턴(pop)하므로 <strong>_booq</strong> 함수의 리턴값을 최종적으로 가져올 수 있다.</p>
+
+<p>And we have to know the process of executing functions in closure, as you all know, javascript is <code>single threaded</code>. That is, one command like executing <strong>foo</strong> function, can be processed at a time. The reason that possible, typically the browser maintain execution context with a stack, the data structure. So, It saves a value in stack and return(pop) with <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> ordering, and finally get the <strong>_booq</strong> function&rsquo;s return value.</p>
+
 <p><br /><br /><hr></p>
+
 <h3 id="this-in-javascript">#<strong>this</strong> in Javascript</h3>
+
 <blockquote>
 <p>함수에서의 <code>this</code> 키워드는 strict mode와 일반모드에서 다르게 적용된다. 일반적으로 함수가 어떻게 호출하는지에 따라 this의 내용이 달라진다. 전역에서는 모드에 상관없이 전역객체를 참조한다. 즉, 웹브라우저 전역에서의 <code>this</code>는 window객체가 된다.</p>
+
+<p>Function&rsquo;s <code>this</code> keyword behaves a bit differently between stric mode and non-stric mode. In most cases, the value of <code>this</code> is determined by how a function is called. In global, it refers to global object no matter of mode. That is, <code>this</code> in global web-browser is the window object.</p>
 </blockquote>
-<blockquote>
-<p>Function's <code>this</code> keyword behaves a bit differently between stric mode and non-stric mode. In most cases, the value of <code>this</code> is determined by how a function is called. In global, it refers to global object no matter of mode. That is, <code>this</code> in global web-browser is the window object.</p>
-</blockquote>
+
 <p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test1</span>() {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+
+<pre><code class="language-javascript">function test1() {
+  return this;
 }
 
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test2</span>() {
-  <span style="color:#e6db74">&#34;use strict&#34;</span>;
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+function test2() {
+  &quot;use strict&quot;;
+  return this;
 }
 
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> };
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test3</span>() {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">b</span>;
+let obj = { a: 5, b: 2 };
+function test3() {
+  return this.a + this.b;
 }
 
-<span style="color:#75715e">// All true
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span> <span style="color:#f92672">===</span> window);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">test1</span>() <span style="color:#f92672">===</span> window);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">test2</span>() <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">test2</span>().<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>) <span style="color:#f92672">===</span> window);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">test3</span>().<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">obj</span>) <span style="color:#f92672">===</span> <span style="color:#ae81ff">7</span>);
-</code></pre></div><p>그렇다면 함수가 호출되는 방법에 따라 달라지는 <code>this</code>를 알 필요가 있다. test2 함수처럼 strict mode인 함수에서의 this값은 실행될 때 할당되어 유지된다. 따라서 test2 함수는 실행할 때 아무것도 정의하지 않았으므로 undefined을 리턴한다. 이때 자바스크립트의 Function.prototype에서 상속되는 call(), apply() 함수를 이용하면 특정 객체와 <code>this</code>를 연결할 수 있다. 그래서 test2에 전역의 this(window)를 보내 함수를 실행시키면 window를 리턴하게 된다. 마찬가지로 test3 함수에 obj라는 특정 객체를 보내 실행시키면 함수 내부에서 해당 객체를 <code>this</code>로 참조할 수 있게 된다.</p>
+// All true
+console.log(this === window);
+console.log(test1() === window);
+console.log(test2() === undefined);
+console.log(test2().call(this) === window);
+console.log(test3().call(obj) === 7);
+</code></pre>
+
+<p>그렇다면 함수가 호출되는 방법에 따라 달라지는 <code>this</code>를 알 필요가 있다. test2 함수처럼 strict mode인 함수에서의 this값은 실행될 때 할당되어 유지된다. 따라서 test2 함수는 실행할 때 아무것도 정의하지 않았으므로 undefined을 리턴한다. 이때 자바스크립트의 Function.prototype에서 상속되는 call(), apply() 함수를 이용하면 특정 객체와 <code>this</code>를 연결할 수 있다. 그래서 test2에 전역의 this(window)를 보내 함수를 실행시키면 window를 리턴하게 된다. 마찬가지로 test3 함수에 obj라는 특정 객체를 보내 실행시키면 함수 내부에서 해당 객체를 <code>this</code>로 참조할 수 있게 된다.</p>
+
 <p>Then how <code>this</code> can be different when call the function? The return value of the function in strict mode like test2 function will be assigned in execution. So test2 function returns undefined, because nothing was defined in execution. At this point, It is possible to connect specific object to <code>this</code> with call() and apply(), that inherited from Function.prototype in javascript. Thus, test2 function with <strong>call(this)</strong> will return window. Likewise, <code>this</code> keyword in test3 function can refers to the <strong>obj</strong>(object) with <strong>call(obj)</strong>.</p>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">me</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;roomy&#34;</span> };
 
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myName</span>() {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>;
+<p><br /></p>
+
+<pre><code class="language-javascript">let me = { name: &quot;roomy&quot; };
+
+function myName() {
+  return this.name;
 }
 
-<span style="color:#a6e22e">me</span>.<span style="color:#a6e22e">callName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">myName</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">me</span>.<span style="color:#a6e22e">callName</span>()); <span style="color:#75715e">// roomy
-</span></code></pre></div><p>또한 <code>this</code>는 객체에서의 호출되는 방법에 따라 바뀔 수 있다. 객체(me) 내부에 함수(myName)를 정의하고 프로퍼티(callName)로 부르면 해당 객체 환경을 <code>this</code>로 참조하는 것을 볼 수 있다. 즉, <code>this</code>의 동작방식은 함수가 정의된 방법이나 위치가 아닌 호출방식에 영향을 받는다.</p>
-<p>Also targets of <code>this</code> can be changing according to the method of calling <code>this</code> in object. It refers to the object's environment after defining <strong>myName</strong> function in <strong>me</strong> object that called with <strong>callName</strong> property. That is, <code>this</code> behavior is not at all affected by how or where the function was defined. Like upper example, It matters only that the function was invoked from <strong>callName</strong> member of <strong>me</strong>.</p>
+me.callName = myName;
+console.log(me.callName()); // roomy
+</code></pre>
+
+<p>또한 <code>this</code>는 객체에서의 호출되는 방법에 따라 바뀔 수 있다. 객체(me) 내부에 함수(myName)를 정의하고 프로퍼티(callName)로 부르면 해당 객체 환경을 <code>this</code>로 참조하는 것을 볼 수 있다. 즉, <code>this</code>의 동작방식은 함수가 정의된 방법이나 위치가 아닌 호출방식에 영향을 받는다.</p>
+
+<p>Also targets of <code>this</code> can be changing according to the method of calling <code>this</code> in object. It refers to the object&rsquo;s environment after defining <strong>myName</strong> function in <strong>me</strong> object that called with <strong>callName</strong> property. That is, <code>this</code> behavior is not at all affected by how or where the function was defined. Like upper example, It matters only that the function was invoked from <strong>callName</strong> member of <strong>me</strong>.</p>
+
 <p><br /></p>
-<h4 id="-execution-context-"><strong><em>Execution context</em></strong></h4>
-<h5 id="--the-structure-of-execution-context-in-javascript--">- The structure of execution context in javascript -</h5>
+
+<h4 id="execution-context"><strong><em>Execution context</em></strong></h4>
+
+<h5 id="the-structure-of-execution-context-in-javascript">- The structure of execution context in javascript -</h5>
+
 <ul>
 <li>Variable object : { variables(const, let, var -each has scope), function declarations, arguments&hellip; }</li>
 <li>Scope chain : { variable object, parent scopes }</li>
 <li><code>this</code> : context object</li>
 </ul>
+
 <p><br /></p>
+
 <p>사실 <code>this</code>, 호이스팅, 클로저 등은 자바스크립트의 실행 컨텍스트를 이해하고 있어야 와닿을 것이다. 컨텍스트는 문맥이라는 뜻으로, 실행할 코드의 맥락 정도로 해석하면 될 것 같다. 그러면 스코프와 컨텍스트가 같은 의미같지만, 아니다. <strong>스코프</strong> 는 함수가 변수를 어떻게 접근하는 지를 알려주는 범위로써 호출할 때마다 고유하지만, <strong>컨텍스트</strong> 는 실행할 때 타겟이 달라지는 <code>this</code> 키워드의 값을 가리킨다. 그래서 컨텍스트는 함수가 어떻게 호출되는 지에 따라 결정되곤 한다.</p>
+
 <p>We have to get into the <code>execution context</code> in javascript for understanding terms such as <code>this</code> keyword, hoisting and closure. It is not same the scope and context. <strong>scope</strong> is like a range which let know us how the function access to variables, so it is unique to each invocation. But <strong>context</strong> contains a value of <code>this</code> keyword which could be different in execution. So, context defined according to how the function invoked.</p>
+
 <p><br /><br /><hr></p>
+
 <h3 id="design-pattern-in-javascript">#Design pattern in javascript</h3>
+
 <blockquote>
 <p><a href="https://seesparkbox.com/foundry/javascript_design_patterns">ref : javascript design patterns, by patrick simpson</a></p>
-</blockquote>
-<blockquote>
+
 <p>자바스크립트는 전통적인 객체지향 언어가 아니기 때문에 디자인패턴에 접근하기가 어렵지만, 불가능한 건 아니다. 디자인 패턴은 개발자들이 일반적인 문제들을 가장 좋은 방식으로 해결하기 위해 고안된 패턴들이다. 그래서 이를 이해하고 적용해보는 것이 중요하다.</p>
-</blockquote>
-<blockquote>
+
 <p>JavaScript is not a traditional Object Oriented programming language, design patterns are harder to discern, but not impossible to accomplish. Design patterns are structured best practices that the programmer can use to solve common problems when developing (or designing) an application or system.</p>
 </blockquote>
-<p><br /></p>
-<h4 id="1-prototype"><strong>(1) Prototype</strong></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dream</span> <span style="color:#f92672">=</span> { <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;rich&#34;</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;happy&#34;</span> };
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">now</span> <span style="color:#f92672">=</span> { <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hungry&#34;</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sleepy&#34;</span> };
 
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Life</span>(<span style="color:#a6e22e">status</span>) {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">status</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">dream</span>;
+<p><br /></p>
+
+<h4 id="1-prototype"><strong>(1) Prototype</strong></h4>
+
+<pre><code class="language-javascript">let dream = { 1: &quot;rich&quot;, 2: &quot;happy&quot; };
+let now = { 1: &quot;hungry&quot;, 2: &quot;sleepy&quot; };
+
+function Life(status) {
+  this.status = status || dream;
 }
 
-<span style="color:#a6e22e">Life</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">reality</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">hope</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">realAttr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hope</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span>;
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">realAttr</span>;
+Life.prototype.reality = function(hope) {
+  let realAttr = hope || this.status;
+  return realAttr;
 };
 
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">me</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Life</span>(<span style="color:#a6e22e">now</span>);
+let me = new Life(now);
 
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">me</span>.<span style="color:#a6e22e">reality</span>()); <span style="color:#75715e">// { 1: &#39;hungry&#39;, 2: &#39;sleepy&#39; }
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">me</span>.<span style="color:#a6e22e">reality</span>(<span style="color:#a6e22e">dream</span>)); <span style="color:#75715e">// { 1: &#39;rich&#39;, 2: &#39;happy&#39; }
-</span></code></pre></div><p>ES2015부터 <code>class</code>를 지원하기는 하지만, 이는 코드를 쉽게 쓰기 위한 수단일 뿐이다. 결국 자바스크립트는 프로토타입 기반의 언어이므로 이를 이해하는 것이 중요하다. 자바스크립트에서는 유일하게 객체로 값을 상속시키며, 모든 객체는 기본적으로 프로토타입([[Prototype]]) 객체를 <code>private</code> 하게 가지고 있다. 이는 객체 자신의 부모역할을 하는 객체를 의미하며, 그 다른 객체가 또 다른 프로토타입을 가지고 있는 것이 반복되다가 프로토타입이 null인 객체에서 끝난다. 이를 프로토타입 체인이라고도 한다. 그런데 크롬과 같은 브라우저에 객체를 출력해보면 <code>__proto__</code> 라는 프로퍼티를 볼 수 있다. 이는 다음의 개념들과 비교할 수 있다.</p>
+console.log(me.reality()); // { 1: 'hungry', 2: 'sleepy' }
+console.log(me.reality(dream)); // { 1: 'rich', 2: 'happy' }
+</code></pre>
+
+<p>ES2015부터 <code>class</code>를 지원하기는 하지만, 이는 코드를 쉽게 쓰기 위한 수단일 뿐이다. 결국 자바스크립트는 프로토타입 기반의 언어이므로 이를 이해하는 것이 중요하다. 자바스크립트에서는 유일하게 객체로 값을 상속시키며, 모든 객체는 기본적으로 프로토타입([[Prototype]]) 객체를 <code>private</code> 하게 가지고 있다. 이는 객체 자신의 부모역할을 하는 객체를 의미하며, 그 다른 객체가 또 다른 프로토타입을 가지고 있는 것이 반복되다가 프로토타입이 null인 객체에서 끝난다. 이를 프로토타입 체인이라고도 한다. 그런데 크롬과 같은 브라우저에 객체를 출력해보면 <code>__proto__</code> 라는 프로퍼티를 볼 수 있다. 이는 다음의 개념들과 비교할 수 있다.</p>
+
 <p>The <code>class</code> keyword is introduced in ES2015, but is syntactical sugar, JavaScript remains prototype-based. It is important to understand prototype for this reason. In javascript, the only way to inherit something is objects, and each object has a <code>private</code> property called [[Prototype]] as a default. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. By definition, null has no prototype, and acts as the final link in this prototype chain. But we can check <code>__proto__</code> property on web browser such as a chrome. What is it?</p>
-<p><br /></p>
-<p><strong><em>&ndash; <code>[[Prototype]]</code> vs <code>__proto__</code></em></strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Life</span>.<span style="color:#a6e22e">__proto__</span> <span style="color:#f92672">===</span> Function.<span style="color:#a6e22e">prototype</span>); <span style="color:#75715e">// true
-</span></code></pre></div><p><strong>[[Prototype]]</strong> 은 모든 객체가 가진 프로퍼티로, 연결된 상위의 값이 객체일 수도 있고 null일 수도 있다. <code>__proto__</code>는 숨겨진 <strong>[[Prototype]]</strong> 을 노출시키는 프로퍼티이다. 즉, 둘은 같은 개념이다. 따라서 위의 <strong>Life()</strong> 함수의 <code>__proto__</code> 는 <strong>Function.prototype</strong> 이 된다. 자바스크립트는 인터프리터 언어이면서 Jit(Just-in-time) 방식으로 실행 직전에 컴파일되는 언어이기도 하다. 그래서 코드를 실행시킬 때 <code>__proto__</code> 프로퍼티로 객체끼리의 연결관계를 노출시킬 수 있는 것이다.</p>
-<p><strong>[[Prototype]]</strong> is all objects&rsquo; property and its parent can be an object or null. <code>__proto__</code> is a property which exposing the private <strong>[[Prototype]]</strong>. Both of it them are same. Javascript is an interpreted language and also a compiled language with jit(Just-in-time) way that compiling right before the execution. Thus, <code>__proto__</code> property can exposing the relationship of objects when compile the code.</p>
-<p><br /></p>
-<p><strong><em>&ndash; <code>prototype</code></em></strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Life</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">me</span>.<span style="color:#a6e22e">__proto__</span>); <span style="color:#75715e">// true
-</span></code></pre></div><p><strong>prototype</strong> 은 위의 <strong>Life()</strong> 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 <strong>Life()</strong> 함수의 <strong>prototype</strong> 은 자신을 통해 생성자(<code>new</code> 키워드)로 생성된 <strong>me</strong> 객체의 <code>__proto__</code> 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다. Life.prototype을 그대로 출력하면, Life 객체 자신이 나오게 된다. 자기자신이 생성할 객체들의 부모이기 때문이다.</p>
-<p><strong>prototype</strong> is a property that only function object can has. So <strong>prototype</strong> of <strong>Life()</strong> function will be same with <code>__proto__</code> of <strong>me</strong> object which created by <code>new</code> keyword. That is, a parent object of an object which will be created with specific function. If call <strong>Life.prototype</strong>, <strong>Life</strong> object itself will be written on the console, because it is a parent of the object that will be created by <strong>Life</strong> object.</p>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// all true
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Life</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">constructor</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">Life</span>);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Life</span>.<span style="color:#a6e22e">constructor</span> <span style="color:#f92672">===</span> Function);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Life</span>.<span style="color:#a6e22e">__proto__</span>.<span style="color:#a6e22e">constructor</span> <span style="color:#f92672">===</span> Function);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">me</span>.<span style="color:#a6e22e">constructor</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">Life</span>);
-</code></pre></div><p>또한 함수객체는 <strong>constructor</strong> 라는 프로퍼티도 갖고 있다. 이는 쉽게 말하면 자신을 생성시킨 함수를 의미한다.</p>
-<p>Also the function object has a <strong>constructor</strong> property. In short, this means the parent function of the function that called with constructor.</p>
-<p><br /><br /></p>
-<h4 id="2-module"><strong>(2) Module</strong></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.<span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">getType</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">code</span>) {
-    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">type</span>;
-    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">code</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span>;
-    <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;B&#34;</span>;
 
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">type</span>;
+<p><br /></p>
+
+<p><strong><em>&ndash; <code>[[Prototype]]</code> vs <code>__proto__</code></em></strong></p>
+
+<pre><code class="language-javascript">console.log(Life.__proto__ === Function.prototype); // true
+</code></pre>
+
+<p><strong>[[Prototype]]</strong> 은 모든 객체가 가진 프로퍼티로, 연결된 상위의 값이 객체일 수도 있고 null일 수도 있다. <code>__proto__</code>는 숨겨진 <strong>[[Prototype]]</strong> 을 노출시키는 프로퍼티이다. 즉, 둘은 같은 개념이다. 따라서 위의 <strong>Life()</strong> 함수의 <code>__proto__</code> 는 <strong>Function.prototype</strong> 이 된다. 자바스크립트는 인터프리터 언어이면서 Jit(Just-in-time) 방식으로 실행 직전에 컴파일되는 언어이기도 하다. 그래서 코드를 실행시킬 때 <code>__proto__</code> 프로퍼티로 객체끼리의 연결관계를 노출시킬 수 있는 것이다.</p>
+
+<p><strong>[[Prototype]]</strong> is all objects&rsquo; property and its parent can be an object or null. <code>__proto__</code> is a property which exposing the private <strong>[[Prototype]]</strong>. Both of it them are same. Javascript is an interpreted language and also a compiled language with jit(Just-in-time) way that compiling right before the execution. Thus, <code>__proto__</code> property can exposing the relationship of objects when compile the code.</p>
+
+<p><br /></p>
+
+<p><strong><em>&ndash; <code>prototype</code></em></strong></p>
+
+<pre><code class="language-javascript">console.log(Life.prototype === me.__proto__); // true
+</code></pre>
+
+<p><strong>prototype</strong> 은 위의 <strong>Life()</strong> 처럼 함수객체만이 갖고 있는 프로퍼티이다. 그래서 <strong>Life()</strong> 함수의 <strong>prototype</strong> 은 자신을 통해 생성자(<code>new</code> 키워드)로 생성된 <strong>me</strong> 객체의 <code>__proto__</code> 와 같아진다. 즉, 어떠한 함수를 통해서 생성될 객체의 부모역할을 하는 객체이다. Life.prototype을 그대로 출력하면, Life 객체 자신이 나오게 된다. 자기자신이 생성할 객체들의 부모이기 때문이다.</p>
+
+<p><strong>prototype</strong> is a property that only function object can has. So <strong>prototype</strong> of <strong>Life()</strong> function will be same with <code>__proto__</code> of <strong>me</strong> object which created by <code>new</code> keyword. That is, a parent object of an object which will be created with specific function. If call <strong>Life.prototype</strong>, <strong>Life</strong> object itself will be written on the console, because it is a parent of the object that will be created by <strong>Life</strong> object.</p>
+
+<p><br /></p>
+
+<pre><code class="language-javascript">// all true
+console.log(Life.prototype.constructor === Life);
+console.log(Life.constructor === Function);
+console.log(Life.__proto__.constructor === Function);
+console.log(me.constructor === Life);
+</code></pre>
+
+<p>또한 함수객체는 <strong>constructor</strong> 라는 프로퍼티도 갖고 있다. 이는 쉽게 말하면 자신을 생성시킨 함수를 의미한다.</p>
+
+<p>Also the function object has a <strong>constructor</strong> property. In short, this means the parent function of the function that called with constructor.</p>
+
+<p><br /><br /></p>
+
+<h4 id="2-module"><strong>(2) Module</strong></h4>
+
+<pre><code class="language-javascript">window.config = (function() {
+  let getType = function(code) {
+    let type;
+    if (code === 0) type = &quot;A&quot;;
+    else type = &quot;B&quot;;
+
+    return type;
   };
 
-  <span style="color:#66d9ef">return</span> {
-    <span style="color:#a6e22e">getType</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">getType</span>
+  return {
+    getType: getType
   };
 })();
 
-<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">getType</span>(<span style="color:#ae81ff">0</span>); <span style="color:#75715e">// &#39;A&#39;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">getType</span>(<span style="color:#ae81ff">23</span>); <span style="color:#75715e">// &#39;B&#39;
-</span></code></pre></div><p>모듈패턴은 달리 말하면 <code>class</code>와 같은 동작을 하기 때문에 <code>private</code> 접근을 설정할 수 있게 된다. 그래서 모듈은 <a href="#javascript-closure">클로저</a> 안에서만 존재할 수 있고, 즉시실행함수로 표현되어야 한다. 변수를 함수의 <a href="#execution-context">실행 컨텍스트</a> 에서 데이터가 흐를 때 설정하고, 이를 오브젝트로 리턴하는 형식으로 값을 노출시키는 것이다. 그래서 위의 예제처럼 <strong>getType</strong> 변수는 함수가 실행될 때 private 하게 선언되며, return 된 값으로만 접근이 가능하다.</p>
-<p>Can access to <code>private</code> with module pattern, because it operates like a <code>class</code>. So, modules should be Immediately Invoked Function Expressions (IIFE), and all of the module code exists within a <a href="#javascript-closure">closure</a>. Import variables by passing in values through the function <a href="#execution-context">execution</a>. Export variables (expose variables) by returning an object. Thus, <strong>getType</strong> variable can be initialized like private and only accessed the returned value.</p>
-<p><br /></p>
-<h4 id="3-singleton"><strong>(3) Singleton</strong></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">BOT</span> <span style="color:#f92672">=</span> (() =&gt; {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">instance</span>;
+config.getType(0); // 'A'
+config.getType(23); // 'B'
+</code></pre>
 
-  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">create</span>() {
-    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;roomy&#34;</span>,
-      <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
-    <span style="color:#66d9ef">return</span> {
-      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">name</span>,
-      <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">age</span>
+<p>모듈패턴은 달리 말하면 <code>class</code>와 같은 동작을 하기 때문에 <code>private</code> 접근을 설정할 수 있게 된다. 그래서 모듈은 <a href="#javascript-closure">클로저</a> 안에서만 존재할 수 있고, 즉시실행함수로 표현되어야 한다. 변수를 함수의 <a href="#execution-context">실행 컨텍스트</a> 에서 데이터가 흐를 때 설정하고, 이를 오브젝트로 리턴하는 형식으로 값을 노출시키는 것이다. 그래서 위의 예제처럼 <strong>getType</strong> 변수는 함수가 실행될 때 private 하게 선언되며, return 된 값으로만 접근이 가능하다.</p>
+
+<p>Can access to <code>private</code> with module pattern, because it operates like a <code>class</code>. So, modules should be Immediately Invoked Function Expressions (IIFE), and all of the module code exists within a <a href="#javascript-closure">closure</a>. Import variables by passing in values through the function <a href="#execution-context">execution</a>. Export variables (expose variables) by returning an object. Thus, <strong>getType</strong> variable can be initialized like private and only accessed the returned value.</p>
+
+<p><br /></p>
+
+<h4 id="3-singleton"><strong>(3) Singleton</strong></h4>
+
+<pre><code class="language-javascript">const BOT = (() =&gt; {
+  let instance;
+
+  function create() {
+    let name = &quot;roomy&quot;,
+      age = 3;
+    return {
+      name: name,
+      age: age
     };
   }
 
-  <span style="color:#66d9ef">return</span> {
-    <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">str</span> =&gt; {
-      <span style="color:#75715e">// if instance be never created, execute create()
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">instance</span>) <span style="color:#a6e22e">instance</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">str</span>);
-      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">instance</span>;
+  return {
+    getInstance: str =&gt; {
+      // if instance be never created, execute create()
+      if (!instance) instance = create(str);
+      return instance;
     }
   };
 })();
 
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">roomy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">BOT</span>.<span style="color:#a6e22e">getInstance</span>();
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">roomy2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">BOT</span>.<span style="color:#a6e22e">getInstance</span>();
+let roomy = BOT.getInstance();
+let roomy2 = BOT.getInstance();
 
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">roomy</span>); <span style="color:#75715e">// { name: &#39;roomy&#39;, age: 3 }
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">roomy2</span>); <span style="color:#75715e">// { name: &#39;roomy&#39;, age: 3 }
-</span></code></pre></div><p>싱글톤은 첫 번째 객체가 생성되면, 그 이후에는 계속 그 객체를 반환하는 패턴이다. 그래서 클라이언트가 여러 객체를 생성하지 못하게 제한할 수 있다. 객체의 선언부에서 해당 인스턴스를 실행하고 저장시키기 때문에 모듈과 마찬가지로 즉시실행함수로 표현되어야 한다. 위의 예제의 <strong>BOT</strong> 의 <strong>getInstance</strong> 처럼 객체가 생성된 적이 없다면 <strong>create()</strong> 로 새로운 객체를 만들고, 이후에는 그 객체를 리턴해준다. 따라서 <strong>roomy</strong> 와 <strong>roomy2</strong> 는 같은 인스턴스를 바라보게 된다.</p>
+console.log(roomy); // { name: 'roomy', age: 3 }
+console.log(roomy2); // { name: 'roomy', age: 3 }
+</code></pre>
+
+<p>싱글톤은 첫 번째 객체가 생성되면, 그 이후에는 계속 그 객체를 반환하는 패턴이다. 그래서 클라이언트가 여러 객체를 생성하지 못하게 제한할 수 있다. 객체의 선언부에서 해당 인스턴스를 실행하고 저장시키기 때문에 모듈과 마찬가지로 즉시실행함수로 표현되어야 한다. 위의 예제의 <strong>BOT</strong> 의 <strong>getInstance</strong> 처럼 객체가 생성된 적이 없다면 <strong>create()</strong> 로 새로운 객체를 만들고, 이후에는 그 객체를 리턴해준다. 따라서 <strong>roomy</strong> 와 <strong>roomy2</strong> 는 같은 인스턴스를 바라보게 된다.</p>
+
 <p>In singleton pattern, if the first object is created, then it will constantly returns the same object. So clients can create only that object. Singleton object also should be self-invoked like a module pattern, because it will execute and store the instance at the time of definition. Thus, <strong>roomy</strong> and <strong>roomy2</strong> will access the same instance.</p>
+
 <p><br /></p>
+
 <p>이외에도 <a href="http://www.dofactory.com/javascript/observer-design-pattern">Observer</a>, <a href="http://www.dofactory.com/javascript/adapter-design-pattern">Adapter</a> 와 같은 디자인 패턴들이 있다.</p>
+
 <p><br /><br /><hr></p>
+
 <h3 id="mechanism-of-nodejs">#Mechanism of nodeJs</h3>
+
 <ul>
 <li>single threaded event loop model</li>
 <li>built on top of V8 engine (chrome)</li>
@@ -412,7 +507,7 @@
 </main>
 
         <footer>
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         

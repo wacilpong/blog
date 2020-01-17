@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -121,44 +121,56 @@
 
     </div>
 
-    <div align="start" class="content"><p><strong><em>참고: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)</em></strong></p>
+    <div align="start" class="content">
+
+<p><strong><em>참고: Pow(채굴), PoS(이자지급), PoA, DPoS(투표선출), master node(full block + 네트워크 중계)</em></strong></p>
+
 <p><br /></p>
-<h2 id="-make-genesis-block-now">* Make Genesis Block Now</h2>
+
+<h2 id="make-genesis-block-now">* Make Genesis Block Now</h2>
+
 <h3 id="1-puppeth">1. puppeth</h3>
+
 <p><code>geth</code>설치 및 환경변수 설정까지 끝났다면 <code>puppeth</code>커맨드를 쓸 수 있다.</p>
+
 <p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">$</span> mkdir test
-<span style="color:#f92672">$</span> cd test
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> puppeth
 
-<span style="color:#f92672">+</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">+</span>
-<span style="color:#f92672">|</span> Welcome to puppeth, your Ethereum private network manager <span style="color:#f92672">|</span>
-<span style="color:#f92672">|</span>                                                           <span style="color:#f92672">|</span>
-<span style="color:#f92672">|</span> This tool lets you create a new Ethereum network down to  <span style="color:#f92672">|</span>
-<span style="color:#f92672">|</span> the genesis block, bootnodes, miners and ethstats servers <span style="color:#f92672">|</span>
-<span style="color:#f92672">|</span> without the hassle that it would normally entail.         <span style="color:#f92672">|</span>
-<span style="color:#f92672">|</span>                                                           <span style="color:#f92672">|</span>
-<span style="color:#f92672">|</span> Puppeth uses SSH to dial in to remote servers, and builds <span style="color:#f92672">|</span>
-<span style="color:#f92672">|</span> its network components out of Docker containers using the <span style="color:#f92672">|</span>
-<span style="color:#f92672">|</span> docker<span style="color:#f92672">-</span>compose toolset.                                   <span style="color:#f92672">|</span>
-<span style="color:#f92672">+</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">+</span>
+<pre><code class="language-s">$ mkdir test
+$ cd test
+~test $ puppeth
 
-lease specify a network name to <span style="color:#a6e22e">administer </span>(no spaces or hyphens, please)
-<span style="color:#f92672">&gt;</span> MyTest
++-----------------------------------------------------------+
+| Welcome to puppeth, your Ethereum private network manager |
+|                                                           |
+| This tool lets you create a new Ethereum network down to  |
+| the genesis block, bootnodes, miners and ethstats servers |
+| without the hassle that it would normally entail.         |
+|                                                           |
+| Puppeth uses SSH to dial in to remote servers, and builds |
+| its network components out of Docker containers using the |
+| docker-compose toolset.                                   |
++-----------------------------------------------------------+
 
-What would you like to do<span style="color:#f92672">?</span> (default <span style="color:#f92672">=</span> stats)
- <span style="color:#ae81ff">1</span>. Show network stats
- <span style="color:#ae81ff">2</span>. Manage existing genesis
- <span style="color:#ae81ff">3</span>. Track new remote server
- <span style="color:#ae81ff">4</span>. Deploy network components
-<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>
+lease specify a network name to administer (no spaces or hyphens, please)
+&gt; MyTest
+
+What would you like to do? (default = stats)
+ 1. Show network stats
+ 2. Manage existing genesis
+ 3. Track new remote server
+ 4. Deploy network components
+&gt; 2
 
 (설정 중략)
 
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> ls
-<span style="color:#f92672">&gt;</span> MyTest.json
-</code></pre></div><p><br /></p>
+~test $ ls
+&gt; MyTest.json
+</code></pre>
+
+<p><br /></p>
+
 <p><strong><em>Network ID</em></strong></p>
+
 <ul>
 <li><code>1</code>: Ethereum Main Network</li>
 <li><code>2</code>: Modern Test Network</li>
@@ -166,82 +178,108 @@ What would you like to do<span style="color:#f92672">?</span> (default <span sty
 <li><code>4</code>: Rinkeby Test Network</li>
 <li><code>42</code>: Kovan Test Network</li>
 </ul>
+
 <p><br /></p>
+
 <h3 id="2-geth">2. geth</h3>
-<h4 id="--init">- Init</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> geth <span style="color:#f92672">-</span><span style="color:#f92672">-</span>datadir . init MyNetwork.json
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> ls
+
+<h4 id="init">- Init</h4>
+
+<pre><code class="language-s">~test $ geth --datadir . init MyNetwork.json
+~test $ ls
 
 MyTest.json geth keystore
-</code></pre></div><ul>
+</code></pre>
+
+<ul>
 <li>geth: 블록체인에 관한 정보 디렉토리</li>
 <li>keystore: 계정 키 디렉토리 (private key)</li>
 </ul>
+
 <p><br /></p>
-<h4 id="--create-and-look-at-the-accounts-list">- Create and look at the accounts list</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> geth <span style="color:#f92672">-</span><span style="color:#f92672">-</span>datadir . account new
-Password<span style="color:#f92672">:</span>
-Repeat passphrase<span style="color:#f92672">:</span>
 
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> cd keystore
-<span style="color:#f92672">~</span>test keystore <span style="color:#f92672">$</span> ls
+<h4 id="create-and-look-at-the-accounts-list">- Create and look at the accounts list</h4>
 
-UTC<span style="color:#f92672">-</span><span style="color:#ae81ff">-2018</span><span style="color:#ae81ff">-10</span><span style="color:#ae81ff">-18</span>T11<span style="color:#ae81ff">-00</span><span style="color:#ae81ff">-04.313586000</span>Z<span style="color:#f92672">-</span><span style="color:#f92672">-</span>{key}
+<pre><code class="language-s">~test $ geth --datadir . account new
+Password:
+Repeat passphrase:
 
-<span style="color:#f92672">~</span>test keystore <span style="color:#f92672">$</span> cd ..
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> geth <span style="color:#f92672">-</span><span style="color:#f92672">-</span>datadir . account list
+~test $ cd keystore
+~test keystore $ ls
 
-Account <span style="color:#75715e">#0: {block-hash} keystore:///Users/test/keystore/UTC--2018-10-18T11-00-04.313586000Z--{key}</span>
-</code></pre></div><p><br /></p>
-<h2 id="-make-blockchain-now-macos">* Make Blockchain Now (macOS)</h2>
-<h3 id="1-startblockchainsh">1. startblockchain.sh</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> vi startblockchain.sh
+UTC--2018-10-18T11-00-04.313586000Z--{key}
 
-geth <span style="color:#f92672">-</span><span style="color:#f92672">-</span>datadir . <span style="color:#f92672">-</span><span style="color:#f92672">-</span>networkid <span style="color:#ae81ff">9999</span> <span style="color:#f92672">-</span><span style="color:#f92672">-</span>nodiscover <span style="color:#f92672">-</span><span style="color:#f92672">-</span>rpc <span style="color:#f92672">-</span><span style="color:#f92672">-</span>rpcport <span style="color:#ae81ff">8545</span> <span style="color:#f92672">-</span><span style="color:#f92672">-</span>rpccorsdomain <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">*&#34;</span> <span style="color:#f92672">-</span><span style="color:#f92672">-</span>rpcapi <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">eth,web3,personal,net&#34;</span> <span style="color:#f92672">-</span><span style="color:#f92672">-</span>nat any <span style="color:#f92672">-</span><span style="color:#f92672">-</span>unlock <span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span><span style="color:#f92672">-</span>password ./password.txt
-<span style="color:#f92672">~</span>
-<span style="color:#f92672">~</span>
-<span style="color:#f92672">~</span>
+~test keystore $ cd ..
+~test $ geth --datadir . account list
 
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> chmod <span style="color:#ae81ff">755</span> startblockchain.sh
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> sh startblockchain.sh or ./startblockchain.sh
+Account #0: {block-hash} keystore:///Users/test/keystore/UTC--2018-10-18T11-00-04.313586000Z--{key}
+</code></pre>
 
-INFO [10<span style="color:#ae81ff">-18</span><span style="color:#f92672">|</span><span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="color:#ae81ff">38</span><span style="color:#f92672">:</span><span style="color:#ae81ff">19.756</span>] Starting P2P networking
-INFO [10<span style="color:#ae81ff">-18</span><span style="color:#f92672">|</span><span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="color:#ae81ff">38</span><span style="color:#f92672">:</span><span style="color:#ae81ff">19.760</span>] IPC endpoint opened
-url<span style="color:#f92672">=</span><span style="color:#f92672">/</span>Users<span style="color:#f92672">/</span>test<span style="color:#f92672">/</span>MyTest<span style="color:#f92672">/</span>geth.ipc
+<p><br /></p>
 
-INFO [10<span style="color:#ae81ff">-18</span><span style="color:#f92672">|</span><span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="color:#ae81ff">38</span><span style="color:#f92672">:</span><span style="color:#ae81ff">19.761</span>] HTTP endpoint opened
-url<span style="color:#f92672">=</span>http<span style="color:#f92672">:</span><span style="color:#f92672">/</span><span style="color:#f92672">/</span><span style="color:#ae81ff">127.0</span><span style="color:#ae81ff">.0</span><span style="color:#ae81ff">.1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">8545</span>
+<h2 id="make-blockchain-now-macos">* Make Blockchain Now (macOS)</h2>
 
-cors<span style="color:#f92672">=</span><span style="color:#f92672">*</span> vhosts<span style="color:#f92672">=</span>localhost
-</code></pre></div><ol>
+<h3 id="1-startblockchain-sh">1. startblockchain.sh</h3>
+
+<pre><code class="language-s">~test $ vi startblockchain.sh
+
+geth --datadir . --networkid 9999 --nodiscover --rpc --rpcport 8545 --rpccorsdomain &quot;*&quot; --rpcapi &quot;eth,web3,personal,net&quot; --nat any --unlock 0 --password ./password.txt
+~
+~
+~
+
+~test $ chmod 755 startblockchain.sh
+~test $ sh startblockchain.sh or ./startblockchain.sh
+
+INFO [10-18|21:38:19.756] Starting P2P networking
+INFO [10-18|21:38:19.760] IPC endpoint opened
+url=/Users/test/MyTest/geth.ipc
+
+INFO [10-18|21:38:19.761] HTTP endpoint opened
+url=http://127.0.0.1:8545
+
+cors=* vhosts=localhost
+</code></pre>
+
+<ol>
 <li><code>755</code> means allows all W, R, E</li>
 <li>W, R, E means Writing, Reading, Executing</li>
 </ol>
+
 <p><br /></p>
-<h3 id="2-startgethconsolesh">2. startgethconsole.sh</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> vi startgethconsole.sh
 
-geth attach ipc<span style="color:#f92672">:</span><span style="color:#f92672">/</span>Users<span style="color:#f92672">/</span>test<span style="color:#f92672">/</span>MyTest<span style="color:#f92672">/</span>geth.ipc
-<span style="color:#f92672">~</span>
-<span style="color:#f92672">~</span>
-<span style="color:#f92672">~</span>
+<h3 id="2-startgethconsole-sh">2. startgethconsole.sh</h3>
 
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> sh startgethconsole.sh or ./startgethconsole.sh
-</code></pre></div><ol>
+<pre><code class="language-s">~test $ vi startgethconsole.sh
+
+geth attach ipc:/Users/test/MyTest/geth.ipc
+~
+~
+~
+
+~test $ sh startgethconsole.sh or ./startgethconsole.sh
+</code></pre>
+
+<ol>
 <li>Directory is the IPC endpoint url of geth</li>
 <li>Copy it from terminal (startblockchain.sh)</li>
 </ol>
+
 <p><br /></p>
-<h3 id="3-startmistsh">3. startmist.sh</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> vi startmist.sh
 
-<span style="color:#f92672">/</span>Applications<span style="color:#f92672">/</span>Mist.app<span style="color:#f92672">/</span>Contents<span style="color:#f92672">/</span>MacOS<span style="color:#f92672">/</span>Mist <span style="color:#f92672">-</span><span style="color:#f92672">-</span>rpc <span style="color:#f92672">/</span>Users<span style="color:#f92672">/</span>test<span style="color:#f92672">/</span>MyTest<span style="color:#f92672">/</span>geth.ipc
-<span style="color:#f92672">~</span>
-<span style="color:#f92672">~</span>
-<span style="color:#f92672">~</span>
+<h3 id="3-startmist-sh">3. startmist.sh</h3>
 
-<span style="color:#f92672">~</span>test <span style="color:#f92672">$</span> sh startmist.sh or ./startmist.sh
-</code></pre></div><ol>
+<pre><code class="language-s">~test $ vi startmist.sh
+
+/Applications/Mist.app/Contents/MacOS/Mist --rpc /Users/test/MyTest/geth.ipc
+~
+~
+~
+
+~test $ sh startmist.sh or ./startmist.sh
+</code></pre>
+
+<ol>
 <li>can use <code>--ipc</code> option instead of <code>--rpc</code>.</li>
 <li>But! sometimes got error for <code>--ipc</code>, IDK yet!</li>
 </ol>
@@ -333,7 +371,7 @@ geth attach ipc<span style="color:#f92672">:</span><span style="color:#f92672">/
 </main>
 
         <footer>
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         
