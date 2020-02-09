@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -121,77 +121,61 @@
 
     </div>
 
-    <div align="start" class="content">
-
-<h3 id="what-is-directive">What is directive ?</h3>
-
-<p>Use it to attach custom behavior to elements in the DOM.
+    <div align="start" class="content"><h3 id="what-is-directive-">What is directive ?</h3>
+<p>Use it to attach custom behavior to elements in the DOM.<br />
 <br /><br /><hr></p>
-
 <h3 id="basic-example">Basic Example</h3>
-
 <blockquote>
 <p>This is a simple directive to change chevron background-image as clicking the element.</p>
 </blockquote>
-
 <h4 id="1-html">1. HTML</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">label</span>
+  <span style="color:#a6e22e">appChevron</span>
+  <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chevron&#34;</span>
+  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;background-image: url(&#39;/assets/images/arrow-down.svg&#39;);&#34;</span>
+&gt;&lt;/<span style="color:#f92672">label</span>&gt;
+</code></pre></div><p><br /><br /></p>
+<h4 id="2-ts-of-course-it-needs-to-be-imported-to-appmodulets-declarations">2. TS (Of course it needs to be imported to app.module.ts declarations)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Directive</span>, <span style="color:#a6e22e">ElementRef</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@angular/core&#34;</span>;
 
-<pre><code class="language-html">&lt;label
-  appChevron
-  class=&quot;chevron&quot;
-  style=&quot;background-image: url('/assets/images/arrow-down.svg');&quot;
-&gt;&lt;/label&gt;
-</code></pre>
-
-<p><br /><br /></p>
-
-<h4 id="2-ts-of-course-it-needs-to-be-imported-to-app-module-ts-declarations">2. TS (Of course it needs to be imported to app.module.ts declarations)</h4>
-
-<pre><code class="language-typescript">import { Directive, ElementRef } from &quot;@angular/core&quot;;
-
-@Directive({
-  selector: &quot;[appChevron]&quot;
+<span style="color:#66d9ef">@Directive</span>({
+  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[appChevron]&#34;</span>
 })
-export class ChevronValidate {
-  constructor(el: ElementRef) {
-    const div = document.createElement(&quot;div&quot;);
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChevronValidate</span> {
+  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">el</span>: <span style="color:#66d9ef">ElementRef</span>) {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;div&#34;</span>);
 
-    div.style.width = &quot;100%&quot;;
-    div.style.height = &quot;100%&quot;;
-    div.onclick = () =&gt; {
-      let bg = el.nativeElement.style.backgroundImage;
+    <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;100%&#34;</span>;
+    <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;100%&#34;</span>;
+    <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span>;
 
-      if (bg.indexOf(&quot;down&quot;) !== -1) {
-        el.nativeElement.style.backgroundImage = `url('/assets/images/chevron-up.svg')`;
-      } else {
-        el.nativeElement.style.backgroundImage = `url('/assets/images/chevron-down.svg')`;
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">bg</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;down&#34;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+        <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">url(&#39;/assets/images/chevron-up.svg&#39;)</span><span style="color:#e6db74">`</span>;
+      } <span style="color:#66d9ef">else</span> {
+        <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">url(&#39;/assets/images/chevron-down.svg&#39;)</span><span style="color:#e6db74">`</span>;
       }
     };
 
-    el.nativeElement.appendChild(div);
+    <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">div</span>);
   }
 }
-</code></pre>
-
-<p>Someone think like &ldquo;why did make stupid div in directive?&rdquo;. The reason why is because angular directive is not officially allow sending other element except the one marked that directive selector.
+</code></pre></div><p>Someone think like &ldquo;why did make stupid div in directive?&quot;. The reason why is because angular directive is not officially allow sending other element except the one marked that directive selector.<br />
 <br /><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">/</span><span style="color:#f92672">/</span> HTML
+<span style="color:#f92672">&lt;</span>label [appChevron]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">clickElem&#34;</span> <span style="color:#66d9ef">...</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span>div <span style="color:#75715e">#clickElem click=&#34;something&#34;&gt;&lt;/div&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>label<span style="color:#f92672">&gt;</span>
 
-<pre><code class="language-s">// HTML
-&lt;label [appChevron]=&quot;clickElem&quot; ...&gt;
-    &lt;div #clickElem click=&quot;something&quot;&gt;&lt;/div&gt;
-&lt;/label&gt;
-
-// TS
-...
+<span style="color:#f92672">/</span><span style="color:#f92672">/</span> TS
+<span style="color:#66d9ef">...</span>
 export class ChevronValidate {
-  @Input('clickElem') elem: ElementRef;
+  <span style="color:#f92672">@</span><span style="color:#a6e22e">Input</span>(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">clickElem&#39;</span>) elem<span style="color:#f92672">:</span> ElementRef;
 
-  constructor(el: ElementRef) {
+  <span style="color:#a6e22e">constructor</span>(el<span style="color:#f92672">:</span> ElementRef) {
   }
 }
-</code></pre>
-
-<p>There is actually no syntax error. But you got <code>undefined</code> or error when you try attach to nativeElement with received element in directive. So I think it is better to use directive to only marked element in HTML.</p>
+</code></pre></div><p>There is actually no syntax error. But you got <code>undefined</code> or error when you try attach to nativeElement with received element in directive. So I think it is better to use directive to only marked element in HTML.</p>
 </div>
 
     
@@ -226,7 +210,7 @@ export class ChevronValidate {
 </main>
 
         <footer>
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         

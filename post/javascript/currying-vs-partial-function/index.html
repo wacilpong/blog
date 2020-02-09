@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Partial function and currying in javascript</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Partial function and currying in javascript</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Partial function and currying in javascript</h2>
+        <h5>February 9, 2020</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="partial-function">Partial Function</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sum10</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">10</span>);
+
+<span style="color:#a6e22e">sum10</span>(<span style="color:#ae81ff">5</span>); <span style="color:#75715e">// 15
+</span></code></pre></div><p>부분함수는 어떤 함수의 arguments에서 일부를 고정하여 원래 함수를 반환하는 함수이다. 즉, 함수를 체이닝하기 때문에 함수를 재활용하는 데 활용할 수 있겠다. 위 예시의 <code>sum10</code>은 <code>sum</code>함수에서 argument 하나를 10으로 고정하여, 무조건 10과 첫번째 parameter의 합이 반환되는 부분 함수이다.</p>
+<hr />
+<h2 id="currying">currying</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> =&gt; <span style="color:#a6e22e">b</span> =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+
+<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">5</span>)(<span style="color:#ae81ff">2</span>); <span style="color:#75715e">// 7
+</span></code></pre></div><p>커링은 여러 개의 arguments를 단일로 처리하는 함수를, 여러 번 call하는 프로세스 형태로 바꾸는 기법이다. 따라서 위 예시의 <code>sum</code>은 커링이 적용된 함수이다. 함수호출 특성상 모든 호출이 끝난 후에 함수실행이 종료되므로, 지연시켜서 실행해야 하거나 내부에서 어떠한 값을 memoization해야 하는 경우에 사용할 수 있겠다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">curry</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">func</span> =&gt;
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">_curry</span>(...<span style="color:#a6e22e">args</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">func</span>.<span style="color:#a6e22e">length</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">func</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">args</span>);
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> (...<span style="color:#a6e22e">args2</span>) =&gt; <span style="color:#a6e22e">_curry</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, [...<span style="color:#a6e22e">args</span>, ...<span style="color:#a6e22e">args2</span>]);
+  };
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">log</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">date</span>, <span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">message</span>) =&gt;
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">date</span>.<span style="color:#a6e22e">getHours</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">date</span>.<span style="color:#a6e22e">getMinutes</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">type</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">message</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+
+<span style="color:#a6e22e">curry</span>(<span style="color:#a6e22e">log</span>)(<span style="color:#66d9ef">new</span> Date())(<span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;roomy is studying now&#34;</span>);
+<span style="color:#a6e22e">curry</span>(<span style="color:#a6e22e">log</span>)(<span style="color:#66d9ef">new</span> Date())(<span style="color:#e6db74">&#34;INFO&#34;</span>)(<span style="color:#e6db74">&#34;roomy is studying now&#34;</span>);
+<span style="color:#a6e22e">curry</span>(<span style="color:#a6e22e">log</span>)(<span style="color:#66d9ef">new</span> Date(), <span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;roomy is studying now&#34;</span>);
+</code></pre></div><p>위 예시의 <code>curry</code>함수는 함수를 받은 후에 해당 함수의 arguments를 다중 호출하여 넘길 수 있도록 바꾸어주는, 즉 받은 함수를 커리된 함수로 만들어주는 함수이다. 또한 다중 호출하지 않더라도 넘겨받는 함수의 고정된 arguments의 길이를 기억하고 있으므로 여러 인자를 넘겨도 동일한 효과를 낸다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">curryN</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">func</span>, ...<span style="color:#a6e22e">args</span>) =&gt;
+  <span style="color:#66d9ef">function</span>(...<span style="color:#a6e22e">args2</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">args2</span>.<span style="color:#a6e22e">length</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">curryN</span>(<span style="color:#a6e22e">func</span>, ...<span style="color:#a6e22e">args</span>, ...<span style="color:#a6e22e">args2</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">func</span>(...<span style="color:#a6e22e">args</span>);
+  };
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sumN</span> <span style="color:#f92672">=</span> (...<span style="color:#a6e22e">args</span>) =&gt; <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">acc</span>, <span style="color:#a6e22e">cur</span>) =&gt; <span style="color:#a6e22e">acc</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cur</span>, <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sumFunction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">curryN</span>(<span style="color:#a6e22e">sumN</span>)(<span style="color:#ae81ff">10</span>)(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>)(<span style="color:#ae81ff">5</span>);
+
+<span style="color:#a6e22e">sumFunction</span>(); <span style="color:#75715e">// 30
+</span></code></pre></div><p>만약 arguments가 얼마나 올지 모른다면,<code>curryN</code> 함수처럼 N개의 arguments를 만났을 때 처음에 넘어왔던 arguments들과 합치는 과정을 재귀로 반복하여 구현해볼 수 있다. 그리고 아무 값도 넘기지 않고 <code>커링이 적용된 func</code>를 호출할 때만 비로소 넘겨받은 <code>func</code>를 호출하도록 한다.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript/hoisting-about-function/">Hoisting about function</a></h4>
+    <h5>December 4, 2019</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript/splice-your-array/">Splice Array</a></h4>
+    <h5>November 1, 2019</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

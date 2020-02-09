@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -125,45 +125,29 @@
 
     </div>
 
-    <div align="start" class="content">
-
-<h2 id="flow"><em>flow</em></h2>
-
+    <div align="start" class="content"><h2 id="-flow-"><em>flow</em></h2>
 <ol>
 <li>Request a certification for SSL/TLS in ACM (AWS Certificate Manager).</li>
 <li>Create ELB (Elastic Load Balancer) from EC2 management console.</li>
 <li>Create EC2 instance, and connect to ELB.</li>
 <li>Create record set or new hosted zone, and set alias the ELB in Route53.</li>
 <li>Access SSH with the keypair that can be generated while creating EC2 instance.</li>
-<li>Now we can access public IP if we didn&rsquo;t configure anything in AWS console. So, connect that IP in shell.</li>
+<li>Now we can access public IP if we didn't configure anything in AWS console. So, connect that IP in shell.</li>
 <li>Create server, routing configuration and mark-up files.</li>
 <li>DONE</li>
 </ol>
-
 <p><br /><hr></p>
-
-<h3 id="step-1-get-certification-for-ssl-tls">Step 1. Get certification for SSL/TLS</h3>
-
+<h3 id="step-1-get-certification-for-ssltls">Step 1. Get certification for SSL/TLS</h3>
 <p><strong>(1)</strong> Add domain names which would be protected. I set <code>asteric(*)</code> as I have similiar domains.</p>
-
 <p>인증서를 적용할 도메인을 입력한다. 나는 <code>*.example.com</code>처럼 동일한 형식의 도메인이 있었기에 <code>asteric(*)</code>을 지정했다.</p>
-
 <p><br /></p>
-
 <p><strong>(2)</strong> Select validation method, but I think people usually select Email. Then AWS will send the validation email to Domain registrant, Technical contact, Administrative contact, not an IAM (Identity and Access Management) account.</p>
-
 <p>입력한 도메인의 유효검사 방식을 선택하는데, 보통 이메일로 하는 것 같다. 체크한 후에는 IAM (Identity and Access Management) 계정이 아니라 도메인 등록자, 기술담당자, 관리자 계정으로 이메일이 발송되니까 유의하자.</p>
-
 <p><br /></p>
-
 <p><strong>(3)</strong> Check email validation, then certificate will be issued successfully.</p>
-
 <p>이메일에서 유효검사를 마치면 입력한 도메인에 대한 인증서가 발급된다.</p>
-
 <p><br /><br /></p>
-
 <h3 id="step-2-create-load-balancer">Step 2. Create Load Balancer</h3>
-
 <p><strong>(1)</strong> writing&hellip;</p>
 </div>
 
@@ -261,7 +245,7 @@
 </main>
 
         <footer>
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         

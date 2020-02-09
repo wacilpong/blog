@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Roomy</title>
@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Partial function and currying in javascript</title>
+      <link>https://wacilpong.github.io/blog/post/javascript/currying-vs-partial-function/</link>
+      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript/currying-vs-partial-function/</guid>
+      <description>Partial Function const sum = (a, b) =&amp;gt; a + b; const sum10 = sum.bind(null, 10); sum10(5); // 15 부분함수는 어떤 함수의 arguments에서 일부를 고정하여 원래 함수를 반환하는 함수이다. 즉, 함수를 체이닝하</description>
+    </item>
     
     <item>
       <title>Babel polyfill and babel runtime</title>
@@ -26,7 +35,7 @@
       <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/solve/untranspiled-published-external-library/</guid>
-      <description>jest in CRA // react-scripts/config/jest/babelTransform.js const babelJest = require(&amp;quot;babel-jest&amp;quot;); module.exports = babelJest.createTransformer({ presets: [require.resolve(&amp;quot;babel-preset-react-app&amp;quot;)], babelrc: false, configFile: false }); create-react-app 로 만들어진 리액트 프로젝트에는 jest가 이미 적용되어 있는데, react-scripts 의 jest 설정부분을 보면 알 수 있다. 그런데 jes</description>
+      <description>jest in CRA // react-scripts/config/jest/babelTransform.js const babelJest = require(&amp;#34;babel-jest&amp;#34;); module.exports = babelJest.createTransformer({ presets: [require.resolve(&amp;#34;babel-preset-react-app&amp;#34;)], babelrc: false, configFile: false }); create-react-app 로 만들어진 리액트 프로젝트에는 jest가 이미 적용되어 있는데, react-scripts 의 jest 설정부분을 보면 알 수 있다. 그런데 jes</description>
     </item>
     
     <item>
@@ -125,7 +134,7 @@
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-7/</guid>
-      <description> Token economy project example  example: Toon Hub  </description>
+      <description>Token economy project example : example: Toon Hub</description>
     </item>
     
     <item>
@@ -143,7 +152,7 @@
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-5/</guid>
-      <description>* geth REPL (Read Eval Print Loop) REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands. miner.start() eth.pendingTransactions eth.getTransaction(&amp;quot;{transaction-hash-id}&amp;quot;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1]) pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account. - web3 Ethereum javascript API, so, can manage ethereum blockchain transactions in web browser. Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db:</description>
+      <description>* geth REPL (Read Eval Print Loop) REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands. miner.start() eth.pendingTransactions eth.getTransaction(&amp;#34;{transaction-hash-id}&amp;#34;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1]) pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account. - web3 Ethereum javascript API, so, can manage ethereum blockchain transactions in web browser. Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db:</description>
     </item>
     
     <item>
@@ -161,7 +170,7 @@
       <pubDate>Wed, 17 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-3/</guid>
-      <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉! 3G blockchain: EOS Steemit, bitshare를 만든 댄 라리머가</description>
+      <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉! 3G blockchain: EOS : Steemit, bitshare를 만든 댄 라리머</description>
     </item>
     
     <item>
@@ -170,7 +179,7 @@
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-2/</guid>
-      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&amp;rsquo;의 목적을 모두 충족하면서 암호화된 화</description>
+      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&#39;의 목적을 모두 충족하면서 암호화된 화폐이다. - Bitcoin</description>
     </item>
     
     <item>
@@ -188,10 +197,11 @@
       <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/angular-directive/</guid>
-      <description>What is directive ? Use it to attach custom behavior to elements in the DOM. 
+      <description>What is directive ? Use it to attach custom behavior to elements in the DOM.
+
 Basic Example  This is a simple directive to change chevron background-image as clicking the element.
- 1. HTML &amp;lt;label appChevron class=&amp;quot;chevron&amp;quot; style=&amp;quot;background-image: url(&#39;/assets/images/arrow-down.svg&#39;);&amp;quot; &amp;gt;&amp;lt;/label&amp;gt;  
-2. TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &amp;quot;@angular/core&amp;quot;; @Directive({ selector: &amp;quot;[appChevron]&amp;quot; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
+ 1. HTML &amp;lt;label appChevron class=&amp;#34;chevron&amp;#34; style=&amp;#34;background-image: url(&amp;#39;/assets/images/arrow-down.svg&amp;#39;);&amp;#34; &amp;gt;&amp;lt;/label&amp;gt; 
+2. TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &amp;#34;@angular/core&amp;#34;; @Directive({ selector: &amp;#34;[appChevron]&amp;#34; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
     </item>
     
     <item>
@@ -217,7 +227,7 @@ Change permission of file I will change mode of key file and connect to ssh with
 
 2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
 
-3. Connect domain with CloudFront If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
+3. Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
     </item>
     
     <item>
@@ -226,7 +236,7 @@ Change permission of file I will change mode of key file and connect to ssh with
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/environment/set-https-with-aws/</guid>
-      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect</description>
+      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&#39;t configure anything in AWS console. So, connect</description>
     </item>
     
     <item>

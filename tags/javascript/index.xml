@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>javascript on Roomy</title>
@@ -6,10 +6,19 @@
     <description>Recent content in javascript on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Partial function and currying in javascript</title>
+      <link>https://wacilpong.github.io/blog/post/javascript/currying-vs-partial-function/</link>
+      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript/currying-vs-partial-function/</guid>
+      <description>Partial Function const sum = (a, b) =&amp;gt; a + b; const sum10 = sum.bind(null, 10); sum10(5); // 15 부분함수는 어떤 함수의 arguments에서 일부를 고정하여 원래 함수를 반환하는 함수이다. 즉, 함수를 체이닝하</description>
+    </item>
     
     <item>
       <title>Hoisting about function</title>
