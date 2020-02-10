@@ -34,7 +34,7 @@ sum(5)(2); // 7
 const curry = func =>
   function _curry(...args) {
     if (args.length >= func.length) return func.apply(this, args);
-    else return (...args2) => _curry.apply(this, [...args, ...args2]);
+    return (...args2) => _curry.apply(this, [...args, ...args2]);
   };
 const log = (date, type, message) =>
   console.log(`${date.getHours()}:${date.getMinutes()}, ${type}, ${message}`);
