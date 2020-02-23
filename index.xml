@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -38,6 +38,15 @@ https://tkit.me
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Scroll restoration</title>
+      <link>https://wacilpong.github.io/blog/post/javascript/scroll-restoration/</link>
+      <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript/scroll-restoration/</guid>
+      <description>재미있는 현상을 발견했다. 스크롤을 내리다가 특정 페이지로 이동 후, 다시 전 페이지로 이동(뒤로가기)하면 스크롤 위치를 기억하지 못하는 것이다. 왜 이럴까 한번</description>
     </item>
     
     <item>
