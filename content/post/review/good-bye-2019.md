@@ -1,7 +1,7 @@
 ---
 title: "Good bye 2019"
 date: "2019-12-27"
-tags: ["회고"]
+tags: ["review"]
 draft: false
 ---
 

@@ -1,5 +1,5 @@
 baseURL = "https://wacilpong.github.io/blog/"
-languageCode = "en-us"
+languageCode = "kr-ko"
 title = "Roomy"
 theme = "minimal"
 hasCJKLanguage = true
@@ -49,9 +49,14 @@ disqusShortname = "roomy-han"
     weight = 2
 
 [[menu.main]]
+    url = "/tags/"
+    name = "Tags"
+    weight = 3
+
+[[menu.main]]
     url = "/project/"
     name = "Projects"
-    weight = 3
+    weight = 4
 
 [[menu.icon]]
     url = "https://github.com/wacilpong/"
@@ -61,4 +66,4 @@ disqusShortname = "roomy-han"
 [[menu.icon]]
     url = "https://www.linkedin.com/in/areum-han-a10645118/"
     name = "linkedin"
-    weight = 3
+    weight = 2

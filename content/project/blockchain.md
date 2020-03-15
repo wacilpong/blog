@@ -1,7 +1,6 @@
 ---
 title: "Mushroomy's dapping blockchain story"
 description: "blockchain class"
-tags: ["blockchain"]
 weight: 1
 draft: false
 ---

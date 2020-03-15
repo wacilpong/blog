@@ -1,7 +1,7 @@
 ---
 title: "Babel polyfill and babel runtime"
 date: "2020-01-17"
-tags: ["babel", "environment"]
+tags: ["configuration"]
 draft: false
 ---
 

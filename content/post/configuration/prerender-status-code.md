@@ -1,7 +1,7 @@
 ---
 title: "Prerender Status Code"
 date: "2019-10-06"
-tags: ["SEO", "prerender", "environment"]
+tags: ["configuration"]
 draft: false
 ---
 

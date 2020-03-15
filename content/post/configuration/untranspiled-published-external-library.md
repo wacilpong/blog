@@ -1,7 +1,7 @@
 ---
 title: "Test with jest the untranspiled external libraries"
 date: "2020-01-02"
-tags: ["jest", "solve"]
+tags: ["configuration"]
 draft: false
 ---
 

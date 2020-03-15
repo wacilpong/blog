@@ -11,7 +11,7 @@ draft: false
 
 ## history.scrollRestoration
 
-좀 찾아보니 이런 속성이 있었다. history 객체에는 브라우저 안에서 사용자가 방문한 URL들이 기록된다. window 객체 내부에 들어있기 때문에 window안에서 접근할 수 있다. 이러한 history API의 action으로는 아래의 세 가지가 있다.
+SPA를 하면서 발견한 현상이어서 SPA에서만 발생하는 문제일까 싶어서 `scroll restore in spa` 등으로 검색해서 좀 찾아보니 이런 속성이 있었다. history 객체에는 브라우저 안에서 사용자가 방문한 URL들이 기록된다. window 객체 내부에 들어있기 때문에 window안에서 접근할 수 있다. 이러한 history API의 action으로는 아래의 세 가지가 있다.
 
 - [PUSH](https://developer.mozilla.org/ko/docs/Web/API/History/pushState) : 브라우저의 세션 기록 스택에 상태를 추가
 - [POP](https://developer.mozilla.org/ko/docs/Web/API/Window/popstate_event) : 현재 활성화된 세션 기록 항목이 바뀔 때 발생

@@ -1,7 +1,7 @@
 ---
 title: "When we connect ssh with .pem"
-date: 2018-04-03
-tags: ["linux", "ssh", "environment"]
+date: "2018-04-03"
+tags: ["configuration"]
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "My recently junior web developer interview"
 date: "2017-12-11"
-tags: ["interview"]
+tags: ["review"]
 draft: false
 ---
 
