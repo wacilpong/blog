@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="kr-ko">
     <head>
         
 
@@ -92,6 +92,8 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
+                                <li><a href="/blog/tags/">Tags</a></li>
+                            
                                 <li><a href="/blog/project/">Projects</a></li>
                             
                         </ul>
@@ -124,7 +126,7 @@
     <div align="start" class="content"><p>재미있는 현상을 발견했다. 스크롤을 내리다가 특정 페이지로 이동 후, 다시 전 페이지로 이동(뒤로가기)하면 스크롤 위치를 기억하지 못하는 것이다. 왜 이럴까 한번 파보았다.</p>
 <hr />
 <h2 id="historyscrollrestoration">history.scrollRestoration</h2>
-<p>좀 찾아보니 이런 속성이 있었다. history 객체에는 브라우저 안에서 사용자가 방문한 URL들이 기록된다. window 객체 내부에 들어있기 때문에 window안에서 접근할 수 있다. 이러한 history API의 action으로는 아래의 세 가지가 있다.</p>
+<p>SPA를 하면서 발견한 현상이어서 SPA에서만 발생하는 문제일까 싶어서 <code>scroll restore in spa</code> 등으로 검색해서 좀 찾아보니 이런 속성이 있었다. history 객체에는 브라우저 안에서 사용자가 방문한 URL들이 기록된다. window 객체 내부에 들어있기 때문에 window안에서 접근할 수 있다. 이러한 history API의 action으로는 아래의 세 가지가 있다.</p>
 <ul>
 <li><a href="https://developer.mozilla.org/ko/docs/Web/API/History/pushState">PUSH</a> : 브라우저의 세션 기록 스택에 상태를 추가</li>
 <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Window/popstate_event">POP</a> : 현재 활성화된 세션 기록 항목이 바뀔 때 발생</li>

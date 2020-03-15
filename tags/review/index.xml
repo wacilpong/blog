@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>review on Roomy</title>
+    <link>https://wacilpong.github.io/blog/tags/review/</link>
+    <description>Recent content in review on Roomy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>kr-ko</language>
+    <lastBuildDate>Fri, 27 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wacilpong.github.io/blog/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Good bye 2019</title>
+      <link>https://wacilpong.github.io/blog/post/review/good-bye-2019/</link>
+      <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/good-bye-2019/</guid>
+      <description>난생 처음 쓰는 회고. 간단하게 월별로 내가 뭘 했는지 한번 기록해보자. 월별기록 1월, 2월 프론트엔드 개발자, 혹은 팬케이크형 인간으로의 진화 이직을 결심하게 된</description>
+    </item>
+    
+    <item>
+      <title>After reading clean architecture, by Robert C. Martine</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-clean-architecture/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-clean-architecture/</guid>
+      <description>클린 아키텍쳐를 읽고 내맘대로 정리해보았다. 컴포넌트 모든 언어에서 컴포넌트는 배포할 수 있는 단위 입자 동일한 시점에 동일한 이유로 변경되는 것들을 한데 묶고, 서</description>
+    </item>
+    
+    <item>
+      <title>My recently junior web developer interview</title>
+      <link>https://wacilpong.github.io/blog/post/review/my-recently-interview/</link>
+      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/my-recently-interview/</guid>
+      <description>what kind of companies? 힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다. 블록체인, 핀테크, 클라우드IDE, AI 등등 다양한 분야의 회사에 신입 개발자로 지원했다. 프론트엔</description>
+    </item>
+    
+  </channel>
+</rss>

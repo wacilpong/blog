@@ -5,11 +5,20 @@
     <link>https://wacilpong.github.io/blog/tags/</link>
     <description>Recent content in Tags on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 23 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <language>kr-ko</language>
+    <lastBuildDate>Sun, 15 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>html</title>
+      <link>https://wacilpong.github.io/blog/tags/html/</link>
+      <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/html/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>javascript</title>
@@ -21,101 +30,20 @@
     </item>
     
     <item>
-      <title>babel</title>
-      <link>https://wacilpong.github.io/blog/tags/babel/</link>
+      <title>configuration</title>
+      <link>https://wacilpong.github.io/blog/tags/configuration/</link>
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/babel/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/configuration/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>environment</title>
-      <link>https://wacilpong.github.io/blog/tags/environment/</link>
-      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/environment/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>jest</title>
-      <link>https://wacilpong.github.io/blog/tags/jest/</link>
-      <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/jest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>solve</title>
-      <link>https://wacilpong.github.io/blog/tags/solve/</link>
-      <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/solve/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>회고</title>
-      <link>https://wacilpong.github.io/blog/tags/%ED%9A%8C%EA%B3%A0/</link>
+      <title>review</title>
+      <link>https://wacilpong.github.io/blog/tags/review/</link>
       <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/%ED%9A%8C%EA%B3%A0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>architecture</title>
-      <link>https://wacilpong.github.io/blog/tags/architecture/</link>
-      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/architecture/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>read</title>
-      <link>https://wacilpong.github.io/blog/tags/read/</link>
-      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/read/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>prerender</title>
-      <link>https://wacilpong.github.io/blog/tags/prerender/</link>
-      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/prerender/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SEO</title>
-      <link>https://wacilpong.github.io/blog/tags/seo/</link>
-      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/seo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>react</title>
-      <link>https://wacilpong.github.io/blog/tags/react/</link>
-      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/react/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>html</title>
-      <link>https://wacilpong.github.io/blog/tags/html/</link>
-      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/html/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/review/</guid>
       <description></description>
     </item>
     
@@ -125,132 +53,6 @@
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/tags/blockchain/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>angular</title>
-      <link>https://wacilpong.github.io/blog/tags/angular/</link>
-      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/angular/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://wacilpong.github.io/blog/tags/linux/</link>
-      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ssh</title>
-      <link>https://wacilpong.github.io/blog/tags/ssh/</link>
-      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/ssh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>aws</title>
-      <link>https://wacilpong.github.io/blog/tags/aws/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>deploy</title>
-      <link>https://wacilpong.github.io/blog/tags/deploy/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/deploy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>https</title>
-      <link>https://wacilpong.github.io/blog/tags/https/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/https/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mongoDB</title>
-      <link>https://wacilpong.github.io/blog/tags/mongodb/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/mongodb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://wacilpong.github.io/blog/tags/python/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>interview</title>
-      <link>https://wacilpong.github.io/blog/tags/interview/</link>
-      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/interview/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bot</title>
-      <link>https://wacilpong.github.io/blog/tags/bot/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/bot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>chatbot</title>
-      <link>https://wacilpong.github.io/blog/tags/chatbot/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/chatbot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>slack</title>
-      <link>https://wacilpong.github.io/blog/tags/slack/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/slack/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tkit</title>
-      <link>https://wacilpong.github.io/blog/tags/tkit/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/tkit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>typescript</title>
-      <link>https://wacilpong.github.io/blog/tags/typescript/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/typescript/</guid>
       <description></description>
     </item>
     

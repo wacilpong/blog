@@ -5,7 +5,7 @@
     <link>https://wacilpong.github.io/blog/tags/javascript/</link>
     <description>Recent content in javascript on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>kr-ko</language>
     <lastBuildDate>Sun, 23 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
@@ -45,6 +45,28 @@
       
       <guid>https://wacilpong.github.io/blog/post/javascript/splice-your-array/</guid>
       <description>가끔 Array.prototype.splice()가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때! Sometimes I confused about Array.prototype.splice() function, especially when assign the returned value from this ! Array.prototype.splice() do</description>
+    </item>
+    
+    <item>
+      <title>File structure with React</title>
+      <link>https://wacilpong.github.io/blog/post/javascript/react-file-structure/</link>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript/react-file-structure/</guid>
+      <description>Why I am considering it 앵귤러 5+로 프로젝트를 진행하다가 리액트를 쓰게 되었는데, 앵귤러는 처음 1.x버전부터 본인을 MVW(Model-View-Whateve</description>
+    </item>
+    
+    <item>
+      <title>Angular directive example</title>
+      <link>https://wacilpong.github.io/blog/post/javascript/angular-directive/</link>
+      <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript/angular-directive/</guid>
+      <description>What is directive ? Use it to attach custom behavior to elements in the DOM.
+
+Basic Example  This is a simple directive to change chevron background-image as clicking the element.
+ 1. HTML &amp;lt;label appChevron class=&amp;#34;chevron&amp;#34; style=&amp;#34;background-image: url(&amp;#39;/assets/images/arrow-down.svg&amp;#39;);&amp;#34; &amp;gt;&amp;lt;/label&amp;gt; 
+2. TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &amp;#34;@angular/core&amp;#34;; @Directive({ selector: &amp;#34;[appChevron]&amp;#34; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
     </item>
     
   </channel>

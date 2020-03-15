@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Angular directive example</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Angular directive example</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/tags/">Tags</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Angular directive example</h2>
+        <h5>August 2, 2018</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h3 id="what-is-directive-">What is directive ?</h3>
+<p>Use it to attach custom behavior to elements in the DOM.<br />
+<br /><br /><hr></p>
+<h3 id="basic-example">Basic Example</h3>
+<blockquote>
+<p>This is a simple directive to change chevron background-image as clicking the element.</p>
+</blockquote>
+<h4 id="1-html">1. HTML</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">label</span>
+  <span style="color:#a6e22e">appChevron</span>
+  <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chevron&#34;</span>
+  <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;background-image: url(&#39;/assets/images/arrow-down.svg&#39;);&#34;</span>
+&gt;&lt;/<span style="color:#f92672">label</span>&gt;
+</code></pre></div><p><br /><br /></p>
+<h4 id="2-ts-of-course-it-needs-to-be-imported-to-appmodulets-declarations">2. TS (Of course it needs to be imported to app.module.ts declarations)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Directive</span>, <span style="color:#a6e22e">ElementRef</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@angular/core&#34;</span>;
+
+<span style="color:#66d9ef">@Directive</span>({
+  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[appChevron]&#34;</span>
+})
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChevronValidate</span> {
+  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">el</span>: <span style="color:#66d9ef">ElementRef</span>) {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;div&#34;</span>);
+
+    <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;100%&#34;</span>;
+    <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;100%&#34;</span>;
+    <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span>;
+
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">bg</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;down&#34;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+        <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">url(&#39;/assets/images/chevron-up.svg&#39;)</span><span style="color:#e6db74">`</span>;
+      } <span style="color:#66d9ef">else</span> {
+        <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">url(&#39;/assets/images/chevron-down.svg&#39;)</span><span style="color:#e6db74">`</span>;
+      }
+    };
+
+    <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">div</span>);
+  }
+}
+</code></pre></div><p>Someone think like &ldquo;why did make stupid div in directive?&quot;. The reason why is because angular directive is not officially allow sending other element except the one marked that directive selector.<br />
+<br /><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">/</span><span style="color:#f92672">/</span> HTML
+<span style="color:#f92672">&lt;</span>label [appChevron]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">clickElem&#34;</span> <span style="color:#66d9ef">...</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span>div <span style="color:#75715e">#clickElem click=&#34;something&#34;&gt;&lt;/div&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>label<span style="color:#f92672">&gt;</span>
+
+<span style="color:#f92672">/</span><span style="color:#f92672">/</span> TS
+<span style="color:#66d9ef">...</span>
+export class ChevronValidate {
+  <span style="color:#f92672">@</span><span style="color:#a6e22e">Input</span>(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">clickElem&#39;</span>) elem<span style="color:#f92672">:</span> ElementRef;
+
+  <span style="color:#a6e22e">constructor</span>(el<span style="color:#f92672">:</span> ElementRef) {
+  }
+}
+</code></pre></div><p>There is actually no syntax error. But you got <code>undefined</code> or error when you try attach to nativeElement with received element in directive. So I think it is better to use directive to only marked element in HTML.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript/scroll-restoration/">Scroll restoration</a></h4>
+    <h5>February 23, 2020</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript/currying-vs-partial-function/">Partial function and currying in javascript</a></h4>
+    <h5>February 9, 2020</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript/hoisting-about-function/">Hoisting about function</a></h4>
+    <h5>December 4, 2019</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

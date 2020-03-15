@@ -15,17 +15,32 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/</loc>
-    <lastmod>2020-02-23T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/post/html/drag-and-drop/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/html/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/post/</loc>
-    <lastmod>2020-02-23T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/</loc>
     <lastmod>2020-02-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -35,67 +50,37 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/</loc>
-    <lastmod>2020-02-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/post/javascript/currying-vs-partial-function/</loc>
     <lastmod>2020-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/babel/</loc>
+    <loc>https://wacilpong.github.io/blog/post/configuration/babel-polyfill-and-babel-runtime/</loc>
     <lastmod>2020-01-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/environment/babel-polyfill-and-babel-runtime/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/configuration/</loc>
     <lastmod>2020-01-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/environment/</loc>
-    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/jest/</loc>
+    <loc>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/solve/</loc>
-    <lastmod>2020-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/solve/untranspiled-published-external-library/</loc>
-    <lastmod>2020-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/good-bye-2019/</loc>
+    <loc>https://wacilpong.github.io/blog/post/review/good-bye-2019/</loc>
     <lastmod>2019-12-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/%ED%9A%8C%EA%B3%A0/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/review/</loc>
     <lastmod>2019-12-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/read/after-reading-clean-architecture/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/architecture/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/read/</loc>
+    <loc>https://wacilpong.github.io/blog/post/review/after-reading-clean-architecture/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -110,33 +95,13 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/prerender/</loc>
+    <loc>https://wacilpong.github.io/blog/post/configuration/prerender-status-code/</loc>
     <lastmod>2019-10-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/environment/prerender-status-code/</loc>
-    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/seo/</loc>
-    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/environment/react-file-structure/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript/react-file-structure/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/react/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/html/</loc>
-    <lastmod>2018-11-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -200,82 +165,33 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/angular/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript/angular-directive/</loc>
     <lastmod>2018-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/angular-directive/</loc>
-    <lastmod>2018-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/linux/</loc>
+    <loc>https://wacilpong.github.io/blog/post/configuration/when-connect-ssh/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/ssh/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/environment/when-connect-ssh/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/aws/</loc>
+    <loc>https://wacilpong.github.io/blog/post/configuration/aws-publish-to-s3/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/deploy/</loc>
+    <loc>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/https/</loc>
+    <loc>https://wacilpong.github.io/blog/post/configuration/pyvenv-with-mongodb/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/mongodb/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/environment/aws-publish-to-s3/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/python/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/environment/set-https-with-aws/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/environment/pyvenv-with-mongodb/</loc>
-    <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/interview/</loc>
+    <loc>https://wacilpong.github.io/blog/post/review/my-recently-interview/</loc>
     <lastmod>2017-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/my-recently-interview/</loc>
-    <lastmod>2017-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/bot/</loc>
   </url>
   
   <url>
@@ -283,23 +199,7 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/chatbot/</loc>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/project/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/slack/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/tkit/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/typescript/</loc>
   </url>
   
 </urlset>

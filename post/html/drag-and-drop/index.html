@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Drag and drop API</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Drag and drop API</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/tags/">Tags</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Drag and drop API</h2>
+        <h5>March 15, 2020</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/html"><kbd class="item-tag">html</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="draggable">Draggable</h2>
+<p>HTML5의 모든 요소에서 <code>draggable</code>이라는 속성을 붙일 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">draggable</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;drag01&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;<span style="color:#f92672">h3</span> <span style="color:#a6e22e">draggable</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;drag02&lt;/<span style="color:#f92672">h3</span>&gt;
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">draggable</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;drag03&lt;/<span style="color:#f92672">div</span>&gt;
+...
+</code></pre></div><p><br /></p>
+<p>이 속성이 적용된 요소를 이용해 드래그 이벤트를 활용할 수 있고 <a href="https://developer.mozilla.org/ko/docs/Web/API/DragEvent">DragEvent</a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/DataTransfer">DataTransfer</a> 와 같은 인터페이스의 메소드들도 활용해볼 수 있다.</p>
+<p><br /></p>
+<h2 id="dragevent">DragEvent</h2>
+<p>DragEvent는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">MouseEvent</a>를 상속받고, 아래와 같은 이벤트들을 지정할 수 있다. 더 자세한 건 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API">Drag &amp; Drop API 문서</a>를 보자.</p>
+<table>
+<thead>
+<tr>
+<th><em>Event Handlers</em></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ondrag</strong></td>
+<td>  요소를 드래그하고 있을 때 발생</td>
+</tr>
+<tr>
+<td><strong>ondragstart</strong></td>
+<td>  요소를 드래그하기 시작한 시점에 발생</td>
+</tr>
+<tr>
+<td><strong>ondragover</strong></td>
+<td>  요소가 지정한 드롭 위치에 드래그되었을 때 발생</td>
+</tr>
+<tr>
+<td><strong>ondrop</strong></td>
+<td>  요소를 지정한 드롭 위치에 드롭했을 때 발생</td>
+</tr>
+</tbody>
+</table>
+<p>브라우저는 기본적으로 DOM 요소에 드롭 이벤트가 발생되어도 아무 일도 일어나지 않는다. 따라서 특정 요소를 드롭 위치로 지정하고 싶다면 <code>ondragover</code> 혹은 <code>ondrop</code>을 지정해주어야 한다.</p>
+<p><br /></p>
+<h2 id="datatransfer">DataTransfer</h2>
+<p>모든 DragEvent는 본인의 이벤트 데이터를 들고 있는<code>dataTransfer</code>를 가지고 있다. 이 객체를 통해 드래그하는 요소 데이터를 관리할 수 있다. 관리할 데이터는 html도 가능하며, 더 자세히는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types">Recommended drag types</a>를 보자.</p>
+<p><br /></p>
+<h5 id="1------value--text-data-">1. 드래그가 시작되었을 때 해당 요소의 value를 관리할 text data로 추가</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">dragStart</span>(<span style="color:#a6e22e">event</span>) {
+  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">dataTransfer</span>.<span style="color:#a6e22e">setData</span>(<span style="color:#e6db74">&#34;text/plain&#34;</span>, <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">id</span>);
+}
+</code></pre></div><p><br /></p>
+<h5 id="2----------">2. 드래그하는 중에 마우스 포인터가 드롭 위치로 이동했을 때의 효과 주기</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">dragOver</span>(<span style="color:#a6e22e">event</span>) {
+  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>();
+  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">dataTransfer</span>.<span style="color:#a6e22e">dropEffect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;move&#34;</span>;
+}
+</code></pre></div><p><br /></p>
+<h5 id="3---datatransfer----">3. 드롭했을 때 dataTransfer에 넣었던 데이터를 꺼내서 활용하기</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">drop</span>(<span style="color:#a6e22e">event</span>) {
+  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>();
+
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">dataTransfer</span>.<span style="color:#a6e22e">getData</span>(<span style="color:#e6db74">&#34;text&#34;</span>);
+  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">appendChild</span>(document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">#</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>));
+}
+</code></pre></div></div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/html/shadow-or-virtual/">Shadow DOM vs Virtual DOM</a></h4>
+    <h5>November 9, 2018</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/html"><kbd class="item-tag">html</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
