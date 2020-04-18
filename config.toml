@@ -38,6 +38,7 @@ disqusShortname = "roomy-han"
     favicon = "favicon.ico"
     css = ["css/custom.css"]
     ogImage = "https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+    dateFormat = "2006-01-02"
 
 [[menu.main]]
     url = "/"
