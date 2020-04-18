@@ -6,10 +6,19 @@
     <description>Recent content in javascript on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 23 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Closure, especially in javascript</title>
+      <link>https://wacilpong.github.io/blog/post/javascript/closure-especially-in-javascript/</link>
+      <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript/closure-especially-in-javascript/</guid>
+      <description>클로저는 고차함수(함수를 반환하는 함수) 개념을 이용하여 스코프로 묶인 식별자를 바인딩하기 위한 일종의 기법이다. 클로저는 스코프 내의 실행 컨텍스트가 사라져</description>
+    </item>
     
     <item>
       <title>Scroll restoration</title>
