@@ -3,6 +3,7 @@ title: "To set virtual python environment with mongoDB"
 date: "2018-02-09"
 tags: ["configuration"]
 draft: false
+og_description: ""
 ---
 
 ### Step 1. Install python and mongoDB

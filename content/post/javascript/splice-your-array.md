@@ -3,6 +3,7 @@ title: "Splice Array"
 date: "2019-11-01"
 tags: ["javascript"]
 draft: false
+og_description: "splice can select(remove) the item with specific index to certain index."
 ---
 
 가끔 `Array.prototype.splice()`가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때!

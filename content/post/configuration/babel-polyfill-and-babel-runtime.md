@@ -3,6 +3,7 @@ title: "Babel polyfill and babel runtime"
 date: "2020-01-17"
 tags: ["configuration"]
 draft: false
+og_description: "바벨은 Javascript ES6+ 문법을 ES5로 변환해서 ES6+ 문법을 지원하지 않는 브라우저에서도 동작하도록 만들어주는 컴파일러이다."
 ---
 
 ### Babel ?

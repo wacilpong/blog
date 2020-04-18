@@ -27,7 +27,7 @@ disqusShortname = "roomy-han"
 
 [params]
     author = "Roomy Han"
-    description = "Audio, Video, Disco"
+    description = "Audio, Video, Disco - 듣고, 보고, 배웁니다."
     githubUsername = "wacilpong"
     accent = "#469160"
     showBorder = true
@@ -37,6 +37,7 @@ disqusShortname = "roomy-han"
     highlightStyle = "solarized-dark"
     favicon = "favicon.ico"
     css = ["css/custom.css"]
+    ogImage = "https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
 
 [[menu.main]]
     url = "/"

@@ -3,6 +3,7 @@ title: "File structure with React"
 date: 2019-07-10
 tags: ["javascript"]
 draft: false
+og_description: "리액트를 해보니 굉장히 자유도가 높았고 폴더 구조도 쓰는 사람마다 천차만별이었다. 그러다보니 이에 대해 자연스럽게 고민하고 찾아봤다."
 ---
 
 ## Why I am considering it
@@ -46,9 +47,9 @@ src/
   assets/
 ```
 
-회사에서 `typescript`를 도입해 사용하고 있었기 때문에 typings 폴더에서 해당 프로젝트에서 사용되는 인터페이스를 만들어 쓰고 있다. ts를 쓰고 있다는 점은 마음에 들었지만, 컴포넌트 폴더에 `js`파일만 두고 `(s)css`파일을 모두 따로 뺀 것이 마음에 들지는 않았다. 일반적인 방식에 의해도 확장자가 같다고 한번에 모아두는 것이 좋지는 않은 것 같다고 느꼈다. 그래서 차츰차츰 아래와 같은 구조를 만들어보려고 하고 있다.
+회사에서 `typescript`를 도입해서 사용중이기 때문에 typings 폴더에서 해당 프로젝트에서 사용되는 인터페이스를 만들어 쓰고 있다. 그리고 컴포넌트 폴더에는 말 그대로 뷰부분이 들어 있는데, 컴포넌트 폴더에 `js`파일만 두고 `(s)css`파일을 모두 따로 뺀 것이 마음에 들지는 않았다. 일반적인 방식에 의해도 확장자가 같다고 한번에 모아두는 것이 좋지는 않은 것 같다고 느꼈다. 그래서 차츰차츰 아래와 같은 구조를 만들어보려고 하고 있다.
 
-It using `typescript`, so managing all types about the interfaces in this project in typings folder. I pretty happy that they using ts, but it isn't that about all `js` files in components folder and all `(s)css` files in styles folder. I think It looks complicated, why all files set aside in same folder even if it has same file extension ? So, I gradually make this structure like this:
+It using `typescript`, so managing all types about the interfaces in this project in typings folder. I pretty happy that I am using ts, but it isn't that about all `js` files in components folder and all `(s)css` files in styles folder. I think It looks complicated, why all files set aside in same folder even if it has same file extension ? So, I gradually make this structure like this:
 
 <br />
 
@@ -96,6 +97,6 @@ src/
 
 <br />
 
-## Umm
+## Hmm
 
 리액트가 정확한 가이드를 내려주지 않으니 어려운 점도 있지만, 개발자 각자만의 구조를 만들어간다는 점이 좋은 것 같..지만 매우 혼돈의 카오스적인 아이임은 분명하다.

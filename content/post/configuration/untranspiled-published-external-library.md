@@ -3,6 +3,7 @@ title: "Test with jest the untranspiled external libraries"
 date: "2020-01-02"
 tags: ["configuration"]
 draft: false
+og_description: "create-react-app로 만들어진 리액트 프로젝트에는 jest가 이미 적용되어 있는데, react-scripts 의 jest 설정부분을 보면 알 수 있다. 그런데 node_modules를 트랜스파일링하지 않는다."
 ---
 
 ## jest in CRA

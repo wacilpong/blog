@@ -3,6 +3,7 @@ title: "Angular directive example"
 date: "2018-08-02"
 tags: ["javascript"]
 draft: false
+og_description: "Use it to attach custom behavior to elements in the DOM."
 ---
 
 ### What is directive ?

@@ -3,11 +3,12 @@ title: "Drag and drop API"
 date: "2020-03-15"
 tags: ["html"]
 draft: false
+og_description: "HTML5의 모든 요소에는 draggable이라는 속성을 붙일 수 있다."
 ---
 
 ## Draggable
 
-HTML5의 모든 요소에서 `draggable`이라는 속성을 붙일 수 있다.
+HTML5의 모든 요소에는 `draggable`이라는 속성을 붙일 수 있다.
 
 ```html
 <p draggable="true">drag01</p>

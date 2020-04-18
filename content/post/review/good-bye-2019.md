@@ -3,6 +3,7 @@ title: "Good bye 2019"
 date: "2019-12-27"
 tags: ["review"]
 draft: false
+og_description: "난생 처음 쓰는 회고. 간단하게 월별로 내가 뭘 했는지 한번 기록해보자."
 ---
 
 난생 처음 쓰는 회고. 간단하게 월별로 내가 뭘 했는지 한번 기록해보자.

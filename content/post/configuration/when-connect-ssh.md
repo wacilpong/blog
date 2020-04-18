@@ -3,6 +3,7 @@ title: "When we connect ssh with .pem"
 date: "2018-04-03"
 tags: ["configuration"]
 draft: false
+og_description: "We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect."
 ---
 
 We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.

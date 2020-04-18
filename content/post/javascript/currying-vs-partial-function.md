@@ -3,6 +3,7 @@ title: "Partial function and currying in javascript"
 date: "2020-02-09"
 tags: ["javascript"]
 draft: false
+og_description: "부분함수는 어떤 함수의 arguments에서 일부를 고정하여 원래 함수를 반환하는 함수이다. 즉, 함수를 체이닝하기 때문에 함수를 재활용하는 데 활용할 수 있겠다."
 ---
 
 ## Partial Function

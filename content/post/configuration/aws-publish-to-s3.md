@@ -3,6 +3,7 @@ title: "Publish to aws s3 with s3cmd"
 date: "2018-02-09"
 tags: ["configuration"]
 draft: false
+og_description: ""
 ---
 
 ### 1. Create S3 bucket

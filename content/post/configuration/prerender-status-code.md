@@ -3,6 +3,7 @@ title: "Prerender Status Code"
 date: "2019-10-06"
 tags: ["configuration"]
 draft: false
+og_description: "재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다."
 ---
 
 재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다. SSR(Server Side Rendering)을 도입할 수 없는 상황이었기 때문에 CSR(Client Side Rendering)로 잘 핸들링해야 했다. 회사에서 [**netlify**](https://www.netlify.com/)라는 static deploy 서비스를 사용중이었는데, 유료회원이면 prerender라는 내장된 서비스를 옵션으로 사용할 수 있었다. [**prerender**](https://prerender.io/)는 헤드리스 브라우저를 통해 페이지의 정적 정보들을 저장해놓고, 크롤러가 해당 정보들을 긁어갈 수 있도록 해주는 SEO를 돕는 일종의 기술이다. netlify는 이를 내장시켜서 사용할 수 있도록 만든 것이다.

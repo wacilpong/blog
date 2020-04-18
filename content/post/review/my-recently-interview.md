@@ -3,6 +3,7 @@ title: "My recently junior web developer interview"
 date: "2017-12-11"
 tags: ["review"]
 draft: false
+og_description: "힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다."
 ---
 
 ## what kind of companies?
