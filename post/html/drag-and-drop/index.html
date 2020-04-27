@@ -72,7 +72,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.58.3" />
         
 
         
@@ -137,17 +137,28 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="draggable">Draggable</h2>
+    <div align="start" class="content">
+
+<h2 id="draggable">Draggable</h2>
+
 <p>HTML5의 모든 요소에는 <code>draggable</code>이라는 속성을 붙일 수 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">draggable</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;drag01&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;<span style="color:#f92672">h3</span> <span style="color:#a6e22e">draggable</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;drag02&lt;/<span style="color:#f92672">h3</span>&gt;
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">draggable</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;drag03&lt;/<span style="color:#f92672">div</span>&gt;
+
+<pre><code class="language-html">&lt;p draggable=&quot;true&quot;&gt;drag01&lt;/p&gt;
+&lt;h3 draggable=&quot;true&quot;&gt;drag02&lt;/h3&gt;
+&lt;div draggable=&quot;true&quot;&gt;drag03&lt;/div&gt;
 ...
-</code></pre></div><p><br /></p>
-<p>이 속성이 적용된 요소를 이용해 드래그 이벤트를 활용할 수 있고 <a href="https://developer.mozilla.org/ko/docs/Web/API/DragEvent">DragEvent</a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/DataTransfer">DataTransfer</a> 와 같은 인터페이스의 메소드들도 활용해볼 수 있다.</p>
+</code></pre>
+
 <p><br /></p>
+
+<p>이 속성이 적용된 요소를 이용해 드래그 이벤트를 활용할 수 있고 <a href="https://developer.mozilla.org/ko/docs/Web/API/DragEvent">DragEvent</a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/DataTransfer">DataTransfer</a> 와 같은 인터페이스의 메소드들도 활용해볼 수 있다.</p>
+
+<p><br /></p>
+
 <h2 id="dragevent">DragEvent</h2>
+
 <p>DragEvent는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">MouseEvent</a>를 상속받고, 아래와 같은 이벤트들을 지정할 수 있다. 더 자세한 건 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API">Drag &amp; Drop API 문서</a>를 보자.</p>
+
 <table>
 <thead>
 <tr>
@@ -155,49 +166,69 @@
 <th></th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><strong>ondrag</strong></td>
-<td>  요소를 드래그하고 있을 때 발생</td>
+<td>&nbsp;&nbsp;요소를 드래그하고 있을 때 발생</td>
 </tr>
+
 <tr>
 <td><strong>ondragstart</strong></td>
-<td>  요소를 드래그하기 시작한 시점에 발생</td>
+<td>&nbsp;&nbsp;요소를 드래그하기 시작한 시점에 발생</td>
 </tr>
+
 <tr>
 <td><strong>ondragover</strong></td>
-<td>  요소가 지정한 드롭 위치에 드래그되었을 때 발생</td>
+<td>&nbsp;&nbsp;요소가 지정한 드롭 위치에 드래그되었을 때 발생</td>
 </tr>
+
 <tr>
 <td><strong>ondrop</strong></td>
-<td>  요소를 지정한 드롭 위치에 드롭했을 때 발생</td>
+<td>&nbsp;&nbsp;요소를 지정한 드롭 위치에 드롭했을 때 발생</td>
 </tr>
 </tbody>
 </table>
-<p>브라우저는 기본적으로 DOM 요소에 드롭 이벤트가 발생되어도 아무 일도 일어나지 않는다. 따라서 특정 요소를 드롭 위치로 지정하고 싶다면 <code>ondragover</code> 혹은 <code>ondrop</code>을 지정해주어야 한다.</p>
-<p><br /></p>
-<h2 id="datatransfer">DataTransfer</h2>
-<p>모든 DragEvent는 본인의 이벤트 데이터를 들고 있는<code>dataTransfer</code>를 가지고 있다. 이 객체를 통해 드래그하는 요소 데이터를 관리할 수 있다. 관리할 데이터는 html도 가능하며, 더 자세히는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types">Recommended drag types</a>를 보자.</p>
-<p><br /></p>
-<h5 id="1------value--text-data-">1. 드래그가 시작되었을 때 해당 요소의 value를 관리할 text data로 추가</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">dragStart</span>(<span style="color:#a6e22e">event</span>) {
-  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">dataTransfer</span>.<span style="color:#a6e22e">setData</span>(<span style="color:#e6db74">&#34;text/plain&#34;</span>, <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">id</span>);
-}
-</code></pre></div><p><br /></p>
-<h5 id="2----------">2. 드래그하는 중에 마우스 포인터가 드롭 위치로 이동했을 때의 효과 주기</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">dragOver</span>(<span style="color:#a6e22e">event</span>) {
-  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>();
-  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">dataTransfer</span>.<span style="color:#a6e22e">dropEffect</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;move&#34;</span>;
-}
-</code></pre></div><p><br /></p>
-<h5 id="3---datatransfer----">3. 드롭했을 때 dataTransfer에 넣었던 데이터를 꺼내서 활용하기</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">drop</span>(<span style="color:#a6e22e">event</span>) {
-  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>();
 
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">dataTransfer</span>.<span style="color:#a6e22e">getData</span>(<span style="color:#e6db74">&#34;text&#34;</span>);
-  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">appendChild</span>(document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">#</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>));
+<p>브라우저는 기본적으로 DOM 요소에 드롭 이벤트가 발생되어도 아무 일도 일어나지 않는다. 따라서 특정 요소를 드롭 위치로 지정하고 싶다면 <code>ondragover</code> 혹은 <code>ondrop</code>을 지정해주어야 한다.</p>
+
+<p><br /></p>
+
+<h2 id="datatransfer">DataTransfer</h2>
+
+<p>모든 DragEvent는 본인의 이벤트 데이터를 들고 있는<code>dataTransfer</code>를 가지고 있다. 이 객체를 통해 드래그하는 요소 데이터를 관리할 수 있다. 관리할 데이터는 html도 가능하며, 더 자세히는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types">Recommended drag types</a>를 보자.</p>
+
+<p><br /></p>
+
+<h5 id="1-드래그가-시작되었을-때-해당-요소의-value를-관리할-text-data로-추가">1. 드래그가 시작되었을 때 해당 요소의 value를 관리할 text data로 추가</h5>
+
+<pre><code class="language-javascript">function dragStart(event) {
+  event.dataTransfer.setData(&quot;text/plain&quot;, event.target.id);
 }
-</code></pre></div></div>
+</code></pre>
+
+<p><br /></p>
+
+<h5 id="2-드래그하는-중에-마우스-포인터가-드롭-위치로-이동했을-때의-효과-주기">2. 드래그하는 중에 마우스 포인터가 드롭 위치로 이동했을 때의 효과 주기</h5>
+
+<pre><code class="language-javascript">function dragOver(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = &quot;move&quot;;
+}
+</code></pre>
+
+<p><br /></p>
+
+<h5 id="3-드롭했을-때-datatransfer에-넣었던-데이터를-꺼내서-활용하기">3. 드롭했을 때 dataTransfer에 넣었던 데이터를 꺼내서 활용하기</h5>
+
+<pre><code class="language-javascript">function drop(event) {
+  event.preventDefault();
+
+  const data = event.dataTransfer.getData(&quot;text&quot;);
+  event.target.appendChild(document.querySelector(`#${data}`));
+}
+</code></pre>
+</div>
 
     
     
@@ -251,7 +282,7 @@
 </main>
 
         <footer>
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         
