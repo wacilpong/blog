@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>javascript on Roomy</title>
@@ -71,10 +71,11 @@
       <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/javascript/angular-directive/</guid>
-      <description>What is directive ? Use it to attach custom behavior to elements in the DOM. 
+      <description>What is directive ? Use it to attach custom behavior to elements in the DOM.
+
 Basic Example  This is a simple directive to change chevron background-image as clicking the element.
- 1. HTML &amp;lt;label appChevron class=&amp;quot;chevron&amp;quot; style=&amp;quot;background-image: url(&#39;/assets/images/arrow-down.svg&#39;);&amp;quot; &amp;gt;&amp;lt;/label&amp;gt;  
-2. TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &amp;quot;@angular/core&amp;quot;; @Directive({ selector: &amp;quot;[appChevron]&amp;quot; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
+ 1. HTML &amp;lt;label appChevron class=&amp;#34;chevron&amp;#34; style=&amp;#34;background-image: url(&amp;#39;/assets/images/arrow-down.svg&amp;#39;);&amp;#34; &amp;gt;&amp;lt;/label&amp;gt; 
+2. TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &amp;#34;@angular/core&amp;#34;; @Directive({ selector: &amp;#34;[appChevron]&amp;#34; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
     </item>
     
   </channel>

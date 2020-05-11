@@ -72,7 +72,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -137,38 +137,23 @@
 
     </div>
 
-    <div align="start" class="content">
-
-<p>가끔 <code>Array.prototype.splice()</code>가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때!</p>
-
-<p>Sometimes I confused about <code>Array.prototype.splice()</code> function, especially when assign the returned value from this !
+    <div align="start" class="content"><p>가끔 <code>Array.prototype.splice()</code>가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때!</p>
+<p>Sometimes I confused about <code>Array.prototype.splice()</code> function, especially when assign the returned value from this !<br />
 <br /><br /></p>
-
-<h3 id="array-prototype-splice-do-what">Array.prototype.splice() do &hellip; what ?</h3>
-
+<h3 id="arrayprototypesplice-do--what-">Array.prototype.splice() do &hellip; what ?</h3>
 <p>splice는 아래처럼 특정 인덱스에서 특정 개수만큼 뽑아낼 수 있는 함수이다.</p>
-
-<p>splice can select(remove) the item with specific index to certain index.
+<p>splice can select(remove) the item with specific index to certain index.<br />
 <br /></p>
-
-<pre><code class="language-javascript">var array = [1, 2, 3, 4];
-array.splice(0, 1); // array === [2,3,4]
-</code></pre>
-
-<p><br /></p>
-
-<h3 id="then-what-is-confusing-point">then what is confusing point ?</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
+<span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// array === [2,3,4]
+</span></code></pre></div><p><br /></p>
+<h3 id="then-what-is-confusing-point-">then what is confusing point ?</h3>
 <p>그런데 이 값을 어떠한 값에 할당하면 아래처럼 제거된 배열이 아니라 제거한 해당 값을 반환한다.</p>
-
-<p>But, this function return the removed value with specific index.
+<p>But, this function return the removed value with specific index.<br />
 <br /></p>
-
-<pre><code class="language-javascript">var array = [1, 2, 3, 4];
-var array2 = array.splice(0, 1); // array2 === [1]
-</code></pre>
-
-<p><br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// array2 === [1]
+</span></code></pre></div><p><br /><br />
 따라서 그냥 특정 인덱스 요소를 제거하고 싶으면 할당하지 말고 그냥 쓰면 되는데, 가끔 헷갈리더라&hellip; 나만 그럴수도&hellip;</p>
 </div>
 
@@ -258,7 +243,7 @@ var array2 = array.splice(0, 1); // array2 === [1]
 </main>
 
         <footer>
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
         </footer>
 
         

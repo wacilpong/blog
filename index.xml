@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Roomy</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sat, 18 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
-      <description> Lectures  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain Truffle with ganache Truffle Tutorial: Pet Shop  </description>
+      <description>Lectures  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain Truffle with ganache Truffle Tutorial: Pet Shop  </description>
     </item>
     
     <item>
@@ -26,9 +26,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/tkit-service/</guid>
-      <description> Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack. https://tkit.me
-
-Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornado 4.x / MongoDB (pymongo 3.x)  </description>
+      <description>Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack.
+https://tkit.me
+## Tech Stack - Front-end : Angular 6.x / SCSS - Back-end (APIs) : Python 3.x / Tornado 4.x / MongoDB (pymongo 3.x) </description>
     </item>
     
     <item>
@@ -38,6 +38,15 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Algorithm basic (khan academy)</title>
+      <link>https://wacilpong.github.io/blog/post/algorithm/algorithm-basic/</link>
+      <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/algorithm/algorithm-basic/</guid>
+      <description>칸아카데미의 알고리즘 코스를 들으며 정리해본 알고리즘 기초. https://ko.khanacademy.org/computing/computer-science/algorithms 알고리즘 어떤 문제를 해결하기 위한 절차의 집합 컴퓨터 과학에서 알고리즘은 프로그램이 어떤 문제를</description>
     </item>
     
     <item>
@@ -55,7 +64,7 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/html/drag-and-drop/</guid>
-      <description>Draggable HTML5의 모든 요소에는 draggable이라는 속성을 붙일 수 있다. &amp;lt;p draggable=&amp;quot;true&amp;quot;&amp;gt;drag01&amp;lt;/p&amp;gt; &amp;lt;h3 draggable=&amp;quot;true&amp;quot;&amp;gt;drag02&amp;lt;/h3&amp;gt; &amp;lt;div draggable=&amp;quot;true&amp;quot;&amp;gt;drag03&amp;lt;/div&amp;gt; ... 이 속성이 적용된 요소를 이용해 드래그 이벤트를 활용할 수 있고 DragEvent, DataTransfer 와</description>
+      <description>Draggable HTML5의 모든 요소에는 draggable이라는 속성을 붙일 수 있다. &amp;lt;p draggable=&amp;#34;true&amp;#34;&amp;gt;drag01&amp;lt;/p&amp;gt; &amp;lt;h3 draggable=&amp;#34;true&amp;#34;&amp;gt;drag02&amp;lt;/h3&amp;gt; &amp;lt;div draggable=&amp;#34;true&amp;#34;&amp;gt;drag03&amp;lt;/div&amp;gt; ... 이 속성이 적용된 요소를 이용해 드래그 이벤트를 활용할 수 있고 DragEvent, DataTransfer 와</description>
     </item>
     
     <item>
@@ -91,7 +100,7 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</guid>
-      <description>jest in CRA // react-scripts/config/jest/babelTransform.js const babelJest = require(&amp;quot;babel-jest&amp;quot;); module.exports = babelJest.createTransformer({ presets: [require.resolve(&amp;quot;babel-preset-react-app&amp;quot;)], babelrc: false, configFile: false }); create-react-app 로 만들어진 리액트 프로젝트에는 jest가 이미 적용되어 있는데, react-scripts 의 jest 설정부분을 보면 알 수 있다. 그런데 jes</description>
+      <description>jest in CRA // react-scripts/config/jest/babelTransform.js const babelJest = require(&amp;#34;babel-jest&amp;#34;); module.exports = babelJest.createTransformer({ presets: [require.resolve(&amp;#34;babel-preset-react-app&amp;#34;)], babelrc: false, configFile: false }); create-react-app 로 만들어진 리액트 프로젝트에는 jest가 이미 적용되어 있는데, react-scripts 의 jest 설정부분을 보면 알 수 있다. 그런데 jes</description>
     </item>
     
     <item>
@@ -190,7 +199,7 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-7/</guid>
-      <description> Token economy project example  example: Toon Hub  </description>
+      <description>Token economy project example : example: Toon Hub</description>
     </item>
     
     <item>
@@ -208,7 +217,7 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-5/</guid>
-      <description>* geth REPL (Read Eval Print Loop) REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands. miner.start() eth.pendingTransactions eth.getTransaction(&amp;quot;{transaction-hash-id}&amp;quot;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1]) pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account. - web3 Ethereum javascript API, so, can manage ethereum blockchain transactions in web browser. Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db:</description>
+      <description>* geth REPL (Read Eval Print Loop) REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands. miner.start() eth.pendingTransactions eth.getTransaction(&amp;#34;{transaction-hash-id}&amp;#34;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1]) pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account. - web3 Ethereum javascript API, so, can manage ethereum blockchain transactions in web browser. Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db:</description>
     </item>
     
     <item>
@@ -226,7 +235,7 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       <pubDate>Wed, 17 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-3/</guid>
-      <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉! 3G blockchain: EOS Steemit, bitshare를 만든 댄 라리머가</description>
+      <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉! 3G blockchain: EOS : Steemit, bitshare를 만든 댄 라리머</description>
     </item>
     
     <item>
@@ -235,7 +244,7 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-2/</guid>
-      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&amp;rsquo;의 목적을 모두 충족하면서 암호화된 화</description>
+      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&#39;의 목적을 모두 충족하면서 암호화된 화폐이다. - Bitcoin</description>
     </item>
     
     <item>
@@ -253,10 +262,11 @@ Tech Stack  Front-end : Angular 6.x / SCSS Back-end (APIs) : Python 3.x / Tornad
       <pubDate>Thu, 02 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/javascript/angular-directive/</guid>
-      <description>What is directive ? Use it to attach custom behavior to elements in the DOM. 
+      <description>What is directive ? Use it to attach custom behavior to elements in the DOM.
+
 Basic Example  This is a simple directive to change chevron background-image as clicking the element.
- 1. HTML &amp;lt;label appChevron class=&amp;quot;chevron&amp;quot; style=&amp;quot;background-image: url(&#39;/assets/images/arrow-down.svg&#39;);&amp;quot; &amp;gt;&amp;lt;/label&amp;gt;  
-2. TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &amp;quot;@angular/core&amp;quot;; @Directive({ selector: &amp;quot;[appChevron]&amp;quot; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
+ 1. HTML &amp;lt;label appChevron class=&amp;#34;chevron&amp;#34; style=&amp;#34;background-image: url(&amp;#39;/assets/images/arrow-down.svg&amp;#39;);&amp;#34; &amp;gt;&amp;lt;/label&amp;gt; 
+2. TS (Of course it needs to be imported to app.module.ts declarations) import { Directive, ElementRef } from &amp;#34;@angular/core&amp;#34;; @Directive({ selector: &amp;#34;[appChevron]&amp;#34; }) export class ChevronValidate { constructor(el: ElementRef) { const div = document.</description>
     </item>
     
     <item>
@@ -282,7 +292,7 @@ Change permission of file I will change mode of key file and connect to ssh with
 
 2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
 
-3. Connect domain with CloudFront If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
+3. Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
     </item>
     
     <item>
@@ -291,7 +301,7 @@ Change permission of file I will change mode of key file and connect to ssh with
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</guid>
-      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect</description>
+      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&#39;t configure anything in AWS console. So, connect</description>
     </item>
     
     <item>

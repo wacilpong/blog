@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>html on Roomy</title>
@@ -17,7 +17,7 @@
       <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/html/drag-and-drop/</guid>
-      <description>Draggable HTML5의 모든 요소에는 draggable이라는 속성을 붙일 수 있다. &amp;lt;p draggable=&amp;quot;true&amp;quot;&amp;gt;drag01&amp;lt;/p&amp;gt; &amp;lt;h3 draggable=&amp;quot;true&amp;quot;&amp;gt;drag02&amp;lt;/h3&amp;gt; &amp;lt;div draggable=&amp;quot;true&amp;quot;&amp;gt;drag03&amp;lt;/div&amp;gt; ... 이 속성이 적용된 요소를 이용해 드래그 이벤트를 활용할 수 있고 DragEvent, DataTransfer 와</description>
+      <description>Draggable HTML5의 모든 요소에는 draggable이라는 속성을 붙일 수 있다. &amp;lt;p draggable=&amp;#34;true&amp;#34;&amp;gt;drag01&amp;lt;/p&amp;gt; &amp;lt;h3 draggable=&amp;#34;true&amp;#34;&amp;gt;drag02&amp;lt;/h3&amp;gt; &amp;lt;div draggable=&amp;#34;true&amp;#34;&amp;gt;drag03&amp;lt;/div&amp;gt; ... 이 속성이 적용된 요소를 이용해 드래그 이벤트를 활용할 수 있고 DragEvent, DataTransfer 와</description>
     </item>
     
     <item>

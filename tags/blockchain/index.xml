@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blockchain on Roomy</title>
@@ -44,7 +44,7 @@
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-7/</guid>
-      <description> Token economy project example  example: Toon Hub  </description>
+      <description>Token economy project example : example: Toon Hub</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-5/</guid>
-      <description>* geth REPL (Read Eval Print Loop) REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands. miner.start() eth.pendingTransactions eth.getTransaction(&amp;quot;{transaction-hash-id}&amp;quot;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1]) pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account. - web3 Ethereum javascript API, so, can manage ethereum blockchain transactions in web browser. Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db:</description>
+      <description>* geth REPL (Read Eval Print Loop) REPL will be appeared to you if you start startgethconsole.sh. Practice these geth commands. miner.start() eth.pendingTransactions eth.getTransaction(&amp;#34;{transaction-hash-id}&amp;#34;) eth.blockNumber miner.stop() personal.newAccount() miner.setEtherbase(eth.accounts[1]) pendingTransacrtions: Look at the list of pending transactions. blockNumber: Look at the current block number. setEtherbase(): Change the default account. - web3 Ethereum javascript API, so, can manage ethereum blockchain transactions in web browser. Proxy {_requestManager: a, currentProvider: Proxy, eth: n, db:</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Wed, 17 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-3/</guid>
-      <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉! 3G blockchain: EOS Steemit, bitshare를 만든 댄 라리머가</description>
+      <description>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉! 3G blockchain: EOS : Steemit, bitshare를 만든 댄 라리머</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/blockchain/blockchain-2/</guid>
-      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&amp;rsquo;의 목적을 모두 충족하면서 암호화된 화</description>
+      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&#39;의 목적을 모두 충족하면서 암호화된 화폐이다. - Bitcoin</description>
     </item>
     
     <item>
