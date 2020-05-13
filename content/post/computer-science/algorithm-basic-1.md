@@ -1,7 +1,7 @@
 ---
-title: "Algorithm basic (khan academy)"
+title: "Algorithm basic 1"
 date: "2020-05-11"
-tags: ["algorithm"]
+tags: ["computer-science"]
 draft: false
 ---
 
