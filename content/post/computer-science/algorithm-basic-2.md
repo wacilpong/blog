@@ -14,7 +14,7 @@ https://ko.khanacademy.org/computing/computer-science/algorithms
 
 선택정렬과 삽입정렬의 최대 실행시간은 O(n^2)이다. 따라서 입력하는 배열의 크기가 크다면 매우 오랜 시간이 걸린다. 하지만 **재귀**를 활용하면 더 빠르게 정렬할 수 있다. 각 정렬의 실행시간은 다음과 같다.
 
-![sort](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4f935f3a-efa1-45ed-a236-6bf5beb60e18/_2020-05-13__11.52.41.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200520%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200520T060704Z&X-Amz-Expires=86400&X-Amz-Signature=350c553925a625998c083f5f5dc749612fadf2f424845460ab7eba41f6a60a24&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22_2020-05-13__11.52.41.png%22)
+![sort](https://user-images.githubusercontent.com/27843313/82684221-30b96680-9c8d-11ea-8269-19e77185f71c.png)
 
 <br />
 

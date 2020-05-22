@@ -19,7 +19,7 @@ https://ko.khanacademy.org/computing/computer-science/algorithms
 
 ## 시간 복잡도 Big-O
 
-![big-o](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a485020e-5add-4424-b5cf-32e92762a810/bigo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200511%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200511T095413Z&X-Amz-Expires=86400&X-Amz-Signature=b728d314bf10c2d5b6bcbbb2df9a5576ff4efdedd296ad9fee36407c4b23c0f5&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22bigo.png%22)
+![big-o](https://user-images.githubusercontent.com/27843313/82683740-7cb7db80-9c8c-11ea-8857-59870dd0e127.png)
 
 실행 시간의 효율성을 논의할 때 최악의 경우를 따져보는 것이 가장 일반적이다. 가장 대표적인 Big-O 계산법 또한 실행 시간의 최악의 경우를 따져보는 것으로, "실행 시간은 최대한 이만큼 커지지만 더 천천히 커질 수도 있다"라는 의미의 점근적 표기법이다.
 
@@ -30,7 +30,7 @@ https://ko.khanacademy.org/computing/computer-science/algorithms
 - Big-θ는 최악과 최선의 경우 모두 고려하는 방식
 - Big-Ω는 최선의 경우만 고려하여 "실행시간은 최소한 이만큼 걸린다"라는 의미이다.
 
-![complexity](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2a3cab62-4134-4a9b-9dca-e497995e8ce4/complexity.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200511%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200511T095452Z&X-Amz-Expires=86400&X-Amz-Signature=d79a76db7a9402134eb14d743282cd9ce235e2fa4d2542c038e567682431bb6c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22complexity.png%22)
+![complexity](https://user-images.githubusercontent.com/27843313/82683825-99ecaa00-9c8c-11ea-9ddc-faa889d26cf5.png)
 
 ```jsx
 1. 지수함수(x^n) -> 거듭제곱 수가 상수가 아니면 더 가파르게 복잡도 증가
@@ -102,20 +102,19 @@ function binarySearch(array, target) {
 - 다섯 번째 탐색에서 1개의 값만 남아있으므로 리턴
 
 —> 따라서 최대 5번만 탐색하면 된다.
-
 —> O(log n) 복잡도는 이처럼 찾는 범위를 계속 줄여주므로 효율적이라고 할 수 있다.
-
 —> 쉽게 말하면 반으로 쪼개서 필요없는 범위는 찾지 않도록 한다는 것이며, 실무에서도 필요없는 값을 반복하는 경우가 있는데 이때 로거리즘 기법을 생각해볼 수 있겠음!
 
 <br /><hr />
 
 ## 재귀는 무엇인가 ?
 
-![recursion](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3b7a2c46-640a-4797-bea1-5baa66624cdd/recursion.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200511%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200511T095523Z&X-Amz-Expires=86400&X-Amz-Signature=fcb2bc24cecc68c20004d89eb1a7b7b499a2cad2960f1a2e9f1887fbd6d90a58&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22recursion.jpg%22)
+![recursion](https://user-images.githubusercontent.com/27843313/82683859-a5d86c00-9c8c-11ea-8e5c-c5eaad5d100f.jpg)
 
 재귀는 자기 자신을 호출하는 방식이다?
 
-→ 이 설명은 재귀를 '어떻게' 사용하는 지를 알려주는 것에 가깝다. 즉, 재귀가 무엇인지는 100% 담을 수 없는 설명인 것 같다.
+-> 이 설명은 재귀를 '어떻게' 사용하는 지를 알려주는 것에 가깝다.
+-> 즉, 재귀가 무엇인지는 100% 담을 수 없는 설명인 것 같다.
 
 <br />
 
@@ -155,8 +154,7 @@ const factorial = function (n) {
 - 1은 0이 아니므로 3 _ 2 _ 1 \* factorial(1 - 1)
 - 0은 0이므로 1을 반환하고, 결과값은 3 _ 2 _ 1 \* 1
 
-—> 이렇게 탈출 조건을 지정하면서 같은 사이즈의 작은 태스크를 반복할 수 있는 형태라면 재귀 알고리즘을 사용할 수 있다.
-
+—> 이렇게 탈출 조건을 지정하면서 동일한 작은 태스크를 반복할 수 있는 형태라면 재귀 알고리즘을 사용할 수 있다.
 —> 입력값이 n개라면 n만큼 자기 자신을 호출하기 때문에 시간복잡도 O(n)
 
 <br /><hr />
