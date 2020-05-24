@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Algorithm basic 3</title>
+      <link>https://wacilpong.github.io/blog/post/computer-science/algorithm-basic-3/</link>
+      <pubDate>Wed, 13 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/computer-science/algorithm-basic-3/</guid>
+      <description>칸아카데미의 알고리즘 코스를 들으며 정리해본 알고리즘 기초. https://ko.khanacademy.org/computing/computer-science/algorithms 그래프 표현 이러한 그래프가 있다고 하면, 변수에 저장할 때 3가지 방식으로 할 수 있겠다. 1. 엣지리</description>
+    </item>
+    
+    <item>
       <title>Algorithm basic 1</title>
       <link>https://wacilpong.github.io/blog/post/computer-science/algorithm-basic-1/</link>
       <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
