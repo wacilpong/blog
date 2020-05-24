@@ -19,7 +19,7 @@ https://ko.khanacademy.org/computing/computer-science/algorithms
 
 ## 시간 복잡도 Big-O
 
-![big-o](https://user-images.githubusercontent.com/27843313/82683740-7cb7db80-9c8c-11ea-8857-59870dd0e127.png)
+![big-o](https://cdn.kastatic.org/ka-perseus-images/501211c02f4c6765f60f23842450e1151cfd9c89.png)
 
 실행 시간의 효율성을 논의할 때 최악의 경우를 따져보는 것이 가장 일반적이다. 가장 대표적인 Big-O 계산법 또한 실행 시간의 최악의 경우를 따져보는 것으로, "실행 시간은 최대한 이만큼 커지지만 더 천천히 커질 수도 있다"라는 의미의 점근적 표기법이다.
 
@@ -109,7 +109,7 @@ function binarySearch(array, target) {
 
 ## 재귀는 무엇인가 ?
 
-![recursion](https://user-images.githubusercontent.com/27843313/82683859-a5d86c00-9c8c-11ea-8e5c-c5eaad5d100f.jpg)
+![recursion](https://cdn.kastatic.org/ka-perseus-images/0486791ea01a5456299a6f441a4487a10d12d9da.jpg)
 
 재귀는 자기 자신을 호출하는 방식이다?
 
