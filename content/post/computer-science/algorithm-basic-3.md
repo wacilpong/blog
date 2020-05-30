@@ -17,12 +17,6 @@ https://ko.khanacademy.org/computing/computer-science/algorithms
 
 <br />
 
-![graph](https://cdn.kastatic.org/ka-cs-algorithms/directed_graph_for_challenge.png)
-
-이러한 그래프가 있다고 하면, 변수에 저장할 때 3가지 방식으로 할 수 있겠다.
-
-<br />
-
 **[그래프에 대한 기본 용어]**
 
 - `정점(vertex)`: 그래프를 이루고 있는 어떠한 꼭짓점, 노드(node)
@@ -39,6 +33,12 @@ https://ko.khanacademy.org/computing/computer-science/algorithms
   - 또한 엘리먼트에 스타일을 부여해서 레이아웃이 바뀌어도 트리를 재계산한다.
   - 이때 해당 노드를 시작으로 모든 자식트리를 재계산해 재배치하는 것을 reflow라고 한다.
   - 이러한 특징 때문에 최대한 DOM의 말단 노드를 조작해야한다.
+
+<br />
+
+![graph](https://cdn.kastatic.org/ka-cs-algorithms/directed_graph_for_challenge.png)
+
+이러한 그래프가 있다고 하면, 변수에 저장할 때 3가지 방식으로 할 수 있겠다.
 
 <br />
 
