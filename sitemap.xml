@@ -15,21 +15,6 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/learned/what-i-learned/</loc>
-    <lastmod>2020-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/learned/</loc>
-    <lastmod>2020-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2020-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-concepts-of-programming-languages/</loc>
     <lastmod>2020-06-28T00:00:00+00:00</lastmod>
   </url>
@@ -41,6 +26,11 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/review/</loc>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/</loc>
     <lastmod>2020-06-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -235,7 +225,15 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/learned/what-i-learned/</loc>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/learned/</loc>
   </url>
   
   <url>

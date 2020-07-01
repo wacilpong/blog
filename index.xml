@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 01 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -38,15 +38,6 @@ https://tkit.me
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>2020 what I learned</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned/</link>
-      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned/</guid>
-      <description>2020-07-01 angular entryComponent 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 @NgModule.bootstrap에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로</description>
     </item>
     
     <item>
@@ -356,6 +347,15 @@ Change permission of file I will change mode of key file and connect to ssh with
       
       <guid>https://wacilpong.github.io/blog/post/review/my-recently-interview/</guid>
       <description>what kind of companies? 힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다. 블록체인, 핀테크, 클라우드IDE, AI 등등 다양한 분야의 회사에 신입 개발자로 지원했다. 프론트엔</description>
+    </item>
+    
+    <item>
+      <title>2020</title>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned/</guid>
+      <description>2020-07-01 angular entryComponent 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 @NgModule.bootstrap에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로</description>
     </item>
     
   </channel>
