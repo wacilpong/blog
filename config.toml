@@ -59,6 +59,11 @@ disqusShortname = "roomy-han"
     url = "/project/"
     name = "Projects"
     weight = 4
+[[menu.main]]
+    url = "/learned/"
+    name = "What I Learned"
+    weight = 5
+    
 
 [[menu.icon]]
     url = "https://github.com/wacilpong/"
