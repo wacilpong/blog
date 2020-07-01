@@ -1,8 +1,8 @@
 ---
-title: "2020 what I learned"
-date: "2020-07-01"
-draft: false
+title: "2020"
+description: "what i learned"
 og_description: "What I Learned"
+draft: false
 ---
 
 #### 2020-07-01
