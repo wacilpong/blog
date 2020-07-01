@@ -1,15 +1,32 @@
 <meta name="description" content="{{ .Params.Og_description }}" />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="{{ .Params.Title }}"/>
-<meta property="og:site_name" content="{{ .Params.Title }}"/>
-<meta property="og:description" content="{{ .Params.Og_description }}"/>
-<meta property="og:url" content="{{ .Permalink }}"/>
+<meta property="og:title" content="{{ .Params.Title }}" />
+<meta property="og:site_name" content="{{ .Params.Title }}" />
+<meta property="og:description" content="{{ .Params.Og_description }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
 
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="{{ .Params.Title }}" />
 <meta name="twitter:description" content="{{ .Params.Og_description }}" />
 
 <meta property="og:image" content="{{ .Site.Params.OgImage | absURL }}" />
-<meta property="twitter:image:src" content="{{ .Site.Params.OgImage | absURL }}" />
+<meta
+  property="twitter:image:src"
+  content="{{ .Site.Params.OgImage | absURL }}"
+/>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
