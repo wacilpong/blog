@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="What I Learned" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="2020 what I learned"/>
+<meta property="og:site_name" content="2020 what I learned"/>
+<meta property="og:description" content="What I Learned"/>
+<meta property="og:url" content="https://wacilpong.github.io/blog/learned/what-i-learned/"/>
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="2020 what I learned" />
+<meta name="twitter:description" content="What I Learned" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta property="twitter:image:src" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>2020 what I learned</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">2020 what I learned</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/tags/">Tags</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>2020 what I learned</h2>
+        <h5></h5>
+        
+
+    </div>
+
+    <div align="start" class="content"><h4 id="2020-07-01">2020-07-01</h4>
+<ul>
+<li>
+<dl>
+<dt><strong>angular entryComponent</strong></dt>
+<dd>진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 <code>@NgModule.bootstrap</code>에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 <code>entryComponents</code> 배열에 지정해야 한다.</dd>
+</dl>
+<ol>
+<li>NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)</li>
+<li>라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)</li>
+</ol>
+</li>
+</ul>
+<p><br /></p>
+<ul>
+<li>
+<dl>
+<dt><strong>/etc/hosts</strong></dt>
+<dd><code>cat /etc/hosts</code>를 실행하면 본인(host)의 컴퓨터에서 매핑된 ip주소와 도메인 이름을 확인할 수 있다. 브라우저나 터미널에서 도메인 이름을 치면 네임서버에서 ip를 얻게 되는데, 호스트 컴퓨터가 네임서버에 접근할 수 없는 상황에서는 해당 파일에 매핑된 도메인 이름과 ip주소를 이용한다.</dd>
+</dl>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">##</span>
+<span style="color:#75715e"># Host Database</span>
+#
+<span style="color:#75715e"># localhost is used to configure the loopback interface</span>
+<span style="color:#75715e"># when the system is booting.  Do not change this entry.</span>
+<span style="color:#75715e">##</span>
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<ul>
+<li>
+<p>현재 터미널에 특정 스크립트를 실행해 환경변수 등을 적용하는 <code>source</code> 커맨드는 <code>.</code>와 같다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ source ~/.zshrc
+$ . ~/.zshrc
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<ul>
+<li>
+<p>oh my zsh을 사용할 때 git 관련 명령어를 alias로 사용할 수 있는 이유는 수많은 플러그인 덕분이다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vim .oh-my-zsh/plugins/git/git.plugin.zsh
+
+#
+<span style="color:#75715e"># Functions</span>
+#
+
+<span style="color:#75715e"># The name of the current branch</span>
+<span style="color:#75715e"># Back-compatibility wrapper for when this function was defined here in</span>
+<span style="color:#75715e"># the plugin, before being pulled in to core lib/git.zsh as git_current_branch()</span>
+<span style="color:#75715e"># to fix the core -&gt; git plugin dependency.</span>
+<span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  git_current_branch
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e"># Pretty log messages</span>
+<span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">if</span> ! <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    git log --pretty<span style="color:#f92672">=</span>$1
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#f92672">}</span>
+compdef _git _git_log_prettily<span style="color:#f92672">=</span>git-log
+
+<span style="color:#75715e"># Warn if the current branch is a WIP</span>
+<span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">$(</span>git log -n <span style="color:#ae81ff">1</span> 2&gt;/dev/null | grep -q -c <span style="color:#e6db74">&#34;\-\-wip\-\-&#34;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">then</span>
+    echo <span style="color:#e6db74">&#34;WIP!!&#34;</span>
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#f92672">}</span>
+
+#
+<span style="color:#75715e"># Aliases</span>
+<span style="color:#75715e"># (sorted alphabetically)</span>
+#
+
+alias g<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git&#39;</span>
+
+alias ga<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add&#39;</span>
+alias gaa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add --all&#39;</span>
+alias gapa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add --patch&#39;</span>
+...
+</code></pre></div></li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
