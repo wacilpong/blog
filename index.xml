@@ -351,10 +351,10 @@ Change permission of file I will change mode of key file and connect to ssh with
     
     <item>
       <title>2020</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned/</link>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned/</guid>
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</guid>
       <description>2020-07-01 angular entryComponent 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 @NgModule.bootstrap에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로</description>
     </item>
     
