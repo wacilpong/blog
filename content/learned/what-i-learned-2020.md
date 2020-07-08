@@ -116,3 +116,44 @@ draft: false
   $ ssh -vT git@github.******.com
   $ vim ~/.ssh/known_hosts
   ```
+
+<br />
+<hr />
+
+#### **2020-07-08**
+- `JSON`은 데이터 포맷이지 자바스크립트만의 문법이 아니다. `YAML`과 비슷하지만, JSON에는 주석을 달 수 없다. (by Douglas Crockford)
+
+<br />
+
+- **VSync (Vertical synchronization)**
+  - GPU가 처리하는 프레임으로, 모니터의 화면 업데이트는 VSync에 의해 이루어진다.
+  - 일정한 시간 간격(60Hz)으로, 그래픽 메모리의 front buffer에 저장된 프레임으로 swap되며 화면이 업데이트된다.
+  - 가끔 화면이 깨져 보이는 현상을 Tearing이라고 한다.
+    - VSync가 진행되는 동안 모니터 refresh가 진행되며, 60Hz 모니터는 16.6ms마다 VSync pulse가 발생한다.
+    - Tearing 방지를 위해 VSync pulse 동안은 buffer swap이 불가능하다.
+    - 즉, VSync를 사용하면 Tearing이 일어나지 않는다.
+  - 이러한 VSync를 기반으로 프레임 타이밍을 잘 제어해야 화면이 매끄럽게 보일 수 있다.
+  - 프레임은 픽셀 데이터, 프레임 타이밍은 프레임 생성을 위한 시간 제어라고 할 수 있다.
+  - 크롬 브라우저의 프레임 렌더링은 다음과 같다.
+    ![frame-rendering](https://v8.dev/_img/free-garbage-collection/frame-rendering.png)
+
+<br />
+
+- **Browser rendering pipeline**
+  - 렌더링은 다음의 파이프라인으로 이루어진다.
+    - [참고: performance rendering](https://developers.google.com/web/fundamentals/performance/rendering)
+    - | JS
+    - | Layout: width, height, font... (reflow)
+    - | Paint: color, background... (repaint)
+    - | Composite: opacity, transform...
+    - **참고로 Paint 과정에서 GPU Rasterization을 사용하면 빨라진다.**
+      - GPU Rasterization을 사용하면 빨라진다.
+      - 크롬 브라우저에서 `<meta>` viewport를 설정하거나, css `@viewport`를 설정해 사용할 수 있다.
+        ```html
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+        ```
+      - `minimum-scale`를 "yes"로 설정하면 안되고, "1.0"으로 해야 한다.
+      - `initial-scale`과 `user-scalable`는 고려 대상이 아니라서 상관없다.
+  - Javascript의 **requestAnimationFrame** 메서드는 브라우저에게 다음 repaint가 진행되기 전에 해당 애니메이션을 업데이트하는 함수를 호출하도록 한다. 따라서 화면에 새로운 애니메이션을 업데이트할 준비가 될때마다 이 메소드를 호출하는것이 좋다.
+
+  
