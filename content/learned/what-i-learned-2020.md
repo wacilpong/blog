@@ -5,7 +5,7 @@ og_description: "What I Learned"
 draft: false
 ---
 
-#### **2020-07-01**
+## **2020-07-01**
 
 - **angular entryComponent**
   : 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 `@NgModule.bootstrap`에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 `entryComponents` 배열에 지정해야 한다.
@@ -89,7 +89,7 @@ draft: false
 <br />
 <hr />
 
-#### **2020-07-03**
+## **2020-07-03**
 
 - webpack 번들에는 if~else 혹은 switch 구문으로 dynamic import해도, 번들에는 모두 포함된다. 관련 분석 도구는 [webpack-bundle-analyzer](https://coryrylan.com/blog/analyzing-bundle-size-with-the-angular-cli-and-webpack)를 참고하자. 번들링 결과는 stats.json 파일로 확인할 수 있고, 참고로 앵귤러에서는 `npx ng build --statsJson`를 통해 확인 가능하다.
 
@@ -120,7 +120,7 @@ draft: false
 <br />
 <hr />
 
-#### **2020-07-08**
+## **2020-07-08**
 - `JSON`은 데이터 포맷이지 자바스크립트만의 문법이 아니다. `YAML`과 비슷하지만, JSON에는 주석을 달 수 없다. (by Douglas Crockford)
 
 <br />
