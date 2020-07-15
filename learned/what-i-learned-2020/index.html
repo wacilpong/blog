@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -207,12 +207,12 @@ $ . ~/.zshrc
 <span style="color:#75715e"># Back-compatibility wrapper for when this function was defined here in</span>
 <span style="color:#75715e"># the plugin, before being pulled in to core lib/git.zsh as git_current_branch()</span>
 <span style="color:#75715e"># to fix the core -&gt; git plugin dependency.</span>
-<span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+<span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
   git_current_branch
 <span style="color:#f92672">}</span>
 
 <span style="color:#75715e"># Pretty log messages</span>
-<span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(){</span>
+<span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
   <span style="color:#66d9ef">if</span> ! <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
     git log --pretty<span style="color:#f92672">=</span>$1
   <span style="color:#66d9ef">fi</span>
@@ -220,7 +220,7 @@ $ . ~/.zshrc
 compdef _git _git_log_prettily<span style="color:#f92672">=</span>git-log
 
 <span style="color:#75715e"># Warn if the current branch is a WIP</span>
-<span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+<span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
   <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">$(</span>git log -n <span style="color:#ae81ff">1</span> 2&gt;/dev/null | grep -q -c <span style="color:#e6db74">&#34;\-\-wip\-\-&#34;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">then</span>
     echo <span style="color:#e6db74">&#34;WIP!!&#34;</span>
   <span style="color:#66d9ef">fi</span>
@@ -246,7 +246,7 @@ alias gapa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;g
 <li>
 <p>webpack 번들에는 if~else 혹은 switch 구문으로 dynamic import해도, 번들에는 모두 포함된다. 관련 분석 도구는 <a href="https://coryrylan.com/blog/analyzing-bundle-size-with-the-angular-cli-and-webpack">webpack-bundle-analyzer</a>를 참고하자. 번들링 결과는 stats.json 파일로 확인할 수 있고, 참고로 앵귤러에서는 <code>npx ng build --statsJson</code>를 통해 확인 가능하다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 지연 로딩될 뿐, 모두 번들링에 포함된다.
-</span><span style="color:#75715e">// just lazy loaded, all included in bundle.
+</span><span style="color:#75715e"></span><span style="color:#75715e">// just lazy loaded, all included in bundle.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">production</span>) {
   <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;path/sdk.prod.js&#34;</span>);
 } <span style="color:#66d9ef">else</span> {
@@ -306,7 +306,6 @@ $ vim ~/.ssh/known_hosts
 <li>| Composite: opacity, transform&hellip;</li>
 <li><strong>참고로 Paint 과정에서 GPU Rasterization을 사용하면 빨라진다.</strong>
 <ul>
-<li>GPU Rasterization을 사용하면 빨라진다.</li>
 <li>크롬 브라우저에서 <code>&lt;meta&gt;</code> viewport를 설정하거나, css <code>@viewport</code>를 설정해 사용할 수 있다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, minimum-scale=1.0&#34;</span>&gt;
 </code></pre></div></li>
@@ -319,6 +318,21 @@ $ vim ~/.ssh/known_hosts
 <li>Javascript의 <strong>requestAnimationFrame</strong> 메서드는 브라우저에게 다음 repaint가 진행되기 전에 해당 애니메이션을 업데이트하는 함수를 호출하도록 한다. 따라서 화면에 새로운 애니메이션을 업데이트할 준비가 될때마다 이 메소드를 호출하는것이 좋다.</li>
 </ul>
 </li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2020-07-15"><strong>2020-07-15</strong></h2>
+<ul>
+<li>
+<p><code>git cherry-pick</code> 명령을 통해 특정 커밋을 반영해올 때, <code>--no-commit, -n</code> 옵션을 붙이면 커밋을 하지 않는다. 따라서 어떠한 커밋에서 특정 파일들만 반영하고 나머지는 이전으로 되돌린 후에 반영할 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Q. master &lt;- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 딴 브랜치로 옮기고 싶다면?
+
+1. master에서 temp 브랜치를 새로 딴다.
+2. temp에서 hotfix/test의 커밋들을 cherry-pick 한다.
+3. cherry-pick 하는 도중 충돌이 일어난 커밋들이 있다!
+4. 3번의 커밋들은 git cherry-pick -n {hash} 으로 가져온다.
+5. 충돌이 일어났거나 반영하고 싶지 않은 파일들은 이전 상태로 돌린다.
+</code></pre></div></li>
 </ul>
 </div>
 

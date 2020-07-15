@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -172,13 +172,13 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;prerender-status-code&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;404&#34;</span> /&gt;
 </code></pre></div><p>관련 내용이 있는 <a href="https://prerender.io/documentation/best-practices">prerender document best practice</a>를 읽었을 때, 막연하게 해당 태그를 최상단 루트에 달아놓으면 404인 페이지는 알아서 긁어가지 않겠거니 안일하게 생각했는데 역시 아니었다. 루트(index.html)에 해당 태그를 달아놓으니 구글봇 기반의 모든 봇들이 아예 해당 웹사이트를 크롤링하지 않는 문제가 생겼다. 그래서 반대로 404로 리턴해야하는 경우를 미리 알 수 있는 경우에만 해당 태그를 사용하면 된다.</p>
 <p><br /></p>
-<h4 id="_note-react-helmet_"><em>NOTE: react-helmet</em></h4>
+<h4 id="-note-react-helmet-"><em>NOTE: react-helmet</em></h4>
 <p>나는 리액트로 만든 SPA(Single Page Applicatio)를 다루고 있었기 때문에, 각 페이지에서 메타정보를 바꿀 수 있는 <code>react-helmet</code>을 함께 사용했다. 그런데 아쉽게도 결국 <code>title</code>과 같은 메타정보들을 바꾸려면 모든 페이지에 각각 작성해야 해서 생각보다 크고 노가다 작업이라 아직 반영하지 못했다. 아래처럼 <code>Meta</code>와 같은 일종의 wrapper를 만들어서 라우팅되는 각 페이지 상단에 삽입하면 될 것 같다.</p>
 <p><br /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Meta</span> <span style="color:#f92672">=</span> ({ <span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">description</span> }) =&gt; (
   <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Helmet</span>
     <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">title</span>}
-    <span style="color:#a6e22e">titleTemplate</span><span style="color:#f92672">=</span>{<span style="color:#e6db74">`%s | </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">title</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>}
+    <span style="color:#a6e22e">titleTemplate</span><span style="color:#f92672">=</span>{<span style="color:#e6db74">`</span><span style="color:#e6db74">%s | </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">title</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>}
     <span style="color:#a6e22e">meta</span><span style="color:#f92672">=</span>{[
       {
         <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;description&#34;</span>,
@@ -197,7 +197,7 @@
         <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;website&#34;</span>
       }
     ]}
-  <span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">/</span><span style="color:#f92672">&gt;</span>
 );
 </code></pre></div><p><br /></p>
 <p>이런 식으로 모든 페이지에 SEO 작업을 해두면 <code>prerender-status-code</code>도 활용할 수 있을 것 같다.</p>
