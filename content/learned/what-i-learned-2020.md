@@ -147,7 +147,6 @@ draft: false
     - | Paint: color, background... (repaint)
     - | Composite: opacity, transform...
     - **참고로 Paint 과정에서 GPU Rasterization을 사용하면 빨라진다.**
-      - GPU Rasterization을 사용하면 빨라진다.
       - 크롬 브라우저에서 `<meta>` viewport를 설정하거나, css `@viewport`를 설정해 사용할 수 있다.
         ```html
         <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -156,4 +155,18 @@ draft: false
       - `initial-scale`과 `user-scalable`는 고려 대상이 아니라서 상관없다.
   - Javascript의 **requestAnimationFrame** 메서드는 브라우저에게 다음 repaint가 진행되기 전에 해당 애니메이션을 업데이트하는 함수를 호출하도록 한다. 따라서 화면에 새로운 애니메이션을 업데이트할 준비가 될때마다 이 메소드를 호출하는것이 좋다.
 
-  
+<br />
+<hr />
+
+## **2020-07-15**
+- `git cherry-pick` 명령을 통해 특정 커밋을 반영해올 때, `--no-commit, -n` 옵션을 붙이면 커밋을 하지 않는다. 따라서 어떠한 커밋에서 특정 파일들만 반영하고 나머지는 이전으로 되돌린 후에 반영할 수 있다.
+
+  ```text
+  Q. master <- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 딴 브랜치로 옮기고 싶다면?
+
+  1. master에서 temp 브랜치를 새로 딴다.
+  2. temp에서 hotfix/test의 커밋들을 cherry-pick 한다.
+  3. cherry-pick 하는 도중 충돌이 일어난 커밋들이 있다!
+  4. 3번의 커밋들은 git cherry-pick -n {hash} 으로 가져온다.
+  5. 충돌이 일어났거나 반영하고 싶지 않은 파일들은 이전 상태로 돌린다.
+  ```
