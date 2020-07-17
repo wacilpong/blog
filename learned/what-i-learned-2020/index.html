@@ -334,6 +334,26 @@ $ vim ~/.ssh/known_hosts
 5. 충돌이 일어났거나 반영하고 싶지 않은 파일들은 이전 상태로 돌린다.
 </code></pre></div></li>
 </ul>
+<p><br /></p>
+<hr />
+<h2 id="2020-07-17"><strong>2020-07-17</strong></h2>
+<ul>
+<li>
+<p><code>ln</code> 리눅스 명령을 통해 어떤 파일의 바로가기를 만들 수 있다. <code>-s</code> 옵션을 지정하면 symlink(symbolic link)를 만들어준다. 이것이 일반적으로 의미하는 바로가기이며, <strong>원본이 지워지면 해당 파일도 접근할 수 없다.</strong> 아래 예시에서 hello.txt에 쓴 텍스트는 dest.txt에서도 보인다. hello.txt 원본을 지우면 hard link 방식일 때는 dest.txt에 접근할 수 있지만, soft link 방식일 때는 접근할 수 없다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ touch hello.txt
+
+<span style="color:#75715e"># 1. hard link</span>
+$ ln hello.txt dest.txt
+
+<span style="color:#75715e"># 2. soft link</span>
+$ ln -fs hello.txt dest.txt
+
+$ echo hello &gt; hello.txt
+$ cat dest.txt
+$ rm hello.txt
+
+</code></pre></div></li>
+</ul>
 </div>
 
 </main>
