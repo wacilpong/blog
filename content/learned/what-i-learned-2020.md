@@ -170,3 +170,24 @@ draft: false
   4. 3번의 커밋들은 git cherry-pick -n {hash} 으로 가져온다.
   5. 충돌이 일어났거나 반영하고 싶지 않은 파일들은 이전 상태로 돌린다.
   ```
+
+<br />
+<hr />
+
+## **2020-07-17**
+- `ln` 리눅스 명령을 통해 어떤 파일의 바로가기를 만들 수 있다. `-s` 옵션을 지정하면 symlink(symbolic link)를 만들어준다. 이것이 일반적으로 의미하는 바로가기이며, **원본이 지워지면 해당 파일도 접근할 수 없다.** 아래 예시에서 hello.txt에 쓴 텍스트는 dest.txt에서도 보인다. hello.txt 원본을 지우면 hard link 방식일 때는 dest.txt에 접근할 수 있지만, soft link 방식일 때는 접근할 수 없다.
+
+  ```sh
+  $ touch hello.txt
+
+  # 1. hard link
+  $ ln hello.txt dest.txt
+
+  # 2. soft link
+  $ ln -fs hello.txt dest.txt
+
+  $ echo hello > hello.txt
+  $ cat dest.txt
+  $ rm hello.txt
+
+  ```
