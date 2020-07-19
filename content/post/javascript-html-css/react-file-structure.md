@@ -1,7 +1,7 @@
 ---
 title: "File structure with React"
 date: 2019-07-10
-tags: ["javascript"]
+tags: ["javascript/html/css"]
 draft: false
 og_description: "리액트를 해보니 굉장히 자유도가 높았고 폴더 구조도 쓰는 사람마다 천차만별이었다. 그러다보니 이에 대해 자연스럽게 고민하고 찾아봤다."
 ---

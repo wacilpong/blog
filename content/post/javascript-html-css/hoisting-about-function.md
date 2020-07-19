@@ -1,7 +1,7 @@
 ---
 title: "Hoisting about function"
 date: "2019-12-04"
-tags: ["javascript"]
+tags: ["javascript/html/css"]
 draft: false
 og_description: "자바스크립트는 실행하는 코드가 기억하고 있는 환경이 존재하는데, 이 환경정보가 바로 실행 컨텍스트다. 이 컨텍스트를 구성할 수 있는 방법은 전역 혹은 함수실행 정도가 있겠다."
 ---

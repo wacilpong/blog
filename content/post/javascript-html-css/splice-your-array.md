@@ -1,7 +1,7 @@
 ---
 title: "Splice Array"
 date: "2019-11-01"
-tags: ["javascript"]
+tags: ["javascript/html/css"]
 draft: false
 og_description: "splice can select(remove) the item with specific index to certain index."
 ---

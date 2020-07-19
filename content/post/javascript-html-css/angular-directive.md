@@ -1,7 +1,7 @@
 ---
 title: "Angular directive example"
 date: "2018-08-02"
-tags: ["javascript"]
+tags: ["javascript/html/css"]
 draft: false
 og_description: "Use it to attach custom behavior to elements in the DOM."
 ---

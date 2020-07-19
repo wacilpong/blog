@@ -1,7 +1,7 @@
 ---
 title: "Closure, especially in javascript"
 date: "2020-04-18"
-tags: ["javascript"]
+tags: ["javascript/html/css"]
 draft: false
 og_description: ""
 ---

@@ -1,19 +1,11 @@
 ---
 title: "2020"
-description: "what i learned"
-og_description: "What I Learned"
+description: "About what I learned by year"
+og_description: "About what I learned by year"
 draft: false
 ---
 
 ## **2020-07-01**
-
-- **angular entryComponent**
-  : 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 `@NgModule.bootstrap`에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 `entryComponents` 배열에 지정해야 한다.
-
-  1. NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)
-  2. 라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)
-
-<br />
 
 - **/etc/hosts**
   : `cat /etc/hosts`를 실행하면 본인(host)의 컴퓨터에서 매핑된 ip주소와 도메인 이름을 확인할 수 있다. 브라우저나 터미널에서 도메인 이름을 치면 네임서버에서 ip를 얻게 되는데, 호스트 컴퓨터가 네임서버에 접근할 수 없는 상황에서는 해당 파일에 매핑된 도메인 이름과 ip주소를 이용한다.
@@ -85,6 +77,14 @@ draft: false
   alias gapa='git add --patch'
   ...
   ```
+
+<br />
+
+- **angular entryComponent**
+: 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 `@NgModule.bootstrap`에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 `entryComponents` 배열에 지정해야 한다.
+
+1. NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)
+2. 라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)
 
 <br />
 <hr />
@@ -184,6 +184,7 @@ draft: false
   $ ln hello.txt dest.txt
 
   # 2. soft link
+  # -f means, If the target file exists, then unlink.
   $ ln -fs hello.txt dest.txt
 
   $ echo hello > hello.txt

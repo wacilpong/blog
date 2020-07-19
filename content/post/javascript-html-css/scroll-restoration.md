@@ -1,7 +1,7 @@
 ---
 title: "Scroll restoration"
 date: "2020-02-23"
-tags: ["javascript"]
+tags: ["javascript/html/css"]
 draft: false
 og_description: "재미있는 현상을 발견했다. 스크롤을 내리다가 특정 페이지로 이동 후, 다시 전 페이지로 이동(뒤로가기)하면 스크롤 위치를 기억하지 못하는 것이다. 왜 이럴까 한번 파보았다."
 ---

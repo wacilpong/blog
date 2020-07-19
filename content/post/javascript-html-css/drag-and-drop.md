@@ -1,7 +1,7 @@
 ---
 title: "Drag and drop API"
 date: "2020-03-15"
-tags: ["html"]
+tags: ["javascript/html/css"]
 draft: false
 og_description: "HTML5의 모든 요소에는 draggable이라는 속성을 붙일 수 있다."
 ---

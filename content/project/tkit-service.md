@@ -8,10 +8,13 @@ draft: false
 ## Overview
 
 Global Ticketing system service, TKIT. I created front web for TKIT in full-stack.
-<br><br>
+
+<br /><br />
+
 https://tkit.me
 
-<br>
+<br />
+
 ## Tech Stack
-- Front-end : Angular 6.x / SCSS
+- Front-end : Angular 6 / SCSS
 - Back-end (APIs) : Python 3.x / Tornado 4.x / MongoDB (pymongo 3.x)

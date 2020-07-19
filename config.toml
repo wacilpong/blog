@@ -46,19 +46,20 @@ disqusShortname = "roomy-han"
     weight = 1
 
 [[menu.main]]
-    url = "/post/"
-    name = "Posts"
+    url = "/tags/"
+    name = "Category"
     weight = 2
 
 [[menu.main]]
-    url = "/tags/"
-    name = "Tags"
+    url = "/post/"
+    name = "Posts"
     weight = 3
 
 [[menu.main]]
     url = "/project/"
     name = "Projects"
     weight = 4
+    
 [[menu.main]]
     url = "/learned/"
     name = "What I Learned"

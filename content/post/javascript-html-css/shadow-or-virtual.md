@@ -1,7 +1,7 @@
 ---
 title: "Shadow DOM vs Virtual DOM"
 date: "2018-11-09"
-tags: ["html"]
+tags: ["javascript/html/css"]
 draft: false
 og_description: "DOM(Document Object Model), is literally a structured model by objects."
 ---
