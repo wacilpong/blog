@@ -26,8 +26,10 @@
       
       <guid>https://wacilpong.github.io/blog/project/tkit-service/</guid>
       <description>Overview Global Ticketing system service, TKIT. I created front web for TKIT in full-stack.
+
 https://tkit.me
-## Tech Stack - Front-end : Angular 6.x / SCSS - Back-end (APIs) : Python 3.x / Tornado 4.x / MongoDB (pymongo 3.x) </description>
+
+Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 4.x / MongoDB (pymongo 3.x)  </description>
     </item>
     
     <item>

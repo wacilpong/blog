@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="kr-ko">
     <head>
-        <meta name="description" content="splice can select(remove) the item with specific index to certain index." />
+        <meta name="description" content="DOM(Document Object Model), is literally a structured model by objects." />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="Splice Array" />
-<meta property="og:site_name" content="Splice Array" />
-<meta property="og:description" content="splice can select(remove) the item with specific index to certain index." />
-<meta property="og:url" content="https://wacilpong.github.io/blog/post/javascript/splice-your-array/" />
+<meta property="og:title" content="Shadow DOM vs Virtual DOM" />
+<meta property="og:site_name" content="Shadow DOM vs Virtual DOM" />
+<meta property="og:description" content="DOM(Document Object Model), is literally a structured model by objects." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/javascript-html-css/shadow-or-virtual/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Splice Array" />
-<meta name="twitter:description" content="splice can select(remove) the item with specific index to certain index." />
+<meta name="twitter:title" content="Shadow DOM vs Virtual DOM" />
+<meta name="twitter:description" content="DOM(Document Object Model), is literally a structured model by objects." />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
 <meta
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Splice Array</title>
+        <title>Shadow DOM vs Virtual DOM</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -108,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Splice Array</a>
+                    <a class="navbar-brand visible-xs" href="#">Shadow DOM vs Virtual DOM</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -121,9 +121,9 @@
                             
                                 <li><a href="/blog/">Home</a></li>
                             
-                                <li><a href="/blog/post/">Posts</a></li>
+                                <li><a href="/blog/tags/">Category</a></li>
                             
-                                <li><a href="/blog/tags/">Tags</a></li>
+                                <li><a href="/blog/post/">Posts</a></li>
                             
                                 <li><a href="/blog/project/">Projects</a></li>
                             
@@ -148,32 +148,60 @@
 <main>
 
     <div>
-        <h2>Splice Array</h2>
-        <h5>2019-11-01</h5>
+        <h2>Shadow DOM vs Virtual DOM</h2>
+        <h5>2018-11-09</h5>
         
-<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
 
 
     </div>
 
-    <div align="start" class="content"><p>가끔 <code>Array.prototype.splice()</code>가 굉장히 헷갈릴 때가 있는데, 그게 언제냐면 이 값을 할당할 때!</p>
-<p>Sometimes I confused about <code>Array.prototype.splice()</code> function, especially when assign the returned value from this !<br />
-<br /><br /></p>
-<h3 id="arrayprototypesplice-do--what-">Array.prototype.splice() do &hellip; what ?</h3>
-<p>splice는 아래처럼 특정 인덱스에서 특정 개수만큼 뽑아낼 수 있는 함수이다.</p>
-<p>splice can select(remove) the item with specific index to certain index.<br />
+    <div align="start" class="content"><h2 id="dom-die-or-march-">DOM, Die Or March ?</h2>
+<h3 id="p">:P</h3>
+<p><code>DOM(Document Object Model)</code>, is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (<code>reflow</code> and <code>repaint</code>).</p>
+<p><br /></p>
+<p>DOM은 말 그대로 오브젝트들로 구성된 모델이다. 달리 말하면, DOM은 웹페이지에 대한 객체지향적 표현이다. 웹 브라우저가 이 DOM을 조작하고, 우리는 Javascript와 CSS를 이용해 통신(조작)할 수 있다. 그런데 DOM을 조작할 때 <code>reflow</code>와 <code>repaint</code>에 대한 렌더링 계산 때문에 속도가 늦어진다.</p>
+<p><br /></p>
+<h4 id="1-reflow">1. reflow</h4>
+<ul>
+<li>it triggerd when calculate the node size of <code>Render Tree</code>.</li>
+<li>it triggerd once at least at the beggining of the webpage.</li>
+</ul>
+<h4 id="2-repaint">2. repaint</h4>
+<ul>
+<li>it triggerd when update the DOM.</li>
+</ul>
+<h4 id="3-what-triggers-those-">3. What triggers those ?</h4>
+<ul>
+<li>Adding, Removing and Updating DOM node.</li>
+<li>Moving and animating the DOM node on the page.</li>
+<li><code>display:none, visibility:hidden</code></li>
+<li>User action like scrolling and resizing the window.</li>
+</ul>
+<p><br /></p>
+<p>So, We need to reduce DOM manipulation.<br />
 <br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
-<span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// array === [2,3,4]
-</span></code></pre></div><p><br /></p>
-<h3 id="then-what-is-confusing-point-">then what is confusing point ?</h3>
-<p>그런데 이 값을 어떠한 값에 할당하면 아래처럼 제거된 배열이 아니라 제거한 해당 값을 반환한다.</p>
-<p>But, this function return the removed value with specific index.<br />
+<p>그래서 위와 같은 이유로 DOM 조작 자체를 최소화해야 한다.<br />
 <br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">array2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// array2 === [1]
-</span></code></pre></div><p><br /><br />
-따라서 그냥 특정 인덱스 요소를 제거하고 싶으면 할당하지 말고 그냥 쓰면 되는데, 가끔 헷갈리더라&hellip; 나만 그럴수도&hellip;</p>
+<hr>
+<h2 id="virtual-dom">Virtual DOM</h2>
+<p>This is one of the way to avoid the unnecessary DOM manipulation. It avoids re-rendering page, and represents UI that is kept in memory and synced with the REAL DOM. It is a concept implemented by libraries in JavaScript on top of browser APIs. such as <code>ReactJs</code> and <code>VueJs</code>. In react, the virtual DOM called <code>React DOM</code>.<br />
+<br /></p>
+<p>이는 불필요한 DOM 조작을 피하기 위한 방법 중의 하나이다. 페이지를 다시 렌더링하는 것을 피하고, UI 자체를 표현하여 메모리 상에 저장되고 실제 DOM과 동기화한다. 이는 리액트나 뷰와 같은 브라우저 API들에 기반하여 자바스크립트로 구현된 컨셉이다. 참고로 리액트에서는 이러한 가상 DOM을 <code>React DOM</code>이라고 부른다.<br />
+<br /></p>
+<p><strong><em>Then, How about Angular2+ ?</em></strong></p>
+<ul>
+<li><code>Angular2+</code> manipulates DOM directly, but it has <code>ChangeDetectionRef</code>, is the base class of angular view.</li>
+<li>it is a tree collects all views that are to be checked for changes.</li>
+<li>So we can also reduce the DOM manipulation.</li>
+</ul>
+<p><br /></p>
+<h2 id="shadow-dom">Shadow DOM</h2>
+<p>This is a browser technology designed primarily for scoping variables and CSS in web components. and is mostly about encapsulation of the implementation. It refers to the ability of the browser to include a subtree of DOM elements into the rendering of a document, but not into the main document DOM tree.</p>
+<p><br /></p>
+<p>이는 웹 컴포넌트들에서 변수들과 CSS의 범위를 지정하기 위해 설계된 브라우저 기술이다. 주로 캡슐화를 위해 사용된다. DOM 엘리먼트들의 서브 트리를 렌더링 영역에 포함시키지만, 메인 DOM 트리에는 포함시키지 않는 브라우저의 한 스킬이다.</p>
+<p><br /></p>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/Web_Components/Using_shadow_DOM">Ref: Using Shadow DOM (Javascript)</a></p>
 </div>
 
     
@@ -189,10 +217,10 @@
     
     
 
-    <h4><a href="/blog/post/javascript/closure-especially-in-javascript/">Closure, especially in javascript</a></h4>
+    <h4><a href="/blog/post/javascript-html-css/closure-especially-in-javascript/">Closure, especially in javascript</a></h4>
     <h5>2020-04-18</h5>
     
-<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
 
 
 
@@ -206,27 +234,27 @@
     
     
 
-    <h4><a href="/blog/post/javascript/scroll-restoration/">Scroll restoration</a></h4>
+    <h4><a href="/blog/post/javascript-html-css/drag-and-drop/">Drag and drop API</a></h4>
+    <h5>2020-03-15</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript-html-css/scroll-restoration/">Scroll restoration</a></h4>
     <h5>2020-02-23</h5>
     
-<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/javascript/currying-vs-partial-function/">Partial function and currying in javascript</a></h4>
-    <h5>2020-02-09</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
 
 
 

@@ -20,6 +20,11 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/tags/computer-science/</loc>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/post/</loc>
     <lastmod>2020-06-28T00:00:00+00:00</lastmod>
   </url>
@@ -45,11 +50,6 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/computer-science/</loc>
-    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/post/computer-science/algorithm-basic-2/</loc>
     <lastmod>2020-05-13T00:00:00+00:00</lastmod>
   </url>
@@ -60,32 +60,27 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/javascript/closure-especially-in-javascript/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/closure-especially-in-javascript/</loc>
     <lastmod>2020-04-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/</loc>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
     <lastmod>2020-04-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/html/drag-and-drop/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/drag-and-drop/</loc>
     <lastmod>2020-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/html/</loc>
-    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/javascript/scroll-restoration/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/scroll-restoration/</loc>
     <lastmod>2020-02-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/javascript/currying-vs-partial-function/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/currying-vs-partial-function/</loc>
     <lastmod>2020-02-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -115,12 +110,12 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/javascript/hoisting-about-function/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/hoisting-about-function/</loc>
     <lastmod>2019-12-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/javascript/splice-your-array/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/splice-your-array/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -130,12 +125,12 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/javascript/react-file-structure/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/react-file-structure/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/html/shadow-or-virtual/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/shadow-or-virtual/</loc>
     <lastmod>2018-11-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -195,7 +190,7 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/javascript/angular-directive/</loc>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/angular-directive/</loc>
     <lastmod>2018-08-02T00:00:00+00:00</lastmod>
   </url>
   

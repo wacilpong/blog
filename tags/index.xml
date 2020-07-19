@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>computer-science</title>
+      <link>https://wacilpong.github.io/blog/tags/computer-science/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/tags/computer-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>review</title>
       <link>https://wacilpong.github.io/blog/tags/review/</link>
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
@@ -21,29 +30,11 @@
     </item>
     
     <item>
-      <title>computer-science</title>
-      <link>https://wacilpong.github.io/blog/tags/computer-science/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/computer-science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>javascript</title>
-      <link>https://wacilpong.github.io/blog/tags/javascript/</link>
+      <title>javascript/html/css</title>
+      <link>https://wacilpong.github.io/blog/tags/javascript/html/css/</link>
       <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>html</title>
-      <link>https://wacilpong.github.io/blog/tags/html/</link>
-      <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/html/</guid>
+      <guid>https://wacilpong.github.io/blog/tags/javascript/html/css/</guid>
       <description></description>
     </item>
     

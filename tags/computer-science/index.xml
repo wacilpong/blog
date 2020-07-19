@@ -6,10 +6,19 @@
     <description>Recent content in computer-science on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 24 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading concepts of programming languages, by Robert W. Sebesta</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-concepts-of-programming-languages/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-concepts-of-programming-languages/</guid>
+      <description>프로그래밍 언어론을 읽고 내맘대로 정리해보았다. [기본적인 사항] 프로그래밍 언어의 어휘항목은 수치 리터럴, operator, 특수어를 포함한다. 프로그램은 문자보다는 어</description>
+    </item>
     
     <item>
       <title>Algorithm basic 3</title>

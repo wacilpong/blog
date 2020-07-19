@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="kr-ko">
     <head>
-        <meta name="description" content="What I Learned" />
+        <meta name="description" content="About what I learned by year" />
 
 <meta name="og:type" content="website" />
 <meta property="og:title" content="2020" />
 <meta property="og:site_name" content="2020" />
-<meta property="og:description" content="What I Learned" />
+<meta property="og:description" content="About what I learned by year" />
 <meta property="og:url" content="https://wacilpong.github.io/blog/learned/what-i-learned-2020/" />
 
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="2020" />
-<meta name="twitter:description" content="What I Learned" />
+<meta name="twitter:description" content="About what I learned by year" />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
 <meta
@@ -121,9 +121,9 @@
                             
                                 <li><a href="/blog/">Home</a></li>
                             
-                                <li><a href="/blog/post/">Posts</a></li>
+                                <li><a href="/blog/tags/">Category</a></li>
                             
-                                <li><a href="/blog/tags/">Tags</a></li>
+                                <li><a href="/blog/post/">Posts</a></li>
                             
                                 <li><a href="/blog/project/">Projects</a></li>
                             
@@ -149,25 +149,12 @@
 
     <div>
         <h2>2020</h2>
-        <h5>what i learned</h5>
+        <h5>About what I learned by year</h5>
         
 
     </div>
 
     <div align="start" class="content"><h2 id="2020-07-01"><strong>2020-07-01</strong></h2>
-<ul>
-<li>
-<dl>
-<dt><strong>angular entryComponent</strong></dt>
-<dd>진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 <code>@NgModule.bootstrap</code>에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 <code>entryComponents</code> 배열에 지정해야 한다.</dd>
-</dl>
-<ol>
-<li>NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)</li>
-<li>라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)</li>
-</ol>
-</li>
-</ul>
-<p><br /></p>
 <ul>
 <li>
 <dl>
@@ -239,6 +226,15 @@ alias gapa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;g
 ...
 </code></pre></div></li>
 </ul>
+<p><br /></p>
+<ul>
+<li><strong>angular entryComponent</strong><br />
+: 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 <code>@NgModule.bootstrap</code>에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 <code>entryComponents</code> 배열에 지정해야 한다.</li>
+</ul>
+<ol>
+<li>NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)</li>
+<li>라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)</li>
+</ol>
 <p><br /></p>
 <hr />
 <h2 id="2020-07-03"><strong>2020-07-03</strong></h2>
@@ -346,6 +342,7 @@ $ vim ~/.ssh/known_hosts
 $ ln hello.txt dest.txt
 
 <span style="color:#75715e"># 2. soft link</span>
+<span style="color:#75715e"># -f means, If the target file exists, then unlink.</span>
 $ ln -fs hello.txt dest.txt
 
 $ echo hello &gt; hello.txt
