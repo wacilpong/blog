@@ -349,7 +349,23 @@ $ echo hello &gt; hello.txt
 $ cat dest.txt
 $ rm hello.txt
 
+</code></pre></div><p><br /></p>
+<hr />
+<h2 id="2020-07-26"><strong>2020-07-26</strong></h2>
+<ul>
+<li>
+<p>현재 작업중이었던 브랜치를 특정 브랜치를 기준으로 log를 쌓고 싶을 때는 <code>git rebase</code>를 통해 하며, 리베이스 도중 충돌이 일어나면 머지 마킹하고 <code>git rebase --continue</code>를 통해 계속 진행한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Q. master &lt;- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 새로 딴 브랜치로 옮기고 싶다면?
+
+git pull master
+git checkout hotfix/test
+git rebase master
+(after resolve conflicts)
+git rebase --continue
+git log --graph --decorate
 </code></pre></div></li>
+</ul>
+</li>
 </ul>
 </div>
 
