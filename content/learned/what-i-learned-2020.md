@@ -192,3 +192,20 @@ draft: false
   $ rm hello.txt
 
   ```
+
+  <br />
+  <hr />
+
+  ## **2020-07-26**
+  - 현재 작업중이었던 브랜치를 특정 브랜치를 기준으로 log를 쌓고 싶을 때는 `git rebase`를 통해 하며, 리베이스 도중 충돌이 일어나면 머지 마킹하고 `git rebase --continue`를 통해 계속 진행한다.
+
+    ```text
+    Q. master <- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 새로 딴 브랜치로 옮기고 싶다면?
+
+    git pull master
+    git checkout hotfix/test
+    git rebase master
+    (after resolve conflicts)
+    git rebase --continue
+    git log --graph --decorate
+    ```
