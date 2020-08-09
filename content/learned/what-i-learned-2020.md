@@ -209,3 +209,16 @@ draft: false
     git rebase --continue
     git log --graph --decorate
     ```
+
+<br />
+<hr />
+
+## **2020-08-09**
+- 크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.
+```
+const el = document.createElement('script');
+el.src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js';
+document.getElementsByTagName('head')[0].appendChild(el);
+
+_.VERSION
+```
