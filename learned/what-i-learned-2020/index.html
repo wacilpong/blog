@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -194,12 +194,12 @@ $ . ~/.zshrc
 <span style="color:#75715e"># Back-compatibility wrapper for when this function was defined here in</span>
 <span style="color:#75715e"># the plugin, before being pulled in to core lib/git.zsh as git_current_branch()</span>
 <span style="color:#75715e"># to fix the core -&gt; git plugin dependency.</span>
-<span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
   git_current_branch
 <span style="color:#f92672">}</span>
 
 <span style="color:#75715e"># Pretty log messages</span>
-<span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+<span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(){</span>
   <span style="color:#66d9ef">if</span> ! <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
     git log --pretty<span style="color:#f92672">=</span>$1
   <span style="color:#66d9ef">fi</span>
@@ -207,7 +207,7 @@ $ . ~/.zshrc
 compdef _git _git_log_prettily<span style="color:#f92672">=</span>git-log
 
 <span style="color:#75715e"># Warn if the current branch is a WIP</span>
-<span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
   <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">$(</span>git log -n <span style="color:#ae81ff">1</span> 2&gt;/dev/null | grep -q -c <span style="color:#e6db74">&#34;\-\-wip\-\-&#34;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">then</span>
     echo <span style="color:#e6db74">&#34;WIP!!&#34;</span>
   <span style="color:#66d9ef">fi</span>
@@ -228,8 +228,12 @@ alias gapa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;g
 </ul>
 <p><br /></p>
 <ul>
-<li><strong>angular entryComponent</strong><br />
-: 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 <code>@NgModule.bootstrap</code>에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 <code>entryComponents</code> 배열에 지정해야 한다.</li>
+<li>
+<dl>
+<dt><strong>angular entryComponent</strong></dt>
+<dd>진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 <code>@NgModule.bootstrap</code>에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 <code>entryComponents</code> 배열에 지정해야 한다.</dd>
+</dl>
+</li>
 </ul>
 <ol>
 <li>NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)</li>
@@ -242,7 +246,7 @@ alias gapa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;g
 <li>
 <p>webpack 번들에는 if~else 혹은 switch 구문으로 dynamic import해도, 번들에는 모두 포함된다. 관련 분석 도구는 <a href="https://coryrylan.com/blog/analyzing-bundle-size-with-the-angular-cli-and-webpack">webpack-bundle-analyzer</a>를 참고하자. 번들링 결과는 stats.json 파일로 확인할 수 있고, 참고로 앵귤러에서는 <code>npx ng build --statsJson</code>를 통해 확인 가능하다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 지연 로딩될 뿐, 모두 번들링에 포함된다.
-</span><span style="color:#75715e"></span><span style="color:#75715e">// just lazy loaded, all included in bundle.
+</span><span style="color:#75715e">// just lazy loaded, all included in bundle.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">production</span>) {
   <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;path/sdk.prod.js&#34;</span>);
 } <span style="color:#66d9ef">else</span> {
@@ -303,7 +307,7 @@ $ vim ~/.ssh/known_hosts
 <li><strong>참고로 Paint 과정에서 GPU Rasterization을 사용하면 빨라진다.</strong>
 <ul>
 <li>크롬 브라우저에서 <code>&lt;meta&gt;</code> viewport를 설정하거나, css <code>@viewport</code>를 설정해 사용할 수 있다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, minimum-scale=1.0&#34;</span>&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, minimum-scale=1.0&#34;</span> /&gt;
 </code></pre></div></li>
 <li><code>minimum-scale</code>를 &ldquo;yes&quot;로 설정하면 안되고, &ldquo;1.0&quot;으로 해야 한다.</li>
 <li><code>initial-scale</code>과 <code>user-scalable</code>는 고려 대상이 아니라서 상관없다.</li>
@@ -351,6 +355,8 @@ $ rm hello.txt
 
 </code></pre></div><p><br /></p>
 <hr />
+</li>
+</ul>
 <h2 id="2020-07-26"><strong>2020-07-26</strong></h2>
 <ul>
 <li>
@@ -365,20 +371,20 @@ git rebase --continue
 git log --graph --decorate
 </code></pre></div></li>
 </ul>
-</li>
-</ul>
 <p><br /></p>
 <hr />
 <h2 id="2020-08-09"><strong>2020-08-09</strong></h2>
 <ul>
-<li>크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.</li>
-</ul>
+<li>
+<p>크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.</p>
 <pre><code>const el = document.createElement('script');
 el.src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js';
 document.getElementsByTagName('head')[0].appendChild(el);
 
 _.VERSION
-</code></pre></div>
+</code></pre></li>
+</ul>
+</div>
 
 </main>
 

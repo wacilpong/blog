@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -157,7 +157,7 @@
     </div>
 
     <div align="start" class="content"><h2 id="what-is-marble-diagram">What is marble diagram?</h2>
-<p><img src="https://rxjs-dev.firebaseapp.com/assets/images/marble-diagrams/merge.png" alt="marble-merge" /></p>
+<p><img src="https://user-images.githubusercontent.com/27843313/89752134-136a9a80-db0e-11ea-9f29-b3a5a9326585.png" alt="marble-merge" /></p>
 <p>마블 다이어그램은 위 사진처럼 일련의 시간 흐름에서 발생(emit)되는 값을 조각으로 명시하는 것이다. 어떠한 sequence 중에서 일정 부분을 포착해놓은 것이라고 할 수 있다. 위 예시는 두 흐름 시퀀스를 merge operator를 통해 합친 것이다. 그래서 테스트하기가 까다로울 수 있는데, 이를 일련의 규칙을 통해 테스트하는 것이 marble testing이다.</p>
 <p>이때 흘러가는 각각의 프레임은 10ms로 본다. 예를 들어, <code>---o|</code>라는 콜드 옵저버블은 30ms 후에 o라는 값을 방출하고 종료한다.</p>
 <p><br /></p>
@@ -168,24 +168,24 @@
 <li><code>#</code>: An error terminating the observable</li>
 <li><code>^</code>: Subscription point to the hot observable</li>
 <li><code>!</code>: Unsubscription point at which a subscription is unsubscribed</li>
-<li><code>a</code>: Any character value  being emitted by the producer</li>
+<li><code>a</code>: Any character value being emitted by the producer</li>
 <li><code>()</code>: Emit a single grouped value on same time frame.</li>
 </ol>
 <p><br /></p>
 <h2 id="example">Example</h2>
-<p>(1) source 옵저버블이 일어날 때마다 startWith로 최초 시작한 후 항상 &lsquo;done'이라는 값을 방출하는 옵저버블 테스트</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#39;-a-b-|&#39;</span>);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#39;ab-c-|&#39;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;done&#39;</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;done&#39;</span>, <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;done&#39;</span>});
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">source</span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">pipe</span>(
+<p>(1) source 옵저버블이 일어날 때마다 startWith로 최초 시작한 후 항상 &lsquo;done&rsquo;이라는 값을 방출하는 옵저버블 테스트</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-a-b-|&#34;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;ab-c-|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>});
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">source$</span>.<span style="color:#a6e22e">pipe</span>(
   <span style="color:#a6e22e">startWith</span>({}),
-  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">of</span>(<span style="color:#e6db74">&#39;done&#39;</span>))
+  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">of</span>(<span style="color:#e6db74">&#34;done&#34;</span>))
 );
 
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">result</span><span style="color:#a6e22e">$</span>).<span style="color:#a6e22e">toBeObservable</span>(<span style="color:#a6e22e">expected</span><span style="color:#a6e22e">$</span>);
+<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">result$</span>).<span style="color:#a6e22e">toBeObservable</span>(<span style="color:#a6e22e">expected$</span>);
 </code></pre></div><p><br /></p>
 <p>(2) hot 옵저버블에 대한 기본적인 테스트 (구독한 후 a를 방출하고 10ms 후에 종료)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hot</span>(<span style="color:#e6db74">&#39;-^a-|&#39;</span>, { <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">5</span> });
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#39;-a-|&#39;</span>, { <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">5</span> });
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hot</span>(<span style="color:#e6db74">&#34;-^a-|&#34;</span>, {<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">5</span>});
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-a-|&#34;</span>, {<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">5</span>});
 
 <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">source</span>).<span style="color:#a6e22e">toBeObservable</span>(<span style="color:#a6e22e">expected</span>);
 </code></pre></div></div>

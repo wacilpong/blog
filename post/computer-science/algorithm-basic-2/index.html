@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -159,11 +159,11 @@
     <div align="start" class="content"><p>칸아카데미의 알고리즘 코스를 들으며 정리해본 알고리즘 기초.<br />
 <a href="https://ko.khanacademy.org/computing/computer-science/algorithms">https://ko.khanacademy.org/computing/computer-science/algorithms</a></p>
 <p><br /></p>
-<h2 id="---feat---">좀더 빠른 정렬? feat. 재귀적 알고리즘 설계</h2>
+<h2 id="좀더-빠른-정렬-feat-재귀적-알고리즘-설계">좀더 빠른 정렬? feat. 재귀적 알고리즘 설계</h2>
 <p>선택정렬과 삽입정렬의 최대 실행시간은 O(n^2)이다. 따라서 입력하는 배열의 크기가 크다면 매우 오랜 시간이 걸린다. 하지만 <strong>재귀</strong>를 활용하면 더 빠르게 정렬할 수 있다. 각 정렬의 실행시간은 다음과 같다.</p>
 <p><img src="https://user-images.githubusercontent.com/27843313/82684221-30b96680-9c8d-11ea-8269-19e77185f71c.png" alt="sort" /></p>
 <p><br /></p>
-<h3 id="-merge-sort"><strong>[병합정렬 (merge sort)]</strong></h3>
+<h3 id="병합정렬-merge-sort"><strong>[병합정렬 (merge sort)]</strong></h3>
 <p><img src="https://cdn.kastatic.org/ka-perseus-images/db9d172fc33b90e905c1213b8cce660c228bb99c.png" alt="merge-sort" /></p>
 <p><strong>분할 정복 (divide and conquer)식 알고리즘 ?</strong></p>
 <ul>
@@ -238,7 +238,7 @@
 <p>—&gt; 병합과정에서 두 요소만을 비교하고 각 요소는 최대 한 번의 비교로 array로 다시 복사된다. 따라서 병합하는 과정은 입력값 n만큼의 복잡도를 지닌다. 그리고 분할-정복을 재귀적으로 반복할 때에는 처리할 입력값 n이 <code>n/2, n/4, n/8...</code> 의 형태로 줄어든다. 따라서 병합정렬의 실행시간은 <code>O(n logn)</code>이다.</p>
 <p>—&gt; 병합정렬은 계속 왼쪽과 오른쪽의 하위배열 복사본을 만들어야 하여 저장공간이 필요하다. 즉, 이 정렬은 정렬할 배열이 저장된 그 자리에서 작동하지 않는다.</p>
 <p><br /><hr /></p>
-<h3 id="-quick-sort">[퀵정렬 (quick sort)]</h3>
+<h3 id="퀵정렬-quick-sort">[퀵정렬 (quick sort)]</h3>
 <p><img src="https://cdn.kastatic.org/ka-perseus-images/9876d4dc59e01a4742860ae1831c20f654ed7959.png" alt="quick-sort" /></p>
 <ul>
 <li>병합정렬처럼 분할 정복식 전략을 사용하는 재귀 알고리즘이다.</li>
