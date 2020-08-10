@@ -81,7 +81,7 @@ draft: false
 <br />
 
 - **angular entryComponent**
-: 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 `@NgModule.bootstrap`에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 `entryComponents` 배열에 지정해야 한다.
+  : 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 `@NgModule.bootstrap`에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 `entryComponents` 배열에 지정해야 한다.
 
 1. NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)
 2. 라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)
@@ -121,6 +121,7 @@ draft: false
 <hr />
 
 ## **2020-07-08**
+
 - `JSON`은 데이터 포맷이지 자바스크립트만의 문법이 아니다. `YAML`과 비슷하지만, JSON에는 주석을 달 수 없다. (by Douglas Crockford)
 
 <br />
@@ -149,7 +150,7 @@ draft: false
     - **참고로 Paint 과정에서 GPU Rasterization을 사용하면 빨라진다.**
       - 크롬 브라우저에서 `<meta>` viewport를 설정하거나, css `@viewport`를 설정해 사용할 수 있다.
         ```html
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
         ```
       - `minimum-scale`를 "yes"로 설정하면 안되고, "1.0"으로 해야 한다.
       - `initial-scale`과 `user-scalable`는 고려 대상이 아니라서 상관없다.
@@ -159,6 +160,7 @@ draft: false
 <hr />
 
 ## **2020-07-15**
+
 - `git cherry-pick` 명령을 통해 특정 커밋을 반영해올 때, `--no-commit, -n` 옵션을 붙이면 커밋을 하지 않는다. 따라서 어떠한 커밋에서 특정 파일들만 반영하고 나머지는 이전으로 되돌린 후에 반영할 수 있다.
 
   ```text
@@ -175,6 +177,7 @@ draft: false
 <hr />
 
 ## **2020-07-17**
+
 - `ln` 리눅스 명령을 통해 어떤 파일의 바로가기를 만들 수 있다. `-s` 옵션을 지정하면 symlink(symbolic link)를 만들어준다. 이것이 일반적으로 의미하는 바로가기이며, **원본이 지워지면 해당 파일도 접근할 수 없다.** 아래 예시에서 hello.txt에 쓴 텍스트는 dest.txt에서도 보인다. hello.txt 원본을 지우면 hard link 방식일 때는 dest.txt에 접근할 수 있지만, soft link 방식일 때는 접근할 수 없다.
 
   ```sh
@@ -196,29 +199,32 @@ draft: false
   <br />
   <hr />
 
-  ## **2020-07-26**
-  - 현재 작업중이었던 브랜치를 특정 브랜치를 기준으로 log를 쌓고 싶을 때는 `git rebase`를 통해 하며, 리베이스 도중 충돌이 일어나면 머지 마킹하고 `git rebase --continue`를 통해 계속 진행한다.
+## **2020-07-26**
 
-    ```text
-    Q. master <- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 새로 딴 브랜치로 옮기고 싶다면?
+- 현재 작업중이었던 브랜치를 특정 브랜치를 기준으로 log를 쌓고 싶을 때는 `git rebase`를 통해 하며, 리베이스 도중 충돌이 일어나면 머지 마킹하고 `git rebase --continue`를 통해 계속 진행한다.
 
-    git pull master
-    git checkout hotfix/test
-    git rebase master
-    (after resolve conflicts)
-    git rebase --continue
-    git log --graph --decorate
-    ```
+  ```text
+  Q. master <- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 새로 딴 브랜치로 옮기고 싶다면?
+
+  git pull master
+  git checkout hotfix/test
+  git rebase master
+  (after resolve conflicts)
+  git rebase --continue
+  git log --graph --decorate
+  ```
 
 <br />
 <hr />
 
 ## **2020-08-09**
-- 크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.
-```
-const el = document.createElement('script');
-el.src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js';
-document.getElementsByTagName('head')[0].appendChild(el);
 
-_.VERSION
-```
+- 크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.
+
+  ```
+  const el = document.createElement('script');
+  el.src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js';
+  document.getElementsByTagName('head')[0].appendChild(el);
+
+  _.VERSION
+  ```
