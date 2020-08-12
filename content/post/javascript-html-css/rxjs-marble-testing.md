@@ -17,13 +17,13 @@ draft: false
 <br />
 
 ## Marble Syntax
-1. `-`: Tiem, each frame represents 10ms of time
-2. `|`: The successful completion of an observable
-3. `#`: An error terminating the observable
-4. `^`: Subscription point to the hot observable
-5. `!`: Unsubscription point at which a subscription is unsubscribed
-6. `a`: Any character value  being emitted by the producer
-7. `()`: Emit a single grouped value on same time frame.
+- `-` : Time, 각각을 프레임이라고 부르며 10ms를 의미한다.
+- `|` : 옵저버블이 성공적으로 완료되었음을 의미한다.
+- `#` : 옵저버블이 종료되며 에러를 일으켰음을 의미한다.
+- `^` : 핫 옵저버블의 구독 시점을 의미한다.
+- `!` : 구독을 해제한 시점을 의미한다.
+- `a` : producer에 의해 방출되는 어떠한 값, a가 아니라 다른 문자여도 된다.
+- `()` : 여러 값들이 한번에 방출될 때를 의미한다. ex) '--(abc)-|' → a,b,c가 한번에 방출된다.
 
 <br />
 

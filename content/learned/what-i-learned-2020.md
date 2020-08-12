@@ -83,8 +83,10 @@ draft: false
 - **angular entryComponent**
 : 진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 `@NgModule.bootstrap`에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 `entryComponents` 배열에 지정해야 한다.
 
-1. NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)
-2. 라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)
+  ```text
+  1. NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)
+  2. 라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)
+  ```
 
 <br />
 <hr />
@@ -215,10 +217,10 @@ draft: false
 
 ## **2020-08-09**
 - 크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.
-```
-const el = document.createElement('script');
-el.src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js';
-document.getElementsByTagName('head')[0].appendChild(el);
+  ```
+  const el = document.createElement('script');
+  el.src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js';
+  document.getElementsByTagName('head')[0].appendChild(el);
 
-_.VERSION
-```
+  _.VERSION
+  ```
