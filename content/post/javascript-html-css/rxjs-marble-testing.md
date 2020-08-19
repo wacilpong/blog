@@ -77,7 +77,7 @@ expect(source).toBeObservable(expected);
   ```
 
 - API call
-  'getTestScheduler' will inject a virtual time to the jasmine cold matcher function which will be executed immediately when we flush it.
+  `getTestScheduler` will inject a virtual time to the jasmine cold matcher function which will be executed immediately when we flush it.
 
   ```ts
   const expected$ = cold("-----a|", {a: [{first: "roomy"}]});
