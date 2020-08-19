@@ -208,7 +208,7 @@
 </code></pre></div></li>
 <li>
 <p>API call<br />
-&lsquo;getTestScheduler&rsquo; will inject a virtual time to the jasmine cold matcher function which will be executed immediately when we flush it.</p>
+<code>getTestScheduler</code> will inject a virtual time to the jasmine cold matcher function which will be executed immediately when we flush it.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-----a|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> [{<span style="color:#a6e22e">first</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;roomy&#34;</span>}]});
 
 <span style="color:#a6e22e">userApi</span>.<span style="color:#a6e22e">searchUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">expected$</span>);
