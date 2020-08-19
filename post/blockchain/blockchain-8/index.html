@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -165,12 +165,12 @@
 </ul>
 <p><br /></p>
 <h3 id="dapp">dApp</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">---------------------------</span>
 <span style="color:#f92672">-</span> [dApp] [dApp]...        <span style="color:#f92672">-</span>
 <span style="color:#f92672">-</span> <span style="color:#a6e22e">Application</span>(EVM)        <span style="color:#f92672">-</span>
 <span style="color:#f92672">-</span> Consensus               <span style="color:#f92672">-</span>
 <span style="color:#f92672">-</span> Networking              <span style="color:#f92672">-</span>
-<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#f92672">---------------------------</span>
 </code></pre></div><ul>
 <li>이렇게 dApp을 EVM에 올려서 만들다보니 의존성이 생긴다.</li>
 <li>Networking, Consensus 레이어를 만드는 것이 힘들었다.</li>
@@ -184,7 +184,7 @@
 <li><code>Cosmos SDK</code>: 쉽게 dApp을 만들 수 있도록 해주는 일종의 프레임워크</li>
 <li><a href="https://cosmos.network/docs/resources/whitepaper-ko.html#%EC%BD%94%EC%8A%A4%EB%AA%A8%EC%8A%A4-%EA%B0%9C%EC%9A%94-cosmos-overview">참고: Cosmos document - KR</a></li>
 </ul>
-<h4 id="1--">1. 만들어진 이유?</h4>
+<h4 id="1-만들어진-이유">1. 만들어진 이유?</h4>
 <ul>
 <li>
 <p>복잡한 가상머신(VM) 블록체인</p>
@@ -227,7 +227,7 @@
 <p>-&gt; 그러나 코스모스를 통하면 이러한 문제점, 즉 <code>uncle blockchain</code>이 발생할 수 없다.<br><br />
 -&gt; 코스모스는 반드시 2개의 노드 중 하나만이 선택되는 구조이다.</p>
 <p><br /></p>
-<h4 id="3-hard-spoon----hard-fork">3. Hard Spoon 개념 (&lt;-&gt; Hard Fork)</h4>
+<h4 id="3-hard-spoon-개념---hard-fork">3. Hard Spoon 개념 (&lt;-&gt; Hard Fork)</h4>
 <ul>
 <li>기존의 블록체인 계정 잔고를 복제하여 새로운 암호화폐 발행</li>
 <li>즉, two chain + same ledger + but, the other consensus algorithm each other</li>
@@ -255,7 +255,7 @@
 <li>아톰은 보유자가 투표 및 검증 또는 다른 검증인들에게 위임을 하기 위해 필요</li>
 </ul>
 <p><br /></p>
-<h4 id="6--validators">6. 검증인 (Validators)</h4>
+<h4 id="6-검증인-validators">6. 검증인 (Validators)</h4>
 <ul>
 <li>100명(팀)</li>
 <li>가지고 있는 <code>atom</code>코인 물량에 비례하여 선정</li>
@@ -264,7 +264,7 @@
 <h4 id="7-on-chain-governance">7. on-chain governance</h4>
 <ul>
 <li>과반수 이상의 찬성 또는 &lsquo;yea with force&rsquo; 시 제안서가 통과된다.</li>
-<li>그러나 1/3+는 &lsquo;nay with force'를 통해 다수결을 거부할 수 있다.</li>
+<li>그러나 1/3+는 &lsquo;nay with force&rsquo;를 통해 다수결을 거부할 수 있다.</li>
 <li>이렇게 거부된 경우 모두가 <code>거부권 패널티 수수료 블록(VetoPenaltyFeeBlocks)</code>을 통해 수수료를 상실한다.</li>
 <li>따라서 &lsquo;처벌(slashing)&rsquo; 받음: 디폴트 1일 가치의 블록</li>
 <li>당사자는 <code>거부권 패널티 아톰(VetoPenaltyAtoms)</code>를 추가로 상실: 디폴트 0.1%</li>

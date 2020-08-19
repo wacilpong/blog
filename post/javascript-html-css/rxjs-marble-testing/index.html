@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -159,7 +159,7 @@
     <div align="start" class="content"><h2 id="what-is-marble-diagram">What is marble diagram?</h2>
 <p><img src="https://user-images.githubusercontent.com/27843313/89752134-136a9a80-db0e-11ea-9f29-b3a5a9326585.png" alt="marble-merge" /></p>
 <p>마블 다이어그램은 위 사진처럼 일련의 시간 흐름에서 발생(emit)되는 값을 조각으로 명시하는 것이다. 어떠한 sequence 중에서 일정 부분을 포착해놓은 것이라고 할 수 있다. 위 예시는 두 흐름 시퀀스를 merge operator를 통해 합친 것이다. 그래서 테스트하기가 까다로울 수 있는데, 이를 일련의 규칙을 통해 테스트하는 것이 marble testing이다.</p>
-<p>이때 흘러가는 각각의 프레임은 10ms로 본다. 예를 들어, <code>---o|</code>라는 콜드 옵저버블은 30ms 후에 o라는 값을 방출하고 종료한다.</p>
+<p>이때 흘러가는 각각의 프레임은 10ms로 본다. 예를 들어, <code>---o|</code>라는 콜드 옵저버블은 30ms 후에 o라는 값을 방출하고 종료한다. 이렇게 마블 다이어그램을 string 형태로 표현해서 이를 <code>ASCII marble diagrams</code>이라고도 한다.</p>
 <p><br /></p>
 <h2 id="marble-syntax">Marble Syntax</h2>
 <ul>
@@ -173,22 +173,53 @@
 </ul>
 <p><br /></p>
 <h2 id="example">Example</h2>
-<p>(1) source 옵저버블이 일어날 때마다 startWith로 최초 시작한 후 항상 &lsquo;done'이라는 값을 방출하는 옵저버블 테스트</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-a-b-|&#34;</span>);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;ab-c-|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>});
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">source</span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">pipe</span>(
+<p>(1) source 옵저버블이 일어날 때마다 startWith로 최초 시작한 후 항상 &lsquo;done&rsquo;이라는 값을 방출하는 옵저버블 테스트</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-a-b-|&#34;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;ab-c-|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>});
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">source$</span>.<span style="color:#a6e22e">pipe</span>(
   <span style="color:#a6e22e">startWith</span>({}),
-  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">of</span>(<span style="color:#e6db74">&#34;done&#34;</span>))
+  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">of</span>(<span style="color:#e6db74">&#34;done&#34;</span>))
 );
 
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">result</span><span style="color:#a6e22e">$</span>).<span style="color:#a6e22e">toBeObservable</span>(<span style="color:#a6e22e">expected</span><span style="color:#a6e22e">$</span>);
+<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">result$</span>).<span style="color:#a6e22e">toBeObservable</span>(<span style="color:#a6e22e">expected$</span>);
 </code></pre></div><p><br /></p>
 <p>(2) hot 옵저버블에 대한 기본적인 테스트 (구독한 후 a를 방출하고 10ms 후에 종료)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hot</span>(<span style="color:#e6db74">&#34;-^a-|&#34;</span>, {<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">5</span>});
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-a-|&#34;</span>, {<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">5</span>});
 
 <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">source</span>).<span style="color:#a6e22e">toBeObservable</span>(<span style="color:#a6e22e">expected</span>);
-</code></pre></div></div>
+</code></pre></div><p><br /></p>
+<p>(3) 비동기 상황을 동기적으로 테스팅하는 방법</p>
+<ul>
+<li>
+<p>side effect using <code>tap</code> updates a variable</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">eventCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;--a--b|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;y&#34;</span>});
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s1</span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">tap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">eventCount</span><span style="color:#f92672">++</span>));
+
+<span style="color:#a6e22e">expectObservable</span>(<span style="color:#a6e22e">result</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;--a--b|&#34;</span>, [<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#e6db74">&#34;y&#34;</span>]);
+
+<span style="color:#75715e">// run &#39;virtual time&#39;
+</span><span style="color:#75715e">// to complete all outstanding hot or cold observables
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">flush</span>();
+
+<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">eventCount</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#ae81ff">2</span>);
+</code></pre></div></li>
+<li>
+<p>API call<br />
+&lsquo;getTestScheduler&rsquo; will inject a virtual time to the jasmine cold matcher function which will be executed immediately when we flush it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-----a|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> [{<span style="color:#a6e22e">first</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;roomy&#34;</span>}]});
+
+<span style="color:#a6e22e">userApi</span>.<span style="color:#a6e22e">searchUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">expected$</span>);
+
+<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">search</span>(<span style="color:#e6db74">&#34;roomy&#34;</span>);
+
+<span style="color:#a6e22e">getTestScheduler</span>().<span style="color:#a6e22e">flush</span>();
+<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">users</span>).<span style="color:#a6e22e">toEqual</span>([{<span style="color:#a6e22e">first</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;roomy&#34;</span>} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">User</span>]);
+</code></pre></div></li>
+</ul>
+</div>
 
     
     
