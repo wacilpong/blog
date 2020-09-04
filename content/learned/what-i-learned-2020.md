@@ -224,10 +224,48 @@ draft: false
 - 크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.
 
   ```ts
-  const el = document.createElement('script');
-  
-  el.src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js';
-  document.getElementsByTagName('head')[0].appendChild(el);
+  const el = document.createElement("script");
 
-  _.VERSION
+  el.src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js";
+  document.getElementsByTagName("head")[0].appendChild(el);
+
+  _.VERSION;
   ```
+
+<br />
+<hr />
+
+## **2020-09-05**
+
+- `Rxjs`에서 Subject를 프로미스로 만들고 싶다면 아래처럼 `take`, `first` 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.
+
+  ```ts
+  // test.component.ts
+  ...
+  async () => {
+    this.testService.updateTest();
+
+    // get data after test$.next()
+    const data = (await this.testService.testPromise()).data;
+  }
+
+
+  // test.service.ts
+  ...
+  const test$ = new Subject<boolean>();
+
+  function testPromise(): Promise<boolean> {
+    return this.test$.pipe(take(1)).toPromise();
+  }
+
+  function updateTest(): void {
+    this.httpClient.get("/test").subscribe(
+      (data) => this.test$.next(data),
+      (data) => this.test$.error(data)
+    );
+  }
+  ```
+
+<br />
+
+- 위에 내용에 대해 버그가 아니냐고 issue에 올라오고 있고, Rxjs v7부터 `toPromise`가 deprecated되어 v8에서는 사라진다고 하니 최신 버전에서는 `firstValueFrom`, `lastValueFrom`으로 쉽게 async await 패턴을 사용할 수 있겠다. 근데 지금 날짜 기준으로는 v7도 베타인 상태다. 관련 문서는 [여기!](https://indepth.dev/rxjs-heads-up-topromise-is-being-deprecated/)
