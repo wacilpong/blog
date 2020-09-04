@@ -375,13 +375,49 @@ git log --graph --decorate
 <ul>
 <li>
 <p>크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">el</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>);
-  
-<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js&#39;</span>;
-document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#39;head&#39;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">el</span>);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">el</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;script&#34;</span>);
 
-<span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">VERSION</span>
+<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js&#34;</span>;
+document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#34;head&#34;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">el</span>);
+
+<span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">VERSION</span>;
 </code></pre></div></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2020-09-05"><strong>2020-09-05</strong></h2>
+<ul>
+<li>
+<p><code>Rxjs</code>에서 Subject를 프로미스로 만들고 싶다면 아래처럼 <code>take</code>, <code>first</code> 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// test.component.ts
+</span><span style="color:#75715e"></span>...
+<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">updateTest</span>();
+
+  <span style="color:#75715e">// get data after test$.next()
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">testPromise</span>()).<span style="color:#a6e22e">data</span>;
+}
+
+
+<span style="color:#75715e">// test.service.ts
+</span><span style="color:#75715e"></span>...
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test$</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Subject</span>&lt;<span style="color:#f92672">boolean</span>&gt;();
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testPromise</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">boolean</span>&gt; {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">take</span>(<span style="color:#ae81ff">1</span>)).<span style="color:#a6e22e">toPromise</span>();
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateTest</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">httpClient</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/test&#34;</span>).<span style="color:#a6e22e">subscribe</span>(
+    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">next</span>(<span style="color:#a6e22e">data</span>),
+    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">data</span>)
+  );
+}
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<ul>
+<li>위에 내용에 대해 버그가 아니냐고 issue에 올라오고 있고, Rxjs v7부터 <code>toPromise</code>가 deprecated되어 v8에서는 사라진다고 하니 최신 버전에서는 <code>firstValueFrom</code>, <code>lastValueFrom</code>으로 쉽게 async await 패턴을 사용할 수 있겠다. 근데 지금 날짜 기준으로는 v7도 베타인 상태다. 관련 문서는 <a href="https://indepth.dev/rxjs-heads-up-topromise-is-being-deprecated/">여기!</a></li>
 </ul>
 </div>
 
