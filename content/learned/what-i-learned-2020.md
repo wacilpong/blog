@@ -5,6 +5,14 @@ og_description: "About what I learned by year"
 draft: false
 ---
 
+## **2020-09-09**
+
+- `vscode` 에디터에서 갑자기 탭이 사라지고 파일 하나씩만 뜨는 경우가 있는데, 이때 아래 옵션을 확인해본다.
+
+  ```sh
+  "workbench.editor.showTabs": false
+  ```
+
 ## **2020-09-05**
 
 - `Rxjs`에서 Subject를 프로미스로 만들고 싶다면 아래처럼 `take`, `first` 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.
