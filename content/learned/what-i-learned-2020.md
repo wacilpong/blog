@@ -5,6 +5,28 @@ og_description: "About what I learned by year"
 draft: false
 ---
 
+## **2020-09-14**
+
+- git 환경설정은 3가지 방식으로 할 수 있으며, 각 설정은 역순으로 우선시 된다. 따라서 global 설정이 있어도 어떤 프로젝트에 로컬 옵션을 줬다면 그 옵션이 적용될 것이다. 
+  1. `/etc/gitconfig`: 시스템의 모든 사용자와 모든 저장소에 적용된다.
+
+      ```sh
+      $ git config --system
+      ```
+  2. `~/.gitconfig`: 특정 사용자에게만 적용된다.
+
+      ```sh
+      $ git config --global
+      ```
+  3. `.git/config`: 특정 저장소, 혹은 현재 작업 중인 프로젝트에만 적용된다.
+
+      ```sh
+      $ git config --local
+      ```
+
+<br />
+<hr />
+
 ## **2020-09-09**
 
 - `vscode` 에디터에서 갑자기 탭이 사라지고 파일 하나씩만 뜨는 경우가 있는데, 이때 아래 옵션을 확인해본다.
@@ -12,6 +34,9 @@ draft: false
   ```sh
   "workbench.editor.showTabs": false
   ```
+
+<br />
+<hr />
 
 ## **2020-09-05**
 
