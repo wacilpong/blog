@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</guid>
-      <description>2020-09-09 vscode 에디터에서 갑자기 탭이 사라지고 파일 하나씩만 뜨는 경우가 있는데, 이때 아래 옵션을 확인해본다. &amp;#34;workbench.editor.showTabs&amp;#34;: false 2020-09-05 Rxjs에서 Subject를 프로미스로 만들고 싶</description>
+      <description>2020-09-14 git 환경설정은 3가지 방식으로 할 수 있으며, 각 설정은 역순으로 우선시 된다. 따라서 global 설정이 있어도 어떤 프로젝트에 로컬 옵션을 줬다면 그 옵션이 적용될 것이다.</description>
     </item>
     
   </channel>
