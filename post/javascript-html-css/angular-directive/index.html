@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -182,30 +182,30 @@
 
     <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;100%&#34;</span>;
     <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;100%&#34;</span>;
-    <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> {
+    <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
       <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span>;
 
       <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">bg</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;down&#34;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
-        <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`url(&#39;/assets/images/chevron-up.svg&#39;)`</span>;
+        <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">url(&#39;/assets/images/chevron-up.svg&#39;)</span><span style="color:#e6db74">`</span>;
       } <span style="color:#66d9ef">else</span> {
-        <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`url(&#39;/assets/images/chevron-down.svg&#39;)`</span>;
+        <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundImage</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">url(&#39;/assets/images/chevron-down.svg&#39;)</span><span style="color:#e6db74">`</span>;
       }
     };
 
     <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">nativeElement</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">div</span>);
   }
 }
-</code></pre></div><p>Someone think like &ldquo;why did make stupid div in directive?&rdquo;. The reason why is because angular directive is not officially allow sending other element except the one marked that directive selector.<br />
+</code></pre></div><p>Someone think like &ldquo;why did make stupid div in directive?&quot;. The reason why is because angular directive is not officially allow sending other element except the one marked that directive selector.<br />
 <br /><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">//</span> HTML
-<span style="color:#f92672">&lt;</span>label [appChevron]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;clickElem&#34;</span> <span style="color:#66d9ef">...</span><span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">/</span><span style="color:#f92672">/</span> HTML
+<span style="color:#f92672">&lt;</span>label [appChevron]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">clickElem&#34;</span> <span style="color:#66d9ef">...</span><span style="color:#f92672">&gt;</span>
     <span style="color:#f92672">&lt;</span>div <span style="color:#75715e">#clickElem click=&#34;something&#34;&gt;&lt;/div&gt;</span>
-<span style="color:#f92672">&lt;/</span>label<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>label<span style="color:#f92672">&gt;</span>
 
-<span style="color:#f92672">//</span> TS
+<span style="color:#f92672">/</span><span style="color:#f92672">/</span> TS
 <span style="color:#66d9ef">...</span>
 export class ChevronValidate {
-  <span style="color:#f92672">@</span><span style="color:#a6e22e">Input</span>(<span style="color:#e6db74">&#39;clickElem&#39;</span>) elem<span style="color:#f92672">:</span> ElementRef;
+  <span style="color:#f92672">@</span><span style="color:#a6e22e">Input</span>(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">clickElem&#39;</span>) elem<span style="color:#f92672">:</span> ElementRef;
 
   <span style="color:#a6e22e">constructor</span>(el<span style="color:#f92672">:</span> ElementRef) {
   }

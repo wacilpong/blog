@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</guid>
-      <description>2020-09-14 git 환경설정은 3가지 방식으로 할 수 있으며, 각 설정은 역순으로 우선시 된다. 따라서 global 설정이 있어도 어떤 프로젝트에 로컬 옵션을 줬다면 그 옵션이 적용될 것이다.</description>
+      <description>2020-09-23 어떠한 이벤트 스트림에서 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 concatMapT</description>
     </item>
     
   </channel>
