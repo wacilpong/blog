@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="자바스크립트는 왜 이 모양일까를 읽고 내맘대로 정리해보았다." />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading how js works, by Douglas Crockford" />
+<meta property="og:site_name" content="After reading how js works, by Douglas Crockford" />
+<meta property="og:description" content="자바스크립트는 왜 이 모양일까를 읽고 내맘대로 정리해보았다." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/review/after-reading-how-js-works/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading how js works, by Douglas Crockford" />
+<meta name="twitter:description" content="자바스크립트는 왜 이 모양일까를 읽고 내맘대로 정리해보았다." />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading how js works, by Douglas Crockford</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading how js works, by Douglas Crockford</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading how js works, by Douglas Crockford</h2>
+        <h5>2020-10-06</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="-">시작하기 전에</h2>
+<ul>
+<li>자바스크립트는 이상한 corner case와 edge case로 가득 차 있다.
+<ul>
+<li><code>corner case</code>: 에상하지 못한 환경이나 입력 데이터 등으로 인해 프로그램에 문제가 발생하는 경우, 문제가 발생하는 환경을 동일하게 재현하기 어려워 디버그하기 힘듬</li>
+<li><code>edge case</code>: 데이터가 기대하는 범위의 최소 또는 최댓값일 때 프로그램에 문제가 발생하는 경우, 오버플로 or 언더플로</li>
+</ul>
+</li>
+<li>절대 코너 케이스와 엣지 케이스를 가까이하지 말라.
+<ul>
+<li>언어의 간결하고 분명한 부분만으로도 좋은 프로그램을 만들 수 있다.</li>
+<li><em>가끔 언어의 모호한 면을 파고들곤 하는데, 이걸 굳이 프로그램에서 사용할 필요는 없을듯?</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="heading">숫자</h2>
+<ul>
+<li>js는 int형을 사용하지 않으므로 오버플로 문제가 발생하지 않는다.</li>
+<li>오버플로가 발생하지 않기 때문에 자바스크립트의 정수는 훨씬 안정적이다.</li>
+<li>js의 number는 자바의 double과 밀접하게 64비트 2진 부동소수점 타입이다.</li>
+<li>js에는 <strong>18437736874454810627개</strong> 의 불변 숫자 객체가 내장되어 있는데, 각각은 고유한 숫자를 나타낸다.</li>
+<li>숫자 리터럴은 각 리터럴의 값과 가장 잘 맞는 숫자 객체에 대한 참조를 생성한다.</li>
+<li><code>NaN</code> 는 문자열을 숫자로 변환하려고 했으나 실패했을 때 결과값으로 반환될 수 있다.</li>
+<li>typeof 연산자는 <strong>NaN</strong> 를 number형이라고 표시해서 아주 헷갈린다.</li>
+<li><code>Number.prototype</code> 은 모든 수가 상속하는 객체이다.</li>
+<li><code>더하기 부호(+)</code>는 만약 한 피연산자가 문자열이면, 이 연산자는 나머지 피연산자를 문자열로 바꾸고 연결한다.</li>
+<li>js를 비롯한 많은 언어가 2진 부동소수점을 사용하기 때문에 0.1 + 0.2를 정확히 계산하지 못한다.</li>
+<li>10진 소수점을 처리하는 단일 숫자 시스템이 나오기 전까지는 안전한 정수 범위에서 작업하자.</li>
+<li>js가 차용한 IEEE754 규격은 부동소수점 수의 밑수로 2를 사용한다.</li>
+<li>1950년대 하드웨어는 밑수가 2인 부동소수점 시스템과 잘 맞았으나, <strong>무어의 법칙</strong> 덕분에 이제는 상관없다.</li>
+<li>js 자체의 능력을 활용하면 되므로, 새로운 숫자형을 추가할 필요는 없다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="boolean">Boolean</h2>
+<ul>
+<li>불이 제대로 쓰이는 위치는 if조건문, !피연산자 등이다.</li>
+<li>잘 설계된 언어라면 해당 위치들에 오직 불 값만 사용하도록 하지만, js는 여기에 아무 값이나 사용해도 된다.</li>
+<li><strong>불인 척하는</strong> 자료형에 속한 값은 truthy이거나 falsy 둘 중 하나이다.</li>
+<li><code>falsy</code>: <strong>false, null, undefined, 빈 문자열(&quot;&quot;), 0, NaN</strong></li>
+<li><code>truthy</code>: <strong>&ldquo;false&quot;나 &ldquo;0&quot;같은 문자열도 포함된다.</strong></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="heading-1">배열</h2>
+<ul>
+<li>배열은 객체 리터럴이 아닌 배열 리터럴을 사용해 만들어진다.</li>
+<li>typeof 연산자는 배열에 대해 <strong>object</strong> 를 반환하므로 <code>Array.isArray</code>를 사용해 체크하자.</li>
+<li>최근 배열 요소를 한번에 하나씩 처리하기보다, 배열을 좀 더 함수처럼 처리해야 한다는 생각이 더 지배적이다.</li>
+<li><strong>shift와 unshift 메서드는 pop과 push에 비해 느린데, 배열이 크면 특히 심해진다.</strong></li>
+<li><code>reduce</code> 메서드는 배열을 하나의 값으로 축약하며, 초기 축약값을 전달하지 않으면 0번째 배열 요소가 초기 축약값이다. <em>축약이라고 생각하니 reduce 명칭이 더 와닿는듯.</em></li>
+<li><code>forEach</code> 메서드는 배열의 모든 요소에 대해 전달된 함수를 호출한다.</li>
+<li><strong>forEach나 find는 배열의 끝에 도달하기 전에 종료할 수 있지만, map, reduce, filter는 아니다.</strong></li>
+<li><code>sort</code> 메서드는 추가 메모리 공간을 사용하지 않고 배열 자체를 수정하므로 공유 중인 배열을 정렬하면 위험하다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="heading-2">객체</h2>
+<ul>
+<li>객체에 찾을 수 없는 속성 값을 요청하면, 객체는 undefined라는 빈 값을 반환한다.</li>
+<li>존재하지 않거나 빼먹은 속성 값을 요청하는 것은 에러가 아니므로, 이는 정상적인 동작이다.</li>
+<li>js 객체에서 오로지 null과 undefined만이 빈 값(bottom value)이다.</li>
+<li><code>Object.create(prototype)</code>은 이미 있는 객체를 받아 이를 상속받는 새로운 객체를 반환한다. 즉, 기존의 객체가 새로운 객체의 ptorotype이 된다.</li>
+<li>Object.create(null)을 쓰면 객체가 아무것도 상속받지 못하게 만들 수 있다.</li>
+<li><strong>객체의 속성에 값을 대입하면 가장 새로운 객체, 즉 프로토타입 체인의 가장 위쪽에 있는 객체만 변경된다.</strong></li>
+<li><code>WeakMap</code>은 문자열을 제외한 다른 객체를 키로 쓰고, 존재하는 키의 사본이 없다면 해당 키의 속성은 자동으로 삭제되기 때문에 js의 가비지 컬렉터와 잘 맞는다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="heading-3">문자열</h2>
+<ul>
+<li>문자열은 0에서 65535 사이의 크기를 가지는 부호가 없는 16비트 정수로 이루어진 불변 배열이다.</li>
+<li>문자열은 일반 배열과 다르게 항상 동결된 상태이고 <strong>===</strong> 연산자에 의해 동등하게 검사할 수 있다.</li>
+<li>템플릿 문자열 리터럴은 여러 줄에 걸쳐 쓸 수 있는 문자열 리터럴이며, <strong>백틱(`)</strong> 을 사용한다.</li>
+<li>템플릿 문자열 리터럴은 <code>interpoloation(${})</code>을 제공하는데 이는 XSS같은 보안에 취약하다.</li>
+<li>템플릿 문자열 리터럴을 함수로 전달해서 인코딩 후 조립해서 반환하면 어느정도 위험을 완화할 수는 있다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="statement">Statement</h2>
+<ul>
+<li>function문은 세미콜론으로 끝나지 않지만, let문과 선언문은 세미콜론으로 끝난다.</li>
+<li><strong>function 선언문은 호이스팅되므로 함수 몸체나 모듈 안에 두는 것은 괜찮지만, if나 switch 등에 두는 것은 좋지 않다.</strong></li>
+<li><code>const</code>는 상수의 줄임말이지만, 함수의 실행이 끝나면 사라질 수도 있는 임시적인 거고 프로그램이 실행될 때나 함수가 호출될 때마다 다른 값을 가질 수도 있다.</li>
+<li>js는 조건문이 &lsquo;불인 척하는 값'이길 기대하지만, 개발할 때는 정확한 불 값으로 처리하자.</li>
+<li>반복문을 만드는 가장 좋은 방법은 꼬리재귀(tail recursion)을 사용하는 것이다.</li>
+<li>js에는 <strong>break, continue, throw, return 4가지 중단문이 있는데 이들은 모두 goto가 아니다.</strong> (<em>그러니 안심하자!</em>)</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="heading-4">함수</h2>
+<ul>
+<li>최초의 프로그램은 루틴이라고 불렸고, 같은 루틴을 서브루틴으로 만들었다.</li>
+<li>유용한 여러 서브루틴을 묶어서 라이브러리라고 부르기 시작했다.</li>
+<li>확산 연산자(&hellip;)를 인자 목록에서 쓰면 전개(spread)문라고 부르고, 매개변수 목록에서 쓰면 나머지(rest)문이 된다.</li>
+<li><em>전자는 함수실행문인 func(&hellip;a), 후자는 함수인 func(&hellip;args){} 를 예로 들 수 있겠다.</em></li>
+<li>함수가 호출되면 활성 객체(activation object)가 만들어진다.</li>
+<li><strong>js는 활성 객체를 다른 객체와 마찬가지로 힙에 저장하고 가비지 컬렉터에 의해 처리된다.</strong></li>
+<li>함수 실행 코드뿐 아니라 함수 객체가 생성되는 시점에 활성화된 활성 객체에 대한 참조가 있기 때문에 클로저를 사용할 수 있다.</li>
+<li>함수 객체가 외부 함수에 대한 활성 객체의 참조를 가지는 방식을 <code>클로저</code>라고 한다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="heading-5">예외</h2>
+<ul>
+<li>js는 throw에 어떤 값이든 허용하므로 아무거나 &lsquo;던져도&rsquo; 된다.</li>
+<li>함수의 모든 문장은 제각각 try ~ catch를 가질 수 있다.</li>
+<li>하나의 함수에서 try를 두번 이상 쓰지 않도록 주의해야 한다.</li>
+<li><strong>throw문이 실행되면 현재 함수에 대한 캐치맵을 참조하며, 지정된 catch절이 있으면 제어권을 얻어 실행된다. catch절이 없으면 함수를 호출한 곳을 찾아 여기가 새로운 위치가 된다.</strong></li>
+<li>이 과정을 반복해서 catch절을 찾을 때까지 가상의 호출 스택을 타고 내려간다.</li>
+<li>호출 스택이 더 이상 없으면 <code>처리할 수 없는 예외(uncaught exception)</code> 가 된다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<p>(&hellip; 15장 프로그램 ing)</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading concepts of programming languages, by Robert W. Sebesta</a></h4>
+    <h5>2020-06-28</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/good-bye-2019/">Good bye 2019</a></h4>
+    <h5>2019-12-27</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-clean-architecture/">After reading clean architecture, by Robert C. Martine</a></h4>
+    <h5>2019-12-10</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

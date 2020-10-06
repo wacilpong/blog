@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 09 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -40,6 +40,15 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>After reading how js works, by Douglas Crockford</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-how-js-works/</link>
+      <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-how-js-works/</guid>
+      <description>시작하기 전에 자바스크립트는 이상한 corner case와 edge case로 가득 차 있다. corner case: 에상하지 못한 환경이나 입력 데이터 등으로 인해 프로그램에 문제가 발생하는 경우</description>
     </item>
     
     <item>
