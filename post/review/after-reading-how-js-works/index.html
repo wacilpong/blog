@@ -252,8 +252,15 @@
 <ul>
 <li>최초의 프로그램은 루틴이라고 불렸고, 같은 루틴을 서브루틴으로 만들었다.</li>
 <li>유용한 여러 서브루틴을 묶어서 라이브러리라고 부르기 시작했다.</li>
-<li>확산 연산자(&hellip;)를 인자 목록에서 쓰면 전개(spread)문라고 부르고, 매개변수 목록에서 쓰면 나머지(rest)문이 된다.</li>
-<li><em>전자는 함수실행문인 func(&hellip;a), 후자는 함수인 func(&hellip;args){} 를 예로 들 수 있겠다.</em></li>
+<li>확산 연산자(&hellip;)를 인자 목록에서 쓰면 전개(spread)문라고 부르고, 매개변수 목록에서 쓰면 나머지(rest)문이 된다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// rest
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func</span>(...<span style="color:#a6e22e">args</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
+}
+
+<span style="color:#75715e">// spread
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">func</span>(...<span style="color:#a6e22e">a</span>);
+</code></pre></div></li>
 <li>함수가 호출되면 활성 객체(activation object)가 만들어진다.</li>
 <li><strong>js는 활성 객체를 다른 객체와 마찬가지로 힙에 저장하고 가비지 컬렉터에 의해 처리된다.</strong></li>
 <li>함수 실행 코드뿐 아니라 함수 객체가 생성되는 시점에 활성화된 활성 객체에 대한 참조가 있기 때문에 클로저를 사용할 수 있다.</li>
