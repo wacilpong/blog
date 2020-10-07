@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -162,7 +162,7 @@
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#a6e22e">miner.start</span>()
 eth.pendingTransactions
-<span style="color:#a6e22e">eth.getTransaction</span>(<span style="color:#e6db74">&#34;{transaction-hash-id}&#34;</span>)
+<span style="color:#a6e22e">eth.getTransaction</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{transaction-hash-id}&#34;</span>)
 eth.blockNumber
 <span style="color:#a6e22e">miner.stop</span>()
 
@@ -188,7 +188,7 @@ eth.blockNumber
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">pragma solidity ^0.4.25;
 
 contract MyName {
-    string myName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Roomy&#34;</span>;
+    string myName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Roomy&#34;</span>;
 
     function <span style="color:#a6e22e">getMyName</span>() view public <span style="color:#a6e22e">returns</span>(string) {
         return myName;
@@ -199,15 +199,15 @@ contract MyName {
     }
 }
 </code></pre></div><p><br /></p>
-<h4 id="1-access-modifier-접근제어자">1. Access Modifier (접근제어자)</h4>
+<h4 id="1-access-modifier-">1. Access Modifier (접근제어자)</h4>
 <ul>
 <li><code>public</code>: Call from all internal/external/inharitance.</li>
 <li><code>private</code>: Call only from internal.</li>
-<li><code>external</code>: Call only from external contract. Variables can&rsquo;t set as this.</li>
+<li><code>external</code>: Call only from external contract. Variables can't set as this.</li>
 <li><code>internal</code>: Call from internal/inharitance.</li>
 </ul>
 <p><br /></p>
-<h4 id="2-function-type-함수타입">2. Function Type (함수타입)</h4>
+<h4 id="2-function-type-">2. Function Type (함수타입)</h4>
 <ul>
 <li><code>view</code>: Read-Only. Gas fee will be free.</li>
 <li><code>pure</code>: Read (X). Gas fee will be free. Returned value will be define by argument.</li>
@@ -226,7 +226,7 @@ contract account {
     uint private amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
 
     function <span style="color:#a6e22e">plus</span>() payable public {
-        amount <span style="color:#f92672">+=</span> msg.value;
+        amount <span style="color:#f92672">+</span><span style="color:#f92672">=</span> msg.value;
     }
 }
 </code></pre></div><p><br /></p>
@@ -250,12 +250,12 @@ contract Bank {
     }
 
     function <span style="color:#a6e22e">deposit</span>() payable public {
-        balance <span style="color:#f92672">+=</span> msg.value;
+        balance <span style="color:#f92672">+</span><span style="color:#f92672">=</span> msg.value;
     }
 
     function <span style="color:#a6e22e">withdraw</span>(uint n) public {
         <span style="color:#a6e22e">if </span>((balance <span style="color:#f92672">&gt;=</span> n) <span style="color:#f92672">&amp;&amp;</span> (msg.sender <span style="color:#f92672">==</span> myAddress)) {
-            balance <span style="color:#f92672">-=</span> n;
+            balance <span style="color:#f92672">-</span><span style="color:#f92672">=</span> n;
             <span style="color:#a6e22e">msg.sender.transfer</span>(n);
         }
     }
@@ -277,7 +277,7 @@ contract MyToken {
     string public symbol;
     uint8 public decimals;
 
-    <span style="color:#a6e22e">mapping </span>(address <span style="color:#f92672">=&gt;</span> uint256) public balanceOf;
+    <span style="color:#a6e22e">mapping </span>(address <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> uint256) public balanceOf;
     event <span style="color:#a6e22e">Transfer</span>(address _from, address _to, uint _value);
 
     <span style="color:#a6e22e">constructor</span>(string tokenName,string tokenSymbol,uint8 decimalUnits,uint256 initialSupply) public {
@@ -288,8 +288,8 @@ contract MyToken {
     }
 
     function <span style="color:#a6e22e">transfer</span>(address _to, uint256 _value) public {
-        balanceOf[msg.sender] <span style="color:#f92672">-=</span> _value;
-        balanceOf[_to] <span style="color:#f92672">+=</span> _value;
+        balanceOf[msg.sender] <span style="color:#f92672">-</span><span style="color:#f92672">=</span> _value;
+        balanceOf[_to] <span style="color:#f92672">+</span><span style="color:#f92672">=</span> _value;
         emit <span style="color:#a6e22e">Transfer</span>(msg.sender,_to,_value);
     }
 }
