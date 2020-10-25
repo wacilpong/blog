@@ -2,7 +2,7 @@
 title: "After reading code, by Charles Petzold"
 date: "2020-09-23"
 tags: ["review", "computer-science"]
-draft: false
+draft: true
 og_description: "코드를 읽고 내맘대로 정리해보았다."
 ---
 

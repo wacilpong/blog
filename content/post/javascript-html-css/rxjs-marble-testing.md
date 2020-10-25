@@ -2,9 +2,8 @@
 title: "Rxjs marble testing with jasmine-marbles"
 date: "2020-08-09"
 tags: ["javascript/html/css"]
-description: "About rxjs marble testing"
-og_description: "About rxjs marble testing"
 draft: false
+og_description: "About rxjs marble testing"
 ---
 
 ## What is marble diagram?
