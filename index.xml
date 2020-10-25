@@ -52,15 +52,6 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
     </item>
     
     <item>
-      <title>After reading code, by Charles Petzold</title>
-      <link>https://wacilpong.github.io/blog/post/review/after-reading-code/</link>
-      <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/review/after-reading-code/</guid>
-      <description>Bit 모스부호는 점(dot)과 선(dash)으로 이루어진다. 단지 점과 선은 깜빡임의 종류일 뿐이다. 점자는 이진형태(binary)를 지니며 6개의 형태로</description>
-    </item>
-    
-    <item>
       <title>Rxjs marble testing with jasmine-marbles</title>
       <link>https://wacilpong.github.io/blog/post/javascript-html-css/rxjs-marble-testing/</link>
       <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
