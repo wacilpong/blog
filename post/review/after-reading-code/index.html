@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="코드를 읽고 내맘대로 정리해보았다." />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading code, by Charles Petzold" />
+<meta property="og:site_name" content="After reading code, by Charles Petzold" />
+<meta property="og:description" content="코드를 읽고 내맘대로 정리해보았다." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/review/after-reading-code/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading code, by Charles Petzold" />
+<meta name="twitter:description" content="코드를 읽고 내맘대로 정리해보았다." />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading code, by Charles Petzold</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading code, by Charles Petzold</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading code, by Charles Petzold</h2>
+        <h5>2020-09-23</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="bit">Bit</h2>
+<ul>
+<li>모스부호는 점(dot)과 선(dash)으로 이루어진다.</li>
+<li>단지 점과 선은 깜빡임의 종류일 뿐이다.</li>
+<li>점자는 이진형태(binary)를 지니며 6개의 형태로 이루어져 있다.</li>
+<li><strong>모스부호나 점자부호는 각각이 이루어진 요소의 제곱거듭만큼이 조합의 수이다.</strong><br />
+ex) 모스부호에서 점과 선으로 이루어진 형태가 6개라면 표현할 수 있는 수는 2^6<br />
+ex) 점자부호로 표현할 수 있는 최대의 수는 2^6</li>
+<li>언어는 단지 부호에 불과하다. 숫자는 만국 공통어!</li>
+<li>사람의 손가락과 발가락은 10이어서, 10진수가 보통 많이 사용된다.
+<ul>
+<li>랍스터에게 적합한 숫자 체계는 4진수</li>
+<li>돌고래에게 적합한 숫자 체계는 2진수</li>
+<li>참고로 10진수 이외의 수를 셀 때는 그 중간 수를 생략하면 된다.</li>
+<li>ex) 4진수: 0,1,2,3,10,11,12,13,20&hellip;</li>
+<li>즉, 모든 숫자 체계에서 가능한 숫자를 모두 사용하면, 그 다음 숫자는 반드시 10이 된다.</li>
+</ul>
+</li>
+<li><strong>2진수 체계로 전기를 표현할 수 있게 된다.</strong></li>
+<li>전신에 전류가 흐를 때는 1, 그렇지 않을 때는 0</li>
+<li>수학자 John Wilder Tukey는 후에 컴퓨터가 유행이 되면 더욱 많이 사용할 것이라 생각했다.</li>
+<li>bigit, binit 같은 단어를 고려했지만 결국 <code>Bit</code>가 되었다.</li>
+<li>사용하는 비트수가 많아지면 전달할 수 있는 정보의 양이 많아진다.</li>
+<li>비트가 추가될 때마다 부호의 수는 두 배가 된다.
+<ul>
+<li>ex) 2^1은 비트수 1개, 2^2는 2, 2^3은 3, 2^4는 4&hellip;</li>
+<li>비트수를 구하려면 거듭제곱의 반대인 로그 연산을 하면 된다.</li>
+<li>ex) 2^7 = 128, log 128의 비트수는 7 (밑수 2 생략함)</li>
+</ul>
+</li>
+<li>비트의 관점에서 점자는 6비트짜리 부호로, 생각보다 단순하다.
+<ul>
+<li>ex) &lsquo;code'라는 글자의 점자를 6비트 이진수로 표현하면 아래와 같다.<br />
+100100 101010 100110 100010</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="boolean-algebra">Boolean algebra</h2>
+<ul>
+<li>조지 부울(George Boole)은 논리를 수학적으로 풀려 했고, 부울 대수를 확립했다.
+<ul>
+<li>아래 문장을 수식으로 치환할 수 있다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">에냐는 1kg의 두부를 갖고 있다.
+베티는 에냐보다 2배 많은 두부를 갖고 있다.
+카르멘은 베티보다 2kg 많은 두부를 갖고 있다.
+디아는 카르멘보다 3배 많은 두부를 갖고 있을 때,
+디아가 갖고 있는 두부의 양은?
+
+A = 1
+B = 2 X A
+C = B + 2
+D = 3 X C
+</code></pre></div></li>
+<li>일반적인 숫자뿐만 아니라 종류, 즉 집합에 대해서도 적용할 수 있다.</li>
+<li>부울 대수에서 <code>+</code>와 <code>x</code>기호는 각각 합집합(union)과 교집합(intersection)이다.
+<ul>
+<li>고양이 세계에서 F를 암컷 고양이라고 할 때, 아래 수식의 결과값은 &lsquo;모든 고양이'인 1이다.<br />
+1 + F = 1</li>
+<li>&ldquo;하얀색이나 황색의 중성화된 수컷 고양이나, 하얀색이 아닌 중성화된 암컷 고양이, 또는 검정 고양이&rdquo;<br />
+(M x N x (W + T)) + (F x N x (1 - W)) + B</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="byte">Byte</h2>
+<ul>
+<li><code>작은 부분</code>을 의미하는 <code>bite</code>라는 단어에서 유래했지만 bit와의 혼동을 피하기 위해 byte로 표기하게 되었다.</li>
+<li>1956년경에 IBM에서 만들어졌다.</li>
+<li>IBM이 8비트인 바이트에 끌린 이유 중 하나는 <code>BCD</code>라 불리는 숫자 표시 형식을 저장하기 편리했기 때문이다.</li>
+<li>아주 우연히도 세계 대부분의 문자를 저장하는 데 아주 이상적인 크기이다.
+<ul>
+<li>세계의 대부분 문자가 256문자보다 적기 때문이지만 중국어, 일본어, 한국어의 경우는 아니다.</li>
+</ul>
+</li>
+<li>바이트는 흑백사진에서 회색조를 표현하는 단계로 사용하기에도 이상적이다.
+<ul>
+<li>사람의 눈이 대략 256단계 정도의 명암을 구분할 수 있기 때문이다.</li>
+<li>하지만 대부분의 사람은 10비트인 1024단계를 구분할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="ram-random-access-memory">RAM (Random Access Memory)</h2>
+<ul>
+<li>새로운 값을 각각의 래치에 저장할 수 있고, 어떤 값이 저장되어 있는지 읽을 수 있는 메모리<br />
+<em>feat. Random Access Memory by daft punk</em></li>
+<li><code>래치(latch)</code>란 데이터 값의 변화를 막을 수 있는 요소이다.</li>
+<li>주소 값만 바꾸면 래치 중 어디서든 값을 읽고 쓸 수 있으므로 RAM이라고 불리는 것이다.
+<ul>
+<li>반대로 값을 순차적으로 읽어야 하는 형태의 메모리는 <code>선형 메모리(linear memory)</code>이다.</li>
+<li>그러한 메모리에서는 101번지에 저장된 값을 읽으려면 100번지의 값부터 읽어야 한다.</li>
+<li>카세트 테이프를 생각해보면 이해하기 쉽다!</li>
+</ul>
+</li>
+<li>RAM 구성을 종종 RAM배열이라고 부르는데, 8x1 형태라면 배열에 1비트 값을 8개 저장할 수 있다.</li>
+<li>RAM배열에 저장되는 값의 수 = 2^주소에 입력하는 비트 수</li>
+<li>주소 입력이 1비트 증가할 때마다 메모리 양은 2배 증가한다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1KB = 1024 byte = 2^10 byte
+2KM = 2048 byte = 2^11 byte
+3KB = 4096 byte = 2^12 byte
+...
+</code></pre></div></li>
+<li>회로에 빗대어 보면, 바이트로 가득 찬 RAM배열의 전원을 끄면 모든 데이터가 사라지게 된다. 이것이 바로 RAM이 휘발성 메모리라고 불리는 이유다.</li>
+</ul>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-how-js-works/">After reading how js works, by Douglas Crockford</a></h4>
+    <h5>2020-10-06</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading concepts of programming languages, by Robert W. Sebesta</a></h4>
+    <h5>2020-06-28</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/computer-science/algorithm-basic-3/">Algorithm basic 3</a></h4>
+    <h5>2020-05-24</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

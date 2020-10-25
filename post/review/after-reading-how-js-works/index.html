@@ -178,7 +178,8 @@
 <li>js는 int형을 사용하지 않으므로 오버플로 문제가 발생하지 않는다.</li>
 <li>오버플로가 발생하지 않기 때문에 자바스크립트의 정수는 훨씬 안정적이다.</li>
 <li>js의 number는 자바의 double과 밀접하게 64비트 2진 부동소수점 타입이다.</li>
-<li>js에는 <strong>18437736874454810627개</strong> 의 불변 숫자 객체가 내장되어 있는데, 각각은 고유한 숫자를 나타낸다.</li>
+<li>js에는 <strong>18437736874454810627개</strong> 의 불변 숫자 객체가 내장되어 있는데, 각각은 고유한 숫자를 나타낸다.<br />
+<em>와우!</em></li>
 <li>숫자 리터럴은 각 리터럴의 값과 가장 잘 맞는 숫자 객체에 대한 참조를 생성한다.</li>
 <li><code>NaN</code> 는 문자열을 숫자로 변환하려고 했으나 실패했을 때 결과값으로 반환될 수 있다.</li>
 <li>typeof 연산자는 <strong>NaN</strong> 를 number형이라고 표시해서 아주 헷갈린다.</li>
@@ -290,13 +291,115 @@
 <ul>
 <li>예외로 발생된 값은 스택의 더 아래쪽에 있는 함수 호출로 전달된다.</li>
 <li>스택은 아래에서 위로 쌓이므로 결국 가장 처음 함수를 호출한 곳까지 전달될 수 있다.</li>
-<li>비동기에서는 스택이 매 회 비워지기 떄문에 지역적인 예외만 처리할 수 있다.</li>
+<li>비동기에서는 스택이 매 회 비워지기 때문에 지역적인 예외만 처리할 수 있다.</li>
 </ul>
 </li>
 </ul>
 <p><br /></p>
 <hr />
-<p>(&hellip; 15장 프로그램 ing)</p>
+<h2 id="heading-6">프로그램</h2>
+<ul>
+<li>HTML이 텍스트 형태였기 때문에, js 역시 웹페이지에 텍스트 형태로 삽입했다.</li>
+<li>js 엔진은 소스코드를 컴파일해서 기계어나 중간 언어, 혹은 둘 다로 변환할 수 있어 이식성이 뛰어나다.</li>
+<li>최근에는 HTML 페이지에 js 코드를 포함하지 않는 것이 좋다는 생각이 지배적이다.
+<ul>
+<li>성능상 페이지에 있는 코드를 압축하거나 캐싱할 수 없다.</li>
+<li>보안상 XSS 공격을 받을 수도 있다.</li>
+<li><em>따라서 모듈화된 여러 파일들을 번들링을 통해 js 자체를 분리하는 것이다.</em></li>
+</ul>
+</li>
+<li>함수 바깥에 변수를 선언하는 더 좋은 방법은 <code>모듈(module)</code> 스코프에 선언하는 것이다.
+<ul>
+<li>import/export를 통해 명시적으로 모듈화할 수 있다.</li>
+<li>모듈은 일반적으로 하나의 함수, 또는 함수로 가득찬 한 개의 객체를 export해야 한다.</li>
+<li>export문은 가장 아래에 한 번만 쓰는 것이 좋다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="this----">this 그리고 클래스 없는 자바스크립트</h2>
+<ul>
+<li>프로토타입에 있는 함수가 어떤 객체에서 동작하고 있는지 알아내가 위해 this가 등장한다!</li>
+<li>메서드가 발견되면 인자 목록을 주어 메서드를 호출하고, 자신을 동작시킨 객체에 대한 정보를 this라는 묵시적인 매개변수로 전달받는다. 따라서 오직 메서드 호출만 this 바인딩을 제공받게 된다.</li>
+<li><strong>this는 동적으로 바인딩되므로 함수를 만든 쪽이 아닌 호출하는 쪽이 this를 결정한다.</strong></li>
+<li>js의 아주 좋은 점 중 하나가 바로 객체 리터럴이다.
+<ul>
+<li>메서드만 갖고 있는 hard object: 클로저 내부에 있는 데이터의 완전함을 보장</li>
+<li>데이터만 갖고 있는 soft data object: 함수에 의해 처리될 수 있는 편리한 데이터 집합</li>
+</ul>
+</li>
+<li>js는 클래스가 없이도 클래스 형태의 프로그램을 만들 수 있다.</li>
+<li>js의 더 좋은 구조는 <code>함수 컴포지션(functional composition)</code>이다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test_constructor</span>(<span style="color:#a6e22e">spec</span>) {
+  <span style="color:#66d9ef">let</span> {<span style="color:#a6e22e">memeber</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">sepc</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reuse</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">other_constructor</span>(<span style="color:#a6e22e">sepc</span>);
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+    <span style="color:#75715e">// 이 스코프에서 spec, member, reuse, method를 사용가능
+</span><span style="color:#75715e"></span>  };
+
+  <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">freeze</span>({
+    <span style="color:#a6e22e">method</span>,
+    <span style="color:#a6e22e">goodness</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reuse</span>.<span style="color:#a6e22e">goodness</span>
+  });
+}
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="heading-7">~</h2>
+<ul>
+<li><code>꼬리 호출</code>은 함수가 마지막으로 하는 일이 어떤 함수를 호출해 그 결과를 반환할 때 일어난다.
+<ul>
+<li>활성 객체가 충분히 크다면, 새로운 활성 객체를 할당할 필요가 없어 재사용할 수 있다.</li>
+<li>메모리 할당과 가비지 컬렉션에 드는 시간을 줄일 수 있다.</li>
+<li>꼬리 호출 최적화를 통해 재귀 함수 호출을 반복문만큼 빠르게 할 수 있다.</li>
+<li>단, try 블록 내의 꼬리 호출은 최적화되지 않는다.</li>
+<li>try는 catch로의 실행 흐름이 있기 때문에 활성 객체가 최적화되면 안된다.</li>
+</ul>
+</li>
+<li>이 세상은 비동기적이고, 완전히 분산되어 있으므로 프로그램을 최대한 순수하게 만들어야 한다.</li>
+<li>순차적 언어는 입출력을 블록(block) 방식으로 처리한다.</li>
+<li>js는 탄생 목적 자체가 사용자와의 상호 작용이었기 때문에 순차적 모델에 영향을 덜 받는다.</li>
+<li><strong>비동기 프로그래밍은 콜백 함수와 프로세싱 루프 두 가지 아이디어에 근간한다.</strong>
+<ul>
+<li>이벤트 루프(프로세싱 루프)는 큐(queue)에서 가장 높은 우선순위인 이벤트 혹은 메시지를 가져와서 해당 이벤트나 메시지를 처리하도록 등록된 콜백 함수를 호출한다.</li>
+<li>다른 서버나 시스템과 통신하는 상황에서는 작업의 단위별로 함수를 구분해야 한다.</li>
+<li><code>리퀘스터(requester)</code>: 콜백 함수를 받고, 호출 즉시 반환되지만 바로 끝나지 않고 언젠가 끝나는 함수들</li>
+<li><em>작업의 단위(서버에 요청을 보내는 등)를 구분해 리퀘스터 함수들을 작성해 조합하면 된다!</em></li>
+<li><em>그러나 이 작업을 위해 콜백지옥, 프로미스, async/await을 남발하고 있다.</em></li>
+</ul>
+</li>
+<li>js가 사용하는 epoch는 유닉스로 1970-01-01이다.</li>
+<li>js에서 객체는 형식이 없는 이름:값 쌍의 집합이며, JSON은 이를 사용했을 뿐이다.</li>
+<li>단위 테스트는 고수준으로 올라갈수록 효과가 작은데, 의존성이 증가하면서 테스트 의미가 없어지기 때문이다.</li>
+<li>의미 없는 데이터로 결정하기 보다는, 더 읽기 쉽고 유지보수 하기 쉬운 기능을 골라야 한다.</li>
+<li>빠르지만 이상하게 동작하는 것은 아무런 도움이 되지 못한다.</li>
+<li><code>트랜스파일링(transpiling)</code>은 하나의 프로그래밍 언어를 다른 언어로 컴파일하는 특별한 형태이다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h4 id="--">다음 세대 언어는</h4>
+<ul>
+<li>프로세싱 루프, 메시지 디스패치, 순차적 전송을 포함해서 비동기 프로그래밍을 잘 지원해야 한다.</li>
+<li>유니코드를 잘 지원해야 한다. 예를 들면 split 함수가 문자를 어떻게 조합하는지 알 수 있어야 한다.</li>
+<li>내부 문자 표현 방식으로 UTF-32를 사용해야 한다.</li>
+<li><code>blob(Binary Large OBject)</code>을 직접 지원해야 한다.
+<ul>
+<li>데이터들이 크고 지저분하지만 멋지게 포장되길 원할 것이기 때문이다.</li>
+</ul>
+</li>
+<li>순수 함수의 병렬 처리를 지원해야 한다.
+<ul>
+<li>CPU 성능이 점점 수가 많아지고 있어서 결국 병렬성을 통해 성능을 향상시킬 수 있을 것이다.</li>
+</ul>
+</li>
+<li>시작, 통신, 파괴와 같은 프로세스에 대한 관리를 지원해야 한다.
+<ul>
+<li>프로세스들을 연결해서 함께 종료될 수 있도록 만들 수 있어야 한다.</li>
+</ul>
+</li>
+</ul>
 </div>
 
     
@@ -304,6 +407,25 @@
     
         <h4 class="page-header">Related</h4>
          <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-code/">After reading code, by Charles Petzold</a></h4>
+    <h5>2020-09-23</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
+
+
+
+</div>
+  <div class="item">
 
     
     
@@ -333,23 +455,6 @@
 
     <h4><a href="/blog/post/review/good-bye-2019/">Good bye 2019</a></h4>
     <h5>2019-12-27</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/review/after-reading-clean-architecture/">After reading clean architecture, by Robert C. Martine</a></h4>
-    <h5>2019-12-10</h5>
     
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
 
