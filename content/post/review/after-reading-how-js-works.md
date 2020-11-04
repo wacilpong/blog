@@ -1,5 +1,5 @@
 ---
-title: "After reading how js works, by Douglas Crockford"
+title: "After reading [how js works], by Douglas Crockford"
 date: "2020-10-06"
 tags: ["review"]
 draft: false

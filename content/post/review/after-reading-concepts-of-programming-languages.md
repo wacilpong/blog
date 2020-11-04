@@ -1,5 +1,5 @@
 ---
-title: "After reading concepts of programming languages, by Robert W. Sebesta"
+title: "After reading [concepts of programming languages], by Robert W. Sebesta"
 date: "2020-06-28"
 tags: ["review", "computer-science"]
 draft: false

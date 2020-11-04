@@ -1,5 +1,5 @@
 ---
-title: "After reading clean architecture, by Robert C. Martine"
+title: "After reading [clean architecture], by Robert C. Martine"
 date: "2019-12-10"
 tags: ["review"]
 draft: false
