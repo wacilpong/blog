@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -159,7 +159,7 @@
     <div align="start" class="content"><p>칸아카데미의 알고리즘 코스를 들으며 정리해본 알고리즘 기초.<br />
 <a href="https://ko.khanacademy.org/computing/computer-science/algorithms">https://ko.khanacademy.org/computing/computer-science/algorithms</a></p>
 <p><br /></p>
-<h2 id="-">그래프 표현</h2>
+<h2 id="그래프-표현">그래프 표현</h2>
 <ul>
 <li>그래프는 순환여부에 따라 순환, 비순환 그래프가 있다.</li>
 <li>그래프는 방향여부에 따라 방향, 무방향 그래프가 있다.</li>
@@ -188,7 +188,7 @@
 <p><img src="https://cdn.kastatic.org/ka-cs-algorithms/directed_graph_for_challenge.png" alt="graph" /></p>
 <p>이러한 그래프가 있다고 하면, 변수에 저장할 때 3가지 방식으로 할 수 있겠다.</p>
 <p><br /></p>
-<h5 id="1--edge-list">1. <strong>엣지리스트 (Edge List)</strong></h5>
+<h5 id="1-엣지리스트-edge-list">1. <strong>엣지리스트 (Edge List)</strong></h5>
 <p>엣지리스트는 두 vertex을 연결하는 edge의 개수만큼의 배열로 그래프를 저장하는 방식이다. 매우 간단한 방식이지만 아무런 순서 없이 무작위로 들어가 있다면, 특정 edge를 찾기 위해 선형 검색을 해야 하고 이는 O(N)만큼의 복잡도를 지닌다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">edgeList</span> <span style="color:#f92672">=</span> [
   [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>],
@@ -199,7 +199,7 @@
   [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>],
 ];
 </code></pre></div><p><br /></p>
-<h5 id="2-">2. <strong>인접행렬</strong></h5>
+<h5 id="2-인접행렬">2. <strong>인접행렬</strong></h5>
 <p>인접행렬은 모든 vertex에 인접한 각 vertex를 0으로 표시하고 edge가 있는 경우 1로 표시한 배열로 그래프를 저장하는 방식이다. 즉, vertex by vertex로써 저장되므로 edge가 별로 없는 희소 그래프이더라도 공간을 N^2만큼 차지한다. 게다가 특정 <code>i</code>의 인접한 <code>j</code>를 찾기 위해서는 i행의 모든 vertex를 검색해야 한다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">adjMatrix</span> <span style="color:#f92672">=</span> [
   [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
@@ -210,11 +210,11 @@
   [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
 ];
 </code></pre></div><p><br /></p>
-<h5 id="3-">3. <strong>인접리스트</strong></h5>
+<h5 id="3-인접리스트">3. <strong>인접리스트</strong></h5>
 <p>인접리스트는 각 vertex의 edge로 연결된 vertex로 이루어진 배열로 그래프를 저장하는 방식이다. 따라서 edge <code>(i, j)</code>가 그래프에 있는지 찾으려면 <code>graph[i][j]</code>로 검색해야 한다. 이 검색은 최악의 경우에는 정점 i의 edge 개수만큼 걸린다. 즉, O(degree)만큼의 복잡도를 지닌다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">adjList</span> <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">5</span>], [<span style="color:#ae81ff">5</span>], []];
 </code></pre></div><p><br /><hr /></p>
-<h2 id="---">너비우선탐색, 거대한 그래프 횡단해보기</h2>
+<h2 id="너비우선탐색-거대한-그래프-횡단해보기">너비우선탐색, 거대한 그래프 횡단해보기</h2>
 <ul>
 <li>너비우선탐색은 주어진 소스 정점에서 다른 모든 정점에 이르기까지 거치는 edge의 수를 계산해 가장 짧은 경로를 찾는 알고리즘</li>
 <li>Breadth First Search, BFS라고도 불림</li>
@@ -265,7 +265,7 @@
     
     
 
-    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading [concepts of programming languages], by Robert W. Sebesta</a></h4>
+    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading &lt;concepts of programming languages&gt;</a></h4>
     <h5>2020-06-28</h5>
     
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>

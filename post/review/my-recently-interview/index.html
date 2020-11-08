@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -159,7 +159,7 @@
     <div align="start" class="content"><h2 id="what-kind-of-companies">what kind of companies?</h2>
 <p>힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다. 블록체인, 핀테크, 클라우드IDE, AI 등등 다양한 분야의 회사에 신입 개발자로 지원했다. 프론트엔드/백엔드 가릴 것 없이 넣었고, 주로 nodeJs 기반의 회사로 넣었다. 12월 4일부터 12월 8일까지 일주일 간 인터뷰만 보러 다녔다.</p>
 <p>I apply to 7 different startups that developing web like blockchain, fintech, cloud IDE, traslating AI, medical AI. The most of them are based on nodeJs. I was an interviewee during 2017. 12. 04 ~ 2017. 12. 08.</p>
-<h2 id="what-questions-ive-got">what questions I've got?</h2>
+<h2 id="what-questions-ive-got">what questions I&rsquo;ve got?</h2>
 <ol>
 <li><a href="#thread-vs-process">Thread vs Process</a></li>
 <li><a href="#javascript-hoisting">Javascript Hoisting</a></li>
@@ -180,7 +180,7 @@
 <li><a href="#">Css flex</a></li>
 </ol>
 <hr>
-<h2 id="lets-solve-those-questions">Let's solve those questions!</h2>
+<h2 id="lets-solve-those-questions">Let&rsquo;s solve those questions!</h2>
 <h3 id="thread-vs-process">#Thread vs Process</h3>
 <p>: 먼저, 어플리케이션, 프로세스, 스레드 간의 관계를 알 필요가 있다.</p>
 <p>First of all, we must know the relationship among the application, process and thread.</p>
@@ -250,14 +250,14 @@
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">foo2</span>()); <span style="color:#75715e">// 10
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">foo5</span>()); <span style="color:#75715e">// 16
 </span></code></pre></div><p>그렇다면 클로저 환경에서는 함수실행이 어떻게 처리되는 지 알아야 하는데, 알다시피 자바스크립트는 단일 스레드 환경이다. 즉, <strong>foo</strong> 함수를 실행하라고 명령을 날리면 한 번의 실행만 한다. 함수 안에 함수가 있다고 해서 여러 번 실행되는 게 아니라는 것이다. 이것이 가능한 이유는 보통 브라우저는 스택을 이용해 실행단위를 처리하기 때문이다. 그래서 <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> 함수 순으로 참조하면서 스택에 차곡차곡 쌓아 리턴(pop)하므로 <strong>_booq</strong> 함수의 리턴값을 최종적으로 가져올 수 있다.</p>
-<p>And we have to know the process of executing functions in closure, as you all know, javascript is <code>single threaded</code>. That is, one command like executing <strong>foo</strong> function, can be processed at a time. The reason that possible, typically the browser maintain execution context with a stack, the data structure. So, It saves a value in stack and return(pop) with <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> ordering, and finally get the <strong>_booq</strong> function's return value.</p>
+<p>And we have to know the process of executing functions in closure, as you all know, javascript is <code>single threaded</code>. That is, one command like executing <strong>foo</strong> function, can be processed at a time. The reason that possible, typically the browser maintain execution context with a stack, the data structure. So, It saves a value in stack and return(pop) with <strong>foo</strong> -&gt; <strong>_bar</strong> -&gt; <strong>_booq</strong> ordering, and finally get the <strong>_booq</strong> function&rsquo;s return value.</p>
 <p><br /><br /><hr></p>
 <h3 id="this-in-javascript">#<strong>this</strong> in Javascript</h3>
 <blockquote>
 <p>함수에서의 <code>this</code> 키워드는 strict mode와 일반모드에서 다르게 적용된다. 일반적으로 함수가 어떻게 호출하는지에 따라 this의 내용이 달라진다. 전역에서는 모드에 상관없이 전역객체를 참조한다. 즉, 웹브라우저 전역에서의 <code>this</code>는 window객체가 된다.</p>
 </blockquote>
 <blockquote>
-<p>Function's <code>this</code> keyword behaves a bit differently between stric mode and non-stric mode. In most cases, the value of <code>this</code> is determined by how a function is called. In global, it refers to global object no matter of mode. That is, <code>this</code> in global web-browser is the window object.</p>
+<p>Function&rsquo;s <code>this</code> keyword behaves a bit differently between stric mode and non-stric mode. In most cases, the value of <code>this</code> is determined by how a function is called. In global, it refers to global object no matter of mode. That is, <code>this</code> in global web-browser is the window object.</p>
 </blockquote>
 <p><br /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test1</span>() {
@@ -292,9 +292,9 @@
 <span style="color:#a6e22e">me</span>.<span style="color:#a6e22e">callName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">myName</span>;
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">me</span>.<span style="color:#a6e22e">callName</span>()); <span style="color:#75715e">// roomy
 </span></code></pre></div><p>또한 <code>this</code>는 객체에서의 호출되는 방법에 따라 바뀔 수 있다. 객체(me) 내부에 함수(myName)를 정의하고 프로퍼티(callName)로 부르면 해당 객체 환경을 <code>this</code>로 참조하는 것을 볼 수 있다. 즉, <code>this</code>의 동작방식은 함수가 정의된 방법이나 위치가 아닌 호출방식에 영향을 받는다.</p>
-<p>Also targets of <code>this</code> can be changing according to the method of calling <code>this</code> in object. It refers to the object's environment after defining <strong>myName</strong> function in <strong>me</strong> object that called with <strong>callName</strong> property. That is, <code>this</code> behavior is not at all affected by how or where the function was defined. Like upper example, It matters only that the function was invoked from <strong>callName</strong> member of <strong>me</strong>.</p>
+<p>Also targets of <code>this</code> can be changing according to the method of calling <code>this</code> in object. It refers to the object&rsquo;s environment after defining <strong>myName</strong> function in <strong>me</strong> object that called with <strong>callName</strong> property. That is, <code>this</code> behavior is not at all affected by how or where the function was defined. Like upper example, It matters only that the function was invoked from <strong>callName</strong> member of <strong>me</strong>.</p>
 <p><br /></p>
-<h4 id="-execution-context-"><strong><em>Execution context</em></strong></h4>
+<h4 id="_execution-context_"><strong><em>Execution context</em></strong></h4>
 <h5 id="--the-structure-of-execution-context-in-javascript--">- The structure of execution context in javascript -</h5>
 <ul>
 <li>Variable object : { variables(const, let, var -each has scope), function declarations, arguments&hellip; }</li>
@@ -428,7 +428,7 @@
     
     
 
-    <h4><a href="/blog/post/review/after-reading-how-js-works/">After reading [how js works], by Douglas Crockford</a></h4>
+    <h4><a href="/blog/post/review/after-reading-how-js-works/">After reading &lt;how js works&gt;</a></h4>
     <h5>2020-10-06</h5>
     
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
@@ -445,7 +445,7 @@
     
     
 
-    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading [concepts of programming languages], by Robert W. Sebesta</a></h4>
+    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading &lt;concepts of programming languages&gt;</a></h4>
     <h5>2020-06-28</h5>
     
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>

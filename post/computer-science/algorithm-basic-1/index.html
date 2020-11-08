@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -159,13 +159,13 @@
     <div align="start" class="content"><p>칸아카데미의 알고리즘 코스를 들으며 정리해본 알고리즘 기초.<br />
 <a href="https://ko.khanacademy.org/computing/computer-science/algorithms">https://ko.khanacademy.org/computing/computer-science/algorithms</a></p>
 <p><br /></p>
-<h2 id="heading">알고리즘</h2>
+<h2 id="알고리즘">알고리즘</h2>
 <ul>
 <li>어떤 문제를 해결하기 위한 절차의 집합</li>
 <li>컴퓨터 과학에서 알고리즘은 프로그램이 어떤 문제를 해결하기 위해 필요한 명령어들의 집합</li>
 </ul>
 <p><br /></p>
-<h2 id="--big-o">시간 복잡도 Big-O</h2>
+<h2 id="시간-복잡도-big-o">시간 복잡도 Big-O</h2>
 <p><img src="https://cdn.kastatic.org/ka-perseus-images/501211c02f4c6765f60f23842450e1151cfd9c89.png" alt="big-o" /></p>
 <p>실행 시간의 효율성을 논의할 때 최악의 경우를 따져보는 것이 가장 일반적이다. 가장 대표적인 Big-O 계산법 또한 실행 시간의 최악의 경우를 따져보는 것으로, &ldquo;실행 시간은 최대한 이만큼 커지지만 더 천천히 커질 수도 있다&quot;라는 의미의 점근적 표기법이다.</p>
 <p><br /></p>
@@ -175,7 +175,7 @@
 <li>Big-Ω는 최선의 경우만 고려하여 &ldquo;실행시간은 최소한 이만큼 걸린다&quot;라는 의미이다.</li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/27843313/82683825-99ecaa00-9c8c-11ea-9ddc-faa889d26cf5.png" alt="complexity" /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#ae81ff">1.</span> <span style="color:#a6e22e">지수함수</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">^</span><span style="color:#a6e22e">n</span>) <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">거듭제곱</span> <span style="color:#a6e22e">수가</span> <span style="color:#a6e22e">상수가</span> <span style="color:#a6e22e">아니면</span> <span style="color:#a6e22e">더</span> <span style="color:#a6e22e">가파르게</span> <span style="color:#a6e22e">복잡도</span> <span style="color:#a6e22e">증가</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#ae81ff">1.</span> <span style="color:#a6e22e">지수함수</span>(<span style="color:#a6e22e">x</span><span style="color:#f92672">^</span><span style="color:#a6e22e">n</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">거듭제곱</span> <span style="color:#a6e22e">수가</span> <span style="color:#a6e22e">상수가</span> <span style="color:#a6e22e">아니면</span> <span style="color:#a6e22e">더</span> <span style="color:#a6e22e">가파르게</span> <span style="color:#a6e22e">복잡도</span> <span style="color:#a6e22e">증가</span>
 <span style="color:#ae81ff">2.</span> (<span style="color:#a6e22e">거듭제곱</span> <span style="color:#a6e22e">수가</span> <span style="color:#a6e22e">상수인</span>) <span style="color:#a6e22e">다항함수</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">^</span><span style="color:#a6e22e">x</span>)
 <span style="color:#ae81ff">3.</span> <span style="color:#a6e22e">선형함수</span>(<span style="color:#a6e22e">n</span>)
 <span style="color:#ae81ff">4.</span> <span style="color:#a6e22e">로그함수</span>
@@ -190,11 +190,11 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">ex</span>) <span style="color:#a6e22e">입력값</span> <span style="color:#a6e22e">n에</span> <span style="color:#a6e22e">따라</span> <span style="color:#a6e22e">어떠한</span> <span style="color:#a6e22e">알고리즘이</span> <span style="color:#ae81ff">6</span><span style="color:#a6e22e">n</span><span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">100</span><span style="color:#a6e22e">n</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">300</span>
 <span style="color:#a6e22e">만큼의</span> <span style="color:#a6e22e">복잡도를</span> <span style="color:#a6e22e">가진다면</span><span style="color:#f92672">?</span>
 
-<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">n이</span> <span style="color:#a6e22e">대충</span> <span style="color:#ae81ff">30</span> <span style="color:#a6e22e">정도만</span> <span style="color:#a6e22e">되어도</span> <span style="color:#ae81ff">6</span><span style="color:#a6e22e">n</span><span style="color:#f92672">^</span><span style="color:#ae81ff">2</span><span style="color:#a6e22e">이</span> <span style="color:#a6e22e">나머지</span> <span style="color:#a6e22e">식들보다</span> <span style="color:#a6e22e">커짐</span>.
-<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">즉</span>, <span style="color:#a6e22e">n</span><span style="color:#f92672">^</span><span style="color:#ae81ff">2</span><span style="color:#a6e22e">에</span> <span style="color:#a6e22e">의해</span> <span style="color:#a6e22e">기하급수적으로</span> <span style="color:#a6e22e">실행시간이</span> <span style="color:#a6e22e">늘어남</span>
-<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">앞에</span> <span style="color:#a6e22e">계수</span> <span style="color:#ae81ff">6</span><span style="color:#a6e22e">은</span> <span style="color:#a6e22e">큰</span> <span style="color:#a6e22e">영향을</span> <span style="color:#a6e22e">주지</span> <span style="color:#a6e22e">못하므로</span> <span style="color:#a6e22e">해당</span> <span style="color:#a6e22e">알고리즘의</span> <span style="color:#a6e22e">복잡도는</span> <span style="color:#a6e22e">n</span><span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>
+<span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">n이</span> <span style="color:#a6e22e">대충</span> <span style="color:#ae81ff">30</span> <span style="color:#a6e22e">정도만</span> <span style="color:#a6e22e">되어도</span> <span style="color:#ae81ff">6</span><span style="color:#a6e22e">n</span><span style="color:#f92672">^</span><span style="color:#ae81ff">2</span><span style="color:#a6e22e">이</span> <span style="color:#a6e22e">나머지</span> <span style="color:#a6e22e">식들보다</span> <span style="color:#a6e22e">커짐</span>.
+<span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">즉</span>, <span style="color:#a6e22e">n</span><span style="color:#f92672">^</span><span style="color:#ae81ff">2</span><span style="color:#a6e22e">에</span> <span style="color:#a6e22e">의해</span> <span style="color:#a6e22e">기하급수적으로</span> <span style="color:#a6e22e">실행시간이</span> <span style="color:#a6e22e">늘어남</span>
+<span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">앞에</span> <span style="color:#a6e22e">계수</span> <span style="color:#ae81ff">6</span><span style="color:#a6e22e">은</span> <span style="color:#a6e22e">큰</span> <span style="color:#a6e22e">영향을</span> <span style="color:#a6e22e">주지</span> <span style="color:#a6e22e">못하므로</span> <span style="color:#a6e22e">해당</span> <span style="color:#a6e22e">알고리즘의</span> <span style="color:#a6e22e">복잡도는</span> <span style="color:#a6e22e">n</span><span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>
 </code></pre></div><p><br /><hr /></p>
-<h2 id="-feat-olog-n--">로그함수? feat. O(log n)이 지니는 의미</h2>
+<h2 id="로그함수-feat-olog-n이-지니는-의미">로그함수? feat. O(log n)이 지니는 의미</h2>
 <p>로그(logarithm)는 &ldquo;특정 밑(base)에 대한 거듭제곱 수&quot;를 의미한다. 예를 들면, 밑이 2이고 진수가 8인 로그의 값은 3이다.</p>
 <ul>
 <li>보통 프로그래밍에서는 밑을 2로 한다. 아마도 컴퓨터가 2진수이기 때문이라고 추측.</li>
@@ -234,7 +234,7 @@
 —&gt; O(log n) 복잡도는 이처럼 찾는 범위를 계속 줄여주므로 효율적이라고 할 수 있다.<br />
 —&gt; 쉽게 말하면 반으로 쪼개서 필요없는 범위는 찾지 않도록 한다는 것이며, 실무에서도 필요없는 값을 반복하는 경우가 있는데 이때 로거리즘 기법을 생각해볼 수 있겠음!</p>
 <p><br /><hr /></p>
-<h2 id="--">재귀는 무엇인가 ?</h2>
+<h2 id="재귀는-무엇인가-">재귀는 무엇인가 ?</h2>
 <p><img src="https://cdn.kastatic.org/ka-perseus-images/0486791ea01a5456299a6f441a4487a10d12d9da.jpg" alt="recursion" /></p>
 <p>재귀는 자기 자신을 호출하는 방식이다?</p>
 <p>-&gt; 이 설명은 재귀를 &lsquo;어떻게&rsquo; 사용하는 지를 알려주는 것에 가깝다.<br />
@@ -272,7 +272,7 @@
 <p>—&gt; 이렇게 탈출 조건을 지정하면서 동일한 작은 태스크를 반복할 수 있는 형태라면 재귀 알고리즘을 사용할 수 있다.<br />
 —&gt; 입력값이 n개라면 n만큼 자기 자신을 호출하기 때문에 시간복잡도 O(n)</p>
 <p><br /><hr /></p>
-<h2 id="-----">최근에 알게 된 알고리즘 기법 ?</h2>
+<h2 id="최근에-알게-된-알고리즘-기법-">최근에 알게 된 알고리즘 기법 ?</h2>
 <ol>
 <li>
 <dl>
@@ -385,7 +385,7 @@
     
     
 
-    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading [concepts of programming languages], by Robert W. Sebesta</a></h4>
+    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading &lt;concepts of programming languages&gt;</a></h4>
     <h5>2020-06-28</h5>
     
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>

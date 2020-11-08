@@ -12,21 +12,21 @@
     
     
     <item>
-      <title>After reading [how js works], by Douglas Crockford</title>
+      <title>After reading &lt;how js works&gt;</title>
       <link>https://wacilpong.github.io/blog/post/review/after-reading-how-js-works/</link>
       <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/review/after-reading-how-js-works/</guid>
-      <description>시작하기 전에 자바스크립트는 이상한 corner case와 edge case로 가득 차 있다. corner case: 에상하지 못한 환경이나 입력 데이터 등으로 인해 프로그램에 문제가 발생하는 경우</description>
+      <description>by Douglas Crockford 시작하기 전에 자바스크립트는 이상한 corner case와 edge case로 가득 차 있다. corner case: 에상하지 못한 환경이나 입력 데이터 등으로 인해 프로그램에 문제가 발생하</description>
     </item>
     
     <item>
-      <title>After reading [concepts of programming languages], by Robert W. Sebesta</title>
+      <title>After reading &lt;concepts of programming languages&gt;</title>
       <link>https://wacilpong.github.io/blog/post/review/after-reading-concepts-of-programming-languages/</link>
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/review/after-reading-concepts-of-programming-languages/</guid>
-      <description>프로그래밍 언어론을 읽고 내맘대로 정리해보았다. [기본적인 사항] 프로그래밍 언어의 어휘항목은 수치 리터럴, operator, 특수어를 포함한다. 프로그램은 문자보다는 어</description>
+      <description>by Robert W. Sebesta 프로그래밍 언어론을 읽고 내맘대로 정리해보았다. [기본적인 사항] 프로그래밍 언어의 어휘항목은 수치 리터럴, operator, 특수어를 포함한다. 프로그램은 문자</description>
     </item>
     
     <item>
@@ -39,12 +39,12 @@
     </item>
     
     <item>
-      <title>After reading [clean architecture], by Robert C. Martine</title>
+      <title>After reading &lt;clean architecture&gt;</title>
       <link>https://wacilpong.github.io/blog/post/review/after-reading-clean-architecture/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/review/after-reading-clean-architecture/</guid>
-      <description>클린 아키텍쳐를 읽고 내맘대로 정리해보았다. 컴포넌트 모든 언어에서 컴포넌트는 배포할 수 있는 단위 입자 동일한 시점에 동일한 이유로 변경되는 것들을 한데 묶고, 서</description>
+      <description>by Robert C. Martine 클린 아키텍쳐를 읽고 내맘대로 정리해보았다. 컴포넌트 모든 언어에서 컴포넌트는 배포할 수 있는 단위 입자 동일한 시점에 동일한 이유로 변경되는 것들을 한데</description>
     </item>
     
     <item>

@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -191,7 +191,7 @@
   })();
 }, []);
 
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;list&#34;</span>&gt;{<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span>...<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">&gt;</span><span style="color:#960050;background-color:#1e0010">}</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#960050;background-color:#1e0010">d</span><span style="color:#960050;background-color:#1e0010">i</span><span style="color:#960050;background-color:#1e0010">v</span><span style="color:#960050;background-color:#1e0010">&gt;</span><span style="color:#960050;background-color:#1e0010">;</span>
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;list&#34;</span>&gt;{<span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&amp;&amp;</span> &lt;&gt;...&lt;/&gt;}&lt;/<span style="color:#f92672">div</span>&gt;;
 </code></pre></div><p><img src="/blog/images/scroll-x.gif" alt="scroll-x" /></p>
 <p><br /></p>
 <p>혹시 몰라서 바깥 컨테이너 역할의 엘리먼트에 <code>min-height</code>와 <code>height</code>를 100%로 지정해봤는데, 해당 속성은 해당 브라우저 문서의 보이는 부분 높이값에 해당하므로 밑에 동적으로 늘어나는 높이값을 포함하진 못했다. 그래서 스크롤이 되게 애매한 위치로 기억되는 것을 확인했다. 아마 문서의 높이값 100%에 따른 계산에서의 스크롤 위치인듯 싶다.</p>

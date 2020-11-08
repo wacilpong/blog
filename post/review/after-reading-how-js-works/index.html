@@ -4,13 +4,13 @@
         <meta name="description" content="자바스크립트는 왜 그 모양일까를 읽고 내맘대로 정리해보았다." />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="After reading [how js works], by Douglas Crockford" />
-<meta property="og:site_name" content="After reading [how js works], by Douglas Crockford" />
+<meta property="og:title" content="After reading &lt;how js works&gt;" />
+<meta property="og:site_name" content="After reading &lt;how js works&gt;" />
 <meta property="og:description" content="자바스크립트는 왜 그 모양일까를 읽고 내맘대로 정리해보았다." />
 <meta property="og:url" content="https://wacilpong.github.io/blog/post/review/after-reading-how-js-works/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="After reading [how js works], by Douglas Crockford" />
+<meta name="twitter:title" content="After reading &lt;how js works&gt;" />
 <meta name="twitter:description" content="자바스크립트는 왜 그 모양일까를 읽고 내맘대로 정리해보았다." />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>After reading [how js works], by Douglas Crockford</title>
+        <title>After reading &lt;how js works&gt;</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -108,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">After reading [how js works], by Douglas Crockford</a>
+                    <a class="navbar-brand visible-xs" href="#">After reading &lt;how js works&gt;</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -148,7 +148,7 @@
 <main>
 
     <div>
-        <h2>After reading [how js works], by Douglas Crockford</h2>
+        <h2>After reading &lt;how js works&gt;</h2>
         <h5>2020-10-06</h5>
         
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
@@ -156,7 +156,8 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="-">시작하기 전에</h2>
+    <div align="start" class="content"><p>by Douglas Crockford</p>
+<h2 id="시작하기-전에">시작하기 전에</h2>
 <ul>
 <li>자바스크립트는 이상한 corner case와 edge case로 가득 차 있다.
 <ul>
@@ -173,7 +174,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading">숫자</h2>
+<h2 id="숫자">숫자</h2>
 <ul>
 <li>js는 int형을 사용하지 않으므로 오버플로 문제가 발생하지 않는다.</li>
 <li>오버플로가 발생하지 않기 때문에 자바스크립트의 정수는 훨씬 안정적이다.</li>
@@ -203,7 +204,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading-1">배열</h2>
+<h2 id="배열">배열</h2>
 <ul>
 <li>배열은 객체 리터럴이 아닌 배열 리터럴을 사용해 만들어진다.</li>
 <li>typeof 연산자는 배열에 대해 <strong>object</strong> 를 반환하므로 <code>Array.isArray</code>를 사용해 체크하자.</li>
@@ -224,7 +225,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading-2">객체</h2>
+<h2 id="객체">객체</h2>
 <ul>
 <li>객체에 찾을 수 없는 속성 값을 요청하면, 객체는 undefined라는 빈 값을 반환한다.</li>
 <li>존재하지 않거나 빼먹은 속성 값을 요청하는 것은 에러가 아니므로, 이는 정상적인 동작이다.</li>
@@ -236,7 +237,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading-3">문자열</h2>
+<h2 id="문자열">문자열</h2>
 <ul>
 <li>문자열은 0에서 65535 사이의 크기를 가지는 부호가 없는 16비트 정수로 이루어진 불변 배열이다.</li>
 <li>문자열은 일반 배열과 다르게 항상 동결된 상태이고 <strong>===</strong> 연산자에 의해 동등하게 검사할 수 있다.</li>
@@ -251,13 +252,13 @@
 <li>function문은 세미콜론으로 끝나지 않지만, let문과 선언문은 세미콜론으로 끝난다.</li>
 <li><strong>function 선언문은 호이스팅되므로 함수 본문이나 모듈 안에 두는 것은 괜찮지만, if나 switch 등에 두는 것은 좋지 않다.</strong></li>
 <li><code>const</code>는 상수의 줄임말이지만, 함수의 실행이 끝나면 사라질 수도 있는 임시적인 거고 프로그램이 실행될 때나 함수가 호출될 때마다 다른 값을 가질 수도 있다.</li>
-<li>js는 조건문이 &lsquo;불인 척하는 값'이길 기대하지만, 개발할 때는 정확한 불 값으로 처리하자.</li>
+<li>js는 조건문이 &lsquo;불인 척하는 값&rsquo;이길 기대하지만, 개발할 때는 정확한 불 값으로 처리하자.</li>
 <li>반복문을 만드는 가장 좋은 방법은 꼬리재귀(tail recursion)을 사용하는 것이다.</li>
 <li>js에는 <strong>break, continue, throw, return 4가지 중단문이 있는데 이들은 모두 goto가 아니다.</strong> (<em>그러니 안심하자!</em>)</li>
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading-4">함수</h2>
+<h2 id="함수">함수</h2>
 <ul>
 <li>최초의 프로그램은 루틴이라고 불렸고, 같은 루틴을 서브루틴으로 만들었다.</li>
 <li>유용한 여러 서브루틴을 묶어서 라이브러리라고 부르기 시작했다.</li>
@@ -277,7 +278,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading-5">예외</h2>
+<h2 id="예외">예외</h2>
 <ul>
 <li>js는 throw에 어떤 값이든 허용하므로 아무거나 <strong>던져도</strong> 된다.</li>
 <li>함수의 모든 문장은 제각각 <code>try ~ catch</code>를 가질 수 있다.</li>
@@ -297,7 +298,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading-6">프로그램</h2>
+<h2 id="프로그램">프로그램</h2>
 <ul>
 <li>HTML이 텍스트 형태였기 때문에, js 역시 웹페이지에 텍스트 형태로 삽입했다.</li>
 <li>js 엔진은 소스코드를 컴파일해서 기계어나 중간 언어, 혹은 둘 다로 변환할 수 있어 이식성이 뛰어나다.</li>
@@ -318,7 +319,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="this----">this 그리고 클래스 없는 자바스크립트</h2>
+<h2 id="this-그리고-클래스-없는-자바스크립트">this 그리고 클래스 없는 자바스크립트</h2>
 <ul>
 <li>프로토타입에 있는 함수가 어떤 객체에서 동작하고 있는지 알아내가 위해 this가 등장한다!</li>
 <li>메서드가 발견되면 인자 목록을 주어 메서드를 호출하고, 자신을 동작시킨 객체에 대한 정보를 this라는 묵시적인 매개변수로 전달받는다. 따라서 오직 메서드 호출만 this 바인딩을 제공받게 된다.</li>
@@ -347,7 +348,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading-7">~</h2>
+<h2 id="heading">~</h2>
 <ul>
 <li><code>꼬리 호출</code>은 함수가 마지막으로 하는 일이 어떤 함수를 호출해 그 결과를 반환할 때 일어난다.
 <ul>
@@ -379,7 +380,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h4 id="--">다음 세대 언어는</h4>
+<h4 id="다음-세대-언어는">다음 세대 언어는</h4>
 <ul>
 <li>프로세싱 루프, 메시지 디스패치, 순차적 전송을 포함해서 비동기 프로그래밍을 잘 지원해야 한다.</li>
 <li>유니코드를 잘 지원해야 한다. 예를 들면 split 함수가 문자를 어떻게 조합하는지 알 수 있어야 한다.</li>
@@ -415,7 +416,7 @@
     
     
 
-    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading [concepts of programming languages], by Robert W. Sebesta</a></h4>
+    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading &lt;concepts of programming languages&gt;</a></h4>
     <h5>2020-06-28</h5>
     
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
@@ -451,7 +452,7 @@
     
     
 
-    <h4><a href="/blog/post/review/after-reading-clean-architecture/">After reading [clean architecture], by Robert C. Martine</a></h4>
+    <h4><a href="/blog/post/review/after-reading-clean-architecture/">After reading &lt;clean architecture&gt;</a></h4>
     <h5>2019-12-10</h5>
     
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
