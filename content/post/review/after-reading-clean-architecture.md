@@ -1,10 +1,12 @@
 ---
-title: "After reading [clean architecture], by Robert C. Martine"
+title: "After reading <clean architecture>"
 date: "2019-12-10"
 tags: ["review"]
 draft: false
 og_description: "클린 아키텍쳐를 읽고 내맘대로 정리해보았다."
 ---
+
+by Robert C. Martine
 
 클린 아키텍쳐를 읽고 내맘대로 정리해보았다.
 

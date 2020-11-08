@@ -1,10 +1,12 @@
 ---
-title: "After reading [concepts of programming languages], by Robert W. Sebesta"
+title: "After reading <concepts of programming languages>"
 date: "2020-06-28"
 tags: ["review", "computer-science"]
 draft: false
 og_description: "프로그래밍 언어론을 읽고 내맘대로 정리해보았다."
 ---
+
+by Robert W. Sebesta
 
 프로그래밍 언어론을 읽고 내맘대로 정리해보았다.
 

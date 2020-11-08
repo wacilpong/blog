@@ -1,10 +1,12 @@
 ---
-title: "After reading [how js works], by Douglas Crockford"
+title: "After reading <how js works>"
 date: "2020-10-06"
 tags: ["review"]
 draft: false
 og_description: "자바스크립트는 왜 그 모양일까를 읽고 내맘대로 정리해보았다."
 ---
+
+by Douglas Crockford
 
 ## 시작하기 전에
 - 자바스크립트는 이상한 corner case와 edge case로 가득 차 있다.
