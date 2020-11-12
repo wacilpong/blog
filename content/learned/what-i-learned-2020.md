@@ -5,6 +5,31 @@ og_description: "About what I learned by year"
 draft: false
 ---
 
+## **2020-11-12**
+- 리액트의 `setState()` 메서드는 **state의 변경 사항을 대기열에 넣어** 상태를 변경하라고 React에 요청한다. 따라서 즉시 state를 변경하지 않으므로 상태를 변경하고 그 상태를 바로 호출하면 의도한 대로 동작하지 않는다. 같은 setState를 한번에 여러번 호출하면 안되는 이유이기도 하다. 아래는 setData를 count만큼 실행하고 있는데, map 메서드를 통해 다음 data를 받아서 setData를 한번만 호출하도록 바꾸는 것이 낫겠다.
+  ```ts
+  const getRandom = (max: number) => Math.random() * max;
+  const count = Math.floor(getRandom(100));
+
+  const [data, setData] = useState<IData[]>([]);
+  
+  useEffect(() => {
+    for (let i = 0; i <= count; i++) {
+      setData((prevState) => [
+        ...prevState,
+        {
+          totalCount: Math.floor(getRandom(1500)),
+          satisfaction: getRandom(5).toFixed(2),
+        },
+      ]);
+    }
+  }, []);
+  ```
+- 리액트 훅은 함수형 컴포넌트의 최상위에서만 호출해야 한다. 반복문, 조건문, 혹은 중첩된 함수 내에서 호출하면 안된다. 리액트는 hook이 호출되는 순서에 의존하기 때문이다. [React hooks를 자바스크립트로 구현한 예제](https://medium.com/humanscape-tech/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%81%B4%EB%A1%9C%EC%A0%80%EB%A1%9C-hooks%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-3ba74e11fda7)를 참고해보자.
+
+<br />
+<hr />
+
 ## **2020-09-23**
 - 어떠한 이벤트 스트림에서 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 `concatMapTo`를 사용하자. 아래는 구독여부에 관한 옵저버블을 실행 후 emit된 값이 `true`인 경우만 구독 옵저버블을 실행한다.
   ```ts
