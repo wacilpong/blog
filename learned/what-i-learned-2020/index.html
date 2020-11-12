@@ -154,7 +154,31 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2020-09-23"><strong>2020-09-23</strong></h2>
+    <div align="start" class="content"><h2 id="2020-11-12"><strong>2020-11-12</strong></h2>
+<ul>
+<li>리액트의 <code>setState()</code> 메서드는 <strong>state의 변경 사항을 대기열에 넣어</strong> 상태를 변경하라고 React에 요청한다. 따라서 즉시 state를 변경하지 않으므로 상태를 변경하고 그 상태를 바로 호출하면 의도한 대로 동작하지 않는다. 같은 setState를 한번에 여러번 호출하면 안되는 이유이기도 하다. 아래는 setData를 count만큼 실행하고 있는데, map 메서드를 통해 다음 data를 받아서 setData를 한번만 호출하도록 바꾸는 것이 낫겠다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getRandom</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">max</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=&gt;</span> Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">getRandom</span>(<span style="color:#ae81ff">100</span>));
+
+<span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">setData</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">IData</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
+  
+<span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">count</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+    <span style="color:#a6e22e">setData</span>((<span style="color:#a6e22e">prevState</span>) <span style="color:#f92672">=&gt;</span> [
+      ...<span style="color:#a6e22e">prevState</span>,
+      {
+        <span style="color:#a6e22e">totalCount</span>: <span style="color:#66d9ef">Math.floor</span>(<span style="color:#a6e22e">getRandom</span>(<span style="color:#ae81ff">1500</span>)),
+        <span style="color:#a6e22e">satisfaction</span>: <span style="color:#66d9ef">getRandom</span>(<span style="color:#ae81ff">5</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>),
+      },
+    ]);
+  }
+}, []);
+</code></pre></div></li>
+<li>리액트 훅은 함수형 컴포넌트의 최상위에서만 호출해야 한다. 반복문, 조건문, 혹은 중첩된 함수 내에서 호출하면 안된다. 리액트는 hook이 호출되는 순서에 의존하기 때문이다. <a href="https://medium.com/humanscape-tech/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%81%B4%EB%A1%9C%EC%A0%80%EB%A1%9C-hooks%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-3ba74e11fda7">React hooks를 자바스크립트로 구현한 예제</a>를 참고해보자.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2020-09-23"><strong>2020-09-23</strong></h2>
 <ul>
 <li>어떠한 이벤트 스트림에서 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 <code>concatMapTo</code>를 사용하자. 아래는 구독여부에 관한 옵저버블을 실행 후 emit된 값이 <code>true</code>인 경우만 구독 옵저버블을 실행한다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">pipe</span>(
