@@ -6,10 +6,19 @@
     <description>Recent content in review on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/review/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading &lt;code&gt;</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-code/</link>
+      <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-code/</guid>
+      <description>by Charles Petzold Bit 모스부호는 점(dot)과 선(dash)으로 이루어진다. 단지 점과 선은 깜빡임의 종류일 뿐이다. 점자는 이진형태(binary)를 지니며 6개의</description>
+    </item>
     
     <item>
       <title>After reading &lt;how js works&gt;</title>
