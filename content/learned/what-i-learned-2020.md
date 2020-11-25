@@ -5,6 +5,71 @@ og_description: "About what I learned by year"
 draft: false
 ---
 
+## **2020-11-25**
+- 타입스크립트 컴파일러가 이해하기 쉽게 코드를 작성하면(Easy-to-Compile), ts 성능을 높일 수도 있다.
+- [자세한 문서는 여기 - microsoft/TypeScript WIKI](https://github.com/microsoft/TypeScript/wiki/Performance)
+- 인터섹션 타입(intersection type)보다는 인터페이스(interface)로 작성하자.
+  ```
+  - type Foo = Bar & Baz & {
+  -     someProp: string;
+  - }
+
+  + interface Foo extends Bar, Baz {
+  +     someProp: string;
+  + }
+  ```
+- 타입 어노테이션, 특히 메서드 등이 반환할 타입을 지정해주면 컴파일러의 비용을 절약할 수 있다.
+  ```ts
+  export function func(): otherType {
+      return otherFunc();
+  }
+  ```
+- 유니온(Unions)을 만들기 보다는 서브타입(subtypes)을 만들자. 유니온으로 명시된 타입의 중복 멤버를 제거하려면 쌍으로 비교해야 하므로 비용이 많이 들기 때문이다. 아래처럼 간단한 것은 상관 없지만 12개 이상을 가진 유니온은 체감하는 속도에도 영향을 준다고 한다. 
+  ```ts
+  // before
+  interface WeekdaySchedule {
+    day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday";
+    wake: Time;
+    startWork: Time;
+    endWork: Time;
+    sleep: Time;
+  }
+
+  interface WeekendSchedule {
+    day: "Saturday" | "Sunday";
+    wake: Time;
+    familyMeal: Time;
+    sleep: Time;
+  }
+
+  declare function printSchedule(schedule: WeekdaySchedule | WeekendSchedule);
+  ```
+
+  ```ts
+  // after
+  interface Schedule {
+    day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
+    wake: Time;
+    sleep: Time;
+  }
+
+  interface WeekdaySchedule extends Schedule {
+    day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday";
+    startWork: Time;
+    endWork: Time;
+  }
+
+  interface WeekendSchedule extends Schedule {
+    day: "Saturday" | "Sunday";
+    familyMeal: Time;
+  }
+
+  declare function printSchedule(schedule: Schedule);
+  ```
+
+<br />
+<hr />
+
 ## **2020-11-12**
 - 리액트의 `setState()` 메서드는 **state의 변경 사항을 대기열에 넣어** 상태를 변경하라고 React에 요청한다. 따라서 즉시 state를 변경하지 않으므로 상태를 변경하고 그 상태를 바로 호출하면 의도한 대로 동작하지 않는다. 같은 setState를 한번에 여러번 호출하면 안되는 이유이기도 하다. 아래는 setData를 count만큼 실행하고 있는데, map 메서드를 통해 다음 data를 받아서 setData를 한번만 호출하도록 바꾸는 것이 낫겠다.
   ```ts
