@@ -5,6 +5,12 @@ og_description: "About what I learned by year"
 draft: false
 ---
 
+## **2020-12-03**
+- http request의 `Referer` 헤더는 실제 단어 referrer의 오타이다. 이를 [정의할 때 철자를 빼먹어서](https://tools.ietf.org/html/rfc1945#section-10.13) 그대로 표준이 되었다. 그래서 document객체는 `document.referrer`라고 명시되어 있다. 표준은 한번 정해지면 함부로 바꿀 수 없는 것의 좋은 예시이기도 하다.
+
+<br />
+<hr />
+
 ## **2020-11-25**
 - 타입스크립트 컴파일러가 이해하기 쉽게 코드를 작성하면(Easy-to-Compile), ts 성능을 높일 수도 있다.
 - [자세한 문서는 여기 - microsoft/TypeScript WIKI](https://github.com/microsoft/TypeScript/wiki/Performance)
