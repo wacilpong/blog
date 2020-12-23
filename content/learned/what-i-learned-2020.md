@@ -5,6 +5,25 @@ og_description: "About what I learned by year"
 draft: false
 ---
 
+## **2020-12-23**
+- rxjs `animationFrameScheduler`는 window.requestAnimationFrame가 실행될 때 작업을 수행하는 오퍼레이터이다. 이를 활용해 브라우저가 repaint 하기 전에 스타일을 지정할 수도 있다.
+  ```ts
+  import { animationFrameScheduler } from 'rxjs';
+  import { observeOn } from 'rxjs/operators';
+
+  someObservable.pipe(
+    observeOn(animationFrameScheduler)
+  ).subscribe(v => {
+    someDiv.style.height = `${v}px`;
+  })
+  ```
+- 다른 rxjs의 스케줄러는 아래와 같다.
+  - `asapScheduler`: 비동기 작업들 중에서 높은 우선순위를 가져간다. microtask와 동일한 큐로 스케줄링한다.
+  - `asyncScheduler`: 일반적인 setTimeout(task, duration)처럼 작업을 수행한다.
+  - `queueScheduler`: 동기적인 방식으로 스케줄링한다. async / await를 생각하면 쉽다.
+- debounceTime, delay, throttleTime, timeInterval, windowTime과 같은 시간 관련 오퍼레이터들이 마지막 인자로 스케줄러를 받을 수 있다.
+  - **지정하지 않을 경우 asyncScheduler를 기본으로 사용한다.**
+
 ## **2020-12-03**
 - http request의 `Referer` 헤더는 실제 단어 referrer의 오타이다. 이를 [정의할 때 철자를 빼먹어서](https://tools.ietf.org/html/rfc1945#section-10.13) 그대로 표준이 되었다. 그래서 document객체는 `document.referrer`라고 명시되어 있다. 표준은 한번 정해지면 함부로 바꿀 수 없는 것의 좋은 예시이기도 하다.
 
@@ -102,7 +121,7 @@ draft: false
 <hr />
 
 ## **2020-09-23**
-- 어떠한 이벤트 스트림에서 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 `concatMapTo`를 사용하자. 아래는 구독여부에 관한 옵저버블을 실행 후 emit된 값이 `true`인 경우만 구독 옵저버블을 실행한다.
+- rxjs에서 어떠한 이벤트 스트림의 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 `concatMapTo`를 사용하자. 아래는 구독여부에 관한 옵저버블을 실행 후 emit된 값이 `true`인 경우만 구독 옵저버블을 실행한다.
   ```ts
   stream.pipe(
     switchMap(() => testService.subscribed$),
@@ -149,7 +168,7 @@ draft: false
 
 ## **2020-09-05**
 
-- `Rxjs`에서 Subject를 프로미스로 만들고 싶다면 아래처럼 `take`, `first` 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.
+- rxjs에서 Subject를 프로미스로 만들고 싶다면 아래처럼 `take`, `first` 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.
 
   ```ts
   // test.component.ts
