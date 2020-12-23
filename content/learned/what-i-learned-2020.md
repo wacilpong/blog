@@ -24,6 +24,9 @@ draft: false
 - debounceTime, delay, throttleTime, timeInterval, windowTime과 같은 시간 관련 오퍼레이터들이 마지막 인자로 스케줄러를 받을 수 있다.
   - **지정하지 않을 경우 asyncScheduler를 기본으로 사용한다.**
 
+<br />
+<hr />
+
 ## **2020-12-03**
 - http request의 `Referer` 헤더는 실제 단어 referrer의 오타이다. 이를 [정의할 때 철자를 빼먹어서](https://tools.ietf.org/html/rfc1945#section-10.13) 그대로 표준이 되었다. 그래서 document객체는 `document.referrer`라고 명시되어 있다. 표준은 한번 정해지면 함부로 바꿀 수 없는 것의 좋은 예시이기도 하다.
 
