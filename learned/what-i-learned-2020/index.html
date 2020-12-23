@@ -154,7 +154,32 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2020-12-03"><strong>2020-12-03</strong></h2>
+    <div align="start" class="content"><h2 id="2020-12-23"><strong>2020-12-23</strong></h2>
+<ul>
+<li>rxjs <code>animationFrameScheduler</code>는 window.requestAnimationFrame가 실행될 때 작업을 수행하는 오퍼레이터이다. 이를 활용해 브라우저가 repaint 하기 전에 스타일을 지정할 수도 있다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">animationFrameScheduler</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;rxjs&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">observeOn</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;rxjs/operators&#39;</span>;
+
+<span style="color:#a6e22e">someObservable</span>.<span style="color:#a6e22e">pipe</span>(
+  <span style="color:#a6e22e">observeOn</span>(<span style="color:#a6e22e">animationFrameScheduler</span>)
+).<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">v</span> <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#a6e22e">someDiv</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">v</span><span style="color:#e6db74">}</span><span style="color:#e6db74">px`</span>;
+})
+</code></pre></div></li>
+<li>다른 rxjs의 스케줄러는 아래와 같다.
+<ul>
+<li><code>asapScheduler</code>: 비동기 작업들 중에서 높은 우선순위를 가져간다. microtask와 동일한 큐로 스케줄링한다.</li>
+<li><code>asyncScheduler</code>: 일반적인 setTimeout(task, duration)처럼 작업을 수행한다.</li>
+<li><code>queueScheduler</code>: 동기적인 방식으로 스케줄링한다. async / await를 생각하면 쉽다.</li>
+</ul>
+</li>
+<li>debounceTime, delay, throttleTime, timeInterval, windowTime과 같은 시간 관련 오퍼레이터들이 마지막 인자로 스케줄러를 받을 수 있다.
+<ul>
+<li><strong>지정하지 않을 경우 asyncScheduler를 기본으로 사용한다.</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="2020-12-03"><strong>2020-12-03</strong></h2>
 <ul>
 <li>http request의 <code>Referer</code> 헤더는 실제 단어 referrer의 오타이다. 이를 <a href="https://tools.ietf.org/html/rfc1945#section-10.13">정의할 때 철자를 빼먹어서</a> 그대로 표준이 되었다. 그래서 document객체는 <code>document.referrer</code>라고 명시되어 있다. 표준은 한번 정해지면 함부로 바꿀 수 없는 것의 좋은 예시이기도 하다.</li>
 </ul>
@@ -252,7 +277,7 @@
 <hr />
 <h2 id="2020-09-23"><strong>2020-09-23</strong></h2>
 <ul>
-<li>어떠한 이벤트 스트림에서 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 <code>concatMapTo</code>를 사용하자. 아래는 구독여부에 관한 옵저버블을 실행 후 emit된 값이 <code>true</code>인 경우만 구독 옵저버블을 실행한다.
+<li>rxjs에서 어떠한 이벤트 스트림의 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 <code>concatMapTo</code>를 사용하자. 아래는 구독여부에 관한 옵저버블을 실행 후 emit된 값이 <code>true</code>인 경우만 구독 옵저버블을 실행한다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">pipe</span>(
   <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">subscribed$</span>),
   <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">isTrue</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">isTrue</span>),
@@ -295,7 +320,7 @@
 <h2 id="2020-09-05"><strong>2020-09-05</strong></h2>
 <ul>
 <li>
-<p><code>Rxjs</code>에서 Subject를 프로미스로 만들고 싶다면 아래처럼 <code>take</code>, <code>first</code> 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.</p>
+<p>rxjs에서 Subject를 프로미스로 만들고 싶다면 아래처럼 <code>take</code>, <code>first</code> 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// test.component.ts
 </span><span style="color:#75715e"></span>...
 <span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
