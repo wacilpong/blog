@@ -6,10 +6,19 @@
     <description>Recent content in review on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 18 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/review/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Good bye 2020</title>
+      <link>https://wacilpong.github.io/blog/post/review/good-bye-2020/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/good-bye-2020/</guid>
+      <description>잘가라 2020년 올해는 개발적으로는 이론을 다지고, 집에서만 활동한 터라 재충전하는 시간이 많았기에 분기별로 작성해본다. 분기별 기록 1분기 2분기 3분기 4</description>
+    </item>
     
     <item>
       <title>After reading &lt;code&gt;</title>
