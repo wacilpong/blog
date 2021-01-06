@@ -18,9 +18,6 @@ by Alexander A. Stepanov, Daniel E. Rose
 - 직사각수는 삼각수에 n을 곱한다.
 - 기하학적으로 직사각수는 n(n+1)이고, 이를 2로 나누면 삼각수가 된다.
 - 따라서 1부터 자연수 n까지의 합은 n(n+1)/2가 된다.
-
-<br />
-
 - 자신을 제외한 모든 약수의 합이 자신과 같으면 완전수이다.
 
 <br />
@@ -65,6 +62,8 @@ by Alexander A. Stepanov, Daniel E. Rose
           return b;
       }
     ```
+
+<br />
 
 #### 완전수, 소수
 - 완전수란 어떤 정수 n 자신을 제외한 모든 약수(진약수)의 합이 n인 수
