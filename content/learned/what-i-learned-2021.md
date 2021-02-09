@@ -32,7 +32,7 @@ draft: false
       ...
       "baseUrl": "./",
       "paths": {
-      "@/*": ["src/*"]
-    }
+        "@/*": ["src/*"]
+      }
   }
   ```
