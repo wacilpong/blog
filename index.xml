@@ -396,5 +396,14 @@ Change permission of file I will change mode of key file and connect to ssh with
       <description>2020-12-23 rxjs animationFrameScheduler는 window.requestAnimationFrame가 실행될 때 작업을 수행하는 오퍼레이</description>
     </item>
     
+    <item>
+      <title>2021</title>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
+      <description>2021-02-09 sapper는 svelte로 구동시키는 웹앱 프레임워크다. 아래의 구조로 이루어진다. routes연결부분이 rails랑 비슷하다는 생각이 들었다.</description>
+    </item>
+    
   </channel>
 </rss>
