@@ -1,9 +1,15 @@
 ---
 title: "2021"
-description: "About what I learned by year"
-og_description: "About what I learned by year"
+description: "About what I learned at 2021"
+og_description: "About what I learned at 2021"
 draft: false
 ---
+
+## **2021-02-10**
+- 타입을 export하지 않고 있는 3rd party library 등을 ts에서 사용할 때 `d.ts` 파일에 모듈을 선언해두는 과정이 필요한데, 모호성 때문인지 이걸 Ambient declarations 부르더라. 그래서 타입스크립트 내에는 이 이름 그대로 [TypeScript/ambients.d.ts](https://github.com/microsoft/TypeScript/blob/master/scripts/types/ambient.d.ts) 파일이 있다. 외부 모듈을 declare해서 tsc가 이해할 수 있도록 한다.
+
+<br />
+<hr />
 
 ## **2021-02-09**
 

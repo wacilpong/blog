@@ -1,7 +1,7 @@
 ---
 title: "2020"
-description: "About what I learned by year"
-og_description: "About what I learned by year"
+description: "About what I learned at 2020"
+og_description: "About what I learned at 2020"
 draft: false
 ---
 
