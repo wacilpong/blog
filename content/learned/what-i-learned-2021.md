@@ -5,7 +5,38 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-02-24**
+
+- cmd에서 작업하던 소스를 단위(hunk)별로 stage에 올리고 싶으면 `--patch` 옵션 사용하면 된다.
+
+  ```sh
+  $ git add --patch
+  ```
+
+- 반영할지 말지 선택하는 옵션들은 아래와 같다. 보통 y로 반영하고, n으로 반영하지 않는다.
+
+  ```txt
+  y - stage this hunk
+  n - do not stage this hunk
+  q - quit; do not stage this hunk or any of the remaining ones
+  a - stage this hunk and all later hunks in the file
+  d - do not stage this hunk or any of the later hunks in the file
+  g - select a hunk to go to
+  / - search for a hunk matching the given regex
+  j - leave this hunk undecided, see next undecided hunk
+  J - leave this hunk undecided, see next hunk
+  k - leave this hunk undecided, see previous undecided hunk
+  K - leave this hunk undecided, see previous hunk
+  s - split the current hunk into smaller hunks
+  e - manually edit the current hunk
+  ? - print help
+  ```
+
+<br />
+<hr />
+
 ## **2021-02-10**
+
 - 타입을 export하지 않고 있는 3rd party library 등을 ts에서 사용할 때 `d.ts` 파일에 모듈을 선언해두는 과정이 필요한데, 모호성 때문인지 이걸 Ambient declarations 부르더라. 그래서 타입스크립트 내에는 이 이름 그대로 [TypeScript/ambients.d.ts](https://github.com/microsoft/TypeScript/blob/master/scripts/types/ambient.d.ts) 파일이 있다. 외부 모듈을 declare해서 tsc가 이해할 수 있도록 한다.
 
 <br />
