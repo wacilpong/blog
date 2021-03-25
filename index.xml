@@ -402,7 +402,7 @@ Change permission of file I will change mode of key file and connect to ssh with
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-02-24 cmd에서 작업하던 소스를 단위(hunk)별로 stage에 올리고 싶으면 --patch 옵션 사용하면 된다. $ git add --patch 반영할지 말지 선택하는 옵션들은 아래와 같다. 보</description>
+      <description>2021-03-24 angular 프레임워크를 사용할 때 생성자 메서드를 주의하자. constructor는 단지 ES6 클래스 문법에서 객체를 생성하는 시점에 호출되므로 angular가 초</description>
     </item>
     
   </channel>
