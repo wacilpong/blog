@@ -5,6 +5,17 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-03-26**
+
+- [border-radius 속성](https://www.w3.org/TR/css-backgrounds-3/#border-radius)은 각 모서리에 지정한 반지름을 가진 원으로 라운딩 처리를 한다. 이때 radius를 50%, 100%, 999px 이런 식으로 줘도 일정 비율 이상 커브가 생기지 않는데 그 이유는 각 원이 겹치지 않게 처리하기 떄문이다. 아래는 공식문서에 적힌 내용이다.
+
+  > Let f = min(Li/Si), where i ∈ {top, right, bottom, left}, Si is the sum of the two corresponding radii of the corners on side i, and Ltop = Lbottom = the width of the box, and Lleft = Lright = the height of the box. If f < 1, then all corner radii are reduced by multiplying them by f.
+
+  **각 코너에 준 값에 대한 비율을 계산해 그 중 최소비율값을 곱하면 각 radii끼리 겹치지 않게 된다.** 그래서 999px, 10px, 999px, 10px 이런 식으로 주면 일정 비율을 곱하기 때문에 직사각형 왼쪽의 원이 필요한 것보다 줄어들게 된다. [이 문서 - what-happens-when-border-radii-overlap](https://css-tricks.com/what-happens-when-border-radii-overlap/)가 설명을 잘 해놨더라.
+
+<br />
+<hr />
+
 ## **2021-03-24**
 
 - angular 프레임워크를 사용할 때 생성자 메서드를 주의하자. constructor는 단지 ES6 클래스 문법에서 객체를 생성하는 시점에 호출되므로 angular가 초기화 작업을 수행하기 전이다. 따라서 앵귤러 컴포넌트에서 바인딩한 속성이나 부모 컴포넌트로부터 전달받은 속성 등의 초기화를 보장하지 않는다. 생성자에는 순수하게 객체의 생성 시점에 필요한, static한 값을 초기화할 때만 사용하자.
