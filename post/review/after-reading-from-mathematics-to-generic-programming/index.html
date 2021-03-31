@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="알고리즘 산책을 읽고 내맘대로 정리해보았다." />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading &lt;from math to generic programming&gt;" />
+<meta property="og:site_name" content="After reading &lt;from math to generic programming&gt;" />
+<meta property="og:description" content="알고리즘 산책을 읽고 내맘대로 정리해보았다." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/review/after-reading-from-mathematics-to-generic-programming/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading &lt;from math to generic programming&gt;" />
+<meta name="twitter:description" content="알고리즘 산책을 읽고 내맘대로 정리해보았다." />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading &lt;from math to generic programming&gt;</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.73.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading &lt;from math to generic programming&gt;</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading &lt;from math to generic programming&gt;</h2>
+        <h5>2021-03-31</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><p>by Alexander A. Stepanov, Daniel E. Rose</p>
+<p>알고리즘 산책을 읽고 정리해놓고 싶은 것들을 적어놓는다. 읽은 기간은 무려 2020-12-30 ~ 2021-03-31&hellip; 뒤로 갈수록 유클리드 GCD 확장, 스테빈, 뇌터까지 정말 수학을 사랑하지 않고서는 재미있게 읽을 수 없어서 넘기면서 읽었다&hellip;</p>
+<p><br /></p>
+<h4 id="자연수의-합">자연수의 합</h4>
+<ul>
+<li>삼각수는 첫 n개의 양의 정수를 나타내는 행들을 쌓아서 만들 수 있다.</li>
+<li>직사각수는 삼각수에 n을 곱한다.</li>
+<li>기하학적으로 직사각수는 n(n+1)이고, 이를 2로 나누면 삼각수가 된다.</li>
+<li>따라서 1부터 자연수 n까지의 합은 n(n+1)/2가 된다.</li>
+<li>자신을 제외한 모든 약수의 합이 자신과 같으면 완전수이다.</li>
+</ul>
+<p><br /></p>
+<h4 id="유클리드-호제법">유클리드 호제법</h4>
+<ul>
+<li>
+<p>유클리드는 최소한의 단계로 최대한 다양하게 응용될 수 있는 결과를 이끄는 증명을 선호했다.</p>
+</li>
+<li>
+<p>최대공측도(최대공약수) 구하기</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">명제: 두 개의 서로 다른 양이 있을 때 더 작은 양을 더 큰 양에서 빼는 작업을 반복한 후에 남는 양이 그전 양을 측정할 수 없으면 두 양은 통분 불가능하다
+</code></pre></div><ul>
+<li>
+<p>피타고라스 학파의 &ldquo;최대공측도를 계산하는 절차가 영원히 종료되지 않으면 두 수 사이에는 최대공측도가 존재하지 않는다&quot;는 결과와 같다.</p>
+</li>
+<li>
+<p><code>측도</code>는 선분 P,V가 있을 때 V를 유한 번 이어서 P를 표현할 수 있으면 V를 P의 측도라고 부른다.</p>
+</li>
+<li>
+<p><code>공측도</code>는 선분 P의 측도이면서 동시에 선분 V의 측도인 경우이다.</p>
+</li>
+<li>
+<p><code>최대공측도</code>는 공측도는 여러 개 있을 수 있는데, 그중 가장 큰 공측도이다.</p>
+</li>
+<li>
+<p>이는 추후 최대공약수와 같다.</p>
+</li>
+<li>
+<p><strong>위 명제에 따라 계속 큰 쪽에서 작은 쪽을 빼는 방법이 유클리드 호제법이다.</strong></p>
+</li>
+<li>
+<p>a와 b는 무한하지 않기 때문에 나눈 나머지를 재귀적으로 비교할 수 있다.</p>
+</li>
+<li>
+<p>이는 a와 b에 대해서 a &lt;= nb를 만족하는 자연수 n이 존재한다는 <code>아르키메데스의 공리</code>로 증명된다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">integer <span style="color:#a6e22e">gcd</span>(integer a, integer b) {
+    <span style="color:#66d9ef">while</span> (b <span style="color:#f92672">!=</span> interger(<span style="color:#ae81ff">0</span>)) {
+        a <span style="color:#f92672">=</span> a <span style="color:#f92672">%</span> b;
+        std<span style="color:#f92672">::</span>swap(a, b);
+    }
+
+    <span style="color:#66d9ef">return</span> a;
+}
+</code></pre></div></li>
+<li>
+<p>위 코드의 순환이 돌 때마다 최대공약수는 항상 같아야 한다.</p>
+</li>
+<li>
+<p>따라서 gcd(a0, b0) = gcd(b0, r1) = gcd(r1, r2) = &hellip; = gcd(rn-1, rn)</p>
+</li>
+<li>
+<p><strong>rn-1과 rn의 나머지는 종료 조건에 따라 0이므로 gcd(a0, b0) = &hellip; = gcd(rn, 0) = rn</strong></p>
+</li>
+<li>
+<p>자바스크립트 재귀적 순환으로 최대공약수를 구할 경우 다음과 같다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">gcd</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">%</span> <span style="color:#a6e22e">b</span>;
+
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">r</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">gcd</span>(<span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">r</span>);
+  }
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>;
+}
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="완전수-소수">완전수, 소수</h4>
+<ul>
+<li>완전수란 어떤 정수 n 자신을 제외한 모든 약수(진약수)의 합이 n인 수</li>
+<li>2^n - 1은 완전수의 원천이 되는 소수의 형태이다.</li>
+<li>1536년 후달리쿠스 레기우스는 n = 11이면 소수가 아님을 밝혔다.</li>
+<li>프랑스 수학자 메르센은 n &lt;= 257에서만 2^n - 1이 소수라고 주장했다.</li>
+<li>이러한 주장으로 <strong>2^n - 1은 메르센 소수라고 불리며, 요즘도 큰 소수에 사용된다.</strong></li>
+<li>페르마는 2^2^n + 1 형태로 나오는 소수를 연구했으나, 첫 5개만 소수이고 더이상 페르마 소수가 존재하지 않을거라 예측하는 의견이 많다.</li>
+<li><strong>페르마의 작은 정리 : p가 소수이면 0 &lt; a &lt; p인 a에 대해 a^p-1 -1은 p로 나누어떨어진다.</strong></li>
+<li>위 정리를 통해 오일러는 소수가 아닌 합성수에 적용되는 법칙을 연구했다.</li>
+<li><strong>오일러의 정리 : a와 n이 서로소일 때 a^φ(n) - 1은 n으로 나누어떨어진다.</strong>
+<ul>
+<li>이때 φ(n)은 오일러 파이 함수로, n과 서로소인 수의 개수를 구할 수 있다.</li>
+<li>φ(n) = n _ (1 - 1/p1) _ (1 - 1/p2) &hellip; * (1 - 1/pm)이며, pm은 n의 소인수</li>
+<li>ex. φ(10) = 10 _ (1 - 1/2) _ (1 - 1/5) = 10 _ 1/2 _ 4/5 = 4개!!</li>
+</ul>
+</li>
+<li>완전수 연구는 실생활에 아무 쓸 데도 없지만 이를 통해 페르마의 작은 정리 발견으로 이어졌다.</li>
+<li>오일러는 페르마의 작은 정리를 보며서 특별한 경우(소수)를 넘어 일반적인 경우(정수)로 확장했다.</li>
+<li>제네릭 프로그래밍도 똑같은 추상화 과정을 거치게 된다.</li>
+<li>코드를 일반화하는 일은 정리나 정리의 증명을 일반화하는 것과 마찬가지다.</li>
+</ul>
+<p><br /></p>
+<h4 id="이론과-모델">이론과 모델</h4>
+<ul>
+<li>수학에서 <code>이론(theory)</code>이라는 용어는 매우 정확한 의미로 부여되고, 증명되지 않은 추측 같은 것이 아니다.</li>
+<li><code>모형(model)</code>은 이론에 있는 모든 연산이 정의되어 있고, 이론의 모든 명제가 참인 원소들의 집합이다.
+<ul>
+<li>모델은 어떤 이론의 특정한 구현이라고 할 수 있다.</li>
+<li>같은 알고리즘도 여러 방식으로 구현할 수 있는 것처럼, 한 이론에 대해 여러 모델이 있을 수 있다.</li>
+</ul>
+</li>
+<li>이론의 공리(axiom)가 적을수록 그만큼 더 다양한 방식으로 구현할 수 있다.</li>
+<li>공리와 명제는 이론의 제약조건이므로 많아질수록 모두 만족하는 모델은 적어질 수밖에 없다.</li>
+</ul>
+<p><br /></p>
+<h4 id="제네릭-알고리즘-유도-방법">제네릭 알고리즘 유도 방법</h4>
+<ul>
+<li>
+<p>좋은 코드를 만들기 위해서는 제대로 된 알고리즘을 찾고, 그것이 어떤 유형에 적용되는지 파악해야 한다.</p>
+</li>
+<li>
+<p>코드를 작성할 때 그 형(int나 float처럼)을 알았지만, 후에 int로 작성한 코드를 unsigned int나 double에 대해서도 사용하도록 고쳐달라고 할지 모른다.</p>
+</li>
+<li>
+<p>따라서 요구조건 매듭을 푸는 과정이 필요하다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">multi_acc4</span>(<span style="color:#66d9ef">int</span> r, <span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> a) {
+  <span style="color:#66d9ef">while</span> (true) {
+    <span style="color:#66d9ef">if</span> (odd(n)) {
+      r <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> a;
+      <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> r;
+    }
+
+    n <span style="color:#f92672">=</span> half(n);
+    a <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> a;
+  }
+}
+</code></pre></div><ul>
+<li>변수를 int로 선언했지만, 다른 double같은 형에 대해서도 돌아갈 수 있을 것이다.</li>
+<li>변수 r과 a는 덧셈을 지원하는 형이어야 한다.</li>
+<li>변수 n은 홀짝을 판별해야 하므로, 1과 비교하고 2로 나누는 연산이 가능해야 한다.</li>
+<li>따라서 r과 a는 같은 형이므로 A, n은 N으로 지칭할 수 있다.</li>
+</ul>
+</li>
+<li>
+<p>위의 과정에 따라 조금 더 일반화된 형식으로 프로그램을 고칠 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> A, <span style="color:#66d9ef">typename</span> N<span style="color:#f92672">&gt;</span>
+A multiply_accumulate(A r, N n, A a) {
+  <span style="color:#66d9ef">while</span> (true) {
+    <span style="color:#66d9ef">if</span> (odd(n)) {
+      r <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> a;
+      <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> r;
+    }
+
+    n <span style="color:#f92672">=</span> half(n);
+    a <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> a;
+  }
+}
+</code></pre></div></li>
+<li>
+<p>A에 대한 요구조건: 덧셈, 값으로 전달, 대입, +연산이 결합법칙을 성립</p>
+<ul>
+<li><code>+</code>는 원칙적으로는 결합법칙이 성립하는 연산이지만, 컴퓨터에서는 아닐 수도 있다.</li>
+<li>w = (x + y) + z / w = x + (y + z)</li>
+<li>-&gt; z가 음수이고 값이 아주 크면 전자는 int범위를 벗어날 수 있지만 후자는 아니다.</li>
+<li>모든 int형의 값에 대해 덧셈이 제대로 정의되어 있지 않기 때문에 발생하는 문제다.</li>
+<li>따라서 +를 부분(partial)함수라고 부른다.</li>
+</ul>
+</li>
+<li>
+<p>N에 대한 요구조건: half, odd, == 0, == 1</p>
+</li>
+<li>
+<p>연산마다 서로 다른 버전을 만드는 대신, 연산 자체를 일반화하는 것도 가능하다.</p>
+</li>
+<li>
+<p><strong>축소(reduction) 알고리즘은 연산의 일반화에서 중요하다.</strong></p>
+<ul>
+<li>주어진 수열의 각 원소와 그 이전 결과에 대해 이항 연산자를 계속 적용하는 것</li>
+<li>커먼 리스프의 reduce함수, 구글의 MapReduce 시스템도 이 개념을 응용한 것</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="추상화">추상화</h4>
+<ul>
+<li>아리스토텔레스의 <code>오르가논(Organon)</code>
+<ul>
+<li>논리학의 여러 영역에 관한 여섯 권의 저작을 가리키는 명칭이다.</li>
+<li>오르가논 중 첫 번째 저작인 범주론에서 추상화 개념이 제시되었다.</li>
+<li>한 속(genus)에는 여러 종이 들어갈 수 있고, 각 종은 종차(differentia)로 구분할 수 있다.</li>
+<li>genus는 생물 분류 단계 중 하나로 종의 윗 단계, <em>ex) 나비 속, 두꺼비 속, 개 속&hellip;</em></li>
+</ul>
+</li>
+<li>제네릭 프로그래밍 용어가 탄생하게 된 배경에도 아리스토텔레스의 genus 개념이 숨어 있다.</li>
+<li><strong>제네릭 프로그래밍은 species보다는 genus수준에 더 초점을 맞추는 프로그래밍 사고이다.</strong></li>
+<li>제네릭 프로그램의 핵심은 개념이다.</li>
+<li>개념은 연관된 객체 유형의 모음을 기술하기 위한 방법이다.
+<ul>
+<li>이때 유형(value type)은 공통적인 해석을 공유하는 값의 집합이다.</li>
+<li>이때 객체(object)는 주어진 값 유형에 속하는 값이 담겨있는 메모리상의 비트 모음이다.</li>
+</ul>
+</li>
+<li>개념-유형 관계는
+<ul>
+<li>수학에서 이론-모형, 아리스토텔레스의 자연과학에서 속-종의 관계와 같다.</li>
+<li>ex) 프로그래밍에서의 개념은 문자, 유형은 char를 예시로 들 수 있다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="결론">결론</h4>
+<ul>
+<li>제네릭 프로그래밍에서 추상화는 추상대수에서 직접적으로 파생되었으나, 개발자 입장에서는 효율도 챙겨야 한다.</li>
+<li>특정 형에 대해서만 작동하더라도 더 빠른 알고리즘이 있다면 제네릭 알고리즘을 쓸 이유가 없다.</li>
+<li>인터페이스가 정확하지 않으면 응용 범위가 제한될 수밖에 없다.
+<ul>
+<li>예를 들어 조건에 맞는 원소를 찾아내는 find 함수에서 찾아낸 원소의 위치는 리턴하지않고, 찾았는지에 대한 것만 bool값으로 리턴하면 두 번쨰로 매치되는 원소가 있는지 알아낼 수 없으므로 인터페이스를 다시 설계해야 한다.</li>
+</ul>
+</li>
+</ul>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/good-bye-2020/">Good bye 2020</a></h4>
+    <h5>2020-12-23</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-code/">After reading &lt;code&gt;</a></h4>
+    <h5>2020-11-18</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-how-js-works/">After reading &lt;how js works&gt;</a></h4>
+    <h5>2020-10-06</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
