@@ -5,6 +5,20 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-04-14**
+
+- **npm ci**
+  - 상태를 클린하게 유지하기 위해 `node_modules`를 모두 지움
+  - `package-lock.json`으로 명시된 버전으로 의존성을 설치함
+  - package-lock.json 파일을 수정하지 않는데, 이 파일이 없으면 설치도 안됨
+  - 따라서 CI에서 배포 전 의존성 설치로 사용하기에 적합
+- **npm install**
+  - 모든 의존성을 설치하거나 기존 dependency를 업데이트
+  - 설치 후 변경사항이 있으면 그에 맞게 package-lock.json를 수정함
+
+<br />
+<hr />
+
 ## **2021-03-26**
 
 - [border-radius 속성](https://www.w3.org/TR/css-backgrounds-3/#border-radius)은 각 모서리에 지정한 반지름을 가진 원으로 라운딩 처리를 한다. 이때 radius를 50%, 100%, 999px 이런 식으로 줘도 일정 비율 이상 커브가 생기지 않는데 그 이유는 각 원이 겹치지 않게 처리하기 떄문이다. 아래는 공식문서에 적힌 내용이다.
