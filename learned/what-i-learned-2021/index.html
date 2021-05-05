@@ -154,7 +154,48 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-03-26"><strong>2021-03-26</strong></h2>
+    <div align="start" class="content"><h2 id="2021-05-05"><strong>2021-05-05</strong></h2>
+<ul>
+<li><strong>colon(:) in vim</strong><br />
+옛날에는 터미널로 모든 상호작용을 해야 했으므로, ex(extended)라는 짧은 니모닉 명령으로 구성되었다. <code>:substitute/foo/bar</code>와 같은 명령으로 상호작용했다. 하지만 시간이 지나면서 vi가 ex commands를 통합하고 <code>i</code>, <code>x</code>와 같이 더 많은 대화형 명령들을 도입했다. 따라서 콜론(:)은 ex모드로 전환하는 명령어이다. 참고로 <a href="http://vimdoc.sourceforge.net/htmldoc/intro.html#Normal">vim의 모드</a>는 아래 6가지이다.
+<ul>
+<li><strong>normal mode</strong>: 모든 편집기 명령을 할 수 있는 모드, command mode</li>
+<li>visual mode: 문자열 혹은 라인을 하이라이팅할 수 있는 모드, &ldquo;v&rdquo; 혹은 &ldquo;V&quot;로 시작</li>
+<li>select mode: 커서로 문자열 혹은 라인을 하이라이팅할 수 있는 모드, &ldquo;gh&quot;로 시작</li>
+<li><strong>insert mode</strong>: 가장 자주 쓰이고 텍스트를 삽입 혹은 대체할 수 있는 모드, &ldquo;i&quot;로 시작이 일반적</li>
+<li>ex mode: ex 명령어들을 사용할 수 있는 모드로 vi 자체가 비주얼된 ex, &ldquo;:&ldquo;으로 시작</li>
+<li>command-line mode: ex commands를 사용할 수 있기 위한 모드
+<ul>
+<li>Ex commands (<code>:</code>)</li>
+<li>search patterns (<code>/</code> and <code>?</code>)</li>
+<li>filter commands (<code>!</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-04-14"><strong>2021-04-14</strong></h2>
+<ul>
+<li><strong>npm ci</strong>
+<ul>
+<li>상태를 클린하게 유지하기 위해 <code>node_modules</code>를 모두 지움</li>
+<li><code>package-lock.json</code>으로 명시된 버전으로 의존성을 설치함</li>
+<li>package-lock.json 파일을 수정하지 않는데, 이 파일이 없으면 설치도 안됨</li>
+<li>따라서 CI에서 배포 전 의존성 설치로 사용하기에 적합</li>
+</ul>
+</li>
+<li><strong>npm install</strong>
+<ul>
+<li>모든 의존성을 설치하거나 기존 dependency를 업데이트</li>
+<li>설치 후 변경사항이 있으면 그에 맞게 package-lock.json를 수정함</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-03-26"><strong>2021-03-26</strong></h2>
 <ul>
 <li>
 <p><a href="https://www.w3.org/TR/css-backgrounds-3/#border-radius">border-radius 속성</a>은 각 모서리에 지정한 반지름을 가진 원으로 라운딩 처리를 한다. 이때 radius를 50%, 100%, 999px 이런 식으로 줘도 일정 비율 이상 커브가 생기지 않는데 그 이유는 각 원이 겹치지 않게 처리하기 떄문이다. 아래는 공식문서에 적힌 내용이다.</p>

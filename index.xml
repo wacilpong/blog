@@ -411,7 +411,7 @@ Change permission of file I will change mode of key file and connect to ssh with
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-03-26 border-radius 속성은 각 모서리에 지정한 반지름을 가진 원으로 라운딩 처리를 한다. 이때 radius를 50%, 100%, 999px 이런 식으로 줘도 일정 비율 이상 커브가 생기지 않는데 그 이유는 각</description>
+      <description>2021-05-05 colon(:) in vim 옛날에는 터미널로 모든 상호작용을 해야 했으므로, ex(extended)라는 짧은 니모닉 명령으로 구성되었다. :substitute/foo</description>
     </item>
     
   </channel>
