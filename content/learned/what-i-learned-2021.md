@@ -5,6 +5,23 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-05-05**
+
+- **colon(:) in vim**
+  옛날에는 터미널로 모든 상호작용을 해야 했으므로, ex(extended)라는 짧은 니모닉 명령으로 구성되었다. `:substitute/foo/bar`와 같은 명령으로 상호작용했다. 하지만 시간이 지나면서 vi가 ex commands를 통합하고 `i`, `x`와 같이 더 많은 대화형 명령들을 도입했다. 따라서 콜론(:)은 ex모드로 전환하는 명령어이다. 참고로 [vim의 모드](http://vimdoc.sourceforge.net/htmldoc/intro.html#Normal)는 아래 6가지이다.
+  - **normal mode**: 모든 편집기 명령을 할 수 있는 모드, command mode
+  - visual mode: 문자열 혹은 라인을 하이라이팅할 수 있는 모드, "v" 혹은 "V"로 시작
+  - select mode: 커서로 문자열 혹은 라인을 하이라이팅할 수 있는 모드, "gh"로 시작
+  - **insert mode**: 가장 자주 쓰이고 텍스트를 삽입 혹은 대체할 수 있는 모드, "i"로 시작이 일반적
+  - ex mode: ex 명령어들을 사용할 수 있는 모드로 vi 자체가 비주얼된 ex, ":"으로 시작
+  - command-line mode: ex commands를 사용할 수 있기 위한 모드
+    - Ex commands (`:`)
+    - search patterns (`/` and `?`)
+    - filter commands (`!`)
+
+<br />
+<hr />
+
 ## **2021-04-14**
 
 - **npm ci**
