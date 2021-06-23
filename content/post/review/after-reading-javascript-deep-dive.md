@@ -2,7 +2,7 @@
 title: "After reading <모던 자바스크립트 deep dive>"
 date: "2021-03-31"
 tags: ["review"]
-draft: true
+draft: false
 og_description: "모던 자바스크립트 deep dive를 읽고 내맘대로 정리해보았다."
 ---
 
@@ -59,3 +59,57 @@ by 이웅모
 ## 클래스
 
 - 생성자 함수와 클래스는 프로토타입 기반의 객체지향을 구현했다는 점에서 유사하나, extends와 super 키워드는 상속 관계 구현을 더 명료하게 한다. 따라서 syntax sugar보다는 새로운 객체 생성 메커니즘으로 보는 것이 좀더 합당하다.
+- 클래스에 contructor를 생략하면 빈 constructor가 암묵적으로 정의된다.
+- 클래스는 클래스 정의 이전에 참조할 수 없어서 마치 호이스팅이 발생하지 않는 것처럼 보인다.
+- `var`, `let`, `const`, `function`, `function*`, `class` 키워드로 선언된 모든 식별자는 호이스팅된다.
+  ```ts
+  const Person = '';
+
+  {
+    // 호이스팅이 발생하지 않으면 ''이 출력되어야 함
+    console.log(Person);
+
+    class Person {}
+  }
+  ```
+- static 키워드를 붙이면 정적 메서드가 되고, **정적 메서드는 인스턴스를 생성하지 않아도 호출할 수 있다.**
+- 클래스 내 정적 메서드 vs 프로토타입 메서드
+  - 속해 있는 프로토타입 체인이 다르다.
+  - **정적 메서드는 클래스로 호출하고, 프로토타입 메서드는 인스턴스로 호출한다.**
+  - 정적 메서드는 인스턴스 프로퍼티를 참조할 수 없다.
+  - 프로토타입 메서드는 인스턴스 프로퍼티를 참조할 수 있다.
+  - **즉, 둘의 this 바인딩이 다르므로 this를 사용하지 않는 메서드를 정적 메서드로 정의하면 좋다.**
+    ```ts
+     class Square {
+       static area(w, h) {
+         return w * h;
+       }
+     }
+
+     console.log(Square.area(10, 10));
+    ```
+    ```ts
+    class Square {
+      constructor(w, h) {
+        this.w = w;
+        this.h = h;
+      }
+
+      area() {
+        return this.w * this.h;
+      }
+    }
+
+    const squareInstance = new Square(10, 10);
+    console.log(squareInstance.area())
+    ```
+- 클래스 필드에 함수를 할당하면 프로퍼티가 아니라 인스턴스 메서드가 되므로 권장하지 않는다.
+- 클래스 필드에 화살표 함수를 할당해서 함수 내부 this가 인스턴스를 가리키게 의도할 수 있다.
+
+## ES6 함수의 추가 기능
+- ES6부터 일반함수는 constructor이지만, 메서드와 화살표 함수는 non-constructor이다.
+- ES6 메서드는 본연의 기능(super)을 추가하고 의미상 맞지 않는 기능(constructor)는 제거되었다.
+- **따라서 메서드를 정의할 때 프로퍼티 값으로 익명함수 표현식을 할당하는 방식은 권장하지 않는다.**
+
+<br />
+계속 읽으면서 정리중~~
