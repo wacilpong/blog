@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="모던 자바스크립트 deep dive를 읽고 내맘대로 정리해보았다." />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading &lt;모던 자바스크립트 deep dive&gt;" />
+<meta property="og:site_name" content="After reading &lt;모던 자바스크립트 deep dive&gt;" />
+<meta property="og:description" content="모던 자바스크립트 deep dive를 읽고 내맘대로 정리해보았다." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading &lt;모던 자바스크립트 deep dive&gt;" />
+<meta name="twitter:description" content="모던 자바스크립트 deep dive를 읽고 내맘대로 정리해보았다." />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading &lt;모던 자바스크립트 deep dive&gt;</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.73.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading &lt;모던 자바스크립트 deep dive&gt;</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading &lt;모던 자바스크립트 deep dive&gt;</h2>
+        <h5>2021-03-31</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><p>by 이웅모</p>
+<p>무려 900쪽이 넘는 엄청난 분량으로, 읽다가 <em>오?</em> 했던 것만 한번 정리해본다.</p>
+<p><br /></p>
+<h2 id="기본적인-개념">기본적인 개념</h2>
+<ul>
+<li>리터럴(literal)
+<ul>
+<li>사람이 이해할 수 있는 문자 또는 약속된 기호를 사용해 값을 생성하는 표기법이다.</li>
+<li>ex) 숫자 리터럴 3을 코드에 기술하면 자바스크립트 엔진은 이를 평가해 숫자 값 3을 생성한다.</li>
+</ul>
+</li>
+<li><code>NaN</code>는 자신과 일치하지 않는 유일한 값이므로, 숫자가 NaN인지는 빌트인 함수 isNaN로 체크한다.</li>
+<li>원시값 vs 객체
+<ul>
+<li>원시 값을 변수에 할당하면 확보된 메모리 공간에는 실제 값이 저장된다.</li>
+<li>객체를 변수에 할당하면 확보된 메모리 공간에는 참조 값이 저장된다.</li>
+<li><strong>&ldquo;값에 의한 전달&quot;과 &ldquo;참조에 의한 전달&quot;은 식별자가 기억하는 메모리 공간에 저장되어 있는 값을 복사해 전달한다는 면에서 동일하다.</strong></li>
+<li>식별자가 기억하는 메모리 공간, 즉 변수에 저장되어 있는 값이 원시값인지 참조값인지에 대한 차이 뿐이다.</li>
+<li>따라서 엄격히 말하면 자바스크립트에는 참조에 의한 전달이 아닌 값에 의한 전달만 존재한다.</li>
+</ul>
+</li>
+<li><code>함수 선언문(function a ...)</code> 함수를 선언문 이전에 호출하면 함수 호이스팅에 의해 호출 가능하다.</li>
+<li><code>함수 표현식(var a = function ...)</code> 함수는 변수 호이스팅이 일어나므로 런타임에서 평가된다.</li>
+<li>함수의 매개변수는 코드를 이해하는 데 방해되므로 이상적인 매개변수 개수는 0개이다.</li>
+<li>매개변수는 최대 3개 이상을 넘지 않는 것을 권장한다.</li>
+</ul>
+<p><br /></p>
+<h2 id="여러-메커니즘에-대한-개념">여러 메커니즘에 대한 개념</h2>
+<ul>
+<li>스코프
+<ul>
+<li><strong>동적 스코프: 함수를 어디서 호출했는지에 따라 그 상위 스코프를 결정한다.</strong></li>
+<li><strong>정적 스코프 or 렉시컬 스코프: 함수를 어디서 정의했는지에 따라 상위 스코프가 정해진다.</strong></li>
+<li>전역 변수를 반드시 사용해야 할 이유가 없다면, 지역 변수를 사용해야 한다.</li>
+<li>변수의 스코프는 좁을수록 좋다.</li>
+</ul>
+</li>
+<li><strong>생성자 함수 내부에서는 return문을 반드시 생략해야 한다.</strong>
+<ul>
+<li>생성자 함수는 암묵적으로 this를 반환한다.</li>
+<li>원시값을 return해도 무시하고 this를 반환한다.</li>
+<li>객체를 return하면 this가 아닌 해당 객체가 반환된다.</li>
+<li>따라서 this가 아닌 다른 값을 명시적으로 반환하면 기본 동작이 훼손된다.</li>
+</ul>
+</li>
+<li><strong>프로토타입 체인은 프로퍼티를 한방향으로만 검색해야 하므로, 단방향 연결 리스트로 구현되어야 한다.</strong>
+<ul>
+<li>자바스크립트는 객체의 프로퍼티(메서드 포함)에 접근하려고 할 때 해당 객체에 접근하려는 프로퍼티가 없으면 <code>[[Prototype]]</code> 내부 슬롯의 참조를 따라 자신의 부모 역할을 하는 프로토타입의 프로퍼티를 순차적으로 검색하는데, 이것이 프로토타입 체인이다.</li>
+<li>프로토타입 체인은 자바스크립트가 객체지향 프로그래밍의 상속을 구현하는 메커니즘이다.</li>
+</ul>
+</li>
+<li>String, Number, Boolean 등 표준 빌트인 생성자 함수가 존재한다.
+<ul>
+<li><code>wrapper object</code>: 문자열, 숫자, 불리언 등 원시값에 대해 객체처럼 접근하면 생성되는 임시 객체</li>
+<li>원시값을 객체처럼 사용하면 js 엔진은 연관 객체를 만들어 처리하고 다시 원시값으로 돌린다.</li>
+<li><em>ex) &ldquo;text&rdquo;.length, &ldquo;text&rdquo;.toUpperCase()</em></li>
+</ul>
+</li>
+<li>실행컨텍스트는 식별자를 등록하고 관리하는 스코프와 코드의 실행순서관리를 구현한 내부 메커니즘이다.
+<ul>
+<li>렉시컬 환경은 스코프와 식별자를 관리, 실행컨텍스트 스택은 코드의 실행순서를 관리한다.</li>
+<li>식별자를 검색할 떄는 항상 현재 실행 중인 실행컨텍스트 렉시컬 환경에서 검색하기 시작한다.</li>
+</ul>
+</li>
+<li><strong>렉시컬 스코프는 달리 말하면 정적 스코프로, 함수를 어디에 정의했는지에 따라 상위 스코프가 결정되는 것이다.</strong></li>
+<li>외부함수보다 더 오래 유지되는 중첩함수가 외부함수의 변수를 참조할 수 있는데, 이때 중첩함수가 클로저이다.</li>
+</ul>
+<h2 id="클래스">클래스</h2>
+<ul>
+<li>생성자 함수와 클래스는 프로토타입 기반의 객체지향을 구현했다는 점에서 유사하나, extends와 super 키워드는 상속 관계 구현을 더 명료하게 한다. 따라서 syntax sugar보다는 새로운 객체 생성 메커니즘으로 보는 것이 좀더 합당하다.</li>
+<li>클래스에 contructor를 생략하면 빈 constructor가 암묵적으로 정의된다.</li>
+<li>클래스는 클래스 정의 이전에 참조할 수 없어서 마치 호이스팅이 발생하지 않는 것처럼 보인다.</li>
+<li><code>var</code>, <code>let</code>, <code>const</code>, <code>function</code>, <code>function*</code>, <code>class</code> 키워드로 선언된 모든 식별자는 호이스팅된다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Person</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+
+{
+  <span style="color:#75715e">// 호이스팅이 발생하지 않으면 &#39;&#39;이 출력되어야 함
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Person</span>);
+
+  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {}
+}
+</code></pre></div></li>
+<li>static 키워드를 붙이면 정적 메서드가 되고, <strong>정적 메서드는 인스턴스를 생성하지 않아도 호출할 수 있다.</strong></li>
+<li>클래스 내 정적 메서드 vs 프로토타입 메서드
+<ul>
+<li>속해 있는 프로토타입 체인이 다르다.</li>
+<li><strong>정적 메서드는 클래스로 호출하고, 프로토타입 메서드는 인스턴스로 호출한다.</strong></li>
+<li>정적 메서드는 인스턴스 프로퍼티를 참조할 수 없다.</li>
+<li>프로토타입 메서드는 인스턴스 프로퍼티를 참조할 수 있다.</li>
+<li><strong>즉, 둘의 this 바인딩이 다르므로 this를 사용하지 않는 메서드를 정적 메서드로 정의하면 좋다.</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Square</span> {
+   <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">area</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">h</span>) {
+     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">w</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">h</span>;
+   }
+ }
+
+ <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Square</span>.<span style="color:#a6e22e">area</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>));
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Square</span> {
+  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">h</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">w</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">w</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">h</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">h</span>;
+  }
+
+  <span style="color:#a6e22e">area() {</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">w</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">h</span>;
+  }
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">squareInstance</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Square</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>);
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">squareInstance</span>.<span style="color:#a6e22e">area</span>())
+</code></pre></div></li>
+</ul>
+</li>
+<li>클래스 필드에 함수를 할당하면 프로퍼티가 아니라 인스턴스 메서드가 되므로 권장하지 않는다.</li>
+<li>클래스 필드에 화살표 함수를 할당해서 함수 내부 this가 인스턴스를 가리키게 의도할 수 있다.</li>
+</ul>
+<h2 id="es6-함수의-추가-기능">ES6 함수의 추가 기능</h2>
+<ul>
+<li>ES6부터 일반함수는 constructor이지만, 메서드와 화살표 함수는 non-constructor이다.</li>
+<li>ES6 메서드는 본연의 기능(super)을 추가하고 의미상 맞지 않는 기능(constructor)는 제거되었다.</li>
+<li><strong>따라서 메서드를 정의할 때 프로퍼티 값으로 익명함수 표현식을 할당하는 방식은 권장하지 않는다.</strong></li>
+</ul>
+<p><br /><br />
+계속 읽으면서 정리중~~</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-from-mathematics-to-generic-programming/">After reading &lt;from math to generic programming&gt;</a></h4>
+    <h5>2021-03-31</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/good-bye-2020/">Good bye 2020</a></h4>
+    <h5>2020-12-23</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-code/">After reading &lt;code&gt;</a></h4>
+    <h5>2020-11-18</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

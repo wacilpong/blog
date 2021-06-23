@@ -52,6 +52,15 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
     </item>
     
     <item>
+      <title>After reading &lt;모던 자바스크립트 deep dive&gt;</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</link>
+      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</guid>
+      <description>by 이웅모 무려 900쪽이 넘는 엄청난 분량으로, 읽다가 오? 했던 것만 한번 정리해본다. 기본적인 개념 리터럴(literal) 사람이 이해할 수 있는 문자 또는 약</description>
+    </item>
+    
+    <item>
       <title>Good bye 2020</title>
       <link>https://wacilpong.github.io/blog/post/review/good-bye-2020/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
