@@ -1,6 +1,6 @@
 ---
-title: "After reading <모던 자바스크립트 deep dive>"
-date: "2021-03-31"
+title: "After reading <modern javascript deep dive>"
+date: "2021-06-23"
 tags: ["review"]
 draft: false
 og_description: "모던 자바스크립트 deep dive를 읽고 내맘대로 정리해보았다."
@@ -55,6 +55,9 @@ by 이웅모
   - 식별자를 검색할 떄는 항상 현재 실행 중인 실행컨텍스트 렉시컬 환경에서 검색하기 시작한다.
 - **렉시컬 스코프는 달리 말하면 정적 스코프로, 함수를 어디에 정의했는지에 따라 상위 스코프가 결정되는 것이다.**
 - 외부함수보다 더 오래 유지되는 중첩함수가 외부함수의 변수를 참조할 수 있는데, 이때 중첩함수가 클로저이다.
+
+
+<br />
 
 ## 클래스
 

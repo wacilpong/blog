@@ -1,9 +1,37 @@
 ---
 title: "2021"
+date: "2021-01-01"
 description: "About what I learned at 2021"
 og_description: "About what I learned at 2021"
 draft: false
 ---
+
+## **2021-06-23**
+
+- 덕 타이핑 (duck typing)은 덕 테스트 (duck test)에서 유래한 것으로, 아래 명제에서 시작한다.
+  > 만약 어떤 새가 오리처럼 걷고, 헤엄치고, 꽥꽥거리는 소리를 낸다면 나는 그 새를 오리라고 부를 것이다.
+  - 객체의 변수와 메서드의 집합이 그 객체의 타입을 결정하는 것을 의미한다.
+  - 타입을 미리 지정하지 않고 런타임에 해당 메서드들을 확인해 타입을 정하는 동적 타이핑의 한 종류다.
+  - **ts 또한 결국 덕 타이핑 기반의 js의 런타임 동작을 모델링해 타입을 체크한다.**
+  - 따라서 아래에서 Vector2D와 NamedVector의 관계를 선언하지 않아도 타입에러가 발생하지 않는다.
+  - 좋든 싫든 ts의 타입 시스템에서 타입은 확장될 수 있도록 '열려' 있다.
+    ```ts
+    interface Vector2D {
+      x: number;
+      y: number;
+    }
+
+    interface NamedVector {
+      name: string;
+      x: number;
+      y: number;
+    }
+
+    const v: NamedVector = {x: 3, y: 4, name: 'haha'}
+    ```
+
+<br />
+<hr />
 
 ## **2021-05-05**
 

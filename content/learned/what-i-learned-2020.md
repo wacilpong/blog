@@ -1,5 +1,6 @@
 ---
 title: "2020"
+date: "2020-01-01"
 description: "About what I learned at 2020"
 og_description: "About what I learned at 2020"
 draft: false
