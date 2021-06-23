@@ -15,33 +15,43 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</loc>
+    <lastmod>2021-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/post/</loc>
+    <lastmod>2021-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/review/</loc>
+    <lastmod>2021-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/</loc>
+    <lastmod>2021-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/</loc>
+    <lastmod>2021-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-from-mathematics-to-generic-programming/</loc>
     <lastmod>2021-03-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</loc>
-    <lastmod>2021-03-31T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/</loc>
-    <lastmod>2021-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/review/</loc>
-    <lastmod>2021-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2021-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/</loc>
-    <lastmod>2021-03-31T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/learned/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -122,6 +132,11 @@
   <url>
     <loc>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -245,23 +260,11 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</loc>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/learned/</loc>
   </url>
   
   <url>

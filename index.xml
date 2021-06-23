@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Jun 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -43,6 +43,15 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
     </item>
     
     <item>
+      <title>After reading &lt;modern javascript deep dive&gt;</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</guid>
+      <description>by 이웅모 무려 900쪽이 넘는 엄청난 분량으로, 읽다가 오? 했던 것만 한번 정리해본다. 기본적인 개념 리터럴(literal) 사람이 이해할 수 있는 문자 또는 약</description>
+    </item>
+    
+    <item>
       <title>After reading &lt;from math to generic programming&gt;</title>
       <link>https://wacilpong.github.io/blog/post/review/after-reading-from-mathematics-to-generic-programming/</link>
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
@@ -52,12 +61,12 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
     </item>
     
     <item>
-      <title>After reading &lt;모던 자바스크립트 deep dive&gt;</title>
-      <link>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
+      <title>2021</title>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</guid>
-      <description>by 이웅모 무려 900쪽이 넘는 엄청난 분량으로, 읽다가 오? 했던 것만 한번 정리해본다. 기본적인 개념 리터럴(literal) 사람이 이해할 수 있는 문자 또는 약</description>
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
+      <description>2021-06-23 덕 타이핑 (duck typing)은 덕 테스트 (duck test)에서 유래한 것으로, 아래 명제에서 시작한다. 만약 어떤 새가 오리처럼 걷고, 헤엄치고, 꽥꽥거리는 소리를</description>
     </item>
     
     <item>
@@ -184,6 +193,15 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       
       <guid>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</guid>
       <description>jest in CRA // react-scripts/config/jest/babelTransform.js const babelJest = require(&amp;#34;babel-jest&amp;#34;); module.exports = babelJest.createTransformer({ presets: [require.resolve(&amp;#34;babel-preset-react-app&amp;#34;)], babelrc: false, configFile: false }); create-react-app 로 만들어진 리액트 프로젝트에는 jest가 이미 적용되어 있는데, react-scripts 의 jest 설정부분을 보면 알 수 있다. 그런데 jes</description>
+    </item>
+    
+    <item>
+      <title>2020</title>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</guid>
+      <description>2020-12-23 rxjs animationFrameScheduler는 window.requestAnimationFrame가 실행될 때 작업을 수행하는 오퍼레이</description>
     </item>
     
     <item>
@@ -403,24 +421,6 @@ Change permission of file I will change mode of key file and connect to ssh with
       
       <guid>https://wacilpong.github.io/blog/post/review/my-recently-interview/</guid>
       <description>what kind of companies? 힙한 분위기를 느끼고 싶어서 스타트업만 건드렸다. 블록체인, 핀테크, 클라우드IDE, AI 등등 다양한 분야의 회사에 신입 개발자로 지원했다. 프론트엔</description>
-    </item>
-    
-    <item>
-      <title>2020</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</guid>
-      <description>2020-12-23 rxjs animationFrameScheduler는 window.requestAnimationFrame가 실행될 때 작업을 수행하는 오퍼레이</description>
-    </item>
-    
-    <item>
-      <title>2021</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-05-05 colon(:) in vim 옛날에는 터미널로 모든 상호작용을 해야 했으므로, ex(extended)라는 짧은 니모닉 명령으로 구성되었다. :substitute/foo</description>
     </item>
     
   </channel>

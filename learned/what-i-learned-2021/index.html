@@ -154,7 +154,37 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-05-05"><strong>2021-05-05</strong></h2>
+    <div align="start" class="content"><h2 id="2021-06-23"><strong>2021-06-23</strong></h2>
+<ul>
+<li>덕 타이핑 (duck typing)은 덕 테스트 (duck test)에서 유래한 것으로, 아래 명제에서 시작한다.
+<blockquote>
+<p>만약 어떤 새가 오리처럼 걷고, 헤엄치고, 꽥꽥거리는 소리를 낸다면 나는 그 새를 오리라고 부를 것이다.</p>
+</blockquote>
+<ul>
+<li>객체의 변수와 메서드의 집합이 그 객체의 타입을 결정하는 것을 의미한다.</li>
+<li>타입을 미리 지정하지 않고 런타임에 해당 메서드들을 확인해 타입을 정하는 동적 타이핑의 한 종류다.</li>
+<li><strong>ts 또한 결국 덕 타이핑 기반의 js의 런타임 동작을 모델링해 타입을 체크한다.</strong></li>
+<li>따라서 아래에서 Vector2D와 NamedVector의 관계를 선언하지 않아도 타입에러가 발생하지 않는다.</li>
+<li>좋든 싫든 ts의 타입 시스템에서 타입은 확장될 수 있도록 &lsquo;열려&rsquo; 있다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Vector2D</span> {
+  <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>;
+}
+
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NamedVector</span> {
+  <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>;
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">v</span>: <span style="color:#66d9ef">NamedVector</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">3</span>, <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">4</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;haha&#39;</span>}
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-05-05"><strong>2021-05-05</strong></h2>
 <ul>
 <li><strong>colon(:) in vim</strong><br />
 옛날에는 터미널로 모든 상호작용을 해야 했으므로, ex(extended)라는 짧은 니모닉 명령으로 구성되었다. <code>:substitute/foo/bar</code>와 같은 명령으로 상호작용했다. 하지만 시간이 지나면서 vi가 ex commands를 통합하고 <code>i</code>, <code>x</code>와 같이 더 많은 대화형 명령들을 도입했다. 따라서 콜론(:)은 ex모드로 전환하는 명령어이다. 참고로 <a href="http://vimdoc.sourceforge.net/htmldoc/intro.html#Normal">vim의 모드</a>는 아래 6가지이다.

@@ -6,10 +6,19 @@
     <description>Recent content in review on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Jun 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/review/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading &lt;modern javascript deep dive&gt;</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</guid>
+      <description>by 이웅모 무려 900쪽이 넘는 엄청난 분량으로, 읽다가 오? 했던 것만 한번 정리해본다. 기본적인 개념 리터럴(literal) 사람이 이해할 수 있는 문자 또는 약</description>
+    </item>
     
     <item>
       <title>After reading &lt;from math to generic programming&gt;</title>
@@ -18,15 +27,6 @@
       
       <guid>https://wacilpong.github.io/blog/post/review/after-reading-from-mathematics-to-generic-programming/</guid>
       <description>by Alexander A. Stepanov, Daniel E. Rose 알고리즘 산책을 읽고 정리해놓고 싶은 것들을 적어놓는다. 읽은 기간은 무려 2020-12-30 ~ 2021-03-31&amp;hellip; 뒤로 갈수록 유클리드 GCD 확장, 스테빈, 뇌터까지 정말 수학을 사랑</description>
-    </item>
-    
-    <item>
-      <title>After reading &lt;모던 자바스크립트 deep dive&gt;</title>
-      <link>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</guid>
-      <description>by 이웅모 무려 900쪽이 넘는 엄청난 분량으로, 읽다가 오? 했던 것만 한번 정리해본다. 기본적인 개념 리터럴(literal) 사람이 이해할 수 있는 문자 또는 약</description>
     </item>
     
     <item>
