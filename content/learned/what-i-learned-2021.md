@@ -33,7 +33,7 @@ draft: false
     }
 
     const param: NamedVector = {x: 3, y: 4, name: 'haha'}
-    caculateLength(v)
+    caculateLength(param)
     ```
 
 <br />
