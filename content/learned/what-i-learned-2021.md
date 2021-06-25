@@ -14,6 +14,7 @@ draft: false
   - 타입을 미리 지정하지 않고 런타임에 해당 메서드들을 확인해 타입을 정하는 동적 타이핑의 한 종류다.
   - **ts 또한 결국 덕 타이핑 기반의 js의 런타임 동작을 모델링해 타입을 체크한다.**
   - 따라서 아래에서 Vector2D와 NamedVector의 관계를 선언하지 않아도 타입에러가 발생하지 않는다.
+  - 즉, NamedVector타입인 param을 Vector2D타입의 인자를 받는 caculateLength로 실행해도 정상적이다.
   - 좋든 싫든 ts의 타입 시스템에서 타입은 확장될 수 있도록 '열려' 있다.
     ```ts
     interface Vector2D {
@@ -27,7 +28,12 @@ draft: false
       y: number;
     }
 
-    const v: NamedVector = {x: 3, y: 4, name: 'haha'}
+    function caculateLength(v: Vector2D) {
+      return Math.sqrt(...);
+    }
+
+    const param: NamedVector = {x: 3, y: 4, name: 'haha'}
+    caculateLength(v)
     ```
 
 <br />
