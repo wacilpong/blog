@@ -6,6 +6,23 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-06-30**
+
+- Referrer-Policy
+  - 최근 회사에서 레퍼러를 수집하는데 사내 도메인에서만 남지 않는 현상을 발견했는데, 보니까 이 정책을 바꾼 것이 원인이었다.
+  - http 헤더의 하나로, 해당 페이지가 어디서 열렸는지 알 수 있는 레퍼러(referrer) 정책을 설정한다.
+    - `no-referrer`: 레퍼러 정보를 전혀 넘기지 않는다.
+    - `origin`: 뒤에 경로는 빼고 도메인만 넘긴다.
+    - `no-referrer-when-downgrade`: 넘기는 프로토콜 보안레벨이 같거나 더 높을 때 넘긴다.
+      - ex) http -> http, http -> https
+    - `same-origin`: 도메인과 프로토콜 보안레벨이 같을 때만 넘긴다.
+    - `strict-origin`: 이동하는 페이지가 https일 때만 넘긴다.
+    - `strict-origin-when-cross-origin`: 디폴트. 동일 도메인 혹은 교차 허용된 도메인에서 동일한 프로토콜 보안레벨로 이동시킬 때 넘긴다.
+    - `unsafe-url`: 조건 없이 전체 주소를 넘긴다.
+
+<br />
+<hr />
+
 ## **2021-06-23**
 
 - 덕 타이핑 (duck typing)은 덕 테스트 (duck test)에서 유래한 것으로, 아래 명제에서 시작한다.
