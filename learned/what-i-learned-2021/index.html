@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -154,7 +154,32 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-06-23"><strong>2021-06-23</strong></h2>
+    <div align="start" class="content"><h2 id="2021-06-30"><strong>2021-06-30</strong></h2>
+<ul>
+<li>Referrer-Policy
+<ul>
+<li>최근 회사에서 레퍼러를 수집하는데 사내 도메인에서만 남지 않는 현상을 발견했는데, 보니까 이 정책을 바꾼 것이 원인이었다.</li>
+<li>http 헤더의 하나로, 해당 페이지가 어디서 열렸는지 알 수 있는 레퍼러(referrer) 정책을 설정한다.
+<ul>
+<li><code>no-referrer</code>: 레퍼러 정보를 전혀 넘기지 않는다.</li>
+<li><code>origin</code>: 뒤에 경로는 빼고 도메인만 넘긴다.</li>
+<li><code>no-referrer-when-downgrade</code>: 넘기는 프로토콜 보안레벨이 같거나 더 높을 때 넘긴다.
+<ul>
+<li>ex) http -&gt; http, http -&gt; https</li>
+</ul>
+</li>
+<li><code>same-origin</code>: 도메인과 프로토콜 보안레벨이 같을 때만 넘긴다.</li>
+<li><code>strict-origin</code>: 이동하는 페이지가 https일 때만 넘긴다.</li>
+<li><code>strict-origin-when-cross-origin</code>: 디폴트. 동일 도메인 혹은 교차 허용된 도메인에서 동일한 프로토콜 보안레벨로 이동시킬 때 넘긴다.</li>
+<li><code>unsafe-url</code>: 조건 없이 전체 주소를 넘긴다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-06-23"><strong>2021-06-23</strong></h2>
 <ul>
 <li>덕 타이핑 (duck typing)은 덕 테스트 (duck test)에서 유래한 것으로, 아래 명제에서 시작한다.
 <blockquote>

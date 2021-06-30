@@ -17,7 +17,7 @@
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-06-23 덕 타이핑 (duck typing)은 덕 테스트 (duck test)에서 유래한 것으로, 아래 명제에서 시작한다. 만약 어떤 새가 오리처럼 걷고, 헤엄치고, 꽥꽥거리는 소리를</description>
+      <description>2021-06-30 Referrer-Policy 최근 회사에서 레퍼러를 수집하는데 사내 도메인에서만 남지 않는 현상을 발견했는데, 보니까 이 정책을 바꾼 것이 원인이었다. http 헤더의 하나로, 해당 페이지가 어</description>
     </item>
     
     <item>
