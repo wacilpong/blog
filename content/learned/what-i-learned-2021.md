@@ -6,6 +6,59 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-07-09**
+
+- [Labeled Tuple](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#labeled-tuple-elements)
+
+  > While these have no impact on type-checking, the lack of labels on tuple positions can make them harder to use - harder to communicate our intent.
+
+  - 타입스크립트 4.0에서 제공되는데, 튜플에 좀더 의미있는 멤버명을 정할 수 있다.
+  - 이때 튜플의 멤버는 모두 이름을 짓거나, 짓지 말아야 한다.
+    ```ts
+    // O
+    type Range = [start: number, end: number];
+    type Code = [number, number];
+
+    // X
+    type Bar = [first: string, number];
+    ```
+
+<br />
+
+- [trackBy](https://angular.io/api/common/NgForOf#change-propagation)
+
+  > trackBy takes a function that has two arguments: index and item. If trackBy is given, Angular tracks changes by the return value of the function.
+
+  - angular의 NgForOf(\*ngFor) 디렉티브에서 사용하는 옵션이다.
+  - 지정한 함수의 값으로 CD를 일으킬 수 있는데, 즉 변화에 해당하는 DOM만 다시 계산한다.
+  - 따라서 trackBy는 고유한 값이어야 한다.
+    ```ts
+    @Component({
+      selector: "my-app",
+      template: `
+        <li *ngFor="let item of list; trackBy: trackKey">
+          {{ item.name }}
+        </li>
+      `,
+    })
+    export class App {
+      list: [
+        {id: 1; name: "first"},
+        {id: 2; name: "second"},
+        {id: 3; name: "third"},
+        {id: 4; name: "fourth"}
+      ];
+
+      trackKey(index, item) {
+        return item.id;
+      }
+    }
+    ```
+
+<br />
+<hr />
+
+
 ## **2021-06-30**
 
 - Referrer-Policy
@@ -26,7 +79,9 @@ draft: false
 ## **2021-06-23**
 
 - 덕 타이핑 (duck typing)은 덕 테스트 (duck test)에서 유래한 것으로, 아래 명제에서 시작한다.
+
   > 만약 어떤 새가 오리처럼 걷고, 헤엄치고, 꽥꽥거리는 소리를 낸다면 나는 그 새를 오리라고 부를 것이다.
+
   - 객체의 변수와 메서드의 집합이 그 객체의 타입을 결정하는 것을 의미한다.
   - 타입을 미리 지정하지 않고 런타임에 해당 메서드들을 확인해 타입을 정하는 동적 타이핑의 한 종류다.
   - **ts 또한 결국 덕 타이핑 기반의 js의 런타임 동작을 모델링해 타입을 체크한다.**
