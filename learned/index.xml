@@ -17,7 +17,7 @@
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-06-30 Referrer-Policy 최근 회사에서 레퍼러를 수집하는데 사내 도메인에서만 남지 않는 현상을 발견했는데, 보니까 이 정책을 바꾼 것이 원인이었다. http 헤더의 하나로, 해당 페이지가 어</description>
+      <description>2021-07-09 Labeled Tuple While these have no impact on type-checking, the lack of labels on tuple positions can make them harder to use - harder to communicate our intent. 타입스크립트 4.0에서 제공되는데, 튜플에 좀더 의미있는 멤버명을 정할 수 있다. 이때 튜플의</description>
     </item>
     
     <item>

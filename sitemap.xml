@@ -75,11 +75,6 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/rxjs-marble-testing/</loc>
     <lastmod>2020-08-09T00:00:00+00:00</lastmod>
   </url>
@@ -266,6 +261,10 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
   </url>
   
   <url>
