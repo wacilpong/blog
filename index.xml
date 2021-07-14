@@ -66,7 +66,7 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-07-09 Labeled Tuple While these have no impact on type-checking, the lack of labels on tuple positions can make them harder to use - harder to communicate our intent. 타입스크립트 4.0에서 제공되는데, 튜플에 좀더 의미있는 멤버명을 정할 수 있다. 이때 튜플의</description>
+      <description>2021-07-15 javascript의 throw에 대하여 Execution of the current function will stop (the statements after throw won&amp;rsquo;t be executed), and control will be passed to the first catch block in the call stack. If no catch block exists among caller functions, the program will terminate. throw 다음 구문은 실행되</description>
     </item>
     
     <item>

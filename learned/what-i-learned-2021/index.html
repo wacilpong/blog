@@ -154,7 +154,48 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-07-09"><strong>2021-07-09</strong></h2>
+    <div align="start" class="content"><h2 id="2021-07-15"><strong>2021-07-15</strong></h2>
+<ul>
+<li>
+<p>javascript의 <code>throw</code>에 대하여</p>
+<blockquote>
+<p>Execution of the current function will stop (the statements after throw won&rsquo;t be executed), and control will be passed to the first catch block in the call stack. If no catch block exists among caller functions, the program will terminate.</p>
+</blockquote>
+<ul>
+<li>
+<p>throw 다음 구문은 실행되지 않고, catch 블록이 없으면 프로그램이 종료된다.</p>
+</li>
+<li>
+<p>throw를 던져도 이전 비동기 작업들은 각각 따로 실행되고, throw도 블록단위로 실행된다.</p>
+</li>
+<li>
+<p><strong>즉, throw는 지역적이어서 아래를 실행하면 그 비동기 작업 내 throw도 모두 실행된다.</strong></p>
+</li>
+<li>
+<p>그리고 해당 블록의 throw 다음 구문은 실행되지 않는다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testPromise</span>() {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+    <span style="color:#a6e22e">resolve</span>();
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;excuted&#34;</span>);
+  });
+}
+
+<span style="color:#a6e22e">testPromise</span>().<span style="color:#a6e22e">then</span>(() =&gt; {
+  <span style="color:#66d9ef">throw</span> <span style="color:#e6db74">&#34;헹&#34;</span>;
+});
+<span style="color:#66d9ef">throw</span> <span style="color:#e6db74">&#34;error&#34;</span>;
+<span style="color:#a6e22e">testPromise</span>();
+
+<span style="color:#75715e">// 출력결과
+</span><span style="color:#75715e">// excuted
+</span><span style="color:#75715e">// Uncaught error
+</span><span style="color:#75715e">// Uncaught (in promise) 헹
+</span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="2021-07-09"><strong>2021-07-09</strong></h2>
 <ul>
 <li>
 <p><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#labeled-tuple-elements">Labeled Tuple</a></p>
@@ -162,8 +203,11 @@
 <p>While these have no impact on type-checking, the lack of labels on tuple positions can make them harder to use - harder to communicate our intent.</p>
 </blockquote>
 <ul>
-<li>타입스크립트 4.0에서 제공되는데, 튜플에 좀더 의미있는 멤버명을 정할 수 있다.</li>
-<li>이때 튜플의 멤버는 모두 이름을 짓거나, 짓지 말아야 한다.
+<li>
+<p>타입스크립트 4.0에서 제공되는데, 튜플에 좀더 의미있는 멤버명을 정할 수 있다.</p>
+</li>
+<li>
+<p>이때 튜플의 멤버는 모두 이름을 짓거나, 짓지 말아야 한다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// O
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Range</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">start</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">end</span>: <span style="color:#66d9ef">number</span>];
 <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Code</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">number</span>, <span style="color:#66d9ef">number</span>];
@@ -182,9 +226,14 @@
 <p>trackBy takes a function that has two arguments: index and item. If trackBy is given, Angular tracks changes by the return value of the function.</p>
 </blockquote>
 <ul>
-<li>angular의 NgForOf(*ngFor) 디렉티브에서 사용하는 옵션이다.</li>
-<li>지정한 함수의 값으로 CD를 일으킬 수 있는데, 즉 변화에 해당하는 DOM만 다시 계산한다.</li>
-<li>따라서 trackBy는 고유한 값이어야 한다.
+<li>
+<p>angular의 NgForOf(*ngFor) 디렉티브에서 사용하는 옵션이다.</p>
+</li>
+<li>
+<p>지정한 함수의 값으로 CD를 일으킬 수 있는데, 즉 변화에 해당하는 DOM만 다시 계산한다.</p>
+</li>
+<li>
+<p>따라서 trackBy는 고유한 값이어야 한다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">@Component</span>({
   <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;my-app&#34;</span>,
   <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
@@ -244,12 +293,23 @@
 <p>만약 어떤 새가 오리처럼 걷고, 헤엄치고, 꽥꽥거리는 소리를 낸다면 나는 그 새를 오리라고 부를 것이다.</p>
 </blockquote>
 <ul>
-<li>객체의 변수와 메서드의 집합이 그 객체의 타입을 결정하는 것을 의미한다.</li>
-<li>타입을 미리 지정하지 않고 런타임에 해당 메서드들을 확인해 타입을 정하는 동적 타이핑의 한 종류다.</li>
-<li><strong>ts 또한 결국 덕 타이핑 기반의 js의 런타임 동작을 모델링해 타입을 체크한다.</strong></li>
-<li>따라서 아래에서 Vector2D와 NamedVector의 관계를 선언하지 않아도 타입에러가 발생하지 않는다.</li>
-<li>즉, NamedVector타입인 param을 Vector2D타입의 인자를 받는 caculateLength로 실행해도 정상적이다.</li>
-<li>좋든 싫든 ts의 타입 시스템에서 타입은 확장될 수 있도록 &lsquo;열려&rsquo; 있다.
+<li>
+<p>객체의 변수와 메서드의 집합이 그 객체의 타입을 결정하는 것을 의미한다.</p>
+</li>
+<li>
+<p>타입을 미리 지정하지 않고 런타임에 해당 메서드들을 확인해 타입을 정하는 동적 타이핑의 한 종류다.</p>
+</li>
+<li>
+<p><strong>ts 또한 결국 덕 타이핑 기반의 js의 런타임 동작을 모델링해 타입을 체크한다.</strong></p>
+</li>
+<li>
+<p>따라서 아래에서 Vector2D와 NamedVector의 관계를 선언하지 않아도 타입에러가 발생하지 않는다.</p>
+</li>
+<li>
+<p>즉, NamedVector타입인 param을 Vector2D타입의 인자를 받는 caculateLength로 실행해도 정상적이다.</p>
+</li>
+<li>
+<p>좋든 싫든 ts의 타입 시스템에서 타입은 확장될 수 있도록 &lsquo;열려&rsquo; 있다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Vector2D</span> {
   <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>;
   <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>;
