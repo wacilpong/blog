@@ -6,6 +6,39 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-07-15**
+
+- javascript의 `throw`에 대하여
+
+  > Execution of the current function will stop (the statements after throw won't be executed), and control will be passed to the first catch block in the call stack. If no catch block exists among caller functions, the program will terminate.
+
+  - throw 다음 구문은 실행되지 않고, catch 블록이 없으면 프로그램이 종료된다.
+  - throw를 던져도 이전 비동기 작업들은 각각 따로 실행되고, throw도 블록단위로 실행된다.
+  - **즉, throw는 지역적이어서 아래를 실행하면 그 비동기 작업 내 throw도 모두 실행된다.**
+  - 그리고 해당 블록의 throw 다음 구문은 실행되지 않는다.
+
+    ```js
+    function testPromise() {
+      return new Promise((resolve, reject) => {
+        resolve();
+        console.log("excuted");
+      });
+    }
+
+    testPromise().then(() => {
+      throw "헹";
+    });
+    throw "error";
+    testPromise();
+
+    // 출력결과
+    // excuted
+    // Uncaught error
+    // Uncaught (in promise) 헹
+    ```
+
+<br />
+
 ## **2021-07-09**
 
 - [Labeled Tuple](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#labeled-tuple-elements)
@@ -14,6 +47,7 @@ draft: false
 
   - 타입스크립트 4.0에서 제공되는데, 튜플에 좀더 의미있는 멤버명을 정할 수 있다.
   - 이때 튜플의 멤버는 모두 이름을 짓거나, 짓지 말아야 한다.
+
     ```ts
     // O
     type Range = [start: number, end: number];
@@ -32,6 +66,7 @@ draft: false
   - angular의 NgForOf(\*ngFor) 디렉티브에서 사용하는 옵션이다.
   - 지정한 함수의 값으로 CD를 일으킬 수 있는데, 즉 변화에 해당하는 DOM만 다시 계산한다.
   - 따라서 trackBy는 고유한 값이어야 한다.
+
     ```ts
     @Component({
       selector: "my-app",
@@ -57,7 +92,6 @@ draft: false
 
 <br />
 <hr />
-
 
 ## **2021-06-30**
 
@@ -88,6 +122,7 @@ draft: false
   - 따라서 아래에서 Vector2D와 NamedVector의 관계를 선언하지 않아도 타입에러가 발생하지 않는다.
   - 즉, NamedVector타입인 param을 Vector2D타입의 인자를 받는 caculateLength로 실행해도 정상적이다.
   - 좋든 싫든 ts의 타입 시스템에서 타입은 확장될 수 있도록 '열려' 있다.
+
     ```ts
     interface Vector2D {
       x: number;
