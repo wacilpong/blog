@@ -6,6 +6,32 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-07-26**
+
+- 인터페이스의 배열을 인덱싱할 때
+
+  - 인덱싱을 통해 어떠한 타입의 부분집합으로 타입을 정의할 수 있다.
+  - 이때 배열의 요소 중 하나를 인덱싱해서 명시할 수도 있다.
+  - 이때 배열의 index는 number니까 아래처럼 `[number]`로 명시한다.
+  - 따라서 `NavState['key']`의 타입은 string이 된다.
+
+    ```ts
+    interface State {
+      arr: string[];
+    }
+
+    type NavState = {
+      key: State["arr"][number];
+    };
+
+    const nav: NavState = {
+      key: "one",
+    };
+    ```
+
+<br />
+<hr />
+
 ## **2021-07-15**
 
 - javascript의 `throw`에 대하여
@@ -38,6 +64,7 @@ draft: false
     ```
 
 <br />
+<hr />
 
 ## **2021-07-09**
 
