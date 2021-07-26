@@ -154,7 +154,40 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-07-15"><strong>2021-07-15</strong></h2>
+    <div align="start" class="content"><h2 id="2021-07-26"><strong>2021-07-26</strong></h2>
+<ul>
+<li>
+<p>인터페이스의 배열을 인덱싱할 때</p>
+<ul>
+<li>
+<p>인덱싱을 통해 어떠한 타입의 부분집합으로 타입을 정의할 수 있다.</p>
+</li>
+<li>
+<p>이때 배열의 요소 중 하나를 인덱싱해서 명시할 수도 있다.</p>
+</li>
+<li>
+<p>이때 배열의 index는 number니까 아래처럼 <code>[number]</code>로 명시한다.</p>
+</li>
+<li>
+<p>따라서 <code>NavState['key']</code>의 타입은 string이 된다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">State</span> {
+  <span style="color:#a6e22e">arr</span>: <span style="color:#66d9ef">string</span>[];
+}
+
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">NavState</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">State</span>[<span style="color:#e6db74">&#34;arr&#34;</span>][<span style="color:#66d9ef">number</span>];
+};
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nav</span>: <span style="color:#66d9ef">NavState</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;one&#34;</span>,
+};
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-07-15"><strong>2021-07-15</strong></h2>
 <ul>
 <li>
 <p>javascript의 <code>throw</code>에 대하여</p>
@@ -195,6 +228,7 @@
 </li>
 </ul>
 <p><br /></p>
+<hr />
 <h2 id="2021-07-09"><strong>2021-07-09</strong></h2>
 <ul>
 <li>

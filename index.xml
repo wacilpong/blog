@@ -66,7 +66,7 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-07-15 javascript의 throw에 대하여 Execution of the current function will stop (the statements after throw won&amp;rsquo;t be executed), and control will be passed to the first catch block in the call stack. If no catch block exists among caller functions, the program will terminate. throw 다음 구문은 실행되</description>
+      <description>2021-07-26 인터페이스의 배열을 인덱싱할 때 인덱싱을 통해 어떠한 타입의 부분집합으로 타입을 정의할 수 있다. 이때 배열의 요소 중 하나를 인덱싱해서 명시할 수도 있다. 이때 배</description>
     </item>
     
     <item>
