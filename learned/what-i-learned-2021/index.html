@@ -154,7 +154,30 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-07-26"><strong>2021-07-26</strong></h2>
+    <div align="start" class="content"><h2 id="2021-08-06"><strong>2021-08-06</strong></h2>
+<ul>
+<li>
+<p>template literal types</p>
+<ul>
+<li>
+<p>타입스크립트에서도 템플릿 리터럴 스트링 구문을 사용할 수 있다.</p>
+</li>
+<li>
+<p>아래처럼 문자열에서 어떤 값이 반복되어 사용될 때 활용할 수 있겠다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">PlusFriend</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">_FRIEND`</span>;
+</code></pre></div></li>
+<li>
+<p>완전 확장하면 어떤 문자열의 첫번째 문자를 추론하는 타입을 만들 수도 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// First의 타입은 &#39;a&#39;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">FirstLetter</span>&lt;<span style="color:#f92672">S</span>&gt; <span style="color:#f92672">=</span> <span style="color:#a6e22e">S</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">infer</span> <span style="color:#a6e22e">C</span><span style="color:#e6db74">}${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">C</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>;
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">First</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">FirstLetter</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#34;abcde&#34;</span><span style="color:#f92672">&gt;</span>;
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-07-26"><strong>2021-07-26</strong></h2>
 <ul>
 <li>
 <p>인터페이스의 배열을 인덱싱할 때</p>

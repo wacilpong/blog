@@ -66,7 +66,7 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-07-26 인터페이스의 배열을 인덱싱할 때 인덱싱을 통해 어떠한 타입의 부분집합으로 타입을 정의할 수 있다. 이때 배열의 요소 중 하나를 인덱싱해서 명시할 수도 있다. 이때 배</description>
+      <description>2021-08-06 template literal types 타입스크립트에서도 템플릿 리터럴 스트링 구문을 사용할 수 있다. 아래처럼 문자열에서 어떤 값이 반복되어 사용될 때 활용할 수 있겠다. type PlusFriend = `${string}_FRIEND`; 완전 확장하</description>
     </item>
     
     <item>
