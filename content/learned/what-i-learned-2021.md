@@ -6,6 +6,28 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-08-06**
+
+- template literal types
+
+  - 타입스크립트에서도 템플릿 리터럴 스트링 구문을 사용할 수 있다.
+  - 아래처럼 문자열에서 어떤 값이 반복되어 사용될 때 활용할 수 있겠다.
+
+    ```ts
+    type PlusFriend = `${string}_FRIEND`;
+    ```
+
+  - 완전 확장하면 어떤 문자열의 첫번째 문자를 추론하는 타입을 만들 수도 있다.
+
+    ```ts
+    // First의 타입은 'a'
+    type FirstLetter<S> = S extends `${infer C}${string}` ? C : "";
+    type First = FirstLetter<"abcde">;
+    ```
+
+<br />
+<hr />
+
 ## **2021-07-26**
 
 - 인터페이스의 배열을 인덱싱할 때
