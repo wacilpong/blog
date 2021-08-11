@@ -154,7 +154,26 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-08-06"><strong>2021-08-06</strong></h2>
+    <div align="start" class="content"><h2 id="2021-08-11"><strong>2021-08-11</strong></h2>
+<ul>
+<li>
+<p>인덱스 시그니처 대신 명확하게 동적 객체를 타이핑하고 싶다면?</p>
+<ul>
+<li>
+<p><code>Record</code>: 키 타입을 유연하게 지정할 수 있는 표준 제네릭</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ABC</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Record</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#66d9ef">number</span><span style="color:#f92672">&gt;</span>;
+</code></pre></div></li>
+<li>
+<p><code>Mapped type</code>: 키마다 별도의 타입을 사용하여 매핑</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ABC</span> <span style="color:#f92672">=</span> {[<span style="color:#a6e22e">k</span> <span style="color:#66d9ef">in</span> <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;c&#34;</span>]<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span>};
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">DEF</span> <span style="color:#f92672">=</span> {[<span style="color:#a6e22e">k</span> <span style="color:#66d9ef">in</span> <span style="color:#e6db74">&#34;d&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;e&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;f&#34;</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;e&#34;</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span>};
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-08-06"><strong>2021-08-06</strong></h2>
 <ul>
 <li>
 <p>template literal types</p>

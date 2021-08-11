@@ -66,7 +66,7 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-08-06 template literal types 타입스크립트에서도 템플릿 리터럴 스트링 구문을 사용할 수 있다. 아래처럼 문자열에서 어떤 값이 반복되어 사용될 때 활용할 수 있겠다. type PlusFriend = `${string}_FRIEND`; 완전 확장하</description>
+      <description>2021-08-11 인덱스 시그니처 대신 명확하게 동적 객체를 타이핑하고 싶다면? Record: 키 타입을 유연하게 지정할 수 있는 표준 제네릭 type ABC = Record&amp;lt;&amp;#34;a&amp;#34; | &amp;#34;b&amp;#34; | &amp;#34;c&amp;#34;, number&amp;gt;; Mapped type: 키마다 별도의 타입을 사용</description>
     </item>
     
     <item>
