@@ -6,6 +6,26 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-08-11**
+
+- 인덱스 시그니처 대신 명확하게 동적 객체를 타이핑하고 싶다면?
+
+  - `Record`: 키 타입을 유연하게 지정할 수 있는 표준 제네릭
+
+    ```ts
+    type ABC = Record<"a" | "b" | "c", number>;
+    ```
+
+  - `Mapped type`: 키마다 별도의 타입을 사용하여 매핑
+
+    ```ts
+    type ABC = {[k in "a" | "b" | "c"]: number};
+    type DEF = {[k in "d" | "e" | "f"]: k extends "e" ? string : number};
+    ```
+
+<br />
+<hr />
+
 ## **2021-08-06**
 
 - template literal types
