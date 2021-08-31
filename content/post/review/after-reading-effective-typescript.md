@@ -2,7 +2,7 @@
 title: "After reading <Effecttive Typescript>"
 date: "2021-06-23"
 tags: ["review"]
-draft: true
+draft: false
 og_description: "이펙티브 타입스크립트를 읽고 내맘대로 정리해보았다."
 ---
 
@@ -52,3 +52,12 @@ by Dan Vanderkam
       return sum;
     }
     ```
+- **ts는 타입 추론을 적극적으로 수행한다.**
+  - 타입 추론은 수동으로 명시해야 하는 타입 구문의 수를 줄여준다.
+  - 즉, 추론 가능한 타입이라면 타입 명시를 안하는게 낫다.
+    _ex) const x = 12 (**GOOD**) / const x: number = 12 (**BAD**)_
+- **값 뒤에 as const를 작성하면 ts는 최대한 좁은 타입으로 추론한다.**
+  - `const a1 = [1, 2, 3]` => 타입은 number[]
+  - `const a2 = [1, 2, 3] as const` => 타입은 readonly [1, 2, 3];
+  - 변수가 정말로 상수라면 상수 단언을 사용하자.
+  - 그러나 상수 단언은 정의한 곳이 아닌 사용한 곳에서 오류가 발생할 수 있으니 주의하자.
