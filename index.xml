@@ -43,6 +43,15 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
     </item>
     
     <item>
+      <title>After reading &lt;Effecttive Typescript&gt;</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-effective-typescript/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-effective-typescript/</guid>
+      <description>by Dan Vanderkam 모든 자바스크립트는 타입스크립트지만, 그 반대는 성립되지 않는다. js를 ts로 전환하는게 아니면 noImplicitAny를 설정하는 것이 좋다.</description>
+    </item>
+    
+    <item>
       <title>After reading &lt;modern javascript deep dive&gt;</title>
       <link>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</link>
       <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>

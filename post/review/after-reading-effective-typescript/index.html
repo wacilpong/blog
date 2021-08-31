@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="이펙티브 타입스크립트를 읽고 내맘대로 정리해보았다." />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading &lt;Effecttive Typescript&gt;" />
+<meta property="og:site_name" content="After reading &lt;Effecttive Typescript&gt;" />
+<meta property="og:description" content="이펙티브 타입스크립트를 읽고 내맘대로 정리해보았다." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/review/after-reading-effective-typescript/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading &lt;Effecttive Typescript&gt;" />
+<meta name="twitter:description" content="이펙티브 타입스크립트를 읽고 내맘대로 정리해보았다." />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading &lt;Effecttive Typescript&gt;</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.73.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading &lt;Effecttive Typescript&gt;</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading &lt;Effecttive Typescript&gt;</h2>
+        <h5>2021-06-23</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><p>by Dan Vanderkam</p>
+<ul>
+<li>모든 자바스크립트는 타입스크립트지만, 그 반대는 성립되지 않는다.</li>
+<li>js를 ts로 전환하는게 아니면 <code>noImplicitAny</code>를 설정하는 것이 좋다.</li>
+<li><em>undefined is not an object</em> 같은 런타임 오류 방지를 위해 <code>strictNullChecks</code>를 설정하는 것이 좋다.</li>
+<li>타입스크립트 컴파일러는 두 가지 역할이 있으며, 이 둘은 완전히 독립적으로 수행된다.
+<ul>
+<li>최신 ts/js를 브라우저에서 동작할 수 있게 구버전 js로 트랜스파일(transpile)한다.</li>
+<li>코드의 타입 오류를 체크한다.</li>
+</ul>
+</li>
+<li>단언문은 컴파일 중에 제거되므로, 타입 체커는 알지 못한다.
+<ul>
+<li>따라서 <code>!</code>(non-null assertion)는 값이 null이 아니라고 확신할 수 있을 때만 사용해야 한다.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li><strong>type 키워드는 인터페이스보다 쓰임새가 많다.</strong>
+<ul>
+<li>유니온이 될 수도 있고, 매핑된 타입이나 조건부 타입처럼 고급 기능에 활용되기도 한다.</li>
+<li>튜플과 배열타입도 더 간결하게 표현할 수 있다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Pair</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">number</span>, <span style="color:#66d9ef">number</span>];
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">StringList</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">string</span>[];
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">NamedNums</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">string</span>, ...<span style="color:#66d9ef">number</span>[]];
+</code></pre></div></li>
+</ul>
+</li>
+<li><strong>제네릭 타입은 타입을 위한 함수와 같다.</strong>
+<ul>
+<li>타입에 대한 DRY(Don&rsquo;t Repeat Yourself) 원칙의 핵심이다.</li>
+<li>제네릭 타입에서 매핑할 수 있는 값, 즉 매개변수를 제한하려면 <code>extends</code>를 사용하자.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Name</span> {
+  <span style="color:#a6e22e">first</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#a6e22e">last</span>: <span style="color:#66d9ef">string</span>;
+}
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">DancingDuo</span>&lt;<span style="color:#f92672">T</span> <span style="color:#a6e22e">extends</span> <span style="color:#a6e22e">Name</span>&gt; <span style="color:#f92672">=</span> [<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">T</span>];
+</code></pre></div></li>
+</ul>
+</li>
+<li><strong>readonly를 사용하면 지역변수와 관련된 변경 오류를 방지할 수 있다.</strong>
+<ul>
+<li><code>readonly number[]</code>가 있다고 한다면,</li>
+<li>배열의 요소를 읽을 수 있지만, 쓸 수는 없다.</li>
+<li>length를 읽을 수 있지만, 배열을 변경할 수는 없다.</li>
+<li>배열을 변경하는 pop과 같은 메서드를 호출할 수 없다.</li>
+<li>함수가 매개변수를 변경하지 않는다면, readonly로 선언해야 한다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">arrSum</span>(<span style="color:#a6e22e">arr</span>: <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">number</span>[]) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">num</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">arr</span>) {
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">num</span>;
+  }
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sum</span>;
+}
+</code></pre></div></li>
+</ul>
+</li>
+<li><strong>ts는 타입 추론을 적극적으로 수행한다.</strong>
+<ul>
+<li>타입 추론은 수동으로 명시해야 하는 타입 구문의 수를 줄여준다.</li>
+<li>즉, 추론 가능한 타입이라면 타입 명시를 안하는게 낫다.<br />
+<em>ex) const x = 12 (<strong>GOOD</strong>) / const x: number = 12 (<strong>BAD</strong>)</em></li>
+</ul>
+</li>
+<li><strong>값 뒤에 as const를 작성하면 ts는 최대한 좁은 타입으로 추론한다.</strong>
+<ul>
+<li><code>const a1 = [1, 2, 3]</code> =&gt; 타입은 number[]</li>
+<li><code>const a2 = [1, 2, 3] as const</code> =&gt; 타입은 readonly [1, 2, 3];</li>
+<li>변수가 정말로 상수라면 상수 단언을 사용하자.</li>
+<li>그러나 상수 단언은 정의한 곳이 아닌 사용한 곳에서 오류가 발생할 수 있으니 주의하자.</li>
+</ul>
+</li>
+</ul>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-javascript-deep-dive/">After reading &lt;modern javascript deep dive&gt;</a></h4>
+    <h5>2021-06-23</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-from-mathematics-to-generic-programming/">After reading &lt;from math to generic programming&gt;</a></h4>
+    <h5>2021-03-31</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/good-bye-2020/">Good bye 2020</a></h4>
+    <h5>2020-12-23</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
