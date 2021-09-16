@@ -24,6 +24,7 @@ by Dan Vanderkam
   - 튜플과 배열타입도 더 간결하게 표현할 수 있다.
     ```ts
     type Pair = [number, number];
+    type Range = [start: number, end: number];
     type StringList = string[];
     type NamedNums = [string, ...number[]];
     ```
@@ -55,9 +56,19 @@ by Dan Vanderkam
 - **ts는 타입 추론을 적극적으로 수행한다.**
   - 타입 추론은 수동으로 명시해야 하는 타입 구문의 수를 줄여준다.
   - 즉, 추론 가능한 타입이라면 타입 명시를 안하는게 낫다.
-    _ex) const x = 12 (**GOOD**) / const x: number = 12 (**BAD**)_
+    - _ex) const x = 12 (**GOOD**) / const x: number = 12 (**BAD**)_
+    - _그러나 객체는 as const로 상수 단언한 것이 아니라면 타입선언해주는 편이 낫다_
 - **값 뒤에 as const를 작성하면 ts는 최대한 좁은 타입으로 추론한다.**
   - `const a1 = [1, 2, 3]` => 타입은 number[]
   - `const a2 = [1, 2, 3] as const` => 타입은 readonly [1, 2, 3];
   - 변수가 정말로 상수라면 상수 단언을 사용하자.
   - 그러나 상수 단언은 정의한 곳이 아닌 사용한 곳에서 오류가 발생할 수 있으니 주의하자.
+- **선택의 여지가 있다면 프로미스를 생성하기 보다는 async/await을 사용하자**
+  - 좀더 간결하고, async함수는 항상 프로미스를 반환하도록 강제되기 때문이다.
+    ```ts
+    // 반환타입은 Promise<number>
+    const getNumber = async () => 42;
+    ```
+  - 즉시 사용가능한 값에도 프로미스를 반환하는 것이 이상해 보일 수 있지만, 실제로는 비동기 함수로 통일하도록 강제하는 데 도움이 된다.
+  - 함수는 항상 동기 또는 비동기로 실행되어야 하며 절대 혼용해서는 안된다.
+  - 참고로 async 함수에서 프로미스로 래핑해도 반환타입은 `Promise<Promise<T>>`가 아닌 `Promise<T>`이다.

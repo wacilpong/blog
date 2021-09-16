@@ -6,6 +6,51 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-09-16**
+
+- `async`는 언제나 암묵적으로 promise를 반환한다.
+
+  - async 함수의 반환값이 프로미스가 아니어도 프로미스로 래핑된다.
+
+    ```js
+    // 반환타입은 Promise<number>
+    const getNumber = async () => 42;
+    ```
+
+- `await`은 resolve 혹은 reject 된 값을 반환한다.
+
+  - await을 해야만 프로미스가 동작하는 것이 아니다.
+  - await은 이미 fulfilled된 각 비동기 태스크들의 완료 값을 동기적으로 반환하는 키워드이다.
+  - 즉, 아래처럼 await을 하지 않고 프로미스 함수를 실행하는 것만으로 내부 동작을 수행한다.
+
+    ```js
+    const promise1 = () =>
+      new Promise((resolve) => {
+        console.log("항상 출력");
+        setTimeout(() => {
+          resolve(1);
+        }, 1000);
+      });
+
+    const promise2 = async () => {
+      console.log("항상 출력");
+      return promise1();
+    };
+
+    // 프로미스는 fulfilled 상태의 객체로 가지고 있으며
+    // 완료여부만 모를뿐 내부 로직 모두 수행한 상태
+    const res = promise2();
+
+    // resolve/reject된 값을 출력함
+    (async () => {
+      const res = await promise2();
+      console.log(res);
+    })();
+    ```
+
+<br />
+<hr />
+
 ## **2021-08-11**
 
 - 인덱스 시그니처 대신 명확하게 동적 객체를 타이핑하고 싶다면?
