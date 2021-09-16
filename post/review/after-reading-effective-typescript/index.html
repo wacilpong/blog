@@ -180,6 +180,7 @@
 <li>유니온이 될 수도 있고, 매핑된 타입이나 조건부 타입처럼 고급 기능에 활용되기도 한다.</li>
 <li>튜플과 배열타입도 더 간결하게 표현할 수 있다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Pair</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">number</span>, <span style="color:#66d9ef">number</span>];
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Range</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">start</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">end</span>: <span style="color:#66d9ef">number</span>];
 <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">StringList</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">string</span>[];
 <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">NamedNums</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">string</span>, ...<span style="color:#66d9ef">number</span>[]];
 </code></pre></div></li>
@@ -217,8 +218,12 @@
 <li><strong>ts는 타입 추론을 적극적으로 수행한다.</strong>
 <ul>
 <li>타입 추론은 수동으로 명시해야 하는 타입 구문의 수를 줄여준다.</li>
-<li>즉, 추론 가능한 타입이라면 타입 명시를 안하는게 낫다.<br />
-<em>ex) const x = 12 (<strong>GOOD</strong>) / const x: number = 12 (<strong>BAD</strong>)</em></li>
+<li>즉, 추론 가능한 타입이라면 타입 명시를 안하는게 낫다.
+<ul>
+<li><em>ex) const x = 12 (<strong>GOOD</strong>) / const x: number = 12 (<strong>BAD</strong>)</em></li>
+<li><em>그러나 객체는 as const로 상수 단언한 것이 아니라면 타입선언해주는 편이 낫다</em></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>값 뒤에 as const를 작성하면 ts는 최대한 좁은 타입으로 추론한다.</strong>
@@ -227,6 +232,17 @@
 <li><code>const a2 = [1, 2, 3] as const</code> =&gt; 타입은 readonly [1, 2, 3];</li>
 <li>변수가 정말로 상수라면 상수 단언을 사용하자.</li>
 <li>그러나 상수 단언은 정의한 곳이 아닌 사용한 곳에서 오류가 발생할 수 있으니 주의하자.</li>
+</ul>
+</li>
+<li><strong>선택의 여지가 있다면 프로미스를 생성하기 보다는 async/await을 사용하자</strong>
+<ul>
+<li>좀더 간결하고, async함수는 항상 프로미스를 반환하도록 강제되기 때문이다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// 반환타입은 Promise&lt;number&gt;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">42</span>;
+</code></pre></div></li>
+<li>즉시 사용가능한 값에도 프로미스를 반환하는 것이 이상해 보일 수 있지만, 실제로는 비동기 함수로 통일하도록 강제하는 데 도움이 된다.</li>
+<li>함수는 항상 동기 또는 비동기로 실행되어야 하며 절대 혼용해서는 안된다.</li>
+<li>참고로 async 함수에서 프로미스로 래핑해도 반환타입은 <code>Promise&lt;Promise&lt;T&gt;&gt;</code>가 아닌 <code>Promise&lt;T&gt;</code>이다.</li>
 </ul>
 </li>
 </ul>

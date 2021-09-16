@@ -17,7 +17,7 @@
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-08-11 인덱스 시그니처 대신 명확하게 동적 객체를 타이핑하고 싶다면? Record: 키 타입을 유연하게 지정할 수 있는 표준 제네릭 type ABC = Record&amp;lt;&amp;#34;a&amp;#34; | &amp;#34;b&amp;#34; | &amp;#34;c&amp;#34;, number&amp;gt;; Mapped type: 키마다 별도의 타입을 사용</description>
+      <description>2021-09-16 async는 언제나 암묵적으로 promise를 반환한다. async 함수의 반환값이 프로미스가 아니어도 프로미스로 래핑된다. // 반환타입은 Promise&amp;lt;number&amp;gt; const getNumber = async () =&amp;gt; 42; a</description>
     </item>
     
     <item>

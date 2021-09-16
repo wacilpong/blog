@@ -154,7 +154,58 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-08-11"><strong>2021-08-11</strong></h2>
+    <div align="start" class="content"><h2 id="2021-09-16"><strong>2021-09-16</strong></h2>
+<ul>
+<li>
+<p><code>async</code>는 언제나 암묵적으로 promise를 반환한다.</p>
+<ul>
+<li>
+<p>async 함수의 반환값이 프로미스가 아니어도 프로미스로 래핑된다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 반환타입은 Promise&lt;number&gt;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> () =&gt; <span style="color:#ae81ff">42</span>;
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><code>await</code>은 resolve 혹은 reject 된 값을 반환한다.</p>
+<ul>
+<li>
+<p>await을 해야만 프로미스가 동작하는 것이 아니다.</p>
+</li>
+<li>
+<p>await은 이미 fulfilled된 각 비동기 태스크들의 완료 값을 동기적으로 반환하는 키워드이다.</p>
+</li>
+<li>
+<p>즉, 아래처럼 await을 하지 않고 프로미스 함수를 실행하는 것만으로 내부 동작을 수행한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise1</span> <span style="color:#f92672">=</span> () =&gt;
+  <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;항상 출력&#34;</span>);
+    <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+      <span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">1</span>);
+    }, <span style="color:#ae81ff">1000</span>);
+  });
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> () =&gt; {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;항상 출력&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">promise1</span>();
+};
+
+<span style="color:#75715e">// 프로미스는 fulfilled 상태의 객체로 가지고 있으며
+</span><span style="color:#75715e">// 완료여부만 모를뿐 내부 로직 모두 수행한 상태
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">promise2</span>();
+
+<span style="color:#75715e">// resolve/reject된 값을 출력함
+</span><span style="color:#75715e"></span>(<span style="color:#a6e22e">async</span> () =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">promise2</span>();
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>);
+})();
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-08-11"><strong>2021-08-11</strong></h2>
 <ul>
 <li>
 <p>인덱스 시그니처 대신 명확하게 동적 객체를 타이핑하고 싶다면?</p>
