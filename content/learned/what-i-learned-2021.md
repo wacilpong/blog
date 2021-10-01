@@ -6,6 +6,17 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-10-01**
+
+- 타입스크립트 커버리지 추적해서 타입 안정성을 유지할 수도 있다.
+  - npm type-cover-age 패키지로 단순 any를 추적할 수 있다.
+  - `npx type-coverage` -> 9985 / 10117 98.69%
+  - 10,117개 심벌 중 9,985개가 any가 아니거나 any별칭이 아닌 타입이다.
+  - `--detail` 플래그를 붙이면 any타입이 있는 곳을 모두 출력해준다.
+
+<br />
+<hr />
+
 ## **2021-09-16**
 
 - `async`는 언제나 암묵적으로 promise를 반환한다.

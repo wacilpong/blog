@@ -72,3 +72,42 @@ by Dan Vanderkam
   - 즉시 사용가능한 값에도 프로미스를 반환하는 것이 이상해 보일 수 있지만, 실제로는 비동기 함수로 통일하도록 강제하는 데 도움이 된다.
   - 함수는 항상 동기 또는 비동기로 실행되어야 하며 절대 혼용해서는 안된다.
   - 참고로 async 함수에서 프로미스로 래핑해도 반환타입은 `Promise<Promise<T>>`가 아닌 `Promise<T>`이다.
+- **부정확한 타입보다는 미완성 타입 사용하기**
+  - 실수가 발생하기 쉽고 잘못된 타입은 차라리 타입이 없는 것보다 못할 수 있다.
+  - 일반적으로 any 같은 추상적인 타입은 정제하는 것이 좋지만
+  - 타입이 구체적으로 정제된다고 해서 정확도가 무조건 올라가는 것은 아니다.
+  - 타입에 의존하기 시작하면 부정확함으로 인해 발생하는 문제는 커진다.
+  - 예를 들어 아래는 타입정보는 정밀해졌지만 결과적으로 복잡해졌다.
+  - 즉, 타입정보를 구체화할수록 오류메시지와 자동완성기능에 주의를 기울이자.
+    ```ts
+    type FnName = "+" | "-" | "*" | "/" | ">" | "rgb";
+    type CallExpression = [FnName, ...any[]];
+    type Expression = number | string | CallExpression;
+    const tests: Expression[] = [
+      10,
+      "red",
+      // TypeError: **는 FnName 형식에 할당할 수 없음
+      ["**", 1, 2],
+    ];
+    ```
+- **가능한 좁은 범위에서만 any타입 사용하기**
+  - 아래처럼 any의 영향을 최대한 좁히자.
+  - x의 반환타입 any는 코드 전반에 영향을 주지만,
+  - good함수 내 x는 test함수의 인자로 넘길 때에만 영향
+    ```ts
+    function bad() {
+      const x: any = callFunction();
+      test(x);
+    }
+    function good() {
+      const x = callFunction();
+      test(x as any);
+    }
+    ```
+  - any를 구체적으로 변형해서 사용하자.
+  - good함수처럼 정확히 배열타입을 선언해주면,
+  - 함수호출 시 매개변수가 배열인지 체크된다.
+    ```ts
+    function bad(arr: any) {...}
+    function good(arr: any[]) {...}
+    ```
