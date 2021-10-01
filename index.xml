@@ -75,7 +75,7 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-09-16 async는 언제나 암묵적으로 promise를 반환한다. async 함수의 반환값이 프로미스가 아니어도 프로미스로 래핑된다. // 반환타입은 Promise&amp;lt;number&amp;gt; const getNumber = async () =&amp;gt; 42; a</description>
+      <description>2021-10-01 타입스크립트 커버리지 추적해서 타입 안정성을 유지할 수도 있다. npm type-cover-age 패키지로 단순 any를 추적할 수 있다. npx type-coverage -&amp;gt; 9985 / 10117 98.69% 10,117개 심벌 중 9,985</description>
     </item>
     
     <item>

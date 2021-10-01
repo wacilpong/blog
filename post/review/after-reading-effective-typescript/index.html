@@ -245,6 +245,48 @@
 <li>참고로 async 함수에서 프로미스로 래핑해도 반환타입은 <code>Promise&lt;Promise&lt;T&gt;&gt;</code>가 아닌 <code>Promise&lt;T&gt;</code>이다.</li>
 </ul>
 </li>
+<li><strong>부정확한 타입보다는 미완성 타입 사용하기</strong>
+<ul>
+<li>실수가 발생하기 쉽고 잘못된 타입은 차라리 타입이 없는 것보다 못할 수 있다.</li>
+<li>일반적으로 any 같은 추상적인 타입은 정제하는 것이 좋지만</li>
+<li>타입이 구체적으로 정제된다고 해서 정확도가 무조건 올라가는 것은 아니다.</li>
+<li>타입에 의존하기 시작하면 부정확함으로 인해 발생하는 문제는 커진다.</li>
+<li>예를 들어 아래는 타입정보는 정밀해졌지만 결과적으로 복잡해졌다.</li>
+<li>즉, 타입정보를 구체화할수록 오류메시지와 자동완성기능에 주의를 기울이자.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">FnName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;*&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;&gt;&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;rgb&#34;</span>;
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">CallExpression</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">FnName</span>, ...<span style="color:#a6e22e">any</span>[]];
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Expression</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">number</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">CallExpression</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tests</span>: <span style="color:#66d9ef">Expression</span>[] <span style="color:#f92672">=</span> [
+  <span style="color:#ae81ff">10</span>,
+  <span style="color:#e6db74">&#34;red&#34;</span>,
+  <span style="color:#75715e">// TypeError: **는 FnName 형식에 할당할 수 없음
+</span><span style="color:#75715e"></span>  [<span style="color:#e6db74">&#34;**&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>],
+];
+</code></pre></div></li>
+</ul>
+</li>
+<li><strong>가능한 좁은 범위에서만 any타입 사용하기</strong>
+<ul>
+<li>아래처럼 any의 영향을 최대한 좁히자.</li>
+<li>x의 반환타입 any는 코드 전반에 영향을 주지만,</li>
+<li>good함수 내 x는 test함수의 인자로 넘길 때에만 영향
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bad() {</span>
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">any</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">callFunction</span>();
+  <span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">x</span>);
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">good() {</span>
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">callFunction</span>();
+  <span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">any</span>);
+}
+</code></pre></div></li>
+<li>any를 구체적으로 변형해서 사용하자.</li>
+<li>good함수처럼 정확히 배열타입을 선언해주면,</li>
+<li>함수호출 시 매개변수가 배열인지 체크된다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bad</span>(<span style="color:#a6e22e">arr</span>: <span style="color:#66d9ef">any</span>) {...}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">good</span>(<span style="color:#a6e22e">arr</span>: <span style="color:#66d9ef">any</span>[]) {...}
+</code></pre></div></li>
+</ul>
+</li>
 </ul>
 </div>
 
