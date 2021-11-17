@@ -75,7 +75,7 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-10-01 타입스크립트 커버리지 추적해서 타입 안정성을 유지할 수도 있다. npm type-cover-age 패키지로 단순 any를 추적할 수 있다. npx type-coverage -&amp;gt; 9985 / 10117 98.69% 10,117개 심벌 중 9,985</description>
+      <description>2021-11-16 css-in-js vs css-in-css css preprocessor는 이제 필수이지만, 선택사항이 두가지 있을 수 있다. 전자의 대표는 styled-component, 후자는 SASS(SCSS)가 있다. css-in-js 방식은 다음</description>
     </item>
     
     <item>
