@@ -6,6 +6,31 @@ og_description: "About what I learned at 2021"
 draft: false
 ---
 
+## **2021-12-08**
+
+- 자바스크립트의 문자열은 코드 유닛의 시퀀스이다. 따라서 두 문자열의 코드 유닛이 같다면 동일하다.
+  ```jsx
+  const firstStr = "hello";
+  const secondStr = "\u0068ell\u006F";
+  console.log(firstStr === secondStr); // => true
+  ```
+  => 정규화 필요 `str.normalize([form])`
+- 정규화는 정규 표현으로 문자열을 변환하는 과정이고, 문자열이 고유한 표현을 갖도록 한다. 즉, 문자열이 결합 문자 시퀀스를 포함하는 복잡한 구조를 가질 때 표준 형식으로 정규화할 수 있다.
+  ```js
+  const str1 = "ça va bien";
+  const str2 = "c\u0327a va bien";
+  console.log(str1.normalize() === str2.normalize()); // => true
+  console.log(str1 === str2); // => false
+  ```
+- zero width joiner
+  - 복잡한 표기 체계의 컴퓨터에 따른 조판에서 사용되는 제어 문자
+  - 부호 위치는 U+200D (HTML: `&#8205;`, `&zwj;`)
+  - 두 이모지 사이에 ZWJ를 두면, 새로운 형태가 표시되는 것도 있다.
+  - ex) 🏳️ ZWJ 🌈 = 🏳️‍🌈
+
+<br />
+<hr />
+
 ## **2021-11-16**
 
 - **css-in-js vs css-in-css**
