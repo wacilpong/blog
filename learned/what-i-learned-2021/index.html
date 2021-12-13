@@ -154,7 +154,68 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2021-11-16"><strong>2021-11-16</strong></h2>
+    <div align="start" class="content"><h2 id="2021-12-13"><strong>2021-12-13</strong></h2>
+<ul>
+<li><a href="https://medium.com/@limsungmook/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%8A%94-%EC%99%9C-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%EC%9D%84-%EC%84%A0%ED%83%9D%ED%96%88%EC%9D%84%EA%B9%8C-997f985adb42">자바스크립트의 프로토타입에 관해 철학적으로 접근한 좋은 글</a>을 발견하여 정리해둔다. 아래는 결정적으로 유용한 부분 발췌!</li>
+</ul>
+<blockquote>
+<p>프로토타입 기반 OOP 언어의 특징은 다음과 같습니다.</p>
+<ul>
+<li>개별 객체(instance) 수준에서 메소드와 변수를 추가</li>
+<li>객체 생성은 일반적으로 복사를 통해 이루어짐</li>
+<li>확장(extends)은 클래스가 아니라 위임(delegation)</li>
+<li>현재 객체가 메시지에 반응하지 못할 때 다른 객체로 메시지를 전달할 수 있게 하여 상속의 본질을 지원</li>
+<li>개별 객체 수준에서 객체를 수정하고 발전시키는 능력은 선험적 분류의 필요성을 줄이고 반복적인 프로그래밍 및 디자인 스타일을 장려</li>
+<li>프로토타입 프로그래밍은 일반적으로 분류하지 않고 유사성을 활용하도록 선택</li>
+<li>결과적으로 설계는 맥락에 의해 평가</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Javascript 에 익숙하다면 별다른 설명 없이도 이해되는 부분이 있을 것으로 보입니다.<br />
+다시 한번 가장 중요하다 생각되는 부분을 정리해보면</p>
+<ul>
+<li>프로토타입 언어에서는 ‘분류’를 우선하지 않는다. 생성된 객체 위주로 유사성을 정의한다.</li>
+<li>어휘, 쓰임새는 맥락(context)에 의해 평가된다.
+<ul>
+<li>실행 컨텍스트, 스코프 체인이 여기서 파생되었습니다</li>
+<li>클로져, this, 호이스팅 등등. 이 모든 헬(?) 이 프로토타입의 ‘맥락’을 표현하기 위한 것입니다.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>비트겐슈타인 글을 좋아했지만 이걸 자바스크립트에 연결시켜서 언어를 이해하려고 한 적은 없어서 정말 신선했고 좋았다. 큰 깨달음! 그리고 내가 좋아했던 비트겐슈타인의 전쟁일기 속 글귀도 몇개 다시 기록해본다.</p>
+<ul>
+<li>“나 외의 생명체가 하나도 없다면, 윤리가 있을 수 있는가? 만일 윤리가 근본적인 무언가이어야 한다면, 세계가 주어진 것만으로는 아직 윤리적 판단을 하기에 충분하지 않다. 그런 경우 세계는 그 자체로는 선하지도 악하지도 않다.” - [전쟁일기], 16년 8월 2일, 루트비히 비트겐슈타인</li>
+<li>“내 언어의 경계는 내 세계의 경계를 의미한다.” - [전쟁일기], 15년 5월 23일, 루트비히 비트겐슈타인</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-12-08"><strong>2021-12-08</strong></h2>
+<ul>
+<li>자바스크립트의 문자열은 코드 유닛의 시퀀스이다. 따라서 두 문자열의 코드 유닛이 같다면 동일하다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstStr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secondStr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\u0068ell\u006F&#34;</span>;
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">firstStr</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">secondStr</span>); <span style="color:#75715e">// =&gt; true
+</span></code></pre></div><p>=&gt; 정규화 필요 <code>str.normalize([form])</code></p>
+</li>
+<li>정규화는 정규 표현으로 문자열을 변환하는 과정이고, 문자열이 고유한 표현을 갖도록 한다. 즉, 문자열이 결합 문자 시퀀스를 포함하는 복잡한 구조를 가질 때 표준 형식으로 정규화할 수 있다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ça va bien&#34;</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;c\u0327a va bien&#34;</span>;
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str1</span>.<span style="color:#a6e22e">normalize</span>() <span style="color:#f92672">===</span> <span style="color:#a6e22e">str2</span>.<span style="color:#a6e22e">normalize</span>()); <span style="color:#75715e">// =&gt; true
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str1</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">str2</span>); <span style="color:#75715e">// =&gt; false
+</span></code></pre></div></li>
+<li>zero width joiner
+<ul>
+<li>복잡한 표기 체계의 컴퓨터에 따른 조판에서 사용되는 제어 문자</li>
+<li>부호 위치는 U+200D (HTML: <code>&amp;#8205;</code>, <code>&amp;zwj;</code>)</li>
+<li>두 이모지 사이에 ZWJ를 두면, 새로운 형태가 표시되는 것도 있다.</li>
+<li>ex) 🏳️ ZWJ 🌈 = 🏳️‍🌈</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2021-11-16"><strong>2021-11-16</strong></h2>
 <ul>
 <li><strong>css-in-js vs css-in-css</strong>
 <ul>

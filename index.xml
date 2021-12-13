@@ -75,7 +75,7 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-11-16 css-in-js vs css-in-css css preprocessor는 이제 필수이지만, 선택사항이 두가지 있을 수 있다. 전자의 대표는 styled-component, 후자는 SASS(SCSS)가 있다. css-in-js 방식은 다음</description>
+      <description>2021-12-13 자바스크립트의 프로토타입에 관해 철학적으로 접근한 좋은 글을 발견하여 정리해둔다. 아래는 결정적으로 유용한 부분 발췌! 프로토타입 기반 OOP 언어의 특징은 다음</description>
     </item>
     
     <item>
