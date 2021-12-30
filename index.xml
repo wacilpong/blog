@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 23 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Dec 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -40,6 +40,15 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Good bye 2021</title>
+      <link>https://wacilpong.github.io/blog/post/review/good-bye-2021/</link>
+      <pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/good-bye-2021/</guid>
+      <description>잘가라 2021년 올해는 운동광인이 되어 운동만 집(재택근무)-운동-집의 반복이어서 특별했던 기억들을 되짚어보며 기록해보자. 분기별 기록 1분기 2분기 3</description>
     </item>
     
     <item>
