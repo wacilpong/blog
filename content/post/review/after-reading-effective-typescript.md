@@ -91,6 +91,7 @@ by Dan Vanderkam
     ];
     ```
 - **가능한 좁은 범위에서만 any타입 사용하기**
+
   - 아래처럼 any의 영향을 최대한 좁히자.
   - x의 반환타입 any는 코드 전반에 영향을 주지만,
   - good함수 내 x는 test함수의 인자로 넘길 때에만 영향
@@ -111,3 +112,37 @@ by Dan Vanderkam
     function bad(arr: any) {...}
     function good(arr: any[]) {...}
     ```
+
+- **문자열 열거형(enum)대신 리터럴 타입 유니온 사용하기**
+
+  - 아래처럼 enum은 명목적 타이핑(nominally typing)을 사용한다.
+  - 구조적 타이핑: 구조가 같으면 할당이 허용
+  - 명목적 타이핑: 타입의 이름이 같아야 할당이 허용
+    ```ts
+    enum Flavor {
+      VANILLA = "vanilla",
+      CHOCOLATE = "chocolate",
+      STRAWBERRY = "strawberry",
+    }
+    let falvor = Flavor.CHOCOLATE;
+    flavor = "strawberry";
+    // "strawberry" 형식은 'Flavor' 형식에 할당될 수 없습니다.
+    ```
+  - 위 예시에서 Flavor는 런타임 시점에는 문자열인데도 ts에서는 enum을 임포트해서 써야 한다.
+  - enum 대신 리터럴 타입 유니온을 쓰면 js와도 호환되고 안전하며 자동완성 기능도 쓸 수 있다.
+    ```ts
+    function scoop(flavor: Flavor) {...}
+    scoop('vanilla');
+    // "vanilla" 형식은 'Flavor' 형식의 매개변수에 할당될 수 없습니다.
+    ```
+    ```ts
+    type Flavor = "vanilla" | "chocolate" | "strawberry";
+    let falvor = Flavor.CHOCOLATE;
+    flavor = "mint";
+    // "mint" 유형은 'Flavor' 형식에 할당될 수 없습니다.
+    ```
+
+- **public, protected, private 접근제어자는 타입 시스템에서만 강제된다.**
+  - 런타임에는 소용이 없으며 단언을 통해서만 우회할 수 있다.
+  - 따라서 접근제어자로 데이터를 감추려고 하면 안 된다.
+  - 확실히 데이터를 감추고 싶다면 클로저를 사용해야 한다.
