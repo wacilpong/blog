@@ -6,6 +6,22 @@ og_description: "About what I learned at 2022"
 draft: false
 ---
 
+## **2022-01-11**
+
+- 처음에 대충 보면 react hooks가 마치 상태관리 도구인 것처럼 느껴질 수 있지만, 전혀 아니다.
+  - 상태관리 도구가 아니라 상태를 잘 정리할 수 있는 옵션들을 제공한다.
+  - **react hooks는 로직을 재사용하기 위해 만들어진 리액트 모듈이다.**
+  - `useState`, `useReducer`는 컴포넌트 상태를 관리하기 위한 방법일 뿐이다.
+  - `useContext`는 기존 context api를 props drilling 없이 공유하게 해줄 뿐이다.
+  - 즉, 컴포넌트 트리의 전역적인 상태를 관리하기 위한 도구는 아니다.
+- react hooks를 쓰더라도 여전히 트리 내 전역상태를 관리할 필요는 있다.
+  - context는 사용자 권한이나 언어 같은 '전역적'이라고 여겨질 만한 데이터를 컴포넌트 트리에서 공유할 수 있도록 설계되었다.
+  - 자주 바뀌는 데이터가 아니며, context는 컴포넌트 재사용을 어렵게 만든다.
+  - 따라서 자주 변경된다면 **redux와 같은 상태를 예측 가능하도록 돕는 도구**를 고려해야 한다.
+
+<br />
+<hr />
+
 ## **2022-01-06**
 
 - [ts의 데코레이터(decorator)](https://www.typescriptlang.org/docs/handbook/decorators.html)는 처음에 앵귤러를 지원하기 위해 추가되었다.
@@ -33,6 +49,12 @@ draft: false
     // Calling greet
     // hi,roomy
     ```
-
-<br />
-<hr />
+- [데코레이터 쓰임새](https://www.geeksforgeeks.org/what-are-decorators-and-how-are-they-used-in-javascript/)
+  - `Class member decorators`
+    - 클래스의 메서드, 프로퍼티에 데코레이팅되며 3개의 인자를 지닌다.
+    - target: 멤버가 속해있는 클래스 _ex. Greeter_
+    - name: 멤버의 이름 _ex.greet_
+    - descriptor: Object.defineProperty로 전달되는 멤버에 대한 description
+  - Members of classes
+    - 전체 클래스에 데코레이팅되며 생성자 함수에 적용된다.
+    - 단일 매개변수(클래스의 생성자 함수)를 받는다.
