@@ -17,7 +17,7 @@
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2022/</guid>
-      <description>2022-01-06 ts의 데코레이터(decorator)는 처음에 앵귤러를 지원하기 위해 추가되었다. 현재까지도 표준화가 되지 않았기 때문에 앵귤러를 쓰거나 어노테이션이</description>
+      <description>2022-01-11 처음에 대충 보면 react hooks가 마치 상태관리 도구인 것처럼 느껴질 수 있지만, 전혀 아니다. 상태관리 도구가 아니라 상태를 잘 정리할 수 있는 옵션들을 제공한다.</description>
     </item>
     
     <item>
