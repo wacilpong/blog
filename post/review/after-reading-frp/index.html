@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="FRP를 읽고 내맘대로 정리해보았다." />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading &lt;Functional Reactive Programming&gt;" />
+<meta property="og:site_name" content="After reading &lt;Functional Reactive Programming&gt;" />
+<meta property="og:description" content="FRP를 읽고 내맘대로 정리해보았다." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/review/after-reading-frp/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading &lt;Functional Reactive Programming&gt;" />
+<meta name="twitter:description" content="FRP를 읽고 내맘대로 정리해보았다." />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading &lt;Functional Reactive Programming&gt;</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.73.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading &lt;Functional Reactive Programming&gt;</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading &lt;Functional Reactive Programming&gt;</h2>
+        <h5>2022-01-13</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><p>by Stephen Blackheath, Anthony Jones</p>
+<p>FRP를 읽고 내맘대로 정리해보았다.</p>
+<h2 id="-">-</h2>
+<ul>
+<li>FRP는 반응형 프로그래밍을 달성하기 위해 함수형 프로그래밍의 규칙을 따르도록 강제하는 방법론이다.</li>
+<li>셀(cell)은 시간에 따라 변화하는 값이고, 스트림(stream)은 이벤트의 흐름을 표현한다.</li>
+<li>옛날 프로그래밍 교과서는 f와 같이 아무 의미가 없는 함수명을 짓지 말라고 가르친다.</li>
+<li>그러나 함수형 프로그래밍에서 특정 문제와 연관되지 않은 코드는 항상 일반화하기를 바란다.</li>
+<li>아래는 Rule이라는 클래스명이 다른 함수들의 이름보다 더 목적을 명확히 설명해준다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rule</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Rule</span><span style="color:#f92672">(</span>Lambda2<span style="color:#f92672">&lt;</span>Calendar<span style="color:#f92672">,</span> Calendar<span style="color:#f92672">,</span> Boolean<span style="color:#f92672">&gt;</span> f<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> f<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> Lambda2<span style="color:#f92672">&lt;</span>Calendar<span style="color:#f92672">,</span> Calendar<span style="color:#f92672">,</span> Boolean<span style="color:#f92672">&gt;</span> f<span style="color:#f92672">;</span>
+  <span style="color:#66d9ef">public</span> Cell<span style="color:#f92672">&lt;</span>Boolean<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">reify</span><span style="color:#f92672">(</span>Cell<span style="color:#f92672">&lt;</span>Calendar<span style="color:#f92672">&gt;</span> dep<span style="color:#f92672">,</span> Cell<span style="color:#f92672">&lt;</span>Calendar<span style="color:#f92672">&gt;</span> ret<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> dep<span style="color:#f92672">.</span><span style="color:#a6e22e">lift</span><span style="color:#f92672">(</span>ret<span style="color:#f92672">,</span> f<span style="color:#f92672">);</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#66d9ef">public</span> Rule <span style="color:#a6e22e">and</span><span style="color:#f92672">(</span>Rule other<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Rule<span style="color:#f92672">((</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> other<span style="color:#f92672">.</span><span style="color:#a6e22e">f</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">));</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+<li>스트림을 내보내면 이벤트나 메시지가 프로그램의 한 부분에서 다른 부분으로 전달되고, 그 메시지에는 값이 들어있는데 이를 종종 <code>페이로드(payload)</code>라고 부른다.</li>
+<li><code>snapshot</code>의 기본 연산은 스트림 이벤트가 emit된 시점의 셀 값을 캡처한다.
+<ul>
+<li>이후 제공받은 함수로 스트림 이벤트의 값과 셀의 값을 합친다.</li>
+<li>snapshot은 트랜잭션을 시작한 시점의 값을 본다.</li>
+<li>rxjs에도 유사하게 소스 옵저버블을 다른 옵저버블과 결합해 소스가 emit될 때만 각각의 최신 값을 합쳐주는 withLatestFrom 메서드가 있다.</li>
+</ul>
+</li>
+<li>스트림(Stream)으로 모델링하기 적합: <em>마우스 클릭과 터치스크린 이벤트, 서버와 연결되거나 끊김, 브라우저에서 웹사이트 북마크함 등&hellip;</em></li>
+<li>셀(Cell)로 모델링하기 적합: <em>시간, 온도, GPS좌표, 마우스 포인터의 위치 등&hellip;</em></li>
+<li>FRP는 상당수의 버그가 만들어지는 일 자체를 방지하지만, 여전히 몇 가지 버그가 있을 수 있다.
+<ul>
+<li>호출하는 쪽에서 모듈의 출력값을 사용하는 것을 까먹는 경우가 있다. <strong>일반적으로 어떤 만들어진 값을 사용하지 않는다면 그것은 버그다!</strong></li>
+<li>타입이 동일한 값을 실수로 혼용하는 경우가 있다. FRP코드에는 지역변수가 많은 경우가 자주 있다. 이때는 혼동을 야기할 수 있는 값을 단독으로 담는 컨테이너를 사용하자. 그렇게 하면 값의 의미를 타입에 반영할 수 있다.</li>
+</ul>
+</li>
+<li>FRP에서는 스트림의 이벤트가 상태 변경을 일으키는 유일한 방법이며, 직접적으로 만들어낼 수 있는 스트림 타입은 아무 이벤트도 발생시키지 않는 never 스트림뿐이다. 따라서 상태를 변경하는 요인은 FRP 시스템의 외부에서 들어올 수밖에 없다. <strong>코드가 오직 (외부)입력에만 반응할 수 있기 때문에 이를 일컬어 반응형 프로그래밍이라고 한다.</strong></li>
+</ul>
+<p><br /></p>
+<h2 id="환원주의를-통한-엔지니어링에-대한-접근">환원주의를 통한 엔지니어링에 대한 접근</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ae81ff">1</span>. 복잡한 문제를 가지고 시작한다.
+2. 문제를 더 작은 부분으로 나눈다.
+3. 각 부분을 해결한다.
+4. 해결한 것을 서로 조합해서 전체에 대한 해법을 만든다.
+</code></pre></div><ul>
+<li>4번에서 합성성의 오류가 발생할 수 있다.</li>
+<li>즉 각 독립적인 부분이 참이어도, 전체를 조합하면 거짓일 수 있다.</li>
+<li>FRP는 이벤트 전파를 제공하면서 합성성을 보장한다.</li>
+<li>FRP/함수형 프로그래밍은 합성성(compositionality)을 강제한다.
+<ul>
+<li>합성성은 복잡도를 효율적으로 처리해주는 아이디어들, 어떻게 합성할지에 대한 규칙이기도 하다.</li>
+<li>이벤트 프로그래밍의 기반에는 이벤트가 발생하면 리스너를 호출하지만,</li>
+<li>FRP에서는 이벤트를 값의 흐름(스트림)으로 본다.</li>
+<li>따라서 각종 콤비네이터(combinator, 고차함수)를 사용해서 값을 어떻게 변환할지 기술한다.</li>
+<li><em>ex) rxjs의 다양한 오퍼레이터들을 생각해보자! combineLatest, mergeMap&hellip;</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="웹에서의-frp-feat-rxjs-드디어">웹에서의 FRP, feat. rxjs (드디어!)</h2>
+<ul>
+<li><code>Observable</code>이라는 인터페이스를 중심으로 하며, 소듐의 Stream에 대응한다.
+<ul>
+<li>옵저버블은 값의 시퀀스를 표현한다.</li>
+<li>값을 얻으려면 옵저버블을 구독해야 한다.</li>
+<li>cold observable: 구독 시 즉시 값을 emit한다.</li>
+<li>hot observable: 이벤트가 발생할 때마다 값을 emit한다.</li>
+</ul>
+</li>
+<li><code>BehaviorSubject</code>가 소듐의 Cell과 대응한다.
+<ul>
+<li>다만, 현재 값이라는 개념을 포함한다.</li>
+<li>cold 옵저버블로 시작하고 구독하면 현재 값이 콜백에 즉시 전달되고</li>
+<li>이후 hot 옵저버블로 바뀌고 상태가 바뀔 때마다 콜백을 통해 갱신된 값을 받는다.</li>
+<li>startWith()로 줄여쓸 수도 있다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// ASIS
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">selected</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Rx</span>.<span style="color:#a6e22e">BehaviorSubject</span>(<span style="color:#e6db74">&#34;cat&#34;</span>);
+<span style="color:#a6e22e">sSelected</span>.<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">selected</span>);
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// TOBE
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">slected</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sSelected</span>.<span style="color:#a6e22e">startWith</span>(<span style="color:#e6db74">&#34;cat&#34;</span>);
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/good-bye-2021/">Good bye 2021</a></h4>
+    <h5>2021-12-30</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-javascript-deep-dive/">After reading &lt;modern javascript deep dive&gt;</a></h4>
+    <h5>2021-06-23</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-effective-typescript/">After reading &lt;Effecttive Typescript&gt;</a></h4>
+    <h5>2021-06-23</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
