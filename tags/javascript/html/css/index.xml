@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>Typescript mixins in Angular</title>
+      <link>https://wacilpong.github.io/blog/post/javascript-html-css/ts-mixin/</link>
+      <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript-html-css/ts-mixin/</guid>
+      <description>What ts mixins 믹스인은 객체지향에서 범용적으로 쓰이는 개념으로, 부모클래스가 되지 않으면서 다른 클래스에서 사용할 수 있는 메서드를 포함하는 클래스다. 베이스 클래스</description>
+    </item>
+    
+    <item>
       <title>Rxjs marble testing with jasmine-marbles</title>
       <link>https://wacilpong.github.io/blog/post/javascript-html-css/rxjs-marble-testing/</link>
       <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="믹스인은 객체지향에서 범용적으로 쓰이는 개념으로, 부모클래스가 되지 않으면서 다른 클래스에서 사용할 수 있는 메서드를 포함하는 클래스다." />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="Typescript mixins in Angular" />
+<meta property="og:site_name" content="Typescript mixins in Angular" />
+<meta property="og:description" content="믹스인은 객체지향에서 범용적으로 쓰이는 개념으로, 부모클래스가 되지 않으면서 다른 클래스에서 사용할 수 있는 메서드를 포함하는 클래스다." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/javascript-html-css/ts-mixin/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Typescript mixins in Angular" />
+<meta name="twitter:description" content="믹스인은 객체지향에서 범용적으로 쓰이는 개념으로, 부모클래스가 되지 않으면서 다른 클래스에서 사용할 수 있는 메서드를 포함하는 클래스다." />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Typescript mixins in Angular</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.73.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Typescript mixins in Angular</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Typescript mixins in Angular</h2>
+        <h5>2022-01-16</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="what">What</h2>
+<blockquote>
+<p><a href="https://www.typescriptlang.org/docs/handbook/mixins.html">ts mixins</a></p>
+</blockquote>
+<ul>
+<li>
+<p>믹스인은 객체지향에서 범용적으로 쓰이는 개념으로, 부모클래스가 되지 않으면서 다른 클래스에서 사용할 수 있는 메서드를 포함하는 클래스다.</p>
+</li>
+<li>
+<p>베이스 클래스 확장을 위해 제네릭과 상속을 활용한다.</p>
+</li>
+<li>
+<p>베이스 클래스를 확장하는 클래스 표현식을 반환해주는 팩토리 함수(다른 객체를 생성하기 위한 객체)가 필요하다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Constructor</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> (...<span style="color:#a6e22e">args</span>: <span style="color:#66d9ef">any</span>[]) <span style="color:#f92672">=&gt;</span> {};
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Scale</span>&lt;<span style="color:#f92672">TBase</span> <span style="color:#a6e22e">extends</span> <span style="color:#a6e22e">Constructor</span>&gt;(<span style="color:#a6e22e">Base</span>: <span style="color:#66d9ef">TBase</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Scaling</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Base</span> {
+    <span style="color:#a6e22e">_scale</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+
+    <span style="color:#a6e22e">setScale</span>(<span style="color:#a6e22e">scale</span>: <span style="color:#66d9ef">number</span>) {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_scale</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">scale</span>;
+    }
+
+    <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">scale</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_scale</span>;
+    }
+  };
+}
+</code></pre></div></li>
+<li>
+<p>ts 데코레이터 패턴과 함께 사용할 수도 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Pausable</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">target</span>: <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">Player</span>) <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pausable</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">target</span> {
+    <span style="color:#a6e22e">shouldFreeze</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+  };
+};
+
+<span style="color:#66d9ef">@Pausable</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Player</span> {
+  <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<h2 id="with-angular">With angular</h2>
+<ul>
+<li>
+<p>A, B컴포넌트가 팩토리함수 Mixin의 Base 클래스이다.</p>
+</li>
+<li>
+<p>이처럼 <strong>믹스인을 통해 다양한 컴포넌트에서 같은 클래스를 확장해 사용할 수 있다.</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mixin</span>&lt;<span style="color:#f92672">T</span> <span style="color:#a6e22e">extends</span> <span style="color:#a6e22e">Constructor</span><span style="color:#960050;background-color:#1e0010">&lt;</span>{}&gt;<span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">Base</span>: <span style="color:#66d9ef">T</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">class</span> {} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">any</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Some</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Base</span> {
+    <span style="color:#a6e22e">blah</span>(<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">count</span>: <span style="color:#66d9ef">number</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> {
+      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">count</span><span style="color:#e6db74">}</span><span style="color:#e6db74">번 blahblah했대요`</span>;
+    }
+  };
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AClassComponent</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Mixin() {</span>
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;roomy&#34;</span>;
+  <span style="color:#a6e22e">count</span>: <span style="color:#66d9ef">5</span>;
+
+  <span style="color:#66d9ef">constructor</span>() {
+    <span style="color:#66d9ef">super</span>();
+  }
+
+  <span style="color:#a6e22e">blahHandler</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">blah</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">count</span>);
+  }
+}
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BClassComponent</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Mixin() {</span>
+  <span style="color:#75715e">// A와 동일
+</span><span style="color:#75715e"></span>}
+</code></pre></div></li>
+<li>
+<p>앵귤러의 공식적인(?) 문법으로 믹스인을 지원하지 않기 때문에, 혹시 생성자로 DI를 받는 부분에서 상충되는 것이 있을까 싶었다.</p>
+</li>
+<li>
+<p>그러나 DI는 말그대로 해당 클래스가 필요한 의존성들을 외부로부터 주입받는 것뿐이다.</p>
+</li>
+<li>
+<p>따라서 주입받은 의존 객체들을 상속하는 것이 앵귤러 DI시스템에 상충되지는 않을 것이다.</p>
+</li>
+<li>
+<p>다만 의존관계가 복잡해질 것 같아서 꼭 필요할 때 써야할 것 같다.</p>
+</li>
+</ul>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript-html-css/rxjs-marble-testing/">Rxjs marble testing with jasmine-marbles</a></h4>
+    <h5>2020-08-09</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript-html-css/closure-especially-in-javascript/">Closure, especially in javascript</a></h4>
+    <h5>2020-04-18</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript-html-css/drag-and-drop/">Drag and drop API</a></h4>
+    <h5>2020-03-15</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
