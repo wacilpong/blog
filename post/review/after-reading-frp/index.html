@@ -157,7 +157,7 @@
     </div>
 
     <div align="start" class="content"><p>by Stephen Blackheath, Anthony Jones</p>
-<p>FRP를 읽고 내맘대로 정리해보았다.</p>
+<p>FRP를 읽고 내맘대로 정리해보았다. java 소듐 라이브러리가 주 예제이고, 뒤로 갈수록 소듐 얘기가 너무 많아서 어려워서 날림 읽었지만 rx기반 지식을 나름대로 알 수 있어서 좋았다.</p>
 <h2 id="기본-개념">기본 개념</h2>
 <blockquote>
 <p>숲에 있는 나무가 쓰러졌는데 근처의 아무도 그 소리를 듣지 못했다. 과연 그 나무는 소리를 낸 것일까?</p>
@@ -199,6 +199,7 @@
 </ul>
 </li>
 <li>FRP에서는 스트림의 이벤트가 상태 변경을 일으키는 유일한 방법이며, 직접적으로 만들어낼 수 있는 스트림 타입은 아무 이벤트도 발생시키지 않는 never 스트림뿐이다. 따라서 상태를 변경하는 요인은 FRP 시스템의 외부에서 들어올 수밖에 없다. <strong>코드가 오직 (외부)입력에만 반응할 수 있기 때문에 이를 일컬어 반응형 프로그래밍이라고 한다.</strong></li>
+<li>FRP는 현재 실행 시점에서 구성되기 때문에 JIT(Just In Time) 컴파일러나 실행 시점 최적화에 적합하다.</li>
 </ul>
 <p><br /></p>
 <h4 id="조작">조작</h4>
@@ -210,6 +211,20 @@
 </code></pre></div></li>
 </ul>
 <p><br /></p>
+<h4 id="참고-이벤트-처리의-여섯-가지-재앙">참고: 이벤트 처리의 여섯 가지 재앙</h4>
+<blockquote>
+<p>FRP는 이 모든 것들을 해결할 수 있는 방법이다.</p>
+</blockquote>
+<ol>
+<li><strong>예측 불가능한 순서</strong>: <em>일반적인 UI조작 생각하면 될듯</em></li>
+<li><strong>첫 번째 이벤트 소실</strong>: <em>초기화 순서나 처리 순서 때문에 처음 이벤트 캐치못할 때</em></li>
+<li><strong>지저분한 상태</strong>: <em>말해 뭐해~</em></li>
+<li><strong>스레드 문제</strong>: <em>js는 해당안됨</em></li>
+<li><strong>콜백 누수</strong>: <em>어떤 이벤트 소스에 리스너 등록하고 removeListener 호출 까먹었을 때</em></li>
+<li><strong>의도치 않은 재귀</strong>: <em>로컬 상태 갱신과 리스너 실행 순서가 반대로 되었을 때</em></li>
+</ol>
+<p><br /></p>
+<hr />
 <h2 id="환원주의를-통한-엔지니어링에-대한-접근">환원주의를 통한 엔지니어링에 대한 접근</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ae81ff">1</span>. 복잡한 문제를 가지고 시작한다.
 2. 문제를 더 작은 부분으로 나눈다.
@@ -250,17 +265,49 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">selected</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Rx</span>.<span style="color:#a6e22e">BehaviorSubject</span>(<span style="color:#e6db74">&#34;cat&#34;</span>);
 <span style="color:#a6e22e">sSelected</span>.<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">selected</span>);
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// TOBE
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">slected</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sSelected</span>.<span style="color:#a6e22e">startWith</span>(<span style="color:#e6db74">&#34;cat&#34;</span>);
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">selected</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sSelected</span>.<span style="color:#a6e22e">startWith</span>(<span style="color:#e6db74">&#34;cat&#34;</span>);
 </code></pre></div></li>
 </ul>
 </li>
 </ul>
 <p><br /></p>
-<h2 id="tmi-그런데-유우머를-곁들인">TMI, 그런데 유우머를 곁들인</h2>
+<h2 id="rxjs로-프로미스-구현하기">rxjs로 프로미스 구현하기</h2>
+<ul>
+<li>대부분의 언어에서 I/O 오류는 예외 메커니즘을 통해 처리되지만, FRP는 오직 값만 다룰 수 있기 때문에 일반적인 FRP 코드는 결코 예외를 던지지 않는다.</li>
+<li>Rx를 기반으로 하는 시스템에서는 오류 처리 기능이 내장되어 있다.</li>
+<li>일반적인 예외는 아니고 내부적으로 그런 오류들은 실제로 그냥 값일 뿐이다.</li>
+<li>I/O 요청마다 별도의 상태를 추적하고 싶을 때 프로미스(promise)를 쓴다.</li>
+<li><strong>프로미스(promise)는 현재 사용할 수 있거나 미래에 사용할 수 있는 값을 모델링한다.</strong></li>
+<li>아래 예시에서 image변수가 초기값이 null인 프라미스로 표현된 값이다. <em>옛날 js코드이긴 함</em>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">imagePromise</span>(<span style="color:#a6e22e">url</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sLoaded</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Rx</span>.<span style="color:#a6e22e">Observable</span>.<span style="color:#a6e22e">create</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">observer</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>();
+    <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+      <span style="color:#a6e22e">observer</span>.<span style="color:#a6e22e">onNext</span>(<span style="color:#a6e22e">img</span>);
+    };
+    <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">url</span>;
+  }).<span style="color:#a6e22e">publish</span>();
+  <span style="color:#a6e22e">sLoaded</span>.<span style="color:#a6e22e">connect</span>();
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">image</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Rx</span>.<span style="color:#a6e22e">BehaviorSubject</span>(<span style="color:#66d9ef">null</span>);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">subscr1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sLoaded</span>.<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">image</span>);
+  <span style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">image</span>,
+    <span style="color:#a6e22e">dispose</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+      <span style="color:#a6e22e">subscr1</span>.<span style="color:#a6e22e">dispose</span>();
+    },
+  };
+}
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<h2 id="tmi-그런데-유우머를-곁들인">TMI, 그런데 유우머를 곁들인&hellip;</h2>
 <ul>
 <li>마스터 요다의 언어 습관은 우리 같은 범상한 인간과는 다르다. 요다를 따라서 변수와 상수를 비교할 수 있는데, <code>if (42 == $value) {...}</code> 처럼 작성하는 것을 요다 조건문이라고 부르기도 한다.</li>
+<li>컴퓨터 과학에서 퓨처(future), 프로미스(promise), 딜레이(delay), 디퍼드(deferred)는 프로그램 실행을 동기화하려고 쓰는 구조체다. 프록시 역할을 하는 객체로 설명되며 값의 연산이 아직 이루어지지 않은 상태이므로 결과는 미리 알 수 없다.</li>
+<li>정적 타입 언어로 작성된 FRP코드에서는 수많은 검사를 공짜로 할 수 있다! FRP는 타입 주도 개발과 궁합이 잘 맞는다.</li>
+<li>오늘 할 리팩터링을 내일로 미루다간 프랑켄슈타인 박사의 괴물을 마주할 것이다. 흠냐!</li>
 </ul>
-<p>(ing~)</p>
+<p><br /></p>
 </div>
 
     
