@@ -1,8 +1,8 @@
 ---
 title: "After reading <From Programmer to Software Architect>"
-date: "2020-11-18"
+date: "2022-02-03"
 tags: ["review"]
-draft: false
+draft: true
 og_description: "개발자에서 아키텍트를 읽고 내맘대로 정리해보았다."
 ---
 
