@@ -81,7 +81,18 @@ by Michael Keeling
   - 즉, 서비스를 사용하는 측에서는 서비스가 어떻게 구현되었는지 몰라도 이를 호출/실행할 수 있어야 한다.
   - 앱 전체의 코드가 하나의 배포에 구현되는 모놀리식 모델과 달리, 독립된 각 서비스를 결합한다.
   - _ex. 좀더 대규모 시스템 구축할 때 쓰는 패턴인듯_
-- **발행/구독 패턴**
-- **공유 데이터 패턴**
-- **멀티 계층 패턴**
-- **오픈소스 공헌 패턴**
+- **발행/구독 패턴, 공유 데이터 패턴, 멀티 계층 패턴, 오픈소스 공헌 패턴 ...**
+
+<br />
+
+## 이름 짓기 7단계 예시
+
+- 모름: the thing that does the thing
+- 넌센스: cranberry
+- 정직: job starter process
+- 정직하고 완전함: data fetcher, checker, transformer, job starter
+- 올바름: data transformation job runner
+- 의도를 담음: data preparer
+- 도메인 추상화: data prepagation agent
+
+=> 시스템 다른 부분에서 상호작용의 규칙을 지닌 요소가 agent라는 표현을 사용하므로 적절함
