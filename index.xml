@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 16 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -40,6 +40,15 @@ Tech Stack  Front-end : Angular 6 / SCSS Back-end (APIs) : Python 3.x / Tornado 
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>After reading &lt;From Programmer to Software Architect&gt;</title>
+      <link>https://wacilpong.github.io/blog/post/review/after-reading-from-programmer-to-software-architect/</link>
+      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/review/after-reading-from-programmer-to-software-architect/</guid>
+      <description>by Michael Keeling 생각보다 협업할 때 좋은 내용도 많아서 곱씹으면서 읽는 부분이 많았다. - 모듈은 설계 시점에 의미 있고 파일 시스템 상의 어떤 형태로 표현할 수 있으며 소프트웨어</description>
     </item>
     
     <item>

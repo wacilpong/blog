@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="개발자에서 아키텍트를 읽고 내맘대로 정리해보았다." />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading &lt;From Programmer to Software Architect&gt;" />
+<meta property="og:site_name" content="After reading &lt;From Programmer to Software Architect&gt;" />
+<meta property="og:description" content="개발자에서 아키텍트를 읽고 내맘대로 정리해보았다." />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/review/after-reading-from-programmer-to-software-architect/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading &lt;From Programmer to Software Architect&gt;" />
+<meta name="twitter:description" content="개발자에서 아키텍트를 읽고 내맘대로 정리해보았다." />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading &lt;From Programmer to Software Architect&gt;</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.73.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading &lt;From Programmer to Software Architect&gt;</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading &lt;From Programmer to Software Architect&gt;</h2>
+        <h5>2022-02-03</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><p>by Michael Keeling</p>
+<p>생각보다 협업할 때 좋은 내용도 많아서 곱씹으면서 읽는 부분이 많았다.</p>
+<h2 id="-">-</h2>
+<ul>
+<li>모듈은 설계 시점에 의미 있고 파일 시스템 상의 어떤 형태로 표현할 수 있으며 소프트웨어가 동작하지 않아도 상관없다.</li>
+<li>컴포넌트는 런타임 시점에 의미 있는 요소이고 시스템이 동작하지 않으면 사라진다.</li>
+<li>용어는 정확하게 사용할수록 좋으니 참고하자.</li>
+<li>디자인 마인드셋 장착하기, <code>이해 -&gt; 탐색 -&gt; 실현 -&gt; 평가</code></li>
+<li>소프트웨어 시스템을 만드는 데에 중단이란 없다. 릴리즈만 계속할 뿐이다.</li>
+<li>&ldquo;모든 아키텍처는 설계지만, 모든 설계가 아키텍처는 아니다.&rdquo; - 그래디 부치</li>
+<li>어떤 기능 요구사항이 아키텍처의 의사결정을 주도할 정도로 중요하다면, 그것은 &lsquo;영향력 있는 기능 요구사항&rsquo;이다.
+<ul>
+<li><em>모든 세부적인 기능까지 고려하면서 구조를 잡지 말자</em></li>
+<li><em>최대한 기획서 비즈니스 로직을 큰 가닥을 몇개 잡아놓고 구조 잡기</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="데이터-기반-웹-애플리케이션의-아키텍처-패턴">데이터 기반 웹 애플리케이션의 아키텍처 패턴</h3>
+<ul>
+<li><strong>3계층</strong>
+<ul>
+<li>[디스플레이 계층] - [비즈니스 계층] - [DB]</li>
+<li>웹앱의 경우 각각 UI렌더링, 서버와 연관된 비즈니스 로직, 데이터 저장 역할이다.</li>
+</ul>
+</li>
+<li><strong>발행/구독</strong>
+<ul>
+<li>[디스플레이][룰 체커] - [이벤트버스] - [데이터 접근자] - [DB]</li>
+<li>각 요소마다 메시지를 만들고 이벤트 버스로 보낸다.</li>
+<li>컴포넌트는 관심있는 특정 메시지 타입을 구독한다.</li>
+</ul>
+</li>
+<li><strong>서비스 지향</strong>
+<ul>
+<li>[디스플레이][서비스 레지스트리] - [데이터 서비스][룰 서비스] - [DB]</li>
+<li>중앙에 서비스 등록/관리하는 레지스트리가 있다.</li>
+<li>컴포넌트는 서비스를 직접 호출하거나 정보 요청하고 받을 수 있다.</li>
+</ul>
+</li>
+<li>어떤 아키텍처든 각 구성 요소는 적어도 하나의 역할을 해야 한다.</li>
+<li>즉, 목적이 없는 구성 요소는 없어야 한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="결정은-미룰-수-있을-때까지-미루자">결정은 미룰 수 있을 때까지 미루자</h3>
+<ul>
+<li>한번 결정하면 되돌리기 어렵다.</li>
+<li>언제라도 쉽게 바꿀 수 있는 의사결정이라면 이미 아키텍처와는 별로 상관없을 것이다.</li>
+<li><em>의사결정을 하기 위한 질문들</em>
+<ul>
+<li>결정을 못해서 더 나아갈 수 없는가?</li>
+<li>더는 기다릴 수 없이 당장 결정해야만 해결되는 문제인가?</li>
+<li>의사결정이 더 많은 선택지나 기회를 만드는가?</li>
+<li>결정은 미루면 위험이 매우 커지는가?</li>
+<li>결정을 내릴 때의 영향력을 충분히 숙지하고 있는가?</li>
+<li>지금 왜 결정을 내려야만 하는지 논리적 근거가 명확한가?</li>
+<li>잘못되었을 경우 되돌릴 만한 시간은 있으며, 실수 감당할 수 있는가?</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="아키텍처-패턴">아키텍처 패턴</h2>
+<ul>
+<li>디자인 패턴은 프로그램의 재사용성, 유지 보수성을 높일 수 있는 다양한 구성에 대한 것이고 아키텍처 패턴은 좀더 품질에 관한 시나리오를 해결하는 데 목적이 있다.</li>
+<li><strong>레이어 패턴</strong>
+<ul>
+<li>코드를 나누고 관심사별로 독립적인 레이어를 구분한다.</li>
+<li>어떤 모듈이든 반드시 하나의 레이어에만 존재해야 한다.</li>
+<li>상위 레이어는 하위 레이어를 사용할 수 있고, 관계는 한 방향으로만 흘러야 한다.</li>
+<li>순환 참조는 허용되지 않는다.</li>
+<li>최상위와 최하위 레이어 간에는 별도 추상화 작업이 필요하며 복잡해질 수 있다.</li>
+<li><em>ex. 리액트로 따지면 redux와 같은 라이브러리가 필요해지는 이유랄까</em></li>
+</ul>
+</li>
+<li><strong>포트와 어댑터 패턴</strong>
+<ul>
+<li>레이어는 도메인이나 비즈니스 로직을 의미한다.</li>
+<li>포트는 레이어와 어댑터 사이의 인터페이스를 정의한다.</li>
+<li>어댑터는 레이어가 데이터나 이벤트를 접근하는 데 사용하는 코드다.</li>
+<li>레이어는 포틀르 노출하는데, 모든 레이어가 포트를 노출할 필요는 없다.</li>
+</ul>
+</li>
+<li><strong>파이프와 필터 패턴</strong>
+<ul>
+<li>단방향으로 데이터를 변형하는 작업만 한다.</li>
+<li>필터는 데이터를 읽고 변형한 후 결과 데이터를 내보낸다.</li>
+<li>파이프는 필터에서 필터로 전달하는 커넥터이며 데이터 순서를 유지한다.</li>
+<li><em>ex. 유닉스 pipe 명령어, rxjs의 pipe도 궤를 같이하는 예시일듯</em></li>
+</ul>
+</li>
+<li><strong>서비스 지향 아키텍처 패턴</strong>
+<ul>
+<li>특정 기능을 가진 컴포넌트를 독립적인 서비스로 구현한다.</li>
+<li>시스템은 실행 중에 서비스를 조합한다.</li>
+<li>즉, 서비스를 사용하는 측에서는 서비스가 어떻게 구현되었는지 몰라도 이를 호출/실행할 수 있어야 한다.</li>
+<li>앱 전체의 코드가 하나의 배포에 구현되는 모놀리식 모델과 달리, 독립된 각 서비스를 결합한다.</li>
+<li><em>ex. 좀더 대규모 시스템 구축할 때 쓰는 패턴인듯</em></li>
+</ul>
+</li>
+<li><strong>발행/구독 패턴, 공유 데이터 패턴, 멀티 계층 패턴, 오픈소스 공헌 패턴 &hellip;</strong></li>
+</ul>
+<p><br /></p>
+<h2 id="이름-짓기-7단계-예시">이름 짓기 7단계 예시</h2>
+<ul>
+<li>모름: the thing that does the thing</li>
+<li>넌센스: cranberry</li>
+<li>정직: job starter process</li>
+<li>정직하고 완전함: data fetcher, checker, transformer, job starter</li>
+<li>올바름: data transformation job runner</li>
+<li>의도를 담음: data preparer</li>
+<li>도메인 추상화: data prepagation agent</li>
+</ul>
+<p>=&gt; 시스템 다른 부분에서 상호작용의 규칙을 지닌 요소가 agent라는 표현을 사용하므로 적절하다. 이름은 시스템을 얼마나 잘 이해하고 있는지 판별하는 리트머스 종이이다. 이름이 넌센스나 정직한 수준에 머물러 있다고 생각한다면 지금 설계하고 있는 시스템의 개념을 더 깊게 파보자.</p>
+<p><br /></p>
+<h2 id="좋은-비평-vs-나쁜-비평">좋은 비평 vs 나쁜 비평</h2>
+<blockquote>
+<p>비평은 설계의 장점을 드러낼 수 있도록 해야 하며, 나쁜 설계 속에 좋은 아이디어가 숨어 있기도 하고 최고의 설계에서도 발전할 구석은 있다. 어떤 설계든 긍정적인 피드백과 건설적인 비평을 받게 해야 한다.</p>
+</blockquote>
+<ul>
+<li><strong>설계목표와 설계자가 제안한 해결방식에 집중한다.</strong> &lt;=&gt; 비평을 받을 때 방어적인 자세를 취한다.</li>
+<li><strong>구체적으로 사실에 근거해 말한다.</strong> &lt;=&gt; 개인적인 취향을 말한다.</li>
+<li><strong>문제를 더 명확하게 파악하도록 질문한다.</strong> &lt;=&gt; 문제 해결의 주변만 짚는다.</li>
+<li><strong>위험 요소를 지적하고 설계로 발생할 문제에 대해 알려준다.</strong> &lt;=&gt; 악랄하게 군다(다음 희생양은 당신이 될 거다).</li>
+<li><strong>설계상 이점을 언급한다.</strong> &lt;=&gt; 단점만 파헤친다.</li>
+</ul>
+<p><br /></p>
+<h2 id="아키텍처-평가">아키텍처 평가</h2>
+<ul>
+<li>어떤 리뷰어는 그 아키텍처를 걸작이라고 생각할 때 다른 리뷰어는 불타는 쓰레기라고 평가할 수 있다.</li>
+<li><code>디자인 루브릭</code>은 리뷰어가 아키텍처의 적합성을 판단할 때 사용해야 하는 기준을 정의한다.
+<ul>
+<li>기준(criteria): 설계의 산출물을 평가하는 데 사용할 특성. ex) 성능, 확장성</li>
+<li>등급(rating): 특성을 해석하는 데 사용할 척도. ex) 1 ~ 4</li>
+<li>기준에 따른 시나리오를 통해 등급을 매긴다.<br />
+ex1) 성능은 평균 부하에서 5초 이내에 응답해야 한다.<br />
+ex2) 시스템은 향후 7년간 데이터가 연평균 5% 늘어난다는 가정하에 확장 가능해야 한다.</li>
+</ul>
+</li>
+</ul>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-frp/">After reading &lt;Functional Reactive Programming&gt;</a></h4>
+    <h5>2022-01-13</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/good-bye-2021/">Good bye 2021</a></h4>
+    <h5>2021-12-30</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/review/after-reading-javascript-deep-dive/">After reading &lt;modern javascript deep dive&gt;</a></h4>
+    <h5>2021-06-23</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
