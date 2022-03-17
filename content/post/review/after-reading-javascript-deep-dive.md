@@ -152,3 +152,59 @@ by 이웅모
   - _com으로 끝나는지 검사 -> /com$/_
 
 <br />
+
+## 이터러블 (iterable)
+
+- `이터러블 프로토콜`
+  - ex. 배열, 문자열, Map, Set
+  - Symbol.iterator를 프로퍼티 키로 사용한 메서드를 직접 구현하거나, 프로토타입 체인을 통해 상속받은 **Symbol.iterator** 메서드를 호출하면 이터레이터를 반환한다.
+  - 이러한 규약이 이터러블 프로토콜이며, 이를 준수하는 객체를 이터러블이라고 한다.
+  - **for...of** 문으로 순회할 수 있고 spread, destructuring할 수 있다.
+- `이터레이터 프로토콜`
+  - ex. `[1,2,3][Symbol.iterator]()`
+  - 이터러블의 Symbol.iterator 메서드를 호출하면 이터레이터를 반환한다.
+  - next 메서드를 가지며, value와 done 프로퍼티를 갖는 객체를 반환한다.
+  - 이러한 규약이 이터레이터 프로토콜이며, **이터레이터 프로토콜을 준수하는 객체를 이터레이터라고 한다.**
+  - 이터레이터는 이터러블의 요소를 탐색하기 위한 포인터 역할을 한다.
+- 사용자 정의 이터러블
+
+  - 아래 같은 무한 이터러블은 지연평가(lazy evaluation)를 통해 데이터를 생성한다.
+  - **for...of** 나 destructuring할당 등이 실행되기 전까지 데이터를 생성하지 않는다.
+  - 순회의 경우 next 메서드가 호출되기 전까지는 데이터를 생성하지 않는다.
+  - 즉, 데이터가 필요한 순간 데이터를 생성한다.
+
+    ```ts
+    // 피보나치 수열 구현
+    // 1. Symbol.iterator 메서드 및 next 소유하도록 구현 -> 이터러블 프로토콜
+    // 2. next 메서드는 value, done을 갖는 객체를 반환 -> 이터레이터 프로토콜
+    // 3. 둘을 동시에 충족하면 이터러블이면서 이터레이터로 만들 수 있다.
+    const fibonacci = function (max) {
+      let [pre, cur] = [0, 1];
+
+      return {
+        [Symbol.iterator]() {
+          return this;
+        },
+        next() {
+          [pre, cur] = [cur, pre + cur];
+
+          return {
+            value: cur,
+          };
+        },
+      };
+    };
+
+    // 사용예시 1
+    for (const n of fibonacci()) {
+      if (n > 10000) {
+        break;
+      }
+
+      console.log(n);
+    }
+
+    // 사용예시 2
+    const [n1, n2, n3] = fibonacci();
+    console.log(n1, n2, n3);
+    ```
