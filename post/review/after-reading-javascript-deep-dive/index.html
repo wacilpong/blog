@@ -336,6 +336,78 @@
 </li>
 </ul>
 <p><br /></p>
+<h2 id="이터러블-iterable">이터러블 (iterable)</h2>
+<ul>
+<li>
+<p><code>이터러블 프로토콜</code></p>
+<ul>
+<li>ex. 배열, 문자열, Map, Set</li>
+<li>Symbol.iterator를 프로퍼티 키로 사용한 메서드를 직접 구현하거나, 프로토타입 체인을 통해 상속받은 <strong>Symbol.iterator</strong> 메서드를 호출하면 이터레이터를 반환한다.</li>
+<li>이러한 규약이 이터러블 프로토콜이며, 이를 준수하는 객체를 이터러블이라고 한다.</li>
+<li><strong>for&hellip;of</strong> 문으로 순회할 수 있고 spread, destructuring할 수 있다.</li>
+</ul>
+</li>
+<li>
+<p><code>이터레이터 프로토콜</code></p>
+<ul>
+<li>ex. <code>[1,2,3][Symbol.iterator]()</code></li>
+<li>이터러블의 Symbol.iterator 메서드를 호출하면 이터레이터를 반환한다.</li>
+<li>next 메서드를 가지며, value와 done 프로퍼티를 갖는 객체를 반환한다.</li>
+<li>이러한 규약이 이터레이터 프로토콜이며, <strong>이터레이터 프로토콜을 준수하는 객체를 이터레이터라고 한다.</strong></li>
+<li>이터레이터는 이터러블의 요소를 탐색하기 위한 포인터 역할을 한다.</li>
+</ul>
+</li>
+<li>
+<p>사용자 정의 이터러블</p>
+<ul>
+<li>
+<p>아래 같은 무한 이터러블은 지연평가(lazy evaluation)를 통해 데이터를 생성한다.</p>
+</li>
+<li>
+<p><strong>for&hellip;of</strong> 나 destructuring할당 등이 실행되기 전까지 데이터를 생성하지 않는다.</p>
+</li>
+<li>
+<p>순회의 경우 next 메서드가 호출되기 전까지는 데이터를 생성하지 않는다.</p>
+</li>
+<li>
+<p>즉, 데이터가 필요한 순간 데이터를 생성한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// 피보나치 수열 구현
+</span><span style="color:#75715e">// 1. Symbol.iterator 메서드 및 next 소유하도록 구현 -&gt; 이터러블 프로토콜
+</span><span style="color:#75715e">// 2. next 메서드는 value, done을 갖는 객체를 반환 -&gt; 이터레이터 프로토콜
+</span><span style="color:#75715e">// 3. 둘을 동시에 충족하면 이터러블이면서 이터레이터로 만들 수 있다.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fibonacci</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">max</span>) {
+  <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">pre</span>, <span style="color:#a6e22e">cur</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>];
+
+  <span style="color:#66d9ef">return</span> {
+    [<span style="color:#a6e22e">Symbol</span>.<span style="color:#a6e22e">iterator</span>]() {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+    },
+    <span style="color:#a6e22e">next() {</span>
+      [<span style="color:#a6e22e">pre</span>, <span style="color:#a6e22e">cur</span>] <span style="color:#f92672">=</span> [<span style="color:#a6e22e">cur</span>, <span style="color:#a6e22e">pre</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cur</span>];
+
+      <span style="color:#66d9ef">return</span> {
+        <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">cur</span>,
+      };
+    },
+  };
+};
+
+<span style="color:#75715e">// 사용예시 1
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">n</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">fibonacci</span>()) {
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10000</span>) {
+    <span style="color:#66d9ef">break</span>;
+  }
+
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">n</span>);
+}
+
+<span style="color:#75715e">// 사용예시 2
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">n1</span>, <span style="color:#a6e22e">n2</span>, <span style="color:#a6e22e">n3</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">fibonacci</span>();
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">n1</span>, <span style="color:#a6e22e">n2</span>, <span style="color:#a6e22e">n3</span>);
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
 </div>
 
     
