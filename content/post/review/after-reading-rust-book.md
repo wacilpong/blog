@@ -18,11 +18,11 @@ og_description: "러스트 언어를 공부해보자."
 - rust 컴파일러는 동시성 처리에 관한 버그처럼 애매한 버그들을 잡아주는 문지기 역할을 한다.
 - 유용한 툴: [Cargo](https://www.npmjs.com/package/cargo), [Rustfmt](https://github.com/rust-lang/rustfmt), [Rust IDE](https://rls.booyaa.wtf/)
 - 설치:
+  ```sh
+  $ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+  $ rustc --version
+  ```
   - `rustup`(OS에 상관없이 손쉽게 rust를 설치하게 해주는 도구)
-    ```sh
-    $ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
-    $ rustc --version
-    ```
 - **Hello world 찍어보기**
   ```rust
   // main.rs
@@ -55,3 +55,32 @@ og_description: "러스트 언어를 공부해보자."
   - carge check는 build 명령어와 달리 실행가능한 상태로 배포하는 과정이 없기 때문에 더 빠르므로, 단순히 컴파일이 잘 되는지 체크할 때 유용하다.
   - 빌드버전의 프로그램은 target/debug 디렉토리에 저장된다.
   - release 옵션으로 배포버전 빌드하면 target/release 디렉토리에 저장된다.
+
+## 2. Guessing game 만들어보기
+
+- 1 ~ 100 랜덤숫자 중에서 맞춰보는 게임을 만들어보자
+
+  ```rust
+  use std::io;
+
+  fn main() {
+      println!("Guess the number!");
+      println!("Please input your guess.");
+
+      let mut guess = String::new();
+
+      io::stdin()
+          .read_line(&mut guess)
+          .expect("Failed to read line");
+
+      println!("You guessed: {}", guess);
+  }
+  ```
+
+  - io는 [prelude: rust standard library](https://doc.rust-lang.org/std/prelude/index.html)에 있다.
+  - rust에서 모든 변수는 불변(immutable)한 것이 기본이다.
+  - rust에서 변수를 가변적으로 사용하려면 변수명 앞에 `mut`를 선언한다.
+  - `::`는 뒤의 함수가 앞쪽에 연관되어 있음을 의미하는 문법이다.
+  - `String::new()`는 스트링 타입의 인스턴스를 생성하며, new는 여러 타입을 생성할 수 있는 보편적인 이름의 함수이다.
+  - `&`은 해당 argument가 reference임을 의미하며, 참조는 기본적으로 불변하다.
+  - 따라서 해당 예제에서는 **가변적이어야 하므로 &guest가 아닌 &mut guess이다.**
