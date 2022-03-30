@@ -2,7 +2,7 @@
 title: "After reading Rust book"
 date: "2022-03-25"
 tags: ["review"]
-draft: true
+draft: false
 og_description: "러스트 언어를 공부해보자."
 ---
 
@@ -58,7 +58,7 @@ og_description: "러스트 언어를 공부해보자."
 
 ## 2. Guessing game 만들어보기
 
-- 1 ~ 100 랜덤숫자 중에서 맞춰보는 게임을 만들어보자
+- 입출력 붙이기
 
   ```rust
   use std::io;
@@ -84,3 +84,39 @@ og_description: "러스트 언어를 공부해보자."
   - `String::new()`는 스트링 타입의 인스턴스를 생성하며, new는 여러 타입을 생성할 수 있는 보편적인 이름의 함수이다.
   - `&`은 해당 argument가 reference임을 의미하며, 참조는 기본적으로 불변하다.
   - 따라서 해당 예제에서는 **가변적이어야 하므로 &guest가 아닌 &mut guess이다.**
+  - read*line 메서드는 `io::Result` 타입을 반환하기도 하는데, enum으로 Ok와 Err값이 있다. expect 메서드를 통해 Result타입에 대응하고 에러인 경우 프로그램을 종료시킨다. \*에러에 대한 복구방법은 9장에서 다룸*
+  - println! 메서드의 `{}`는 값을 대입할 공간 역할을 하며 여러개도 가능하다.
+
+- crate: Rust Package Registry 써보기
+  - Cargo.toml `[dependencies]` 하위에 [rand](https://crates.io/crates/rand)를 명시한다.
+  - 이때 cargo는 dependencies에 리스팅된 crate들을 다운받는데, rand가 의존하는 다른 crate들까지 가져온다.
+  - `Cargo.lock` 파일을 통해 의존성들에 특정 버전을 고정시킬 수 있다.
+  - `cargo update` 명령어를 통해 lock파일을 무시하고 의존성의 마이너 버전상 가장 최신으로 업데이트한다.
+- 1 ~ 100 랜덤숫자 부여하기
+
+  ```rust
+  use std::io;
+  use rand::Rng;
+
+  fn main() {
+      println!("Guess the number!");
+
+      let secret_number = rand::thread_rng().gen_range(1..101);
+
+      println!("The secret number is: {}", secret_number);
+
+      println!("Please input your guess.");
+
+      let mut guess = String::new();
+
+      io::stdin()
+          .read_line(&mut guess)
+          .expect("Failed to read line");
+
+      println!("You guessed: {}", guess);
+  }
+  ```
+
+  - Rng는 Random number generator이다.
+  - `start..end`에서 end는 초과를 의미하므로, 1..=100라고 써도 같다.
+  - 참고로 `cargo doc --open` 명령어를 통해 패키지와 사용된 의존성에 관한 문서를 확인할 수 있다.
