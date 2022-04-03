@@ -3,11 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://wacilpong.github.io/blog/project/blockchain/</loc>
+    <loc>https://wacilpong.github.io/blog/project/rust-book/</loc>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/project/tkit-service/</loc>
+    <loc>https://wacilpong.github.io/blog/project/blockchain/</loc>
   </url>
   
   <url>
@@ -15,12 +15,37 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/review/after-reading-from-programmer-to-software-architect/</loc>
-    <lastmod>2022-02-03T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/post/rust/rust-2/</loc>
+    <lastmod>2022-04-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/post/</loc>
+    <lastmod>2022-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/</loc>
+    <lastmod>2022-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/rust/</loc>
+    <lastmod>2022-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/</loc>
+    <lastmod>2022-04-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/post/rust/rust-1/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/post/review/after-reading-from-programmer-to-software-architect/</loc>
     <lastmod>2022-02-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -30,13 +55,8 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2022-02-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/</loc>
-    <lastmod>2022-02-03T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
+    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -291,10 +311,6 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
   </url>
   
   <url>
