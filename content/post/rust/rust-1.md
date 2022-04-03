@@ -1,9 +1,9 @@
 ---
-title: "After reading Rust book capter 1"
+title: "After reading Rust book chapter 1"
 date: "2022-03-25"
 tags: ["rust"]
 draft: false
-og_description: "After reading Rust book capter 1"
+og_description: "Installation, Hello World, Hello Cargo"
 ---
 
 ## 시작!

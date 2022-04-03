@@ -1,9 +1,9 @@
 ---
-title: "After reading Rust book capter 2"
+title: "After reading Rust book chapter 2"
 date: "2022-04-03"
 tags: ["rust"]
 draft: false
-og_description: "After reading Rust book capter 2"
+og_description: "Programming a Guessing Game"
 ---
 
 ## guessing game 입출력 붙이기
