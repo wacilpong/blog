@@ -2,6 +2,6 @@
 title: "SlackBot: Dumbledore"
 description: "Chat supporter, dumbledore"
 repo: "dumbledore"
-weight: 2
+weight: 3
 draft: false
 ---
