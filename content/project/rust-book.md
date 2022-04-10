@@ -9,3 +9,4 @@ draft: false
 
 1. [Getting Started](https://wacilpong.github.io/blog/post/rust/rust-1/)
 2. [Guessing Game](https://wacilpong.github.io/blog/post/rust/rust-2/)
+3. [Common Programming Concepts](https://wacilpong.github.io/blog/post/rust/rust-3/)
