@@ -6,10 +6,19 @@
     <description>Recent content in rust on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 03 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 3</title>
+      <link>https://wacilpong.github.io/blog/post/rust/rust-3/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/rust/rust-3/</guid>
+      <description>Variables and Mutability (1) let fn main() { let x = 5; println!(&amp;#34;The value of x is: {}&amp;#34;, x); x = 6; println!(&amp;#34;The value of x is: {}&amp;#34;, x); } rust에서 모든 변수는 기본적으로 불변하며, 안전하고 쉬운 코드를 작성하기 위함이다. 위</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 2</title>
