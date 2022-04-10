@@ -188,3 +188,130 @@ fn main() {
     let b: [i32; 5] = [1, 2, 3, 4, 5];
 }
 ```
+
+- 배열의 각 요소는 모두 같은 타입이어야 한다.
+- 배열은 고정된 크기이며, 데이터를 힙(heap)이 아닌 스택(stack) 메모리에 할당할 때 유용하다.
+- _동적으로 변하는 데이터는 벡터(vector)로 관리하며 [Chapter 8](https://doc.rust-lang.org/book/ch08-01-vectors.html)에서 자세히 다룸_
+- 배열타입을 지정하는 방법은 `[타입;원소개수]`이다.
+- 유효하지 않은 요소에 접근할 때 `thread 'main' panicked at...`처럼 panic을 발생시킨다.
+- **rust는 컴파일에서는 문제가 없지만 런타임 에러를 내서 엉뚱한 메모리에 대한 접근을 막는다.**
+
+<br />
+<hr />
+
+## Functions
+
+```rust
+fn main() {
+    println!("Hello, world!");
+
+    another_function();
+
+    // statement
+    let y = 6;
+
+    // expressions
+    let y2 = {
+        let x = 3;
+        x + 1
+    };
+}
+
+fn another_function() {
+    println!("Another function.");
+}
+
+// arrow function
+fn five() -> i32 {
+    5
+}
+```
+
+- rust에서 함수, 변수의 네이밍 컨벤션은 snake_case이다.
+- rust에서 함수는 어딘가에 선언되기만 하면 사용할 수 있다.
+- 화살표 함수는 js에서와 마찬가지로 `return` 키워드를 생략할 수 있다.
+- 함수의 인자(parameter)와 인수(argument) 용어를 실제로는 섞어서 사용하기도 한다.
+- `문(statements)`은 뭔가 액션을 수행하지만 값을 반환하지는 않는다.
+- `식(expressions)`은 값을 반환하기 위해 평가한다.
+  - expressions은 끝에 세미콜론(`;`)이 붙지 않는다.
+  - 뒤에 세미콜론을 붙이면 statement로 전환되며 값을 반환하지 않는다.
+
+<br />
+<hr />
+
+## Control Flow
+
+### (1) if
+
+```rust
+// Handling Multiple Conditions
+fn main() {
+    let number = 6;
+
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3, or 2");
+    }
+}
+
+// Using in a let Statement
+fn main() {
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+    println!("The value of number is: {}", number);
+}
+
+```
+
+- if문에서 값을 반환하여 표현식처럼 사용할 수 있다.
+- if-else 타입이 다르면 컴파일되지 않는다. _ex. if는 숫자이고 else는 문자열을 반환_
+
+<br />
+
+### (2) loop, while, for
+
+```rust
+fn main() {
+    // loop
+    let mut counter = 0;
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is {}", result);
+
+    // while
+    let a = [10, 20, 30, 40, 50];
+    let mut index = 0;
+
+    while index < 5 {
+        println!("the value is: {}", a[index]);
+
+        index += 1;
+    }
+
+    // for
+    for element in a {
+        println!("the value is: {}", element);
+    }
+
+    for number in (1..4).rev() {
+        println!("{}!", number);
+    }
+}
+```
+
+- loop는 영원히 반복되므로 반드시 탈출 조건이 필요하다.
+- loop에서 `break`뒤에 값을 붙이면 반환할 수 있다.
+- while은 특정 조건에 따라 반복할 때 사용한다.
+- for는 특정 컬렉션을 순회하면서 반복할 때 사용한다.
