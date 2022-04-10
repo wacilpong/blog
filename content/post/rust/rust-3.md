@@ -134,7 +134,7 @@ let guess: u32 = "42".parse().expect("Not a number!");
 
 ### (2) 컴파운드(Compound) 타입
 
-- 하나의 타입으로 여러 값을 글부화한 타입이다.
+- 하나의 타입으로 여러 값을 그룹화한 타입이다.
 - 튜플(tuples), 배열(arrays)
 
 <br />
@@ -199,7 +199,7 @@ fn main() {
 <br />
 <hr />
 
-## Functions
+## 함수
 
 ```rust
 fn main() {
