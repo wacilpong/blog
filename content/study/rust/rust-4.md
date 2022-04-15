@@ -6,7 +6,7 @@ draft: false
 og_description: "Understanding Ownership"
 ---
 
-## Ownership
+## 소유권 (Ownership)
 
 ### 배경
 
@@ -199,7 +199,7 @@ fn calculate_length(s: &String) -> usize {
 
 <br />
 
-### Mutable References
+### 가변 참조 (Mutable References)
 
 ```rust
 fn main() {
@@ -262,3 +262,7 @@ fn dangle() -> &String {
   - 즉, 어떤 데이터에 대한 참조를 생성하면 컴파일러가 참조하기 전에 스코프를 벗어났는지 확인해준다.
   - 따라서 위 코드는 에러를 낸다. `missing lifetime specifier`
   - **dangle 함수는 String에 대한 참조를 반환하는데, 변수 s가 반환시점에 스코프를 벗어나므로 drop 함수가 호출되고 메모리가 해제된다.** 따라서 이 함수는 에러의 위험이 있기 때문에 에러를 발생시키는 것이다.
+
+<br />
+
+## 슬라이스 타입 (Slice Type)
