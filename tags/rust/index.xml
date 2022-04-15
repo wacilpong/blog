@@ -6,35 +6,44 @@
     <description>Recent content in rust on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 Apr 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>After reading Rust book chapter 4</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-4/</link>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-4/</guid>
+      <description>소유권 (Ownership) 배경 ownership은 rust가 메모리를 어떻게 관리하는지에 대해 제어하는 일련의 규칙이다. 가비지 컬렉터나 개발자가 임의로 메모리를 해제하는</description>
+    </item>
+    
+    <item>
       <title>After reading Rust book chapter 3</title>
-      <link>https://wacilpong.github.io/blog/post/rust/rust-3/</link>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-3/</link>
       <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/rust/rust-3/</guid>
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-3/</guid>
       <description>Variables and Mutability (1) let fn main() { let x = 5; println!(&amp;#34;The value of x is: {}&amp;#34;, x); x = 6; println!(&amp;#34;The value of x is: {}&amp;#34;, x); } rust에서 모든 변수는 기본적으로 불변하며, 안전하고 쉬운 코드를 작성하기 위함이다. 위</description>
     </item>
     
     <item>
       <title>After reading Rust book chapter 2</title>
-      <link>https://wacilpong.github.io/blog/post/rust/rust-2/</link>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-2/</link>
       <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/rust/rust-2/</guid>
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-2/</guid>
       <description>guessing game 입출력 붙이기 use std::io; fn main() { println!(&amp;#34;Guess the number!&amp;#34;); println!(&amp;#34;Please input your guess.&amp;#34;); let mut guess = String::new(); io::stdin() .read_line(&amp;amp;mut guess) .expect(&amp;#34;Failed to read line&amp;#34;); println!(&amp;#34;You guessed: {}&amp;#34;, guess); } io는 prelude: rust standard library에 있다. rust에서 모든 변수는 불변(im</description>
     </item>
     
     <item>
       <title>After reading Rust book chapter 1</title>
-      <link>https://wacilpong.github.io/blog/post/rust/rust-1/</link>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-1/</link>
       <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://wacilpong.github.io/blog/post/rust/rust-1/</guid>
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-1/</guid>
       <description>시작! rust같은 low-level의 언어를 공부하면 아래와 같은 점들을 공부할 수 있다. memory management: 메모리 관리 ex. ownership data representation: 모델링 전에 데이터를 어떻게 표현할지? concurrency:</description>
     </item>
     

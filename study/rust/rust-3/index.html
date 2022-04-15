@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Common Programming Concepts" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 3" />
+<meta property="og:site_name" content="After reading Rust book chapter 3" />
+<meta property="og:description" content="Common Programming Concepts" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-3/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 3" />
+<meta name="twitter:description" content="Common Programming Concepts" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 3</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 3</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 3</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="variables-and-mutability">Variables and Mutability</h2>
+<h3 id="1-let">(1) let</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The value of x is: {}&#34;</span>, x);
+    x <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The value of x is: {}&#34;</span>, x);
+}
+</code></pre></div><ul>
+<li>rust에서 모든 변수는 기본적으로 불변하며, 안전하고 쉬운 코드를 작성하기 위함이다.</li>
+<li>위 코드는 <code>cannot assign twice to immutable variable</code>에러와 함께 컴파일되지 않는다. <em><code>help: consider making this binding mutable: mut x</code>라는 친절한 팁과 함께&hellip;</em></li>
+<li>rust는 컴파일러 차원에서 불변하다고 선언한 값은 변경할 수 없도록 보장하기 때문에 특정 변수의 값이 언제 어디서 바뀌는지 일일이 추적할 필요가 없다.</li>
+<li>위 에러는 x 변수에 <code>mut</code> 키워드를 추가해 해결할 수 있다.</li>
+<li>매번 복사하고 새로운 인스턴스를 반환해야할 때에는 가변형이 유용하다.</li>
+</ul>
+<p><br /></p>
+<h3 id="2-constants">(2) constants</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">const</span> MAX_POINTS: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100_000</span>;
+</code></pre></div><ul>
+<li>변수와 달리 <code>mut</code> 키워드를 사용할 수 없다.</li>
+<li><strong>let에 값을 할당하면 묵시적으로 타이핑되던 것과 달리, 할당할 값의 타입을 반드시 지정해야 한다.</strong></li>
+<li>함수 호출의 결과값이나 런타임 연산으로 받은 값을 사용할 수 없다.</li>
+<li>rust는 상수 이름에 대문자만 사용하며, 단어 사이에 밑줄을 추가한다.</li>
+</ul>
+<p><br /></p>
+<h2 id="shadowing">Shadowing</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+
+    {
+        <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The value of x in the inner scope is: {}&#34;</span>, x);
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The value of x is: {}&#34;</span>, x);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// O
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> spaces <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;   &#34;</span>;
+<span style="color:#66d9ef">let</span> spaces <span style="color:#f92672">=</span> spaces.len();
+
+<span style="color:#75715e">// X (mismatched types)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> spaces <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;   &#34;</span>;
+spaces <span style="color:#f92672">=</span> spaces.len();
+</code></pre></div><ul>
+<li>첫번째 코드의 x는 12이다.</li>
+<li>두번째 코드처럼 shadowing을 통해 동일한 이름의 변수를 다른 타입으로 사용할 수 있다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="data-types">Data Types</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> guess: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;42&#34;</span>.parse().expect(<span style="color:#e6db74">&#34;Not a number!&#34;</span>);
+</code></pre></div><p>: 문자열을 숫자 타입으로 변환할 때처럼 여러 타입을 사용해야 한다면 type annotation을 통해 타입을 명시한다.</p>
+<p><br /></p>
+<h3 id="1-scarlar-">(1) 스칼라(Scarlar) 타입</h3>
+<ul>
+<li>
+<p>하나의 값을 표현하는 타입이다.</p>
+</li>
+<li>
+<p>정수(integers), 부동 소수점 숫자(floating-point numbers), 불리언(Booleans), 문자열(characters)</p>
+<p><br /></p>
+<h4 id="--">정수, 부동 소수점</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.0</span>; <span style="color:#75715e">// f64
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> y: <span style="color:#66d9ef">f32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.0</span> <span style="color:#75715e">// f32
+</span><span style="color:#75715e"></span>}
+
+</code></pre></div><ul>
+<li>
+<p>부호가 있으면 i로, 없으면 u로 시작한다. <em>ex. <code>i32</code>, <code>u32</code></em></p>
+</li>
+<li>
+<p>부호가 없고 있음의 차이는 음수를 저장할 수 있는지 양수만 저장 가능한지 여부이다.</p>
+</li>
+<li>
+<p><code>isize</code>, <code>usize</code> 타입은 프로그램이 실행중인 컴퓨터 종류에 따라 크기가 달라진다.</p>
+</li>
+<li>
+<p><strong>rust 정수의 기본타입인 i32*가 대체로 가장 빠르며 64bit 플랫폼에서도 그렇다.</strong></p>
+</li>
+<li>
+<p>rust는 디버그 모드로 컴파일하면 정수 오버플로 추가검사를 통해 <a href="https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html">panic</a>을 발생시킨다.</p>
+</li>
+<li>
+<p>소수점 숫자 타입은 <code>f32</code>, <code>f64</code>가 있다.</p>
+</li>
+<li>
+<p>대부분 CPU에서 f64가 f32만큼 빠르면서 정확도가 높아, <strong>rust는 f64를 기본타입으로 하고 있다.</strong></p>
+</li>
+<li>
+<p>숫자 사칙연산은 다른 언어들과 동일하다. <a href="https://doc.rust-lang.org/book/appendix-02-operators.html">모든 연산자 목록</a></p>
+<p><br /></p>
+</li>
+</ul>
+<h4 id="-">불리언, 문자</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> t <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+    <span style="color:#66d9ef">let</span> f: <span style="color:#66d9ef">bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>; <span style="color:#75715e">// with explicit type annotation
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">let</span> c <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;z&#39;</span>;
+    <span style="color:#66d9ef">let</span> z <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ℤ&#39;</span>;
+    <span style="color:#66d9ef">let</span> heart_eyed_cat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;😻&#39;</span>;
+}
+</code></pre></div><ul>
+<li>
+<p>불리언은 <code>bool</code>키워드로 선언한다.</p>
+</li>
+<li>
+<p>불리언의 크기는 1byte이다.</p>
+</li>
+<li>
+<p>문자는 <code>char</code>타입으로, 언어가 제공하는 가장 기본적인 알파벳이다.</p>
+</li>
+<li>
+<p>문자열 리터럴은 큰따옴표로 표현하지만, char 리터럴은 작은따옴표로 표현한다.</p>
+</li>
+<li>
+<p>char 타입은 4byte 유니코드 스칼라값이어서 ASCII보다 더 많은 문자를 표현할 수 있다.</p>
+<p><br /></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-compound-">(2) 컴파운드(Compound) 타입</h3>
+<ul>
+<li>하나의 타입으로 여러 값을 그룹화한 타입이다.</li>
+<li>튜플(tuples), 배열(arrays)</li>
+</ul>
+<p><br /></p>
+<h4 id="heading">튜플</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> tup: (<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">f64</span>, <span style="color:#66d9ef">u8</span>) <span style="color:#f92672">=</span> (<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">6.4</span>, <span style="color:#ae81ff">1</span>);
+    <span style="color:#66d9ef">let</span> (x, y, z) <span style="color:#f92672">=</span> tup;
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The value of y is: {}&#34;</span>, y);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x: (<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">f64</span>, <span style="color:#66d9ef">u8</span>) <span style="color:#f92672">=</span> (<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">6.4</span>, <span style="color:#ae81ff">1</span>);
+
+    <span style="color:#66d9ef">let</span> five_hundred <span style="color:#f92672">=</span> x.<span style="color:#ae81ff">0</span>;
+
+    <span style="color:#66d9ef">let</span> six_point_four <span style="color:#f92672">=</span> x.<span style="color:#ae81ff">1</span>;
+
+    <span style="color:#66d9ef">let</span> one <span style="color:#f92672">=</span> x.<span style="color:#ae81ff">2</span>;
+}
+</code></pre></div><ul>
+<li>서로 다른 타입의 여러 값을 하나의 컴파운드 타입으로 묶을 때 적합하다.</li>
+<li>튜플은 한번 정의하면 그 크기를 조정할 수 없다.</li>
+<li>첫번째 코드처럼 선택적으로 타입 어노테이션을 적용할 수도 있다.</li>
+<li>첫번째 코드처럼 <strong>tup변수를 분해(destrucuring)해올 수도 있다.</strong></li>
+<li>두번째 코드처럼 <strong>마침표(.) 다음에 인덱스를 통해 각 요소를 참조해올 수도 있다.</strong></li>
+<li>어떤 값도 없는 튜플(<code>()</code>)은 하나의 값만 있는 특수 타입이며 묵시적으로 <a href="https://doc.rust-lang.org/std/primitive.unit.html">unit value</a>를 반환한다.</li>
+<li><strong>unit value는 void와 비슷하지만 반환값으로 사용할 수 있다는 차이가 있다.</strong></li>
+<li><em>rust는 함수형 언어니까 void대신 &lsquo;의미없는&rsquo; 값을 반환하도록 구현했을 것임</em>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// error: mismatched types: expected `()` but found `int`
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">f</span>() {
+    <span style="color:#ae81ff">1</span><span style="color:#66d9ef">i32</span>
+}
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<h4 id="heading-1">배열</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+
+    <span style="color:#66d9ef">let</span> b: [<span style="color:#66d9ef">i32</span>; <span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+}
+</code></pre></div><ul>
+<li>배열의 각 요소는 모두 같은 타입이어야 한다.</li>
+<li>배열은 고정된 크기이며, 데이터를 힙(heap)이 아닌 스택(stack) 메모리에 할당할 때 유용하다.</li>
+<li><em>동적으로 변하는 데이터는 벡터(vector)로 관리하며 <a href="https://doc.rust-lang.org/book/ch08-01-vectors.html">Chapter 8</a>에서 자세히 다룸</em></li>
+<li>배열타입을 지정하는 방법은 <code>[타입;원소개수]</code>이다.</li>
+<li>유효하지 않은 요소에 접근할 때 <code>thread 'main' panicked at...</code>처럼 panic을 발생시킨다.</li>
+<li><strong>rust는 컴파일에서는 문제가 없지만 런타임 에러를 내서 엉뚱한 메모리에 대한 접근을 막는다.</strong></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="heading-2">함수</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>);
+
+    another_function();
+
+    <span style="color:#75715e">// statement
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+
+    <span style="color:#75715e">// expressions
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> y2 <span style="color:#f92672">=</span> {
+        <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+        x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+    };
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">another_function</span>() {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Another function.&#34;</span>);
+}
+
+<span style="color:#75715e">// arrow function
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">five</span>() -&gt; <span style="color:#66d9ef">i32</span> {
+    <span style="color:#ae81ff">5</span>
+}
+</code></pre></div><ul>
+<li>rust에서 함수, 변수의 네이밍 컨벤션은 snake_case이다.</li>
+<li>rust에서 함수는 어딘가에 선언되기만 하면 사용할 수 있다.</li>
+<li>화살표 함수는 js에서와 마찬가지로 <code>return</code> 키워드를 생략할 수 있다.</li>
+<li>함수의 인자(parameter)와 인수(argument) 용어를 실제로는 섞어서 사용하기도 한다.</li>
+<li><code>문(statements)</code>은 뭔가 액션을 수행하지만 값을 반환하지는 않는다.</li>
+<li><code>식(expressions)</code>은 값을 반환하기 위해 평가한다.
+<ul>
+<li>expressions은 끝에 세미콜론(<code>;</code>)이 붙지 않는다.</li>
+<li>뒤에 세미콜론을 붙이면 statement로 전환되며 값을 반환하지 않는다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="control-flow">Control Flow</h2>
+<h3 id="1-if">(1) if</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// Handling Multiple Conditions
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> number <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+
+    <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;number is divisible by 4&#34;</span>);
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;number is divisible by 3&#34;</span>);
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;number is divisible by 2&#34;</span>);
+    } <span style="color:#66d9ef">else</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;number is not divisible by 4, 3, or 2&#34;</span>);
+    }
+}
+
+<span style="color:#75715e">// Using in a let Statement
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> condition <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+    <span style="color:#66d9ef">let</span> number <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> condition { <span style="color:#ae81ff">5</span> } <span style="color:#66d9ef">else</span> { <span style="color:#ae81ff">6</span> };
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The value of number is: {}&#34;</span>, number);
+}
+
+</code></pre></div><ul>
+<li>if문에서 값을 반환하여 표현식처럼 사용할 수 있다.</li>
+<li>if-else 타입이 다르면 컴파일되지 않는다. <em>ex. if는 숫자이고 else는 문자열을 반환</em></li>
+</ul>
+<p><br /></p>
+<h3 id="2-loop-while-for">(2) loop, while, for</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#75715e">// loop
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">loop</span> {
+        counter <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+
+        <span style="color:#66d9ef">if</span> counter <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> {
+            <span style="color:#66d9ef">break</span> counter <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+        }
+    };
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The result is {}&#34;</span>, result);
+
+    <span style="color:#75715e">// while
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">50</span>];
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+    <span style="color:#66d9ef">while</span> index <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;the value is: {}&#34;</span>, a[index]);
+
+        index <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    }
+
+    <span style="color:#75715e">// for
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> element <span style="color:#66d9ef">in</span> a {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;the value is: {}&#34;</span>, element);
+    }
+
+    <span style="color:#66d9ef">for</span> number <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">1</span>..<span style="color:#ae81ff">4</span>).rev() {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}!&#34;</span>, number);
+    }
+}
+</code></pre></div><ul>
+<li>loop는 영원히 반복되므로 반드시 탈출 조건이 필요하다.</li>
+<li>loop에서 <code>break</code>뒤에 값을 붙이면 반환할 수 있다.</li>
+<li>while은 특정 조건에 따라 반복할 때 사용한다.</li>
+<li>for는 특정 컬렉션을 순회하면서 반복할 때 사용한다.</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

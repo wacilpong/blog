@@ -15,37 +15,42 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/rust/rust-3/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/post/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/study/rust/rust-4/</loc>
+    <lastmod>2022-04-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/rust/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/study/</loc>
+    <lastmod>2022-04-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/tags/</loc>
+    <lastmod>2022-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/study/rust/rust-3/</loc>
     <lastmod>2022-04-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/rust/rust-2/</loc>
+    <loc>https://wacilpong.github.io/blog/study/rust/rust-2/</loc>
     <lastmod>2022-04-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/rust/rust-1/</loc>
+    <loc>https://wacilpong.github.io/blog/study/rust/rust-1/</loc>
     <lastmod>2022-03-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -55,8 +60,18 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/post/</loc>
+    <lastmod>2022-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/tags/review/</loc>
     <lastmod>2022-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
+    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -230,52 +245,52 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-10/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-10/</loc>
     <lastmod>2018-10-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-9/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-9/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-8/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-8/</loc>
     <lastmod>2018-10-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-7/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-7/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-6/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-6/</loc>
     <lastmod>2018-10-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-5/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-5/</loc>
     <lastmod>2018-10-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-4/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-4/</loc>
     <lastmod>2018-10-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-3/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-3/</loc>
     <lastmod>2018-10-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-2/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-2/</loc>
     <lastmod>2018-10-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/blockchain/blockchain-1/</loc>
+    <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-1/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -311,10 +326,6 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
   </url>
   
   <url>

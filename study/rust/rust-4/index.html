@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Understanding Ownership" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 4" />
+<meta property="og:site_name" content="After reading Rust book chapter 4" />
+<meta property="og:description" content="Understanding Ownership" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-4/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 4" />
+<meta name="twitter:description" content="Understanding Ownership" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 4</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 4</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 4</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="-ownership">소유권 (Ownership)</h2>
+<h3 id="heading">배경</h3>
+<ul>
+<li>ownership은 rust가 메모리를 어떻게 관리하는지에 대해 제어하는 일련의 규칙이다.</li>
+<li>가비지 컬렉터나 개발자가 임의로 메모리를 해제하는 방식 대신, ownership 시스템에 의해 관리된다.</li>
+<li>rust 같은 시스템 프로그래밍 언어에서는 값이 스택/힙 어디에 저장되는지에 따라 언어의 동작에 영향을 미친다.
+<ul>
+<li>스택과 힙은 모두 런타임에 활용하는 메모리의 일부이다.</li>
+<li>스택은 Last In First Out 구조이며, 고정된 크기를 가져야 한다.</li>
+<li>컴파일 시점에 알 수 없거나 런타임에 동적으로 변하는 데이터는 힙 메모리에 저장한다.</li>
+<li>힙에 데이터를 넣으려면 운영체제는 일정한 공간을 찾아 사용중임을 표시하고 해당 메모리의 주소값(pointer)을 넘겨주며 이를 할당(allocating)이라고 한다.</li>
+<li>포인터 자체는 고정된 크기이므로 스택에 저장할 수 있다.</li>
+<li>실제 포인터가 가리키는 데이터는 그 포인터가 가리키는 메모리를 따라가야 한다.</li>
+</ul>
+</li>
+<li><strong>함수를 호출할 때 (힙 메모리에 저장된 데이터에 대한 포인터를 포함한) 여러 값이 전달되며, 그 값들은 함수의 로컬변수로써 할당되어 스택에 저장되고 함수 실행이 끝나면 스택에서 제거된다.</strong></li>
+<li><strong>코드의 어느 부분이 힙 메모리에 저장된 데이터를 사용하는지 추적하고 힙에 저장되는 데이터의 중복을 최소화해 사용하지 않는 데이터를 힙 메모리에서 제거하면 메모리 부족 문제를 해소할 수 있다.</strong></li>
+<li>=&gt; rust ownership은 위 문제를 해결하기 위한 방법이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="heading-1">규칙</h3>
+<ul>
+<li>rust에서 다루는 각각의 값은 owner라고 불리우는 변수를 가지고 있다.</li>
+<li>특정 시점에 값의 owner는 단 하나뿐이다.</li>
+<li>owner가 범위를 벗어나면 그 값은 제거된다.</li>
+</ul>
+<p><br /></p>
+<h3 id="-string-">사례: String 타입</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</code></pre></div><ul>
+<li>s는 문자열 리터럴로, 불변하며 코드 작성 시점에 필요한 모든 문자열값을 알 수 없다.</li>
+<li>s2는 String 타입으로, 힙에 할당되므로 컴파일 시점에 알 수 없는 크기의 문자열을 저장할 수 있다.</li>
+<li><strong>s2는 from 함수를 통해 문자열 리터럴을 이용해 생성시킨 String 인스턴스이다.</strong></li>
+<li><strong>String 타입은 변경할 수 있지만, 문자열 리터럴은 변경할 수 없는 이유는 메모리 차이이다.</strong></li>
+</ul>
+<p><br /></p>
+<h4 id="string---">String 타입에서의 메모리 할당</h4>
+<blockquote>
+<p>해당 메모리는 반드시 런타임에 운영체제에 요청해야 하고, String 타입의 사용이 완료되면 이 메모리를 운영체제에 다시 돌려줄 방법이 필요하다.</p>
+</blockquote>
+<ul>
+<li>첫번째 절차는 개발자가 <code>String::from</code> 함수를 호출하면 되며, 이 동작은 일반적이다.</li>
+<li>두번째 절차는 <strong>rust는 변수에 할당된 메모리는 변수를 소유한 스코프를 벗어나는 순간 자동으로 해제한다.</strong>
+<ul>
+<li>변수가 범위를 벗어나면 rust는 <a href="https://doc.rust-lang.org/std/ops/trait.Drop.html#tymethod.drop">drop</a>이라는 이름의 특별한 함수를 호출한다.</li>
+<li>drop 함수는 그 타입에 대한 메모리를 해제하며, 닫는 중괄호를 만나면 자동으로 호출된다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="1-----move">(1) 변수-데이터가 상호작용하는 방식: 이동(move)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+<span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> x;
+
+println<span style="color:#f92672">!</span>(println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, x);
+
+<span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> s1;
+
+<span style="color:#75715e">// value used here after move
+</span><span style="color:#75715e"></span>println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, s1);
+</code></pre></div><ul>
+<li>정수와 달리 스트링 타입은 포인터, 길이, 용량을 스택에 저장하므로 메모리 해제가 필요하다.</li>
+<li>rust는 할당된 메모리를 복사하는 대신 변수 s1을 무효화시킨다.</li>
+<li>얕은 복사가 아닌 무효화 처리이기 때문에 이동(move)했다고 표현한다.</li>
+<li>이로써 위 코드에서 s2만 유효하기 때문에 두 변수가 스코프를 벗어나도 s2만 메모리를 해제한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="2-----clone">(2) 변수-데이터가 상호작용하는 방식: 복제(clone)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> s1.clone();
+
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;s1 = {}, s2 = {}&#34;</span>, s1, s2);
+</code></pre></div><ul>
+<li>스택 데이터가 아닌 힙 메모리에 저장된 String 데이터를 깊은 복사해야 한다면 <code>clone</code>을 쓴다.</li>
+<li>복사하는 메모리의 크기에 따라 무거운 작업이 될 수도 있다.</li>
+<li>자세한 사항은 5장에서 다룬다.</li>
+</ul>
+<p><br /></p>
+<h4 id="3----copy">(3) 스택 전용 데이터: 복사(copy)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+<span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> x;
+
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x = {}, y = {}&#34;</span>, x, y);
+</code></pre></div><ul>
+<li>그럼 위 코드는 clone하지도 않았고 변수 y로 move하지도 않았는데 왜 동작할까?</li>
+<li>정수형 같은 타입은 컴파일 시점에 이미 크기를 알 수 있어 온전히 스택에 저장된다.</li>
+<li>즉, 실제 값을 복사하는 것이 성능에 부담을 주지 않는다.</li>
+<li>깊은 복사와 얕은 복사 간의 차이가 없으므로 clone해도 얕은 복사와 차이가 없다.</li>
+<li><a href="https://doc.rust-lang.org/book/appendix-03-derivable-traits.html#clone-and-copy-for-duplicating-values">copy trait</a>라는 특성이 적용되어 있으면 그 타입의 변수는 새 변수에 할당해도 무효화되지 않는다.
+<ul>
+<li><code>u32</code>와 같은 모든 정수형 타입</li>
+<li><code>bool</code>, true와 false만 갖는 불리언 타입</li>
+<li><code>f64</code>와 같은 부동 소수점 타입</li>
+<li><code>char</code>, 문자 타입</li>
+<li>copy trait가 적용된 타입으로 이루어진 튜플, <em>ex. (i32, i32)</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="ownership-and-functions">Ownership and Functions</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+
+    takes_ownership(s);
+
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+
+    makes_copy(x);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_ownership</span>(some_string: String) {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, some_string);
+}
+<span style="color:#75715e">// Here, some_string goes out of scope and `drop` is called. The backing
+</span><span style="color:#75715e"></span><span style="color:#75715e">// memory is freed.
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">makes_copy</span>(some_integer: <span style="color:#66d9ef">i32</span>) {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, some_integer);
+}
+<span style="color:#75715e">// Here, some_integer goes out of scope. Nothing special happens.
+</span></code></pre></div><ul>
+<li>함수에 값을 전달하는 것은, 변수에 값을 대입하는 것과 유사하다.</li>
+<li>위 코드에서 takes_ownership 메서드 호출 후 변수 s를 사용하려고 하면 컴파일 에러가 뜰 것이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="return-values-and-scope">Return Values and Scope</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> gives_ownership();
+    <span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+    <span style="color:#66d9ef">let</span> s3 <span style="color:#f92672">=</span> takes_and_gives_back(s2);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">gives_ownership</span>() -&gt; String {
+    <span style="color:#66d9ef">let</span> some_string <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;yours&#34;</span>);
+
+    some_string
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_and_gives_back</span>(a_string: String) -&gt; String {
+    a_string
+}
+</code></pre></div><ul>
+<li>함수의 반환값 또한 ownership을 이전하고, 스코프를 벗어날 때 drop 함수에 의해 제거된다.</li>
+<li>함수에 값을 전달할 때 ownership을 이전하고 싶지 않다면 어떻게 해야 할까?</li>
+<li>함수에 전달했던 변수를 다시 사용하기 위해 매번 그 변수를 실제 반환값과 함께 다시 반환해야 하는 것은 번거롭다.</li>
+<li>이를 위해 rust는 참조(references)를 지원한다.</li>
+</ul>
+<p><br /></p>
+<h2 id="references-and-borrowing">References and Borrowing</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+    <span style="color:#66d9ef">let</span> len <span style="color:#f92672">=</span> calculate_length(<span style="color:#f92672">&amp;</span>s1);
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The length of &#39;{}&#39; is {}.&#34;</span>, s1, len);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">calculate_length</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">usize</span> {
+    s.len()
+}
+</code></pre></div><ul>
+<li>값의 ownership을 이동시키는 대신, 매개변수로 전달된 객체의 참조를 이용하도록 할 수 있다.</li>
+<li><strong>앰퍼샌드(&amp;) 기호가 바로 참조이며, ownership을 가져오지 않고도 값을 참조할 수 있다.</strong></li>
+<li><code>&amp;s1</code>은 변수 s1의 값은 읽을 수 있지만 ownership은 없는 참조인 상태를 의미한다.</li>
+<li>참조가 가리키는 값은 참조가 범위를 벗어나더라도 drop 함수가 호출되지 않는다.</li>
+<li><strong>즉, calculate_length함수가 끝날 때 변수 s는 자신이 가리키는 값에 ownership이 없으므로 아무 일도 일어나지 않는다.</strong></li>
+<li>함수의 매개변수로 참조를 전달하는 것을 <code>borrowing</code>이라고 한다.</li>
+<li>빌려온 매개변수, 즉 참조는 불변하므로 변경할 수 없다.</li>
+</ul>
+<p><br /></p>
+<h3 id="--mutable-references">가변 참조 (Mutable References)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+
+    change(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">change</span>(some_string: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> String) {
+    some_string.push_str(<span style="color:#e6db74">&#34;, world&#34;</span>);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+<span style="color:#66d9ef">let</span> r1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s;
+<span style="color:#66d9ef">let</span> r2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s;
+
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}, {}&#34;</span>, r1, r2);
+</code></pre></div><ul>
+<li><strong>(1) 특정 스코프 내의 특정 데이터에 대한 가변 참조는 하나만 허용된다.</strong>
+<ul>
+<li>첫번째 코드처럼 가변 참조를 전달받으면 변경할 수 있다.</li>
+<li>두번째 코드는 에러를 낸다. <em>cannot borrow <code>s</code> as mutable more than once at a</em></li>
+<li>이는 data races를 컴파일 시점에 방지하기 위함이다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+
+<span style="color:#66d9ef">let</span> r1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> r2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> r3 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s; <span style="color:#75715e">// BIG PROBLEM
+</span><span style="color:#75715e"></span>
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}, {}, and {}&#34;</span>, r1, r2, r3);
+</code></pre></div><ul>
+<li><strong>(2) 불변 참조를 이미 사용중일 때도 가변 참조를 생성할 수 없다.</strong>
+<ul>
+<li>데이터를 읽는 동작은 아무 영향이 없으므로 불변 참조는 여러 개 생성해도 된다.</li>
+<li>위 코드는 에러를 낸다. <em>cannot borrow <code>s</code> as mutable because it is also borrowed as immutable</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> reference_to_nothing <span style="color:#f92672">=</span> dangle();
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">dangle</span>() -&gt; <span style="color:#66d9ef">&amp;</span>String {
+    <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+
+    <span style="color:#f92672">&amp;</span>s
+}
+</code></pre></div><ul>
+<li><strong>(3) 참조는 항상 유효해야 한다.</strong>
+<ul>
+<li>rust는 죽은 참조가 일어나지 않도록 컴파일러가 보장한다.</li>
+<li>이때 죽은 참조란 이미 해제되어 다른 정보가 저장된 메모리를 계속 참조하는 포인터이다.</li>
+<li>즉, 어떤 데이터에 대한 참조를 생성하면 컴파일러가 참조하기 전에 스코프를 벗어났는지 확인해준다.</li>
+<li>따라서 위 코드는 에러를 낸다. <code>missing lifetime specifier</code></li>
+<li><strong>dangle 함수는 String에 대한 참조를 반환하는데, 변수 s가 반환시점에 스코프를 벗어나므로 drop 함수가 호출되고 메모리가 해제된다.</strong> 따라서 이 함수는 에러의 위험이 있기 때문에 에러를 발생시키는 것이다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="--slice-type">슬라이스 타입 (Slice Type)</h2>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

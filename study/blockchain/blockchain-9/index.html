@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="Mushroomy&#39;s 9th Blockcahin Story" />
+<meta property="og:site_name" content="Mushroomy&#39;s 9th Blockcahin Story" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/blockchain/blockchain-9/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Mushroomy&#39;s 9th Blockcahin Story" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mushroomy&#39;s 9th Blockcahin Story</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Mushroomy&#39;s 9th Blockcahin Story</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Mushroomy&#39;s 9th Blockcahin Story</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="truffle-command">Truffle Command</h2>
+<h4 id="1---------npm-i--g-truffle-">1. 설치 및 버전 확인: 아래의 버전내용이 뜨지 않으면 <code>npm i -g truffle</code>로 설치하자.</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">test <span style="color:#f92672">$</span> truffle <span style="color:#f92672">-</span><span style="color:#f92672">-</span>version
+
+Truffle <span style="color:#a6e22e">v4.1.14 </span>(core<span style="color:#f92672">:</span> <span style="color:#ae81ff">4.1</span><span style="color:#ae81ff">.14</span>)
+Solidity <span style="color:#a6e22e">v0.4.24 </span>(solc<span style="color:#f92672">-</span>js)
+</code></pre></div><p><br /></p>
+<h4 id="2----">2. 트러플 프로젝트 초기화 과정</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">test <span style="color:#f92672">$</span> truffle init
+
+Downloading...
+Unpacking...
+Setting up...
+Unbox successful. Sweet<span style="color:#f92672">!</span>
+
+Commands<span style="color:#f92672">:</span>
+
+Compile<span style="color:#f92672">:</span>        truffle compile
+Migrate<span style="color:#f92672">:</span>        truffle migrate
+Test contracts<span style="color:#f92672">:</span> truffle test
+
+test <span style="color:#f92672">$</span> ls <span style="color:#f92672">-</span>al
+
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">7</span> test  staff   <span style="color:#ae81ff">224</span>B Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> .
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">4</span> test  staff   <span style="color:#ae81ff">128</span>B Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31</span> ..
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">3</span> test  staff    <span style="color:#ae81ff">96</span>B Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> build
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">4</span> test  staff   <span style="color:#ae81ff">128</span>B Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> contracts
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">4</span> test  staff   <span style="color:#ae81ff">128</span>B Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">44</span> migrations
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">2</span> test  staff    <span style="color:#ae81ff">64</span>B Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31</span> test
+<span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>  <span style="color:#ae81ff">1</span> test  staff   <span style="color:#ae81ff">545</span>B Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31</span> truffle<span style="color:#f92672">-</span>config.js
+<span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>  <span style="color:#ae81ff">1</span> test  staff   <span style="color:#ae81ff">545</span>B Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31</span> truffle.js
+</code></pre></div><p><br /></p>
+<h4 id="3---">3. 스마트 컨트랙트 생성</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">test <span style="color:#f92672">$</span> cd contracts
+contracts <span style="color:#f92672">$</span> vi MyName.sol
+
+pragma solidity ^0.4.24;
+
+contract MyName {
+    string myName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">JongKwang Coin&#34;</span>;
+
+    function <span style="color:#a6e22e">getMyName</span>() constant public <span style="color:#a6e22e">returns</span>(string) {
+        return myName;
+    }
+
+    function <span style="color:#a6e22e">setMyName</span>(string newMyName) public {
+        myName <span style="color:#f92672">=</span> newMyName;
+    }
+}
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">:</span>wq
+
+contracts <span style="color:#f92672">$</span> ls <span style="color:#f92672">-</span>al
+
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">4</span> test  staff  <span style="color:#ae81ff">128</span> Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> .
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">7</span> test  staff  <span style="color:#ae81ff">224</span> Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span><span style="color:#ae81ff">05</span> ..
+<span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>  <span style="color:#ae81ff">1</span> test  staff  <span style="color:#ae81ff">507</span> Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31</span> Migrations.sol
+<span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>  <span style="color:#ae81ff">1</span> test  staff  <span style="color:#ae81ff">244</span> Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">54</span> MyName.sol
+</code></pre></div><p><br /></p>
+<h4 id="4----for-deploying">4. 마이그레이션 파일 생성 (for deploying)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">test <span style="color:#f92672">$</span> cd migrations
+migrations <span style="color:#f92672">$</span> vi <span style="color:#ae81ff">2</span>_deploy_myname.js
+
+var myName <span style="color:#f92672">=</span> <span style="color:#a6e22e">artifacts.require</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">./MyName.sol&#34;</span>);
+module.exports <span style="color:#f92672">=</span> <span style="color:#a6e22e">function</span>(deployer) {
+        <span style="color:#a6e22e">deployer.deploy</span>(myName);
+};
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">~</span>
+<span style="color:#f92672">:</span>wq
+
+migrations <span style="color:#f92672">$</span> ls <span style="color:#f92672">-</span>al
+
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">4</span> test  staff  <span style="color:#ae81ff">128</span> Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span> .
+drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x  <span style="color:#ae81ff">7</span> test  staff  <span style="color:#ae81ff">224</span> Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span><span style="color:#ae81ff">05</span> ..
+<span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>  <span style="color:#ae81ff">1</span> test  staff  <span style="color:#ae81ff">129</span> Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31</span> <span style="color:#ae81ff">1</span>_initial_migration.js
+<span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>r<span style="color:#f92672">-</span><span style="color:#f92672">-</span>  <span style="color:#ae81ff">1</span> test  staff  <span style="color:#ae81ff">116</span> Oct <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">44</span> <span style="color:#ae81ff">2</span>_deploy_myname.js
+</code></pre></div><p><br /></p>
+<ul>
+<li>마이그레이션 파일은 반드시 순서대로 만들어져야 한다. <code>1, 2, 3...</code></li>
+<li>대소문자는 상관없지만 <code>under bar(_)</code>로 이루어져야 한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="5--">5. 개발환경 구성</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">test <span style="color:#f92672">$</span> truffle develop
+
+Truffle Develop started at http<span style="color:#f92672">:</span><span style="color:#f92672">/</span><span style="color:#f92672">/</span><span style="color:#ae81ff">127.0</span><span style="color:#ae81ff">.0</span><span style="color:#ae81ff">.1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">9545</span><span style="color:#f92672">/</span>
+
+Accounts<span style="color:#f92672">:</span>
+{<span style="color:#ae81ff">10</span>개 생성됨}
+
+Private Keys<span style="color:#f92672">:</span>
+{<span style="color:#ae81ff">10</span>개 생성됨}
+
+Mnemonic<span style="color:#f92672">:</span> candy maple cake sugar pudding cream honey rich smooth crumble sweet treat
+
+⚠️  Important ⚠️  <span style="color:#f92672">:</span> This mnemonic was created for you by Truffle. It is not secure.
+Ensure you do not use it on production blockchains, or else you risk losing funds.
+
+<span style="color:#a6e22e">truffle</span>(develop)<span style="color:#f92672">&gt;</span>
+<span style="color:#a6e22e">truffle</span>(develop)<span style="color:#f92672">&gt;</span>
+</code></pre></div><p><br /></p>
+<h4 id="6-----">6. 배포 (한 번만 하면 됨)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#a6e22e">truffle</span>(develop)<span style="color:#f92672">&gt;</span> migrate
+
+Compiling ./contracts<span style="color:#f92672">/</span>Migrations.sol...
+Compiling ./contracts<span style="color:#f92672">/</span>MyName.sol...
+Writing artifacts to ./build<span style="color:#f92672">/</span>contracts
+
+Using network <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">develop&#39;</span>.
+
+Running migration<span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>_initial_migration.js
+  Deploying Migrations...
+  <span style="color:#66d9ef">...</span> {hash}
+  Migrations<span style="color:#f92672">:</span> {hash}
+Saving successful migration to network...
+  <span style="color:#66d9ef">...</span> {hash}
+Saving artifacts...
+Running migration<span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>_deploy_myname.js
+  Deploying MyName...
+  <span style="color:#66d9ef">...</span> {hash}
+  MyName<span style="color:#f92672">:</span> {hash}
+Saving successful migration to network...
+  <span style="color:#66d9ef">...</span> {hash}
+Saving artifacts...
+</code></pre></div><p><br /></p>
+<h2 id="truffle-with-web3-api">Truffle (with Web3 API)</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#a6e22e">ttruffle</span>(develop)<span style="color:#f92672">&gt;</span> web3.eth
+
+Eth {
+  _requestManager<span style="color:#f92672">:</span>
+   RequestManager {
+     provider<span style="color:#f92672">:</span>
+      HttpProvider {
+        host<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">http://127.0.0.1:9545/&#39;</span>,
+        timeout<span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+        user<span style="color:#f92672">:</span> undefined,
+        password<span style="color:#f92672">:</span> undefined,
+        headers<span style="color:#f92672">:</span> undefined,
+        send<span style="color:#f92672">:</span> [Function],
+        sendAsync<span style="color:#f92672">:</span> [Function],
+        _alreadyWrapped<span style="color:#f92672">:</span> true },
+     polls<span style="color:#f92672">:</span> {},
+     timeout<span style="color:#f92672">:</span> null },
+  getBalance<span style="color:#f92672">:</span>
+
+  <span style="color:#a6e22e">... </span>(생략)<span style="color:#66d9ef">...</span>
+</code></pre></div><ul>
+<li>truffle은 <code>web3</code> API를 사용하므로 해당 명령어 사용가능</li>
+<li>command ex)</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ae81ff">1</span><span style="color:#a6e22e">. MyName.deployed</span>()<span style="color:#a6e22e">.then</span>(<span style="color:#a6e22e">function</span>(instance) { app <span style="color:#f92672">=</span> nstance; })
+<span style="color:#ae81ff">2</span><span style="color:#a6e22e">. web3.fromWei</span>(<span style="color:#a6e22e">web3.eth.getBalance</span>(web3.eth.accounts[1]), <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ether&#34;</span>)
+<span style="color:#ae81ff">3</span><span style="color:#a6e22e">. app.setMyName</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Han&#34;</span>, {from<span style="color:#f92672">:</span> web3.eth.accounts[1]})
+<span style="color:#ae81ff">4</span><span style="color:#a6e22e">. app.getMyName</span>()
+</code></pre></div><ul>
+<li>MyName 컨트랙트를 <code>app</code>이라는 전역변수로 설정</li>
+<li>두번째 지갑 잔액 보기</li>
+<li>컨트랙트 내부 함수설정 + 가스비 지불은 2번째 지갑에서</li>
+<li>컨트랙트 내부 함수호출</li>
+</ul>
+<p><br /></p>
+<h2 id="ganache">Ganache</h2>
+<p><img src="/blog/images/ganache.png" alt="ganache" /></p>
+<p><br /></p>
+<ul>
+<li>사진에서 보여주듯, <code>RPC(Remote Procedure Call)</code>서버로 연결되어 있다.</li>
+<li>RPC는 별도의 원격제어를 위해 다른 주소에서 함수나 프로시저를 실행할 수 있게 해주는 프로세스 간 통신기술이다.</li>
+<li>가나슈는 <code>127.0.0.1:7545</code>로 연결되어 있다.</li>
+<li>127.0.0.1은 IPv4에서 본인의 컴퓨터를 의미하는 <code>루프백(loop back)</code> 호스트명이다.</li>
+<li>이때 루프백이란 라우팅, 스트림 등의 흐름이 별도 가공없이 원래의 장치로 돌아간다는 의미이다.</li>
+</ul>
+<p><br /></p>
+<h4 id="1-truffle-configjs-ganache--">1. truffle-config.js: ganache에 트러플 연결</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">module.exports <span style="color:#f92672">=</span> {
+  networks<span style="color:#f92672">:</span> {
+    development<span style="color:#f92672">:</span> {
+      host<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">127.0.0.1&#34;</span>,
+      port<span style="color:#f92672">:</span> <span style="color:#ae81ff">8545</span>,
+      network_id<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">*&#34;</span> <span style="color:#f92672">/</span><span style="color:#f92672">/</span> Match any network id
+    }
+  }
+};
+</code></pre></div><p><br /></p>
+<h4 id="2-command">2. command</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">truffle  console  <span style="color:#f92672">-</span><span style="color:#f92672">-</span>network development
+migrate  <span style="color:#f92672">-</span><span style="color:#f92672">-</span>compile<span style="color:#f92672">-</span>all  —reset
+</code></pre></div><p>-&gt; 1개 블록에 1개의 트랜잭션만 담는다.</p>
+<p><br /></p>
+<p><strong><em>Truffle pet shop</em></strong></p>
+<ul>
+<li><a href="https://truffleframework.com/tutorials/pet-shop">Ref: truffle pet shop</a></li>
+<li><a href="https://steemit.com/etherum/%40dongshik/ethereum-pet-shop-and-truffle">참고: 트러플 펫샵 튜토리얼</a></li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
