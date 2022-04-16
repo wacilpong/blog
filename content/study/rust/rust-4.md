@@ -173,6 +173,7 @@ fn takes_and_gives_back(a_string: String) -> String {
 - 이를 위해 rust는 참조(references)를 지원한다.
 
 <br />
+<hr />
 
 ## References and Borrowing
 
@@ -264,5 +265,124 @@ fn dangle() -> &String {
   - **dangle 함수는 String에 대한 참조를 반환하는데, 변수 s가 반환시점에 스코프를 벗어나므로 drop 함수가 호출되고 메모리가 해제된다.** 따라서 이 함수는 에러의 위험이 있기 때문에 에러를 발생시키는 것이다.
 
 <br />
+<hr />
 
-## 슬라이스 타입 (Slice Type)
+## Slice Type
+
+### (1) 문자열 슬라이스
+
+```rust
+fn main() {
+    let mut s = String::from("hello world");
+    let word = first_word(&s);
+
+    s.clear();
+}
+
+fn first_word_length(s: &String) -> usize {...}
+fn second_word_length(s: &String) -> (usize, usize) {...}
+```
+
+- 슬라이스 또한 ownership을 갖지 않는 타입이다.
+- **슬라이스를 통해 컬렉션 전체가 아닌, 컬렉션의 연속된 요소들을 참조할 수 있다.**
+- first_word_length 함수의 usize타입 반환값은 String 타입과 별개이므로 나중에도 값이 유효할 것이라 보장 X
+- second_word_length 함수는 단어의 시작과 끝 인덱스를 모두 추적해야 하므로 관리할 상태가 늘어난다.
+- main 함수를 보면 s변수를 비워도 word변수는 여전히 5를 가지고 있다.
+- **즉, word변수는 더이상 s변수와 데이터 싱크가 맞지 않아 버그를 유발할 수 있다.**
+- => 이 문제를 해결하기 위해 slice를 이용할 수 있다.
+
+<br />
+
+```rust
+let s = String::from("hello world");
+
+let hello = &s[0..5];
+let world = &s[6..11];
+```
+
+```rust
+let s = String::from("hello");
+let len = s.len();
+
+// (1)
+let slice = &s[0..2];
+let slice = &s[..2];
+
+// (2)
+let slice = &s[3..len];
+let slice = &s[3..];
+
+// (3)
+let slice = &s[0..len];
+let slice = &s[..];
+```
+
+- 위 방식을 통해 String 일부에 대한 참조를 얻게 된다.
+- `[시작인덱스..끝인덱스]` 형태로, world변수는 7번째 문자로부터 5개 문자를 참조한다.
+- 위 (1),(2),(3)은 각각 동일하게 동작한다.
+
+<br />
+
+```rust
+fn main() {
+    let mut s = String::from("hello world");
+    let word = first_word(&s);
+
+    s.clear(); // error!
+
+    println!("the first word is: {}", word);
+}
+
+fn first_word(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+```
+
+- 이제 first_word 함수는 String 타입에 대한 참조가 유효성을 컴파일러가 보장해준다.
+- _cannot borrow `s` as mutable because it is also borrowed as immutable_
+
+<br />
+
+```rust
+let s = "Hello, world!";
+```
+
+- **문자열 리터럴은 slice 타입이다.**
+- 문자열 리터럴 s변수의 타입은 `&str`이며, 바이너리의 어느 한 부분을 가리키는 슬라이스라는 뜻이다.
+- 따라서 문자열 리터럴은 항상 불변하다.
+
+<br />
+
+```rust
+// AS-IS
+fn first_word(s: &String) -> &str {}
+
+// TO-BE
+fn first_word(s: &str) -> &str {}
+```
+
+- AS-IS 함수는 String 타입의 값만 넘길 수 있다.
+- TO-BE 함수는 String과 &str 모두 적용할 수 있다.
+- 왜냐하면 String 타입을 전달해야 한다면 전체 문자열 슬라이스를 넘기면 된다.
+- 즉, **String 타입에 대한 참조대신 문자열 슬라이스를 매개변수로 사용하면 같은 기능을 유지하면서 더 보편적인 API 형태가 된다.**
+
+<br />
+
+### (2) 그외 타입 슬라이스
+
+```rust
+let a = [1, 2, 3, 4, 5];
+let slice = &a[1..3];
+```
+
+- 위 슬라이스는 `&[i32]`타입이다.
+- 슬라이스는 문자열에 특화되어 있으나, 모든 종류의 컬렉션에 활용할 수 있다.
+- _컬렉션은 벡터(vectors)를 소개하는 8장에서 자세히 다룸_
