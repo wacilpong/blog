@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -156,7 +156,7 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="guessing-game-입출력-붙이기">guessing game 입출력 붙이기</h2>
+    <div align="start" class="content"><h2 id="guessing-game--">guessing game 입출력 붙이기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::io;
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
@@ -179,11 +179,11 @@
 <li><code>String::new()</code>는 스트링 타입의 인스턴스를 생성하며, new는 여러 타입을 생성할 수 있는 보편적인 이름의 함수이다.</li>
 <li><code>&amp;</code>은 해당 argument가 reference임을 의미하며, 참조는 기본적으로 불변하다.</li>
 <li>따라서 해당 예제에서는 <strong>가변적이어야 하므로 &amp;guest가 아닌 &amp;mut guess이다.</strong></li>
-<li>read<em>line 메서드는 <code>io::Result</code> 타입을 반환하기도 하는데, enum으로 Ok와 Err값이 있다. expect 메서드를 통해 Result타입에 대응하고 에러인 경우 프로그램을 종료시킨다. *에러에 대한 복구방법은 9장에서 다룸</em></li>
+<li><code>read_line</code> 메서드는 <code>io::Result</code> 타입을 반환하기도 하는데, enum으로 Ok와 Err값이 있다. expect 메서드를 통해 Result타입에 대응하고 에러인 경우 프로그램을 종료시킨다. <em>에러에 대한 복구방법은 9장에서 다룸</em></li>
 <li>println! 메서드의 <code>{}</code>는 값을 대입할 공간 역할을 하며 여러개도 가능하다.</li>
 </ul>
 <p><br /></p>
-<h3 id="crate-rust-package-registry-써보기">crate: Rust Package Registry 써보기</h3>
+<h3 id="crate-rust-package-registry-">crate: Rust Package Registry 써보기</h3>
 <ul>
 <li>Cargo.toml <code>[dependencies]</code> 하위에 <a href="https://crates.io/crates/rand">rand</a>를 명시한다.</li>
 <li>이때 cargo는 dependencies에 리스팅된 crate들을 다운받는데, rand가 의존하는 다른 crate들까지 가져온다.</li>
@@ -191,7 +191,7 @@
 <li><code>cargo update</code> 명령어를 통해 lock파일을 무시하고 의존성의 마이너 버전상 가장 최신으로 업데이트한다.</li>
 </ul>
 <p><br /></p>
-<h2 id="1--100-랜덤숫자-부여하기">1 ~ 100 랜덤숫자 부여하기</h2>
+<h2 id="1--100--">1 ~ 100 랜덤숫자 부여하기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::io;
 <span style="color:#66d9ef">use</span> rand::Rng;
 
@@ -218,7 +218,7 @@
 <li>참고로 <code>cargo doc --open</code> 명령어를 통해 패키지와 사용된 의존성에 관한 문서를 확인할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h2 id="지정된-숫자와-추측한-숫자-비교하기">지정된 숫자와 추측한 숫자 비교하기</h2>
+<h2 id="----">지정된 숫자와 추측한 숫자 비교하기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> rand::Rng;
 <span style="color:#66d9ef">use</span> std::cmp::Ordering;
 <span style="color:#66d9ef">use</span> std::io;
@@ -229,9 +229,9 @@
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;You guessed: {}&#34;</span>, guess);
 
     <span style="color:#66d9ef">match</span> guess.cmp(<span style="color:#f92672">&amp;</span>secret_number) {
-        Ordering::Less <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
-        Ordering::Greater <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
-        Ordering::Equal <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;You win!&#34;</span>),
+        Ordering::Less <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
+        Ordering::Greater <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
+        Ordering::Equal <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;You win!&#34;</span>),
     }
 }
 </code></pre></div><ul>
@@ -252,13 +252,13 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="맞히면-종료하고-잘못된-입력값-처리하기">맞히면 종료하고 잘못된 입력값 처리하기</h2>
+<h2 id="-----1">맞히면 종료하고 잘못된 입력값 처리하기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#75715e">// --snip--
 </span><span style="color:#75715e"></span>
     <span style="color:#66d9ef">let</span> guess: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> guess.trim().parse() {
-        Ok(num) <span style="color:#f92672">=&gt;</span> num,
-        Err(_) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">continue</span>,
+        Ok(num) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> num,
+        Err(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">continue</span>,
     };
 
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;You guessed: {}&#34;</span>, guess);
@@ -267,9 +267,9 @@
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Please input your guess.&#34;</span>);
 
         <span style="color:#66d9ef">match</span> guess.cmp(<span style="color:#f92672">&amp;</span>secret_number) {
-            Ordering::Less <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
-            Ordering::Greater <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
-            Ordering::Equal <span style="color:#f92672">=&gt;</span> {
+            Ordering::Less <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
+            Ordering::Greater <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
+            Ordering::Equal <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
               println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;You win!&#34;</span>);
               <span style="color:#66d9ef">break</span>;
             }
@@ -306,16 +306,16 @@
             .expect(<span style="color:#e6db74">&#34;Failed to read line&#34;</span>);
 
         <span style="color:#66d9ef">let</span> guess: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> guess.trim().parse() {
-            Ok(num) <span style="color:#f92672">=&gt;</span> num,
-            Err(_) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">continue</span>,
+            Ok(num) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> num,
+            Err(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">continue</span>,
         };
 
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;You guessed: {}&#34;</span>, guess);
 
         <span style="color:#66d9ef">match</span> guess.cmp(<span style="color:#f92672">&amp;</span>secret_number) {
-            Ordering::Less <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
-            Ordering::Greater <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
-            Ordering::Equal <span style="color:#f92672">=&gt;</span> {
+            Ordering::Less <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
+            Ordering::Greater <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
+            Ordering::Equal <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
                 println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;You win!&#34;</span>);
                 <span style="color:#66d9ef">break</span>;
             }

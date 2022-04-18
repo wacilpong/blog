@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Using Structs to Structure Related Data" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 5" />
+<meta property="og:site_name" content="After reading Rust book chapter 5" />
+<meta property="og:description" content="Using Structs to Structure Related Data" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-5/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 5" />
+<meta name="twitter:description" content="Using Structs to Structure Related Data" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 5</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 5</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 5</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="structs---">구조체(Structs) 정의와 인스턴스 생성</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">User</span> {
+    active: <span style="color:#66d9ef">bool</span>,
+    username: String,
+    email: String,
+    sign_in_count: <span style="color:#66d9ef">u64</span>,
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
+        email: String::from(<span style="color:#e6db74">&#34;someone@example.com&#34;</span>),
+        username: String::from(<span style="color:#e6db74">&#34;someusername123&#34;</span>),
+        active: <span style="color:#a6e22e">true</span>,
+        sign_in_count: <span style="color:#ae81ff">1</span>,
+    };
+
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> user2 <span style="color:#f92672">=</span> User {
+        <span style="color:#75715e">// same
+</span><span style="color:#75715e"></span>    }
+
+    user2.email <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;anotheremail@example.com&#34;</span>);
+}
+</code></pre></div><ul>
+<li>구조체는 튜플과 비슷하나, 다음의 차이가 있다.
+<ul>
+<li>(1) 각 데이터에 이름을 부여해 의미를 더 명확하게 할 수 있다.</li>
+<li>(2) <strong>이름이 있으므로 인스턴스의 값을 읽거나 참조할 때 순서에 의존할 필요가 없다.</strong></li>
+</ul>
+</li>
+<li>구조체 안의 각 데이터를 필드(field)라고 한다.</li>
+<li><strong>구조체의 몇몇 필드만 가변적이라고 명시할 수 없고, 전체 인스턴스를 가변적으로 만들 수 있다.</strong></li>
+</ul>
+<p><br /></p>
+<h3 id="--ownership">구조체 데이터의 ownership</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">User</span> {
+    active: <span style="color:#66d9ef">bool</span>,
+    username: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
+    email: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
+    sign_in_count: <span style="color:#66d9ef">u64</span>,
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
+        email: <span style="color:#e6db74">&#34;someone@example.com&#34;</span>,
+        username: <span style="color:#e6db74">&#34;someusername123&#34;</span>,
+        active: <span style="color:#a6e22e">true</span>,
+        sign_in_count: <span style="color:#ae81ff">1</span>,
+    };
+}
+</code></pre></div><ul>
+<li>User에서 <code>&amp;str</code> 대신 String 타입을 사용하는 이유는 <strong>구조체의 각 인스턴스가 데이터의 ownership을 갖게히여 유효한 스코프 내에 존재하는 동안은 데이터 또한 유효할 수 있도록 하기 위한 의도이다.</strong></li>
+<li><strong>구조체에서 다른 변수가 소유한 데이터의 참조를 저장하려면 수명(lifetimes)이 필요하다.</strong></li>
+<li>수명은 구조체의 유효한 범위 안에서 구조체가 참조하는 데이터가 유효하다고 보장해준다.</li>
+<li>따라서 위 코드는 에러를 낸다. <em>missing lifetime specifier</em><br />
+<em><code>help: consider introducing a named lifetime parameter</code>라는 친절한 팁과 함께..</em><br />
+<em>수명에 관해서는 10장에서 자세히 다룸</em></li>
+</ul>
+<p><br /></p>
+<h3 id="---">구조체에 관한 유용한 문법들</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) shorthand
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">build_user</span>(email: String, username: String) -&gt; <span style="color:#a6e22e">User</span> {
+    User {
+        email,
+        username,
+        active: <span style="color:#a6e22e">true</span>,
+        sign_in_count: <span style="color:#ae81ff">1</span>,
+    }
+}
+
+<span style="color:#75715e">// (2) update syntax
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
+        email: String::from(<span style="color:#e6db74">&#34;someone@example.com&#34;</span>),
+        username: String::from(<span style="color:#e6db74">&#34;someusername123&#34;</span>),
+        active: <span style="color:#a6e22e">true</span>,
+        sign_in_count: <span style="color:#ae81ff">1</span>,
+    };
+
+    <span style="color:#66d9ef">let</span> user2 <span style="color:#f92672">=</span> User {
+        email: String::from(<span style="color:#e6db74">&#34;another@example.com&#34;</span>),
+        ..user1
+    };
+}
+
+<span style="color:#75715e">// (3) tuple structs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Color</span>(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>);
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span>(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>);
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> black <span style="color:#f92672">=</span> Color(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+    <span style="color:#66d9ef">let</span> origin <span style="color:#f92672">=</span> Point(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+}
+
+<span style="color:#75715e">// (4) Unit-Like Structs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AlwaysEqual</span>;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> subject <span style="color:#f92672">=</span> AlwaysEqual;
+}
+</code></pre></div><ul>
+<li>(1)의 구조체의 필드 초기화 단축 문법을 사용해 변수명을 일일이 입력할 필요가 없다.</li>
+<li>(2)의 구조체 갱신 문법은 <code>=</code>처럼 할당하는 것이므로 데이터가 이동된다.
+<ul>
+<li><strong>즉, 위 예시에서 user1은 user2로 이동되었기 때문에 더이상 사용할 수 없다.</strong></li>
+<li><strong>만약 email, username 모두 새 문자열을 할당한다면 user1에는 <code>copy trait</code>를 가진 타입(불리언, 정수)만 존재하므로 user1은 user2가 생성되어도 여전히 유효할 것이다.</strong></li>
+</ul>
+</li>
+<li>(3)은 튜플 구조체로, 알반 구조체처럼 각 필드에 이름을 부여하는 것이 불필요하지만 튜플 자체에는 이름을 부여해서 다른 튜플들과 구분해야할 때 유용하다.
+<ul>
+<li>black과 origin은 같은 타입들을 포함하고 있지만, 각각 다른 튜플 구조체의 인스턴스이므로 서로 다른 타입이다.</li>
+<li>이외에는 다른 튜플들과 똑같이 동작한다.</li>
+</ul>
+</li>
+<li>(4)처럼 필드가 하나도 없는 구조체는 <code>()</code>과 유사하게 동작해서 유사 유닛 구조체라고 부른다.
+<ul>
+<li>테스팅 목적으로 AlwaysEqual의 모든 인스턴스가 다른 타입의 모든 인스턴스와 동일하게 구현할 때 유용하다.</li>
+<li>즉, 어떤 타입의 trait를 구현하지만 타입에 저장할 데이터는 없을 때 유용하다.</li>
+</ul>
+</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
