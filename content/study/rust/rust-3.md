@@ -20,7 +20,7 @@ fn main() {
 ```
 
 - rust에서 모든 변수는 기본적으로 불변하며, 안전하고 쉬운 코드를 작성하기 위함이다.
-- 위 코드는 `cannot assign twice to immutable variable`에러와 함께 컴파일되지 않는다.
+- 위 코드는 컴파일되지 않는다. _cannot assign twice to immutable variable_
 - _`help: consider making this binding mutable: mut x`라는 친절한 팁과 함께..._
 - rust는 컴파일러 차원에서 불변하다고 선언한 값은 변경할 수 없도록 보장하기 때문에 특정 변수의 값이 언제 어디서 바뀌는지 일일이 추적할 필요가 없다.
 - 위 에러는 x 변수에 `mut` 키워드를 추가해 해결할 수 있다.

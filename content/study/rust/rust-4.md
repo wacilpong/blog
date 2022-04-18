@@ -240,9 +240,22 @@ let r3 = &mut s; // BIG PROBLEM
 println!("{}, {}, and {}", r1, r2, r3);
 ```
 
+```rust
+let mut s = String::from("hello");
+
+let r1 = &s; // no problem
+let r2 = &s; // no problem
+println!("{} and {}", r1, r2);
+// variables r1 and r2 will not be used after this point
+
+let r3 = &mut s; // no problem
+println!("{}", r3);
+```
+
 - **(2) 불변 참조를 이미 사용중일 때도 가변 참조를 생성할 수 없다.**
   - 데이터를 읽는 동작은 아무 영향이 없으므로 불변 참조는 여러 개 생성해도 된다.
-  - 위 코드는 에러를 낸다. _cannot borrow `s` as mutable because it is also borrowed as immutable_
+  - 첫번째 코드는 에러를 낸다. _cannot borrow `s` as mutable because it is also borrowed as immutable_
+  - 두번째 코드는 r1, r2의 스코프가 끝나기 전에 참조가 더이상 사용되지 않으므로 r3는 허용되며, 이를 `Non-Lexical Lifetimes(NLL)`이라고 한다.
 
 <br />
 
@@ -262,7 +275,7 @@ fn dangle() -> &String {
   - rust는 죽은 참조가 일어나지 않도록 컴파일러가 보장한다.
   - 이때 죽은 참조란 이미 해제되어 다른 정보가 저장된 메모리를 계속 참조하는 포인터이다.
   - 즉, 어떤 데이터에 대한 참조를 생성하면 컴파일러가 참조하기 전에 스코프를 벗어났는지 확인해준다.
-  - 따라서 위 코드는 에러를 낸다. `missing lifetime specifier`
+  - 따라서 위 코드는 에러를 낸다. _missing lifetime specifier_
   - **dangle 함수는 String에 대한 참조를 반환하는데, 변수 s가 반환시점에 스코프를 벗어나므로 drop 함수가 호출되고 메모리가 해제된다.** 따라서 이 함수는 에러의 위험이 있기 때문에 에러를 발생시키는 것이다.
 
 <br />
