@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -166,7 +166,8 @@
 }
 </code></pre></div><ul>
 <li>rust에서 모든 변수는 기본적으로 불변하며, 안전하고 쉬운 코드를 작성하기 위함이다.</li>
-<li>위 코드는 <code>cannot assign twice to immutable variable</code>에러와 함께 컴파일되지 않는다. <em><code>help: consider making this binding mutable: mut x</code>라는 친절한 팁과 함께&hellip;</em></li>
+<li>위 코드는 <code>cannot assign twice to immutable variable</code>에러와 함께 컴파일되지 않는다.</li>
+<li><em><code>help: consider making this binding mutable: mut x</code>라는 친절한 팁과 함께&hellip;</em></li>
 <li>rust는 컴파일러 차원에서 불변하다고 선언한 값은 변경할 수 없도록 보장하기 때문에 특정 변수의 값이 언제 어디서 바뀌는지 일일이 추적할 필요가 없다.</li>
 <li>위 에러는 x 변수에 <code>mut</code> 키워드를 추가해 해결할 수 있다.</li>
 <li>매번 복사하고 새로운 인스턴스를 반환해야할 때에는 가변형이 유용하다.</li>
@@ -211,7 +212,7 @@ spaces <span style="color:#f92672">=</span> spaces.len();
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> guess: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;42&#34;</span>.parse().expect(<span style="color:#e6db74">&#34;Not a number!&#34;</span>);
 </code></pre></div><p>: 문자열을 숫자 타입으로 변환할 때처럼 여러 타입을 사용해야 한다면 type annotation을 통해 타입을 명시한다.</p>
 <p><br /></p>
-<h3 id="1-scarlar-">(1) 스칼라(Scarlar) 타입</h3>
+<h3 id="1-스칼라scarlar-타입">(1) 스칼라(Scarlar) 타입</h3>
 <ul>
 <li>
 <p>하나의 값을 표현하는 타입이다.</p>
@@ -219,7 +220,7 @@ spaces <span style="color:#f92672">=</span> spaces.len();
 <li>
 <p>정수(integers), 부동 소수점 숫자(floating-point numbers), 불리언(Booleans), 문자열(characters)</p>
 <p><br /></p>
-<h4 id="--">정수, 부동 소수점</h4>
+<h4 id="정수-부동-소수점">정수, 부동 소수점</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.0</span>; <span style="color:#75715e">// f64
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> y: <span style="color:#66d9ef">f32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.0</span> <span style="color:#75715e">// f32
@@ -252,7 +253,7 @@ spaces <span style="color:#f92672">=</span> spaces.len();
 <p><br /></p>
 </li>
 </ul>
-<h4 id="-">불리언, 문자</h4>
+<h4 id="불리언-문자">불리언, 문자</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> t <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
     <span style="color:#66d9ef">let</span> f: <span style="color:#66d9ef">bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>; <span style="color:#75715e">// with explicit type annotation
@@ -281,13 +282,13 @@ spaces <span style="color:#f92672">=</span> spaces.len();
 </ul>
 </li>
 </ul>
-<h3 id="2-compound-">(2) 컴파운드(Compound) 타입</h3>
+<h3 id="2-컴파운드compound-타입">(2) 컴파운드(Compound) 타입</h3>
 <ul>
 <li>하나의 타입으로 여러 값을 그룹화한 타입이다.</li>
 <li>튜플(tuples), 배열(arrays)</li>
 </ul>
 <p><br /></p>
-<h4 id="heading">튜플</h4>
+<h4 id="튜플">튜플</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> tup: (<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">f64</span>, <span style="color:#66d9ef">u8</span>) <span style="color:#f92672">=</span> (<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">6.4</span>, <span style="color:#ae81ff">1</span>);
     <span style="color:#66d9ef">let</span> (x, y, z) <span style="color:#f92672">=</span> tup;
@@ -319,7 +320,7 @@ spaces <span style="color:#f92672">=</span> spaces.len();
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h4 id="heading-1">배열</h4>
+<h4 id="배열">배열</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
 
@@ -335,7 +336,7 @@ spaces <span style="color:#f92672">=</span> spaces.len();
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="heading-2">함수</h2>
+<h2 id="함수">함수</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>);
 
@@ -380,11 +381,11 @@ spaces <span style="color:#f92672">=</span> spaces.len();
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> number <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
 
-    <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+    <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;number is divisible by 4&#34;</span>);
-    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;number is divisible by 3&#34;</span>);
-    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;number is divisible by 2&#34;</span>);
     } <span style="color:#66d9ef">else</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;number is not divisible by 4, 3, or 2&#34;</span>);
@@ -409,9 +410,9 @@ spaces <span style="color:#f92672">=</span> spaces.len();
     <span style="color:#75715e">// loop
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">loop</span> {
-        counter <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
 
-        <span style="color:#66d9ef">if</span> counter <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> {
+        <span style="color:#66d9ef">if</span> counter <span style="color:#f92672">==</span> <span style="color:#ae81ff">10</span> {
             <span style="color:#66d9ef">break</span> counter <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
         }
     };
@@ -425,7 +426,7 @@ spaces <span style="color:#f92672">=</span> spaces.len();
     <span style="color:#66d9ef">while</span> index <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;the value is: {}&#34;</span>, a[index]);
 
-        index <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        index <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
     }
 
     <span style="color:#75715e">// for
