@@ -126,3 +126,204 @@ fn main() {
 - (4)처럼 필드가 하나도 없는 구조체는 `()`과 유사하게 동작해서 유사 유닛 구조체라고 부른다.
   - 테스팅 목적으로 AlwaysEqual의 모든 인스턴스가 다른 타입의 모든 인스턴스와 동일하게 구현할 때 유용하다.
   - 즉, 어떤 타입의 trait를 구현하지만 타입에 저장할 데이터는 없을 때 유용하다.
+
+<br />
+<hr />
+
+## 사례: Rectangles 프로그램
+
+```rust
+// (1)
+fn main() {
+    let width1 = 30;
+    let height1 = 50;
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(width1, height1)
+    );
+}
+
+fn area(width: u32, height: u32) -> u32 {
+    width * height
+}
+```
+
+```rust
+// (2)
+fn main() {
+    let rect1 = (30, 50);
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(rect1)
+    );
+}
+
+fn area(dimensions: (u32, u32)) -> u32 {
+    dimensions.0 * dimensions.1
+}
+```
+
+```rust
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(&rect1)
+    );
+}
+
+fn area(rectangle: &Rectangle) -> u32 {
+    rectangle.width * rectangle.height
+}
+```
+
+- 사각형의 면적을 구하는 프로그램으로, area 함수의 두 매개변수는 연관되어 있다.
+- 그러나 프로그램 어디에도 두 매개변수의 관계를 표현하고 있지 않다.
+- 튜플을 이용해 (2)처럼 하나의 매개변수만 전달하도록 리팩토링할 수 있다.
+- 그러나 각 요소에 이름이 없어서 계산 과정에서 튜플의 인덱스로 접근하고 있다.
+- 구조체를 이용해 (3)처럼 width, height라는 명확한 이름의 필드값으로 Rectangle 인스턴스를 계산할 수 있다.
+
+<br />
+
+### 트레이트(trait)로 유용한 기능 추가하기
+
+```rust
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {}", rect1);
+}
+```
+
+- Rectangle 구조체를 디버깅하기 위해 println! 매크로를 찍은 위 코드는 에러를 낸다.
+  _Rectangle doesn't implement std::fmt::Display_
+  _help: the trait std::fmt::Display is not implemented for Rectangle_
+  _note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead_
+- println! 매크로는 다양한 포맷의 문자열을 출력할 수 있고, 중괄호는 `Display` 포맷을 출력하라는 의미이다.
+- i32와 같은 원시 타입들은 1을 숫자 1로 보여주는 것처럼, 자신을 표현할 방법이 하나다.
+- 반면 구조체는 값들을 쉼표로 구분할지, 중괄호까지 보여줄지 등 불명확하다.
+- 따라서 러스트는 구조체가 Display 크레이트를 구현하지 않도록 두었다.
+
+<br />
+
+```rust
+...
+println!("rect1 is {:?}", rect1);
+```
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {:?}", rect1);
+}
+```
+
+- 에러의 친절한 팁대로 구현해도 에러를 낸다.
+  _error[E0277]: Rectangle doesn't implement Debug_
+  _help: the trait Debug is not implemented for Rectangle_
+  _note: add #[derive(Debug)] to Rectangle or manually impl Debug for Rectangle_
+- 중괄호 안의 `:?` 연산자를 지정하면 매크로는 Debug 포맷으로 출력한다.
+- 러스트는 디버깅 정보를 출력하는 기능만 제공할 뿐, 구조체에 직접 이를 구현해주어야 한다.
+- `#[derive(Debug)]`를 구조체 선언 전에 추가해주어 Debug포맷을 출력할 수 있다.
+- {:?} 대신 `{:#}`을 이용하면 중괄호가 정돈된 형태로 출력할 수 있다.
+
+<br />
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let scale = 2;
+    let rect1 = Rectangle {
+        width: dbg!(30 * scale),
+        height: 50,
+    };
+
+    dbg!(&rect1);
+}
+```
+
+```sh
+$ cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 1.24s
+     Running `{mydirpath}/rectangles/target/debug/rectangles main.rs`
+[src/main.rs:10] 30 * scale = 60
+[src/main.rs:14] &rect1 = Rectangle {
+    width: 60,
+    height: 50,
+}
+}
+```
+
+- [dbg!](https://doc.rust-lang.org/std/macro.dbg.html) 매크로를 통해 파일과 라인에 결과값을 함께 출력할 수 있다.
+- 이를 통해 표현식의 결과값을 처리하고 ownership을 반환할 수 있다.
+- 따라서 dbg! 매크로는 표현식의 값에 대한 ownership을 반환하므로 `30 * scale`라는 표현식에 써도 된다.
+- [`derive` 어노테이션을 통해 더 다양한 사용자 정의 타입을 위한 트레이트](https://doc.rust-lang.org/book/appendix-03-derivable-traits.html)를 제공한다.
+- area 함수는 사각형의 면적을 구하므로 Rectangle 구조체에 대해서만 사용하게 만드는 것이 더 효율적이다.
+- 이때 area 함수를 Rectangle 타입의 메서드로 만들 수 있다.
+
+<br />
+<hr />
+
+## 메서드(Method)
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+    );
+}
+```
+
+-
