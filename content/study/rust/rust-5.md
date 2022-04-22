@@ -326,4 +326,89 @@ fn main() {
 }
 ```
 
--
+- area 메서드 시그니처를 보면 `&Rectangle`이 아닌, `&self`를 사용하고 있다.
+- Rectangle 구조체 컨텍스트 안에 존재하므로 러스트는 이미 self가 Rectangle 타입이라는 것을 안다.
+- &self는 `self: &Self`을 줄인 말이다.
+- 메서드가 Self타입 인스턴스를 사용해야 하므로(빌려와야 하므로) &를 붙인다.
+- 메서드는 self의 ownership을 갖거나, 이 예제처럼 self의 불변 인스턴스를 빌리거나, 매개변수들처럼 self의 가변 인스턴스를 빌려올 수 있다.
+- 위 코드에서는 구조체의 데이터를 읽을 뿐 값을 쓰지 않기 때문에 굳이 ownership을 가질 필요가 없는데, 만약 메서드를 호출한 인스턴스의 값을 변경하고자 한다면 `&mut self`로 선언해야 한다. 이는 self를 다른 인스턴스로 교체하고 호출자가 더 이상 예전 인스턴스를 사용하지 못하도록 할 때 활용하는 기법이다.
+
+<br />
+
+```rust
+impl Rectangle {
+    fn width(&self) -> bool {
+        self.width > 0
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    if rect1.width() {
+        println!("The rectangle has a nonzero width; it is {}", rect1.width);
+    }
+}
+```
+
+- 어떤 목적으로든 구조체에 존재하는 같은 이름의 메서드를 만들 수 있다.
+- 종종 필드의 값만 반환하고 다른 작업은 수행할 필요없을 때 사용한다.
+  - _마치 getter_
+  - getter는 메서드는 public하지만 필드는 private으로 만들 수 있다.
+  - 따라서 public API의 일부로 해당 필드에 대해 읽기 전용으로 만들 수 있다.
+
+<br />
+
+### 특징
+
+```rust
+// (1)
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+```
+
+```rust
+// (2)
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+```
+
+```rust
+// (3)
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+impl Rectangle {
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+```
+
+- (1)처럼 메서드에 여러 매개변수를 전달하려면 self 이후에 원하는 만큼 추가하면 된다.
+- (2)처럼 self 매개변수를 굳이 사용하지 않는 다른 함수도 정의할 수 있다,
+  - 구조체 인스턴스를 직접 전달받지 않으므로 메서드가 아니라 `연관 함수(associated function`이다.
+  - 구조체의 새로운 인스턴스를 반환하는 생성자(constructor)를 구현할 때 자주 사용한다.
+  - 연관 함수를 호출하려면 구조체 이름에 `::` 문법을 사용한다.
+  - ex. `String::from`
+  - ex. `let sq = Rectangle::square(3);`
+- (3)처럼 여러 개의 impl 블록을 선언하는 것도 가능하며, 제네릭(generic)과 트레이트(trait)에서 유용하게 활용될 수 있다. _이는 10장에서 자세히 다룸_
