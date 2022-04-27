@@ -6,7 +6,7 @@ draft: false
 og_description: "Using Structs to Structure Related Data"
 ---
 
-## 구조체(Structs) 정의와 인스턴스 생성
+## 1. 구조체(Structs) 정의와 인스턴스 생성
 
 ```rust
 struct User {
@@ -130,7 +130,7 @@ fn main() {
 <br />
 <hr />
 
-## 사례: Rectangles 프로그램
+## 2. 사례: Rectangles 프로그램
 
 ```rust
 // (1)
@@ -298,7 +298,7 @@ $ cargo run
 <br />
 <hr />
 
-## 메서드(Method)
+## 3. 메서드(Method)
 
 ```rust
 #[derive(Debug)]
