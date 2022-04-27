@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Enums and Pattern Matching" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 6" />
+<meta property="og:site_name" content="After reading Rust book chapter 6" />
+<meta property="og:description" content="Enums and Pattern Matching" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-6/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 6" />
+<meta name="twitter:description" content="Enums and Pattern Matching" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 6</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 6</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 6</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="1--algebraic-data-type">1. 대수적 타입(Algebraic data type)</h2>
+<ul>
+<li>러스트의 <code>enum</code>은 함수형 언어들의 <code>대수자료형(algebraic data types)</code>에 가깝다.</li>
+<li>정수론은 각종 숫자의 성질을 대상으로 하는 수학이다.</li>
+<li>대수학은 숫자 대신 문자를 사용하여 방정식의 풀이 방법이나 대수적 구조를 연구한다.
+<ul>
+<li>아래와 같은 과정으로 문제를 해결하는 것이 대수학의 목적이다.</li>
+<li>ex. 10x = 5000, x = 500</li>
+</ul>
+</li>
+<li>대수적 타입은 다른 자료형의 값을 가지는 자료형이자, 부분으로 전체를 나타내는 타입이다.
+<ul>
+<li>모든 IP 주소가 v4이거나 v6이지만, 동시에 두 형식을 지원할 수는 없다.</li>
+<li>따라서 IP 주소는 대수적 타입, 즉 러스트의 enum에 적합하다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">IpAddrKind</span> {
+    V4,
+    V6,
+}
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="2--">2. 선언과 활용</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> four <span style="color:#f92672">=</span> IpAddrKind::V4;
+<span style="color:#66d9ef">let</span> six <span style="color:#f92672">=</span> IpAddrKind::V6;
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">route</span>(ip_kind: <span style="color:#a6e22e">IpAddrKind</span>) {}
+
+route(IpAddrKind::V4);
+route(IpAddrKind::V6);
+</code></pre></div><ul>
+<li>(1)처럼 <code>::</code>으로 값을 할당하고 v4, v6를 같은 타입(IpAddrKind)으로 취급할 수 있다.</li>
+<li>(2)처럼 enum타입의 매개변수를 갖는 함수를 정의할 수도 있다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">IpAddrKind</span> {
+    V4,
+    V6,
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">IpAddr</span> {
+    kind: <span style="color:#a6e22e">IpAddrKind</span>,
+    address: String,
+}
+
+<span style="color:#66d9ef">let</span> home <span style="color:#f92672">=</span> IpAddr {
+    kind: <span style="color:#a6e22e">IpAddrKind</span>::V4,
+    address: String::from(<span style="color:#e6db74">&#34;127.0.0.1&#34;</span>),
+};
+
+<span style="color:#66d9ef">let</span> loopback <span style="color:#f92672">=</span> IpAddr {
+    kind: <span style="color:#a6e22e">IpAddrKind</span>::V6,
+    address: String::from(<span style="color:#e6db74">&#34;::1&#34;</span>),
+};
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">IpAddr</span> {
+    V4(String),
+    V6(String),
+}
+
+<span style="color:#66d9ef">let</span> home <span style="color:#f92672">=</span> IpAddr::V4(String::from(<span style="color:#e6db74">&#34;127.0.0.1&#34;</span>));
+<span style="color:#66d9ef">let</span> loopback <span style="color:#f92672">=</span> IpAddr::V6(String::from(<span style="color:#e6db74">&#34;::1&#34;</span>));
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">IpAddr</span> {
+    V4(<span style="color:#66d9ef">u8</span>, <span style="color:#66d9ef">u8</span>, <span style="color:#66d9ef">u8</span>, <span style="color:#66d9ef">u8</span>),
+    V6(String),
+}
+
+<span style="color:#66d9ef">let</span> home <span style="color:#f92672">=</span> IpAddr::V4(<span style="color:#ae81ff">127</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
+<span style="color:#66d9ef">let</span> loopback <span style="color:#f92672">=</span> IpAddr::V6(String::from(<span style="color:#e6db74">&#34;::1&#34;</span>));
+</code></pre></div><ul>
+<li>(1)처럼 enum을 구조체 안에서 사용해 데이터를 할당(저장)할 수 있다.</li>
+<li>(2)처럼 enum의 열거값(variants)에 직접 데이터를 지정할 수 있다.</li>
+<li>(3)처럼 <strong>구조체와 달리 enum에 각 열거값의 타입이 다를 때도 처리할 수 있다.</strong></li>
+<li>enum 값에는 String, numeric types, struct, enum 등 어떤 타입이든 저장 할 수 있다.</li>
+<li>위 <code>IpAddr</code>는 표준 라이브러리(<code>Enum std::net::IpAddr</code>)에 있다.
+<ul>
+<li>유효 스코프에서 사용하지 않는 한 같은 이름으로 타입을 재정의할 수 있다.</li>
+<li><em>타입을 스코프로 가져오는 방법은 7장에서 다룸</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="structs-vs-enums">Structs vs Enums</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 각각의 다른 타입이 모두 Message 타입에 속하고 있다.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Message</span> {
+    Quit,
+    Move { x: <span style="color:#66d9ef">i32</span>, y: <span style="color:#66d9ef">i32</span> },
+    Write(String),
+    ChangeColor(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>),
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 각각의 다른 타입 구조체를 정의했기 때문에
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 여러 종류의 메시지를 매개변수로 받는 함수를 쉽게 정의할 수 없다.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">QuitMessage</span>; <span style="color:#75715e">// unit struct
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MoveMessage</span> {
+    x: <span style="color:#66d9ef">i32</span>,
+    y: <span style="color:#66d9ef">i32</span>,
+}
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">WriteMessage</span>(String); <span style="color:#75715e">// tuple struct
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ChangeColorMessage</span>(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>); <span style="color:#75715e">// tuple struct
+</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 구조체와 마찬가지로 enum도 impl블록에서 메서드를 정의할 수 있다.
+</span><span style="color:#75715e"></span><span style="color:#75715e">// self로 이 메서드를 호출하는 enum의 값에 접근할 수 있다.
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 여기서 self는 Write(&#34;hello&#34;)이다.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Message {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">call</span>(<span style="color:#f92672">&amp;</span>self) {
+        <span style="color:#75715e">// method body
+</span><span style="color:#75715e"></span>    }
+}
+
+<span style="color:#66d9ef">let</span> m <span style="color:#f92672">=</span> Message::Write(String::from(<span style="color:#e6db74">&#34;hello&#34;</span>));
+m.call();
+</code></pre></div><p><br /></p>
+<h3 id="null--option-enum---">Null 대신 Option enum을 사용할 때의 장점</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    None,
+    Some(T),
+}
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> some_number <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
+    <span style="color:#66d9ef">let</span> some_string <span style="color:#f92672">=</span> Some(<span style="color:#e6db74">&#34;a string&#34;</span>);
+
+    <span style="color:#66d9ef">let</span> absent_number: Option<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> None;
+}
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x: <span style="color:#66d9ef">i8</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+    <span style="color:#66d9ef">let</span> y: Option<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i8</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
+
+    <span style="color:#66d9ef">let</span> sum <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y;
+}
+</code></pre></div><ul>
+<li>러스트에는 <code>null</code>이 없다.</li>
+<li>대신, 표준 라이브러리가 제공하는 Option<T> enum을 통해 null의 경우를 처리한다.</li>
+<li>프렐류드에 포함되어 있어서 굳이 스코프로 가져올 필요없이(<code>Option::</code> 문법없이) 직접 사용할 수 있다.<br />
+<em>이때 T는 제네릭을 의미하며 10장에서 자세히 다룸</em></li>
+<li>Some이 어떤 타입인지 위 코드처럼 명시해주어야 한다.</li>
+<li>러스트 컴파일러는 None 값만 보고 해당 Some이 어떤 타입으로 쓰이고 있는지 유추할 수 없다.</li>
+<li><code>Option&lt;T&gt; !== T</code>이다. 따라서 (2)는 에러를 낸다.
+<ul>
+<li><em>cannot add Option<i8> to i8</em></li>
+<li>i8은 항상 유효한 반면, Option<i8>은 값이 없는 경우가 있어서 두 타입은 다르다.</li>
+<li><strong>따라서 Option<T>가 아닌 모든 타입은 null이 아닐 것이라고 생각해도 된다.</strong></li>
+<li>null값이 확산되는 것을 막고 러스트 코드의 안정성을 위해 의도적으로 디자인된 패턴이다.</li>
+</ul>
+</li>
+<li><a href="https://doc.rust-lang.org/std/option/enum.Option.html">Optopn<T></a>는 Some값으로부터 T를 알아내기 위한 다양한 메서드를 제공한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="null-">null의 문제점</h4>
+<ul>
+<li><strong>null값의 문제는 이를 null이 아닌 값처럼 사용하려고 하면 에러가 발생한다는 점이다.</strong></li>
+<li>대부분의 상태는 있을 수도 있고, 없을 수도 있는 값이기 때문에 너무 치명적이다.</li>
+<li>null값 창시자인 토니 호어는 객체지향 언어의 참조를 다룰 때 모든 참조를 완전히 안전하게 사용할 수 있도록 하는 의미에서 null 참조 개념의 유혹을 뿌리칠 수 없었고, 그렇게 구현했다. 그리고 이를 &lsquo;엄청난 실수'라고 표현했다.</li>
+</ul>
+<p><br /></p>
+<h2 id="3-match---">3. Match 흐름 제어 연산자</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Coin</span> {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">value_in_cents</span>(coin: <span style="color:#a6e22e">Coin</span>) -&gt; <span style="color:#66d9ef">u8</span> {
+    <span style="color:#66d9ef">match</span> coin {
+        Coin::Penny <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+            println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Lucky penny!&#34;</span>);
+            <span style="color:#ae81ff">1</span>
+        }
+        Coin::Nickel <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>,
+        Coin::Dime <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>,
+        Coin::Quarter <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">25</span>,
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {}
+</code></pre></div><ul>
+<li><code>match</code> 키워드 다음에 표현식(expression)을 쓰는데, boolean만 되는 if와 달리 모든 타입이 가능하다.</li>
+<li>각각의 가지(arms)는 <code>=&gt;</code>를 기준으로 패턴과 실행할 코드부분으로 나뉘어진다.</li>
+<li>표현식의 값이 패턴과 일치하면 그 연관된 코드부분이 실행되고 값을 반환한다.</li>
+<li>실행할 코드부분이 짧으면 통상 중괄호를 사용하지 않는다. <em>마치 한줄 화살표 함수처럼</em></li>
+</ul>
+<p><br /></p>
+<h3 id="--">값을 바인딩하는 패턴</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">UsState</span> {
+    Alabama,
+    Alaska,
+    <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Coin</span> {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">value_in_cents</span>(coin: <span style="color:#a6e22e">Coin</span>) -&gt; <span style="color:#66d9ef">u8</span> {
+    <span style="color:#66d9ef">match</span> coin {
+        Coin::Penny <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>,
+        Coin::Nickel <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>,
+        Coin::Dime <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>,
+        Coin::Quarter(state) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+            println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;State quarter from {:?}!&#34;</span>, state);
+            <span style="color:#ae81ff">25</span>
+        }
+    }
+}
+
+value_in_cents(Coin::Quarter(UsState::Alaska));
+</code></pre></div><ul>
+<li>Quarter동전이 미국의 어느 주에서 발행됐는지 알기 위해 UsState값을 바인딩할 수 있다.</li>
+<li>함수를 호출하면 match 표현식의 coin 변수는 <code>Coin::Quarter(UsState::Alaska)</code>값이다.</li>
+<li>이때 match의 각 가지들과 비교하면 <code>Coin::Quarter(state)</code>와 일치하게 된다.</li>
+<li>그리고 state 변수에는 <code>UsState::Alaska</code>값이 바인딩된다.</li>
+</ul>
+<p><br /></p>
+<h3 id="enumoptiont-match-">enum(Option<T>)과 match의 조합</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">plus_one</span>(x: Option<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span>) -&gt; Option<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">match</span> x {
+            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> None,
+            Some(i) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Some(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
+        }
+    }
+
+    <span style="color:#66d9ef">let</span> five <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
+    <span style="color:#66d9ef">let</span> six <span style="color:#f92672">=</span> plus_one(five);
+    <span style="color:#66d9ef">let</span> none <span style="color:#f92672">=</span> plus_one(None);
+}
+</code></pre></div><ul>
+<li>이처럼 함수의 x인자에 값이 있으면 1을 더하고, 없으면 아무것도 안할 때 <strong>enum + match 조합으로 쉽게 구현할 수 있다.</strong></li>
+<li>러스트에서는 match 표현식을 작성하고, enum 열거값에 명시한 데이터를 변수에 바인딩하여 연관코드를 실행하는 패턴을 자주 볼 수 있다.<br />
+<em>러스타시안들에게 꾸준히 사랑받는 기능이라고 함. 올ㅋ</em></li>
+</ul>
+<p><br /></p>
+<h3 id="match-------">match는 표현식에 지정한 경우의 수를 모두 처리해야 한다.</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">plus_one</span>(x: Option<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span>) -&gt; Option<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">match</span> x {
+            Some(i) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Some(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
+        }
+    }
+
+    <span style="color:#66d9ef">let</span> five <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
+    <span style="color:#66d9ef">let</span> six <span style="color:#f92672">=</span> plus_one(five);
+    <span style="color:#66d9ef">let</span> none <span style="color:#f92672">=</span> plus_one(None);
+}
+</code></pre></div><ul>
+<li>x는 Option<T>타입이지만 None에 대한 패턴이 없으므로 에러를 낸다.<br />
+<em>non-exhaustive patterns: <code>None</code> not covered</em><br />
+<em>help: ensure that all possible cases are being handled, &hellip;</em><br />
+<em>note: the matched value is of type <code>Option&lt;i32&gt;</code></em></li>
+<li><strong>즉, 러스트의 패턴 매칭은 완벽해야 한다. Matches in Rust are exhaustive.</strong></li>
+</ul>
+<p><br /></p>
+<h3 id="catch-all--placeholder--">catch-all 패턴과 Placeholder <code>_</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> dice_roll <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>;
+    <span style="color:#66d9ef">match</span> dice_roll {
+        <span style="color:#ae81ff">3</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> add_fancy_hat(),
+        <span style="color:#ae81ff">7</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> remove_fancy_hat(),
+        other <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> move_player(other),
+        <span style="color:#75715e">// _ =&gt; reroll(),
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// _ =&gt; (),
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_fancy_hat</span>() {}
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">remove_fancy_hat</span>() {}
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">move_player</span>(num_spaces: <span style="color:#66d9ef">u8</span>) {}
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">reroll</span>() {}
+}
+</code></pre></div><ul>
+<li>에제처럼 주사위 숫자의 모든 경우를 처리하는 대신 catch-all 패턴을 쓸 수 있다.</li>
+<li>여기서는 3과 7외의 숫자를 other라고 명명하고, 바인딩된 숫자를 변수로 이용한다.</li>
+<li>catch-all 패턴은 match가 모든 경우의 수를 처리해야 한다는 규칙을 충족한다.</li>
+<li><strong>match 패턴은 순서대로 평가되므로 <code>other</code>를 마지막 가지로 두어야 한다.</strong></li>
+</ul>
+<hr />
+<ul>
+<li>catch-all 패턴에서 어떤 값도 사용하고 싶지 않을 때는 <code>_</code>를 사용한다.</li>
+<li><code>_</code>는 모든 값과 일치하지만 값이 바인딩되지는 않는 특수한 패턴이다.</li>
+<li>이 또한 지정한 경우 외의 모든 값을 무시하기 때문에 match의 완전성에도 충족한다.</li>
+<li>유닛 값(unit value, <code>()</code>)을 활용해 어떤 코드도 실행하지 않게 할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h2 id="4-if-let--">4. if let 흐름 제어</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// AS-IS
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> config_max <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">3</span><span style="color:#66d9ef">u8</span>);
+    <span style="color:#66d9ef">match</span> config_max {
+        Some(max) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The maximum is configured to be {}&#34;</span>, max),
+        _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> (),
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// TO-BE
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> config_max <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">3</span><span style="color:#66d9ef">u8</span>);
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Some(max) <span style="color:#f92672">=</span> config_max {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The maximum is configured to be {}&#34;</span>, max);
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> coin <span style="color:#f92672">=</span> Coin::Penny;
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Coin::Quarter(state) <span style="color:#f92672">=</span> coin {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;State quarter from {:?}!&#34;</span>, state);
+    } <span style="color:#66d9ef">else</span> {
+        count <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    }
+}
+
+</code></pre></div><ul>
+<li>예제에서 아무 처리도 하지 않는 경우 <code>_ =&gt; ()</code>가 성가신 보일러플레이트 같다.</li>
+<li>즉, match는 단 한 가지 경우만 처리할 때 사용하기에는 다소 장황하다.</li>
+<li><code>if let</code> 문법은 한 경우만 처리하고 나머지는 무시하고 싶을 때 유용하다.</li>
+<li><strong>주어진 값에 한 패턴만 검사하고 나머지는 무시하는 match의 syntax sugar라고 볼 수 있다.</strong></li>
+<li><strong>else를 활용해 match의 _ 패턴에 연관된 코드 또한 처리할 수 있다. (<code>If let ~ else</code>)</strong></li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

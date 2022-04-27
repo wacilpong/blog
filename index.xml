@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 18 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Apr 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/rust-book/</guid>
-      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data  </description>
+      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data Enums and Pattern Matching  </description>
     </item>
     
     <item>
@@ -39,12 +39,21 @@
     </item>
     
     <item>
+      <title>After reading Rust book chapter 6</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-6/</link>
+      <pubDate>Tue, 26 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-6/</guid>
+      <description>1. 대수적 타입(Algebraic data type) 러스트의 enum은 함수형 언어들의 대수자료형(algebraic data types)에 가깝다. 정수론은 각종 숫자의</description>
+    </item>
+    
+    <item>
       <title>After reading Rust book chapter 5</title>
       <link>https://wacilpong.github.io/blog/study/rust/rust-5/</link>
       <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/rust/rust-5/</guid>
-      <description>구조체(Structs) 정의와 인스턴스 생성 struct User { active: bool, username: String, email: String, sign_in_count: u64, } fn main() { let user1 = User { email: String::from(&amp;#34;someone@example.com&amp;#34;), username: String::from(&amp;#34;someusername123&amp;#34;), active: true, sign_in_count: 1, }; let mut user2 = User { // same } user2.email = String::from(&amp;#34;anotheremail@example.com&amp;#34;); } 구조체는 튜플과</description>
+      <description>1. 구조체(Structs) 정의와 인스턴스 생성 struct User { active: bool, username: String, email: String, sign_in_count: u64, } fn main() { let user1 = User { email: String::from(&amp;#34;someone@example.com&amp;#34;), username: String::from(&amp;#34;someusername123&amp;#34;), active: true, sign_in_count: 1, }; let mut user2 = User { // same } user2.email = String::from(&amp;#34;anotheremail@example.com&amp;#34;); } 구조체는 튜플</description>
     </item>
     
     <item>
