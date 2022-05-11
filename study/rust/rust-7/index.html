@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="kr-ko">
     <head>
-        <meta name="description" content="" />
+        <meta name="description" content="Managing Growing Projects with Packages, Crates, and Modules" />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="" />
-<meta property="og:site_name" content="" />
-<meta property="og:description" content="" />
-<meta property="og:url" content="https://wacilpong.github.io/blog/study/" />
+<meta property="og:title" content="After reading Rust book chapter 7" />
+<meta property="og:site_name" content="After reading Rust book chapter 7" />
+<meta property="og:description" content="Managing Growing Projects with Packages, Crates, and Modules" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-7/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="" />
-<meta name="twitter:description" content="" />
+<meta name="twitter:title" content="After reading Rust book chapter 7" />
+<meta name="twitter:description" content="Managing Growing Projects with Packages, Crates, and Modules" />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
 <meta
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Studies</title>
+        <title>After reading Rust book chapter 7</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -91,9 +91,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.62.0" />
         
-            <link href="/blog/study/index.xml" rel="alternate" type="application/rss&#43;xml" title="Roomy" />
-            <link href="/blog/study/index.xml" rel="feed" type="application/rss&#43;xml" title="Roomy" />
-        
 
         
 
@@ -111,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Studies</a>
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 7</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -150,112 +147,79 @@
 
 <main>
 
-    <h2>Studies</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-7/">After reading Rust book chapter 7</a></h4>
-    <h5>2022-05-10</h5>
-    
+    <div>
+        <h2>After reading Rust book chapter 7</h2>
+        <h5></h5>
+        
 <a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
 
 
+    </div>
 
-</div>
-  <div class="item">
+    <div align="start" class="content"><ul>
+<li>기능들을 그룹화하고 구현을 캡슐화하는 과정을 통해 코드의 차원을 높일 수 있다.</li>
+<li>코드의 어떤 부분을 다른 코드를 위해 공개/비공개할지 정해야 한다.</li>
+<li>이는 스코프(scope)와 관련이 있다.
+<ul>
+<li>스코프는 일종의 중첩된 컨텍스트다.</li>
+<li>특정 스코프 내에 사용된 중복될 수 없다.</li>
+<li>개발자와 컴파일러는 특정 지점의 특정 이름이 변수, 함수, 구조체 등 무엇을 의미하는지 알아야 하므로 스코프가 필요하다.</li>
+</ul>
+</li>
+<li>따라서 러스트는 코드의 구조를 관리하기 위한 모듈시스템을 제공한다.
+<ul>
+<li><code>Packages</code>: 크레이트를 빌드, 테스트, 공유할 수 있는 cargo feature</li>
+<li><code>Crates</code>: 라이브러리나 실행 파일을 생성하는 모듈들의 트리</li>
+<li><code>Modules and use</code>: 스코프, 경로에 대한 접근성을 제어할 수 있게 해줌</li>
+<li><code>Paths</code>: 구조체, 함수, 모듈 등의 이름을 짓는 방식</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="packages-and-crates">Packages and Crates</h2>
+<ul>
+<li>크레이트(Crates)는 하나의 바이너리 혹은 라이브러리다.
+<ul>
+<li><code>crate root</code>는 러스트 컴파일러가 컴파일을 시작해서 크레이트의 루트 모듈을 만들어 내는 소스 파일이다.</li>
+</ul>
+</li>
+<li>패키지(Packages)는 일련의 기능을 제공하는 하나 이상의 크레이트를 의미한다.
+<ul>
+<li>패키지는 <code>Cargo.toml</code>파일을 통해 그 크레이트를 빌드하는 방법을 명시한다.</li>
+<li>Cargo.toml에 <code>src/main.rs</code>, <code>src/lib.rs</code> 파일이 서술되어 있지 않다.</li>
+<li><strong>이는 규칙이다: 두 파일은 바이너리/라이브러리 크레이트의 crate root이며, 그 패키지와 같은 이름이다.</strong></li>
+<li><strong>cargo는 라이브러리나 바이너리를 빌드할 때 rustc 컴파일러에게 crate root 파일을 전달한다.</strong></li>
+</ul>
+</li>
+<li>크레이트는 관련 기능들을 하나의 스코프로 묶어서, 그 기능을 여러 프로젝트에서 공유하기 수월해진다.<br />
+<em>ex. 난수 생성에 사용하는 <code>rand</code> 크레이트</em></li>
+<li>rand 크레이트에 Rng라는 이름의 트레이트를 제공하지만, 개발자가 그 이름으로 어떤 구조체를 만들어도 된다.
+<ul>
+<li>크레이트의 기능은 자신의 스코프 안에 구현되어 있기 때문이다.</li>
+<li>Rng 트레이트는 <code>rand::Rng</code>로 접근하기 떄문이다.</li>
+<li>따라서 같은 이름이 있더라도 rand를 의존성으로 추가해도 상관없다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="---privacy-">모듈을 이용한 스코프와 접근성(Privacy) 제어</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// src/lib.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">mod</span> front_of_house {
+    <span style="color:#66d9ef">mod</span> hosting {
+        <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
+        <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">seat_at_table</span>() {}
+    }
 
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-6/">After reading Rust book chapter 6</a></h4>
-    <h5>2022-04-26</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-5/">After reading Rust book chapter 5</a></h4>
-    <h5>2022-04-18</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-4/">After reading Rust book chapter 4</a></h4>
-    <h5>2022-04-13</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-3/">After reading Rust book chapter 3</a></h4>
-    <h5>2022-04-05</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
-
-
-
-</div>
- 
+    <span style="color:#66d9ef">mod</span> serving {
+        <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">take_order</span>() {}
+        <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">serve_order</span>() {}
+        <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">take_payment</span>() {}
+    }
+}
+</code></pre></div></div>
 
 </main>
-
-
-
-<div class="pages">
-
-    
-
-    
-        <a class="icon pages-icon" href="/blog/study/page/2/" rel="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    
-
-</div>
-
-
 
         <footer>
             <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
