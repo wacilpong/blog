@@ -181,7 +181,7 @@
 <ul>
 <li>크레이트(Crates)는 하나의 바이너리 혹은 라이브러리다.
 <ul>
-<li><code>crate root</code>는 러스트 컴파일러가 컴파일을 시작해서 크레이트의 루트 모듈을 만들어 내는 소스 파일이다.</li>
+<li><code>crate root</code>: 러스트 컴파일러가 컴파일을 시작해서 크레이트의 루트 모듈을 만들어 내는 소스 파일</li>
 </ul>
 </li>
 <li>패키지(Packages)는 일련의 기능을 제공하는 하나 이상의 크레이트를 의미한다.
@@ -204,7 +204,9 @@
 </ul>
 <p><br /></p>
 <h2 id="---privacy-">모듈을 이용한 스코프와 접근성(Privacy) 제어</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// src/lib.rs
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// cargo new --lib restaurant
+</span><span style="color:#75715e"></span><span style="color:#75715e">// src/lib.rs
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">mod</span> front_of_house {
     <span style="color:#66d9ef">mod</span> hosting {
         <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
@@ -217,7 +219,215 @@
         <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">take_payment</span>() {}
     }
 }
-</code></pre></div></div>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">crate</span>
+<span style="color:#960050;background-color:#1e0010">└</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> front_of_house
+   <span style="color:#960050;background-color:#1e0010">├</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> hosting
+   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> add_to_waitlist
+   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> seat_at_table
+   <span style="color:#960050;background-color:#1e0010">└</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> serving
+       <span style="color:#960050;background-color:#1e0010">├</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> take_order
+       <span style="color:#960050;background-color:#1e0010">├</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> serve_order
+       <span style="color:#960050;background-color:#1e0010">└</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> take_payment
+
+</code></pre></div><ul>
+<li><strong>모듈은 코드의 특정 아이템을 외부의 코드에서 사용할 수 있게 공개할지 결정한다.</strong></li>
+<li>이때 아이템의 공개 및 비공개 여부를 접근성(privacy)이라고 한다.</li>
+<li><code>mod</code> 키워드로 모듈을 정의할 수 있다.</li>
+<li>모듈 안에 다른 모듈은 물론 구조체, 열거, 상수, 트레이트, 함수도 추가할 수 있다.</li>
+<li>src/lib.rs는 크레이트 루트로, 모듈 트리 구조에서 루트 역할을 한다.</li>
+<li>(2)는 (1)모듈의 모듈 트리(module tree)이다.</li>
+<li>모듈 트리는 파일시스템의 디렉터리 트리와 유사하다.</li>
+</ul>
+<p><br /></p>
+<h2 id="-----">모듈 트리의 아이템을 참조하기 위한 경로들</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">mod</span> front_of_house {
+    <span style="color:#66d9ef">mod</span> hosting {
+        <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
+    }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">eat_at_restaurant</span>() {
+    <span style="color:#75715e">// (1) 절대경로
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">crate</span>::front_of_house::hosting::add_to_waitlist();
+
+    <span style="color:#75715e">// (2) 상대경로
+</span><span style="color:#75715e"></span>    front_of_house::hosting::add_to_waitlist();
+}
+
+</code></pre></div><ul>
+<li><code>절대경로</code>: 크레이트 이름이나 crate 리터럴을 이용한, 크레이트 루트부터 시작하는 경로</li>
+<li><code>상대경로</code>: 현재 모듈에서 시작해 self, super, 현재 모듈의 식별자를 이용하는 경로</li>
+<li>두 경로 모두 하나 이상의 식별자로 구성되며, 각 식별자를 ::로 구분한다.</li>
+<li>(1)은 절대경로로써 파일 시스템에서 /로 경로를 시작하는 것과 마찬가지이다.</li>
+<li><strong>러스트 가이드는 코드의 정의와 호출은 독립적이므로 절대경로를 사용하기를 권장한다.</strong></li>
+<li>위 코드는 컴파일 에러를 낸다.
+<ul>
+<li><em>error[E0603]: module hosting is private</em></li>
+<li><strong>즉, 러스트 모듈에서 접근성 방식은 모든 아이템(함수, 구조체, 모듈 등)이 기본적으로 비공개다.</strong></li>
+<li><strong>그러나 자식 모듈의 아이템은 부모 모듈의 아이템을 사용할 수 있다.</strong></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="pub---"><code>pub</code> 키워드로 경로 공개하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">mod</span> front_of_house {
+    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">mod</span> hosting {
+        <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
+    }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">eat_at_restaurant</span>() {
+    <span style="color:#75715e">// Absolute path
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">crate</span>::front_of_house::hosting::add_to_waitlist();
+
+    <span style="color:#75715e">// Relative path
+</span><span style="color:#75715e"></span>    front_of_house::hosting::add_to_waitlist();
+}
+</code></pre></div><ul>
+<li>모듈만 공개한다고 그 내부 아이템들도 공개되지는 않는다.</li>
+<li><strong>모듈의 pub 키워드는 부모 모듈이 하위 모듈을 참조할 수 있게만 할 뿐이다.</strong></li>
+<li>따라서 예제처럼 add_to_waitlist 함수를 공개하고 싶다면 함수에도 키워드를 붙여야 한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="super--"><code>super</code>로 시작하는 상대경로</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">serve_order</span>() {}
+
+<span style="color:#66d9ef">mod</span> back_of_house {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fix_incorrect_order</span>() {
+        cook_order();
+        <span style="color:#66d9ef">super</span>::serve_order();
+    }
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">cook_order</span>() {}
+}
+
+</code></pre></div><ul>
+<li><code>super</code> 키워드를 이용한 상대경로는 파일시스템의 <code>..</code>문법처럼 부모 모듈부터 시작할 수 있다.</li>
+<li>back_of_house 모듈과 serve_order 함수는 같은 레벨에 있으므로 크레이트의 모듈 트리를 재구성할 때도 함께 이동될 것이다.</li>
+<li><strong>따라서 super를 사용하면 추후 코드를 다른 모듈로 이동해도 수정할 코드를 최소화할 수 있게 된다.</strong></li>
+</ul>
+<p><br /></p>
+<h4 id="struct-enum-">struct와 enum 공개하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">mod</span> back_of_house {
+    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Breakfast</span> {
+        <span style="color:#66d9ef">pub</span> toast: String,
+        seasonal_fruit: String,
+    }
+
+    <span style="color:#66d9ef">impl</span> Breakfast {
+        <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summer</span>(toast: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; <span style="color:#a6e22e">Breakfast</span> {
+            Breakfast {
+                toast: String::from(toast),
+                seasonal_fruit: String::from(<span style="color:#e6db74">&#34;peaches&#34;</span>),
+            }
+        }
+    }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">eat_at_restaurant</span>() {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> meal <span style="color:#f92672">=</span> back_of_house::Breakfast::summer(<span style="color:#e6db74">&#34;Rye&#34;</span>);
+
+    meal.toast <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Wheat&#34;</span>);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;I&#39;d like {} toast please&#34;</span>, meal.toast);
+
+    <span style="color:#75715e">// 컴파일 에러!
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// meal.seasonal_fruit = String::from(&#34;blueberries&#34;);
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ul>
+<li>struct는 각 필드도 공개/비공개 처리할 수 있다.</li>
+<li>enum은 pub를 쓰면 모든 열거값이 공개된다.</li>
+</ul>
+<p><br /></p>
+<h2 id="use-----">use 키워드: 경로 자체를 스코프로 가져오기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">mod</span> front_of_house {
+    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">mod</span> hosting {
+        <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
+    }
+}
+
+<span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#66d9ef">crate</span>::front_of_house::hosting;
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// use self::front_of_house::hosting;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">eat_at_restaurant</span>() {
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+}
+</code></pre></div><ul>
+<li><code>use</code>는 경로를 현재 범위로 가져와, 그 아이템이 마치 현재 스코프인 것처럼 호출할 수 있게 해준다.</li>
+<li>파일시스템의 <code>심볼릭 링크(symbolic link)</code>를 생성하는 것과 유사하다.</li>
+<li>단, (2) 상대경로의 경우 현재 범위의 이름부터 시작하는 대신 self 키워드를 사용한다.</li>
+</ul>
+<p><br /></p>
+<ul>
+<li><strong>Tip 1: 어떤 모듈에서 파생되었는지 알아야 하기 때문에 함수까지 use로 가져오진 말자.</strong>
+<ul>
+<li><code>use self::front_of_house::hosting::add_to_waitlist</code></li>
+<li>게다가 러스트는 같은 이름의 두 아이템이 현재 스코프에 존재하는 것을 지원하지 않는다.</li>
+</ul>
+</li>
+<li><strong>Tip 2: <code>as</code> 키워드로 같은 이름의 두 아이템을 현재 스코프로 가져올 수 있다.</strong>
+<ul>
+<li><code>ex1) use std::fmt::Result;</code></li>
+<li><code>ex2) use std::io::Result as IoResult;</code></li>
+</ul>
+</li>
+<li><strong>Tip 3: pub use 키워드로 이름을 Re-exporting하기</strong>
+<ul>
+<li>use 키워드로 스코프에 이름을 가져오면, 그 이름은 새로운 스코프에서 비공개가 된다.</li>
+<li>따라서 그 스코프에 작성한 코드를 외부에서 접근할 수 있게 하려면 pub 키워드를 써야 한다.</li>
+<li><code>pub use crate::front_of_house::hosting;</code></li>
+<li>이를 통해 코드의 내부 구조는 유지하되 외부에는 다른 구조로 코드를 노출할 수 있다.</li>
+</ul>
+</li>
+<li><strong>Tip 4: Cargo.toml 파일에 필요한 크레이트를 나열해 외부 패키지를 사용할 수 있다.</strong>
+<ul>
+<li>표준 라이브러리 또한 외부 패키지이나, 함께 제공되므로 Cargo.toml 파일에 추가할 필요는 없다.</li>
+<li>표준 라이브러리 크레이트의 이름인 std으로 시작하는 절대 경로로 사용한다.</li>
+<li><code>use std::collections:HashMap;</code></li>
+</ul>
+</li>
+<li><strong>Tip 5: 중첩 경로로 use 목록을 깔끔하게 유지할 수 있다.</strong>
+<ul>
+<li>예시1처럼 여러 아이템을 같은 경로로부터 가져올 수 있다.</li>
+<li><code>ex1) use std::{cmp::Ordering, io};</code></li>
+<li>예시2처럼 중복되는 경로를 self로 가져올 수도 있다.</li>
+<li><code>ex2) use std::io::{self, Write}</code></li>
+</ul>
+</li>
+<li><strong>Tip 6: 글롭(<code>*</code>) 연산자로 어떤 경로의 모든 공개 아이템을 현재 스코프로 가져올 수 있다.</strong>
+<ul>
+<li><code>use std::collections::*;</code></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="---">모듈을 다른 파일로 분리하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// src/lib.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">mod</span> front_of_house;
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">crate</span>::front_of_house::hosting;
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">eat_at_restaurant</span>() {
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// src/front_of_house.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">mod</span> hosting;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// src/front_of_house/hosting.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
+</code></pre></div><ul>
+<li>이렇게 다른 파일로 모듈을 쪼개도 모듈 트리는 같은 형태로 유지된다.</li>
+<li>(2)처럼 mod명에 코드블록 대신 세미콜론을 쓰면 모듈의 콘텐츠를 같은 이름의 파일에서 가져온다.</li>
+</ul>
+</div>
 
 </main>
 
