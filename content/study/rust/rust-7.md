@@ -26,6 +26,7 @@ og_description: "Managing Growing Projects with Packages, Crates, and Modules"
 - 크레이트(Crates)는 하나의 바이너리 혹은 라이브러리다.
   - `crate root`: 러스트 컴파일러가 컴파일을 시작해서 크레이트의 루트 모듈을 만들어 내는 소스 파일
 - 패키지(Packages)는 일련의 기능을 제공하는 하나 이상의 크레이트를 의미한다.
+  - 그러나 라이브러리 크레이트는 최대 1개만 가질 수 있다. -> _lib.rs 엔트리!_
   - 패키지는 `Cargo.toml`파일을 통해 그 크레이트를 빌드하는 방법을 명시한다.
   - Cargo.toml에 `src/main.rs`, `src/lib.rs` 파일이 서술되어 있지 않다.
   - **이는 규칙이다: 두 파일은 바이너리/라이브러리 크레이트의 crate root이며, 그 패키지와 같은 이름이다.**
