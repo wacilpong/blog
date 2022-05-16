@@ -186,6 +186,7 @@
 </li>
 <li>패키지(Packages)는 일련의 기능을 제공하는 하나 이상의 크레이트를 의미한다.
 <ul>
+<li>그러나 라이브러리 크레이트는 최대 1개만 가질 수 있다. -&gt; <em>lib.rs 엔트리!</em></li>
 <li>패키지는 <code>Cargo.toml</code>파일을 통해 그 크레이트를 빌드하는 방법을 명시한다.</li>
 <li>Cargo.toml에 <code>src/main.rs</code>, <code>src/lib.rs</code> 파일이 서술되어 있지 않다.</li>
 <li><strong>이는 규칙이다: 두 파일은 바이너리/라이브러리 크레이트의 crate root이며, 그 패키지와 같은 이름이다.</strong></li>
