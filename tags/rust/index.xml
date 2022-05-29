@@ -6,10 +6,19 @@
     <description>Recent content in rust on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Tue, 10 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 8</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-8/</link>
+      <pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-8/</guid>
+      <description>Vector // (1) let v: Vec&amp;lt;i32&amp;gt; = Vec::new(); // (2) let v = vec![1, 2, 3]; // (3) let mut v = Vec::new(); v.push(5); v.push(6); v.push(7); v.push(8); 연속된 일련의 값을 저장하는 컬렉션, Vec&amp;lt;T&amp;gt; 모든 값은 메모리상에 연속으로 저장되고, 같은 타입의 값만 저</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 7</title>

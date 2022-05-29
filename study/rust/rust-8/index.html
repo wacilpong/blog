@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Common Collections" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 8" />
+<meta property="og:site_name" content="After reading Rust book chapter 8" />
+<meta property="og:description" content="Common Collections" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-8/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 8" />
+<meta name="twitter:description" content="Common Collections" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 8</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 8</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 8</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="vector">Vector</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> v: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Vec::new();
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> v <span style="color:#f92672">=</span> Vec::new();
+
+v.push(<span style="color:#ae81ff">5</span>);
+v.push(<span style="color:#ae81ff">6</span>);
+v.push(<span style="color:#ae81ff">7</span>);
+v.push(<span style="color:#ae81ff">8</span>);
+</code></pre></div><ul>
+<li>연속된 일련의 값을 저장하는 컬렉션, <code>Vec&lt;T&gt;</code></li>
+<li>모든 값은 메모리상에 연속으로 저장되고, 같은 타입의 값만 저장할 수 있다.</li>
+<li>(1)처럼 빈 벡터를 생성할 수도 있고, 러스트는 벡터에 값을 추가하면 타입을 추론할 수 있으므로 (2)처럼 값을 지정해 벡터를 생성하는 <code>vec!</code> 매크로를 제공한다.</li>
+<li>(3)처럼 <code>push</code> 메서드를 이용해 뮤터블한 벡터에 값을 추가할 수 있다.</li>
+<li><strong>다른 구조체와 마찬가지로 벡터도 스코프를 벗어나면 해제, 즉 drop 메서드가 호출된다.</strong></li>
+<li><em>벡터에 참조형 값을 저장하면 복잡해지는데, 다음 기회에 알려준다고 한다.. !?</em></li>
+</ul>
+<p><br /></p>
+<h4 id="--">벡터로부터 값 읽기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+
+<span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> third: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>v[<span style="color:#ae81ff">2</span>];
+
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The third element is {}&#34;</span>, third);
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">match</span> v.get(<span style="color:#ae81ff">2</span>) {
+    Some(third) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The third element is {}&#34;</span>, third),
+    None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;There is no third element.&#34;</span>),
+}
+
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+<span style="color:#66d9ef">let</span> first <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>v[<span style="color:#ae81ff">0</span>];
+
+v.push(<span style="color:#ae81ff">6</span>);
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The first element is: {}&#34;</span>, first);
+</code></pre></div><ul>
+<li>(1)은 <strong>&amp;와 []를 이용해 인덱스 문법으로 접근하는 방법이며, 저장된 값의 참조를 반환한다.</strong></li>
+<li>(2)은 <strong>get 메서드를 이용하고, 이때는 Option&lt;&amp;T&gt; 타입의 값을 반환한다.</strong></li>
+<li>벡터에 존재하지 않는 인덱스값을 사용할 때 프로그램이 어떻게 반응할 지 직접 결정할 수 있다.</li>
+<li>(1)의 방식으로는 패닉을 발생시키므로 프로그램이 강제 종료되기를 원할 때 유용하다.</li>
+<li>(2)의 방식은 None값이 반환되므로 벡터의 범위를 벗어나 읽으려는 시도가 빈번할 때 유용하다.</li>
+<li>벡터 또한 소유와 대여 규칙이 적용되므로 (3)은 아래와 같은 에러를 낸다.
+<ul>
+<li><em>cannot borrow <code>v</code> as mutable because it is also borrowed as immutable</em></li>
+<li>같은 스코프에서 가변참조와 불변참조를 동시에 가질 수 없기 때문이다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="---1">벡터의 값 순회하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">57</span>];
+<span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#f92672">&amp;</span>v {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, i);
+}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">57</span>];
+<span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> v {
+    <span style="color:#f92672">*</span>i <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>;
+}
+</code></pre></div><ul>
+<li>(1)은 for loop으로 벡터에 저장된 i32타입의 값에 대한 불변참조를 가져와 출력한다.</li>
+<li>(2)은 가변 벡터에 저장된 값에 대한 가변참조를 가져와 값을 변경하고 있다.</li>
+<li>가변참조가 가리키는 값을 변경하려면 <code>역참조 연산자(*)</code>를 이용해야 하는데, 이는 15장에서 다룬다.</li>
+</ul>
+<p><br /></p>
+<h4 id="-enum----">벡터에 enum을 통해 여러 타입 저장하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">SpreadsheetCell</span> {
+    Int(<span style="color:#66d9ef">i32</span>),
+    Float(<span style="color:#66d9ef">f64</span>),
+    Text(String),
+}
+
+<span style="color:#66d9ef">let</span> row <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[
+    SpreadsheetCell::Int(<span style="color:#ae81ff">3</span>),
+    SpreadsheetCell::Text(String::from(<span style="color:#e6db74">&#34;blue&#34;</span>)),
+    SpreadsheetCell::Float(<span style="color:#ae81ff">10.12</span>),
+];
+</code></pre></div><ul>
+<li>어떤 아이템 목록에 각기 다른 타입의 값을 저장할 일은 많다.</li>
+<li><strong>따라서 enum을 활용하면 벡터에 각기 다른 타입의 값을 저장할 수 있다.</strong></li>
+<li>러스트는 컴파일 시점에 벡터에 어떤 타입의 값이 저장될지 알아야 한다.</li>
+<li>따라서 프로그램 작성 시점에 저장할 타입들을 알 수 없다면 이 방법도 유용하지 않다.<br />
+<em>그때는 17장에서 설명할 트레이트 객체를 사용한다.</em></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="string">String</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;초기값&#34;</span>;
+<span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> data.to_string();
+
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;초기값&#34;</span>);
+</code></pre></div><ul>
+<li>문자(character)의 컬렉션이며, UTF-8 형식으로 저장된다.</li>
+<li><strong>러스트 언어 명세에서는 오직 문자열 슬라이스 str 타입만 지원하고, 주로 값을 대여한 &amp;str 형태로 자주 보인다.</strong></li>
+<li>반면 String 타입은 러스트의 표준 라이브러리가 제공하는 타입이다.</li>
+<li>러스트에서 문자열이란 둘 중 하나를 의미하는 것이 아니라, 둘을 동시에 의미한다.</li>
+<li>위 예시처럼 문자열을 생성하는 방법은 다양하며, 셋 모두 문자열 리터럴인 String 타입이다.</li>
+</ul>
+<p><br /></p>
+<h4 id="-">문자열 수정하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s1 <span style="color:#f92672">=</span> String:<span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#34;foo&#34;</span>);
+<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bar&#34;</span>;
+
+s1.push_str(s2);
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;s2: {}&#34;</span>, s2);
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello, &#34;</span>);
+<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;world!&#34;</span>);
+<span style="color:#66d9ef">let</span> s3 <span style="color:#f92672">=</span> s1 <span style="color:#f92672">+</span> <span style="color:#f92672">&amp;</span>s2;
+
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;tic&#34;</span>);
+<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;tac&#34;</span>);
+<span style="color:#66d9ef">let</span> s3 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;toe&#34;</span>);
+<span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> format<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}-{}-{}&#34;</span>, s1, s2, s3);
+</code></pre></div><ul>
+<li>(1)의 <strong>push_str 메서드는 매개변수의 소유권을 가지지 않으므로</strong>, 코드에서 s1에 붙인 후에 println에서도 s2를 여전히 사용할 수 있다.</li>
+<li>(2)의 + 연산자는 내부적으로 add라는 메서드를 사용한다.
+<ul>
+<li><code>fn add(self, s: &amp;str) -&gt; String {...}</code></li>
+<li>두번째 인자로 &amp;str 타입을 받는데, String 타입을 넣어도 강제 역참조에 의해 변환된다.</li>
+<li>self에 소유권이 있으므로 (2)의 s1은 메서드 스코프로 이동하므로 유효하지 않게 된다.</li>
+<li>복잡한 문자열을 결합할 경우 +와 &quot; 기호 때문에 문자열의 최종형태 가늠이 어렵다.</li>
+</ul>
+</li>
+<li>(3)의 <strong>format! 매크로를 사용하면 결합된 String 값을 반환하고, 인자에 대한 소유권도 없다.</strong></li>
+</ul>
+<p><br /></p>
+<h4 id="--1">문자열의 인덱스</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> len <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Hola&#34;</span>).len();
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> len <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;안녕하세요&#34;</span>).len();
+
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span>[<span style="color:#ae81ff">236</span>, <span style="color:#ae81ff">149</span>, <span style="color:#ae81ff">136</span>, <span style="color:#ae81ff">235</span>, <span style="color:#ae81ff">133</span>, <span style="color:#ae81ff">149</span>, <span style="color:#ae81ff">237</span>, <span style="color:#ae81ff">149</span>, <span style="color:#ae81ff">152</span>, <span style="color:#ae81ff">236</span>, <span style="color:#ae81ff">132</span>, <span style="color:#ae81ff">184</span>, <span style="color:#ae81ff">236</span>, <span style="color:#ae81ff">154</span>, <span style="color:#ae81ff">148</span>]
+[<span style="color:#e6db74">&#39;안&#39;</span>, <span style="color:#e6db74">&#39;녕&#39;</span>, <span style="color:#e6db74">&#39;하&#39;</span>, <span style="color:#e6db74">&#39;세&#39;</span>, <span style="color:#e6db74">&#39;요&#39;</span>]
+[<span style="color:#e6db74">&#34;안&#34;</span>, <span style="color:#e6db74">&#34;녕&#34;</span>, <span style="color:#e6db74">&#34;하&#34;</span>, <span style="color:#e6db74">&#34;세&#34;</span>, <span style="color:#e6db74">&#34;요&#34;</span>]
+
+<span style="color:#75715e">// (4)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> hello <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;안녕하세요&#34;</span>;
+<span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>hello[<span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">3</span>];
+</code></pre></div><ul>
+<li>러스트의 문자열은 인덱스를 지원하지 않는데, 메모리에 어떻게 저장하는지부터 알아야 한다.</li>
+<li>(1)의 길이는 4이자 벡터에 저장된 문자열의 길이가 4byte라는 뜻이다.</li>
+<li>(2)의 길이는 5지만 <strong>유니코드의 스칼라값은 3byte이므로 &lsquo;안녕하세요'를 UTF-8로 인코딩하면 15byte이다.</strong></li>
+<li>러스트 관점에서 문자열은 크게 바이트, 스칼라값, 그래핌 클러스터(문자라고 부르는 것에 가까운 것)로 구분된다.
+<ul>
+<li>(3)처럼 &lsquo;안녕하세요'는 총 15개의 바이트값으로 저장된다.</li>
+<li>(3)의 두번째 줄은 이를 러스트의 char타입인 유니코드 스칼라값으로 표현한 것이다.</li>
+<li>(3)의 마지막 줄은 같은 데이터를 그래핌 클러스터로 표현한 것이다.</li>
+</ul>
+</li>
+<li>String 타입에 인덱스를 지원하지 않는 큰 이유는, <strong>인덱스 처리는 항상 O(1)이 소요되어야 하지만, 러스트는 유효한 문자를 파악하기 위해 처음부터 스캔해야 하므로 String 타입에서만큼은 일정한 성능을 보장할 수 없어서다.</strong></li>
+<li>그럼에도 (4)처럼 인덱스를 활용해 문자열 슬라이스를 만들 수도 있다.
+<ul>
+<li>이때 앞서 말했듯 한 글자가 3byte를 차지하므로 변수 s는 &lsquo;안'이 된다.</li>
+<li><code>&amp;hello[0..1]</code>처럼 작성하면 런타임에 패닉이 발생하므로 주의하자.</li>
+<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;byte index 1 is not a char boundary;</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="--2">문자열 순회</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> c <span style="color:#66d9ef">in</span> <span style="color:#e6db74">&#34;안녕하세요&#34;</span>.chars() {
+  println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, c);
+}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> b <span style="color:#66d9ef">in</span> <span style="color:#e6db74">&#34;안녕하세요&#34;</span>.bytes() {
+  println(<span style="color:#e6db74">&#34;{}&#34;</span>, b);
+}
+</code></pre></div><ul>
+<li>(1)을 통해 개별 유니코드 스칼라값을 순회할 수 있다.</li>
+<li>(2)을 통해 문자열의 각 바이트를 반환해 순회할 수 있다.</li>
+<li>문자열에서 그래핌 클러스터를 가져오는 방법은 너무 복잡해서 표준 라이브러리는 제공하지 않는다.</li>
+</ul>
+<p><br /></p>
+<h4 id="strings-are-not-so-simple">Strings Are Not So Simple</h4>
+<ul>
+<li>러스트는 UTF-8 데이터를 다루기에 충분한 고민을 하게 만든다.</li>
+<li>러스트의 문자열에 대한 방식은 조금 복잡할지라도, <strong>개발 시점에 ASCII 문자가 아닌 다른 형식의 문자를 다룰 때 에러를 처리해야할 필요가 없다는 장점이 있다.</strong></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="hash-map">Hash Map</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std:<span style="color:#a6e22e">collections</span>::HashMap;
+
+<span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> scores <span style="color:#f92672">=</span> HashMap::new();
+
+scores.insert(String::from(<span style="color:#e6db74">&#34;블루&#34;</span>), <span style="color:#ae81ff">10</span>);
+scores.insert(String::from(<span style="color:#e6db74">&#34;레드&#34;</span>), <span style="color:#ae81ff">50</span>);
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::collections::HashMap;
+
+<span style="color:#66d9ef">let</span> teams <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[String::from(<span style="color:#e6db74">&#34;블루&#34;</span>), String::from(<span style="color:#e6db74">&#34;레드&#34;</span>)];
+<span style="color:#66d9ef">let</span> initial_scores <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">50</span>];
+<span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> scores: <span style="color:#a6e22e">HashMap</span><span style="color:#f92672">&lt;</span>_, _<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> teams.into_iter().zip(initial_scores.into_iter()).collect();
+</code></pre></div><ul>
+<li>특정 키에 값을 연결할 때 사용하며, 더 범용으로 사용되는 map을 구현한 구현체다.</li>
+<li>다양한 언어에 존재하며 해시 테이블, 딕셔너리, 연관 배열과 같은 이름을 지닌다.</li>
+<li><strong>범용 컬렉션 중에서는 사용빈도가 낮아 프렐류드를 통해 자동으로 가져오지 않으므로 use로 가져와야 한다.</strong></li>
+<li>벡터와 마찬가지로 해시맵은 데이터를 힙 메모리에 저장하고, 모든 키와 모든 값의 타입은 같아야 한다.</li>
+<li>(1)처럼 new 함수를 통해 빈 해시맵을 생성할 수 있다.</li>
+<li>(2)처럼 튜플의 벡터에 <code>collect</code> 메서드를 호출해 해시맵으로 변환할 수도 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="--3">해시맵과 소유권</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::collections::HashMap;
+
+<span style="color:#66d9ef">let</span> field_name <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Favorite color&#34;</span>);
+<span style="color:#66d9ef">let</span> field_value <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Blue&#34;</span>);
+
+<span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> map <span style="color:#f92672">=</span> HashMap::new();
+map.insert(field_name, field_value);
+<span style="color:#75715e">// field_name and field_value are invalid at this point
+</span><span style="color:#75715e"></span><span style="color:#75715e">// try using them and see what compiler error you get!
+</span></code></pre></div><ul>
+<li>i32처럼 copy트레이트를 구현하는 타입은 값들이 해시맵으로 복사된다.</li>
+<li>하지만 String처럼 값을 소유하는 타입은 값과 함께 소유권이 해시맵으로 이동된다.</li>
+</ul>
+<p><br /></p>
+<h4 id="---2">해시맵 값 접근/수정하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::collections::HashMap;
+
+<span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> scores <span style="color:#f92672">=</span> HashMap::new();
+
+scores.insert(String::from(<span style="color:#e6db74">&#34;Blue&#34;</span>), <span style="color:#ae81ff">10</span>);
+scores.insert(String::from(<span style="color:#e6db74">&#34;Yellow&#34;</span>), <span style="color:#ae81ff">50</span>);
+
+<span style="color:#66d9ef">let</span> team_name <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Blue&#34;</span>);
+<span style="color:#66d9ef">let</span> score <span style="color:#f92672">=</span> scores.get(<span style="color:#f92672">&amp;</span>team_name);
+
+<span style="color:#66d9ef">for</span> (k, v) <span style="color:#66d9ef">in</span> <span style="color:#f92672">&amp;</span>scores {
+  println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}: {}&#34;</span>, k, v);
+}
+
+<span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span>scores.insert(String::from(<span style="color:#e6db74">&#34;Red&#34;</span>), <span style="color:#ae81ff">10</span>);
+scores.insert(String::from(<span style="color:#e6db74">&#34;Red&#34;</span>), <span style="color:#ae81ff">20</span>);
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span>scores.entry(String::from(<span style="color:#e6db74">&#34;Green&#34;</span>)).or_insert(<span style="color:#ae81ff">50</span>);
+scores.entry(String::from(<span style="color:#e6db74">&#34;Green&#34;</span>)).or_insert(<span style="color:#ae81ff">60</span>);
+
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::collections::HashMap;
+
+<span style="color:#66d9ef">let</span> text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello world wonderful world&#34;</span>;
+<span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> map <span style="color:#f92672">=</span> HashMap::new();
+
+<span style="color:#66d9ef">for</span> word <span style="color:#66d9ef">in</span> text.split_whitespace() {
+  <span style="color:#66d9ef">let</span> count <span style="color:#f92672">=</span> map.entry(word).or_insert(<span style="color:#ae81ff">0</span>);
+  <span style="color:#f92672">*</span>count <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+}
+
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:?}&#34;</span>, map);
+</code></pre></div><ul>
+<li><strong>해시맵의 get 메서드는 Option&lt;&amp;V&gt; 타입을 반환하고, 그 키에 값이 없으면 None을 반환한다.</strong></li>
+<li>for loop을 통해 해시맵의 키-쌍을 순회하고, 임의의 순서로 출력할 수 있다.</li>
+<li>(1)처럼 같은 키로 insert하면 처음 마지막 것으로 값을 덮으므로 Red의 값은 20이다.</li>
+<li>(2)의 <code>entry</code> 메서드는 키에 값이 할당되지 않을 때만 추가하므로 Green의 값은 50이다.</li>
+<li>(3)처럼 기존 값에 따라 새로운 해시맵을 만들 수도 있다.
+<ul>
+<li>(3)의 map 결과는 <code>{&quot;world&quot;: 2, &quot;hello&quot;: 1, &quot;wonderful&quot;: 1}</code>이다.</li>
+<li><code>or_insert</code> 메서드는 키에 할당된 값에 대한 가변 참조(&amp;mut V)를 반환한다.</li>
+<li>가변참조를 count변수에 저장했으므로 이 변수에 새 값을 할당하려면 count를 역참조(*)해야 한다.</li>
+</ul>
+</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
