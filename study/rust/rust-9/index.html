@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Error Handling" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 9" />
+<meta property="og:site_name" content="After reading Rust book chapter 9" />
+<meta property="og:description" content="Error Handling" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-9/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 9" />
+<meta name="twitter:description" content="Error Handling" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 9</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 9</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 9</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><ul>
+<li>에러 발생 가능성을 인지하고 개발자가 코드를 컴파일하기 전에 에러를 처리하도록 유도한다.</li>
+<li>다른 언어에서는 에러 구분없이 exception으로 처리한다.</li>
+<li>러스트는 recoverable 에러와 unrecoverable 에러로 구분한다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="-">에러의 종류</h2>
+<h4 id="1-recoverable-error"><strong>1. recoverable error</strong></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> Result<span style="color:#f92672">&lt;</span>T, E<span style="color:#f92672">&gt;</span> {
+	Ok(T),
+	Err(E),
+}
+</code></pre></div><ul>
+<li>ex. 파일 열기를 시도했으나 존재하지 않는 파일일 때</li>
+<li><code>Result&lt;T, E&gt;</code> 타입으로 표현한다.</li>
+<li>이때 T는 작업이 성공한 경우 Ok값에 포함될 값의 타입, E는 Err값에 포함될 값의 타입이다.</li>
+<li><strong>Result enum은</strong>
+<ul>
+<li>(1) 러스트의 타입 시스템을 통해 작업이 실패할 수도 있음을 알린다.</li>
+<li>(2) 실패할 경우 프로그램을 회복할 기회를 제공한다.</li>
+<li>(3) 작업이 성공한 경우와 실패한 경우 모두 처리하도록 유도할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="2-unrecoverable-error"><strong>2. unrecoverable error</strong></h4>
+<ul>
+<li>ex. 배열의 범위를 벗어나는 메모리에 대한 접근</li>
+<li>항상 버그의 가능성을 내포하고 있는 에러를 의미한다.</li>
+<li><code>panic! 매크로</code>: unrecoverable 에러가 발생한 프로그램의 실행을 종료한다.</li>
+<li>프로그램이 제대로 처리할 수 없는 비정상적인 상태에 놓였다는 것을 알려준다.</li>
+<li>유효하지 않거나 잘못된 값을 계속 사용하지 못하도록 프로세스를 종료한다.</li>
+</ul>
+<p><br /></p>
+<h2 id="unrecoverable-errors-with-panic-">Unrecoverable Errors with <code>panic!</code> 매크로</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) panic! 매크로 직접 호출하기
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;crash and burn&#34;</span>);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2) panic! 발생하는 예:
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 벡터의 크기를 벗어난 인덱스로 값을 읽는 경우
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#66d9ef">let</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>];
+
+  v[<span style="color:#ae81ff">99</span>];
+}
+</code></pre></div><ul>
+<li>패닉이 발생하면 프로그램은 스택을 풀어주거나 취소한다.</li>
+<li><strong>스택 풀어주기(unwind)</strong>
+<ul>
+<li>스택을 역순으로 순회하며 각 함수에 전달되었던 데이터를 정리한다.</li>
+<li>하지만 이를 위해 실행되는 작업의 양은 어마어마하다.</li>
+</ul>
+</li>
+<li><strong>스택을 즉시 취소</strong>
+<ul>
+<li>스택을 정리하지 않고 애플리케이션을 종료한다.</li>
+<li>이 경우 사용하던 메모리는 그냥 운영체제가 정리하게 된다.</li>
+<li>릴리즈 모드에서 패닉을 취소하게 하려면 <code>Cargo.toml</code>에 아래처럼 작성한다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">[profile.release]
+panic = <span style="color:#e6db74">&#39;abort&#39;</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>러스트는 보안을 위해 존재하지 않는 인덱스의 값을 읽으려고 하면 실행을 중단한다.</li>
+<li>C언어에서는 버퍼 오버리드(buffer overread)가 사용된다.
+<ul>
+<li>인덱스로 지정한 위치의 메모리가 벡터가 관리하는 메모리가 아니더라도 벡터에 저장된 값에 해당하는 위치의 메모리에 저장된 값을 리턴한다.</li>
+<li>이런 방법은 보안상의 취약점이 되기 쉬운데, 공격자가 인덱스를 조작해서 값을 읽을 수 있다.</li>
+</ul>
+</li>
+<li><strong>panic! 역추적 활용</strong>
+<ul>
+<li>라이브러리에서 panic! 매크로가 호출되는 경우 역추적(backtrace)으로 문제를 찾을 수 있다.</li>
+<li>역추적이란 그 지점까지 호출된 모든 함수의 목록이다.</li>
+<li>note: run with <code>RUST_BACKTRACE=1</code> environment variable to display a backtrace.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="recoverable-errors-with-result-enum">Recoverable Errors with <code>Result</code> enum</h2>
+<h4 id="match----result---">match 표현식을 이용해 리턴된 Result 타입의 리턴값 처리</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs::File;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#75715e">// f: Result&lt;File, std::io::Error&gt;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>);
+
+  <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> f {
+      Ok(file) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> file,
+      Err(error) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+          panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일 열기 실패: {:?}&#34;</span>, error);
+      }
+  };
+}
+</code></pre></div><ul>
+<li>변수 f: <code>File::open</code> 함수의 실행
+<ul>
+<li>성공하면 파일의 핸들(파일을 읽거나 쓸 수 있음)을 저장한 Ok 열거값이 된다.</li>
+<li>실패하면 에러 정보를 담고 있는 Err 열거값이 된다.</li>
+</ul>
+</li>
+<li>Result 열거자와 값이 prelude에 의해 자동으로 임포트된다.</li>
+<li>파일이 없는 경우 에러 메시지는 다음과 같다.
+<ul>
+<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;파일 열기 실패: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }', src/main.rs:10:13</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="match-----">match 표현식으로 여러 종류의 에러 처리하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs::File;
+<span style="color:#66d9ef">use</span> std::io::ErrorKind;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#75715e">// f: Result&lt;File, std::io::Error&gt;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>);
+
+  <span style="color:#e6db74">/**
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    </span><span style="color:#e6db74">*</span><span style="color:#e6db74"> 파일 열기 시도 실패 시
+</span><span style="color:#e6db74">    </span><span style="color:#e6db74">*</span><span style="color:#e6db74"> =&gt; error.kind가 NotFound 인지 확인
+</span><span style="color:#e6db74">    </span><span style="color:#e6db74">*</span><span style="color:#e6db74"> =&gt; 파일 생성 =&gt; 파일 생성 성공 </span><span style="color:#e6db74">/</span><span style="color:#e6db74"> 실패 따른 처리
+</span><span style="color:#e6db74">    </span><span style="color:#e6db74">*/</span>
+  <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> f {
+      Ok(file) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> file,
+      Err(<span style="color:#66d9ef">ref</span> error) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">match</span> error.kind() {
+          ErrorKind::NotFound <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">match</span> File::create(<span style="color:#e6db74">&#34;hello.txt&#34;</span>) {
+              Ok(fc) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> fc,
+              Err(e) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일을 생성하지 못했습니다: {:?}&#34;</span>, e),
+          },
+          other_error <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일을 열지 못했습니다: {:?}&#34;</span>, other_error),
+      },
+  };
+}
+</code></pre></div><ul>
+<li>Err 열거값(Result::Err)에 저장된 타입은 표준 라이브러리 구조체인 io::Error</li>
+<li><code>kind</code> 메서드: io::ErrorKind enum 타입을 반환한다.</li>
+<li>io::ErrorKind enum은 <code>ErrorKind::NotFound</code>처럼 다양한 종류의 오류를 표현한다.</li>
+<li><a href="https://doc.rust-lang.org/std/keyword.ref.html">ref keyword</a>: 패턴 매칭 중에 참조로 바인딩되고, move가 아니라 borrow된다.</li>
+</ul>
+<p><br /></p>
+<h4 id="resultunwrap">Result::unwrap()</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs::File;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>).unwrap();
+}
+</code></pre></div><ul>
+<li>match 표현식과 같은 동작을 하는 shortcut 메서드이다.</li>
+<li>Result 타입의 값이 Ok이면 저장된 값을 반환하고, Err라면 panic! 매크로를 호출한다.</li>
+<li>에러메시지
+<ul>
+<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;called Result::unwrap() on an Err value: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }', src/main.rs:4:37</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="resultexpect">Result::expect()</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs::File;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>).expect(<span style="color:#e6db74">&#34;파일을 열 수 없습니다.&#34;</span>);
+}
+</code></pre></div><ul>
+<li>panic! 매크로에 에러 메시지를 전달한다.</li>
+<li>에러 메시지와 함께 panic! 매크로를 호출한다.</li>
+<li>에러메시지:
+<ul>
+<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;파일을 열 수 없습니다.: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }', src/main.rs:4:37</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="--1">에러 전파하기</h2>
+<h4 id="1-return-erre"><strong>1. return Err(e)</strong></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs::File;
+<span style="color:#66d9ef">use</span> std::io;
+<span style="color:#66d9ef">use</span> std::io::Read;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read_username_from_file</span>() -&gt; Result<span style="color:#f92672">&lt;</span>String, io::Error<span style="color:#f92672">&gt;</span> {
+      <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>);
+      <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> f <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> f {
+          Ok(file) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> file,
+          Err(e) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">return</span> Err(e), <span style="color:#75715e">// 함수 실행 조기 중단, 에러값을 호출자에 리턴
+</span><span style="color:#75715e"></span>      };
+      <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
+      <span style="color:#75715e">// read_to_string: 파일의 내용을 변수에 기록, Result 타입 리턴
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">match</span> f.read_to_string(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s) {
+          Ok(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Ok(s),
+          Err(e) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Err(e), <span style="color:#75715e">// 함수의 마지막 표현식이므로 return 키워드 명시 X
+</span><span style="color:#75715e"></span>      }
+  }
+}
+</code></pre></div><ul>
+<li>return 키워드로 함수를 조기 중단하고 에러값을 반환한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="2--"><strong>2. ? 연산자</strong></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read_username_from_file</span>() -&gt; Result<span style="color:#f92672">&lt;</span>String, io::Error<span style="color:#f92672">&gt;</span> {
+		<span style="color:#75715e">// ok, err값을 다르게 처리하면서 에러발생시 에러를 반환하고 종료
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>)<span style="color:#f92672">?</span>;
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
+    f.read_to_string(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s)<span style="color:#f92672">?</span>;
+}
+</code></pre></div><ul>
+<li>match 표현식과 비슷하다.</li>
+<li>에러가 발생하면 조기에 return 가능하다. (return Error)</li>
+<li>Result 값이 Ok면 Ok값에 저장된 값을 반환, 프로그램이 계속 실행된다.</li>
+<li>Err이면 Err값이 전체 함수의 반환값이 되고 호출자로 에러가 전파된다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="-panic--">언제 panic! 매크로를 사용하는가?</h2>
+<ul>
+<li>
+<p>실패할 가능성이 있는 함수는 대체로 Result 타입 리턴을 권장한다.</p>
+</li>
+<li>
+<p>호출자가 회복을 시도하거나 회복할 수 없다면 panic! 매크로를 호출한다.</p>
+</li>
+<li>
+<p><strong>실패할 가능성이 없어도 Result값을 모두 처리하는 게 낫다.</strong></p>
+<ul>
+<li>Err 값이 반환될 리 없다고 확신하는 상황이어도, unwrap 메서드를 호출하자.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::net::IpAddr;
+<span style="color:#66d9ef">let</span> home: <span style="color:#a6e22e">IpAddr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>.parse().unwrap();
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>1에서 100 사이의 값인지 검사하기 위한 커스텀 타입 예시</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 구조체 정의
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Guess</span> {
+    value: <span style="color:#66d9ef">i32</span>,
+}
+
+<span style="color:#66d9ef">impl</span> Guess {
+    <span style="color:#75715e">// new 연관 함수 구현
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(value: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#a6e22e">Guess</span> {
+        <span style="color:#66d9ef">if</span> value <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> value <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> {
+            panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Guess value must be between 1 and 100, got {}.&#34;</span>, value);
+        }
+
+        Guess { value }
+    }
+
+    <span style="color:#75715e">// 자신의 값을 대여해 u32 타입의 값 리턴
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// getter: 구조체의 필드에서 값을 가져와 리턴
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">value</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">i32</span> {
+        self.value
+    }
+}
+</code></pre></div><ul>
+<li>라이브러리 코드에서 패닉을 발생시킬 때 유효성 검사를 반드시 거치도록 할 수 있다.</li>
+<li>모듈 외부 코드가 <code>Guess:new</code> 함수를 이용해 인스턴스를 생성하게 함으로써 유효성 체크를 거친다.</li>
+</ul>
+</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
