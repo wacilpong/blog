@@ -15,3 +15,4 @@ draft: false
 6. [Enums and Pattern Matching](https://wacilpong.github.io/blog/study/rust/rust-6/)
 7. [Managing Growing Projects with Packages, Crates, and Modules](https://wacilpong.github.io/blog/study/rust/rust-7/)
 8. [Common Collections](https://wacilpong.github.io/blog/study/rust/rust-8/)
+9. [Error Handling](https://wacilpong.github.io/blog/study/rust/rust-9/)
