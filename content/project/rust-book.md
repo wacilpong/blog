@@ -16,3 +16,4 @@ draft: false
 7. [Managing Growing Projects with Packages, Crates, and Modules](https://wacilpong.github.io/blog/study/rust/rust-7/)
 8. [Common Collections](https://wacilpong.github.io/blog/study/rust/rust-8/)
 9. [Error Handling](https://wacilpong.github.io/blog/study/rust/rust-9/)
+10. [Generic Types, Traits, and Lifetimes](https://wacilpong.github.io/blog/study/rust/rust-10/)
