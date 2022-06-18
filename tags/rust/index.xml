@@ -6,10 +6,19 @@
     <description>Recent content in rust on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 12 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jun 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 10</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-10/</link>
+      <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-10/</guid>
+      <description>Removing Duplication by Extracting a Function // (1) fn main() { let number_list = vec![34, 50, 25, 100, 65]; let mut largest = number_list[0]; for number in number_list { if number &amp;gt; largest { largest = number; } } println!(&amp;#34;The largest number is {}&amp;#34;, largest); } // (2) fn largest(list: &amp;amp;[i32]) -&amp;gt; i32 { let mut largest = list[0]; for &amp;amp;item in list { if item &amp;gt; largest { largest</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 9</title>

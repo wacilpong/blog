@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Generic Types, Traits, and Lifetimes" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 10" />
+<meta property="og:site_name" content="After reading Rust book chapter 10" />
+<meta property="og:description" content="Generic Types, Traits, and Lifetimes" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-10/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 10" />
+<meta name="twitter:description" content="Generic Types, Traits, and Lifetimes" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 10</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 10</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 10</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="removing-duplication-by-extracting-a-function">Removing Duplication by Extracting a Function</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> number_list <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">65</span>];
+
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> largest <span style="color:#f92672">=</span> number_list[<span style="color:#ae81ff">0</span>];
+
+    <span style="color:#66d9ef">for</span> number <span style="color:#66d9ef">in</span> number_list {
+        <span style="color:#66d9ef">if</span> number <span style="color:#f92672">&gt;</span> largest {
+            largest <span style="color:#f92672">=</span> number;
+        }
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The largest number is {}&#34;</span>, largest);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest</span>(list: <span style="color:#66d9ef">&amp;</span>[<span style="color:#66d9ef">i32</span>]) -&gt; <span style="color:#66d9ef">i32</span> {
+  <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> largest <span style="color:#f92672">=</span> list[<span style="color:#ae81ff">0</span>];
+
+  <span style="color:#66d9ef">for</span> <span style="color:#f92672">&amp;</span>item <span style="color:#66d9ef">in</span> list {
+      <span style="color:#66d9ef">if</span> item <span style="color:#f92672">&gt;</span> largest {
+          largest <span style="color:#f92672">=</span> item;
+      }
+  }
+
+  largest
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> number_list <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">65</span>];
+
+    <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> largest(<span style="color:#f92672">&amp;</span>number_list);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The largest number is {}&#34;</span>, result);
+
+    <span style="color:#66d9ef">let</span> number_list <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">102</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">6000</span>, <span style="color:#ae81ff">89</span>, <span style="color:#ae81ff">54</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">43</span>, <span style="color:#ae81ff">8</span>];
+
+    <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> largest(<span style="color:#f92672">&amp;</span>number_list);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The largest number is {}&#34;</span>, result);
+}
+</code></pre></div><ul>
+<li>(1)은 확장성을 고려한(ex. 여러 리스트 순회해서 대상 숫자를 찾는 등) 함수를 (2)처럼 추출할 수 있다.</li>
+<li>코드 변경 과정은 다음과 같다.
+<ul>
+<li>중복된 코드를 판단한다.</li>
+<li>중복된 코드를 함수로 추출하고 함수 시그니처에 입력과 반환 타입을 명시한다.</li>
+<li>중복된 코드를 함수 호출로 교체한다.</li>
+</ul>
+</li>
+<li>결국 제네릭 타입 없이 중복을 제거하는 방법을 활용해 제네릭 함수로도 추출할 수 있다.</li>
+<li>제네릭 타입으로 바꿀 중복 코드를 찾는 방법은, 함수로 추출해야 할 중복 코드를 찾는 방법과 같다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="--">제네릭 데이터 타입</h2>
+<h4 id="-">함수에서의 사용</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest_i32</span>(list: <span style="color:#66d9ef">&amp;</span>[<span style="color:#66d9ef">i32</span>]) -&gt; <span style="color:#66d9ef">i32</span> {...}
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest_char</span>(list: <span style="color:#66d9ef">&amp;</span>[char]) -&gt; <span style="color:#a6e22e">char</span> {...}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(list: <span style="color:#66d9ef">&amp;</span>[T]) -&gt; <span style="color:#a6e22e">T</span> {...}
+</code></pre></div><ul>
+<li>(1)처럼 매개변수/반환타입만 다르고 함수 본문은 같다면 (2)처럼 제네릭 함수로 추출할 수 있다.</li>
+<li>(2)는 largest 함수가 어떤 타입 T를 일반화한 함수라는 의미이다.</li>
+</ul>
+<p><br /></p>
+<h4 id="--1">구조체에서의 사용</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) 타입 T를 일반화한 구조체
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    x: <span style="color:#a6e22e">T</span>,
+    y: <span style="color:#a6e22e">T</span>,
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> integer <span style="color:#f92672">=</span> Point { x: <span style="color:#ae81ff">5</span>, y: <span style="color:#ae81ff">10</span> };
+    <span style="color:#66d9ef">let</span> float <span style="color:#f92672">=</span> Point { x: <span style="color:#ae81ff">1.0</span>, y: <span style="color:#ae81ff">4.0</span> };
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2) 다중 제네릭 타입 구조체
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>T, U<span style="color:#f92672">&gt;</span> {
+    x: <span style="color:#a6e22e">T</span>,
+    y: <span style="color:#a6e22e">U</span>,
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> both_integer <span style="color:#f92672">=</span> Point { x: <span style="color:#ae81ff">5</span>, y: <span style="color:#ae81ff">10</span> };
+    <span style="color:#66d9ef">let</span> both_float <span style="color:#f92672">=</span> Point { x: <span style="color:#ae81ff">1.0</span>, y: <span style="color:#ae81ff">4.0</span> };
+    <span style="color:#66d9ef">let</span> integer_and_float <span style="color:#f92672">=</span> Point { x: <span style="color:#ae81ff">5</span>, y: <span style="color:#ae81ff">4.0</span> };
+}
+</code></pre></div><ul>
+<li>제네릭 타입 매개변수는 얼마든지 선언할 수 있지만, 너무 많으면 가독성이 떨어진다.</li>
+<li><strong>즉, 제네릭 타입이 많아진다는 것은 코드를 더 작은 부분으로 재구성해야함을 뜻한다.</strong></li>
+</ul>
+<p><br /></p>
+<h4 id="--2">열거자에서의 사용</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    Some(T),
+    None,
+}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> Result<span style="color:#f92672">&lt;</span>T, E<span style="color:#f92672">&gt;</span> {
+    Ok(T),
+    Err(E),
+}
+</code></pre></div><ul>
+<li>(2)처럼 코드에서 여러 개의 구조체나 열거자가 오직 저장하는 값의 타입만 다를 때 유용하다.</li>
+</ul>
+<p><br /></p>
+<h4 id="--3">메서드에서의 사용</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    x: <span style="color:#a6e22e">T</span>,
+    y: <span style="color:#a6e22e">T</span>,
+}
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Point<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">x</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span> {
+        <span style="color:#f92672">&amp;</span>self.x
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> p <span style="color:#f92672">=</span> Point { x: <span style="color:#ae81ff">5</span>, y: <span style="color:#ae81ff">10</span> };
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;p.x = {}&#34;</span>, p.x());
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Point<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">f32</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">distance_from_origin</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">f32</span> {
+        (self.x.powi(<span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> self.y.powi(<span style="color:#ae81ff">2</span>)).sqrt()
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>X1, Y1<span style="color:#f92672">&gt;</span> {
+    x: <span style="color:#a6e22e">X1</span>,
+    y: <span style="color:#a6e22e">Y1</span>,
+}
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>X1, Y1<span style="color:#f92672">&gt;</span> Point<span style="color:#f92672">&lt;</span>X1, Y1<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">mixup</span><span style="color:#f92672">&lt;</span>X2, Y2<span style="color:#f92672">&gt;</span>(self, other: <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>X2, Y2<span style="color:#f92672">&gt;</span>) -&gt; <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>X1, Y2<span style="color:#f92672">&gt;</span> {
+        Point {
+            x: <span style="color:#a6e22e">self</span>.x,
+            y: <span style="color:#a6e22e">other</span>.y,
+        }
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> p1 <span style="color:#f92672">=</span> Point { x: <span style="color:#ae81ff">5</span>, y: <span style="color:#ae81ff">10.4</span> };
+    <span style="color:#66d9ef">let</span> p2 <span style="color:#f92672">=</span> Point { x: <span style="color:#e6db74">&#34;Hello&#34;</span>, y: <span style="color:#e6db74">&#39;c&#39;</span> };
+
+    <span style="color:#66d9ef">let</span> p3 <span style="color:#f92672">=</span> p1.mixup(p2);
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;p3.x = {}, p3.y = {}&#34;</span>, p3.x, p3.y);
+}
+</code></pre></div><ul>
+<li>(1)처럼 impl 키워드 다음에 제네릭을 지정하면 러스트는 Point에 지정된 타입이 구체화된 타입이 아닌 제네릭 타입이라는 점을 인식한다.</li>
+<li>(2)처럼 특정 타입의 인스턴스에만 적용할 메서드를 구현할 수도 있는데, 이때는 impl 키워드 뒤에 타입을 명시할 필요가 없다.</li>
+<li>(3)처럼 <strong>구조체 정의에 사용된 제네릭 타입이 내부 메서드 시그니처에서 사용한 타입과 무조건 같을 필요는 없다.</strong>
+<ul>
+<li>mixup 함수는 <code>X1, Y1</code> 타입으로 일반화된 구조체 안에서 정의되었으나,</li>
+<li>전혀 다른 <code>X2, Y2</code> 타입의 Point 구조체를 매개변수로 사용할 수도 있다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="--4">제네릭의 성능</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> integer <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
+<span style="color:#66d9ef">let</span> float <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5.0</span>);
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span>num Option_i32 {
+    Some(<span style="color:#66d9ef">i32</span>),
+    None,
+}
+
+<span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Option_f64</span> {
+    Some(<span style="color:#66d9ef">f64</span>),
+    None,
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> integer <span style="color:#f92672">=</span> Option_i32::Some(<span style="color:#ae81ff">5</span>);
+    <span style="color:#66d9ef">let</span> float <span style="color:#f92672">=</span> Option_f64::Some(<span style="color:#ae81ff">5.0</span>);
+}
+</code></pre></div><ul>
+<li>러스트에서는 제네릭을 사용한다고 해서 구체화된 타입을 사용할 때보다 성능이 떨어지지 않는다.</li>
+<li>러스트는 컴파일 시점에 제네릭 사용 코드를 <code>단일화(monomorphzation)</code>하기 때문이다.</li>
+<li>단일화란 컴파일 시점에 제네릭 코드를 실제로 사용하는 구체화된 타입으로 변환하는 과정이다.</li>
+<li>(2)는 (1)의 Option<T>을 사용하는 코드의 monomorphized된 버전이다.</li>
+<li><strong>이처럼 제네릭 코드를 특정 타입을 사용하는 코드로 컴파일하므로 런타임 비용이 들지 않는다.</strong></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="trait-defining-shared-behavior">트레이트(trait): Defining Shared Behavior</h2>
+<ul>
+<li>트레이트는 공유 가능한 동작을 추상화하여 정의하는 방법이다.</li>
+<li>트레이트에 제네릭을 결합해 모든 타입에 특정 동작을 공유할 수도 있다.</li>
+<li>약간 차이점이 있지만 다른 언어에서의 <code>인터페이스(interface)</code>와 유사하다.</li>
+</ul>
+<p><br /></p>
+<h3 id="--5">트레이트 선언하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Summary {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String;
+}
+</code></pre></div><ul>
+<li>트레이트는 어떤 목적에 필요한 일련의 행위를 정의하고, 여러 타입에 적용할 메서드 시그니처를 그룹화한다.</li>
+<li>Tweet 구조체 인스턴스의 데이터를 요약해 보여주는 라이브러리를 개발한다고 가정해보자.
+<ul>
+<li>각 타입으로부터 요약 데이터를 추출해야 하므로 summarize 메서드를 호출해야 한다.</li>
+<li>위 예제 코드는 해당 동작을 표현하는 트레이트이다.</li>
+</ul>
+</li>
+<li>트레이트 내 메서드 시그니처는 구현 코드 대신 세미콜론을 붙인다.</li>
+<li><strong>따라서 이 트레이트를 구현하는 각 타입은 반드시 이 메서드 본문을 구현해야 한다.</strong></li>
+<li>하나의 트레이트에 여러 개의 메서드를 정의할 수도 있다.</li>
+</ul>
+<p><br /></p>
+<h3 id="---1">타입에 트레이트 구현하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">NewsArticle</span> {
+    <span style="color:#66d9ef">pub</span> headline: String,
+    <span style="color:#66d9ef">pub</span> location: String,
+    <span style="color:#66d9ef">pub</span> author: String,
+    <span style="color:#66d9ef">pub</span> content: String,
+}
+
+<span style="color:#66d9ef">impl</span> Summary <span style="color:#66d9ef">for</span> NewsArticle {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String {
+        format<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}, by {} ({})&#34;</span>, self.headline, self.author, self.location)
+    }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Tweet</span> {
+    <span style="color:#66d9ef">pub</span> username: String,
+    <span style="color:#66d9ef">pub</span> content: String,
+    <span style="color:#66d9ef">pub</span> reply: <span style="color:#66d9ef">bool</span>,
+    <span style="color:#66d9ef">pub</span> retweet: <span style="color:#66d9ef">bool</span>,
+}
+
+<span style="color:#66d9ef">impl</span> Summary <span style="color:#66d9ef">for</span> Tweet {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String {
+        format<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}: {}&#34;</span>, self.username, self.content)
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> aggregator::{Summary, Tweet};
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> tweet <span style="color:#f92672">=</span> Tweet {
+        username: String::from(<span style="color:#e6db74">&#34;horse_ebooks&#34;</span>),
+        content: String::from(
+            <span style="color:#e6db74">&#34;of course, as you probably already know, people&#34;</span>,
+        ),
+        reply: <span style="color:#a6e22e">false</span>,
+        retweet: <span style="color:#a6e22e">false</span>,
+    };
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 new tweet: {}&#34;</span>, tweet.summarize());
+}
+</code></pre></div><ul>
+<li>(1)처럼 <code>impl ~ for</code> 키워드를 덧붙인다는 점을 제외하면 보통 메서드를 구현하는 방법과 유사하다.</li>
+<li>(2)처럼 보통의 메서드처럼 각 타입의 인스턴스에 대해 해당 메서드를 호출할 수 있다.</li>
+<li>각 타입과 Summary 트레이트를 lib.rs 하나에 정의해 모두 같은 범위에 있다고 보자.
+<ul>
+<li>lib.rs 파일을 aggregator라는 라이브러리 안에 생성했다고 보자.</li>
+<li>이때 별개 라이브러리 범위에 정의된 구조체에 Summary 트레이트를 구현하고 싶다면?</li>
+<li>aggregator::Summary처럼 가져와야 하므로 <code>pub</code>키워드를 추가해줘야 한다.</li>
+</ul>
+</li>
+<li><strong>외부 타입에 외부 트레이트를 구현할 수는 없다.</strong>
+<ul>
+<li>aggregator 크레이트 안에서 <code>Vec&lt;T&gt;</code>타입에 <code>Display</code> 트레이트를 구현할 수 없다.</li>
+<li>둘다 표준 라이브러리에 정의된 타입이고, aggregator 크레이트의 로컬 타입이 아니기 때문이다.</li>
+<li>이는 <code>통일성(coherence)</code> 혹은 <code>고아규칙(orphan rule)</code>이라고 부르는 프로그램의 특성이다.</li>
+<li><strong>이 규칙이 없다면 두 크레이트가 같은 타입에 같은 트레이트를 구현하게 될 수가 있고, 이때 러스트는 어떤 타입 구현을 사용해야 할 지 알 수 없게 된다.</strong></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="---default-implementations">트레이트 기본 구현 (Default Implementations)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Summary {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize_author</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String {
+        format<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;(Read more from {}...)&#34;</span>, self.summarize_author())
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Summary <span style="color:#66d9ef">for</span> Tweet {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize_author</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String {
+        format<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;@{}&#34;</span>, self.username)
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> tweet <span style="color:#f92672">=</span> Tweet {
+    username: String::from(<span style="color:#e6db74">&#34;horse_ebooks&#34;</span>),
+    content: String::from(
+        <span style="color:#e6db74">&#34;of course, as you probably already know, people&#34;</span>,
+    ),
+    reply: <span style="color:#a6e22e">false</span>,
+    retweet: <span style="color:#a6e22e">false</span>,
+};
+
+println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 new tweet: {}&#34;</span>, tweet.summarize());
+</code></pre></div><ul>
+<li>때로는 트레이트에 일부 혹은 전체 메서드의 기본 동작을 구현하는 편이 유용할 때가 있다.</li>
+<li>기본 구현은 (1)처럼 <strong>같은 트레이트의 다른 메서드를 호출할 수도 있다.</strong></li>
+<li>이 트레이트는 (2)처럼 <strong>기본 구현이 없는 summarize_author 메서드만 정의하면 된다.</strong></li>
+<li>이때 같은 메서드를 오버라이딩하면서 기본 구현 코드를 호출할 수는 없다.</li>
+</ul>
+<p><br /></p>
+<h3 id="--traits-as-parameters">트레이트 매개변수 (Traits as Parameters)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(item: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">impl</span> Summary) {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Breaking news! {}&#34;</span>, item.summarize());
+}
+</code></pre></div><ul>
+<li>위 코드의 item 매개변수는 지정된 트레이트를 구현하는 모든 타입을 허용한다.</li>
+<li>notify 함수의 본문에서는 Summary 트레이트에 정의된 메서드라면 무엇이든 호출할 수 있다.</li>
+<li>이처럼 <code>impl Trait</code> 문법은 함수 정의가 간단한 경우에는 편리하다.</li>
+</ul>
+<p><br /></p>
+<h4 id="1-trait-bound-syntax">(1) Trait Bound Syntax</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Summary</span><span style="color:#f92672">&gt;</span>(item: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>) {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Breaking news! {}&#34;</span>, item.summarize());
+}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Summary</span><span style="color:#f92672">&gt;</span>(item1: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>, item2: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>) {...}
+</code></pre></div><ul>
+<li>트레이트 경계 문법은 (2)처럼 매개변수가 여러 개인 좀더 복잡한 경우 유용하다.</li>
+<li>제네릭 타입에 콜론으로 지정할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="2------">(2) + 문법으로 여러 트레이트 경계 정의하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(item: <span style="color:#66d9ef">&amp;</span>(<span style="color:#66d9ef">impl</span> Summary <span style="color:#f92672">+</span> Display)) {...}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Summary</span> <span style="color:#f92672">+</span> Display<span style="color:#f92672">&gt;</span>(item: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>) {...}
+</code></pre></div><ul>
+<li>하나 이상의 트레이트 경계를 정의하는 것도 가능하다.</li>
+<li>매개변수에 Summary와 Display 트레이트를 모두 구현해야 한다면 + 문법을 사용한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="3-where----">(3) where 이용해 트레이트 경계 정리하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">some_function</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Display</span> <span style="color:#f92672">+</span> Clone, U: Clone <span style="color:#f92672">+</span> Debug<span style="color:#f92672">&gt;</span>(t: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>, u: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">U</span>) -&gt; <span style="color:#66d9ef">i32</span> {...}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">some_function</span><span style="color:#f92672">&lt;</span>T, U<span style="color:#f92672">&gt;</span>(t: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>, u: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">U</span>) -&gt; <span style="color:#66d9ef">i32</span>
+    <span style="color:#a6e22e">where</span> T: <span style="color:#a6e22e">Display</span> <span style="color:#f92672">+</span> Clone,
+          U: Clone <span style="color:#f92672">+</span> Debug
+{...}
+</code></pre></div><ul>
+<li>(1)처럼 너무 많은 트레이트 경계를 사용하면 함수 시그니처 가독성이 떨어진다.</li>
+<li>(2)처럼 where clause를 이용해 함수 시그니처를 훨씬 간결하게 유지할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h3 id="----">반환값에 트레이트 구현 값 사용하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_summarizable</span>() -&gt; <span style="color:#a6e22e">impl</span> Summary {
+    Tweet {
+        username: String::from(<span style="color:#e6db74">&#34;horse_ebooks&#34;</span>),
+        content: String::from(
+            <span style="color:#e6db74">&#34;of course, as you probably already know, people&#34;</span>,
+        ),
+        reply: <span style="color:#a6e22e">false</span>,
+        retweet: <span style="color:#a6e22e">false</span>,
+    }
+}
+</code></pre></div><ul>
+<li>위 함수는 Summary 트레이트를 구현하는 어떤 타입이라도 반환할 수 있다.</li>
+<li>이때 함수는 Tweet 타입을 반환하지만, 이 함수를 호출하는 코드는 실제 반환 타입을 알지 못한다.</li>
+<li>impl Trait 문법은 하나의 타입을 반환하는 경우에만 사용할 수 있다.</li>
+<li>즉, Tweet이나 NewsArticle 둘중에 하나를 반환하려고 하면 컴파일러 에러가 뜬다.</li>
+<li>컴파일러가 impl Trait 문법을 구현하는 방법의 제약 때문이다.<br />
+<em>17장에서 더 자세히 다룰 것임</em></li>
+</ul>
+<p><br /></p>
+<h4 id="---largest-">트레이트 경계 예제: largest 함수</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest</span><span style="color:#f92672">&lt;</span>T: PartialOrd<span style="color:#f92672">&gt;</span>(list: <span style="color:#66d9ef">&amp;</span>[T]) -&gt; <span style="color:#a6e22e">T</span> {...}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest</span><span style="color:#f92672">&lt;</span>T: PartialOrd <span style="color:#f92672">+</span> Copy<span style="color:#f92672">&gt;</span>(list: <span style="color:#66d9ef">&amp;</span>[T]) -&gt; <span style="color:#a6e22e">T</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> largest <span style="color:#f92672">=</span> list[<span style="color:#ae81ff">0</span>];
+
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">&amp;</span>item <span style="color:#66d9ef">in</span> list {
+        <span style="color:#66d9ef">if</span> item <span style="color:#f92672">&gt;</span> largest {
+            largest <span style="color:#f92672">=</span> item;
+        }
+    }
+
+    largest
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> number_list <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">65</span>];
+
+    <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> largest(<span style="color:#f92672">&amp;</span>number_list);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The largest number is {}&#34;</span>, result);
+
+    <span style="color:#66d9ef">let</span> char_list <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#e6db74">&#39;y&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;q&#39;</span>];
+
+    <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> largest(<span style="color:#f92672">&amp;</span>char_list);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The largest char is {}&#34;</span>, result);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest</span><span style="color:#f92672">&lt;</span>T: PartialOrd<span style="color:#f92672">&gt;</span>(list: <span style="color:#66d9ef">&amp;</span>[T]) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> largest <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>list[<span style="color:#ae81ff">0</span>];
+
+    <span style="color:#66d9ef">for</span> item <span style="color:#66d9ef">in</span> list {
+        <span style="color:#66d9ef">if</span> item <span style="color:#f92672">&gt;</span> largest {
+            largest <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>item;
+        }
+    }
+
+    largest
+}
+
+...
+</code></pre></div><ul>
+<li>i32와 char처럼 크기가 이미 정해진 타입은 스택에 저장되므로 Copy 트레이트를 구현하고 있다.</li>
+<li>(1)은 list 매개변수에 Copy 트레이트를 구현하지 않는 타입의 값이 전달될 가능성이 생겼다.
+<ul>
+<li><em>error[E0508]: cannot move out of type <code>[T]</code>, a non-copy slice</em></li>
+<li>그 결과 list[0] 값을 largest 변수로 가져올 수 없어서 에러가 발생하는 것이다.</li>
+</ul>
+</li>
+<li>따라서 (2)처럼 타입 T 트레이트 경계에 Copy 트레이트를 추가해야 한다.</li>
+<li>Copy대신 Clone으로 선언해도 되며, largest 함수가 소유권을 가질 때 슬라이스의 각 값을 복제한다.</li>
+<li>clone 함수를 사용하면 결국 String처럼 힙 데이터를 사용하는 타입은 더 많은 힙 메모리가 필요하다.
+<ul>
+<li>따라서 많은 양의 데이터 처리에는 속도가 떨어진다.</li>
+</ul>
+</li>
+<li>(3)처럼 Copy나 Clone 트레이트 경계 없이(힙 메모리 할당 없이) 구현할 수도 있다.
+<ul>
+<li>이때 <code>for item in list</code>에서 item은 &amp;T를 의미한다.</li>
+<li><code>&amp;item</code>은 참조를 destructuring한다는 의미여서 T를 의미하게 된다.</li>
+<li>따라서 largest는 &amp;T타입이므로 &amp; 키워드 없이 순회해야 한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="--blanket-implementations">덮개 구현 (blanket implementations)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Display</span><span style="color:#f92672">&gt;</span> ToString <span style="color:#66d9ef">for</span> T {
+    <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.</span>to_string();
+</code></pre></div><ul>
+<li><strong>타입이 원하는 트레이트를 구현하는 경우에만 다른 트레이트를 조건적으로 구현하게 할 수 있다.</strong></li>
+<li>러스트 표준 라이브러리에서는 빈번하게 사용하는 기법이다.</li>
+<li>(1)처럼 표준 라이브러리는 Display 트레이트 구현 타입에 ToString 트레이트도 함께 구현한다.</li>
+<li>따라서 (2)처럼 Display를 구현하는 모든 타입은 ToString 트레이트의 to_string 메서드를 호출할 수 있다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="lifetimes----">수명(Lifetimes)을 이용힌 참조 유효성 검사</h2>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
