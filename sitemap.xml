@@ -100,11 +100,6 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
-    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/ts-mixin/</loc>
     <lastmod>2022-01-16T00:00:00+00:00</lastmod>
   </url>
@@ -356,6 +351,10 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
   </url>
   
   <url>

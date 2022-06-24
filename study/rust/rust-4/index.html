@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -156,8 +156,8 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="-ownership">소유권 (Ownership)</h2>
-<h3 id="heading">배경</h3>
+    <div align="start" class="content"><h2 id="소유권-ownership">소유권 (Ownership)</h2>
+<h3 id="배경">배경</h3>
 <ul>
 <li>ownership은 rust가 메모리를 어떻게 관리하는지에 대해 제어하는 일련의 규칙이다.</li>
 <li>가비지 컬렉터나 개발자가 임의로 메모리를 해제하는 방식 대신, ownership 시스템에 의해 관리된다.</li>
@@ -176,14 +176,14 @@
 <li>=&gt; rust ownership은 위 문제를 해결하기 위한 방법이다.</li>
 </ul>
 <p><br /></p>
-<h3 id="heading-1">규칙</h3>
+<h3 id="규칙">규칙</h3>
 <ul>
 <li>rust에서 다루는 각각의 값은 owner라고 불리우는 변수를 가지고 있다.</li>
 <li>특정 시점에 값의 owner는 단 하나뿐이다.</li>
 <li>owner가 범위를 벗어나면 그 값은 제거된다.</li>
 </ul>
 <p><br /></p>
-<h3 id="-string-">사례: String 타입</h3>
+<h3 id="사례-string-타입">사례: String 타입</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
 <span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
 </code></pre></div><ul>
@@ -193,7 +193,7 @@
 <li><strong>String 타입은 변경할 수 있지만, 문자열 리터럴은 변경할 수 없는 이유는 메모리 차이이다.</strong></li>
 </ul>
 <p><br /></p>
-<h4 id="string---">String 타입에서의 메모리 할당</h4>
+<h4 id="string-타입에서의-메모리-할당">String 타입에서의 메모리 할당</h4>
 <blockquote>
 <p>해당 메모리는 반드시 런타임에 운영체제에 요청해야 하고, String 타입의 사용이 완료되면 이 메모리를 운영체제에 다시 돌려줄 방법이 필요하다.</p>
 </blockquote>
@@ -207,7 +207,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="1-----move">(1) 변수-데이터가 상호작용하는 방식: 이동(move)</h4>
+<h4 id="1-변수-데이터가-상호작용하는-방식-이동move">(1) 변수-데이터가 상호작용하는 방식: 이동(move)</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
 <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> x;
 
@@ -226,7 +226,7 @@ println<span style="color:#f92672">!</span>(println<span style="color:#f92672">!
 <li>이로써 위 코드에서 s2만 유효하기 때문에 두 변수가 스코프를 벗어나도 s2만 메모리를 해제한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="2-----clone">(2) 변수-데이터가 상호작용하는 방식: 복제(clone)</h4>
+<h4 id="2-변수-데이터가-상호작용하는-방식-복제clone">(2) 변수-데이터가 상호작용하는 방식: 복제(clone)</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
 <span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> s1.clone();
 
@@ -237,7 +237,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;s1 
 <li>자세한 사항은 5장에서 다룬다.</li>
 </ul>
 <p><br /></p>
-<h4 id="3----copy">(3) 스택 전용 데이터: 복사(copy)</h4>
+<h4 id="3-스택-전용-데이터-복사copy">(3) 스택 전용 데이터: 복사(copy)</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
 <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> x;
 
@@ -273,7 +273,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x =
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, some_string);
 }
 <span style="color:#75715e">// Here, some_string goes out of scope and `drop` is called. The backing
-</span><span style="color:#75715e"></span><span style="color:#75715e">// memory is freed.
+</span><span style="color:#75715e">// memory is freed.
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">makes_copy</span>(some_integer: <span style="color:#66d9ef">i32</span>) {
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, some_integer);
@@ -329,7 +329,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x =
 <li>빌려온 매개변수, 즉 참조는 불변하므로 변경할 수 없다.</li>
 </ul>
 <p><br /></p>
-<h3 id="--mutable-references">가변 참조 (Mutable References)</h3>
+<h3 id="가변-참조-mutable-references">가변 참조 (Mutable References)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
 
@@ -403,7 +403,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{},
 <p><br /></p>
 <hr />
 <h2 id="slice-type">Slice Type</h2>
-<h3 id="1--">(1) 문자열 슬라이스</h3>
+<h3 id="1-문자열-슬라이스">(1) 문자열 슬라이스</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello world&#34;</span>);
     <span style="color:#66d9ef">let</span> word <span style="color:#f92672">=</span> first_word(<span style="color:#f92672">&amp;</span>s);
@@ -460,7 +460,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{},
     <span style="color:#66d9ef">let</span> bytes <span style="color:#f92672">=</span> s.as_bytes();
 
     <span style="color:#66d9ef">for</span> (i, <span style="color:#f92672">&amp;</span>item) <span style="color:#66d9ef">in</span> bytes.iter().enumerate() {
-        <span style="color:#66d9ef">if</span> item <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74">b&#39; &#39;</span> {
+        <span style="color:#66d9ef">if</span> item <span style="color:#f92672">==</span> <span style="color:#e6db74">b&#39; &#39;</span> {
             <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span>..i];
         }
     }
@@ -493,7 +493,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{},
 <li>즉, <strong>String 타입에 대한 참조대신 문자열 슬라이스를 매개변수로 사용하면 같은 기능을 유지하면서 더 보편적인 API 형태가 된다.</strong></li>
 </ul>
 <p><br /></p>
-<h3 id="2---">(2) 그외 타입 슬라이스</h3>
+<h3 id="2-그외-타입-슬라이스">(2) 그외 타입 슬라이스</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
 <span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a[<span style="color:#ae81ff">1</span>..<span style="color:#ae81ff">3</span>];
 </code></pre></div><ul>

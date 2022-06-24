@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -209,8 +209,8 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="--">제네릭 데이터 타입</h2>
-<h4 id="-">함수에서의 사용</h4>
+<h2 id="제네릭-데이터-타입">제네릭 데이터 타입</h2>
+<h4 id="함수에서의-사용">함수에서의 사용</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest_i32</span>(list: <span style="color:#66d9ef">&amp;</span>[<span style="color:#66d9ef">i32</span>]) -&gt; <span style="color:#66d9ef">i32</span> {...}
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest_char</span>(list: <span style="color:#66d9ef">&amp;</span>[char]) -&gt; <span style="color:#a6e22e">char</span> {...}
@@ -222,7 +222,7 @@
 <li>(2)는 largest 함수가 어떤 타입 T를 일반화한 함수라는 의미이다.</li>
 </ul>
 <p><br /></p>
-<h4 id="--1">구조체에서의 사용</h4>
+<h4 id="구조체에서의-사용">구조체에서의 사용</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) 타입 T를 일반화한 구조체
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     x: <span style="color:#a6e22e">T</span>,
@@ -249,7 +249,7 @@
 <li><strong>즉, 제네릭 타입이 많아진다는 것은 코드를 더 작은 부분으로 재구성해야함을 뜻한다.</strong></li>
 </ul>
 <p><br /></p>
-<h4 id="--2">열거자에서의 사용</h4>
+<h4 id="열거자에서의-사용">열거자에서의 사용</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     Some(T),
@@ -265,7 +265,7 @@
 <li>(2)처럼 코드에서 여러 개의 구조체나 열거자가 오직 저장하는 값의 타입만 다를 때 유용하다.</li>
 </ul>
 <p><br /></p>
-<h4 id="--3">메서드에서의 사용</h4>
+<h4 id="메서드에서의-사용">메서드에서의 사용</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     x: <span style="color:#a6e22e">T</span>,
@@ -322,7 +322,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="--4">제네릭의 성능</h4>
+<h4 id="제네릭의-성능">제네릭의 성능</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> integer <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
 <span style="color:#66d9ef">let</span> float <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5.0</span>);
@@ -351,14 +351,14 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="trait-defining-shared-behavior">트레이트(trait): Defining Shared Behavior</h2>
+<h2 id="트레이트trait-defining-shared-behavior">트레이트(trait): Defining Shared Behavior</h2>
 <ul>
 <li>트레이트는 공유 가능한 동작을 추상화하여 정의하는 방법이다.</li>
 <li>트레이트에 제네릭을 결합해 모든 타입에 특정 동작을 공유할 수도 있다.</li>
 <li>약간 차이점이 있지만 다른 언어에서의 <code>인터페이스(interface)</code>와 유사하다.</li>
 </ul>
 <p><br /></p>
-<h3 id="--5">트레이트 선언하기</h3>
+<h3 id="트레이트-선언하기">트레이트 선언하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Summary {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String;
 }
@@ -375,7 +375,7 @@
 <li>하나의 트레이트에 여러 개의 메서드를 정의할 수도 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="---1">타입에 트레이트 구현하기</h3>
+<h3 id="타입에-트레이트-구현하기">타입에 트레이트 구현하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">NewsArticle</span> {
     <span style="color:#66d9ef">pub</span> headline: String,
@@ -437,7 +437,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="---default-implementations">트레이트 기본 구현 (Default Implementations)</h3>
+<h3 id="트레이트-기본-구현-default-implementations">트레이트 기본 구현 (Default Implementations)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Summary {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize_author</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String;
@@ -470,7 +470,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>이때 같은 메서드를 오버라이딩하면서 기본 구현 코드를 호출할 수는 없다.</li>
 </ul>
 <p><br /></p>
-<h3 id="--traits-as-parameters">트레이트 매개변수 (Traits as Parameters)</h3>
+<h3 id="트레이트-매개변수-traits-as-parameters">트레이트 매개변수 (Traits as Parameters)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(item: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">impl</span> Summary) {
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Breaking news! {}&#34;</span>, item.summarize());
 }
@@ -493,7 +493,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>제네릭 타입에 콜론으로 지정할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h4 id="2------">(2) + 문법으로 여러 트레이트 경계 정의하기</h4>
+<h4 id="2--문법으로-여러-트레이트-경계-정의하기">(2) + 문법으로 여러 트레이트 경계 정의하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(item: <span style="color:#66d9ef">&amp;</span>(<span style="color:#66d9ef">impl</span> Summary <span style="color:#f92672">+</span> Display)) {...}
 
@@ -504,7 +504,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>매개변수에 Summary와 Display 트레이트를 모두 구현해야 한다면 + 문법을 사용한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="3-where----">(3) where 이용해 트레이트 경계 정리하기</h4>
+<h4 id="3-where-이용해-트레이트-경계-정리하기">(3) where 이용해 트레이트 경계 정리하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">some_function</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Display</span> <span style="color:#f92672">+</span> Clone, U: Clone <span style="color:#f92672">+</span> Debug<span style="color:#f92672">&gt;</span>(t: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>, u: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">U</span>) -&gt; <span style="color:#66d9ef">i32</span> {...}
 
@@ -518,7 +518,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>(2)처럼 where clause를 이용해 함수 시그니처를 훨씬 간결하게 유지할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="----">반환값에 트레이트 구현 값 사용하기</h3>
+<h3 id="반환값에-트레이트-구현-값-사용하기">반환값에 트레이트 구현 값 사용하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_summarizable</span>() -&gt; <span style="color:#a6e22e">impl</span> Summary {
     Tweet {
         username: String::from(<span style="color:#e6db74">&#34;horse_ebooks&#34;</span>),
@@ -538,7 +538,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <em>17장에서 더 자세히 다룰 것임</em></li>
 </ul>
 <p><br /></p>
-<h4 id="---largest-">트레이트 경계 예제: largest 함수</h4>
+<h4 id="트레이트-경계-예제-largest-함수">트레이트 경계 예제: largest 함수</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest</span><span style="color:#f92672">&lt;</span>T: PartialOrd<span style="color:#f92672">&gt;</span>(list: <span style="color:#66d9ef">&amp;</span>[T]) -&gt; <span style="color:#a6e22e">T</span> {...}
 
@@ -604,7 +604,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 </li>
 </ul>
 <p><br /></p>
-<h4 id="--blanket-implementations">덮개 구현 (blanket implementations)</h4>
+<h4 id="덮개-구현-blanket-implementations">덮개 구현 (blanket implementations)</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Display</span><span style="color:#f92672">&gt;</span> ToString <span style="color:#66d9ef">for</span> T {
     <span style="color:#75715e">// --snip--
@@ -620,8 +620,199 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="lifetimes----">수명(Lifetimes)을 이용힌 참조 유효성 검사</h2>
-</div>
+<h2 id="수명lifetimes을-이용힌-참조-유효성-검사">수명(Lifetimes)을 이용힌 참조 유효성 검사</h2>
+<ul>
+<li>참조값의 스코프이며, 대부분 암시적으로 처리되지만 조건에 따라 명시해야 하는 경우도 있다.</li>
+<li>러스트는 <code>borrow checker</code>를 통해 수명을 검사한다.</li>
+</ul>
+<p><br  /></p>
+<h3 id="generic-lifetimes-in-functions">Generic Lifetimes in Functions</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> string1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;abcd&#34;</span>);
+    <span style="color:#66d9ef">let</span> string2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xyz&#34;</span>;
+
+    <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> longest(string1.as_str(), string2);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The longest string is {}&#34;</span>, result);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">longest</span>(x: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, y: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {
+    <span style="color:#66d9ef">if</span> x.len() <span style="color:#f92672">&gt;</span> y.len() {
+        x
+    } <span style="color:#66d9ef">else</span> {
+        y
+    }
+}
+</code></pre></div><ul>
+<li>위 코드에서 longest 함수의 x, y는 스코프가 동적으로 결정된다.</li>
+<li><code>if ~ else</code> 블록에서 x, y가 유효한 수명인지 알 수 없다.</li>
+<li>즉, 반환값의 스코프가 유효한 지 검사할 수 없다.</li>
+<li>컴파일 에러를 낸다.<br />
+<em>error[E0106]: missing lifetime specifier</em></li>
+</ul>
+<p><br /></p>
+<h3 id="lifetime-annotation">LifeTime Annotation</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 참조
+</span><span style="color:#75715e"></span><span style="color:#f92672">&amp;</span><span style="color:#66d9ef">i32</span>
+
+<span style="color:#75715e">// 수명을 지정한 참조
+</span><span style="color:#75715e"></span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">i32</span>
+
+<span style="color:#75715e">// 수명을 지정한 변경가능한 참조
+</span><span style="color:#75715e"></span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">mut</span> <span style="color:#66d9ef">i32</span>
+</code></pre></div><p><br /></p>
+<h3 id="lifetime-annotations-in-function-signatures">Lifetime Annotations in Function Signatures</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e">// longest 함수 수정
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> string1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;abcd&#34;</span>);
+    <span style="color:#66d9ef">let</span> string2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xyz&#34;</span>;
+
+    <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> longest(string1.as_str(), string2);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The longest string is {}&#34;</span>, result);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">longest</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(x: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>, y: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span> {
+    <span style="color:#66d9ef">if</span> x.len() <span style="color:#f92672">&gt;</span> y.len() {
+        x
+    } <span style="color:#66d9ef">else</span> {
+        y
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> string1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;long string is long&#34;</span>);
+    <span style="color:#66d9ef">let</span> result;
+    <span style="color:#75715e">// ⛔️ borrowed value does not live long enough
+</span><span style="color:#75715e"></span>    {
+        <span style="color:#66d9ef">let</span> string2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;xyz&#34;</span>);
+        result <span style="color:#f92672">=</span> longest(string1.as_str(), string2.as_str());
+    }
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The longest string is {}&#34;</span>, result);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">longest</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(x: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>, y: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span> {
+    <span style="color:#66d9ef">if</span> x.len() <span style="color:#f92672">&gt;</span> y.len() {
+        x
+    } <span style="color:#66d9ef">else</span> {
+        y
+    }
+}
+</code></pre></div><ul>
+<li>가장 작은 스코프의 변수와 동일한 스코프를 가진다.</li>
+<li>(2) 예제에서는 <code>string2</code> 와 같은 스코프를 가지기 때문에 에러가 발생한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="lifetime은-함수에서-언제-사용할까">Lifetime은 함수에서 언제 사용할까?</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// y에는 &#39;a를 사용하지 않음
+</span><span style="color:#75715e">// x와도, 반환타입과도 관련이 없기 때문
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">longest</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(x: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>, y: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span> {
+    x
+}
+</code></pre></div><ul>
+<li>인자와 반환타입이 연결되어 있을 때</li>
+<li>참조값을 반환해야 할 때</li>
+</ul>
+<p><br /></p>
+<h3 id="lifetime-annotations-in-struct-definitions">Lifetime Annotations in Struct Definitions</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ImportantExcerpt</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span> {
+    part: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>,
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> novel <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Call me Ishmael. Some years ago...&#34;</span>);
+    <span style="color:#66d9ef">let</span> first_sentence <span style="color:#f92672">=</span> novel.split(<span style="color:#e6db74">&#39;.&#39;</span>).next().expect(<span style="color:#e6db74">&#34;Could not find a &#39;.&#39;&#34;</span>);
+    <span style="color:#66d9ef">let</span> i <span style="color:#f92672">=</span> ImportantExcerpt {
+        part: <span style="color:#a6e22e">first_sentence</span>,
+    };
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    {
+        <span style="color:#66d9ef">let</span> novel <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Call me Ishmael. Some years ago...&#34;</span>);
+    }
+    <span style="color:#66d9ef">let</span> first_sentence <span style="color:#f92672">=</span> novel.split(<span style="color:#e6db74">&#39;.&#39;</span>).next().expect(<span style="color:#e6db74">&#34;Could not find a &#39;.&#39;&#34;</span>);
+    <span style="color:#66d9ef">let</span> i <span style="color:#f92672">=</span> ImportantExcerpt {
+        part: <span style="color:#a6e22e">first_sentence</span>,
+    };
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, i.part);
+}
+</code></pre></div><ul>
+<li>참조 타입이 있다면 무조건 붙여줘야 한다.</li>
+<li>구조체의 스코프에서 참조 가능해야 함을 뜻한다.</li>
+<li>위 코드에서 <code>ImportantExcerpt</code>의 part 필드는 참조 문자열 슬라이스이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="lifetime-elision">Lifetime Elision</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span>(s: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {...}
+
+<span style="color:#75715e">// 1번 규칙 적용
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(s: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {...}
+
+<span style="color:#75715e">// 2번 규칙 적용 - 완성!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(s: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span> {...}
+</code></pre></div><ul>
+<li>3가지 규칙에 따라 수명을 지정하고 모든 인자와 반환값에 수명이 부여되었다면 생략 가능하다.</li>
+<li>인자에 부여하는 수명을 <code>input lifetimes</code>, 반환값에 부여하는 수명을 <code>output lifetimes</code>라고 한다.</li>
+<li>3가지 규칙
+<ul>
+<li>컴파일러는 인자 1개당 1개의 LifeTime 부여</li>
+<li>1개의 input lifetime만 존재하면, 이 수명이 모든 output lifetime에 부여된다.</li>
+<li>인자가 여러 개이며, 그 중 하나가 <code>&amp;self</code> 혹은 <code>&amp;mut self</code>라면 output lifetime은 self의 수명과 동일하다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="lifetime-annotations-in-method-definitions">Lifetime Annotations in Method Definitions</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 구조체에 수명이 명시되어 있다면 메서드에도 명시해야 함
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span> ImportantExcerpt<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">level</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">i32</span> {
+        <span style="color:#ae81ff">3</span>
+    }
+}
+
+<span style="color:#75715e">// 반환값의 수명이 self와 동일하다면 따로 명시해주지 않아도 괜찮음
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span> ImportantExcerpt<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">announce_and_return_part</span>(<span style="color:#f92672">&amp;</span>self, announcement: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Attention please: {}&#34;</span>, announcement);
+        self.part
+    }
+}
+
+<span style="color:#75715e">// 따로 명시가 필요한 경우
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span> ImportantExcerpt<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">announce_and_return_part</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;b</span><span style="color:#f92672">&gt;</span>(<span style="color:#f92672">&amp;</span>self, announcement: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;b</span> <span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;b</span> <span style="color:#66d9ef">str</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Attention please: {}&#34;</span>, announcement);
+        announcement
+    }
+}
+</code></pre></div><p><br /></p>
+<h3 id="the-static-lifetime">The Static Lifetime</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s: <span style="color:#66d9ef">&amp;</span>&#39;static <span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I have a static lifetime.&#34;</span>;
+</code></pre></div><ul>
+<li><code>'static</code>은 스태틱 수명으로, 프로그램 실행 내내 살아있는 경우다.</li>
+<li>다른 방법으로 해결하기 어려울 때만 사용하자.</li>
+</ul>
+<p><br /></p>
+<h3 id="모두-합치기-제네릭-타입-인자-트레이트-경계-수명">모두 합치기: 제네릭 타입 인자, 트레이트 경계, 수명</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fmt::Display;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">longest_with_an_announcement</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span>, T<span style="color:#f92672">&gt;</span>(
+    x: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>,
+    y: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>,
+    ann: <span style="color:#a6e22e">T</span>,
+) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>
+<span style="color:#66d9ef">where</span>
+    T: <span style="color:#a6e22e">Display</span>,
+{
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Announcement! {}&#34;</span>, ann);
+    <span style="color:#66d9ef">if</span> x.len() <span style="color:#f92672">&gt;</span> y.len() {
+        x
+    } <span style="color:#66d9ef">else</span> {
+        y
+    }
+}
+</code></pre></div></div>
 
 </main>
 
