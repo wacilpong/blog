@@ -537,3 +537,232 @@ let s = 3.to_string();
 <hr />
 
 ## 수명(Lifetimes)을 이용힌 참조 유효성 검사
+
+- 참조값의 스코프이며, 대부분 암시적으로 처리되지만 조건에 따라 명시해야 하는 경우도 있다.
+- 러스트는 `borrow checker`를 통해 수명을 검사한다.
+
+<br  />
+
+### Generic Lifetimes in Functions
+
+```rust
+fn main() {
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+
+    let result = longest(string1.as_str(), string2);
+    println!("The longest string is {}", result);
+}
+
+fn longest(x: &str, y: &str) -> &str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
+
+- 위 코드에서 longest 함수의 x, y는 스코프가 동적으로 결정된다.
+- `if ~ else` 블록에서 x, y가 유효한 수명인지 알 수 없다.
+- 즉, 반환값의 스코프가 유효한 지 검사할 수 없다.
+- 컴파일 에러를 낸다.
+  _error[E0106]: missing lifetime specifier_
+
+<br />
+
+### LifeTime Annotation
+
+```rust
+// 참조
+&i32
+
+// 수명을 지정한 참조
+&'a i32
+
+// 수명을 지정한 변경가능한 참조
+&'a mut i32
+```
+
+<br />
+
+### Lifetime Annotations in Function Signatures
+
+```rust
+// (1)
+// longest 함수 수정
+fn main() {
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+
+    let result = longest(string1.as_str(), string2);
+    println!("The longest string is {}", result);
+}
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
+
+```rust
+// (2)
+fn main() {
+    let string1 = String::from("long string is long");
+    let result;
+    // ⛔️ borrowed value does not live long enough
+    {
+        let string2 = String::from("xyz");
+        result = longest(string1.as_str(), string2.as_str());
+    }
+    println!("The longest string is {}", result);
+}
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
+
+- 가장 작은 스코프의 변수와 동일한 스코프를 가진다.
+- (2) 예제에서는 `string2` 와 같은 스코프를 가지기 때문에 에러가 발생한다.
+
+<br />
+
+### Lifetime은 함수에서 언제 사용할까?
+
+```rust
+// y에는 'a를 사용하지 않음
+// x와도, 반환타입과도 관련이 없기 때문
+fn longest<'a>(x: &'a str, y: &str) -> &'a str {
+    x
+}
+```
+
+- 인자와 반환타입이 연결되어 있을 때
+- 참조값을 반환해야 할 때
+
+<br />
+
+### Lifetime Annotations in Struct Definitions
+
+```rust
+struct ImportantExcerpt<'a> {
+    part: &'a str,
+}
+
+fn main() {
+    let novel = String::from("Call me Ishmael. Some years ago...");
+    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
+    let i = ImportantExcerpt {
+        part: first_sentence,
+    };
+}
+
+fn main() {
+    {
+        let novel = String::from("Call me Ishmael. Some years ago...");
+    }
+    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
+    let i = ImportantExcerpt {
+        part: first_sentence,
+    };
+
+    println!("{}", i.part);
+}
+```
+
+- 참조 타입이 있다면 무조건 붙여줘야 한다.
+- 구조체의 스코프에서 참조 가능해야 함을 뜻한다.
+- 위 코드에서 `ImportantExcerpt`의 part 필드는 참조 문자열 슬라이스이다.
+
+<br />
+
+### Lifetime Elision
+
+```rust
+fn first_word(s: &str) -> &str {...}
+
+// 1번 규칙 적용
+fn first_word<'a>(s: &'a str) -> &str {...}
+
+// 2번 규칙 적용 - 완성!
+fn first_word<'a>(s: &'a str) -> &'a str {...}
+```
+
+- 3가지 규칙에 따라 수명을 지정하고 모든 인자와 반환값에 수명이 부여되었다면 생략 가능하다.
+- 인자에 부여하는 수명을 `input lifetimes`, 반환값에 부여하는 수명을 `output lifetimes`라고 한다.
+- 3가지 규칙
+  - 컴파일러는 인자 1개당 1개의 LifeTime 부여
+  - 1개의 input lifetime만 존재하면, 이 수명이 모든 output lifetime에 부여된다.
+  - 인자가 여러 개이며, 그 중 하나가 `&self` 혹은 `&mut self`라면 output lifetime은 self의 수명과 동일하다.
+
+<br />
+
+### Lifetime Annotations in Method Definitions
+
+```rust
+// 구조체에 수명이 명시되어 있다면 메서드에도 명시해야 함
+impl<'a> ImportantExcerpt<'a> {
+    fn level(&self) -> i32 {
+        3
+    }
+}
+
+// 반환값의 수명이 self와 동일하다면 따로 명시해주지 않아도 괜찮음
+impl<'a> ImportantExcerpt<'a> {
+    fn announce_and_return_part(&self, announcement: &str) -> &str {
+        println!("Attention please: {}", announcement);
+        self.part
+    }
+}
+
+// 따로 명시가 필요한 경우
+impl<'a> ImportantExcerpt<'a> {
+    fn announce_and_return_part<'b>(&self, announcement: &'b str) -> &'b str {
+        println!("Attention please: {}", announcement);
+        announcement
+    }
+}
+```
+
+<br />
+
+### The Static Lifetime
+
+```rust
+let s: &'static str = "I have a static lifetime.";
+```
+
+- `'static`은 스태틱 수명으로, 프로그램 실행 내내 살아있는 경우다.
+- 다른 방법으로 해결하기 어려울 때만 사용하자.
+
+<br />
+
+### 모두 합치기: 제네릭 타입 인자, 트레이트 경계, 수명
+
+```rust
+use std::fmt::Display;
+
+fn longest_with_an_announcement<'a, T>(
+    x: &'a str,
+    y: &'a str,
+    ann: T,
+) -> &'a str
+where
+    T: Display,
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
