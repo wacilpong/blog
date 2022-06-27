@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Writing Automated Tests" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 11" />
+<meta property="og:site_name" content="After reading Rust book chapter 11" />
+<meta property="og:description" content="Writing Automated Tests" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-11/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 11" />
+<meta name="twitter:description" content="Writing Automated Tests" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 11</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.73.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 11</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 11</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><ul>
+<li>러스트의 타입 시스템은 모든 종류의 incorrectness를 잡을 수 없다.</li>
+<li>2를 더한 값을 반환하는 add_two 함수가 있을 때, 러스트는 이 함수가 의도한대로 동작하는지 알 수 없다.</li>
+<li>따라서 테스팅 과정이 필요하다.</li>
+</ul>
+<p><br /></p>
+<h2 id="how-to-write-tests">How to Write Tests</h2>
+<ul>
+<li>Set up any needed data or state.</li>
+<li>Run the code you want to test.</li>
+<li>Assert the results are what you expect.</li>
+</ul>
+<p><br /></p>
+<h3 id="the-anatomy-of-a-test-function">The Anatomy of a Test Function</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) success
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[cfg(test)]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#75715e">#[test]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">it_works</span>() {
+        <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>;
+        assert_eq<span style="color:#f92672">!</span>(result, <span style="color:#ae81ff">4</span>);
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2) Fail
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[cfg(test)]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#75715e">#[test]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">exploration</span>() {
+        assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>);
+    }
+
+    <span style="color:#75715e">#[test]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">another</span>() {
+        panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Make this test fail&#34;</span>);
+    }
+}
+</code></pre></div><ul>
+<li><code>#[test]</code>가 붙는 함수는 테스트 함수를 의미한다.</li>
+<li>각각의 테스트는 새로운 스레드에서 수행된다.</li>
+<li>테스트 코드가 수행되던 스레드가 죽으면 메인 스레드는 실패로 표시한다.</li>
+<li>(2)의 경우 ok 대신 <code>tests::another...FAILED</code>이 뜬다.</li>
+</ul>
+<p><br /></p>
+<h3 id="checking-results-with-the-assert-macro">Checking Results with the <code>assert!</code> Macro</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[derive(Debug)]</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
+    width: <span style="color:#66d9ef">u32</span>,
+    height: <span style="color:#66d9ef">u32</span>,
+}
+
+<span style="color:#66d9ef">impl</span> Rectangle {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">can_hold</span>(<span style="color:#f92672">&amp;</span>self, other: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">bool</span> {
+        self.width <span style="color:#f92672">&gt;</span> other.width <span style="color:#f92672">&amp;&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1-1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Rectangle {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">can_hold</span>(<span style="color:#f92672">&amp;</span>self, other: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">bool</span> {
+        self.width <span style="color:#f92672">&lt;</span> other.width <span style="color:#f92672">&amp;&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[cfg(test)]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
+
+    <span style="color:#75715e">#[test]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">larger_can_hold_smaller</span>() {
+        <span style="color:#66d9ef">let</span> larger <span style="color:#f92672">=</span> Rectangle {
+            width: <span style="color:#ae81ff">8</span>,
+            height: <span style="color:#ae81ff">7</span>,
+        };
+        <span style="color:#66d9ef">let</span> smaller <span style="color:#f92672">=</span> Rectangle {
+            width: <span style="color:#ae81ff">5</span>,
+            height: <span style="color:#ae81ff">1</span>,
+        };
+
+        assert<span style="color:#f92672">!</span>(larger.can_hold(<span style="color:#f92672">&amp;</span>smaller));
+    }
+}
+</code></pre></div><ul>
+<li><code>super::*</code>
+<ul>
+<li>tests 모듈은` 내부 모듈이므로 외부 모듈의 테스트에 해당하는 코드(1)를 스코프로 가져와야 한다.</li>
+<li>이제 외부 모듈에서 정의한 모든 항목을 해당 테스트 모듈에서 사용할 수 있다.</li>
+</ul>
+</li>
+<li><code>assert!</code> 매크로는 불리언 값을 반환한다.</li>
+<li>(1), (2) 테스트의 assert! 표현식은 true를 반환하고 테스트는 pass한다.</li>
+<li>(1-1)로 테스트해보면 부등호가 바뀌었기 때문에 제대로 동작하지 않고, 테스트는 실패한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="testing-equality-with-the-assert_eq-and-assert_ne-macros">Testing Equality with the assert_eq! and assert_ne! Macros</h3>
+<ul>
+<li><code>assert_eq!</code>는 전달된 두 인자 값이 같아야 성공이며, <code>assert_ne!</code>는 그 반대이다.</li>
+<li>두 매크로는 디버그 형식을 이용해 전달된 인수를 출력한다.
+<ul>
+<li>매크로에 전달된 값들은 <code>PartialEq</code>와 <code>Debug</code> 트레이트를 구현해야 한다.</li>
+<li>Primitive Types와 표준 라이브러리가 제공하는 타입들은 두 트레이트를 구현하고 있다.</li>
+<li>직접 선언한 구조체와 열거자는 개발자가 직접 두 트레이트를 구현해야 한다.<br />
+<em><code>#[derive(PartialEq, Debug)]</code> 어노테이션 추가</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="adding-custom-failure-messages">Adding Custom Failure Messages</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">greeting</span>(name: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; String {
+    String::from(<span style="color:#e6db74">&#34;안녕하세요!&#34;</span>)
+}
+
+<span style="color:#75715e">#[cfg(test)]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
+
+    <span style="color:#75715e">#[test]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">greeting_contains_name</span>() {
+        <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> greeting(<span style="color:#e6db74">&#34;캐롤&#34;</span>);
+        assert<span style="color:#f92672">!</span>(
+					result.contains(<span style="color:#e6db74">&#34;캐롤&#34;</span>),
+					<span style="color:#e6db74">&#34;Greeting 함수의 결과에 이름이 포함되어 있지 않음. 결과값: &#39;{}&#39;&#34;</span>, result
+				);
+    }
+
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">running <span style="color:#ae81ff">1</span> test
+test tests::greeting_contains_name ... FAILED
+
+failures:
+
+<span style="color:#f92672">----</span> tests::greeting_contains_name stdout <span style="color:#f92672">----</span>
+thread <span style="color:#a6e22e">&#39;tests</span>::greeting_contains_name<span style="color:#960050;background-color:#1e0010">&#39;</span> panicked at <span style="color:#a6e22e">&#39;Greeting</span> <span style="color:#960050;background-color:#1e0010">함수의</span> <span style="color:#960050;background-color:#1e0010">결과에</span> <span style="color:#960050;background-color:#1e0010">이름이</span> <span style="color:#960050;background-color:#1e0010">포함되어</span> <span style="color:#960050;background-color:#1e0010">있지</span> <span style="color:#960050;background-color:#1e0010">않음</span>. <span style="color:#960050;background-color:#1e0010">결과값</span>: <span style="color:#960050;background-color:#1e0010">&#39;안녕하세요</span><span style="color:#f92672">!</span><span style="color:#960050;background-color:#1e0010">&#39;&#39;</span>, src<span style="color:#f92672">/</span>lib.rs:<span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">9</span>
+note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;background-color:#1e0010">`</span>RUST_BACKTRACE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">`</span> environment variable to display a backtrace
+
+
+failures:
+    <span style="color:#a6e22e">tests</span>::greeting_contains_name
+
+test result: <span style="color:#a6e22e">FAILED</span>. <span style="color:#ae81ff">0</span> passed; <span style="color:#ae81ff">1</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0.00</span>s
+</code></pre></div><ul>
+<li>assert!, assert_eq!, assert_ne! 매크로는 실패 메세지를 사용자 정의로 추가할 수 있다.</li>
+<li>위 코드는 assert! 매크로에서의 사용자 정의 실패 매세지이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="checking-for-panics-with-should_panic">Checking for Panics with should_panic</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Guess</span> {
+    value: <span style="color:#66d9ef">u32</span>
+}
+
+<span style="color:#66d9ef">impl</span> Guess {
+    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(value: <span style="color:#66d9ef">u32</span>) -&gt; <span style="color:#a6e22e">Guess</span> {
+        <span style="color:#66d9ef">if</span> value <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> {
+            panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;반드시 100보다 작거나 같은 값을 사용해야 합니다. 지정된 값: {}&#34;</span>, value)
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> value <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> {
+            panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;반드시 1보다 크거나 같은 값을 사용해야 합니다. 지정된 값: {}&#34;</span>, value);
+        }
+
+        Guess {
+            value
+        }
+    }
+}
+
+<span style="color:#75715e">#[cfg(test)]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
+
+    <span style="color:#75715e">#[test]</span>
+    <span style="color:#75715e">#[should_panic(expected=</span><span style="color:#e6db74">&#34;반드시 100보다 작거나 같은 값을 사용해야 합니다.&#34;</span><span style="color:#75715e">)]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">greater_than_100</span>() {
+        Guess::new(<span style="color:#ae81ff">200</span>);
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">running <span style="color:#ae81ff">1</span> test
+test tests::greater_than_100 <span style="color:#f92672">-</span> should panic ... FAILED
+
+failures:
+
+<span style="color:#f92672">----</span> tests::greater_than_100 stdout <span style="color:#f92672">----</span>
+thread <span style="color:#a6e22e">&#39;tests</span>::greater_than_100<span style="color:#960050;background-color:#1e0010">&#39;</span> panicked at <span style="color:#960050;background-color:#1e0010">&#39;반드시</span> <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">보다</span> <span style="color:#960050;background-color:#1e0010">크거나</span> <span style="color:#960050;background-color:#1e0010">같은</span> <span style="color:#960050;background-color:#1e0010">값을</span> <span style="color:#960050;background-color:#1e0010">사용해야</span> <span style="color:#960050;background-color:#1e0010">합니다</span>. <span style="color:#960050;background-color:#1e0010">지정된</span> <span style="color:#960050;background-color:#1e0010">값</span>: <span style="color:#ae81ff">200</span><span style="color:#960050;background-color:#1e0010">&#39;</span>, src<span style="color:#f92672">/</span>lib.rs:<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">13</span>
+note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;background-color:#1e0010">`</span>RUST_BACKTRACE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">`</span> environment variable to display a backtrace
+note: <span style="color:#a6e22e">panic</span> did not contain expected string
+      panic message: <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#e6db74">&#34;반드시 1보다 크거나 같은 값을 사용해야 합니다. 지정된 값: 200&#34;</span><span style="color:#960050;background-color:#1e0010">`</span>,
+ expected substring: <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#e6db74">&#34;반드시 100보다 작거나 같은 값을 사용해야 합니다.&#34;</span><span style="color:#960050;background-color:#1e0010">`</span>
+
+failures:
+    <span style="color:#a6e22e">tests</span>::greater_than_100
+
+test result: <span style="color:#a6e22e">FAILED</span>. <span style="color:#ae81ff">0</span> passed; <span style="color:#ae81ff">1</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0.00</span>s
+</code></pre></div><ul>
+<li><code>should_panic</code>은 패닉이 발생하면 테스트 성공, 패닉이 발생하지 않으면 테스트 실패이다.</li>
+<li>위 코드는 개발자 의도대로 패닉은 발생했지만, 의도한 문자열과 다른 메세지 결과가 출력된다.</li>
+<li>expected로 패닉 메세지를 지정할 수 있기 때문이다.</li>
+<li>should_panic을 통해 버그가 발생한 위치를 파악하기 쉽다.</li>
+</ul>
+<p><br /></p>
+<h3 id="using-resultt-e-in-tests">Using Result&lt;T, E&gt; in Tests</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[cfg(test)]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#75715e">#[test]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">it_works</span>() -&gt; Result<span style="color:#f92672">&lt;</span>(), String<span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span> {
+            Ok(())
+        } <span style="color:#66d9ef">else</span> {
+            Err(String::from(<span style="color:#e6db74">&#34;two plus two does not equal four&#34;</span>))
+        }
+    }
+}
+</code></pre></div><p><br /></p>
+<hr />
+<h2 id="controlling-how-tests-are-run">Controlling How Tests Are Run</h2>
+<ul>
+<li><code>cargo test</code>
+<ul>
+<li>테스트 모드의 코드를 컴파일하고, 결과 테스트 바이너리를 실행한다.</li>
+<li>기본 동작은 모든 테스트를 병렬로 실행한다.</li>
+<li>테스트가 실행되는 동안 출력 결과를 모아 테스트 결과 한 곳에 보여준다.</li>
+<li>옵션
+<ul>
+<li>cargo test 명령에 적용되는 옵션<br />
+(<code>cargo test —help</code> 옵션을 통해 옵션 확인)</li>
+<li>결과 테스트 바이너리의 생성에 적용되는 옵션: 구분자 — 다음에 나열됨<br />
+(<code>cargo test —- —help</code> 옵션을 통해 옵션 확인)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="테스트를-병렬직렬로-실행하기">테스트를 병렬/직렬로 실행하기</h3>
+<ul>
+<li>thread를 이용해 병렬 실행한다.
+<ul>
+<li>테스트를 더 빨리 실행해서 코드 결과를 빠르게 받을 수 있는 장점!</li>
+<li>병렬 테스트 시 공유되는 변수, 디렉토리가 다른 thread에 의해 방해 받을 수 있는 단점</li>
+</ul>
+</li>
+<li>테스트를 직렬로 실행하기: <code>cargo test -- —-test-threads=1</code></li>
+</ul>
+<p><br /></p>
+<h3 id="함수의-결과-보여주기">함수의 결과 보여주기</h3>
+<ul>
+<li>
+<p>기본: 테스트 라이브러리에서는 테스트 성공 시 표준 출력에 아무것도 출력하지 않는다. ex) println!</p>
+<ul>
+<li>테스트 실행기가 테스트 성공 시 println!의 출력은 가로챈다.</li>
+</ul>
+</li>
+<li>
+<p>성공한 테스트의 출력값도 확인하기: <code>cargo test -- --nocapture</code></p>
+</li>
+<li>
+<p><code>—-nocapture</code> 플래그 실행 결과</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ▶︎ 테스트가 병렬로 실행되어 문자열 출력 순서가 뒤섞임</span>
+running <span style="color:#ae81ff">2</span> tests
+입력값: <span style="color:#ae81ff">8</span>
+입력값: <span style="color:#ae81ff">4</span>
+thread <span style="color:#e6db74">&#39;tests::this_test_will_fail&#39;</span> panicked at <span style="color:#e6db74">&#39;assertion failed: `(left == right)`
+</span><span style="color:#e6db74">  left: `5`,
+</span><span style="color:#e6db74"> right: `10`&#39;</span>, src/lib.rs:19:9
+note: run with <span style="color:#e6db74">`</span>RUST_BACKTRACE<span style="color:#f92672">=</span>1<span style="color:#e6db74">`</span> environment variable to display a backtrace
+test tests::this_test_will_pass ... ok
+test tests::this_test_will_fail ... FAILED
+
+failures:
+
+failures:
+    tests::this_test_will_fail
+
+test result: FAILED. <span style="color:#ae81ff">1</span> passed; <span style="color:#ae81ff">1</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ▶︎ -—nocapture -—test-threads=1 실행 결과</span>
+running <span style="color:#ae81ff">2</span> tests
+test tests::this_test_will_fail ... 입력값: <span style="color:#ae81ff">8</span>
+thread <span style="color:#e6db74">&#39;main&#39;</span> panicked at <span style="color:#e6db74">&#39;assertion failed: `(left == right)`
+</span><span style="color:#e6db74">  left: `5`,
+</span><span style="color:#e6db74"> right: `10`&#39;</span>, src/lib.rs:19:9
+note: run with <span style="color:#e6db74">`</span>RUST_BACKTRACE<span style="color:#f92672">=</span>1<span style="color:#e6db74">`</span> environment variable to display a backtrace
+FAILED
+test tests::this_test_will_pass ... 입력값: <span style="color:#ae81ff">4</span>
+ok
+
+failures:
+
+failures:
+    tests::this_test_will_fail
+
+test result: FAILED. <span style="color:#ae81ff">1</span> passed; <span style="color:#ae81ff">1</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<h3 id="이름을-이용해-테스트-일부만-실행하기">이름을 이용해 테스트 일부만 실행하기</h3>
+<ul>
+<li>하나의 테스트만 실행하기: <code>cargo test {테스트 함수 이름}</code></li>
+<li>여러 테스트 실행하기: <code>cargo test {테스트 이름의 일부 지정}</code></li>
+<li>지정된 이름에 일치하는 모든 테스트를 실행한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="명시적으로-요청하지-않은-테스트-제외하기">명시적으로 요청하지 않은 테스트 제외하기</h3>
+<ul>
+<li>특정 테스트만 제외하고 테스트를 실행하고 싶을 때: <code>#[test]</code> 다음에 <code>#[ignore]</code> 특성을 추가함</li>
+<li>제외된 테스트만을 실행하고 싶을 때: <code>cargo test —- -—ignored</code></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="test-organization">Test Organization</h2>
+<p><br /></p>
+<h3 id="단위-테스트-unit-test">단위 테스트 (unit test)</h3>
+<ul>
+<li>하나의 모듈을 독립적으로 테스트함, private 함수 테스트 가능, 라이브러리를 별개로 테스트하는 방법</li>
+<li>코드가 의도적으로 동작하는지 빠르게 판단</li>
+<li><code>#[cfg(test)]</code> 특성
+<ul>
+<li>cargo test 명령을 실행할 때만 코드를 컴파일하고 실행하라는 의미</li>
+<li>cargo build 에서는 테스트 모듈의 코드가 컴파일되지 않음.</li>
+<li>통합 테스트는 다른 디렉터리에 작성하므로 해당 특성 필요하지 않지만,<br />
+단위 테스트에서는 같은 파일에 작성하므로 테스트 코드가 컴파일 결과에 포함되지 않도록 해당 특성 지정 필요함.</li>
+<li>cfg: configuration 설정의 약자</li>
+<li>cargo는 cfg 특성을 이용해 cargo test 명령을 실행할 때만 테스트 코드를 컴파일함.</li>
+</ul>
+</li>
+<li>private 함수의 테스트
+<ul>
+<li>러스트에서는 private 함수의 테스트를 허용함</li>
+<li>테스트 함수 내에서 private 함수 접근 가능</li>
+</ul>
+</li>
+</ul>
+<h3 id="통합-테스트-integration-test">통합 테스트 (integration test)</h3>
+<ul>
+<li>
+<p>다른 모듈과 함께 라이브러리를 테스트하는 방법, public 함수만 테스트 가능</p>
+</li>
+<li>
+<p>라이브러리가 올바르게 동작하는 지 확인하는 목적이므로 coverage가 중요함</p>
+</li>
+<li>
+<p>tests 디렉토리</p>
+<ul>
+<li>최상위 레벨에 생성</li>
+<li>각 파일은 별개의 크레이트로 컴파일됨</li>
+<li>통합 테스트 실행 결과</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ▶︎ 단위 테스트 결과</span>
+running <span style="color:#ae81ff">1</span> test
+test tests::internal ... ok
+
+test result: ok. <span style="color:#ae81ff">1</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+
+<span style="color:#75715e"># ▶︎ 통합 테스트 시작</span>
+     Running tests/integration_test.rs <span style="color:#f92672">(</span>target/debug/deps/integration_test-66e2bf000b052bec<span style="color:#f92672">)</span>
+
+running <span style="color:#ae81ff">1</span> test
+test it_adds_two ... ok
+<span style="color:#75715e"># ▶︎ 통합 테스트 각 테스트 함수 결과</span>
+test result: ok. <span style="color:#ae81ff">1</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+<span style="color:#75715e"># ▶︎ 통합 테스트 전체 결과</span>
+   Doc-tests adder
+
+running <span style="color:#ae81ff">0</span> tests
+
+test result: ok. <span style="color:#ae81ff">0</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+</code></pre></div><ul>
+<li>특정 통합 테스트만 실행하기: <code>cargo test -—test {통합 테스트 파일명}</code></li>
+</ul>
+</li>
+<li>
+<p>통합 테스트의 서브 모듈</p>
+<ul>
+<li>tests 하위에 서브 디렉토리를 추가하면 해당 위치의 파일들은 별개의 크레이트로 컴파일되지 않는다.</li>
+<li>별도의 테스트 섹션으로 작성하지 않고, 테스트에 공유되어야 하는 코드들을 작성해야할 때 유용하게 사용함. ex) <code>common::setup()</code></li>
+</ul>
+</li>
+<li>
+<p>바이너리 크레이트의 단위 테스트</p>
+</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

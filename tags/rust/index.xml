@@ -6,10 +6,19 @@
     <description>Recent content in rust on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 15 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jun 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 11</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-11/</link>
+      <pubDate>Fri, 24 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-11/</guid>
+      <description>러스트의 타입 시스템은 모든 종류의 incorrectness를 잡을 수 없다. 2를 더한 값을 반환하는 add_two 함수가 있을 때, 러스트는 이 함수가 의도한대로 동작하는</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 10</title>
