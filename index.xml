@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Fri, 24 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/rust-book/</guid>
-      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data Enums and Pattern Matching Managing Growing Projects with Packages, Crates, and Modules Common Collections Error Handling Generic Types, Traits, and Lifetimes  </description>
+      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data Enums and Pattern Matching Managing Growing Projects with Packages, Crates, and Modules Common Collections Error Handling Generic Types, Traits, and Lifetimes Writing Automated Tests An I/O Project: Building a Command Line Program  </description>
     </item>
     
     <item>
@@ -36,6 +36,15 @@
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>After reading Rust book chapter 12</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-12/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-12/</guid>
+      <description>Accepting Command Line Arguments Reading the Argument Values use std::env; fn main() { let args: Vec&amp;lt;String&amp;gt; = env::args().collect(); let query = &amp;amp;args[1]; let filename = &amp;amp;args[2]; println!(&amp;#34;검색어: {}&amp;#34;, query); println!(&amp;#34;대상 파일: {}&amp;#34;, filename); } 커맨</description>
     </item>
     
     <item>
@@ -494,7 +503,7 @@
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/blockchain/blockchain-2/</guid>
-      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&amp;rsquo;의 목적을 모두 충족하면서 암호화된 화</description>
+      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&#39;의 목적을 모두 충족하면서 암호화된 화폐이다. - Bitcoin</description>
     </item>
     
     <item>
@@ -542,7 +551,7 @@ Change permission of file I will change mode of key file and connect to ssh with
 
 2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
 
-3. Connect domain with CloudFront If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
+3. Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
     </item>
     
     <item>
@@ -551,7 +560,7 @@ Change permission of file I will change mode of key file and connect to ssh with
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</guid>
-      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect</description>
+      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&#39;t configure anything in AWS console. So, connect</description>
     </item>
     
     <item>

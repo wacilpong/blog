@@ -6,10 +6,19 @@
     <description>Recent content in Studies on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Fri, 24 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 12</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-12/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-12/</guid>
+      <description>Accepting Command Line Arguments Reading the Argument Values use std::env; fn main() { let args: Vec&amp;lt;String&amp;gt; = env::args().collect(); let query = &amp;amp;args[1]; let filename = &amp;amp;args[2]; println!(&amp;#34;검색어: {}&amp;#34;, query); println!(&amp;#34;대상 파일: {}&amp;#34;, filename); } 커맨</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 11</title>
@@ -188,7 +197,7 @@
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/blockchain/blockchain-2/</guid>
-      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&amp;rsquo;의 목적을 모두 충족하면서 암호화된 화</description>
+      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&#39;의 목적을 모두 충족하면서 암호화된 화폐이다. - Bitcoin</description>
     </item>
     
     <item>
