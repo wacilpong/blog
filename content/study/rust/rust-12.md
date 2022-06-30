@@ -73,9 +73,9 @@ fn main() {
 
 ```rust
 fn main() {
-...
-let (query, filename) = parse_config(&args);
-...
+  ...
+  let (query, filename) = parse_config(&args);
+  ...
 }
 
 fn parse_config(args: &[String]) -> (&str, &str) {
@@ -100,9 +100,9 @@ fn parse_config(args: &[String]) -> (&str, &str) {
 
 ```rust
 fn main() {
-...
-let config = parse_config(&args);
-...
+  ...
+  let config = parse_config(&args);
+  ...
 }
 
 struct Config {
@@ -130,9 +130,9 @@ fn parse_config(args: &[String]) -> Config {
 
 ```rust
 fn main() {
-...
-let config = Config::new(&args);
-...
+  ...
+  let config = Config::new(&args);
+  ...
 }
 
 struct Config {
@@ -164,3 +164,190 @@ impl Config {
 <br />
 
 #### (1) 에러 메시지 개선하기
+
+```rust
+impl Config {
+    fn new(args: &[String]) -> Config {
+        if args.len() < 3 {
+            panic!("필요한 인수가 지정되지 않았습니다.");
+        }
+
+        let query = args[1].clone();
+        let filename = args[2].clone();
+
+        Config { query, filename }
+    }
+}
+```
+
+- new 연관함수에 길이가 충분한지 검사하는 코드를 추가했다.
+- 그러나 `panic!` 매크로는 사용상의 문제보다 프로그래밍적 문제에 적합하다.
+- 따라서 작업의 성공/실패 여부를 의미하는 Result 타입을 반환하도록 하자.
+
+<br />
+
+#### (2) panic! 매크로 호출 대신 Result 반환하기
+
+```rust
+impl Config {
+    fn new(args: &[String]) -> Result<Config, &'static str> {
+        if args.len() < 3 {
+            return Err("필요한 인수가 지정되지 않았습니다.");
+        }
+
+        let query = args[1].clone();
+        let filename = args[2].clone();
+
+        Ok(Config { query, filename })
+    }
+}
+```
+
+- 작업이 성공하면 Config 인스턴스를 반환하고, 그렇지 않으면 에러메시지를 반환한다.
+- 이때 `&'static str`은 정적 수명을 가진 문자열 리터럴 타입이며 에러메시지를 저장하기 위함이다.
+
+<br />
+
+#### (3) Config::new 함수 호출하고 에러 처리하기
+
+```rust
+use std::process;
+
+fn main() {
+  ...
+  let config = Config::new(&args).unwrap_or_else(|err| {
+      println!("Problem parsing arguments: {}", err);
+      process::exit(1);
+  });
+  ...
+}
+```
+
+- 0이 아닌 상태는 프로그램을 호출한 프로세스에게 프로그램이 에러 상태여서 종료되었음을 알리는 규칙이다.
+- `unwrap_or_else`는 표준 라이브러리가 `Result<T, E>`타입에 정의한 메서드다.
+  - panic! 매크로가 아닌 다른 방법으로 에러를 처리할 수 있다.
+  - Ok 값이면 그 열거값에 저장된 값을 반환한다.
+  - **Err 값이면 클로저를 이용해 해당 메서드에 전달한 익명함수를 호출한다.**
+  - **Err에 저장되는 값은 익명함수의 파이프 문자(|) 사이에 선언하는 인수에 전달된다.**
+
+<br />
+
+### main 함수에서 로직 분리하기
+
+```rust
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    let config = Config::new(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
+
+    println!("검색어: {}", config.query);
+    println!("대상 파일: {}", config.filename);
+
+    run(config);
+}
+
+fn run(config: Config) {
+    let contents = fs::read_to_string(config.filename).expect("파일을 읽지 못했습니다.");
+
+    println!("파일 내용:\n{}", contents);
+}
+```
+
+- 현재 작성된 코드에서 설정, 에러처리와 관련되지 않은 코드를 분리할 수 있다.
+- main 함수를 더 쉽게 검증할 수 있으며 나머지 로직에 대한 테스트도 작성할 수 있다.
+
+<br />
+
+```rust
+...
+use std::error::Error;
+
+fn main() {
+    ...
+    if let Err(e) = run(config) {
+        println!("애플리케이션 에러: {}", e);
+        process::exit(1);
+    }
+}
+
+fn run(config: Config) -> Result<(), Box<dyn Error>> {
+    let contents = fs::read_to_string(config.filename)?;
+
+    println!("파일 내용:\n{}", contents);
+
+    Ok(())
+}
+```
+
+- run 함수는 원래 유닛타입을 반환했으므로 Ok인 경우 유지한다.
+- `Box<dyn Error>`는 트레이트 객체로 함수가 Error 트레이트를 구현하는 타입을 반환하지만, 반환될 값의 타입은 특정하지 않는다는 의미이다.
+- **panic! 매크로 호출 대신 `?` 연산자를 사용하면 현재 함수의 호출자에게 에러값을 반환할 수 있다.**
+- run 함수는 성공 시 ()를 반환하므로 오로지 에러가 발생했는지만 파악하면 된다.
+- 따라서 `unwrap_or_else`를 이용해 ()값을 얻어올 필요가 없다.
+- if let 구문과 기존 unwrap_or_else 함수 본문은 같다.
+- 즉, 에러메시지 출력 후 프로그램을 종료한다.
+
+<br />
+
+### 라이브러리 크레이트로 분리하기
+
+```rust
+// lib.rs
+use std::fs;
+use std::error::Error;
+
+pub struct Config {
+  pub query: String,
+  pub filename: String
+}
+
+impl Config {
+  pub fn new(args: &[String]) -> Result<Config, &'static str> {
+      if args.len() < 3 {
+          return Err("필요한 인수가 지정되지 않았습니다.");
+      }
+
+      let query = args[1].clone();
+      let filename = args[2].clone();
+
+      Ok(Config { query, filename })
+  }
+}
+
+pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
+  let contents = fs::read_to_string(config.filename)?;
+
+  println!("파일 내용:\n{}", contents);
+
+  Ok(())
+}
+```
+
+```rust
+// main.rs
+use std::env;
+use std::process;
+
+use minigrep::Config;
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    let config = Config::new(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
+
+    println!("검색어: {}", config.query);
+    println!("대상 파일: {}", config.filename);
+
+    if let Err(e) = minigrep::run(config) {
+        println!("애플리케이션 에러: {}", e);
+        process::exit(1);
+    }
+}
+```
+
+- 이제 lib.rs는 테스트할 수 있는 공개 API를 갖게 된 셈이다.
+- 따라서 main.rs에서 스코프로 가져와서 사용할 수 있다.
