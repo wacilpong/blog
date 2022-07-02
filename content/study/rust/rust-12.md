@@ -351,3 +351,275 @@ fn main() {
 
 - 이제 lib.rs는 테스트할 수 있는 공개 API를 갖게 된 셈이다.
 - 따라서 main.rs에서 스코프로 가져와서 사용할 수 있다.
+
+<br />
+<hr />
+
+## 테스트 주도 방법으로 라이브러리 기능 개발하기
+
+- TDD는 소프트웨어 작성법 중 하나일 뿐이지만, 코드의 디자인 또한 주도한다.
+- 여기서는 파일 내용에서 검색해 검색어를 포함하는 라인의 목록을 반환하는 기능을 작성한다.
+
+<br />
+
+### 실패하는 테스트 작성하기
+
+```rust
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let query = "duct";
+        let contents = "\
+Rust:
+safe, fast, productive.
+Pick three.";
+
+        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
+    }
+}
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+  vec![]
+}
+```
+
+- 위 테스트는 검색할 검색어와 검색 대상이 되는 텍스트를 입력받아 포함하는 줄만 반환한다.
+- search 함수는 아직 빈 벡터를 반환하도록 구현되어 있으므로 테스트는 실패한다.
+- 이때 수명을 지정하지 않으면 러스트는 두 인수 중 어떤 것이 필요한지 알 수 없어 에러를 낸다.
+  - **슬라이스가 참조하는 데이터가 유효해야 그에 대한 참조도 유효하기 때문이다.**
+  - contents가 아닌 query 인수로부터 문자열 슬라이스를 만들 수도 있어 명확하지 않다.
+  - 따라서 search 함수가 반환하는 데이터는 contents 인수와 같은 수명임을 명시해야 한다.
+
+<br />
+
+### 위 테스트 성공시키기
+
+- contents 인수의 각 줄을 순회한다.
+- 각 줄이 검색어를 포함하고 있는지 확인한다.
+- 검색어가 포함되어 있으면 반환할 값의 목록에 그 줄을 추가한다.
+- 검색어가 포함되어 있지 않으면 다음 줄로 건너뛴다.
+- 검색어를 포함하는 줄의 목록을 반환한다.
+
+<br />
+
+```rust
+// lib.rs
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut results = Vec::new();
+
+    for line in contents.lines() {
+        if line.contains(query) {
+            results.push(line);
+        }
+    }
+
+    results
+}
+```
+
+```rust
+// lib.rs
+pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
+  let contents = fs::read_to_string(config.filename)?;
+
+  for line in search(&config.query, &contents) {
+    println!("{}", line);
+  }
+
+  Ok(())
+}
+```
+
+- `lines` 메서드는 반복자를 반환한다.
+- `contains` 메서드로 검색어의 포함 야부를 확인한다.
+- 검색어를 포함하는 줄을 가변 벡터 `results`에 저장한다.
+- **TDD로 개발한 search 함수를 run 함수에 활용하면, 이제 검색어가 포함된 줄만 출력한다.**
+
+<br />
+<hr />
+
+## 환경 변수 다루기
+
+- 사용자가 환경 변수를 이용해 문자열 검색에 대소문자를 구분하지 않도록 설정해보자.
+- 환경 변수를 설정하면 그 터미널 세션에서는 대소문자를 구분하지 않고 검색을 계속할 수 있다.
+
+<br />
+
+```rust
+use std::fs;
+use std::error::Error;
+use std::env;
+
+pub struct Config {
+  pub query: String,
+  pub filename: String,
+  pub ignore_case: bool,
+}
+
+impl Config {
+  pub fn new(args: &[String]) -> Result<Config, &'static str> {
+      if args.len() < 3 {
+          return Err("필요한 인수가 지정되지 않았습니다.");
+      }
+
+      let query = args[1].clone();
+      let filename = args[2].clone();
+      let ignore_case = env::var("IGNORE_CASE").is_ok();
+
+      Ok(Config {
+          query,
+          filename,
+          ignore_case,
+      })
+  }
+}
+
+pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
+  let contents = fs::read_to_string(config.filename)?;
+
+  let results = if config.ignore_case {
+      search_case_insensitive(&config.query, &contents)
+  } else {
+      search(&config.query, &contents)
+  };
+
+  for line in results {
+      println!("{}", line);
+  }
+
+  Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn case_sensitive() {
+        let query = "duct";
+        let contents = "\
+Rust:
+safe, fast, productive.
+Pick three.
+Duct tape.";
+
+        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
+    }
+
+    #[test]
+    fn case_insensitive() {
+        let query = "rUsT";
+        let contents = "\
+Rust:
+safe, fast, productive.
+Pick three.
+Trust me.";
+
+        assert_eq!(
+            vec!["Rust:", "Trust me."],
+            search_case_insensitive(query, contents)
+        );
+    }
+}
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+  let mut results = Vec::new();
+
+  for line in contents.lines() {
+      if line.contains(query) {
+          results.push(line);
+      }
+  }
+
+  results
+}
+
+pub fn search_case_insensitive<'a>(
+  query: &str,
+  contents: &'a str,
+) -> Vec<&'a str> {
+  let query = query.to_lowercase();
+  let mut results = Vec::new();
+
+  for line in contents.lines() {
+      if line.to_lowercase().contains(&query) {
+          results.push(line);
+      }
+  }
+
+  results
+}
+```
+
+```txt
+$ IGNORE_CASE=1 cargo run to poem.txt
+```
+
+- `search_case_insensitive` 함수는 'rUsT'라는 검색어로 'Rust', 'Trust me'를 찾아낸다.
+- `to_lowercase` 메서드는 기존 데이터를 참조하는 것이 아니라 새로운 데이터를 생성한다.
+- 따라서 query 섀도우 변수는 문자열 슬라이스가 아니라 문자열이다.
+- `contains` 메서드는 문자열 슬라이스가 매개변수이기 때문에 query의 참조(&)를 넘겨야 한다.
+- `ignore_case` 변수는 env::var 함수의 IGNORE_CASE 환경 변수 값이 대입된다.
+- `env::var` 함수는 환경 변수가 설정되어 있으면 Ok, 그렇지 않으면 Err를 반환하는 Result 타입이다.
+- 여기서는 환경 변수의 값보다는 어떤 값이든 설정되어 있는지 여부만 확인한다.
+- 따라서 unwrap, expect 보다는 값이 있기만 하면 false를 반환하는 `is_err`가 적합하다.
+- **이제 IGNORE_CASE에 값을 설정하면 'to'의 검색 결과에 대문자도 포함된다.**
+
+<br />
+<hr />
+
+## stderr를 이용해 에러메시지 출력
+
+- println! 매크로는 표준 출력에만 지정된 메시지를 출력한다.
+- 따라서 표준 에러를 이용해 메시지를 출력하려면 다른 방법을 사용해야 한다.
+- 대부분의 터미널에서의 output 종류:
+  - `stdout`: standard output for general information
+  - `stderr`: standard error for error messages
+
+<br />
+
+### 에러의 기록 여부 확인하기
+
+```txt
+cargo run > output.txt
+```
+
+- `>`를 통해 출력 메시지를 화면이 아닌 파일에 기록하도록 한다.
+- 따라서 에러 메시지를 화면에서 확인할 수 없고, output.txt 파일에 기록되었다.
+- 하지만 에러 메시지는 다른 커맨드 프로그램처럼 터미널 화면에 보이는 편이 낫다.
+- **즉, stderr로 출력해서 프로그램이 성공했을 때의 데이터만 파일에 기록되는 편이 낫다.**
+
+<br />
+
+### 에러를 stderr로 출력하기
+
+```rust
+// main.rs
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    let config = Config::new(&args).unwrap_or_else(|err| {
+        eprintln!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
+
+    if let Err(e) = minigrep::run(config) {
+        eprintln!("애플리케이션 에러: {}", e);
+        process::exit(1);
+    }
+}
+```
+
+```txt
+(1)
+$ cargo run > output.txt
+
+(2)
+$ cargo run to poem.txt > output.txt
+```
+
+- `eprintln!`는 표준 에러 스트림에 메시지를 출력하는 표준 라이브러리가 지원하는 매크로다.
+- (1)을 다시 실행해보면 다른 커맨드 프로그램처럼 에러 메시지가 터미널 화면에 출력된다.
+- (2)를 실행해보면 터미널에는 아무것도 출력되지 않지만, 검색 결과가 output.txt에 기록된다.
