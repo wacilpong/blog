@@ -465,6 +465,253 @@
 <li>이제 lib.rs는 테스트할 수 있는 공개 API를 갖게 된 셈이다.</li>
 <li>따라서 main.rs에서 스코프로 가져와서 사용할 수 있다.</li>
 </ul>
+<p><br /></p>
+<hr />
+<h2 id="-----">테스트 주도 방법으로 라이브러리 기능 개발하기</h2>
+<ul>
+<li>TDD는 소프트웨어 작성법 중 하나일 뿐이지만, 코드의 디자인 또한 주도한다.</li>
+<li>여기서는 파일 내용에서 검색해 검색어를 포함하는 라인의 목록을 반환하는 기능을 작성한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="---2">실패하는 테스트 작성하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
+
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">one_result</span>() {
+        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;duct&#34;</span>;
+        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#960050;background-color:#1e0010">\</span>
+Rust:
+<span style="color:#a6e22e">safe</span>, fast, productive.
+Pick three.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
+
+        assert_eq<span style="color:#f92672">!</span>(vec<span style="color:#f92672">!</span>[<span style="color:#e6db74">&#34;safe, fast, productive.&#34;</span>], search(query, contents));
+    }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+  vec<span style="color:#f92672">!</span>[]
+}
+</code></pre></div><ul>
+<li>위 테스트는 검색할 검색어와 검색 대상이 되는 텍스트를 입력받아 포함하는 줄만 반환한다.</li>
+<li>search 함수는 아직 빈 벡터를 반환하도록 구현되어 있으므로 테스트는 실패한다.</li>
+<li>이때 수명을 지정하지 않으면 러스트는 두 인수 중 어떤 것이 필요한지 알 수 없어 에러를 낸다.
+<ul>
+<li><strong>슬라이스가 참조하는 데이터가 유효해야 그에 대한 참조도 유효하기 때문이다.</strong></li>
+<li>contents가 아닌 query 인수로부터 문자열 슬라이스를 만들 수도 있어 명확하지 않다.</li>
+<li>따라서 search 함수가 반환하는 데이터는 contents 인수와 같은 수명임을 명시해야 한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="---3">위 테스트 성공시키기</h3>
+<ul>
+<li>contents 인수의 각 줄을 순회한다.</li>
+<li>각 줄이 검색어를 포함하고 있는지 확인한다.</li>
+<li>검색어가 포함되어 있으면 반환할 값의 목록에 그 줄을 추가한다.</li>
+<li>검색어가 포함되어 있지 않으면 다음 줄로 건너뛴다.</li>
+<li>검색어를 포함하는 줄의 목록을 반환한다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// lib.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
+
+    <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
+        <span style="color:#66d9ef">if</span> line.contains(query) {
+            results.push(line);
+        }
+    }
+
+    results
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// lib.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span>dyn Error<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
+
+  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> search(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents) {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, line);
+  }
+
+  Ok(())
+}
+</code></pre></div><ul>
+<li><code>lines</code> 메서드는 반복자를 반환한다.</li>
+<li><code>contains</code> 메서드로 검색어의 포함 야부를 확인한다.</li>
+<li>검색어를 포함하는 줄을 가변 벡터 <code>results</code>에 저장한다.</li>
+<li><strong>TDD로 개발한 search 함수를 run 함수에 활용하면, 이제 검색어가 포함된 줄만 출력한다.</strong></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="---4">환경 변수 다루기</h2>
+<ul>
+<li>사용자가 환경 변수를 이용해 문자열 검색에 대소문자를 구분하지 않도록 설정해보자.</li>
+<li>환경 변수를 설정하면 그 터미널 세션에서는 대소문자를 구분하지 않고 검색을 계속할 수 있다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs;
+<span style="color:#66d9ef">use</span> std::error::Error;
+<span style="color:#66d9ef">use</span> std::env;
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
+  <span style="color:#66d9ef">pub</span> query: String,
+  <span style="color:#66d9ef">pub</span> filename: String,
+  <span style="color:#66d9ef">pub</span> ignore_case: <span style="color:#66d9ef">bool</span>,
+}
+
+<span style="color:#66d9ef">impl</span> Config {
+  <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+      <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
+          <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
+      }
+
+      <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
+      <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
+      <span style="color:#66d9ef">let</span> ignore_case <span style="color:#f92672">=</span> env::var(<span style="color:#e6db74">&#34;IGNORE_CASE&#34;</span>).is_ok();
+
+      Ok(Config {
+          query,
+          filename,
+          ignore_case,
+      })
+  }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span>dyn Error<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
+
+  <span style="color:#66d9ef">let</span> results <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> config.ignore_case {
+      search_case_insensitive(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents)
+  } <span style="color:#66d9ef">else</span> {
+      search(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents)
+  };
+
+  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> results {
+      println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, line);
+  }
+
+  Ok(())
+}
+
+<span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
+
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">case_sensitive</span>() {
+        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;duct&#34;</span>;
+        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#960050;background-color:#1e0010">\</span>
+Rust:
+<span style="color:#a6e22e">safe</span>, fast, productive.
+Pick three.
+Duct tape.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
+
+        assert_eq<span style="color:#f92672">!</span>(vec<span style="color:#f92672">!</span>[<span style="color:#e6db74">&#34;safe, fast, productive.&#34;</span>], search(query, contents));
+    }
+
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">case_insensitive</span>() {
+        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rUsT&#34;</span>;
+        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#960050;background-color:#1e0010">\</span>
+Rust:
+<span style="color:#a6e22e">safe</span>, fast, productive.
+Pick three.
+Trust me.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
+
+        assert_eq<span style="color:#f92672">!</span>(
+            vec<span style="color:#f92672">!</span>[<span style="color:#e6db74">&#34;Rust:&#34;</span>, <span style="color:#e6db74">&#34;Trust me.&#34;</span>],
+            search_case_insensitive(query, contents)
+        );
+    }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
+
+  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
+      <span style="color:#66d9ef">if</span> line.contains(query) {
+          results.push(line);
+      }
+  }
+
+  results
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search_case_insensitive</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(
+  query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
+  contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>,
+) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> query.to_lowercase();
+  <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
+
+  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
+      <span style="color:#66d9ef">if</span> line.to_lowercase().contains(<span style="color:#f92672">&amp;</span>query) {
+          results.push(line);
+      }
+  }
+
+  results
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">$ IGNORE_CASE=1 cargo run to poem.txt
+</code></pre></div><ul>
+<li><code>search_case_insensitive</code> 함수는 &lsquo;rUsT'라는 검색어로 &lsquo;Rust&rsquo;, &lsquo;Trust me'를 찾아낸다.</li>
+<li><code>to_lowercase</code> 메서드는 기존 데이터를 참조하는 것이 아니라 새로운 데이터를 생성한다.</li>
+<li>따라서 query 섀도우 변수는 문자열 슬라이스가 아니라 문자열이다.</li>
+<li><code>contains</code> 메서드는 문자열 슬라이스가 매개변수이기 때문에 query의 참조(&amp;)를 넘겨야 한다.</li>
+<li><code>ignore_case</code> 변수는 env::var 함수의 IGNORE_CASE 환경 변수 값이 대입된다.</li>
+<li><code>env::var</code> 함수는 환경 변수가 설정되어 있으면 Ok, 그렇지 않으면 Err를 반환하는 Result 타입이다.</li>
+<li>여기서는 환경 변수의 값보다는 어떤 값이든 설정되어 있는지 여부만 확인한다.</li>
+<li>따라서 unwrap, expect 보다는 값이 있기만 하면 false를 반환하는 <code>is_err</code>가 적합하다.</li>
+<li><strong>이제 IGNORE_CASE에 값을 설정하면 &lsquo;to'의 검색 결과에 대문자도 포함된다.</strong></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="stderr---">stderr를 이용해 에러메시지 출력</h2>
+<ul>
+<li>println! 매크로는 표준 출력에만 지정된 메시지를 출력한다.</li>
+<li>따라서 표준 에러를 이용해 메시지를 출력하려면 다른 방법을 사용해야 한다.</li>
+<li>대부분의 터미널에서의 output 종류:
+<ul>
+<li><code>stdout</code>: standard output for general information</li>
+<li><code>stderr</code>: standard error for error messages</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="----1">에러의 기록 여부 확인하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">cargo run &gt; output.txt
+</code></pre></div><ul>
+<li><code>&gt;</code>를 통해 출력 메시지를 화면이 아닌 파일에 기록하도록 한다.</li>
+<li>따라서 에러 메시지를 화면에서 확인할 수 없고, output.txt 파일에 기록되었다.</li>
+<li>하지만 에러 메시지는 다른 커맨드 프로그램처럼 터미널 화면에 보이는 편이 낫다.</li>
+<li><strong>즉, stderr로 출력해서 프로그램이 성공했을 때의 데이터만 파일에 기록되는 편이 낫다.</strong></li>
+</ul>
+<p><br /></p>
+<h3 id="-stderr-">에러를 stderr로 출력하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// main.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
+    <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
+        eprintln<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: {}&#34;</span>, err);
+        process::exit(<span style="color:#ae81ff">1</span>);
+    });
+
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Err(e) <span style="color:#f92672">=</span> minigrep::run(config) {
+        eprintln<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;애플리케이션 에러: {}&#34;</span>, e);
+        process::exit(<span style="color:#ae81ff">1</span>);
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">(1)
+$ cargo run &gt; output.txt
+
+(2)
+$ cargo run to poem.txt &gt; output.txt
+</code></pre></div><ul>
+<li><code>eprintln!</code>는 표준 에러 스트림에 메시지를 출력하는 표준 라이브러리가 지원하는 매크로다.</li>
+<li>(1)을 다시 실행해보면 다른 커맨드 프로그램처럼 에러 메시지가 터미널 화면에 출력된다.</li>
+<li>(2)를 실행해보면 터미널에는 아무것도 출력되지 않지만, 검색 결과가 output.txt에 기록된다.</li>
+</ul>
 </div>
 
 </main>
