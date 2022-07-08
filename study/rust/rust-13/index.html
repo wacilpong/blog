@@ -840,6 +840,55 @@
 </code></pre></div><p><br /></p>
 <hr />
 <h2 id="--loops-vs-iterators">성능 비교: Loops vs Iterators</h2>
+<ul>
+<li><code>The Adventures of Sherlock Holmes</code>에서 원하는 단어를 찾는 벤치마크 결과:<br />
+<em>test benchSearchFor bench: 19,620,300 ns/iter (+/- 915,700)</em><br />
+<em>test benchSearchIter bench: 19,234,900 ns/iter (+/- 657,200)</em>
+<ul>
+<li>반복자를 이용한 구현이 약간 더 빠르다.</li>
+</ul>
+</li>
+<li><strong>반복자는 러스트의 <code>무비용 추상화(zero-cost abstraction</code> 기능 중 하나이다.</strong>
+<ul>
+<li>고수준의 추상화를 제공하면서도 직접 작성하는 저수준 코드와 거의 같은 코드로 컴파일된다.</li>
+<li>추상화를 해도 추가적인 런타임 오버헤드가 발생하지 않는다는 뜻이다.</li>
+<li>C++의 어떤 기능을 사용하지 않으면 그에 따른 오버헤드도 없다는 zero-overhead 또한 유사한 개념이다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="---1">예시: 오디오 디코더</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> buffer: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> [<span style="color:#66d9ef">i32</span>];
+<span style="color:#66d9ef">let</span> coefficients: [<span style="color:#66d9ef">i64</span>; <span style="color:#ae81ff">12</span>];
+<span style="color:#66d9ef">let</span> qlp_shift: <span style="color:#66d9ef">i16</span>;
+
+<span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">12</span>..buffer.len() {
+    <span style="color:#75715e">// 1. 계수의 12개 값을 반복
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 2. 계수를 zip을 통해 버퍼의 이전 12개 값과 쌍으로 만듬
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 3. 각 쌍마다 값을 곱하고 모든 결과를 합함
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 4. qlp_shift 비트를 오른쪽으로 이동시킴
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> prediction <span style="color:#f92672">=</span> coefficients.iter()
+                                 .zip(<span style="color:#f92672">&amp;</span>buffer[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">12</span>..i])
+                                 .map(<span style="color:#f92672">|</span>(<span style="color:#f92672">&amp;</span>c, <span style="color:#f92672">&amp;</span>s)<span style="color:#f92672">|</span> c <span style="color:#f92672">*</span> s <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">i64</span>)
+                                 .sum::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i64</span><span style="color:#f92672">&gt;</span>() <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> qlp_shift;
+    <span style="color:#66d9ef">let</span> delta <span style="color:#f92672">=</span> buffer[i];
+    buffer[i] <span style="color:#f92672">=</span> prediction <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">i32</span> <span style="color:#f92672">+</span> delta;
+}
+</code></pre></div><ul>
+<li>이 코드는 반복자를 연결해 하나의 스코프에서 세 개의 값에 대한 연산을 수행한다.</li>
+<li>여기서는 반복자를 생성하고 두 어댑터 메서드를 호출한 후 그 값을 sum으로 소비한다.</li>
+<li><code>unrolling</code>: 12번의 반복이 있음을 알고 루프를 unroll시키는 러스트의 최적화 방식
+<ul>
+<li>루프를 제어하는 코드의 오버헤드를 없애기 위해 루프를 제거한다.</li>
+<li>이후 루프 안에서 실행되던 코드를 필요한 횟수만큼 반복하는 코드를 생성한다.</li>
+<li>따라서 이 코드는 개발자가 직접 반복 코드를 작성하는 것과 같은 어셈블리 코드로 컴파일된다.</li>
+</ul>
+</li>
+<li>coefficients 배열의 값들은 레지스터에 저장되어 빠르게 접근 가능하다.</li>
+<li>런타임 시 배열에 접근할 때도 bounds check(인덱스가 배열 범위인지 등)를 수행하지도 않는다.</li>
+<li>러스트는 이처럼 코드의 효율성을 극대화하도록 최적화한다.</li>
+<li><strong>따라서 런타임 성능 손실 없이 반복자와 클로저를 사용해도 된다.</strong></li>
+</ul>
 </div>
 
 </main>
