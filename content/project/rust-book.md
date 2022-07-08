@@ -19,3 +19,4 @@ draft: false
 10. [Generic Types, Traits, and Lifetimes](https://wacilpong.github.io/blog/study/rust/rust-10/)
 11. [Writing Automated Tests](https://wacilpong.github.io/blog/study/rust/rust-11/)
 12. [An I/O Project: Building a Command Line Program](https://wacilpong.github.io/blog/study/rust/rust-12/)
+13. [Functional Language Features: Iterators and Closures](https://wacilpong.github.io/blog/study/rust/rust-13/)

@@ -754,3 +754,46 @@ pub fn search_case_insensitive<'a>(
 <hr />
 
 ## 성능 비교: Loops vs Iterators
+
+- `The Adventures of Sherlock Holmes`에서 원하는 단어를 찾는 벤치마크 결과:
+  _test benchSearchFor bench: 19,620,300 ns/iter (+/- 915,700)_
+  _test benchSearchIter bench: 19,234,900 ns/iter (+/- 657,200)_
+  - 반복자를 이용한 구현이 약간 더 빠르다.
+- **반복자는 러스트의 `무비용 추상화(zero-cost abstraction` 기능 중 하나이다.**
+  - 고수준의 추상화를 제공하면서도 직접 작성하는 저수준 코드와 거의 같은 코드로 컴파일된다.
+  - 추상화를 해도 추가적인 런타임 오버헤드가 발생하지 않는다는 뜻이다.
+  - C++의 어떤 기능을 사용하지 않으면 그에 따른 오버헤드도 없다는 zero-overhead 또한 유사한 개념이다.
+
+<br />
+
+#### 예시: 오디오 디코더
+
+```rust
+let buffer: &mut [i32];
+let coefficients: [i64; 12];
+let qlp_shift: i16;
+
+for i in 12..buffer.len() {
+    // 1. 계수의 12개 값을 반복
+    // 2. 계수를 zip을 통해 버퍼의 이전 12개 값과 쌍으로 만듬
+    // 3. 각 쌍마다 값을 곱하고 모든 결과를 합함
+    // 4. qlp_shift 비트를 오른쪽으로 이동시킴
+    let prediction = coefficients.iter()
+                                 .zip(&buffer[i - 12..i])
+                                 .map(|(&c, &s)| c * s as i64)
+                                 .sum::<i64>() >> qlp_shift;
+    let delta = buffer[i];
+    buffer[i] = prediction as i32 + delta;
+}
+```
+
+- 이 코드는 반복자를 연결해 하나의 스코프에서 세 개의 값에 대한 연산을 수행한다.
+- 여기서는 반복자를 생성하고 두 어댑터 메서드를 호출한 후 그 값을 sum으로 소비한다.
+- `unrolling`: 12번의 반복이 있음을 알고 루프를 unroll시키는 러스트의 최적화 방식
+  - 루프를 제어하는 코드의 오버헤드를 없애기 위해 루프를 제거한다.
+  - 이후 루프 안에서 실행되던 코드를 필요한 횟수만큼 반복하는 코드를 생성한다.
+  - 따라서 이 코드는 개발자가 직접 반복 코드를 작성하는 것과 같은 어셈블리 코드로 컴파일된다.
+- coefficients 배열의 값들은 레지스터에 저장되어 빠르게 접근 가능하다.
+- 런타임 시 배열에 접근할 때도 bounds check(인덱스가 배열 범위인지 등)를 수행하지도 않는다.
+- 러스트는 이처럼 코드의 효율성을 극대화하도록 최적화한다.
+- **따라서 런타임 성능 손실 없이 반복자와 클로저를 사용해도 된다.**
