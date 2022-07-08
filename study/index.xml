@@ -6,10 +6,19 @@
     <description>Recent content in Studies on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jul 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 13</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-13/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-13/</guid>
+      <description>클로저(Closures): 주변 환경을 캡처하는 익명함수 러스트의 클로저는 변수에 저장하거나 다른 함수에 인자로 전달하는 익명함수다. 일반 함수와 달리 클로</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 12</title>
