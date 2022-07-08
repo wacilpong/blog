@@ -80,8 +80,7 @@ fn main() {
 - [unwrap_or_else](https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap_or_else)는 표준 라이브러리에 정의된 `Option<T>`의 메서드이다.
 - **어떤 인자도 없이 T를 반환하는 클로저**를 인수로 받는다.
   - [`FnOnce`](https://doc.rust-lang.org/std/ops/trait.FnOnce.html) 트레이트가 구현되어야 하며, 한번만 호출되는 함수이다.
-  - `|| self.most_stocked()` 클로저를 통해 참조를 self로 캡처하고 데이터를 패싱한다.
-  - most_stocked가 캡처된 컨텍스트의 ShirtColor 타입의 값을 사용할 수 있는 이유다.
+  - `|| self.most_stocked()` 클로저는 Inventory 인스턴스의 불변 참조를 캡처해 데이터를 패싱한다.
 - 일반함수는 이런 경우에 해당 컨텍스트를 캡처할 수 없다.
 - vertical pipe(`|`)로 클로저를 명시하며, [smalltalk](https://wiki.c2.com/?SmalltalkBlocksAndClosures)와 [ruby](https://www.geeksforgeeks.org/closures-in-ruby/)도 같은 문법이다.
 
@@ -181,7 +180,8 @@ fn main() {
 - 클로저를 변수에 할당하여 함수처럼 호출할 수도 있다.
 - (1)은 사용 후에도 출력하기 위해 현재 값들을 불변 차용하여 캡처하는 클로저를 정의한다.
 - (2)는 list 값을 바꾸므로 가변 차용하여 클로저를 정의한다.
-- (2)는 borrows_mutably 클로저 선언 후에 가변 차용이 끝나므로 이후 list는 불변값이다.
+- (2)는 borrows_mutably 클로저 선언 후에 가변 차용이 끝난다.
+- (2)는 즉, 클로저 선언과 호출 사이에 list 값에 대한 사용은 불변 차용이다.
 
 #### move
 
@@ -306,7 +306,7 @@ fn main() {
 
 ## Iterator를 이용한 일련의 요소 처리
 
-#### Iterator 생성하기
+### Iterator 생성하기
 
 ```rust
 fn main() {
@@ -327,4 +327,430 @@ fn main() {
 
 <br />
 
-#### Iterator 트레이트와 next 메서드
+### Iterator 트레이트와 next 메서드
+
+```rust
+pub trait Iterator {
+    type Item;
+
+    fn next(&mut self) -> Option<Self::Item>;
+
+    // 기본 구현이 적용된 메서드는 생략
+}
+```
+
+- 모든 반복자는 위 Iterator 트레이트를 구현해야 한다.
+- next 메서드는 컬렉션에서 값을 가져와 Some에 저장해 반환하고 모두 순회하면 None을 반환한다.
+- next 메서드는 Item 타입을 반환하고 있는데, 즉 Item은 반복자가 반환할 타입이다.
+  _`type Item`과 `Self::Item`은 연관타입으로, 19장에서 자세히 다룸_
+
+<br />
+
+```rust
+#[test]
+fn iterator_demonstration() {
+    let v1 = vec![1, 2, 3];
+
+    let mut v1_iter = v1.iter();
+
+    assert_eq!(v1_iter.next(), Some(&1));
+    assert_eq!(v1_iter.next(), Some(&2));
+    assert_eq!(v1_iter.next(), Some(&3));
+    assert_eq!(v1_iter.next(), None);
+
+    // let v1_iter = v1.iter();
+
+    // for val in v1_iter {
+    //     v1_iter.next()
+    // }
+}
+```
+
+- Iterator 트레이트는 next 메서드 하나만 정의하고 있는데, 이를 직접 호출해도 된다.
+- 이때 next 메서드를 호출하면 이미 반환한 값을 추적하기 위해 반복자 내부 상태가 변경된다.
+- **즉, v1_iter 변수는 반복자를 소비(consume)하므로 가변적으로 정의해야 한다.**
+- **그러나 for 안에서는 루프가 v1_iter의 소유권을 가지고 가변 변수로 만들기 때문에 불변해도 된다.**
+- 종류:
+  - `iter`: 불변 참조를 순회하는 반복자를 생성
+  - `into_iter`: v1에 대한 소유권을 가지고 소유한 값을 반환하는 반복자 생성
+  - `iter_mut`: 가변 참조를 순회하는 반복자를 생성
+
+<br />
+
+### 반복자를 소비하는 메서드: `sum`
+
+```rust
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn iterator_sum() {
+        let v1 = vec![1, 2, 3];
+        let v1_iter = v1.iter();
+        let total: i32 = v1_iter.sum();
+
+        assert_eq!(total, 6);
+    }
+}
+
+```
+
+- Iterator 트레이트를 구현하려면 next 메서드를 반드시 구현해야 한다.
+- next를 호출하는 메서드는 내부에서 반복자를 소비하므로 `consuming adaptors`라고도 부른다.
+- 예를 들어, sum 메서드는 반복자에 대한 소유권을 가지고 next 메서드를 게속 호출해 순회한다.
+- sum 메서드를 호출한 후에는 v1_iter 변수의 소유권이 없으므로 더 이상 사용할 수 없다.
+
+<br />
+
+### 다른 반복자를 생성하는 메서드: `map`
+
+```rust
+fn main() {
+    let v1: Vec<i32> = vec![1, 2, 3];
+
+    // (1)
+    v1.iter().map(|x| x + 1);
+
+    // (2)
+    let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+    assert_eq!(v2, vec![2, 3, 4]);
+}
+
+```
+
+- 반복자를 다른 종류의 반복자로 변경할 수 있는데, 이를 `iterator adaptors`라고 부른다.
+- 모든 반복자는 지연 특성이 있어서 결과를 얻으려면 consuming adaptor 메서드를 호출해야 한다.
+- 위 map 메서드의 클로저는 각 요소에 1을 더한 값을 반환해 새로운 반복자를 반환하고 있다.
+- **Iterator 트레이트의 반복 로직을 재사용하면서 일부 동작을 바꾸기 위해 클로저를 사용한 좋은 예다.**
+- **(1)은 반복자를 실제로 실행하지 않으므로 에러가 난다.**
+  _warning: unused Map that must be used_
+  _note: iterators are lazy and do nothing unless consumed_
+- **(2)는 반복자를 실행한 결과값을 컬렉션에 담아 반환하는 collect 메서드를 사용했다.**
+
+<br />
+
+### 환경을 캡처하는 클로저 활용: `filter`
+
+```rust
+#[derive(PartialEq, Debug)]
+struct Shoe {
+    size: u32,
+    style: String,
+}
+
+// shoes에 저장된 벡터와 shoe_size 매개변수의 소유권을 가지고
+// 지정된 크기의 신발 리스트를 저장한 벡터를 반환함
+fn shoes_in_size(shoes: Vec<Shoe>, shoe_size: u32) -> Vec<Shoe> {
+    // into_iter로 벡터의 소유권을 가지는 반복자를 생성함
+    // filter 인자로 shoe_size 변수를 캡처하는 클로저 전달
+    shoes.into_iter().filter(|s| s.size == shoe_size).collect()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn filters_by_size() {
+        let shoes = vec![
+            Shoe {
+                size: 10,
+                style: String::from("sneaker"),
+            },
+            Shoe {
+                size: 13,
+                style: String::from("sandal"),
+            },
+            Shoe {
+                size: 10,
+                style: String::from("boot"),
+            },
+        ];
+
+        let in_my_size = shoes_in_size(shoes, 10);
+
+        assert_eq!(
+            in_my_size,
+            vec![
+                Shoe {
+                    size: 10,
+                    style: String::from("sneaker")
+                },
+                Shoe {
+                    size: 10,
+                    style: String::from("boot")
+                },
+            ]
+        );
+    }
+}
+```
+
+- **filter 메서드는 인자에 반복자로부터 각 요소를 가져와 불리언값을 반환하는 클로저를 전달한다.**
+- 클로저가 true를 반환하면 filter가 생성하는 반복자에 추가되고, false이면 추가되지 않는다.
+- 위 코드에서 클로저는 환경에서 shoe_size 매개변수를 캡처하고 값을 각 Shoe의 size와 비교한다.
+
+<br />
+<hr />
+
+## 12장의 I/O 프로젝트 개선
+
+### 기존 Config::new의 clone이 필요한 이유?
+
+```rust
+// minigrep
+// src/lib.rs
+impl Config {
+    pub fn new(args: &[String]) -> Result<Config, &'static str> {
+        if args.len() < 3 {
+            return Err("not enough arguments");
+        }
+
+        let query = args[1].clone();
+        let filename = args[2].clone();
+
+        let ignore_case = env::var("IGNORE_CASE").is_ok();
+
+        Ok(Config {
+            query,
+            filename,
+            ignore_case,
+        })
+    }
+}
+```
+
+- clone 메서드가 필요한 이유는 new 함수에 String의 슬라이스인 args 변수 소유권이 없기 때문이다.
+- 따라서 Config 인스턴스가 복제된 값을 소유해 반환하도록 해야 했다.
+- 이제 슬라이스를 대여하는 대신 인자로 전달된 반복자의 소유권을 갖도록 수정할 수 있다.
+- 그러면 새로운 메모리 할당을 수행하는 대신, 반복자로부터 String값을 Config 인스턴스로 이동할 수 있다.
+
+<br />
+
+### 리팩터링: 반환된 반복자를 직접 사용하기
+
+```rust
+// AS-IS
+fn main() {
+    let args: Vec<String> = env::args().collect();
+
+    let config = Config::new(&args).unwrap_or_else(|err| {
+        eprintln!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
+
+    ...
+}
+```
+
+```rust
+// TO-BE
+fn main() {
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
+        eprintln!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
+
+    ...
+}
+
+impl Config {
+    pub fn new(
+        mut args: impl Iterator<Item = String>,
+    ) -> Result<Config, &'static str> {...}
+}
+```
+
+- `env::args`는 반복자를 반환하는 함수다.
+- 반복자의 값을 벡터로 합쳐 Config::new 슬라이스로 전달하는 대신, 반환한 반복자를 직접 전달시킨다.
+- Config::new의 args가 반복자 타입이도록 함수 시그니처도 변경한다.
+  - **표준 라이브러리에 따르면 env::args 힘수의 반환 타입은 `std::env::Args`이다.**
+  - **그리고 해당 타입은 Iterator 트레이트를 구현하고 String 값을 반환해야 한다.**
+  - 따라서 args는 ` &[String]` 대신 `impl Iterator<Item = String>` 타입을 가진다.
+  - 이때 impl trait 문법은 args가 Iterator 트레이트를 구현하면서 String 요소를 반환하는 어떤 타입도 가능하다는 뜻이다.
+  - 이때 args의 소유권을 가지고 반복자를 순회해야 하므로 args는 가변적이어야 한다.
+
+<br />
+
+### 리팩터링: 인덱스 대신 Iterator 트레이트 메서드 활용
+
+```rust
+// AS-IS
+impl Config {
+    pub fn new(args: &[String]) -> Result<Config, &'static str> {
+        if args.len() < 3 {
+            return Err("not enough arguments");
+        }
+
+        let query = args[1].clone();
+        let filename = args[2].clone();
+
+        ...
+    }
+}
+```
+
+```rust
+// TO-BE
+impl Config {
+    pub fn new(
+        mut args: impl Iterator<Item = String>,
+    ) -> Result<Config, &'static str> {
+        // env::args 함수의 첫번째 반환값은 프로그램 이름임
+        // 따라서 단순히 next 호출함
+        args.next();
+
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a query string"),
+        };
+
+        let filename = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a file name"),
+        };
+
+        ...
+    }
+}
+```
+
+- 이제 args는 Iterator 트레이트를 구현하므로 next 메서드를 호출할 수 있다.
+- 각 값들에 대한 성공/실패 여부 동작을 위해 match 표현식을 사용한다.
+
+<br />
+
+### 리팩터링: Iterator adaptors를 사용해 깔끔한 코드 작성
+
+```rust
+// AS-IS
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut results = Vec::new();
+
+    for line in contents.lines() {
+        if line.contains(query) {
+            results.push(line);
+        }
+    }
+
+    results
+}
+```
+
+```rust
+// TO-BE
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
+}
+```
+
+- 반복자 어댑터 메서드들을 활용하면 코드가 더 직관적이고 중간값을 저장하는 변수도 필요없게 된다.
+- 함수형 프로그래밍은 가변 상태를 최소화하므로 코드를 간결하게 유지할 수 있다.
+- 루프를 실행하면서 새로운 벡터를 생성하는 대신, 루프의 목적을 고수준의 메서드로 퉁칠 수 있다.
+
+<br />
+
+### 리팩터링: minigrep 최종 코드
+
+```rust
+// main.rs
+use std::env;
+use std::process;
+
+use minigrep::Config;
+
+fn main() {
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
+        eprintln!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
+
+    if let Err(e) = minigrep::run(config) {
+        eprintln!("애플리케이션 에러: {}", e);
+
+        process::exit(1);
+    }
+}
+```
+
+```rust
+// lib.rs
+use std::fs;
+use std::error::Error;
+use std::env;
+
+pub struct Config {
+  pub query: String,
+  pub filename: String,
+  pub ignore_case: bool,
+}
+
+impl Config {
+    pub fn new(
+        mut args: impl Iterator<Item = String>,
+    ) -> Result<Config, &'static str> {
+        args.next();
+
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a query string"),
+        };
+
+        let filename = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a file name"),
+        };
+
+        let ignore_case = env::var("IGNORE_CASE").is_ok();
+
+        Ok(Config {
+            query,
+            filename,
+            ignore_case,
+        })
+    }
+}
+
+pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
+  let contents = fs::read_to_string(config.filename)?;
+
+  let results = if config.ignore_case {
+      search_case_insensitive(&config.query, &contents)
+  } else {
+      search(&config.query, &contents)
+  };
+
+  for line in results {
+      println!("{}", line);
+  }
+
+  Ok(())
+}
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
+}
+
+pub fn search_case_insensitive<'a>(
+  query: &str,
+  contents: &'a str,
+) -> Vec<&'a str> {
+  let query = query.to_lowercase();
+
+  contents
+        .lines()
+        .filter(|line| line.to_lowercase().contains(&query))
+        .collect()
+
+}
+```
+
+<br />
+<hr />
+
+## 성능 비교: Loops vs Iterators
