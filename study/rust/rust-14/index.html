@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="More About Cargo and Crates.io" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 14" />
+<meta property="og:site_name" content="After reading Rust book chapter 14" />
+<meta property="og:description" content="More About Cargo and Crates.io" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-14/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 14" />
+<meta name="twitter:description" content="More About Cargo and Crates.io" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 14</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 14</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 14</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="----">릴리즈 프로필을 이용한 빌드 커스터마이징</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// Cargo.toml
+</span><span style="color:#75715e"></span>[profile.dev]
+opt<span style="color:#f92672">-</span>level <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+[profile.release]
+opt<span style="color:#f92672">-</span>level <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</code></pre></div><ul>
+<li><code>cargo build</code>: dev 프로필을 사용하고, <code>--release</code>를 붙이면 release 프로필을 쓴다.</li>
+<li><code>opt-level</code>: 러스트가 코드에 적용할 최적화 수준을 지정, 0 ~ 3까지이며 기본값은 0이다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="cratesio---">crates.io 사이트에 크레이트 발행하기</h2>
+<ul>
+<li><a href="https://crates.io">crates.io</a>의 크레이트 레지스트리는 오픈소스로 작성된 코드를 주로 호스팅한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="---">유용한 문서 주석 작성하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#e6db74">/// Adds one to the number given.
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// # Examples
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// ```
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// let arg = 5;
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// let answer = my_crate::add_one(arg);
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// assert_eq!(6, answer);
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// ```
+</span><span style="color:#e6db74"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(x: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
+    x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+}
+</code></pre></div><ul>
+<li><code>문서 주석(documentation comment)</code>은 슬래시 3개로 시작한다.</li>
+<li><code>cargo doc</code> 명령
+<ul>
+<li>주석으로 HTML 문서를 생성할 수 있다.</li>
+<li>러스트와 함께 발행되는 rustdoc으로 target/doc에 HTML 문서를 생성한다.</li>
+<li><code>--open</code> 옵션을 함께 실행하면 생성한 HTML 문서를 브라우저를 통해 보여준다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="1----">(1) 문서 주석에 사용하는 섹션</h4>
+<ul>
+<li>Panics
+<ul>
+<li>함수가 패닉을 발생시키는 경우를 설명한다.</li>
+<li>함수의 호출자가 프로그램이 패닉을 발생하는 것을 원치 않을 때는 이 함수를 호출하지 않도록 주의한다.</li>
+</ul>
+</li>
+<li>Errors
+<ul>
+<li>함수가 Result 타입을 반환하면 어떤 종류의 에러를 발생할 수 있는지, 어떤 조건인지 명시한다.</li>
+<li>이를 통해 호출자가 발생 가능한 에러를 적절히 처리하는 데 도움이 된다.</li>
+</ul>
+</li>
+<li>Safety
+<ul>
+<li>함수 호출이 안전하지 않다면 왜인지, 호출할 때 주의할 내용은 뭔지 언급한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="2----">(2) 문서 주석을 테스트에 활용하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cargo test
+Doc-tests my_crate
+
+running <span style="color:#ae81ff">1</span> test
+test src/lib.rs - add_one <span style="color:#f92672">(</span>line 5<span style="color:#f92672">)</span> ... ok
+
+test result: ok. <span style="color:#ae81ff">1</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.27s
+</code></pre></div><ul>
+<li>코드는 수정되었는데 문서가 최신화되지 않으면 나쁘다.</li>
+<li><code>cargo test</code> 명령을 통해 문서의 예제 코드도 테스트로 실행한다.</li>
+<li>따라서 <code>assert_eq!</code> 매크로가 패닉을 반환하도록 함수나 예제를 수정하면 실제 코드와 예제가 일치하지 않음을 알 수 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="3-----">(3) 아이템을 보유한 루트를 위한 주석</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#e6db74">//! # My Crate
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">//!
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">//! `my_crate` is a collection of utilities to make performing certain
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">//! calculations more convenient.
+</span><span style="color:#e6db74"></span>
+<span style="color:#e6db74">/// Adds one to the number given.
+</span><span style="color:#e6db74"></span><span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span><span style="color:#e6db74">///
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// # Examples
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// ```
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// let arg = 5;
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// let answer = my_crate::add_one(arg);
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// assert_eq!(6, answer);
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// ```
+</span><span style="color:#e6db74"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(x: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
+    x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+}
+</code></pre></div><ul>
+<li><code>//!</code>는 주석을 추가하는 것이 아니라, 주석을 갖고 있는 아이템을 문서에 추가한다.</li>
+<li>따라서 크레이트나 모듈 전체를 문서화하기 위해 모듈 안에 작성한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="pub-use----api-">pub use 키워드를 이용해 공개 API 발행하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#e6db74">//! # Art
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">//!
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">//! A library for modeling artistic concepts.
+</span><span style="color:#e6db74"></span>
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">use</span> self::kinds::PrimaryColor;
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">use</span> self::kinds::SecondaryColor;
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">use</span> self::utils::mix;
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">mod</span> kinds {
+    <span style="color:#e6db74">/// The primary colors according to the RYB color model.
+</span><span style="color:#e6db74"></span>    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">PrimaryColor</span> {
+        Red,
+        Yellow,
+        Blue,
+    }
+
+    <span style="color:#e6db74">/// The secondary colors according to the RYB color model.
+</span><span style="color:#e6db74"></span>    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">SecondaryColor</span> {
+        Orange,
+        Green,
+        Purple,
+    }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">mod</span> utils {
+    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">crate</span>::kinds::<span style="color:#f92672">*</span>;
+
+    <span style="color:#e6db74">/// Combines two primary colors in equal amounts to create
+</span><span style="color:#e6db74"></span>    <span style="color:#e6db74">/// a secondary color.
+</span><span style="color:#e6db74"></span>    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">mix</span>(c1: <span style="color:#a6e22e">PrimaryColor</span>, c2: <span style="color:#a6e22e">PrimaryColor</span>) -&gt; <span style="color:#a6e22e">SecondaryColor</span> {
+        <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>        unimplemented<span style="color:#f92672">!</span>();
+    }
+}
+</code></pre></div><ul>
+<li>pub use 키워드를 쓰면 내부 구조와는 다른 공개용 구조로 아이템을 다시 노출할 수 있다.</li>
+<li>다시 노출하면 공개 아이템을 원래 정의한 위치가 아닌 다른 위치에 노출한다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> art::kinds::PrimaryColor;
+<span style="color:#66d9ef">use</span> art::utils::mix;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> red <span style="color:#f92672">=</span> PrimaryColor::Red;
+    <span style="color:#66d9ef">let</span> yellow <span style="color:#f92672">=</span> PrimaryColor::Yellow;
+    mix(red, yellow);
+}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> art::mix;
+<span style="color:#66d9ef">use</span> art::PrimaryColor;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ul>
+<li>art 라이브러리를 사용하는 사람 관점에서 PrimaryColorsms kinds 모듈에, mix 함수는 utils 모듈에 정의되어 있다.</li>
+<li>art의 내부 구조는 사용하는 사람에게는 그다지 유용한 정보가 아니다.</li>
+<li>따라서 (3)처럼 <code>pub use</code> 구문을 통해 아이템들을 최상위 수준으로 다시 노출시킨다.</li>
+<li>그러면 (1)대신 (2)처럼 가져올 수 있고, 중첩된 모듈이 많을 때 유용하다.</li>
+</ul>
+<p><br /></p>
+<h3 id="crateio--">crate.io 계정 생성하기</h3>
+<ul>
+<li><a href="https://crates.io">crates.io</a> 로그인 후, API 토큰을 생성한다.</li>
+<li><code>cargo login {token}</code>을 실행하면 토큰을 ~/.cargo/credentials에 저장한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="----1">새 크레이트에 메타데이터 추가하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[package]
+name = &#34;guessing_game&#34;
+version = &#34;0.1.0&#34;
+edition = &#34;2021&#34;
+description = &#34;A fun game where you guess what number the computer has chosen.&#34;
+license = &#34;MIT OR Apache-2.0&#34;
+</code></pre></div><ul>
+<li>위 메타데이터 정도는 필수적으로 입력해야 하며, 이외에는 <a href="https://doc.rust-lang.org/cargo/">cargo</a> 문서를 보자.</li>
+<li><code>cargo publish</code>를 통해 크레이트를 발생할 수 있다.</li>
+<li>크레이트 발행은 <a href="https://crates.io">https://crates.io</a> 사이트에 특정 버전 크레이트를 업로드하는 과정이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="-----1">등록한 크레이트의 새 버전 발행하기</h3>
+<ul>
+<li>새 버전의 릴리즈를 준비할 때는 Cargo.toml의 버전값을 수정한다.</li>
+<li>시맨틱 버저닝(Semantic Versioning) 규칙을 이용해 적절하게 버전을 지정하자.</li>
+</ul>
+<p><br /></p>
+<h3 id="cargo-yank-cratesio--">cargo yank: crates.io에서 버전 제거하기</h3>
+<ul>
+<li>이전 버전의 크레이트를 삭제할 수는 없다.</li>
+<li>다른 프로젝트들이 앞으로 이전 버전을 새로 의존 목록에 추가하는 것을 막을 수는 있다.</li>
+<li>cargo는 특정 버전의 크레이트에 대한 지원을 중단(yank)하는 기능을 제공한다.</li>
+<li>Cargo.lock 파일이 생성된 모든 프로젝트는 문제없이 동작하되, 중단된 버전을 사용하지 못하도록 한다.</li>
+<li><code>cargo yank --vers 1.0.1</code></li>
+<li><code>cargo yank --vers 1.0.1 --undo</code></li>
+<li>중단해도 코드는 남아있다.</li>
+<li>즉, 중단은 실수로 중요한 보안 정보를 업로드했을 때 삭제하는 용도로 지원하는 것은 아니다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="cargo-workspaces">Cargo Workspaces</h2>
+<ul>
+<li>어느 시점이 되면 패키지를 여러 라이브러리 크레이트로 나누어야 할 시기가 온다.</li>
+<li>이때 cargo는 여러 패키지를 관리할 수 있는 워크스페이스 기능을 제공한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="-">워크스페이스 생성하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[workspace]
+
+members = [
+    &#34;adder&#34;,
+]
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo new adder
+     Created binary <span style="color:#f92672">(</span>application<span style="color:#f92672">)</span> <span style="color:#e6db74">`</span>adder<span style="color:#e6db74">`</span> package
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">├── Cargo.lock
+├── Cargo.toml
+├── adder
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+└── target
+</code></pre></div><ul>
+<li>워크스페이스는 최상위에 하나의 target 디렉터리를 가지고, 여기에 모든 빌드물이 모인다.</li>
+<li>따라서 adder 크레이트는 독립적인 target 디렉터리를 가지지는 않는다.</li>
+<li>만약 각 크레이트가 독립적인 target을 가진다면, 각 크레이트를 빌드할 때마다 의존하는 다른 크레이트들도 다시 컴파일되기 때문에 하나의 target만 공유하는 것이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="-----2">워크스페이스에 두 번째 크레이트 생성하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[workspace]
+
+members = [
+    &#34;adder&#34;,
+    &#34;add_one&#34;,
+]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo new add_one --lib
+     Created library <span style="color:#e6db74">`</span>add_one<span style="color:#e6db74">`</span> package
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">├── Cargo.lock
+├── Cargo.toml
+├── add_one
+│   ├── Cargo.toml
+│   └── src
+│       └── lib.rs
+├── adder
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+└── target
+</code></pre></div><ul>
+<li>워크스페이스에 라이브러리 크레이트를 생성했다.</li>
+<li>이제 바이너리 크레이트 adder에 라이브러리 크레이트 add_one에 대한 의존성을 추가할 수 있다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># adder/Cargo.toml</span>
+[dependencies]
+add_one = { path = <span style="color:#e6db74">&#34;../add_one&#34;</span> }
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// adder/src/main.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> add_one;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+    println<span style="color:#f92672">!</span>(
+        <span style="color:#e6db74">&#34;Hello, world! {} plus one is {}!&#34;</span>,
+        num,
+        add_one::add_one(num)
+    );
+}
+</code></pre></div><ul>
+<li>이제 최상위 add 디렉터리에서 <code>cargo build</code> 명령으로 빌드할 수 있다.</li>
+<li><code>cargo run -p adder</code>를 통해 워크스페이스에서 실행할 패키지 이름을 지정할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="1-----">(1) 워크스페이스에 외부 크레이트 의존성 추가하기</h4>
+<ul>
+<li>워크스페이스는 최상위에 <em>Cargo.lock</em> 파일을 갖기 때문에, 모든 의존성에 대해 같은 버전을 적용할 수 있다.</li>
+<li>따라서 <em>adder/Cargo.toml</em>, <em>add_one/Cargo.toml</em>에 각각 rand 크레이트를 추가하면 cargo는 하나의 rand만 <em>Cargo.lock</em>에 추가한다.</li>
+<li>rand 크레이트를 추가하여 <code>add_one</code> 크레이트에서 rand를 사용해보자.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># add_one/Cargo.toml</span>
+[dependencies]
+rand = <span style="color:#e6db74">&#34;0.8.3&#34;</span>
+</code></pre></div><ul>
+<li><em>add_one/src/lib.rs</em> 파일에 <code>use rand;</code>를 추가하고 프로젝트 루트에서 <code>cargo build</code>를 실행하면</li>
+<li><code>rand</code> 크레이트를 가져와 컴파일하지만, 스코프에 포함된 <code>rand</code>를 참조하지 않았으므로 경고가 표시된다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo build
+    Updating crates.io index
+  Downloaded rand v0.8.3
+   --snip--
+   Compiling rand v0.8.3
+   Compiling add_one v0.1.0 <span style="color:#f92672">(</span>file:///projects/add/add_one<span style="color:#f92672">)</span>
+warning: unused import: <span style="color:#e6db74">`</span>rand<span style="color:#e6db74">`</span>
+ --&gt; add_one/src/lib.rs:1:5
+  |
+<span style="color:#ae81ff">1</span> | use rand;
+  |     ^^^^
+  |
+  <span style="color:#f92672">=</span> note: <span style="color:#e6db74">`</span><span style="color:#75715e">#[warn(unused_imports)]` on by default</span>
+
+warning: <span style="color:#ae81ff">1</span> warning emitted
+
+   Compiling adder v0.1.0 <span style="color:#f92672">(</span>file:///projects/add/adder<span style="color:#f92672">)</span>
+    Finished dev <span style="color:#f92672">[</span>unoptimized + debuginfo<span style="color:#f92672">]</span> target<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> in 10.18s
+</code></pre></div><ul>
+<li>최상위 <em>Cargo.lock</em>엔 <code>add_one</code>의 rand 의존성 정보가 포함되었다.</li>
+<li>하지만 rand가 워크스페이스 어딘가에서 사용되더라도, 다른 크레이트에서 <em>Cargo.toml</em> 파일에 rand를 추가하지 않으면 사용할 수 없다.</li>
+<li>예를 들어 <code>adder</code> 크레이트의 <em>adder/src/main.rs</em>에 <code>use rand;</code>를 추가하면 에러가 발생한다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo build
+  --snip--
+   Compiling adder v0.1.0 <span style="color:#f92672">(</span>file:///projects/add/adder<span style="color:#f92672">)</span>
+error<span style="color:#f92672">[</span>E0432<span style="color:#f92672">]</span>: unresolved import <span style="color:#e6db74">`</span>rand<span style="color:#e6db74">`</span>
+ --&gt; adder/src/main.rs:2:5
+  |
+<span style="color:#ae81ff">2</span> | use rand;
+  |     ^^^^ no external crate <span style="color:#e6db74">`</span>rand<span style="color:#e6db74">`</span>
+</code></pre></div><ul>
+<li>위 에러를 해결하려면 <code>adder</code> 패키지의 <em>Cargo.toml</em>에 rand에 대한 의존성을 추가해야 한다.</li>
+<li><code>adder</code> 패키지를 빌드하면 <em>Cargo.lock</em>의 <code>adder</code>에 대한 의존성 목록에 rand가 추가되지만, rand가 다시 다운로드되진 않는다.</li>
+<li>cargo는 rand 패키지를 사용하는 워크스페이스 내 모든 크레이트가 동일한 버전을 사용하도록 하여 공간을 절약하고 워크스페이스의 크레이트가 서로 호환되도록 한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="2---">(2) 워크스페이스에 테스트 추가하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(x: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
+    x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+}
+
+<span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">mod</span> tests {
+    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
+
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">it_works</span>() {
+        assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">3</span>, add_one(<span style="color:#ae81ff">2</span>));
+    }
+}
+</code></pre></div><ul>
+<li>또 다른 개선을 위해 <code>add_one</code> 크레이트 내에서 <code>add_one::add_one</code> 함수 테스트를 추가하자</li>
+<li>이제 최상위 디렉토리에서 <code>cargo test</code>를 실행하면 워크스페이스 내 모든 크레이트의 테스트가 실행된다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo test
+   Compiling add_one v0.1.0 <span style="color:#f92672">(</span>file:///projects/add/add_one<span style="color:#f92672">)</span>
+   Compiling adder v0.1.0 <span style="color:#f92672">(</span>file:///projects/add/adder<span style="color:#f92672">)</span>
+    Finished test <span style="color:#f92672">[</span>unoptimized + debuginfo<span style="color:#f92672">]</span> target<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> in 0.27s
+     Running target/debug/deps/add_one-f0253159197f7841
+
+running <span style="color:#ae81ff">1</span> test
+test tests::it_works ... ok
+
+test result: ok. <span style="color:#ae81ff">1</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+
+     Running target/debug/deps/adder-49979ff40686fa8e
+
+running <span style="color:#ae81ff">0</span> tests
+
+test result: ok. <span style="color:#ae81ff">0</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+
+   Doc-tests add_one
+
+running <span style="color:#ae81ff">0</span> tests
+
+test result: ok. <span style="color:#ae81ff">0</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+</code></pre></div><ul>
+<li>출력의 첫번째 섹션은 <code>add_one</code> 크레이트의 <code>it_works</code> 테스트가 통과했음을 보여준다.</li>
+<li>다음 섹션은 <code>adder</code> 크레이트에서 0개의 테스트가 발견됐음을 보여준다.</li>
+<li>마지막 섹션은 <code>add_one</code> 크레이트에서 0개의 문서 테스트가 발견되었음을 보여준다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo test -p add_one
+    Finished test <span style="color:#f92672">[</span>unoptimized + debuginfo<span style="color:#f92672">]</span> target<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> in 0.00s
+     Running target/debug/deps/add_one-b3235fea9a156f74
+
+running <span style="color:#ae81ff">1</span> test
+test tests::it_works ... ok
+
+test result: ok. <span style="color:#ae81ff">1</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+
+   Doc-tests add_one
+
+running <span style="color:#ae81ff">0</span> tests
+
+test result: ok. <span style="color:#ae81ff">0</span> passed; <span style="color:#ae81ff">0</span> failed; <span style="color:#ae81ff">0</span> ignored; <span style="color:#ae81ff">0</span> measured; <span style="color:#ae81ff">0</span> filtered out; finished in 0.00s
+</code></pre></div><ul>
+<li>최상위에서 <code>-p</code> 플래그로 이름을 지정해 워크스페이스의 특정 크레이트에 대한 테스트만 실행할 수도 있다.</li>
+<li><code>cargo test</code>가 <code>add_one</code> 크레이트에 대한 테스트만 실행하고 <code>adder</code> 크레이트 테스트는 실행하지 않았다.</li>
+<li>워크스페이스의 크레이트를 crates.io에 배포하려면 각 크레이트를 별도로 배포해야 한다.</li>
+<li>테스트와 마찬가지로 <code>-p</code> 플래그로 배포하려는 크레이트의 이름을 지정해 특정 크레이트를 배포할 수 있다.</li>
+<li>프로젝트가 커지면 워크스페이스 사용을 고려해볼 수 있다.</li>
+<li>하나의 큰 코드 덩어리보단 작은 개별 컴포넌트를 이해하는게 더 쉽다.</li>
+<li>또한 워크스페이스에 크레이트를 관리하면 크레이트가 동시에 자주 변경되어도 크레이트간의 조화가 더 쉬워진다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="cargo-install-cratesio--">cargo install: crates.io에서 바이너리 설치하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo install ripgrep
+    Updating crates.io index
+  Downloaded ripgrep v11.0.2
+  Downloaded <span style="color:#ae81ff">1</span> crate <span style="color:#f92672">(</span>243.3 KB<span style="color:#f92672">)</span> in 0.88s
+  Installing ripgrep v11.0.2
+--snip--
+   Compiling ripgrep v11.0.2
+    Finished release <span style="color:#f92672">[</span>optimized + debuginfo<span style="color:#f92672">]</span> target<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> in 3m 10s
+  Installing ~/.cargo/bin/rg
+   Installed package <span style="color:#e6db74">`</span>ripgrep v11.0.2<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>executable <span style="color:#e6db74">`</span>rg<span style="color:#e6db74">`</span><span style="color:#f92672">)</span>
+</code></pre></div><ul>
+<li>설치한 모든 바이너리는 루트의 bin 폴더에 저장된다.</li>
+<li>rustup로 러스트를 설치하고 설정을 바꾸지 않았다면 이 디렉터리는 <code>$HOME/.cargo/bin</code>이다.</li>
+<li>설치한 프로그램을 실행할 수 있도록 디렉터리를 <code>&amp;PATH</code> 환경변수에 추가해야 한다.</li>
+<li>위 예시의 마지막 줄을 보면 ripgrep은 rg 디렉터리에 설치되었다.</li>
+<li>설치 디렉터리가 경로에 등록되었다면 <code>rg --help</code> 명령으로 파일을 검색할 수 있다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="---cargo-">사용자 정의 명령으로 cargo 확장하기</h2>
+<ul>
+<li>$PATH 변수에 cargo-something 바이너리가 지정되어 있다면,</li>
+<li>이 바이너리는 <code>cargo something</code>처럼 cargo 하위명령으로 실행할 수 있다.</li>
+<li>사용자 정의 명령은 <code>cargo --list</code>로 확인할 수 있다.</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

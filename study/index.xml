@@ -6,10 +6,28 @@
     <description>Recent content in Studies on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 04 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 15</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-15/</link>
+      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-15/</guid>
+      <description>포인터(pointer)는 메모리에 주소를 가지고 있는 변수를 일컫는 보편적인 개념이다. 러스트에서 가장 대중적인 포인터는 &amp;amp;기호를 사용한 참조, 변</description>
+    </item>
+    
+    <item>
+      <title>After reading Rust book chapter 14</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-14/</link>
+      <pubDate>Sun, 17 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-14/</guid>
+      <description>릴리즈 프로필을 이용한 빌드 커스터마이징 // Cargo.toml [profile.dev] opt-level = 0 [profile.release] opt-level = 3 cargo build: dev 프로필을 사용하고, --release를 붙이면 release 프로필을 쓴다. opt-level: 러스트가 코드에 적</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 13</title>

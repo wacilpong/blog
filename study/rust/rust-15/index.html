@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Smart Pointers" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 15" />
+<meta property="og:site_name" content="After reading Rust book chapter 15" />
+<meta property="og:description" content="Smart Pointers" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-15/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 15" />
+<meta name="twitter:description" content="Smart Pointers" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 15</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 15</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 15</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><ul>
+<li>포인터(pointer)는 메모리에 주소를 가지고 있는 변수를 일컫는 보편적인 개념이다.</li>
+<li>러스트에서 가장 대중적인 포인터는 &amp;기호를 사용한 참조, 변수가 가리키는 값을 대여한다.</li>
+<li>스마트 포인터(smart pointer)는 포인터처럼 동작할 뿐만 아니라 추가 메타데이터를 포함한다.
+<ul>
+<li><strong>러스트에서 참조는 데이터를 대여할 수만 있지만, 스마트 포인터는 가리키는 데이터를 소유할 수 있다.</strong></li>
+<li>ex. <code>String</code>, <code>Vec&lt;T&gt;</code> -&gt; 두 타입은 메모리를 소유하며 데이터를 갱신할 수 있다.</li>
+<li>스마트 포인터는 주로 구조체를 이용해 구현한다.</li>
+<li><code>Deref</code>,<code>Drop</code> 트레이트를 구현해야 한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="1-boxt-----">1. Box<T>를 이용한 힙 메모리의 데이터 참조</h2>
+<ul>
+<li>Box는 데이터를 힙 메모리에 저장하고, 데이터를 가리키는 포인터만 스택에 저장한다.</li>
+<li>Box를 주로 사용하는 예시:
+<ul>
+<li>컴파일 타임에 크기를 알 수 없는 타입을 정확한 크기가 필요한 상황에 사용할 때</li>
+<li>데이터 크기가 커서 데이터를 복제하지 않고 소유권만 이전하고 싶을 때</li>
+<li>특정 타입이 아닌 특정 트레이트를 구현하는 타입의 값을 소유할 때</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="1-1-----">1-1. 힙 메모리에 박스 데이터 저장하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> b <span style="color:#f92672">=</span> Box::new(<span style="color:#ae81ff">5</span>);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;b = {}&#34;</span>, b);
+}
+</code></pre></div><ul>
+<li>변수 b에는 힙 메모리에 할당된 5라는 값을 가리키는 Box를 대입한다.</li>
+<li>소유된 값과 마찬가지로 b는 main 함수 끝에 도달해서 박스가 스코프를 벗어나면 메모리 해제된다.</li>
+<li>즉, 스택에 저장된 박스와 힙에 저장된 박스가 가리키는 데이터의 메모리가 모두 해제된다.</li>
+</ul>
+<p><br /></p>
+<h3 id="1-2----">1-2. 박스와 재귀 타입 활용하기</h3>
+<ul>
+<li>컴파일 타임에 크기를 알 수 없는 타입 중 하나는 재귀 타입(recursive type)이다.</li>
+<li>재귀 타입이란 같은 타입의 다른 값을 자신의 일부에 포함하는 값이다.</li>
+<li>값을 중첩하면 이론적으로는 무한할 수 있어서 러스트는 재귀 타입 값에 필요한 공간을 판단할 수 없다.</li>
+</ul>
+<p><br /></p>
+<h4 id="1---cons-list-construction-list">(1) 리스트 생성자 (cons list, construction list)</h4>
+<ul>
+<li>콘스 리스트는 리스프(Lisp) 언어에 도입된 데이터 구조다.</li>
+<li>하나의 값과 값의 쌍으로 구성된 두 인수를 이용해 새로운 쌍을 생성한다.</li>
+<li>함수형 프로그래밍에서 은어적으로, <code>x를 y에 콘스한다</code>고 하는데 원소 x를 y 리스트의 첫 부분에 추가해서 새로운 리스트를 생성한다는 의미이다.</li>
+<li>러스트는 콘스 리스트보다는 보편적으로 Vec<T>를 더 많이 사용한다.</li>
+<li>하지만 콘스 리스트를 이해하면 박스를 이용해 어렵지 않게 재귀 데이터 타입을 다룰 수 있다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">List</span> {
+    Cons(<span style="color:#66d9ef">i32</span>, List),
+    Nil,
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> <span style="color:#66d9ef">crate</span>::List::{Cons, Nil};
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> list <span style="color:#f92672">=</span> Cons(<span style="color:#ae81ff">1</span>, Cons(<span style="color:#ae81ff">2</span>, Cons(<span style="color:#ae81ff">3</span>, Nil)));
+}
+</code></pre></div><ul>
+<li><code>Nil</code>은 재귀의 기본 상태(base case)를 뜻하며, null과는 다르다.</li>
+<li>List는 i32 값의 콘스 리스트인 enum이다.</li>
+<li>List enum을 이용해 1, 2, 3을 리스트에 저장한다.</li>
+<li>위 코드는 에러를 발생시킨다.<br />
+<em>error[E0072]: recursive type <code>List</code> has infinite size</em>
+<ul>
+<li><strong>선언한 List가 재귀 타입이므로 러스트는 어느 정도의 메모리 공간이 필요한지 알 수 없다.</strong></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="2-----">(2) 비재귀 타입의 크기를 계산하는 방법</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Message</span> {
+    Quit,
+    Move { x: <span style="color:#66d9ef">i32</span>, y: <span style="color:#66d9ef">i32</span> },
+    Write(String),
+    ChangeColor(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>),
+}
+</code></pre></div><ul>
+<li>러스트는 Message 값을 저장하는 데 필요한 공간을 결정하기 위해 모든 열거값을 확인한다.</li>
+<li>이때 Message 값에 필요한 공간은 가장 큰 열거값을 저장하는 데 필요한 공간이다.</li>
+<li>이와는 달리 위의 List 같은 재귀 타입은 아래의 일들이 일어난다.
+<ul>
+<li>(1) 컴파일러는 Cons 열거값을 먼저 확인한다.</li>
+<li>(2) 이 열거값은 i32 타입과 List 타입의 값을 저장한다.</li>
+<li>(3) 따라서 Cons는 i32 타입 크기에 List 타입 크기를 더한 공간이 필요하다.</li>
+<li>(4) List는 필요 공간을 확인하기 위해 다시 Cons 열거값을 확인한다.</li>
+<li>위 과정이 무한반복된다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="3-boxt----">(3) Box<T>로 재귀 타입의 크기 결정하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span>help: <span style="color:#a6e22e">insert</span> some indirection (e.g., a <span style="color:#960050;background-color:#1e0010">`</span>Box<span style="color:#960050;background-color:#1e0010">`</span>, <span style="color:#960050;background-color:#1e0010">`</span>Rc<span style="color:#960050;background-color:#1e0010">`</span>, or <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">`</span>) to make <span style="color:#960050;background-color:#1e0010">`</span>List<span style="color:#960050;background-color:#1e0010">`</span> representable
+  <span style="color:#f92672">|</span>
+<span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>     Cons(<span style="color:#66d9ef">i32</span>, Box<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;</span>),
+  <span style="color:#f92672">|</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">List</span> {
+    Cons(<span style="color:#66d9ef">i32</span>, Box<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;</span>),
+    Nil,
+}
+
+<span style="color:#66d9ef">use</span> <span style="color:#66d9ef">crate</span>::List::{Cons, Nil};
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> list <span style="color:#f92672">=</span> Cons(<span style="color:#ae81ff">1</span>, Box::new(Cons(<span style="color:#ae81ff">2</span>, Box::new(Cons(<span style="color:#ae81ff">3</span>, Box::new(Nil))))));
+}
+</code></pre></div><ul>
+<li>러스트 컴파일러는 List 타입에 대한 에러를 내며 위와 같은 유용한 정보를 함께 제공한다.</li>
+<li>(1)의 메시지는 값을 직접 저장하지 말고, 가리키는 포인터를 통해 간접적으로 저장하라고 알려준다.</li>
+<li>Box<T>는 포인터이고, 포인터의 크기는 가리키는 데이터의 크기와는 무관하다.</li>
+<li>(2)의 Cons 열거값은 이제 i32 타입의 크기에 박스의 포인터 데이터를 저장할 공간만 있으면 된다.</li>
+<li><strong>List 값에 필요한 메모리 공간은 (i32 크기 + 박스의 포인터 데이터 크기)이다.</strong></li>
+<li>Box의 크기는 <a href="https://doc.rust-lang.org/std/primitive.usize.html">usize</a>로, List enum의 크기는 더 이상 무한하지 않다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="2-deref-----">2. <code>Deref</code> 트레이트로 스마트 포인터를 참조처럼 취급하기</h2>
+<ul>
+<li>해당 트레이트를 구현하면
+<ul>
+<li>역참조 연산자(*)의 동작을 변경할 수 있다.</li>
+<li>참조를 사용하는 코드를 그대로 스마트 포인터에도 적용할 수 있다.</li>
+</ul>
+</li>
+<li>이를 위해 역참조 연산자가 참조를 어떻게 처리하는지부터 알아야 한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="2-1------">2-1. 역참조 연산자로 포인터가 가리키는 값 읽어오기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+    <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>x;
+
+    assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, x);
+    assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, <span style="color:#f92672">*</span>y);
+}
+</code></pre></div><ul>
+<li>변수 x는 i32 값 5를 저장하고, y는 x의 참조를 저장한다.</li>
+<li><strong>변수 y를 검증하려면 역참조 연산자를 붙여서 가리키는 값의 참조를 따라가야 한다.</strong></li>
+<li>따라서 *y를 통해 y가 가리키는 값 5에 접근할 수 있다.</li>
+<li>만약 <code>assert_eq!(5, y)</code>라고 작성하면 에러를 낸다.<br />
+<em>error[E0277]: can't compare <code>{integer}</code> with <code>&amp;{integer}</code></em>
+<ul>
+<li>숫자와 숫자에 대한 참조는 다른 타입이므로 둘을 비교할 수 없기 때문이다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="2-2-boxt--">2-2. Box<T>를 참조처럼 사용하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+    <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> Box::new(x);
+
+    assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, x);
+    assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, <span style="color:#f92672">*</span>y);
+}
+</code></pre></div><ul>
+<li>참조 대신 박스를 사용할 수도 있으며, 이때도 역참조 연산자는 정상 동작한다.</li>
+<li>박스 타입을 직접 구현하면서 박스가 어떻게 역참조 연산자를 지원하는지 알아보아야 한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="2-3----">2-3. 직접 구현하는 스마트 포인터</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(T);
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(x: <span style="color:#a6e22e">T</span>) -&gt; <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+        MyBox(x)
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {}
+</code></pre></div><ul>
+<li><code>Box&lt;T&gt;</code> 와 비슷한 동작은 갖는 스마트 포인터를 구현해보자.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(T);
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(x: <span style="color:#a6e22e">T</span>) -&gt; <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+        MyBox(x)
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+    <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> MyBox::new(x);
+
+    assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, x);
+    assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, <span style="color:#f92672">*</span>y);
+}
+
+<span style="color:#75715e">// 실행결과
+</span><span style="color:#75715e"></span><span style="color:#75715e">$</span> cargo run
+   Compiling deref<span style="color:#f92672">-</span>example v0.<span style="color:#ae81ff">1.0</span> (file:<span style="color:#e6db74">///projects/deref-example)
+</span><span style="color:#e6db74"></span>error[E0614]: <span style="color:#a6e22e">type</span> <span style="color:#960050;background-color:#1e0010">`</span>MyBox<span style="color:#f92672">&lt;</span>{integer}<span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">`</span> cannot be dereferenced
+  <span style="color:#f92672">-</span>-&gt; <span style="color:#a6e22e">src</span><span style="color:#f92672">/</span>main.rs:<span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">19</span>
+   <span style="color:#f92672">|</span>
+<span style="color:#ae81ff">14</span> <span style="color:#f92672">|</span>     assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, <span style="color:#f92672">*</span>y);
+   <span style="color:#f92672">|</span>                   <span style="color:#f92672">^</span><span style="color:#f92672">^</span>
+
+For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">-</span><span style="color:#f92672">-</span>explain E0614<span style="color:#960050;background-color:#1e0010">`</span>.
+error: <span style="color:#a6e22e">could</span> not compile <span style="color:#960050;background-color:#1e0010">`</span>deref<span style="color:#f92672">-</span>example<span style="color:#960050;background-color:#1e0010">`</span> due to previous error
+</code></pre></div><ul>
+<li><code>MyBox</code> 구조체는 아직 <code>Deref</code> 트레이트를 구현하지 않았기 때문에, 역참조가 발생하면 오류가 난다.</li>
+<li>실제로 Rust 컴파일러는 <code>*y</code>_ 를 <code>_(y.deref())</code> 로 변환하여 실행한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="2-4-deref----">2-4. Deref 트레이트로 참조같은 타입 구현하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::ops::Deref;
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Deref <span style="color:#66d9ef">for</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Target</span> <span style="color:#f92672">=</span> T;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">deref</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Self</span>::Target {
+        <span style="color:#f92672">&amp;</span>self.<span style="color:#ae81ff">0</span>
+    }
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(T);
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(x: <span style="color:#a6e22e">T</span>) -&gt; <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+        MyBox(x)
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+    <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> MyBox::new(x);
+
+    assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, x);
+    assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, <span style="color:#f92672">*</span>y);
+}
+</code></pre></div><ul>
+<li><code>Deref</code> 트레이트의 <code>deref()</code> 메서드를 구현하여 역참조 기능을 구현할 수 있다.</li>
+<li><code>Deref</code> 트레이트는 표준 라이브러리에서 불러온다.</li>
+<li><code>type Target = T;</code> 연관 타입이다. (Ch. 19)</li>
+<li><code>deref()</code> 메서드는 <code>&amp;Self::Target</code> 타입 (참조 타입)을 반환한다.</li>
+<li><code>&amp;self.0</code>는 튜플 구조체의 첫번째 아이템을 반환한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="2-5-----">2-5. 함수와 메서드에서 묵시적 강제 역참조</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::ops::Deref;
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Deref <span style="color:#66d9ef">for</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Target</span> <span style="color:#f92672">=</span> T;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">deref</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span> {
+        <span style="color:#f92672">&amp;</span>self.<span style="color:#ae81ff">0</span>
+    }
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(T);
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(x: <span style="color:#a6e22e">T</span>) -&gt; <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+        MyBox(x)
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">hello</span>(name: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Hello, {}!&#34;</span>, name);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> m <span style="color:#f92672">=</span> MyBox::new(String::from(<span style="color:#e6db74">&#34;Rust&#34;</span>));
+    hello(<span style="color:#f92672">&amp;</span>m);
+}
+</code></pre></div><ul>
+<li>강제 역참조(Deref coercion)란 <code>Deref</code> 트레이트를 구현하는 참조 타입을 다른 타입으로 변환하는 것이다.</li>
+<li>위는 <code>&amp;MyBox</code> → <code>&amp;str</code> 변환하는 강제 역참조의 예시이다.
+<ul>
+<li><code>Deref</code> 트레이트를 구현한 <code>MyBox</code></li>
+<li><code>MyBox::deref()</code> 함수가 <code>String</code> 반환</li>
+<li><code>Deref</code> 트레이트를 구현한 <code>String</code></li>
+<li><code>String::deref()</code> 함수가 <code>str</code> 반환</li>
+<li><strong>&amp;m → &amp;String → &amp;str</strong></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="--">[강제 역참조가 없었다면?]</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> m <span style="color:#f92672">=</span> MyBox::new(String::from(<span style="color:#e6db74">&#34;Rust&#34;</span>));
+    hello(<span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>m)[..]);
+}
+</code></pre></div><ul>
+<li>가독성이 매우 떨어진다.</li>
+</ul>
+<p><br /></p>
+<h3 id="2-6---">2-6. 강제 역참조와 가변성</h3>
+<ul>
+<li>불변참조에 <code>Deref</code> 트레이트를 사용했던 것처럼 가변참조에는 <code>DerefMut</code> 를 사용할 수 있다.</li>
+<li>Rust 는 3가지 경우에 대한 강제 역참조를 수행한다.
+<ul>
+<li><code>T: Deref&lt;Target = U&gt;</code> 일 때, <code>&amp;T</code> → <code>&amp;U</code></li>
+<li><code>T: DerefMut&lt;Target = U&gt;</code> 일 때, <code>&amp;mut T</code> → <code>&amp;mut U</code></li>
+<li><code>T: Deref&lt;Target = U&gt;</code> 일 때, <code>&amp;mut T</code> → <code>&amp;U</code></li>
+</ul>
+</li>
+<li>1, 2 번째는 불변/가변 참조끼리의 강제 역참조이다.</li>
+<li>3번째는 <strong>가변→불변</strong>으로의 강제 역참조인데 이는 <strong>단방향으로써 참조 규칙을 위반하지 않기 위해서</strong>이다.</li>
+</ul>
+<p><br /></p>
+<h4 id="---">[다시 살펴보는 참조 규칙]</h4>
+<ul>
+<li>항상 하나의 가변참조, 혹은 다수의 불변 참조만 있어야 한다.</li>
+<li>참조 변수는 항상 유효해야 한다.</li>
+</ul>
+<p><br /></p>
+<h2 id="3-drop----">3. Drop 트레이트로 클린업 코드 실행하기</h2>
+<ul>
+<li><code>Drop</code> 트레이트는 스마트 포인터가 <strong>스코프 밖으로 나갈때</strong> 클린업 작업을 실행한다.</li>
+<li>ex) 파일이나 네트워크 연결시에 후작업을 하여 메모리나 다른 리소스를 해제하여 프로세스 과부하가 발생하지 않게 한다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">CustomSmartPointer</span> {
+    data: String,
+}
+
+<span style="color:#66d9ef">impl</span> Drop <span style="color:#66d9ef">for</span> CustomSmartPointer {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">drop</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Dropping CustomSmartPointer with data `{}`!&#34;</span>, self.data);
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> c <span style="color:#f92672">=</span> CustomSmartPointer {
+        data: String::from(<span style="color:#e6db74">&#34;my stuff&#34;</span>),
+    };
+    <span style="color:#66d9ef">let</span> d <span style="color:#f92672">=</span> CustomSmartPointer {
+        data: String::from(<span style="color:#e6db74">&#34;other stuff&#34;</span>),
+    };
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;CustomSmartPointers created.&#34;</span>);
+}
+
+<span style="color:#75715e">// 실행결과
+</span><span style="color:#75715e"></span><span style="color:#75715e">$</span> cargo run
+   Compiling drop<span style="color:#f92672">-</span>example v0.<span style="color:#ae81ff">1.0</span> (file:<span style="color:#e6db74">///projects/drop-example)
+</span><span style="color:#e6db74"></span>    Finished dev [unoptimized <span style="color:#f92672">+</span> debuginfo] target(s) <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0.60</span>s
+     Running <span style="color:#960050;background-color:#1e0010">`</span>target<span style="color:#f92672">/</span>debug<span style="color:#f92672">/</span>drop<span style="color:#f92672">-</span>example<span style="color:#960050;background-color:#1e0010">`</span>
+CustomSmartPointers created.
+Dropping CustomSmartPointer with data <span style="color:#960050;background-color:#1e0010">`</span>other stuff<span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">!</span>
+Dropping CustomSmartPointer with data <span style="color:#960050;background-color:#1e0010">`</span>my stuff<span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">!</span>
+</code></pre></div><ul>
+<li><code>Drop</code> 트레이트의 <code>drop</code> 메서드 내부에 클린업 로직을 구현했다.</li>
+<li>c, d 포인터가 스코프 밖으로 나갈때 d, c 순으로 drop 메서드를 호출한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="3-1-stdmemdrop---">3-1. <code>std::mem::drop</code> 으로 조기 해제하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">CustomSmartPointer</span> {
+    data: String,
+}
+
+<span style="color:#66d9ef">impl</span> Drop <span style="color:#66d9ef">for</span> CustomSmartPointer {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">drop</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Dropping CustomSmartPointer with data `{}`!&#34;</span>, self.data);
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> c <span style="color:#f92672">=</span> CustomSmartPointer {
+        data: String::from(<span style="color:#e6db74">&#34;some data&#34;</span>),
+    };
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;CustomSmartPointer created.&#34;</span>);
+    c.drop();
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;CustomSmartPointer dropped before the end of main.&#34;</span>);
+}
+
+<span style="color:#75715e">// 실행결과
+</span><span style="color:#75715e"></span><span style="color:#75715e">$</span> cargo run
+   Compiling drop<span style="color:#f92672">-</span>example v0.<span style="color:#ae81ff">1.0</span> (file:<span style="color:#e6db74">///projects/drop-example)
+</span><span style="color:#e6db74"></span>error[E0040]: <span style="color:#a6e22e">explicit</span> <span style="color:#66d9ef">use</span> of destructor method
+  <span style="color:#f92672">-</span>-&gt; <span style="color:#a6e22e">src</span><span style="color:#f92672">/</span>main.rs:<span style="color:#ae81ff">16</span>:<span style="color:#ae81ff">7</span>
+   <span style="color:#f92672">|</span>
+<span style="color:#ae81ff">16</span> <span style="color:#f92672">|</span>     c.drop();
+   <span style="color:#f92672">|</span>     <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+   <span style="color:#f92672">|</span>     <span style="color:#f92672">|</span> <span style="color:#f92672">|</span>
+   <span style="color:#f92672">|</span>     <span style="color:#f92672">|</span> explicit destructor calls not allowed
+   <span style="color:#f92672">|</span>     help: <span style="color:#a6e22e">consider</span> using <span style="color:#960050;background-color:#1e0010">`</span>drop<span style="color:#960050;background-color:#1e0010">`</span> function: <span style="color:#960050;background-color:#1e0010">`</span>drop(c)<span style="color:#960050;background-color:#1e0010">`</span>
+
+For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">-</span><span style="color:#f92672">-</span>explain E0040<span style="color:#960050;background-color:#1e0010">`</span>.
+error: <span style="color:#a6e22e">could</span> not compile <span style="color:#960050;background-color:#1e0010">`</span>drop<span style="color:#f92672">-</span>example<span style="color:#960050;background-color:#1e0010">`</span> due to previous error
+</code></pre></div><ul>
+<li><code>drop</code> 을 강제적으로 조기에 호출해야할 경우가 있다.<br />
+<em>ex) 스레드 락을 강제적으로 풀어야 할 때</em></li>
+<li>이때 drop 을 직접적으로 호출하려 하면 아래의 오류 같이 나타난다.</li>
+<li>따라서 수동으로 해제를 하고 싶을때는 <code>std::mem::drop</code> 을 호출하면 된다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">CustomSmartPointer</span> {
+    data: String,
+}
+
+<span style="color:#66d9ef">impl</span> Drop <span style="color:#66d9ef">for</span> CustomSmartPointer {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">drop</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Dropping CustomSmartPointer with data `{}`!&#34;</span>, self.data);
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> c <span style="color:#f92672">=</span> CustomSmartPointer {
+        data: String::from(<span style="color:#e6db74">&#34;some data&#34;</span>),
+    };
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;CustomSmartPointer created.&#34;</span>);
+    drop(c);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;CustomSmartPointer dropped before the end of main.&#34;</span>);
+}
+
+<span style="color:#75715e">// 실행결과
+</span><span style="color:#75715e"></span><span style="color:#75715e">$</span> cargo run
+   Compiling drop<span style="color:#f92672">-</span>example v0.<span style="color:#ae81ff">1.0</span> (file:<span style="color:#e6db74">///projects/drop-example)
+</span><span style="color:#e6db74"></span>    Finished dev [unoptimized <span style="color:#f92672">+</span> debuginfo] target(s) <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0.73</span>s
+     Running <span style="color:#960050;background-color:#1e0010">`</span>target<span style="color:#f92672">/</span>debug<span style="color:#f92672">/</span>drop<span style="color:#f92672">-</span>example<span style="color:#960050;background-color:#1e0010">`</span>
+CustomSmartPointer created.
+Dropping CustomSmartPointer with data <span style="color:#960050;background-color:#1e0010">`</span>some data<span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">!</span>
+CustomSmartPointer dropped before the end of main.
+</code></pre></div><ul>
+<li>기존 스코프와 마찬가지로 drop 된 포인터는 더이상 유효하지 않다.</li>
+<li>따라서 만약에 실수로 사용될 시, 컴파일러 검사에서 걸리게 된다.</li>
+<li>JavaScript (혹은 Garbage Collector 를 사용하는 언어)는 <code>delete</code> 키워드로 객체의 속성을 삭제해도 클린업 실행시점을 예측 할 수가 없다.<br />
+<em>GC 만의 로직으로 GC 가 실행될때 클린업이 되기 때문에</em></li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
