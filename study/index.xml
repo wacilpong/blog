@@ -6,10 +6,19 @@
     <description>Recent content in Studies on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Aug 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 16</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-16/</link>
+      <pubDate>Sat, 06 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-16/</guid>
+      <description>다중 프로세서를 사용할 수록 동시성과 병렬 처리가 중요해지고 있다. 이 챕터에서 동시성을 말할 때 개념적으로 병렬 처리라고 생각해도 된다. 코드를 동시에 실행하기 위</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 15</title>

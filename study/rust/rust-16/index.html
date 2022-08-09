@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Fearless Concurrency" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 16" />
+<meta property="og:site_name" content="After reading Rust book chapter 16" />
+<meta property="og:description" content="Fearless Concurrency" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-16/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 16" />
+<meta name="twitter:description" content="Fearless Concurrency" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 16</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 16</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 16</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><ul>
+<li>다중 프로세서를 사용할 수록 동시성과 병렬 처리가 중요해지고 있다.</li>
+<li>이 챕터에서 동시성을 말할 때 개념적으로 병렬 처리라고 생각해도 된다.</li>
+</ul>
+<p><br /></p>
+<h2 id="-----">코드를 동시에 실행하기 위해 스레드 사용하기</h2>
+<ul>
+<li>프로그램의 계산을 여러 스레드로 나누어 처리하면 성능은 향상되지만 복잡해진다.
+<ul>
+<li>Race condition: 스레드가 처리되는 순서 문제</li>
+<li>Deadlocks: 두 스레드가 서로 처리되기를 기다리는 교착 문제</li>
+<li>특정 상황에서만 발생해 재현하기 어려운 버그</li>
+</ul>
+</li>
+<li>여러 언어에서는 운영체제가 스레드를 만들도록 호출할 수 있는 API를 제공한다.</li>
+<li>러스트 표준 라이브러리는 1:1 스레드 구현 모델을 사용한다.</li>
+<li>러스트 프로그램은 하나의 언어 스레드 당 하나의 운영체제 스레드를 사용한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="spawn--"><code>spawn</code>: 스레드 생성하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::thread;
+<span style="color:#66d9ef">use</span> std::time::Duration;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    thread::spawn(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+        <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#ae81ff">10</span> {
+            println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi number {} from the spawned thread!&#34;</span>, i);
+            thread::sleep(Duration::from_millis(<span style="color:#ae81ff">1</span>));
+        }
+    });
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#ae81ff">5</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi number {} from the main thread!&#34;</span>, i);
+        thread::sleep(Duration::from_millis(<span style="color:#ae81ff">1</span>));
+    }
+}
+</code></pre></div><ul>
+<li><code>thread::sleep</code>은 현재 실행중인 스레드를 강제로 종료하는 함수다.</li>
+<li>메인 스레드가 완료되면, 모든 spawn 스레드는 실행 여부와 상관없이 종료된다.</li>
+<li>따라서 위 코드는 숫자 4까지 각각 출력되다가, 5에서 spawn 것만 출력되며 끝난다.</li>
+<li>그러나 스레드의 실행 순서와, spawn 스레드가 다 실행되는지는 보장할 수 없다.</li>
+</ul>
+<p><br /></p>
+<h3 id="join----"><code>join</code>: 모든 스레드 끝나도록 기다리기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::thread;
+<span style="color:#66d9ef">use</span> std::time::Duration;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> handle <span style="color:#f92672">=</span> thread::spawn(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+        <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#ae81ff">10</span> {
+            println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi number {} from the spawned thread!&#34;</span>, i);
+            thread::sleep(Duration::from_millis(<span style="color:#ae81ff">1</span>));
+        }
+    });
+
+    <span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// handle.join().unwrap();
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span>..<span style="color:#ae81ff">5</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi number {} from the main thread!&#34;</span>, i);
+        thread::sleep(Duration::from_millis(<span style="color:#ae81ff">1</span>));
+    }
+
+    <span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span>    handle.join().unwrap();
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) 결과
+</span><span style="color:#75715e"></span>hi number <span style="color:#ae81ff">1</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">2</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">3</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">4</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">5</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">6</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">7</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">8</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">9</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">1</span> from the main thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">2</span> from the main thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">3</span> from the main thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">4</span> from the main thread<span style="color:#f92672">!</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2) 결과
+</span><span style="color:#75715e"></span>hi number <span style="color:#ae81ff">1</span> from the main thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">2</span> from the main thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">1</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">3</span> from the main thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">2</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">4</span> from the main thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">3</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">4</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">5</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">6</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">7</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">8</span> from the spawned thread<span style="color:#f92672">!</span>
+hi number <span style="color:#ae81ff">9</span> from the spawned thread<span style="color:#f92672">!</span>
+</code></pre></div><ul>
+<li><code>thread::spawn</code>의 반환 타입은 <code>JoinHandle</code>이다.</li>
+<li>해당 구조체의 메서드인 join을 실행하면 모든 스레드가 종료되기를 기다린다.</li>
+<li>따라서 위 코드는 생성하는 모든 spawn 스레드가 완료된다.</li>
+<li>(2)처럼 for loop 이전에 join을 실행하면 spawn 스레드를 모두 기다렸다가 main 스레드가 실행된다.</li>
+</ul>
+<p><br /></p>
+<h3 id="move-closures----"><code>move</code> Closures: 다른 스레드로 소유권 이동하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::thread;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+
+    <span style="color:#66d9ef">let</span> handle <span style="color:#f92672">=</span> thread::spawn(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Here&#39;s a vector: {:?}&#34;</span>, v);
+    });
+
+    <span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// drop(v)
+</span><span style="color:#75715e"></span>
+    handle.join().unwrap();
+}
+</code></pre></div><ul>
+<li>러스트 클로저는 환경을 캡쳐해 spawn으로 생성된 스레드에서 v에 접근할 수 있어야 한다.</li>
+<li>이때 v에 대한 참조를 빌려와 출력을 시도하지만, 러스트는 이 스레드가 얼마나 유효한지 알 수 없다.</li>
+<li>따라서 위 코드는 에러를 낸다.<br />
+<em>closure may outlive the current function, but it borrows <code>v</code>, which is owned by the current function</em></li>
+<li>그렇다고 drop으로 v를 해제하면 생성되는 스레드가 전혀 실행되지 않을 수 있다.</li>
+<li>spawn 스레드가 v를 참조하지만 main 스레드가 즉시 v를 해제하므로 v는 유효하지 않게 된다.<br />
+<em>help: to force the closure to take ownership of <code>v</code> (and any other referenced variables), use the <code>move</code> keyword</em></li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::thread;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+
+    <span style="color:#66d9ef">let</span> handle <span style="color:#f92672">=</span> thread::spawn(<span style="color:#66d9ef">move</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Here&#39;s a vector: {:?}&#34;</span>, v);
+    });
+
+    <span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// drop(v)
+</span><span style="color:#75715e"></span>
+    handle.join().unwrap();
+}
+</code></pre></div><ul>
+<li>클로저 앞에 move를 붙여 클로저가 사용하는 값의 소유권을 강제로 갖도록 할 수 있다.</li>
+<li>이때 v는 클로저가 사용된 환경으로 소유권이 이동되므로 (1)의 v는 사용할 수 없다.<br />
+<em>value used here after move</em></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="--">멀티 스레드 사용하기</h2>
+<h3 id="-">메시지 패싱</h3>
+<h4 id="heading">채널</h4>
+<ul>
+<li>쓰레드 간 통신하는 방법</li>
+<li>데이터를 송신하는 transmitter, 수신하는 receiver
+<ul>
+<li>둘 중에 하나라도 drop되면 채널은 닫힘</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="--1">채널 생성</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::sync::mpsc;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> (tx, rx) <span style="color:#f92672">=</span> mpsc::channel();
+}
+</code></pre></div><ul>
+<li><code>mpsc(multiple producer single consumer)</code> 라이브러리 사용</li>
+<li>데이터를 보내는 주체는 여럿이 될 수 있지만 받는 주체는 하나뿐</li>
+</ul>
+<p><br /></p>
+<h4 id="---">채널을 통해 메시지 주고받기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::sync::mpsc;
+<span style="color:#66d9ef">use</span> std::thread;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> (tx, rx) <span style="color:#f92672">=</span> mpsc::channel();
+
+    thread::spawn(<span style="color:#66d9ef">move</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+        <span style="color:#66d9ef">let</span> val <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hi&#34;</span>);
+        tx.send(val).unwrap();
+    });
+
+    <span style="color:#66d9ef">let</span> received <span style="color:#f92672">=</span> rx.recv().unwrap();
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Got: {}&#34;</span>, received);
+}
+</code></pre></div><ul>
+<li><code>recv</code>: 쓰레드 블락하고 데이터 올 때까지 기다림</li>
+<li><code>try_recv</code>: 실행하는 시점에 바로 <code>Result&lt;T, E&gt;</code> 타입 리턴. 데이터가 올 때까지 반복적으로 호출하면 되며, 다른 작업과 병행해야 할 때 유용함</li>
+</ul>
+<p><br /></p>
+<h4 id="---1">채널과 소유권 이전</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    thread::spawn(<span style="color:#66d9ef">move</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+        <span style="color:#66d9ef">let</span> val <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hi&#34;</span>);
+
+				<span style="color:#75715e">// 소유권 넘어감
+</span><span style="color:#75715e"></span>        tx.send(val).unwrap();
+
+				<span style="color:#75715e">// Error: borrow of moved value: `val`
+</span><span style="color:#75715e"></span>        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;val is {}&#34;</span>, val);
+    });
+}
+</code></pre></div><ul>
+<li>rust의 소유권 이전은 Race Condition 문제를 컴파일 시점에 체크해줌</li>
+</ul>
+<p><br /></p>
+<h4 id="multiple-producer">Multiple Producer</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> (tx, rx) <span style="color:#f92672">=</span> mpsc::channel();
+    <span style="color:#66d9ef">let</span> tx1 <span style="color:#f92672">=</span> tx.clone();
+}
+</code></pre></div><ul>
+<li><code>clone</code> 메서드 이용해서 producer 복사</li>
+<li>동일한 기능 그대로 사용 가능</li>
+</ul>
+<p><br /></p>
+<h3 id="--2">상태 공유</h3>
+<h4 id="heading-1">뮤텍스</h4>
+<ul>
+<li>동일한 위치의 데이터에 여러 개의 쓰레드가 동시에 접근하면 데이터의 동기화 문제가 생김</li>
+<li>이를 해결하기 위해 데이터에 접근하기 위해서는 <code>락(lock)</code>을 가지고 있어야 하는 제약을 둔 방법</li>
+<li>데이터 사용이 끝나면 락을 반납해야 함</li>
+</ul>
+<p><br /></p>
+<h4 id="mutext">Mutex<T></h4>
+<ul>
+<li>뮤텍스 구현</li>
+<li><code>Deref</code>, <code>Drop</code> 트레이트를 구현한 스마트 포인터</li>
+<li><code>lock</code> 메서드는 <code>MutexGuard</code> 타입을 반환하는데, 이 타입은 스코프가 끝나면 자동으로 락을 해제함</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::sync::Mutex;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+		<span style="color:#75715e">// 초기값 5
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> m <span style="color:#f92672">=</span> Mutex::new(<span style="color:#ae81ff">5</span>);
+
+    {
+        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> num <span style="color:#f92672">=</span> m.lock().unwrap();
+
+				<span style="color:#75715e">// 값을 6으로 변경
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">*</span>num <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;m = {:?}&#34;</span>, m);
+}
+</code></pre></div><p><br /></p>
+<h4 id="arct---mutext-">Arc<T> - Mutex<T> 공유하기</h4>
+<ul>
+<li>
+<p>스마트 포인터를 공유할 때 사용했던 <code>Rc&lt;T&gt;</code> 타입을 사용하면 에러가 난다</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::rc::Rc;
+<span style="color:#66d9ef">use</span> std::sync::Mutex;
+<span style="color:#66d9ef">use</span> std::thread;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> counter <span style="color:#f92672">=</span> Rc::new(Mutex::new(<span style="color:#ae81ff">0</span>));
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> handles <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[];
+
+    <span style="color:#66d9ef">for</span> _ <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">10</span> {
+        <span style="color:#66d9ef">let</span> counter <span style="color:#f92672">=</span> Rc::clone(<span style="color:#f92672">&amp;</span>counter);
+        <span style="color:#66d9ef">let</span> handle <span style="color:#f92672">=</span> thread::spawn(<span style="color:#66d9ef">move</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+            <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> num <span style="color:#f92672">=</span> counter.lock().unwrap();
+
+            <span style="color:#f92672">*</span>num <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        });
+        handles.push(handle);
+    }
+
+    <span style="color:#66d9ef">for</span> handle <span style="color:#66d9ef">in</span> handles {
+        handle.join().unwrap();
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Result: {}&#34;</span>, <span style="color:#f92672">*</span>counter.lock().unwrap());
+}
+</code></pre></div><ul>
+<li>Error: Rc&lt;Mutex<i32>&gt; cannot be sent between threads safely</li>
+<li>Rc<T> 타입은 멀티쓰레드 사용에 안전하지 않음</li>
+</ul>
+</li>
+<li>
+<p>멀티쓰레드 사용에 안전한 <code>Arc&lt;T&gt;</code> 타입을 사용해야 함</p>
+<ul>
+<li><code>Rc&lt;T&gt;</code>와 사용방법은 거의 동일함</li>
+<li>멀티쓰레드를 안전하게 사용하기 위한 오버헤드가 추가적으로 발생하기 때문에 멀티쓰레드 사용 상황이 아닌 경우엔 <code>Rc&lt;T&gt;</code>를 사용하는 것을 권장함</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::sync::{Arc, Mutex};
+<span style="color:#66d9ef">use</span> std::thread;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> counter <span style="color:#f92672">=</span> Arc::new(Mutex::new(<span style="color:#ae81ff">0</span>));
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> handles <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[];
+
+    <span style="color:#66d9ef">for</span> _ <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">10</span> {
+        <span style="color:#66d9ef">let</span> counter <span style="color:#f92672">=</span> Arc::clone(<span style="color:#f92672">&amp;</span>counter);
+        <span style="color:#66d9ef">let</span> handle <span style="color:#f92672">=</span> thread::spawn(<span style="color:#66d9ef">move</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+            <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> num <span style="color:#f92672">=</span> counter.lock().unwrap();
+
+            <span style="color:#f92672">*</span>num <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        });
+        handles.push(handle);
+    }
+
+    <span style="color:#66d9ef">for</span> handle <span style="color:#66d9ef">in</span> handles {
+        handle.join().unwrap();
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Result: {}&#34;</span>, <span style="color:#f92672">*</span>counter.lock().unwrap());
+}
+</code></pre></div><p><br /></p>
+<h4 id="send--sync">Send &amp; Sync</h4>
+<ul>
+<li>
+<p>Send: 쓰레드 간 소유권 이전이 가능하게 해줌</p>
+</li>
+<li>
+<p>Sync: 여러 쓰레드에서 데이터를 참조할 수 있게 해줌</p>
+</li>
+<li>
+<p><code>Arc&lt;T&gt;</code> 를 사용하려면 T가 Send, Sync 트레이트를 구현해야 함</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::sync::{Arc, Mutex};
+<span style="color:#66d9ef">use</span> std::thread;
+<span style="color:#66d9ef">use</span> std::rc::Rc;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+      <span style="color:#75715e">// the trait `Send` is not implemented for `Rc&lt;Mutex&lt;i32&gt;&gt;`
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">// the trait `Sync` is not implemented for `Rc&lt;Mutex&lt;i32&gt;&gt;`
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> counter <span style="color:#f92672">=</span> Arc::new(Rc::new(Mutex::new(<span style="color:#ae81ff">0</span>)));
+
+      <span style="color:#75715e">// 멀티쓰레드 사용하는 부분...
+</span><span style="color:#75715e"></span>}
+</code></pre></div></li>
+<li>
+<p>직접 구현하는 것은 권장하지 않음</p>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="rust----">Rust의 멀티쓰레드는 언제나 안전한 걸까?</h2>
+<ul>
+<li>그건 아니다.</li>
+<li>데드락 같은 상황은 컴파일 시점에 캐치되지 않을 수 있으니 주의해야 함
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::sync::{Arc, Mutex};
+<span style="color:#66d9ef">use</span> std::thread;
+<span style="color:#66d9ef">use</span> std::time::Duration;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> counter <span style="color:#f92672">=</span> Arc::new(Mutex::new(<span style="color:#ae81ff">0</span>));
+    <span style="color:#66d9ef">let</span> counter2 <span style="color:#f92672">=</span> Arc::new(Mutex::new(<span style="color:#ae81ff">0</span>));
+
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> handles <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[];
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">2</span> {
+        <span style="color:#66d9ef">let</span> counter <span style="color:#f92672">=</span> Arc::clone(<span style="color:#f92672">&amp;</span>counter);
+        <span style="color:#66d9ef">let</span> counter2 <span style="color:#f92672">=</span> Arc::clone(<span style="color:#f92672">&amp;</span>counter2);
+
+        <span style="color:#66d9ef">let</span> handle <span style="color:#f92672">=</span> thread::spawn(<span style="color:#66d9ef">move</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+            <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> num;
+            <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> num2;
+
+            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> {
+                num <span style="color:#f92672">=</span> counter.lock().unwrap();
+                thread::sleep(Duration::from_millis(<span style="color:#ae81ff">100</span>));
+                num2 <span style="color:#f92672">=</span> counter2.lock().unwrap();
+            } <span style="color:#66d9ef">else</span> {
+                num <span style="color:#f92672">=</span> counter2.lock().unwrap();
+                thread::sleep(Duration::from_millis(<span style="color:#ae81ff">100</span>));
+                num2 <span style="color:#f92672">=</span> counter.lock().unwrap();
+            }
+
+            <span style="color:#f92672">*</span>num <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+            <span style="color:#f92672">*</span>num2 <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        });
+
+        handles.push(handle);
+    };
+
+    <span style="color:#66d9ef">for</span> handle <span style="color:#66d9ef">in</span> handles {
+        handle.join().unwrap();
+    }
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Result: {}&#34;</span>, <span style="color:#f92672">*</span>counter.lock().unwrap());
+}
+</code></pre></div></li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
