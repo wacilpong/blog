@@ -22,3 +22,4 @@ draft: false
 13. [Functional Language Features: Iterators and Closures](https://wacilpong.github.io/blog/study/rust/rust-13/)
 14. [More About Cargo and Crates.io](https://wacilpong.github.io/blog/study/rust/rust-14/)
 15. [Smart Pointers](https://wacilpong.github.io/blog/study/rust/rust-15/)
+16. [Fearless Concurrency](https://wacilpong.github.io/blog/study/rust/rust-16/)

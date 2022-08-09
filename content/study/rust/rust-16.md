@@ -168,3 +168,268 @@ fn main() {
 - 클로저 앞에 move를 붙여 클로저가 사용하는 값의 소유권을 강제로 갖도록 할 수 있다.
 - 이때 v는 클로저가 사용된 환경으로 소유권이 이동되므로 (1)의 v는 사용할 수 없다.
   _value used here after move_
+
+<br />
+<hr />
+
+## 멀티 스레드 사용하기
+
+### 메시지 패싱
+
+#### 채널
+
+- 쓰레드 간 통신하는 방법
+- 데이터를 송신하는 transmitter, 수신하는 receiver
+  - 둘 중에 하나라도 drop되면 채널은 닫힘
+
+<br />
+
+#### 채널 생성
+
+```rust
+use std::sync::mpsc;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+}
+```
+
+- `mpsc(multiple producer single consumer)` 라이브러리 사용
+- 데이터를 보내는 주체는 여럿이 될 수 있지만 받는 주체는 하나뿐
+
+<br />
+
+#### 채널을 통해 메시지 주고받기
+
+```rust
+use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let val = String::from("hi");
+        tx.send(val).unwrap();
+    });
+
+    let received = rx.recv().unwrap();
+    println!("Got: {}", received);
+}
+```
+
+- `recv`: 쓰레드 블락하고 데이터 올 때까지 기다림
+- `try_recv`: 실행하는 시점에 바로 `Result<T, E>` 타입 리턴. 데이터가 올 때까지 반복적으로 호출하면 되며, 다른 작업과 병행해야 할 때 유용함
+
+<br />
+
+#### 채널과 소유권 이전
+
+```rust
+fn main() {
+    thread::spawn(move || {
+        let val = String::from("hi");
+
+				// 소유권 넘어감
+        tx.send(val).unwrap();
+
+				// Error: borrow of moved value: `val`
+        println!("val is {}", val);
+    });
+}
+```
+
+- rust의 소유권 이전은 Race Condition 문제를 컴파일 시점에 체크해줌
+
+<br />
+
+#### Multiple Producer
+
+```rust
+fn main() {
+    let (tx, rx) = mpsc::channel();
+    let tx1 = tx.clone();
+}
+```
+
+- `clone` 메서드 이용해서 producer 복사
+- 동일한 기능 그대로 사용 가능
+
+<br />
+
+### 상태 공유
+
+#### 뮤텍스
+
+- 동일한 위치의 데이터에 여러 개의 쓰레드가 동시에 접근하면 데이터의 동기화 문제가 생김
+- 이를 해결하기 위해 데이터에 접근하기 위해서는 `락(lock)`을 가지고 있어야 하는 제약을 둔 방법
+- 데이터 사용이 끝나면 락을 반납해야 함
+
+<br />
+
+#### Mutex<T>
+
+- 뮤텍스 구현
+- `Deref`, `Drop` 트레이트를 구현한 스마트 포인터
+- `lock` 메서드는 `MutexGuard` 타입을 반환하는데, 이 타입은 스코프가 끝나면 자동으로 락을 해제함
+
+```rust
+use std::sync::Mutex;
+
+fn main() {
+		// 초기값 5
+    let m = Mutex::new(5);
+
+    {
+        let mut num = m.lock().unwrap();
+
+				// 값을 6으로 변경
+        *num = 6;
+    }
+
+    println!("m = {:?}", m);
+}
+```
+
+<br />
+
+#### Arc<T> - Mutex<T> 공유하기
+
+- 스마트 포인터를 공유할 때 사용했던 `Rc<T>` 타입을 사용하면 에러가 난다
+
+  ```rust
+  use std::rc::Rc;
+  use std::sync::Mutex;
+  use std::thread;
+
+  fn main() {
+      let counter = Rc::new(Mutex::new(0));
+      let mut handles = vec![];
+
+      for _ in 0..10 {
+          let counter = Rc::clone(&counter);
+          let handle = thread::spawn(move || {
+              let mut num = counter.lock().unwrap();
+
+              *num += 1;
+          });
+          handles.push(handle);
+      }
+
+      for handle in handles {
+          handle.join().unwrap();
+      }
+
+      println!("Result: {}", *counter.lock().unwrap());
+  }
+  ```
+
+  - Error: Rc<Mutex<i32>> cannot be sent between threads safely
+  - Rc<T> 타입은 멀티쓰레드 사용에 안전하지 않음
+
+- 멀티쓰레드 사용에 안전한 `Arc<T>` 타입을 사용해야 함
+  - `Rc<T>`와 사용방법은 거의 동일함
+  - 멀티쓰레드를 안전하게 사용하기 위한 오버헤드가 추가적으로 발생하기 때문에 멀티쓰레드 사용 상황이 아닌 경우엔 `Rc<T>`를 사용하는 것을 권장함
+
+<br />
+
+```rust
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+fn main() {
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let counter = Arc::clone(&counter);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
+}
+```
+
+<br />
+
+#### Send & Sync
+
+- Send: 쓰레드 간 소유권 이전이 가능하게 해줌
+- Sync: 여러 쓰레드에서 데이터를 참조할 수 있게 해줌
+- `Arc<T>` 를 사용하려면 T가 Send, Sync 트레이트를 구현해야 함
+
+  ```rust
+  use std::sync::{Arc, Mutex};
+  use std::thread;
+  use std::rc::Rc;
+
+  fn main() {
+  		// the trait `Send` is not implemented for `Rc<Mutex<i32>>`
+  		// the trait `Sync` is not implemented for `Rc<Mutex<i32>>`
+      let counter = Arc::new(Rc::new(Mutex::new(0)));
+
+  		// 멀티쓰레드 사용하는 부분...
+  }
+  ```
+
+- 직접 구현하는 것은 권장하지 않음
+
+<br />
+<hr />
+
+## Rust의 멀티쓰레드는 언제나 안전한 걸까?
+
+- 그건 아니다.
+- 데드락 같은 상황은 컴파일 시점에 캐치되지 않을 수 있으니 주의해야 함
+  ```rust
+  use std::sync::{Arc, Mutex};
+  use std::thread;
+  use std::time::Duration;
+
+  fn main() {
+      let counter = Arc::new(Mutex::new(0));
+      let counter2 = Arc::new(Mutex::new(0));
+
+      let mut handles = vec![];
+
+      for i in 0..2 {
+          let counter = Arc::clone(&counter);
+          let counter2 = Arc::clone(&counter2);
+
+          let handle = thread::spawn(move || {
+              let mut num;
+              let mut num2;
+
+              if i == 0 {
+                  num = counter.lock().unwrap();
+                  thread::sleep(Duration::from_millis(100));
+                  num2 = counter2.lock().unwrap();
+              } else {
+                  num = counter2.lock().unwrap();
+                  thread::sleep(Duration::from_millis(100));
+                  num2 = counter.lock().unwrap();
+              }
+
+              *num += 1;
+              *num2 += 1;
+          });
+
+          handles.push(handle);
+      };
+
+      for handle in handles {
+          handle.join().unwrap();
+      }
+
+      println!("Result: {}", *counter.lock().unwrap());
+  }
+  ```
