@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -162,8 +162,8 @@
 
 <span style="color:#a6e22e">someObservable</span>.<span style="color:#a6e22e">pipe</span>(
   <span style="color:#a6e22e">observeOn</span>(<span style="color:#a6e22e">animationFrameScheduler</span>)
-).<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">v</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
-  <span style="color:#a6e22e">someDiv</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">v</span><span style="color:#e6db74">}</span><span style="color:#e6db74">px</span><span style="color:#e6db74">`</span>;
+).<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">v</span> <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#a6e22e">someDiv</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">v</span><span style="color:#e6db74">}</span><span style="color:#e6db74">px`</span>;
 })
 </code></pre></div></li>
 <li>다른 rxjs의 스케줄러는 아래와 같다.
@@ -256,14 +256,14 @@
 <h2 id="2020-11-12"><strong>2020-11-12</strong></h2>
 <ul>
 <li>리액트의 <code>setState()</code> 메서드는 <strong>state의 변경 사항을 대기열에 넣어</strong> 상태를 변경하라고 React에 요청한다. 따라서 즉시 state를 변경하지 않으므로 상태를 변경하고 그 상태를 바로 호출하면 의도한 대로 동작하지 않는다. 같은 setState를 한번에 여러번 호출하면 안되는 이유이기도 하다. 아래는 setData를 count만큼 실행하고 있는데, map 메서드를 통해 다음 data를 받아서 setData를 한번만 호출하도록 바꾸는 것이 낫겠다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getRandom</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">max</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span>;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getRandom</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">max</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=&gt;</span> Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span>;
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">getRandom</span>(<span style="color:#ae81ff">100</span>));
 
-<span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">setData</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">IData</span>[]<span style="color:#f92672">&gt;</span>([]);
+<span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">setData</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">IData</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
   
-<span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
   <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">count</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
-    <span style="color:#a6e22e">setData</span>((<span style="color:#a6e22e">prevState</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> [
+    <span style="color:#a6e22e">setData</span>((<span style="color:#a6e22e">prevState</span>) <span style="color:#f92672">=&gt;</span> [
       ...<span style="color:#a6e22e">prevState</span>,
       {
         <span style="color:#a6e22e">totalCount</span>: <span style="color:#66d9ef">Math.floor</span>(<span style="color:#a6e22e">getRandom</span>(<span style="color:#ae81ff">1500</span>)),
@@ -281,8 +281,8 @@
 <ul>
 <li>rxjs에서 어떠한 이벤트 스트림의 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 <code>concatMapTo</code>를 사용하자. 아래는 구독여부에 관한 옵저버블을 실행 후 emit된 값이 <code>true</code>인 경우만 구독 옵저버블을 실행한다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">pipe</span>(
-  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">subscribed</span><span style="color:#a6e22e">$</span>),
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">isTrue</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">isTrue</span>),
+  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">subscribed$</span>),
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">isTrue</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">isTrue</span>),
   <span style="color:#a6e22e">concatMapTo</span>(<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">subscribe</span>())
 ).<span style="color:#a6e22e">subscribe</span>();
 </code></pre></div></li>
@@ -325,7 +325,7 @@
 <p>rxjs에서 Subject를 프로미스로 만들고 싶다면 아래처럼 <code>take</code>, <code>first</code> 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// test.component.ts
 </span><span style="color:#75715e"></span>...
-<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">updateTest</span>();
 
   <span style="color:#75715e">// get data after test$.next()
@@ -335,16 +335,16 @@
 
 <span style="color:#75715e">// test.service.ts
 </span><span style="color:#75715e"></span>...
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Subject</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">boolean</span><span style="color:#f92672">&gt;</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test$</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Subject</span>&lt;<span style="color:#f92672">boolean</span>&gt;();
 
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testPromise</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">boolean</span><span style="color:#f92672">&gt;</span> {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test</span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">take</span>(<span style="color:#ae81ff">1</span>)).<span style="color:#a6e22e">toPromise</span>();
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testPromise</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">boolean</span>&gt; {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">take</span>(<span style="color:#ae81ff">1</span>)).<span style="color:#a6e22e">toPromise</span>();
 }
 
 <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateTest</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
   <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">httpClient</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/test&#34;</span>).<span style="color:#a6e22e">subscribe</span>(
-    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test</span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">next</span>(<span style="color:#a6e22e">data</span>),
-    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test</span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">data</span>)
+    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">next</span>(<span style="color:#a6e22e">data</span>),
+    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">data</span>)
   );
 }
 </code></pre></div></li>
@@ -478,7 +478,7 @@ $ rm hello.txt
 <li>
 <p>webpack 번들에는 if~else 혹은 switch 구문으로 dynamic import해도, 번들에는 모두 포함된다. 관련 분석 도구는 <a href="https://coryrylan.com/blog/analyzing-bundle-size-with-the-angular-cli-and-webpack">webpack-bundle-analyzer</a>를 참고하자. 번들링 결과는 stats.json 파일로 확인할 수 있고, 참고로 앵귤러에서는 <code>npx ng build --statsJson</code>를 통해 확인 가능하다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 지연 로딩될 뿐, 모두 번들링에 포함된다.
-</span><span style="color:#75715e"></span><span style="color:#75715e">// just lazy loaded, all included in bundle.
+</span><span style="color:#75715e">// just lazy loaded, all included in bundle.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">production</span>) {
   <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;path/sdk.prod.js&#34;</span>);
 } <span style="color:#66d9ef">else</span> {
@@ -541,12 +541,12 @@ $ . ~/.zshrc
 <span style="color:#75715e"># Back-compatibility wrapper for when this function was defined here in</span>
 <span style="color:#75715e"># the plugin, before being pulled in to core lib/git.zsh as git_current_branch()</span>
 <span style="color:#75715e"># to fix the core -&gt; git plugin dependency.</span>
-<span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
   git_current_branch
 <span style="color:#f92672">}</span>
 
 <span style="color:#75715e"># Pretty log messages</span>
-<span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+<span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(){</span>
   <span style="color:#66d9ef">if</span> ! <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
     git log --pretty<span style="color:#f92672">=</span>$1
   <span style="color:#66d9ef">fi</span>
@@ -554,7 +554,7 @@ $ . ~/.zshrc
 compdef _git _git_log_prettily<span style="color:#f92672">=</span>git-log
 
 <span style="color:#75715e"># Warn if the current branch is a WIP</span>
-<span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
   <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">$(</span>git log -n <span style="color:#ae81ff">1</span> 2&gt;/dev/null | grep -q -c <span style="color:#e6db74">&#34;\-\-wip\-\-&#34;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">then</span>
     echo <span style="color:#e6db74">&#34;WIP!!&#34;</span>
   <span style="color:#66d9ef">fi</span>
