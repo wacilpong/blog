@@ -23,3 +23,4 @@ draft: false
 14. [More About Cargo and Crates.io](https://wacilpong.github.io/blog/study/rust/rust-14/)
 15. [Smart Pointers](https://wacilpong.github.io/blog/study/rust/rust-15/)
 16. [Fearless Concurrency](https://wacilpong.github.io/blog/study/rust/rust-16/)
+17. [Object-Oriented Programming Features of Rust](https://wacilpong.github.io/blog/study/rust/rust-17/)
