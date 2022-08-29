@@ -6,10 +6,19 @@
     <description>Recent content in Studies on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 22 Aug 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Aug 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 18</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-18/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-18/</guid>
+      <description>All the Places Patterns Can Be Used 1-1. match Arms match VALUE { PATTERN =&amp;gt; EXPRESSION, PATTERN =&amp;gt; EXPRESSION, PATTERN =&amp;gt; EXPRESSION, } match x { None =&amp;gt; None, Some(i) =&amp;gt; Some(i + 1), } match 표현식에 사용된 값에 대한 모든 가능성을 반드시 처리해야 한다. 마지막 가지에는</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 17</title>

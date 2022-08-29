@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 22 Aug 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Aug 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/rust-book/</guid>
-      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data Enums and Pattern Matching Managing Growing Projects with Packages, Crates, and Modules Common Collections Error Handling Generic Types, Traits, and Lifetimes Writing Automated Tests An I/O Project: Building a Command Line Program Functional Language Features: Iterators and Closures More About Cargo and Crates.io Smart Pointers Fearless Concurrency Object-Oriented Programming Features of Rust  </description>
+      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data Enums and Pattern Matching Managing Growing Projects with Packages, Crates, and Modules Common Collections Error Handling Generic Types, Traits, and Lifetimes Writing Automated Tests An I/O Project: Building a Command Line Program Functional Language Features: Iterators and Closures More About Cargo and Crates.io Smart Pointers Fearless Concurrency Object-Oriented Programming Features of Rust Patterns and Matching  </description>
     </item>
     
     <item>
@@ -36,6 +36,15 @@
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>After reading Rust book chapter 18</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-18/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-18/</guid>
+      <description>All the Places Patterns Can Be Used 1-1. match Arms match VALUE { PATTERN =&amp;gt; EXPRESSION, PATTERN =&amp;gt; EXPRESSION, PATTERN =&amp;gt; EXPRESSION, } match x { None =&amp;gt; None, Some(i) =&amp;gt; Some(i + 1), } match 표현식에 사용된 값에 대한 모든 가능성을 반드시 처리해야 한다. 마지막 가지에는</description>
     </item>
     
     <item>
