@@ -548,3 +548,303 @@ fn generic<T: ?Sized>(t: &T) {
 <br />
 
 ## 19.4 Advanced Functions and Closures
+
+### 19.4.1 함수 포인터
+
+```rust
+fn add_one(x: i32) -> i32 {
+    x + 1
+}
+
+// 매개변수 f는 i32 타입을 받아 i32 타입을 반환하는 함수
+fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
+    f(arg) + f(arg)
+}
+
+fn main() {
+    let answer = do_twice(add_one, 5);
+
+    println!("The answer is: {}", answer);
+}
+```
+
+- 함수를 다른 함수의 인자로 전달하기 위해 함수 포인터를 사용한다.
+- 이때 함수는 Fn 트레이트가 아닌 fn 타입으로 강제된다.
+
+<br />
+
+```rust
+// 인자로 클로저를 받는 map
+let list_of_numbers = vec![1, 2, 3];
+let list_of_strings: Vec<String> = list_of_numbers.iter().map(|i| i.to_string()).collect();
+```
+
+```rust
+// 인자로 함수를 받는 map
+// to_string 이름의 함수가 여러 곳에 있으므로 뿌리를 명시
+// 여기서는 ToString 트레이트의 메서드를 사용했다.
+let list_of_numbers = vec![1, 2, 3];
+let list_of_strings: Vec<String> = list_of_numbers.iter().map(ToString::to_string).collect();
+```
+
+- 함수 포인터는 클로저의 트레이트 Fn, FnMut, FnOnce를 모두 구현하므로 클로저를 요구하는 함수 인자로도 전달 가능하다.
+- 인자로 클로저를 받든 함수를 받든 모두 완전히 같은 코드로 컴파일된다.
+
+<br />
+
+### 19.4.2 클로저 반환하기
+
+```rust
+fn returns_closure() -> dyn Fn(i32) -> i32 {
+    |x| x + 1
+}
+```
+
+```sh
+$ cargo build
+   Compiling functions-example v0.1.0 (file:///projects/functions-example)
+error[E0746]: return type cannot have an unboxed trait object
+ --> src/lib.rs:1:25
+  |
+1 | fn returns_closure() -> dyn Fn(i32) -> i32 {
+  |                         ^^^^^^^^^^^ doesn't have a size known at compile-time
+  |
+  = note: for information on `impl Trait`, see <https://doc.rust-lang.org/book/ch10-02-traits.html#returning-types-that-implement-traits>
+help: use `impl Fn(i32) -> i32` as the return type, as all return paths are of type `[closure@src/lib.rs:2:5: 2:14]`, which implements `Fn(i32) -> i32`
+  |
+1 | fn returns_closure() -> impl Fn(i32) -> i32 {
+  |                         ~~~~~~~~~~~~~~~~~~~
+
+For more information about this error, try `rustc --explain E0746`.
+error: could not compile `functions-example` due to previous error
+```
+
+- 클로저는 트레이트로 표현하므로 직접 반환할 수는 없다.
+- 러스트는 클로저에 얼마나 메모리를 할당해야 하는지 알 수 없어 컴파일되지 않는다.
+- 이때는 트레이트 객체를 이용해 해결할 수 있다.
+  ```rust
+  fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
+      Box::new(|x| x + 1)
+  }
+  ```
+
+<br />
+<hr />
+
+## 19.5 Macros
+
+- 러스트에서 매크로는 `macro_rules!`로 정의하는 매크로와 아래 3가지 매크로를 의미한다.
+  - #[derive] 매크로는 구조체와 열거자에 적용된 특성을 상속한다.
+  - 특성형 매크로는 어떤 아이템에도 적용할 수 있는 사용자 정의 특성을 정의한다.
+  - 함수형 매크로는 함수 호출처럼 보이지만 인자로 전달된 토큰에 적용된다.
+
+<br />
+
+### 19.5.1 매크로와 함수의 차이점
+
+- 매크로는 기본적으로 다른 코드를 작성하는 코드로서 메타프로그래밍(metaprogramming)이다.
+- 메타프로그래밍은 개발자가 작성하고 관리해야 하는 코드 양을 줄여준다.
+- 함수는 필요한 매개변수 개수와 타입을 선언해야 하지만, 매크로는 매개변수 개수가 가변적이다.
+  - println!("안녕")
+  - println!("안녕 {}", name)
+- 함수는 런타임에 호출되므로 컴파일에 트레이트를 구현할 수 없지만, 매크로는 가능하다.
+  - 매크로는 컴파일러가 코드의 의미를 해석하기 전에 확장되기 때문이다.
+  - 따라서 주어진 타입의 트레이트를 구현하는 등의 작업을 수행할 수 있다.
+- 함수는 어느 곳에든 선언/호출할 수 있지만, 매크로는 꼭 스코프 내에 있어야 한다.
+
+<br />
+
+### 19.5.2 선언적 매크로(declarative macros)
+
+- 러스트에서 일반적으로 사용하는 형태의 매크로이며, match 표현식과 비슷하게 구현할 수 있다.
+- 매크로 역시 값을 관련된 코드를 실행하는 패턴과 비교한다.
+- 예를 들어, vec! 매크로에 값을 전달해 새로운 벡터를 생성할 수 있다.
+  - `let v: Vec<u32> = vec![1, 2, 3];`
+  - 함수로는 값의 개수나 타입을 미리 알 수 없으므로 불가능하다.
+
+<br />
+
+```rust
+  // vec! 매크로의 간소화된 코드
+  #[macro_export]
+  macro_rules! vec {
+        // $x:expr는 전달되는 표현식이며
+        // $x라는 이름을 부여함
+      ($( $x:expr ),*) => {
+          {
+              let mut temp_vec = Vec::new();
+              $(
+                    // $x 표현식이 일치할 때마다 생성
+                    temp_vec.push($x);
+              )*
+              temp_vec
+          }
+      };
+  }
+```
+
+- `macro_rules!`를 통해 매크로를 선언한다.
+- `#[macro_export]`은 매크로를 선언한 크레이트를 가져올 때 매크로도 범위로 가져오기 위함이다.
+- 본문은 match 표현식과 비슷한데, 하나의 가지 코드로만 구성되었다. `($( $x:expr ),*) =>`
+- 해당 가지가 이 매크로의 유일한 패턴이므로 해당 매크로를 사용하는 코드는 꼭 이 패턴에 맞아야 한다.
+- 이때 매크로의 패턴은 값이 아니라 러스트 코드 구조와 일치해야 한다.
+  - 전체 패턴은 괄호와 달러 기호로 시작한다. `($(전달된 표현식))`
+  - 쉼표 다음의 `*`는 앞에 패턴과 일치하는 코드가 있을 수도, 없을 수도 있다는 뜻이다.
+  - 예를 들어, `vec![1, 2, 3]`은 표현식이 3개이므로 $x 패텬이 3번 일치하게 된다.
+    ```rust
+    // vec![1, 2, 3]를 호출하면 생성되는 코드
+    {
+        let mut temp_vec = Vec::new();
+        temp_vec.push(1);
+        temp_vec.push(2);
+        temp_vec.push(3);
+        temp_vec
+    }
+    ```
+
+<br />
+
+### 19.5.3 절차적 매크로(procedural macros)
+
+```rust
+use proc_macro;
+
+#[some_attribute]
+pub fn some_name(input: TokenStream) -> TokenStream {
+}
+```
+
+- 전달되는 러스트 코드를 다른 코드로 대체하는 선언적 매크로와는 달리 그대로 반환한다.
+- 절차적 매크로를 생성할 때는 각자의 크레이트 안에 정의해야 한다.
+
+<br />
+
+#### (1) Custom derive Macro 매크로
+
+```rust
+use hello_macro::HelloMacro;
+use hello_macro_derive::HelloMacro;
+
+#[derive(HelloMacro)]
+struct Pancakes;
+
+fn main() {
+    Pancakes::hello_macro();
+}
+```
+
+- HelloMacro 트레이트를 모든 타입에 구현하지 않고, 어노테이션으로 기본 구현되도록 하는 예제이다.
+
+<br />
+
+```rust
+// hello_macro/src/lib.rs
+pub trait HelloMacro {
+    fn hello_macro();
+}
+```
+
+```rust
+// hello_macro/hello_macro_derive/Cargo.toml
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = "0.14.4"
+quote = "0.6.3"
+
+// hello_macro/hello_macro_derive/src/lib.rs
+use proc_macro::TokenStream;
+use quote::quote;
+use syn;
+
+#[proc_macro_derive(HelloMacro)]
+pub fn hello_macro_derive(input: TokenStream) -> TokenStream {
+    // 러스트 코드를 파싱해 트리 구성
+    let ast = syn::parse(input).unwrap();
+
+    // 트레이트 구현체 빌드
+    impl_hello_macro(&ast)
+}
+
+fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
+    let name = &ast.ident;
+    let gen = quote! {
+        impl HelloMacro for #name {
+            fn hello_macro() {
+                println!("Hello, Macro! My name is {}!", stringify!(#name));
+            }
+        }
+    };
+    gen.into()
+}
+```
+
+- ast.ident 필드로부터 인스턴스를 얻어오며, name 변수에 대입된다.
+  - 위 예제에서는 구조체 이름인 `Pancakes`가 저장된다.
+- quote! 매크로는 반환할 러스트 코드를 정의한다.
+- stringify! 매크로는 러스트에 내장된 매크로이며, 표현식을 문자열 리터럴로 변환한다.
+
+<br />
+
+```rust
+// pancakes/Cargo.toml
+[dependencies]
+hello-macro = {path = "../hello-macro"}
+hello-macro-derive = {path = "../hello-macro/hello-macro-derive"}
+
+// pancakes/src/main.rs
+use hello_macro::HelloMacro;
+use hello_macro_derive::HelloMacro;
+
+#[derive(HelloMacro)]
+struct Pancakes;
+
+fn main() {
+    Pancakes::hello_macro();
+}
+```
+
+- `cargo run`으로 실행하면 구조체 이름인 Pancakes가 대입되어 출력된다.
+- 절차적 매크로 덕분에 pancakes 크레이트는 HelloMacro 트레이트를 구현하지 않아도 된다.
+- #[derive(HelloMacro)] 어노테이션을 통해 트레이트의 기본 구현을 적용할 수 있게 된다.
+
+<br />
+
+#### (2) Attribute-like 매크로
+
+```rust
+// (1)
+#[route(GET, "/")]
+fn index() {
+
+// (2)
+#[proc_macro_attribute]
+pub fn route(attr: TokenStream, item: TokenStream) -> TokenStream {
+```
+
+- derive를 위한 코드가 아니라, 새로운 어트리뷰트를 생성하는 매크로다.
+- derive로 상속하는 것보다 유연해서 구조체나 열거자 뿐만 아니라 함수에도 적용할 수 있다.
+- 예를 들어 (1)처럼 route 특성을 새롭게 구현할 수 있다.
+- route는 (2)처럼 어트리뷰트 자체와 그것을 적용시킬 아이템의 본문을 매개변수로 받는다.
+- 결국 동작 자체는 사용자 정의 상속 매크로와 완전히 같다.
+- `proc-macro` 크레이트 타입과 함께 크레이트를 생성한 후 원하는 코드를 생성하는 함수를 구현하면 된다.
+
+<br />
+
+#### (3) Function-like 매크로
+
+```rust
+// (1)
+let sql = sql!(SELECT * FROM posts WHERE id=1);
+
+// (2)
+#[proc_macro]
+pub fn sql(input: TokenStream) -> TokenStream {
+```
+
+- 함수 호출과 유사하지만, macro_rules! 매크로처럼 함수보다는 유연하다.
+- 예를 들어, 개수가 정해지지 않은 인자를 정의할 수도 있다.
+- (1) 매크로는 SQL 구문을 분석해 문법적으로 올바른지 확인하는 매크로다.
+- (2)처럼 토큰을 전달받아 원하는 코드를 생성해 반환한다.
+- 결국 사용자 정의 상속 매크로의 함수 시그니처와 유사하다.
