@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="Advanced Features" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="After reading Rust book chapter 19" />
+<meta property="og:site_name" content="After reading Rust book chapter 19" />
+<meta property="og:description" content="Advanced Features" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/rust/rust-19/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="After reading Rust book chapter 19" />
+<meta name="twitter:description" content="Advanced Features" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>After reading Rust book chapter 19</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">After reading Rust book chapter 19</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>After reading Rust book chapter 19</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="192-advanced-traits">19.2 Advanced Traits</h2>
+<h3 id="1921-------">19.2.1 연관 타입으로 트레이트 정의에 자리지정자 타입 선언</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Iterator {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Item</span>;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">next</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) -&gt; Option<span style="color:#f92672">&lt;</span>Self::Item<span style="color:#f92672">&gt;</span>;
+}
+</code></pre></div><ul>
+<li>자리지정자 타입(placeholder type)으로 트레이트의 메서드 시그니처를 정의할 수 있다.</li>
+<li><code>Item</code>은 연관 타입으로써, Iterator 트레이트의 자리지정자 타입이다.</li>
+<li>Iterator 트레이트를 구현하는 타입은 Item 타입을 대체할 실제 타입을 지정해야 한다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Item 타입을 u32 타입으로 대체
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Iterator <span style="color:#66d9ef">for</span> Counter {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Item</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">u32</span>;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">next</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) -&gt; Option<span style="color:#f92672">&lt;</span>Self::Item<span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 제네릭으로 선언한 가상의 Iterator
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Iterator<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">next</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) -&gt; Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>;
+}
+</code></pre></div><ul>
+<li>연관 타입은 제네릭과 유사하지만, 제네릭은 처리할 타입을 명시하지 않아도 함수를 선언할 수 있다.</li>
+<li>(1)문법은 (2)처럼 제네릭으로 표현할 수 있지만 왜 그렇게 하지 않았을까?
+<ul>
+<li>제네릭 타입 매개변수를, 필요한 타입으로 교체해서 여러 번 구현해야 하기 때문이다.</li>
+<li>즉, (1)은 Counter 구조체의 next 메서드를 호출할 떄마다 u32를 지정할 필요가 없다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="1922------">19.2.2 기본 제네릭 타입 매개변수와 연산자 오버로딩</h3>
+<ul>
+<li><code>자리지정자 타입 = 실제 타입</code> 문법으로 제네릭의 기본 타입을 지정할 수 있다.</li>
+<li>연산자를 오버로딩(overloading)할 때 유용하다.</li>
+<li>러스트는 사용자 정의 연산자나 연산자 오버로딩을 지원하지 않는다.</li>
+<li>하지만 <code>std::ops</code> 모듈에 있는 연산자와 관련 트레이트를 구현해 오버로딩할 수 있다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// Add 트레이트를 구현하여
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Point 인스턴스에 대한 + 연산자 오버로딩
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::ops::Add;
+
+<span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug, Copy, Clone, PartialEq)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span> {
+    x: <span style="color:#66d9ef">i32</span>,
+    y: <span style="color:#66d9ef">i32</span>,
+}
+
+<span style="color:#66d9ef">impl</span> Add <span style="color:#66d9ef">for</span> Point {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Output</span> <span style="color:#f92672">=</span> Point;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add</span>(self, other: <span style="color:#a6e22e">Point</span>) -&gt; <span style="color:#a6e22e">Point</span> {
+        Point {
+            x: <span style="color:#a6e22e">self</span>.x <span style="color:#f92672">+</span> other.x,
+            y: <span style="color:#a6e22e">self</span>.y <span style="color:#f92672">+</span> other.y,
+        }
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    assert_eq<span style="color:#f92672">!</span>(
+        Point { x: <span style="color:#ae81ff">1</span>, y: <span style="color:#ae81ff">0</span> } <span style="color:#f92672">+</span> Point { x: <span style="color:#ae81ff">2</span>, y: <span style="color:#ae81ff">3</span> },
+        Point { x: <span style="color:#ae81ff">3</span>, y: <span style="color:#ae81ff">3</span> }
+    );
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">trait</span> Add<span style="color:#f92672">&lt;</span>Rhs<span style="color:#f92672">=</span>Self<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Output</span>;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add</span>(self, rhs: <span style="color:#a6e22e">Rhs</span>) -&gt; <span style="color:#a6e22e">Self</span>::Output;
+}
+</code></pre></div><ul>
+<li>Add 트레이트는 하나의 연관 타입과 하나의 메서드를 정의한다.</li>
+<li>Rhs에 타입을 지정하지 않으면 Self(Add 트레이트를 구현하는 타입 자체)을 가리키게 된다.</li>
+<li>따라서 위 예시의 Rhs의 기본 타입은 Point 인스턴스가 된다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// Millimeters + Meters 연산을 수행하는
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Add 트레이트를 Millimeters 구조체에 정의
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::ops::Add;
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Millimeters</span>(<span style="color:#66d9ef">u32</span>);
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Meters</span>(<span style="color:#66d9ef">u32</span>);
+
+<span style="color:#66d9ef">impl</span> Add<span style="color:#f92672">&lt;</span>Meters<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">for</span> Millimeters {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Output</span> <span style="color:#f92672">=</span> Millimeters;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add</span>(self, other: <span style="color:#a6e22e">Meters</span>) -&gt; <span style="color:#a6e22e">Millimeters</span> {
+        Millimeters(self.<span style="color:#ae81ff">0</span> <span style="color:#f92672">+</span> (other.<span style="color:#ae81ff">0</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>))
+    }
+}
+</code></pre></div><ul>
+<li>이때는 Meters를 더해야 하므로 Rhs 타입 매개변수에 기본 타입으로 지정해야 한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="1923----------">19.2.3 불명확성 제거를 위한 완전 식별자 문법: 같은 이름 메서드 호출</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">trait</span> Pilot {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fly</span>(<span style="color:#f92672">&amp;</span>self);
+}
+
+<span style="color:#66d9ef">trait</span> Wizard {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fly</span>(<span style="color:#f92672">&amp;</span>self);
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Human</span>;
+
+<span style="color:#66d9ef">impl</span> Pilot <span style="color:#66d9ef">for</span> Human {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fly</span>(<span style="color:#f92672">&amp;</span>self) {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;This is your captain speaking.&#34;</span>);
+    }
+}
+
+<span style="color:#66d9ef">impl</span> Wizard <span style="color:#66d9ef">for</span> Human {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fly</span>(<span style="color:#f92672">&amp;</span>self) {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Up!&#34;</span>);
+    }
+}
+
+<span style="color:#66d9ef">impl</span> Human {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fly</span>(<span style="color:#f92672">&amp;</span>self) {
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;*waving arms furiously*&#34;</span>);
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// *waving arms furiously*
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#66d9ef">let</span> person <span style="color:#f92672">=</span> Human;
+
+    person.fly();
+}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> person <span style="color:#f92672">=</span> Human;
+    Pilot::fly(<span style="color:#f92672">&amp;</span>person);
+    Wizard::fly(<span style="color:#f92672">&amp;</span>person);
+    person.fly();
+}
+</code></pre></div><ul>
+<li>러스트는 각 트레이트에 선언된 같은 이름의 메서드 선언을 허용한다.</li>
+<li>같은 이름의 메서드를 호출할 때, 러스트 컴파일러는 기본적으로 타입에 직접 구현된 메서드를 호출한다.</li>
+<li>따라서 (1)은 Human 구조체에 직접 선언한 fly 메서드가 호출된다.</li>
+<li>(2)는 명시적으로 호출하고 있으므로 러스트는 각 트레이트의 메서드를 호출한다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">trait</span> Animal {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">baby_name</span>() -&gt; String;
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Dog</span>;
+
+<span style="color:#66d9ef">impl</span> Dog {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">baby_name</span>() -&gt; String {
+        String::from(<span style="color:#e6db74">&#34;Spot&#34;</span>)
+    }
+}
+
+<span style="color:#66d9ef">impl</span> Animal <span style="color:#66d9ef">for</span> Dog {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">baby_name</span>() -&gt; String {
+        String::from(<span style="color:#e6db74">&#34;puppy&#34;</span>)
+    }
+}
+
+<span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Spot 출력
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;A baby dog is called a {}&#34;</span>, Dog::baby_name());
+}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Error!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;A baby dog is called a {}&#34;</span>, Animal::baby_name());
+}
+
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#75715e">// puppy 출력
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;A baby dog is called a {}&#34;</span>, <span style="color:#f92672">&lt;</span>Dog <span style="color:#66d9ef">as</span> Animal<span style="color:#f92672">&gt;</span>::baby_name());
+}
+</code></pre></div><ul>
+<li>트레이트를 구현하는 두 타입이 같은 스코프에 있으면 러스트는 어떤 타입 메서드를 호출할지 알 수 없다.</li>
+<li>(1)은 Dog 구조체가 구현하는 Animal 트레이트가 아닌, Dog 구조체의 메서드가 호출된다.</li>
+<li>(2)는 러스트가 Animal::baby_name가 어떤 함수인지 판단할 수 없어 컴파일 에러가 난다.
+<ul>
+<li><em>error[E0283]: type annotations needed</em></li>
+<li>연관 함수는 self 매개변수를 포함하지 않기 때문이다.</li>
+</ul>
+</li>
+<li>(3)은 완전 식별자 문법으로 Dog 구조체가 구현하는 Animal 트레이트의 메서드를 호출한다.</li>
+<li><strong>완전 식별자 문법: <code>&lt;타입명 as 트레이트명&gt;::함수(메서드일때_수신자, 다음_매개변수, ...);</code></strong></li>
+<li>이는 러스트가 어떤 메서드를 호출해야 하는지 스스로 판단할 수 없을 때만 사용한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="1924-supertraits------">19.2.4 Supertraits: 한 트레이트에서 다른 트레이트 기능을 요청</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">**********
+*        *
+* <span style="color:#f92672">(</span>1, 3<span style="color:#f92672">)</span> *
+*        *
+**********
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fmt;
+
+<span style="color:#75715e">// 이 트레이트는 Display 트레이트의 기능을 요구함을 명시
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">trait</span> OutlinePrint: <span style="color:#a6e22e">fmt</span>::Display {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">outline_print</span>(<span style="color:#f92672">&amp;</span>self) {
+        <span style="color:#75715e">// 따라서 Display를 구현하는 타입에 자동으로 구현되는
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// to_string 함수를 사용할 수 있다.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">let</span> output <span style="color:#f92672">=</span> self.to_string();
+        <span style="color:#66d9ef">let</span> len <span style="color:#f92672">=</span> output.len();
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, <span style="color:#e6db74">&#34;*&#34;</span>.repeat(len <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>));
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;*{}*&#34;</span>, <span style="color:#e6db74">&#34; &#34;</span>.repeat(len <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>));
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;* {} *&#34;</span>, output);
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;*{}*&#34;</span>, <span style="color:#e6db74">&#34; &#34;</span>.repeat(len <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>));
+        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, <span style="color:#e6db74">&#34;*&#34;</span>.repeat(len <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>));
+    }
+}
+</code></pre></div><ul>
+<li>값을 애스터리스크(*)로 꾸며 출력하는 메서드가 있는 OutlinePrint 트레이트를 정의해보자.</li>
+<li>이때 OutlinePrint는 Display 트레이트의 기능에 의존한다.</li>
+<li>트레이트 선언부에 <code>OutlinePrint: Display</code>처럼 명시해주면 된다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span> {
+    x: <span style="color:#66d9ef">i32</span>,
+    y: <span style="color:#66d9ef">i32</span>,
+}
+
+<span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> OutlinePrint <span style="color:#66d9ef">for</span> Point {}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::fmt;
+
+<span style="color:#66d9ef">impl</span> fmt::Display <span style="color:#66d9ef">for</span> Point {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fmt</span>(<span style="color:#f92672">&amp;</span>self, f: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> fmt::Formatter) -&gt; <span style="color:#a6e22e">fmt</span>::Result {
+        write<span style="color:#f92672">!</span>(f, <span style="color:#e6db74">&#34;({}, {})&#34;</span>, self.x, self.y)
+    }
+}
+</code></pre></div><ul>
+<li>(1)처럼 Display 트레이트를 구현하지 않는 타입을 OutlinePrint에 구현하려고 하면 에러를 낸다.
+<ul>
+<li><em>error[E0277]: <code>Point</code> doesn't implement <code>std::fmt::Display</code></em></li>
+<li>해결하려면 Point 구조체에 Display 트레이트를 구현해야 한다.</li>
+</ul>
+</li>
+<li>(2)는 성공적으로 컴파일된다.</li>
+</ul>
+<p><br /></p>
+<h3 id="1925-------">19.2.5 뉴타입 패턴으로 외부 타입에 외부 트레이트 구현</h3>
+<ul>
+<li>뉴타입 패턴은 튜플 구조체에 새로운 타입을 생성하는 것이다.</li>
+<li>튜플은 하나의 필드를 포함하고 트레이트를 구현하고자 하는 타입의 wrapper로 동작한다.</li>
+<li>그러면 이 wrapper는 크레이트의 로컬 타입이므로 원하는 트레이트를 구현할 수 있다.</li>
+<li>예를 들어 Vec<T> 타입에 Display 트레이트를 직접 구현할 수 없다.
+<ul>
+<li>둘다 크레이트 외부에 정의되어있기 때문이다.</li>
+<li>규칙: 어떤 타입에 트레이트를 구현하려면 그 타입/트레이트 중 하나가 로컬이어야 한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fmt;
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Wrapper</span>(Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span>);
+
+<span style="color:#66d9ef">impl</span> fmt::Display <span style="color:#66d9ef">for</span> Wrapper {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fmt</span>(<span style="color:#f92672">&amp;</span>self, f: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> fmt::Formatter) -&gt; <span style="color:#a6e22e">fmt</span>::Result {
+        write<span style="color:#f92672">!</span>(f, <span style="color:#e6db74">&#34;[{}]&#34;</span>, self.<span style="color:#ae81ff">0.</span>join(<span style="color:#e6db74">&#34;, &#34;</span>))
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> w <span style="color:#f92672">=</span> Wrapper(vec<span style="color:#f92672">!</span>[String::from(<span style="color:#e6db74">&#34;hello&#34;</span>), String::from(<span style="color:#e6db74">&#34;world&#34;</span>)]);
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;w = {}&#34;</span>, w);
+    <span style="color:#75715e">// w = [hello, world] 출력
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ul>
+<li>
+<p>Wrapper는 Vec<T>를 감싸는 튜플 구조체이며 self.0으로 저장된 값에 접근한다.</p>
+</li>
+<li>
+<p>단점</p>
+<ul>
+<li>
+<p>Wrapper가 새로운 타입이어서 내부에 저장된 값이 제공하는 메서드는 없다.</p>
+</li>
+<li>
+<p>새 타입이 내부 타입과 완전히 같은 메서드를 제공하게 하려면 Deref 트레이트를 구현해야 한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 참고
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 튜플의 첫번째 아이템을 반환하는 deref 메서드를 가짐
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::ops::Deref;
+
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Deref <span style="color:#66d9ef">for</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Target</span> <span style="color:#f92672">=</span> T;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">deref</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Self</span>::Target {
+        <span style="color:#f92672">&amp;</span>self.<span style="color:#ae81ff">0</span>
+    }
+}
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="193-advanced-types">19.3 Advanced Types</h2>
+<h3 id="1931----">19.3.1 뉴타입을 이용한 타입안전성과 추상화</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Millimeters</span>(<span style="color:#66d9ef">u32</span>);
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Meters</span>(<span style="color:#66d9ef">u32</span>);
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">People</span>(HashMap<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span>, String<span style="color:#f92672">&gt;</span>)
+</code></pre></div><ul>
+<li>(1)은 u32 타입을 감싸는 뉴타입으로, 값을 명확히 구분하고 단위를 표시한다.</li>
+<li>(2)처럼 People 타입을 사용하는 코드는 오직 사람 이름을 추가하는 메서드처럼 공개 API만 다루게 된다.
+<ul>
+<li>뉴타입 패턴은 내부 타입이 제공하는 API와 다른 API를 노출하므로 제한된 기능만 사용하게 한다.</li>
+<li>이름이 i32 타입과 관련있다는 사실을 알 필요 없듯, 뉴타입 패턴은 내부 구현 자체도 숨긴다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="1932-----">19.3.2 타입 별칭으로 동질의 타입 생성</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Kilometers</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">i32</span>;
+</code></pre></div><ul>
+<li>타입에 다른 이름을 부여하려면 type 키워드를 사용한다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// AS-IS
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> f: Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Box::new(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi&#34;</span>));
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_long_type</span>(f: Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span>) {
+        <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_long_type</span>() -&gt; Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>        Box::new(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> ())
+    }
+}
+
+<span style="color:#75715e">// TO-DO
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Thunk</span> <span style="color:#f92672">=</span> Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span>;
+
+    <span style="color:#66d9ef">let</span> f: <span style="color:#a6e22e">Thunk</span> <span style="color:#f92672">=</span> Box::new(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi&#34;</span>));
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_long_type</span>(f: <span style="color:#a6e22e">Thunk</span>) {
+        <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_long_type</span>() -&gt; <span style="color:#a6e22e">Thunk</span> {
+        <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>        Box::new(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> ())
+    }
+}
+</code></pre></div><ul>
+<li>타입 별칭을 쓰는 이유는 중복을 줄이기 위함이다.</li>
+<li>위 타입을 사용하는 곳에 일일이 작성해야 한다면 힘들고 에러 발생하기도 쉽다.</li>
+<li>Thunk라는 의미 있는 이름으로 별칭을 만들어 중복을 제거하고 코드 의도도 명확히 표현할 수 있다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> Result<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> std::result::Result<span style="color:#f92672">&lt;</span>T, std::io::Error<span style="color:#f92672">&gt;</span>;
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Write {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">write</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self, buf: <span style="color:#66d9ef">&amp;</span>[<span style="color:#66d9ef">u8</span>]) -&gt; Result<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>;
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">flush</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) -&gt; Result<span style="color:#f92672">&lt;</span>()<span style="color:#f92672">&gt;</span>;
+
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">write_all</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self, buf: <span style="color:#66d9ef">&amp;</span>[<span style="color:#66d9ef">u8</span>]) -&gt; Result<span style="color:#f92672">&lt;</span>()<span style="color:#f92672">&gt;</span>;
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">write_fmt</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self, fmt: <span style="color:#a6e22e">fmt</span>::Arguments) -&gt; Result<span style="color:#f92672">&lt;</span>()<span style="color:#f92672">&gt;</span>;
+}
+</code></pre></div><ul>
+<li>(1)처럼 std::io 모듈에서도 타입 별칭을 사용하며, 완전 식별자 별칭이므로 E타입을 생략할 수 있다.</li>
+<li>(2)처럼 Result&lt;T, E&gt;에서 std::io::Error 타입을 생략해서 함수 시그니처를 작성할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h3 id="1933----never-">19.3.3 절대 반환하지 않는 never 타입</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">bar</span>() -&gt; <span style="color:#f92672">!</span> {
+    <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ul>
+<li><code>!</code> 타입은 아무 값도 없는 빈 타입처럼 동작하며, 러스트 개발팀은 이를 never 타입이라고 부른다.</li>
+<li>함수가 값을 반환하지 않을 때 반환 타입 자리에 사용하기 때문이다.</li>
+</ul>
+<p><br /></p>
+<h4 id="1-continue">(1) continue</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) O
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> guess: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> guess.trim().parse() {
+    Ok(num) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> num,
+    Err(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">continue</span>,
+};
+
+<span style="color:#75715e">// (2) X
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> guess <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> guess.trim().parse() {
+        Ok(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>,
+        Err(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>,
+    };
+</code></pre></div><ul>
+<li>match 표현식의 가지는 반드시 같은 타입을 반환해야 한다.</li>
+<li>그러면 continue는 어떤 값을 반환할까? 바로 ! 값이다.</li>
+<li>따라서 러스트는 (1)에서 !는 절대 값을 가질 수 없으므로 guess 변수 타입을 u32로 결정한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="2-panic-">(2) panic! 매크로</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">unwrap</span>(self) -&gt; <span style="color:#a6e22e">T</span> {
+        <span style="color:#66d9ef">match</span> self {
+            Some(val) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> val,
+            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;called `Option::unwrap()` on a `None` value&#34;</span>),
+        }
+    }
+}
+</code></pre></div><ul>
+<li>unwrap 함수는 Option<T> 타입으로부터 값을 반환하거나 panic! 매크로를 호출시킨다.</li>
+<li>러스트는 val 변수가 T 타입이고, panic! 매크로가 ! 타입임을 파악해 문제없이 동작한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="3-loop">(3) loop</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">print<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;forever &#34;</span>);
+
+<span style="color:#66d9ef">loop</span> {
+    print<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;and ever &#34;</span>);
+}
+</code></pre></div><ul>
+<li>위 코드의 루프는 절대 끝나지 않으므로 이 표현식의 값은 !이다.</li>
+<li>그러나 break문을 추가하면 루프가 종료되므로, 그 경우에는 !가 아니다.</li>
+</ul>
+<p><br /></p>
+<h3 id="1934----sized-">19.3.4 동적 크기 타입과 Sized 트레이트</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 컴파일되지 않는다.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> s1: <span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello there!&#34;</span>;
+<span style="color:#66d9ef">let</span> s2: <span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;How&#39;s it going?&#34;</span>;
+</code></pre></div><ul>
+<li>때에 따라 런타임에서 그 크기를 알 수 있는 값을 사용해야 한다.</li>
+<li>str 타입은 그 자체로 동적 크기 타입(dynamically sized types)이다.</li>
+<li>실제로 코드를 실행하기 전까지는 문자열이 얼마나 긴지 미리 알 수 없기 때문이다.</li>
+<li>따라서 str 타입의 변수를 생성할 수도 없고 인자로 받을 수도 없다.</li>
+<li>두 변수를 &amp;str 타입으로 선언하면 되며, 슬라이스는 시작 위치와 길이를 저장하고 있기 때문이다.</li>
+<li>&amp;str 타입의 크기는 항상 정해져 있으므로 길이와 관계없이 문자열을 참조할 수 있다.
+<ul>
+<li>&amp;str은 str의 주소와 길이 두 값을 갖는다.</li>
+<li>러스트의 동적 크기 타입은 대부분 이렇게 동작한다.</li>
+<li>즉, 동적인 정보의 크기를 메타데이터에 추가로 저장한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="sized-">Sized 트레이트</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">generic</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(t: <span style="color:#a6e22e">T</span>) {
+    <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">generic</span><span style="color:#f92672">&lt;</span>T: Sized<span style="color:#f92672">&gt;</span>(t: <span style="color:#a6e22e">T</span>) {
+    <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// (3)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">generic</span><span style="color:#f92672">&lt;</span>T: <span style="color:#f92672">?</span>Sized<span style="color:#f92672">&gt;</span>(t: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>) {
+    <span style="color:#75715e">// --snip--
+</span><span style="color:#75715e"></span>}
+</code></pre></div><ul>
+<li>러스트는 컴파일에 타입 크기를 알 수 있는지 결정하는 Sized 트레이트를 제공한다.</li>
+<li>이 트레이트는 컴파일에 크기가 알려진 모든 타입에 자동으로 구현된다.</li>
+<li>따라서 (1)은 실제로는 (2)처럼 작성된 것으로 취급된다.</li>
+<li>제네릭 함수는 컴파일에 크기가 알려진 타입만 사용할 수 있으나, (3) 문법으로 완화할 수 있다.</li>
+<li><code>?Sized</code> 트레이트 경계는 &lsquo;T는 Sized 트레이트를 구현할 수도 있고 아닐 수도 있다'로 읽는다.</li>
+<li>이 문법은 Sized 트레이트에만 적용할 수 있고, 구현하지 않을 수도 있으므로 &amp;T로 바꿔야 한다.</li>
+</ul>
+<p><br /></p>
+<h2 id="194-advanced-functions-and-closures">19.4 Advanced Functions and Closures</h2>
+<h3 id="1941--">19.4.1 함수 포인터</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(x: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
+    x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+}
+
+<span style="color:#75715e">// 매개변수 f는 i32 타입을 받아 i32 타입을 반환하는 함수
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">do_twice</span>(f: <span style="color:#a6e22e">fn</span>(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span>, arg: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
+    f(arg) <span style="color:#f92672">+</span> f(arg)
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> answer <span style="color:#f92672">=</span> do_twice(add_one, <span style="color:#ae81ff">5</span>);
+
+    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The answer is: {}&#34;</span>, answer);
+}
+</code></pre></div><ul>
+<li>함수를 다른 함수의 인자로 전달하기 위해 함수 포인터를 사용한다.</li>
+<li>이때 함수는 Fn 트레이트가 아닌 fn 타입으로 강제된다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 인자로 클로저를 받는 map
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> list_of_numbers <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+<span style="color:#66d9ef">let</span> list_of_strings: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> list_of_numbers.iter().map(<span style="color:#f92672">|</span>i<span style="color:#f92672">|</span> i.to_string()).collect();
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 인자로 함수를 받는 map
+</span><span style="color:#75715e"></span><span style="color:#75715e">// to_string 이름의 함수가 여러 곳에 있으므로 뿌리를 명시
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 여기서는 ToString 트레이트의 메서드를 사용했다.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> list_of_numbers <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+<span style="color:#66d9ef">let</span> list_of_strings: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> list_of_numbers.iter().map(ToString::to_string).collect();
+</code></pre></div><ul>
+<li>함수 포인터는 클로저의 트레이트 Fn, FnMut, FnOnce를 모두 구현하므로 클로저를 요구하는 함수 인자로도 전달 가능하다.</li>
+<li>인자로 클로저를 받든 함수를 받든 모두 완전히 같은 코드로 컴파일된다.</li>
+</ul>
+<p><br /></p>
+<h3 id="1942--">19.4.2 클로저 반환하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_closure</span>() -&gt; <span style="color:#a6e22e">dyn</span> Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
+    <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo build
+   Compiling functions-example v0.1.0 <span style="color:#f92672">(</span>file:///projects/functions-example<span style="color:#f92672">)</span>
+error<span style="color:#f92672">[</span>E0746<span style="color:#f92672">]</span>: <span style="color:#66d9ef">return</span> type cannot have an unboxed trait object
+ --&gt; src/lib.rs:1:25
+  |
+<span style="color:#ae81ff">1</span> | fn returns_closure<span style="color:#f92672">(</span><span style="color:#f92672">)</span> -&gt; dyn Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32 <span style="color:#f92672">{</span>
+  |                         ^^^^^^^^^^^ doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t have a size known at compile-time
+  |
+  <span style="color:#f92672">=</span> note: <span style="color:#66d9ef">for</span> information on <span style="color:#e6db74">`</span>impl Trait<span style="color:#e6db74">`</span>, see &lt;https://doc.rust-lang.org/book/ch10-02-traits.html#returning-types-that-implement-traits&gt;
+help: use <span style="color:#e6db74">`</span>impl Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32<span style="color:#e6db74">`</span> as the <span style="color:#66d9ef">return</span> type, as all <span style="color:#66d9ef">return</span> paths are of type <span style="color:#e6db74">`</span><span style="color:#f92672">[</span>closure@src/lib.rs:2:5: 2:14<span style="color:#f92672">]</span><span style="color:#e6db74">`</span>, which implements <span style="color:#e6db74">`</span>Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32<span style="color:#e6db74">`</span>
+  |
+<span style="color:#ae81ff">1</span> | fn returns_closure<span style="color:#f92672">(</span><span style="color:#f92672">)</span> -&gt; impl Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32 <span style="color:#f92672">{</span>
+  |                         ~~~~~~~~~~~~~~~~~~~
+
+For more information about this error, try <span style="color:#e6db74">`</span>rustc --explain E0746<span style="color:#e6db74">`</span>.
+error: could not compile <span style="color:#e6db74">`</span>functions-example<span style="color:#e6db74">`</span> due to previous error
+</code></pre></div><ul>
+<li>클로저는 트레이트로 표현하므로 직접 반환할 수는 없다.</li>
+<li>러스트는 클로저에 얼마나 메모리를 할당해야 하는지 알 수 없어 컴파일되지 않는다.</li>
+<li>이때는 트레이트 객체를 이용해 해결할 수 있다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_closure</span>() -&gt; Box<span style="color:#f92672">&lt;</span>dyn Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> {
+    Box::new(<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+}
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="195-macros">19.5 Macros</h2>
+<ul>
+<li>러스트에서 매크로는 <code>macro_rules!</code>로 정의하는 매크로와 아래 3가지 매크로를 의미한다.
+<ul>
+<li>#[derive] 매크로는 구조체와 열거자에 적용된 특성을 상속한다.</li>
+<li>특성형 매크로는 어떤 아이템에도 적용할 수 있는 사용자 정의 특성을 정의한다.</li>
+<li>함수형 매크로는 함수 호출처럼 보이지만 인자로 전달된 토큰에 적용된다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="1951---">19.5.1 매크로와 함수의 차이점</h3>
+<ul>
+<li>매크로는 기본적으로 다른 코드를 작성하는 코드로서 메타프로그래밍(metaprogramming)이다.</li>
+<li>메타프로그래밍은 개발자가 작성하고 관리해야 하는 코드 양을 줄여준다.</li>
+<li>함수는 필요한 매개변수 개수와 타입을 선언해야 하지만, 매크로는 매개변수 개수가 가변적이다.
+<ul>
+<li>println!(&ldquo;안녕&rdquo;)</li>
+<li>println!(&ldquo;안녕 {}&quot;, name)</li>
+</ul>
+</li>
+<li>함수는 런타임에 호출되므로 컴파일에 트레이트를 구현할 수 없지만, 매크로는 가능하다.
+<ul>
+<li>매크로는 컴파일러가 코드의 의미를 해석하기 전에 확장되기 때문이다.</li>
+<li>따라서 주어진 타입의 트레이트를 구현하는 등의 작업을 수행할 수 있다.</li>
+</ul>
+</li>
+<li>함수는 어느 곳에든 선언/호출할 수 있지만, 매크로는 꼭 스코프 내에 있어야 한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="1952--declarative-macros">19.5.2 선언적 매크로(declarative macros)</h3>
+<ul>
+<li>러스트에서 일반적으로 사용하는 형태의 매크로이며, match 표현식과 비슷하게 구현할 수 있다.</li>
+<li>매크로 역시 값을 관련된 코드를 실행하는 패턴과 비교한다.</li>
+<li>예를 들어, vec! 매크로에 값을 전달해 새로운 벡터를 생성할 수 있다.
+<ul>
+<li><code>let v: Vec&lt;u32&gt; = vec![1, 2, 3];</code></li>
+<li>함수로는 값의 개수나 타입을 미리 알 수 없으므로 불가능하다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">  <span style="color:#75715e">// vec! 매크로의 간소화된 코드
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#[</span><span style="color:#75715e">macro_export</span><span style="color:#75715e">]</span>
+  macro_rules<span style="color:#f92672">!</span> vec {
+        <span style="color:#75715e">// $x:expr는 전달되는 표현식이며
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// $x라는 이름을 부여함
+</span><span style="color:#75715e"></span>      (<span style="color:#75715e">$(</span> <span style="color:#75715e">$x</span>:<span style="color:#a6e22e">expr</span> ),<span style="color:#f92672">*</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+          {
+              <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> temp_vec <span style="color:#f92672">=</span> Vec::new();
+              <span style="color:#75715e">$(</span>
+                    <span style="color:#75715e">// $x 표현식이 일치할 때마다 생성
+</span><span style="color:#75715e"></span>                    temp_vec.push(<span style="color:#75715e">$x</span>);
+              )<span style="color:#f92672">*</span>
+              temp_vec
+          }
+      };
+  }
+</code></pre></div><ul>
+<li><code>macro_rules!</code>를 통해 매크로를 선언한다.</li>
+<li><code>#[macro_export]</code>은 매크로를 선언한 크레이트를 가져올 때 매크로도 범위로 가져오기 위함이다.</li>
+<li>본문은 match 표현식과 비슷한데, 하나의 가지 코드로만 구성되었다. <code>($( $x:expr ),*) =&gt;</code></li>
+<li>해당 가지가 이 매크로의 유일한 패턴이므로 해당 매크로를 사용하는 코드는 꼭 이 패턴에 맞아야 한다.</li>
+<li>이때 매크로의 패턴은 값이 아니라 러스트 코드 구조와 일치해야 한다.
+<ul>
+<li>전체 패턴은 괄호와 달러 기호로 시작한다. <code>($(전달된 표현식))</code></li>
+<li>쉼표 다음의 <code>*</code>는 앞에 패턴과 일치하는 코드가 있을 수도, 없을 수도 있다는 뜻이다.</li>
+<li>예를 들어, <code>vec![1, 2, 3]</code>은 표현식이 3개이므로 $x 패텬이 3번 일치하게 된다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// vec![1, 2, 3]를 호출하면 생성되는 코드
+</span><span style="color:#75715e"></span>{
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> temp_vec <span style="color:#f92672">=</span> Vec::new();
+    temp_vec.push(<span style="color:#ae81ff">1</span>);
+    temp_vec.push(<span style="color:#ae81ff">2</span>);
+    temp_vec.push(<span style="color:#ae81ff">3</span>);
+    temp_vec
+}
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="1953--procedural-macros">19.5.3 절차적 매크로(procedural macros)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> proc_macro;
+
+<span style="color:#75715e">#[</span><span style="color:#75715e">some_attribute</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">some_name</span>(input: <span style="color:#a6e22e">TokenStream</span>) -&gt; <span style="color:#a6e22e">TokenStream</span> {
+}
+</code></pre></div><ul>
+<li>전달되는 러스트 코드를 다른 코드로 대체하는 선언적 매크로와는 달리 그대로 반환한다.</li>
+<li>절차적 매크로를 생성할 때는 각자의 크레이트 안에 정의해야 한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="1-custom-derive-macro-">(1) Custom derive Macro 매크로</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> hello_macro::HelloMacro;
+<span style="color:#66d9ef">use</span> hello_macro_derive::HelloMacro;
+
+<span style="color:#75715e">#[</span><span style="color:#75715e">derive(HelloMacro)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Pancakes</span>;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    Pancakes::hello_macro();
+}
+</code></pre></div><ul>
+<li>HelloMacro 트레이트를 모든 타입에 구현하지 않고, 어노테이션으로 기본 구현되도록 하는 예제이다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// hello_macro/src/lib.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> HelloMacro {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">hello_macro</span>();
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// hello_macro/hello_macro_derive/Cargo.toml
+</span><span style="color:#75715e"></span>[lib]
+<span style="color:#66d9ef">proc</span><span style="color:#f92672">-</span><span style="color:#66d9ef">macro</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+
+[dependencies]
+syn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0.14.4&#34;</span>
+quote <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0.6.3&#34;</span>
+
+<span style="color:#75715e">// hello_macro/hello_macro_derive/src/lib.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> proc_macro::TokenStream;
+<span style="color:#66d9ef">use</span> quote::quote;
+<span style="color:#66d9ef">use</span> syn;
+
+<span style="color:#75715e">#[</span><span style="color:#75715e">proc_macro_derive(HelloMacro)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">hello_macro_derive</span>(input: <span style="color:#a6e22e">TokenStream</span>) -&gt; <span style="color:#a6e22e">TokenStream</span> {
+    <span style="color:#75715e">// 러스트 코드를 파싱해 트리 구성
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> ast <span style="color:#f92672">=</span> syn::parse(input).unwrap();
+
+    <span style="color:#75715e">// 트레이트 구현체 빌드
+</span><span style="color:#75715e"></span>    impl_hello_macro(<span style="color:#f92672">&amp;</span>ast)
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">impl_hello_macro</span>(ast: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">syn</span>::DeriveInput) -&gt; <span style="color:#a6e22e">TokenStream</span> {
+    <span style="color:#66d9ef">let</span> name <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>ast.ident;
+    <span style="color:#66d9ef">let</span> gen <span style="color:#f92672">=</span> quote<span style="color:#f92672">!</span> {
+        <span style="color:#66d9ef">impl</span> HelloMacro <span style="color:#66d9ef">for</span> <span style="color:#960050;background-color:#1e0010">#</span>name {
+            <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">hello_macro</span>() {
+                println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Hello, Macro! My name is {}!&#34;</span>, stringify<span style="color:#f92672">!</span>(<span style="color:#960050;background-color:#1e0010">#</span>name));
+            }
+        }
+    };
+    gen.into()
+}
+</code></pre></div><ul>
+<li>ast.ident 필드로부터 인스턴스를 얻어오며, name 변수에 대입된다.
+<ul>
+<li>위 예제에서는 구조체 이름인 <code>Pancakes</code>가 저장된다.</li>
+</ul>
+</li>
+<li>quote! 매크로는 반환할 러스트 코드를 정의한다.</li>
+<li>stringify! 매크로는 러스트에 내장된 매크로이며, 표현식을 문자열 리터럴로 변환한다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// pancakes/Cargo.toml
+</span><span style="color:#75715e"></span>[dependencies]
+hello<span style="color:#f92672">-</span><span style="color:#66d9ef">macro</span> <span style="color:#f92672">=</span> {path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;../hello-macro&#34;</span>}
+hello<span style="color:#f92672">-</span><span style="color:#66d9ef">macro</span><span style="color:#f92672">-</span>derive <span style="color:#f92672">=</span> {path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;../hello-macro/hello-macro-derive&#34;</span>}
+
+<span style="color:#75715e">// pancakes/src/main.rs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> hello_macro::HelloMacro;
+<span style="color:#66d9ef">use</span> hello_macro_derive::HelloMacro;
+
+<span style="color:#75715e">#[</span><span style="color:#75715e">derive(HelloMacro)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Pancakes</span>;
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    Pancakes::hello_macro();
+}
+</code></pre></div><ul>
+<li><code>cargo run</code>으로 실행하면 구조체 이름인 Pancakes가 대입되어 출력된다.</li>
+<li>절차적 매크로 덕분에 pancakes 크레이트는 HelloMacro 트레이트를 구현하지 않아도 된다.</li>
+<li>#[derive(HelloMacro)] 어노테이션을 통해 트레이트의 기본 구현을 적용할 수 있게 된다.</li>
+</ul>
+<p><br /></p>
+<h4 id="2-attribute-like-">(2) Attribute-like 매크로</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">route(GET, </span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/</span><span style="color:#e6db74">&#34;</span><span style="color:#75715e">)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">index</span>() {
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">proc_macro_attribute</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">route</span>(attr: <span style="color:#a6e22e">TokenStream</span>, item: <span style="color:#a6e22e">TokenStream</span>) -&gt; <span style="color:#a6e22e">TokenStream</span> {
+</code></pre></div><ul>
+<li>derive를 위한 코드가 아니라, 새로운 어트리뷰트를 생성하는 매크로다.</li>
+<li>derive로 상속하는 것보다 유연해서 구조체나 열거자 뿐만 아니라 함수에도 적용할 수 있다.</li>
+<li>예를 들어 (1)처럼 route 특성을 새롭게 구현할 수 있다.</li>
+<li>route는 (2)처럼 어트리뷰트 자체와 그것을 적용시킬 아이템의 본문을 매개변수로 받는다.</li>
+<li>결국 동작 자체는 사용자 정의 상속 매크로와 완전히 같다.</li>
+<li><code>proc-macro</code> 크레이트 타입과 함께 크레이트를 생성한 후 원하는 코드를 생성하는 함수를 구현하면 된다.</li>
+</ul>
+<p><br /></p>
+<h4 id="3-function-like-">(3) Function-like 매크로</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> sql <span style="color:#f92672">=</span> sql<span style="color:#f92672">!</span>(SELECT <span style="color:#f92672">*</span> FROM posts WHERE id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>);
+
+<span style="color:#75715e">// (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">proc_macro</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">sql</span>(input: <span style="color:#a6e22e">TokenStream</span>) -&gt; <span style="color:#a6e22e">TokenStream</span> {
+</code></pre></div><ul>
+<li>함수 호출과 유사하지만, macro_rules! 매크로처럼 함수보다는 유연하다.</li>
+<li>예를 들어, 개수가 정해지지 않은 인자를 정의할 수도 있다.</li>
+<li>(1) 매크로는 SQL 구문을 분석해 문법적으로 올바른지 확인하는 매크로다.</li>
+<li>(2)처럼 토큰을 전달받아 원하는 코드를 생성해 반환한다.</li>
+<li>결국 사용자 정의 상속 매크로의 함수 시그니처와 유사하다.</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

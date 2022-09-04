@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -204,10 +204,10 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="모듈을-이용한-스코프와-접근성privacy-제어">모듈을 이용한 스코프와 접근성(Privacy) 제어</h2>
+<h2 id="---privacy-">모듈을 이용한 스코프와 접근성(Privacy) 제어</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e">// cargo new --lib restaurant
-</span><span style="color:#75715e">// src/lib.rs
+</span><span style="color:#75715e"></span><span style="color:#75715e">// cargo new --lib restaurant
+</span><span style="color:#75715e"></span><span style="color:#75715e">// src/lib.rs
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">mod</span> front_of_house {
     <span style="color:#66d9ef">mod</span> hosting {
         <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
@@ -222,14 +222,14 @@
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">crate</span>
-<span style="color:#960050;background-color:#1e0010">└──</span> front_of_house
-   <span style="color:#960050;background-color:#1e0010">├──</span> hosting
-   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├──</span> add_to_waitlist
-   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└──</span> seat_at_table
-   <span style="color:#960050;background-color:#1e0010">└──</span> serving
-       <span style="color:#960050;background-color:#1e0010">├──</span> take_order
-       <span style="color:#960050;background-color:#1e0010">├──</span> serve_order
-       <span style="color:#960050;background-color:#1e0010">└──</span> take_payment
+<span style="color:#960050;background-color:#1e0010">└</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> front_of_house
+   <span style="color:#960050;background-color:#1e0010">├</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> hosting
+   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">├</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> add_to_waitlist
+   <span style="color:#960050;background-color:#1e0010">│</span>   <span style="color:#960050;background-color:#1e0010">└</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> seat_at_table
+   <span style="color:#960050;background-color:#1e0010">└</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> serving
+       <span style="color:#960050;background-color:#1e0010">├</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> take_order
+       <span style="color:#960050;background-color:#1e0010">├</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> serve_order
+       <span style="color:#960050;background-color:#1e0010">└</span><span style="color:#960050;background-color:#1e0010">─</span><span style="color:#960050;background-color:#1e0010">─</span> take_payment
 
 </code></pre></div><ul>
 <li><strong>모듈은 코드의 특정 아이템을 외부의 코드에서 사용할 수 있게 공개할지 결정한다.</strong></li>
@@ -241,7 +241,7 @@
 <li>모듈 트리는 파일시스템의 디렉터리 트리와 유사하다.</li>
 </ul>
 <p><br /></p>
-<h2 id="모듈-트리의-아이템을-참조하기-위한-경로들">모듈 트리의 아이템을 참조하기 위한 경로들</h2>
+<h2 id="-----">모듈 트리의 아이템을 참조하기 위한 경로들</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">mod</span> front_of_house {
     <span style="color:#66d9ef">mod</span> hosting {
         <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
@@ -271,7 +271,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="pub-키워드로-경로-공개하기"><code>pub</code> 키워드로 경로 공개하기</h4>
+<h4 id="pub---"><code>pub</code> 키워드로 경로 공개하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">mod</span> front_of_house {
     <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">mod</span> hosting {
         <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
@@ -291,7 +291,7 @@
 <li>따라서 예제처럼 add_to_waitlist 함수를 공개하고 싶다면 함수에도 키워드를 붙여야 한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="super로-시작하는-상대경로"><code>super</code>로 시작하는 상대경로</h4>
+<h4 id="super--"><code>super</code>로 시작하는 상대경로</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">serve_order</span>() {}
 
 <span style="color:#66d9ef">mod</span> back_of_house {
@@ -309,7 +309,7 @@
 <li><strong>따라서 super를 사용하면 추후 코드를 다른 모듈로 이동해도 수정할 코드를 최소화할 수 있게 된다.</strong></li>
 </ul>
 <p><br /></p>
-<h4 id="struct와-enum-공개하기">struct와 enum 공개하기</h4>
+<h4 id="struct-enum-">struct와 enum 공개하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">mod</span> back_of_house {
     <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Breakfast</span> {
         <span style="color:#66d9ef">pub</span> toast: String,
@@ -340,7 +340,7 @@
 <li>enum은 pub를 쓰면 모든 열거값이 공개된다.</li>
 </ul>
 <p><br /></p>
-<h2 id="use-키워드-경로-자체를-스코프로-가져오기">use 키워드: 경로 자체를 스코프로 가져오기</h2>
+<h2 id="use-----">use 키워드: 경로 자체를 스코프로 가져오기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">mod</span> front_of_house {
     <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">mod</span> hosting {
         <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}
@@ -351,7 +351,7 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#66d9ef">crate</span>::front_of_house::hosting;
 
 <span style="color:#75715e">// (2)
-</span><span style="color:#75715e">// use self::front_of_house::hosting;
+</span><span style="color:#75715e"></span><span style="color:#75715e">// use self::front_of_house::hosting;
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">eat_at_restaurant</span>() {
     hosting::add_to_waitlist();
@@ -407,9 +407,9 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="모듈을-다른-파일로-분리하기">모듈을 다른 파일로 분리하기</h2>
+<h2 id="---">모듈을 다른 파일로 분리하기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e">// src/lib.rs
+</span><span style="color:#75715e"></span><span style="color:#75715e">// src/lib.rs
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">mod</span> front_of_house;
 
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">crate</span>::front_of_house::hosting;
@@ -420,7 +420,7 @@
     hosting::add_to_waitlist();
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
-</span><span style="color:#75715e">// src/front_of_house.rs
+</span><span style="color:#75715e"></span><span style="color:#75715e">// src/front_of_house.rs
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">mod</span> hosting;
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// src/front_of_house/hosting.rs
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_to_waitlist</span>() {}

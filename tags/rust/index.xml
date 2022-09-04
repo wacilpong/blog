@@ -6,10 +6,19 @@
     <description>Recent content in rust on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Fri, 26 Aug 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Sep 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 19</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-19/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-19/</guid>
+      <description>19.2 Advanced Traits 19.2.1 연관 타입으로 트레이트 정의에 자리지정자 타입 선언 pub trait Iterator { type Item; fn next(&amp;amp;mut self) -&amp;gt; Option&amp;lt;Self::Item&amp;gt;; } 자리지정자 타입(placeholder type)으로 트레이트의 메</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 18</title>

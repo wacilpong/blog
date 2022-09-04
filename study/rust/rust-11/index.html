@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -171,23 +171,23 @@
 <p><br /></p>
 <h3 id="the-anatomy-of-a-test-function">The Anatomy of a Test Function</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) success
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[cfg(test)]</span>
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">mod</span> tests {
-    <span style="color:#75715e">#[test]</span>
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">it_works</span>() {
         <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>;
         assert_eq<span style="color:#f92672">!</span>(result, <span style="color:#ae81ff">4</span>);
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2) Fail
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[cfg(test)]</span>
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">mod</span> tests {
-    <span style="color:#75715e">#[test]</span>
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">exploration</span>() {
         assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>);
     }
 
-    <span style="color:#75715e">#[test]</span>
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">another</span>() {
         panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Make this test fail&#34;</span>);
     }
@@ -201,7 +201,7 @@
 <p><br /></p>
 <h3 id="checking-results-with-the-assert-macro">Checking Results with the <code>assert!</code> Macro</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[derive(Debug)]</span>
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
     width: <span style="color:#66d9ef">u32</span>,
     height: <span style="color:#66d9ef">u32</span>,
@@ -209,21 +209,21 @@
 
 <span style="color:#66d9ef">impl</span> Rectangle {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">can_hold</span>(<span style="color:#f92672">&amp;</span>self, other: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">bool</span> {
-        self.width <span style="color:#f92672">&gt;</span> other.width <span style="color:#f92672">&amp;&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
+        self.width <span style="color:#f92672">&gt;</span> other.width <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1-1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Rectangle {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">can_hold</span>(<span style="color:#f92672">&amp;</span>self, other: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">bool</span> {
-        self.width <span style="color:#f92672">&lt;</span> other.width <span style="color:#f92672">&amp;&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
+        self.width <span style="color:#f92672">&lt;</span> other.width <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[cfg(test)]</span>
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">mod</span> tests {
     <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
 
-    <span style="color:#75715e">#[test]</span>
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">larger_can_hold_smaller</span>() {
         <span style="color:#66d9ef">let</span> larger <span style="color:#f92672">=</span> Rectangle {
             width: <span style="color:#ae81ff">8</span>,
@@ -249,7 +249,7 @@
 <li>(1-1)로 테스트해보면 부등호가 바뀌었기 때문에 제대로 동작하지 않고, 테스트는 실패한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="testing-equality-with-the-assert_eq-and-assert_ne-macros">Testing Equality with the assert_eq! and assert_ne! Macros</h3>
+<h3 id="testing-equality-with-the-assert-eq-and-assert-ne-macros">Testing Equality with the assert_eq! and assert_ne! Macros</h3>
 <ul>
 <li><code>assert_eq!</code>는 전달된 두 인자 값이 같아야 성공이며, <code>assert_ne!</code>는 그 반대이다.</li>
 <li>두 매크로는 디버그 형식을 이용해 전달된 인수를 출력한다.
@@ -267,11 +267,11 @@
     String::from(<span style="color:#e6db74">&#34;안녕하세요!&#34;</span>)
 }
 
-<span style="color:#75715e">#[cfg(test)]</span>
+<span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">mod</span> tests {
     <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
 
-    <span style="color:#75715e">#[test]</span>
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">greeting_contains_name</span>() {
         <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> greeting(<span style="color:#e6db74">&#34;캐롤&#34;</span>);
         assert<span style="color:#f92672">!</span>(
@@ -286,8 +286,8 @@ test tests::greeting_contains_name ... FAILED
 
 failures:
 
-<span style="color:#f92672">----</span> tests::greeting_contains_name stdout <span style="color:#f92672">----</span>
-thread <span style="color:#a6e22e">&#39;tests</span>::greeting_contains_name<span style="color:#960050;background-color:#1e0010">&#39;</span> panicked at <span style="color:#a6e22e">&#39;Greeting</span> <span style="color:#960050;background-color:#1e0010">함수의</span> <span style="color:#960050;background-color:#1e0010">결과에</span> <span style="color:#960050;background-color:#1e0010">이름이</span> <span style="color:#960050;background-color:#1e0010">포함되어</span> <span style="color:#960050;background-color:#1e0010">있지</span> <span style="color:#960050;background-color:#1e0010">않음</span>. <span style="color:#960050;background-color:#1e0010">결과값</span>: <span style="color:#960050;background-color:#1e0010">&#39;안녕하세요</span><span style="color:#f92672">!</span><span style="color:#960050;background-color:#1e0010">&#39;&#39;</span>, src<span style="color:#f92672">/</span>lib.rs:<span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">9</span>
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> tests::greeting_contains_name stdout <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+thread <span style="color:#a6e22e">&#39;tests</span>::greeting_contains_name<span style="color:#960050;background-color:#1e0010">&#39;</span> panicked at <span style="color:#a6e22e">&#39;Greeting</span> <span style="color:#960050;background-color:#1e0010">함</span><span style="color:#960050;background-color:#1e0010">수</span><span style="color:#960050;background-color:#1e0010">의</span> <span style="color:#960050;background-color:#1e0010">결</span><span style="color:#960050;background-color:#1e0010">과</span><span style="color:#960050;background-color:#1e0010">에</span> <span style="color:#960050;background-color:#1e0010">이</span><span style="color:#960050;background-color:#1e0010">름</span><span style="color:#960050;background-color:#1e0010">이</span> <span style="color:#960050;background-color:#1e0010">포</span><span style="color:#960050;background-color:#1e0010">함</span><span style="color:#960050;background-color:#1e0010">되</span><span style="color:#960050;background-color:#1e0010">어</span> <span style="color:#960050;background-color:#1e0010">있</span><span style="color:#960050;background-color:#1e0010">지</span> <span style="color:#960050;background-color:#1e0010">않</span><span style="color:#960050;background-color:#1e0010">음</span>. <span style="color:#960050;background-color:#1e0010">결</span><span style="color:#960050;background-color:#1e0010">과</span><span style="color:#960050;background-color:#1e0010">값</span>: <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010">안</span><span style="color:#960050;background-color:#1e0010">녕</span><span style="color:#960050;background-color:#1e0010">하</span><span style="color:#960050;background-color:#1e0010">세</span><span style="color:#960050;background-color:#1e0010">요</span><span style="color:#f92672">!</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010">&#39;</span>, src<span style="color:#f92672">/</span>lib.rs:<span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">9</span>
 note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;background-color:#1e0010">`</span>RUST_BACKTRACE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">`</span> environment variable to display a backtrace
 
 
@@ -300,7 +300,7 @@ test result: <span style="color:#a6e22e">FAILED</span>. <span style="color:#ae81
 <li>위 코드는 assert! 매크로에서의 사용자 정의 실패 매세지이다.</li>
 </ul>
 <p><br /></p>
-<h3 id="checking-for-panics-with-should_panic">Checking for Panics with should_panic</h3>
+<h3 id="checking-for-panics-with-should-panic">Checking for Panics with should_panic</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Guess</span> {
     value: <span style="color:#66d9ef">u32</span>
 }
@@ -319,12 +319,12 @@ test result: <span style="color:#a6e22e">FAILED</span>. <span style="color:#ae81
     }
 }
 
-<span style="color:#75715e">#[cfg(test)]</span>
+<span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">mod</span> tests {
     <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
 
-    <span style="color:#75715e">#[test]</span>
-    <span style="color:#75715e">#[should_panic(expected=</span><span style="color:#e6db74">&#34;반드시 100보다 작거나 같은 값을 사용해야 합니다.&#34;</span><span style="color:#75715e">)]</span>
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#75715e">#[</span><span style="color:#75715e">should_panic(expected=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">반드시 100보다 작거나 같은 값을 사용해야 합니다.</span><span style="color:#e6db74">&#34;</span><span style="color:#75715e">)</span><span style="color:#75715e">]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">greater_than_100</span>() {
         Guess::new(<span style="color:#ae81ff">200</span>);
     }
@@ -334,8 +334,8 @@ test tests::greater_than_100 <span style="color:#f92672">-</span> should panic .
 
 failures:
 
-<span style="color:#f92672">----</span> tests::greater_than_100 stdout <span style="color:#f92672">----</span>
-thread <span style="color:#a6e22e">&#39;tests</span>::greater_than_100<span style="color:#960050;background-color:#1e0010">&#39;</span> panicked at <span style="color:#960050;background-color:#1e0010">&#39;반드시</span> <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">보다</span> <span style="color:#960050;background-color:#1e0010">크거나</span> <span style="color:#960050;background-color:#1e0010">같은</span> <span style="color:#960050;background-color:#1e0010">값을</span> <span style="color:#960050;background-color:#1e0010">사용해야</span> <span style="color:#960050;background-color:#1e0010">합니다</span>. <span style="color:#960050;background-color:#1e0010">지정된</span> <span style="color:#960050;background-color:#1e0010">값</span>: <span style="color:#ae81ff">200</span><span style="color:#960050;background-color:#1e0010">&#39;</span>, src<span style="color:#f92672">/</span>lib.rs:<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">13</span>
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> tests::greater_than_100 stdout <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+thread <span style="color:#a6e22e">&#39;tests</span>::greater_than_100<span style="color:#960050;background-color:#1e0010">&#39;</span> panicked at <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#960050;background-color:#1e0010">반</span><span style="color:#960050;background-color:#1e0010">드</span><span style="color:#960050;background-color:#1e0010">시</span> <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">보</span><span style="color:#960050;background-color:#1e0010">다</span> <span style="color:#960050;background-color:#1e0010">크</span><span style="color:#960050;background-color:#1e0010">거</span><span style="color:#960050;background-color:#1e0010">나</span> <span style="color:#960050;background-color:#1e0010">같</span><span style="color:#960050;background-color:#1e0010">은</span> <span style="color:#960050;background-color:#1e0010">값</span><span style="color:#960050;background-color:#1e0010">을</span> <span style="color:#960050;background-color:#1e0010">사</span><span style="color:#960050;background-color:#1e0010">용</span><span style="color:#960050;background-color:#1e0010">해</span><span style="color:#960050;background-color:#1e0010">야</span> <span style="color:#960050;background-color:#1e0010">합</span><span style="color:#960050;background-color:#1e0010">니</span><span style="color:#960050;background-color:#1e0010">다</span>. <span style="color:#960050;background-color:#1e0010">지</span><span style="color:#960050;background-color:#1e0010">정</span><span style="color:#960050;background-color:#1e0010">된</span> <span style="color:#960050;background-color:#1e0010">값</span>: <span style="color:#ae81ff">200</span><span style="color:#960050;background-color:#1e0010">&#39;</span>, src<span style="color:#f92672">/</span>lib.rs:<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">13</span>
 note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;background-color:#1e0010">`</span>RUST_BACKTRACE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">`</span> environment variable to display a backtrace
 note: <span style="color:#a6e22e">panic</span> did not contain expected string
       panic message: <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#e6db74">&#34;반드시 1보다 크거나 같은 값을 사용해야 합니다. 지정된 값: 200&#34;</span><span style="color:#960050;background-color:#1e0010">`</span>,
@@ -353,11 +353,11 @@ test result: <span style="color:#a6e22e">FAILED</span>. <span style="color:#ae81
 </ul>
 <p><br /></p>
 <h3 id="using-resultt-e-in-tests">Using Result&lt;T, E&gt; in Tests</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[cfg(test)]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">mod</span> tests {
-    <span style="color:#75715e">#[test]</span>
+    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">it_works</span>() -&gt; Result<span style="color:#f92672">&lt;</span>(), String<span style="color:#f92672">&gt;</span> {
-        <span style="color:#66d9ef">if</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> {
             Ok(())
         } <span style="color:#66d9ef">else</span> {
             Err(String::from(<span style="color:#e6db74">&#34;two plus two does not equal four&#34;</span>))
@@ -385,7 +385,7 @@ test result: <span style="color:#a6e22e">FAILED</span>. <span style="color:#ae81
 </li>
 </ul>
 <p><br /></p>
-<h3 id="테스트를-병렬직렬로-실행하기">테스트를 병렬/직렬로 실행하기</h3>
+<h3 id="--">테스트를 병렬/직렬로 실행하기</h3>
 <ul>
 <li>thread를 이용해 병렬 실행한다.
 <ul>
@@ -396,7 +396,7 @@ test result: <span style="color:#a6e22e">FAILED</span>. <span style="color:#ae81
 <li>테스트를 직렬로 실행하기: <code>cargo test -- —-test-threads=1</code></li>
 </ul>
 <p><br /></p>
-<h3 id="함수의-결과-보여주기">함수의 결과 보여주기</h3>
+<h3 id="---1">함수의 결과 보여주기</h3>
 <ul>
 <li>
 <p>기본: 테스트 라이브러리에서는 테스트 성공 시 표준 출력에 아무것도 출력하지 않는다. ex) println!</p>
@@ -446,14 +446,14 @@ test result: FAILED. <span style="color:#ae81ff">1</span> passed; <span style="c
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h3 id="이름을-이용해-테스트-일부만-실행하기">이름을 이용해 테스트 일부만 실행하기</h3>
+<h3 id="----">이름을 이용해 테스트 일부만 실행하기</h3>
 <ul>
 <li>하나의 테스트만 실행하기: <code>cargo test {테스트 함수 이름}</code></li>
 <li>여러 테스트 실행하기: <code>cargo test {테스트 이름의 일부 지정}</code></li>
 <li>지정된 이름에 일치하는 모든 테스트를 실행한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="명시적으로-요청하지-않은-테스트-제외하기">명시적으로 요청하지 않은 테스트 제외하기</h3>
+<h3 id="-----1">명시적으로 요청하지 않은 테스트 제외하기</h3>
 <ul>
 <li>특정 테스트만 제외하고 테스트를 실행하고 싶을 때: <code>#[test]</code> 다음에 <code>#[ignore]</code> 특성을 추가함</li>
 <li>제외된 테스트만을 실행하고 싶을 때: <code>cargo test —- -—ignored</code></li>
@@ -462,7 +462,7 @@ test result: FAILED. <span style="color:#ae81ff">1</span> passed; <span style="c
 <hr />
 <h2 id="test-organization">Test Organization</h2>
 <p><br /></p>
-<h3 id="단위-테스트-unit-test">단위 테스트 (unit test)</h3>
+<h3 id="--unit-test">단위 테스트 (unit test)</h3>
 <ul>
 <li>하나의 모듈을 독립적으로 테스트함, private 함수 테스트 가능, 라이브러리를 별개로 테스트하는 방법</li>
 <li>코드가 의도적으로 동작하는지 빠르게 판단</li>
@@ -483,7 +483,7 @@ test result: FAILED. <span style="color:#ae81ff">1</span> passed; <span style="c
 </ul>
 </li>
 </ul>
-<h3 id="통합-테스트-integration-test">통합 테스트 (integration test)</h3>
+<h3 id="--integration-test">통합 테스트 (integration test)</h3>
 <ul>
 <li>
 <p>다른 모듈과 함께 라이브러리를 테스트하는 방법, public 함수만 테스트 가능</p>
