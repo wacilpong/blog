@@ -6,6 +6,16 @@ og_description: "About what I learned at 2022"
 draft: false
 ---
 
+## **2022-09-14**
+
+- 분명 git이 설치되어 있는데도 vscode에서 `git(extension)`을 찾을 수 없다고 뜰 때?
+  - 에디터에서 `cmd + ,`를 눌러 Settings으로 이동한다.
+  - `git.path`를 검색해 `Edit in settings.json`로 진입한다.
+  - git.path에 본인의 git 설치 경로를 적어준다.
+  - `which git` 명령어를 통해 찾으며, 나는 `/usr/local/bin/git`였다.
+
+<br />
+
 ## **2022-05-11**
 
 - 라이브러리성 코드가 혼재된 코드를 디버깅할 때는 크롬 개발자도구 break point 디버깅을 잘 활용하자. 귀찮아도 꼭 하자. 때로는 멀리 가는 길처럼 보여도 소스코드 디버깅을 하는 것이 가장 빠른 길이다.
