@@ -25,3 +25,5 @@ draft: false
 16. [Fearless Concurrency](https://wacilpong.github.io/blog/study/rust/rust-16/)
 17. [Object-Oriented Programming Features of Rust](https://wacilpong.github.io/blog/study/rust/rust-17/)
 18. [Patterns and Matching](https://wacilpong.github.io/blog/study/rust/rust-18/)
+19. [Advanced Features](https://wacilpong.github.io/blog/study/rust/rust-19/)
+20. [Patterns and Matching](https://wacilpong.github.io/blog/study/rust/rust-20/)
