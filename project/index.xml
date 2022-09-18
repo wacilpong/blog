@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/project/rust-book/</guid>
-      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data Enums and Pattern Matching Managing Growing Projects with Packages, Crates, and Modules Common Collections Error Handling Generic Types, Traits, and Lifetimes Writing Automated Tests An I/O Project: Building a Command Line Program Functional Language Features: Iterators and Closures More About Cargo and Crates.io Smart Pointers Fearless Concurrency Object-Oriented Programming Features of Rust Patterns and Matching  </description>
+      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data Enums and Pattern Matching Managing Growing Projects with Packages, Crates, and Modules Common Collections Error Handling Generic Types, Traits, and Lifetimes Writing Automated Tests An I/O Project: Building a Command Line Program Functional Language Features: Iterators and Closures More About Cargo and Crates.io Smart Pointers Fearless Concurrency Object-Oriented Programming Features of Rust Patterns and Matching Advanced Features Patterns and Matching  </description>
     </item>
     
     <item>

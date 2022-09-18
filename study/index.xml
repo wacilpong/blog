@@ -6,10 +6,19 @@
     <description>Recent content in Studies on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Thu, 01 Sep 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Sep 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>After reading Rust book chapter 20</title>
+      <link>https://wacilpong.github.io/blog/study/rust/rust-20/</link>
+      <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/rust/rust-20/</guid>
+      <description>Single-Threaded Web Server // src/main.rs use std::{ fs, io::{prelude::*, BufReader}, net::{TcpListener, TcpStream}, }; fn main() { let listener = TcpListener::bind(&amp;#34;127.0.0.1:7878&amp;#34;).unwrap(); for stream in listener.incoming() { let stream = stream.unwrap(); handle_connection(stream); } } fn handle_connection(mut stream: TcpStream) { let buf_reader = BufReader::new(&amp;amp;mut stream); // calling `next` to get the first item from the iterator. // The first `unwrap` takes care of the `Option` and stops the program if the iterator has</description>
+    </item>
     
     <item>
       <title>After reading Rust book chapter 19</title>
