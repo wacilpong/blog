@@ -50,6 +50,15 @@ fn handle_connection(mut stream: TcpStream) {
 }
 ```
 
+```sh
+		Running `target/debug/hello`
+Connection established!
+Connection established!
+Connection established!
+```
+
+- 서버에서 데이터에 응답이 않기 때문에 브라우저가 서버에 여러번 연결을 시도한다.
+
 <br />
 
 ## Turning into a Multithreaded Server
