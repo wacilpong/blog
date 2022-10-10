@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="모두를 위한 클라우드 컴퓨팅 2" />
+<meta property="og:site_name" content="모두를 위한 클라우드 컴퓨팅 2" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/cloud-computing/2/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="모두를 위한 클라우드 컴퓨팅 2" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>모두를 위한 클라우드 컴퓨팅 2</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">모두를 위한 클라우드 컴퓨팅 2</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>모두를 위한 클라우드 컴퓨팅 2</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="---">클라우드 컴퓨팅의 역사와 모델</h2>
+<h3 id="heading">유래</h3>
+<ul>
+<li>존 매카시(John McCarthy)가 1961년 MIT 100주년 기념연설에서 공개적으로 제안했던 유틸리티 컴퓨팅에서 나온 것에서 탄생했다.</li>
+<li>2000년대에서 네트워크가 발전하면서 그리드 컴퓨팅과 가상화가 기반인 클라우드 컴퓨팅으로 실현되었다.</li>
+</ul>
+<p><br /></p>
+<h3 id="heading-1">정의</h3>
+<ul>
+<li><code>가트너(Gartner)의 정의</code>: 인터넷 기술을 이용해 IT 기반의 기능들을 확장 가능하고 탄력적인 서비스 형태로 제공하는 방식</li>
+<li><code>마이크로소프트의 정의</code>: 인터넷을 통해 서버, 스토리지, DB, 네트워크, SW, 분석 등과 같은 컴퓨팅 서비스를 유연한 자원과 규모의 경제를 통해 제공하기 위한 것</li>
+<li><code>IBM의 정의</code>: 클라우드 서비스 제공자가 제공하는 데이터 센터의 애플리케이션, 서버, 스토리지, 개발 툴, 네트워킹 기능과 같은 컴퓨팅 리소스를 온디맨드로 서비스할 수 있는 것</li>
+<li><code>구글의 정의</code>: 독자적으로 데이터 센터를 구축하고 관리하는 대신 클라우드 제공자로부터 IT 자원을 탄력적으로 유틸리티와 같이 서비스로 제공받아 쓰는 것을 말하며, 스토리지, 컴퓨팅, 네트워킹, 데이터 처리, 분석, 애플리케이션 개발, 머신러닝과 같은 서비스를 포함</li>
+<li><code>아마존의 정의</code>: IT 자원을 제공받고 사용한 만큼 지불하는 방식. 물리적인 데이터 센터와 서버들을 구축하고 소유하는 것 대신 아마존과 같은 클라우드 제공자를 통해 필요한 만큼 컴퓨팅 파워, 스토리지, DB 등의 기술 서비스를 사용하는 것</li>
+<li><code>위키피디아 정의</code>: 데이터 스토리지나 컴퓨팅 파워와 같은 컴퓨터 시스템 자원을 사용자가 직접 관여하지 않고도 온디맨드 방식으로 사용할 수 있는 것. 인터넷을 통해 사용자들에게 IT 자원을 제공하는 데이터 센터를 설명할 때 사용</li>
+<li><code>미국국립표준기술연구소(NIST)의 정의</code>: <strong>네트워크, 서버, 스토리지, 애플리케이션, 서비스 등과 같은 컴퓨팅 자원을 설정 가능한 공유 풀(shared pool)로 구성하여 서비스 제공자가 제공하면 서비스 제공자의 간섭과 컴퓨팅 자원 관리를 최소화하면서 언제 어디서나 필요에 따라 컴퓨팅 자원을 네트워크를 통해 편리하게 접근할 수 있는 모델</strong></li>
+</ul>
+<p><br /></p>
+<h3 id="heading-2">특성</h3>
+<ul>
+<li><code>온디맨드 셀프서비스(on-demand self service)</code>: 클라우드 컴퓨팅 사용자는 클라우드 서비스 제공자의 직접 관여 없이 원하는 컴퓨팅 파워, 네트워크 스토리지와 같은 자원을 자동으로 프로비저닝(provisioning)할 수 있다.</li>
+<li><code>광대역 네트워크 접근(broad network access)</code>: 네트워크를 통해서 모바일 폰, 노트북, PDA 같은 다양한 기종이 다른 클라이언트 플랫폼을 통해 클라우드 컴퓨팅 자원에 접근할 수 있다.</li>
+<li><code>리소스 풀링(resource pooling)</code>: 클라우드 컴퓨팅 서비스 제공자의 컴퓨팅 자원은 풀링되어 서로 다른 사용자가 자원을 나누어 사용하는 멀티테넌트 모델로 다양한 사용자에게 제공된다. 풀링된 물리적 컴퓨팅 자원이나 가상화된 컴퓨팅 자원은 사용자들의 요구에 맞게 제공/회수되어 다른 사용자에게 재할당된다. 이때 리소스는 스토리지, 데이터 처리를 위한 프로세싱 파워, 메모리, 네트워크 대역폭, 가상머신 등을 포함한다.
+<ul>
+<li>이때 멀티테넌시 모델을 사용하여 제공한다.</li>
+<li>멀티테넌시는 기본적으로 다양한 사용자들이 동일한 자원을 공유해 활용하는 것이다.</li>
+<li>사용자가 사용하는 애플리케이션과 데이터 관리를 통합해 여러 그룹이 공유해 활용하게 하면 시스템 활용과 효율성을 개선할 수 있다.</li>
+</ul>
+</li>
+<li><code>신속한 탄력성(rapid elasticity)</code>: 클라우드 컴퓨팅 자원을 신속하게 프로비저닝하여 배포할 수 있고 사용자의 요구량에 따라 자원의 규모를 확장하고 축소할 수 있다. 사용자에게는 클라우드 컴퓨팅 자원이 언제든지 원하는 만큼의 자원을 제약 없이 제공되는 것처럼 보이게 한다.</li>
+<li><code>사용량 측정(measured service)</code>: 클라우드 컴퓨팅 자원의 사용량을 측정할 수 있다. 클라우드 컴퓨팅 자원에 대한 모니터링, 제어, 사용량 등이 클라우드 서비스 제공자와 사용자에게 모두 투명하게 제공된다.</li>
+</ul>
+<p><br /></p>
+<h3 id="nist---">NIST가 제시하는 서비스 모델</h3>
+<ul>
+<li>SaaS</li>
+<li>PaaS</li>
+<li>IaaS</li>
+</ul>
+<p><br /></p>
+<h3 id="nist----1">NIST가 제시하는 배포 모델</h3>
+<ul>
+<li>위 서비스 모델들을 아래 배포 모델로 제공할 수 있다.</li>
+<li><code>private cloud</code>: 클라우드 인프라가 특정 기관의 사용자에게만 열려 있는, 배타적으로 클라우드 인프라가 사용된다.</li>
+<li><code>community cloud</code>: 특정 목적의 커뮤니티 사용자에게만 열려 있도록 구축한다.</li>
+<li><code>public cloud</code>: 일반 사용자에게 열려 있도록 구축한다.</li>
+<li><code>hybrid cloud</code>: 서로 다른 종류의 클라우드 배포 모델을 혼합한 형태의 클라우드 인프라다.</li>
+</ul>
+<p><br /></p>
+<h3 id="--">클라우드를 활용하는 이유</h3>
+<h4 id="1----">(1) 인프라 규모 산정이 용이해진다.</h4>
+<ul>
+<li>컴퓨팅 자원의 규모를 산정하는 것은 매우 어려운 일 중 하나이다.
+<ul>
+<li>ex. 아마존 컴퓨팅 자원 규모는 세일즈 트랜잭션 수와 밀접한 관련</li>
+<li>따라서 비즈니스 관점에서 중요하게 고려해야 한다.</li>
+</ul>
+</li>
+<li>IT 자원을 최대 피크(peak)에 맞게 낭비를 줄이는 방법:
+<ul>
+<li><code>단계적 확장</code>: 이전 데이터를 활용해 분기별로 수요량을 예측해 컴퓨팅 자원을 확보</li>
+<li><code>피크타임 확장</code>: 피크타임이 될 때까지 기다린 후 피크 시점에 IT 자원을 증설, but 비즈니스의 안정성은 확보되지 않음</li>
+<li><code>동적 확장</code>: 자원이 필요할 때 필요한 만큼만 동적으로 자원을 확보해 서비스에 할당</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="2----">(2) 비용을 절감할 수 있다.</h4>
+<ul>
+<li>클라우드 컴퓨팅에서 동적으로 자원을 할당할 수 있는 것은 가상화 기술을 사용하기 때문이다.</li>
+<li>인프라 구축 비용 뿐만 아니라 인력에 대한 비용 및 서비스 테스트나 배포와 같은 시간적 비용도 절감한다.</li>
+<li>소프트웨어 구입과 유지보수 비용도 절감한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="3-">(3) 탄력성</h4>
+<ul>
+<li>IT 자원 요구량 변화에 따라 온디맨드 방식으로 자원을 동적으로 확대/축소할 수 있다.</li>
+<li>이를 통해 인프라에 대한 투자비용과 관리비용을 절감할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="4-">(4) 가용성</h4>
+<ul>
+<li>예측되지 않은 서비스 중단을 최소화할 수 있다.</li>
+<li>동적으로 IT 자원을 증설할 수 있으니 서비스 가용성(availability)을 높일 수 있다.</li>
+<li>인프라 가용성은 인프라가 활용 가능한 시간을 기준으로 측정한다.</li>
+<li>시스템 셧다운 상태를 포함해 실제 인프라가 임의의 시간에 활용 가능한가를 측정하는 것이다.</li>
+<li>가용성은 인프라의 런타임 예외 발생 상황에 대해 얼마나 잘 대처하고 있는지에 대한 지표로 활용할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="5-">(5) 신속성</h4>
+<ul>
+<li>필요로 하는 자원을 신속하게 준비할 수 있다.</li>
+<li>특히 안정성 측면에서 서비스의 신속한 복구는 비즈니스 안정성을 높일 수 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="6---">(6) 투명한 사용량 측정</h4>
+<ul>
+<li>클라우드 컴퓨팅 인프라를 사용한 사용량을 대시보드 형태로 실시간으로 제공한다.</li>
+<li>ex. AWS EC2 모니터링 대시보드</li>
+</ul>
+<p><br /></p>
+<h4 id="7-">(7) 복원성</h4>
+<ul>
+<li>클라우드 컴퓨팅 인프라를 기반으로 서비스 구축할 때 가상머신을 통해 서비스가 제공된다.</li>
+<li>손쉽게 가상머신 파일을 이동하거나 공유 스토리지를 통해 인프라에서 서비스를 복구할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h3 id="----">클라우드 컴퓨팅에 영향을 준 기술들</h3>
+<h4 id="1-">(1) 클러스터링</h4>
+<ul>
+<li>여러 자원을 묶어 마치 하나의 거대한 자원으로 활용할 수 있는 기술</li>
+<li>자원은 동일할(homogeneous) 수도 있고 스펙 등이 다르게 상이할(heterogeneous) 수도 있다.</li>
+<li>일반적으로는 동일한 IT 자원을 네트워크로 연결한다.</li>
+<li>광대역 네트워크 보다는 동일한 물리적 공간에서 연결된 형태를 의미한다. (LAN)</li>
+</ul>
+<p><br /></p>
+<h4 id="2--">(2) 그리드 컴퓨팅</h4>
+<ul>
+<li>분산된 각기 다른 기기의 컴퓨팅 자원을 광대역 네트워크로 하나의 단일 시스템을 만들어 컴퓨팅 자원을 공유하는 시스템이다.</li>
+<li>일반적으로 그리드에 포함된 데이터 센터는 특정 그룹만이 사용하는 것이 아니라 다양한 커뮤니티를 지원한다.</li>
+<li>커뮤니티는 논리적인 그룹으로, 가상의 조직(virtual organization)이다.</li>
+<li>하나의 컴퓨팅 자원을 여러 커뮤니티가 공유한다면 작업을 제출하는 사용자의 소속 VO를 확인하고, 일반적으로 그리드 인증서(grid certificate)를 이용한다.</li>
+<li>그리드 사이트에 속한 데이터 센터의 독립적인 자치권이 보장되므로, 그리드 컴퓨팅에서 데이터 센터를 연계하는 것을 데이터 센터 페더레이션(federation)이라고 한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="3--1">(3) 가상화</h4>
+<ul>
+<li>한 대의 서버를 여러 대의 가상서버로 만들어 제공하는 기술</li>
+<li>필요한 장치들을 SW적으로 동작시킬 수 있다면, 가상컴퓨터를 SW적으로 구현할 수 있는 셈이다.</li>
+<li>즉, 한 대의 물리서버에서 여러 대의 가상서버가 동작하는 환경을 만들 수 있다.</li>
+<li>가상화 기술은 달리 말하면 가상서버(가상 인스턴스, 가상머신)를 만드는 기술이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="----1">클라우드 서비스 제공자의 역할</h3>
+<ul>
+<li>클라우드 컴퓨팅 인프라를 구축해 서비스를 제공/소비하는 주체는 클라우드 서비스 제공자/소비자이다.</li>
+<li>이때 소비자는 사용자를 포함해 클라우드 서비스에 접속하여 자원을 사용하는 모든 개체(entity)를 의미한다.</li>
+<li>[역할]
+<ul>
+<li>쉬운 접근성과 높은 보안성 제공</li>
+<li>비즈니스에서 클라우드를 적용하는 이유에 대한 높은 이해</li>
+<li>약속된 성능 제공</li>
+<li>합리적인 비용</li>
+<li>온디맨드 기반의 서비스 제공</li>
+<li>유지보수 부담 제거</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="-">자원성능의 확장</h3>
+<h4 id="1---scale-out">(1) 수평적인 확장 (scale-out)</h4>
+<ul>
+<li>가상머신 A에 가상머신 B,C를 추가하는 등 가상머신 개수를 온디맨드로 확장한다.</li>
+<li>일반적으로 동일한 타입의 IT자원을 추가하여 확장한다.</li>
+<li>풀에서 제공 가능한 규모만큼 확장/축소할 수 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="2---scale-up">(2) 수직적인 확장 (scale-up)</h4>
+<ul>
+<li>2 CPU 가상머신을 4 CPU로 변경하는 등 가상머신 자체의 성능을 향상시키는 방식이다.</li>
+<li>물리시스템이 제공하는 자원의 한계를 가상머신이 넘어설 수 없어 물리시스템 자원 규모에 영향을 받는다.</li>
+<li><strong>그래서 일반적으로 대규모 IT자원 성능을 높이려면 스케일아웃 방식을 주로 이용한다.</strong></li>
+</ul>
+<p><br /></p>
+<h3 id="public----">public 클라우드 사용 시 고려사항</h3>
+<ul>
+<li>데이터에 대한 보안 취약성</li>
+<li>보안정책의 상충</li>
+<li>어드민의 역할 축소
+<ul>
+<li>클라우드 서비스 제공자의 운영정책과 역량에 의존성이 커진다.</li>
+</ul>
+</li>
+<li>네트워크 의존성 증가
+<ul>
+<li>네트워크는 기본적으로 신뢰성이 확보되지 않은 전송 인프라이다.</li>
+<li>네트워크 회선은 물리적으로 단일 회선인 end-to-end가 아니라, 라우터가 개입한다.</li>
+<li>따라서 네트워크를 통해 얼마든지 전송되는 데이터 복제가 가능하다.</li>
+<li><code>traceroute google.com</code>로 라우팅 홉(hop)을 측정하면:
+<ul>
+<li>최종 목적지까지 20단계를 거친다.</li>
+<li>전송 패킷이 거쳐야 하는 라우터가 많다는 뜻이다.</li>
+<li>따라서 전송 과정 중에서 패킷이 도청되어 복제될 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>클라우드 간의 이식 표준 부재
+<ul>
+<li>클라우드 서비스 제공자를 변경할 일이 있을 때, 동일 환경이 아닐 수도 있다.</li>
+<li>A에서 지원하는 보안 표준이 B에서는 제공되지 않을 수도 있기 때문이다.</li>
+</ul>
+</li>
+<li>지역적 이슈</li>
+</ul>
+<p><br /></p>
+<h3 id="heading-3">연습문제</h3>
+<ol>
+<li>
+<p>클라우드 컴퓨팅과 유사한 개념을 소개한 사람을 검색해보고, 어떤 점에서 유사한지 기술해보라.</p>
+<ul>
+<li>존 매카시 - 컴퓨터의 시분할 기술이 컴퓨팅 파워, 소프트웨어까지 수도 및 전기와 같은 유틸리티 모델로 판매 가능한 <code>유틸리티 컴퓨팅</code>을 제안<br />
+⇒ 클라우드 컴퓨팅 또한 컴퓨팅 자원을 분할하여 사용자에게 할당하고 비용을 부과하는 모델이라는 점에서 유틸리티 컴퓨팅과 유사</li>
+<li>레너드 클라인록(아파넷 연구자) - 네트워크의 기술이 성장하면 마치 전화기와 전기를 쓰듯이 어디서든지 컴퓨터를 유틸리티처럼 사용하게 될 것으로 예측</li>
+<li>켄 올슨(DEC 사장) - “개인이 집마다 컴퓨터를 둘 필요가 없다”</li>
+</ul>
+</li>
+<li>
+<p>2.2절에서 기술한 클라우드 컴퓨팅에 대한 정의 외에 또 다른 정의가 있는지 찾아보고, 기존 개념과 어떤 점에서 다른지 설명해보라.</p>
+<p><code>자원 관점</code> : 인터넷 상에서 서비스로 전송되는 응용들과 이들 서비스를 제공하는 데이터센터 내의 하드웨어와 시스템소프트웨어를 지칭</p>
+<p><code>플랫폼 관점</code> : 인터넷 상에서 기업이나 사용자들에게 IT 서비스를 제공하기 위한 유연하고 비용 효과적인 검증된 전송 플랫폼</p>
+<p><code>서비스 관점</code> : 최종사용자에 대해서 신뢰 가능한 서비스 품질을 보장하는 동적인 컴퓨팅 환경을 제공하기 위한 새로운 컴퓨팅 패러다임</p>
+<ul>
+<li>클라우드 컴퓨팅은 초기에는 서버나 스토리지 같은 자원관점에서 정의되었고, 기술적 진보에 따라 서비스 채널과 플랫폼 관점으로 그 정의가 확대 되었고, 클라우드 컴퓨팅 서비스 환경의 발전에 따라 다시 서비스와 비즈니스 관점으로 정의된다.</li>
+<li><a href="https://www.sap.com/korea/insights/what-is-cloud-computing.html"><code>SAP</code></a> - 클라우드 컴퓨팅은 인터넷을 통해 구독 기반의 데이터 스토리지, 보안, 네트워킹, 소프트웨어 애플리케이션 및 비즈니스 인텔리전스와 같은 서비스를 제공
+<ul>
+<li>보안, 비즈니스 인텔리전스 영역이 추가되었다.
+<ul>
+<li>비즈니스 인텔리전스: 조직에서 사람과 기술의 힘을 사용하여 전략적 및 일상적 의사 결정 프로세스에 사용될 데이터를 수집하고 분석하는 프로세스</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://www.oracle.com/kr/cloud/what-is-cloud-computing/"><code>오라클</code></a> - 클라우드 컴퓨팅은 IT를 구매하는 대신 임대할 수 있는 것. 클라우드 서비스에는 서버, 스토리지, 데이터베이스, 네트워킹, 소프트웨어, 애널리틱스 및 비즈니스 인텔리전스가 포함되지만 이에 국한되지는 않음</li>
+</ul>
+</li>
+<li>
+<p>NIST에서 정의한 클라우드 컴퓨팅의 5가지 특성 외에 고려해야 할 특성이 있는가? 있다면 어떤 것인지 기술하고 논리적 근거를 설명해보라.</p>
+<p><a href="https://www.kcloudnews.co.kr/news/articleView.html?idxno=10834">https://www.kcloudnews.co.kr/news/articleView.html?idxno=10834</a></p>
+<ul>
+<li>유지 관리 작업 간소화<br />
+물리적 인프라에 대한 걱정이 없음, 물리적인 라우터, 스위치, 스토리지 시스템에 대해서 유지 관리할 필요가 없고. 냉각 시스템 및 발전기도 유지 관리할 필요가 없다.</li>
+<li>비용 효율적인 프로세스 기관<br />
+이미 작업된 서비스를 사용하면 몇 시간, 몇 분이면 완료할 수 있다.</li>
+<li><strong><em>보안 향상</em></strong><br />
+AWS / MS / 구글 클라우드의 경우 공급자가 매우 안전하다.<br />
+기업 단위의 보안 장치를 배포할 수 있음.<br />
+DDoS 보호, 키관리, 데이터 암호화의 경우도 공급자가 제안해줄 수 있다.</li>
+<li><strong><em>자동화</em></strong><br />
+클라우드는 많은 프로세스를 자동화하므로 확장성이 뛰어나고 비용 효율적</li>
+<li><strong><em>쓴 만큼 사용하는 편리한 결제 구조</em></strong></li>
+</ul>
+</li>
+<li>
+<p>멀티테넌시 모델의 장점이 있다면 단점도 존재한다. 장단점을 비교 설명해보라.</p>
+<p>[**장점]**</p>
+<p>빠른 사이트 구축 : ec사이트를 빠르고 비교적 저렴하게 구축할 수 있다.</p>
+<p>시스템 운용 불필요 : 서비스 제공자가 os나 애플리케이션 업데이트, 서버 교체, 보안 등 시스템 운영 작업을 수행</p>
+<p>[**단점]**</p>
+<p>보안 불안 : 여러 사용자가 동일한 시스템을 사용하기 때문에 데이터가 혼동되거나 정보 유출이 발생할 가능성을 배제할 수 없음</p>
+<p>디자인 등의 자유도 불편 : 고정된 형식이 미리 만들어져 있기 때문에 테넌트 사이트 설계 및 외부 시스템과의 연동 등 무료 사이트 구축이 어려움</p>
+</li>
+<li>
+<p>NIST가 제시한 클라우드 컴퓨팅 3가지 모델 외에 다양한 모델이 제시되고 있다. 모델 한 가지를 제시하고 그 모델에 대해서 설명해보라.</p>
+<ul>
+<li>IDaaS(Identity as a Service): 신뢰할 수 있는 제 3자가 제공하는 IAM 서비스를 일종의 SaaS 형태로 사용하는것, 클라우드 기반 인증 서비스
+<ul>
+<li>일반 SaaS와 달리 기업의 보안에 직결된 서비스인 만큼 이 서비스를 제공하는 기업에 대한 신뢰도가 훨씬 높아야한다.</li>
+<li>계정관리를 사용자가 직접 자유롭게 할 수 있다</li>
+<li>예: 공동인증서(카카오, 네이버, 은행 등에서 발행), 클라우드 이메일(맥북이메일에서 지메일 확인)</li>
+</ul>
+</li>
+<li>UCaaS(UC as a Service): 통합커뮤니케이션(Unified Communications) 솔루션을 클라우드 사업자를 통해 서비스받음. 전화, 이메일, 메시징, 영상 회의 시스템 등의 커뮤니케이션 수단을 하나의 플랫폼으로 통합하여 관리</li>
+<li>BaaS는 백엔드기능을 클라우드 서비스 형태로 제공해주는 것을 말한다. 개발자는 BaaS 솔루션을 통해서 서버기술을 몰라도 그 환경에 연결되는 모바일 앱을 만들 수 있게 되어 초기투자비를 크게 줄이고 핵심 서비스 영역에 역량을 집중할 수 있도록 하며, 이용자 변화에 유연한 대처가 가능하게 되어 기술적 위험을 최소화할 수 있다.</li>
+</ul>
+</li>
+<li>
+<p>소프트웨어 개발 시 동일한 개발환경은 매우 중요한 요소이다. 대형 프로젝트에 클라우드가 어떻게 활용되었는지 사례를 조사하여 기술해보라.</p>
+<p><a href="https://aws.amazon.com/ko/solutions/case-studies/11st/">https://aws.amazon.com/ko/solutions/case-studies/11st/</a></p>
+<p>11번가는 라이브 커머스를 외부 솔루션을 사용해 왔는데, 이는 제공하는 범위 내에서만 사용 가능했기 때문에, 이를 극복하기 위해서 AWS를 선택</p>
+<p><a href="https://aws.amazon.com/ko/ivs/">Amazon Interactive Video Service</a> / Amazon EC2 / Amazon S3 / Amazon RDS 서비스를 이용하여 라이브 스트리밍 솔루션을 만듬</p>
+<ul>
+<li>이외에도 도커 컨테이너 기반으로 개인 가상머신(똑같은 환경 제공)을 각각 제공하는 서비스들 (stackblitz, codesandbox, 구름에디터 등등)</li>
+<li><code>쿠버네티스</code><br />
+사용자의 환경에서 쿠버네티스를 사용할 경우 얻을 수 있는 주요 이점은, 특히 <a href="https://www.redhat.com/ko/topics/cloud-native-apps">클라우드를 위한 애플리케이션 개발을 최적화</a><br />
+하는 중인 경우, 쿠버네티스를 통해 물리 또는 가상 머신의 클러스트에서 컨테이너를 예약하고 실행할 수 있는 플랫폼이 확보된다는 것입니다. 더 넓게 보면, 프로덕션 환경에 컨테이너 기반 인프라를 완전히 구현해서 사용할 수 있습니다. 또한 쿠버네티스는 운영 작업 자동화와 관련이 있으므로 다른 애플리케이션 플랫폼 또는 관리 시스템에서 가능한 작업의 상당수를 컨테이너를 사용해 수행할 수 있습니다.<br />
+<a href="https://www.redhat.com/ko/topics/containers/what-is-kubernetes">https://www.redhat.com/ko/topics/containers/what-is-kubernetes</a></li>
+</ul>
+</li>
+<li>
+<p>IaaS 서비스를 제공하는 기업을 찾아보고 아마존, 구글과 같은 대형 IT 기업과 비교했을 때 비교 우위가 되는 경쟁력은 무엇인지 조사해보라.</p>
+<ul>
+<li>가비아(g클라우드) : 다수의 공공∙행정기관 레퍼런스를 보유한 공공기관에 최적화된 IaaS 클라우드 서비스</li>
+<li>네이버(네이버클라우드) : 고객이 원하는 형태로 직접 상품을 개발하고 제공할 수 있는 것이 특징</li>
+<li>오라클: 클라우드 프리티어가 굉장히 좋음 <a href="https://hoing.io/archives/10446">https://hoing.io/archives/10446</a></li>
+</ul>
+</li>
+<li>
+<p>클라우드 컴퓨팅의 4가지 배포 모델 중에서 커뮤니티 클라우드로 구축하여 해결할 수 있는 주변의 문제를 찾아보고, 왜 커뮤니티 클라우드 구축이 해결 방법인지 설명해보라.</p>
+<ul>
+<li>github, github enterprise, github private repo</li>
+<li>금융권에서 많이 쓰는 듯…</li>
+<li>타 회사와 협업할때?</li>
+</ul>
+</li>
+<li>
+<p>클라우드 배포 모델의 비교 기준이 되었던 확장성, 복원성, 보안, 성능 비용 외에 또 다른 고려사항은 무엇이 있는지 기술하고 그 이유를 설명하라.</p>
+<ul>
+<li>테넌트는 세입자라는 뜻임. 클라우드 서비스 이용자가 가지게 되는 자신만의 환경을 의미</li>
+<li><a href="https://m.blog.naver.com/knyzang/221879308432">https://m.blog.naver.com/knyzang/221879308432</a></li>
+<li>결론부터 말하자면, <strong>대용량 또는 수요 변동이 많은 워크로드</strong>에는 퍼블릭 클라우드가 더 적합할 수 있습니다. <strong>예측 가능한 사용 패턴을 갖는 워크로드</strong>에는 프라이빗 클라우드가 더 효과적일 수 있습니다. 하이브리드 클라우드는 <strong>모든 워크로드가 어디에서든 호스팅될 수 있으므로 포괄적</strong>입니다.</li>
+</ul>
+</li>
+<li>
+<p>클라우드 컴퓨팅 인프라를 탄력적으로 구성하는 다양한 모델들이 연구되고 있다. 어떤 모델이 있는지 조사해보고 그 모델이 갖는 장점은 무엇인지 설명해보라.</p>
+<ul>
+<li><strong>인터클라우드</strong></li>
+</ul>
+<p>인터클라우드는 서로 연결된 글로벌 클라우드의 클라우드이며 기반이 되는 인터넷 네트워크의 네트워크에 대한 확장이다. 공개형 클라우드 서비스 제공자들 간의 직접적인 상호운용성에 초점을 맞추고 있으며, 이는 제공자들과 소비자들 간의 것 보다 더한 편이다.</p>
+<ul>
+<li><strong>멀티클라우드</strong></li>
+</ul>
+<p>멀티클라우드는 단일 벤더에 대한 의존성을 줄이고 선택을 통한 유연성을 향상시키고 장애에 대한 불편을 줄이는 등을 하기 위해 하나의 이기종 아키텍처 안에서 여러 개의 클라우드 컴퓨팅 서비스의 이용을 뜻한다. 여러 개의 배치 모드(공개형, 폐쇄형, 레거시)가 아닌 여러 개의 클라우드 서비스를 가리킨다는 점에서 복합형 클라우드와는 차이가 있다.</p>
+</li>
+<li>
+<p>가용성과 신뢰성을 구분하였는데 의미 있는 구분인가? 의미가 있다면 어떤 점에서 의미가 있는지 설명하고 의미가 없다면 그 이유는 무엇인지 설명하라.</p>
+<ul>
+<li>가용성: 시스템이 서비스를 요청 받았을 때, 서비스를 제공할 수 있는 능력</li>
+<li>신뢰성: 시스템이 명세화 된 대로 서비스를 제공할 수 있는 능력</li>
+<li>신뢰할 수 있는 시스템은 늘 사용 가능하다거나, 사용 가능한 시스템은 신뢰할 수 있다고 가정할 수는 없기 때문에 둘을 구분하는 것은 의미가 있다.
+<ul>
+<li>ex. A컴퓨터가 일년에 한번 고장나고 수리하는데 3일 걸리고 B컴퓨터는 한달에 한번 고장나는데 수리하는데 10분 걸린다면 A는 신뢰성이 높고 B는 가용성이 더 높다고 할 수 있다. 시스템이 사용될 환경과 그것이 사용될 목적을 반드시 고려하여 선택해야한다.</li>
+</ul>
+</li>
+<li>가용성과 신뢰성은 서로 다른 이점으로써, 클라우드 도입 및 비즈니스 이점과 직결된다.
+<ul>
+<li>가용성이 증대된 IT자원은 즉시접근가능하며, 더 오랜시간 동안 접근 가능하다.</li>
+<li>신뢰성이 증대된 IT자원은 예외 발생 상황을 더욱 잘 방지하고 복구 할 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>클라우드 컴퓨팅에 영향을 준 기술들 중 설명되지 않은 기술은 무엇이 있는지 찾아보고 어떤 점에서 영향을 주었는지 설명해보라.</p>
+<ul>
+<li><strong><code>로드 밸런싱</code></strong><br />
+컴퓨터 자원 분산 기술의 일종으로 둘 혹은 셋 이상의 중앙 처리장치 혹은 저장 장치와 같은 컴퓨터 자원들의 작업을 나누는 것을 의미합니다. 예를들면 홈쇼핑에서 갑자기 고객 요청으로 주문이 폭주했을때 여러 대의 분산 처리하여 서버의 부하량, 속도 저하를 방지해 분산처리하면 중단 없이 서비스를 운영할 수 있습니다.</li>
+</ul>
+</li>
+<li>
+<p>클라우드 서비스 제공자(CSP)의 역할 중 추가적으로 제공해야 할 것이 있다면 제시하라.</p>
+<ul>
+<li>컨설팅: 마이그레이션을 준비하는 단계, 인프라 구축을 위해 아키텍처 논의</li>
+<li>마이그레이션: 기존 인프라에서 클라우드로 이사가는 단계 (새로운 환경으로 세팅되어야 하므로 이식성이 중요, 버전이슈 등 대응해줘야할 부분이 많음)</li>
+<li>데이터 센터의 친환경화: 데이터센터의 경우 막대한 전력량 사용으로 인한 환경에 악영향을 끼친다. 이를 줄이는 것도 CSP의 역할이 아닐까 ..</li>
+</ul>
+<p>⇒ 위 두 가지는 MSP(Managed Service Provider)가 제공하고 있는데(ex. 베스핀글로벌, 메가존) 애초에 CSP가 해주면 좋을 것 같다.</p>
+</li>
+<li>
+<p>컴퓨팅 자원의 성능을 확장하는 방법 중 스케일업 방식이 스케일아웃 방식보다 적용하기 좋은 사례를 찾아보고 그 이유를 설명하라.</p>
+<p><a href="https://azure.microsoft.com/ko-kr/resources/cloud-computing-dictionary/scaling-out-vs-scaling-up/#scale-up-vertically">https://azure.microsoft.com/ko-kr/resources/cloud-computing-dictionary/scaling-out-vs-scaling-up/#scale-up-vertically</a></p>
+<ul>
+<li>워크로드가 급증하여 CPU 또는 I/O와 같은 성능 제한에 도달하는 경우</li>
+<li>기존 데이터베이스 최적화로 해결할 수 없는 성능 문제를 해결해야하는 경우</li>
+</ul>
+</li>
+<li>
+<p>다국적 클라우드 기반 서비스를 이용할 때 특히 데이터 관점에서 분쟁 이슈 사례를 조사하라.</p>
+<p>pass!</p>
+</li>
+<li>
+<p>우리나라의 클라우드 컴퓨팅법에 대해 조사하고 이 법이 강조하는 것이 무엇인지 설명하라.</p>
+<ul>
+<li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%BB%B4%ED%93%A8%ED%8C%85%20%EB%B0%9C%EC%A0%84%EB%B0%8F%EC%9D%B4%EC%9A%A9%EC%9E%90%EB%B3%B4%ED%98%B8%EC%97%90%EA%B4%80%ED%95%9C%EB%B2%95%EB%A5%A0">클라우드컴퓨팅 발전 및 이용자 보호에 관한 법률</a><br />
+제 2장 (클라우드컴퓨팅 발전 기반의 조성)부터 제 3장 (클라우드컴퓨팅서비스의 이용 촉진)<br />
+4장 신뢰성 향상 및 이용자 보호<br />
+제 11조 (중소기업에 대한 지원)<br />
+제 12조 (전문인력의 양성)<br />
+제 20조 (국가기관등의 클라우드컴퓨팅서비스 이용 촉진)<br />
+제 21조 (전산시설등의 구비) 등<br />
+<strong><em>국가적 차원에서 클라우드 컴퓨팅 산업을 발전시키려고 많은 법을 강조하는 거 같다. (2020년 시행)</em></strong><br />
+<strong><em>해당 목표로 국민생활과 국민경제의 발전에 클라우드 컴퓨팅 서비스를 안착시키기 위함</em></strong><br />
+2년이 지났는데, 그 사이 내가 의식하고 겪은 클라우드 서비스는 엔비디아 게이밍 클라우드 서비스 밖에 ;; 근데 이것도 LG U+가 독점해서 기존 게이머가 접근하기 너무 힘듦 ;;<br />
+그 외 법률에 보안이 가장 강조가 됨<br />
+사실상 중요한 데이터 및 로직을 다른 회사의 클라우드에서 사용한다는게 불신이 들 수도 있음<br />
+클라우드에 관한 신뢰성을 가지기 위해서는 이러한 법률로 보안을 어길시 져야하는 손해배상책임을 엄격히 매겨야한다고 생각함.<br />
+그렇기에 클라우드 컴퓨팅이 국민 경제를 상승시킬 수 있다는 신뢰성을 주기 위해서 보안을 강조하는게 아닌가 싶다.</li>
+</ul>
+</li>
+</ol>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

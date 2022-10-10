@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Fri, 09 Sep 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Oct 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -36,6 +36,33 @@
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>모두를 위한 클라우드 컴퓨팅 3</title>
+      <link>https://wacilpong.github.io/blog/study/cloud-computing/3/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/cloud-computing/3/</guid>
+      <description>HTC HPC 환경에서는 하나의 작업을 여러 작업으로 분리한다. 따라서 분리된 작업 처리 과정에서 상호 간 통신이 필요하다. MPI(Message Passing Interface) 방식으로 프로그램을 작성해야 한다. 상호</description>
+    </item>
+    
+    <item>
+      <title>모두를 위한 클라우드 컴퓨팅 2</title>
+      <link>https://wacilpong.github.io/blog/study/cloud-computing/2/</link>
+      <pubDate>Mon, 26 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/cloud-computing/2/</guid>
+      <description>클라우드 컴퓨팅의 역사와 모델 유래 존 매카시(John McCarthy)가 1961년 MIT 100주년 기념연설에서 공개적으로 제안했던 유틸리티 컴퓨팅에서 나</description>
+    </item>
+    
+    <item>
+      <title>모두를 위한 클라우드 컴퓨팅 1</title>
+      <link>https://wacilpong.github.io/blog/study/cloud-computing/1/</link>
+      <pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/cloud-computing/1/</guid>
+      <description>기본 개념 클라우드 컴퓨팅 데이터 스토리지나 컴퓨팅 파워 같은 컴퓨터 시스템 리소스를 온디맨드 방식으로 제공하는 것이다. 즉, 원하는 시점에 컴퓨팅 자원을 쓸 수 있다</description>
     </item>
     
     <item>
