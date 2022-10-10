@@ -6,10 +6,19 @@
     <description>Recent content in cloud-computing on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 03 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Oct 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/cloud-computing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>모두를 위한 클라우드 컴퓨팅 4</title>
+      <link>https://wacilpong.github.io/blog/study/cloud-computing/4/</link>
+      <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/cloud-computing/4/</guid>
+      <description>AWS 루트 사용자는 모든 리소스에 대한 액세스 권한을 갖는 계정이다. IAM(Identity and Access Management) 계정은 특정한 권한에 대한 제약을 갖는다. 가상머신 만들기 서비스 &amp;gt; EC2 &amp;gt; 인스턴스 시작 &amp;gt;</description>
+    </item>
     
     <item>
       <title>모두를 위한 클라우드 컴퓨팅 3</title>
