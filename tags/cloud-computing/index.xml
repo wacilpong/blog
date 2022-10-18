@@ -6,10 +6,19 @@
     <description>Recent content in cloud-computing on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 10 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Oct 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/cloud-computing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>모두를 위한 클라우드 컴퓨팅 5</title>
+      <link>https://wacilpong.github.io/blog/study/cloud-computing/5/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/cloud-computing/5/</guid>
+      <description>컨테이너 샌드박스(sandbox)화된 런타임 환경 샌드박스화되었다는 의미는 프로세스가 보호된 영역에서 동작한다는 것이다. 따라서 호스트 시스템에 부정적</description>
+    </item>
     
     <item>
       <title>모두를 위한 클라우드 컴퓨팅 4</title>

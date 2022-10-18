@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="모두를 위한 클라우드 컴퓨팅 5" />
+<meta property="og:site_name" content="모두를 위한 클라우드 컴퓨팅 5" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/cloud-computing/5/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="모두를 위한 클라우드 컴퓨팅 5" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>모두를 위한 클라우드 컴퓨팅 5</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">모두를 위한 클라우드 컴퓨팅 5</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>모두를 위한 클라우드 컴퓨팅 5</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="heading">컨테이너</h2>
+<ul>
+<li>샌드박스(sandbox)화된 런타임 환경
+<ul>
+<li>샌드박스화되었다는 의미는 프로세스가 보호된 영역에서 동작한다는 것이다.</li>
+<li>따라서 호스트 시스템에 부정적인 영향을 미치는 것으로부터 보호한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="--packaging-technology">패키징 기술 (Packaging technology)</h3>
+<ul>
+<li>컨테이너 기술은 패키징(packaging) 기술로 간단히 표현할 수 있다.</li>
+<li>패키징의 대상은 애플리케이션과 이것이 동작할 수 있는 환경이다.</li>
+<li>자신이 동작할 수 있는 환경을 포함하고 있으므로 쉽게 배포가 가능하다.</li>
+<li>컨테이너 기반 애플리케이션 패키징
+<ul>
+<li><code>Standard</code>: 규격화된 컨테이너 사용</li>
+<li><code>Portable</code>: 컨테이너는 이동이 가능</li>
+<li><code>Light weight</code>: 표준 컨테이너에 담을 수 있는 용량의 제한</li>
+<li><code>Security &amp; Protection</code>: 컨테이너별 보안과 안전장치</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="-vs-">가상화 vs 컨테이너</h3>
+<ul>
+<li>가상화에서는 물리적 컴퓨터 시스템 전체를 가상머신으로 만들고 그 운영체제를 가상머신에 설치한 상태로 배포한다.<br />
+<em>ex. VMWare 머신 위에서 운영체제를 여러 개 띄운다.</em>
+<ul>
+<li>여러 운영체제가 하나의 하드웨어를 공유하고 운영체제들이 각 커널을 가진다.</li>
+<li>서로 독립된 운영체제를 구동하므로 컨테이너보다 오버헤드가 증가한다.</li>
+</ul>
+</li>
+<li>반면 컨테이너들은 컨테이너를 구동하는 운영체제의 <code>커널(kernel)</code>을 공유한다.<br />
+<em>ex. Docker 이미지 여러 개를 하나의 운영체제 위에 띄운다.</em>
+<ul>
+<li>커널이란 하드웨어 시스템으로 접근할 수 있는 터널이라고 생각하면 쉽다.</li>
+<li>따라서 하나의 운영체제 안에서 여러 커널을 공유하므로 가상화보다 오버헤드가 적다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="--">컨테이너 기술의 역사</h3>
+<ul>
+<li>컨테이너의 핵심 기술은 분리(isolation)에 기반을 둔다.</li>
+<li>Unix V7: chroot를 통해 프로세스 간 분리를 할 수 있게됨</li>
+<li>FreeBSD Jail: Jail이라는 독립된 작은 시스템으로 나눠 커널을 공유</li>
+<li>Linux VServer: Jail처럼 운영체제 수준의 가상화로 시스템 리소스를 분리</li>
+<li>Solaris Containers: 존(zone) 개념 도입해 자원 분리</li>
+<li>Open VZ: 리눅스 커널 패치로 자원을 분리할 수 있는 기능 제공</li>
+<li>Process Container: 컴퓨터 자원 프로세스 사용량을 제한/격리하기 위함</li>
+<li><code>LXC</code>: chroot의 확장된 형태로 현재 통용되는 컨테이너 기술의 시초<br />
+<em>도커가 이를 컨테이너 엔진으로 초기에 사용함</em></li>
+<li><code>Docker</code>
+<ul>
+<li>한번 구축하면 어느곳에서나 실행할 수 있는 <code>Build Once, Run Anyway</code> 실현</li>
+<li>프랑스의 dotCloud 회사에서 시작한 프로젝트이다.</li>
+<li>플랫폼에 사용할 기반 기술로 컨테이너를 활용하려는 목적이었다.</li>
+<li>따라서 플랫픔 서비스를 제공하기 위해 필요한 기술들을 도커에 적용하게 되었다.</li>
+<li>이에 따라 리눅스 컨테이너를 보편화할 수 있는 도커가 탄생했다.</li>
+</ul>
+</li>
+<li><code>Kubernetes</code>
+<ul>
+<li>구글에서 2015년 7월에 오픈소스로 공개했다.</li>
+<li>2016년에 쿠버네티스를 CNCF(Cloud Native Computing Foundation)에 기증했다.</li>
+<li>따라서 VMWare, Azure, AWS, 도커에서 쿠버네티스를 자신의 인프라에서 지원할 수 있게 되었다.</li>
+<li>컨테이너화된 워크로드와 서비스를 관리할 수 있는 대표 오케스트레이션 툴이다.</li>
+</ul>
+</li>
+<li>Container Security Issue
+<ul>
+<li>컨테이너를 적용한 앱들이 활발하게 사용되면서 Dirty COW와 같은 보안문제가 발생했다.<br />
+<em>리눅스 커널에서 readonly 메모리 복사할 때 race condition을 발생시키는 이슈</em><br />
+<em>이를 통해 write 권한을 얻을 수 있어, 일반 권한 사용자가 root 권한 상승 시도</em></li>
+</ul>
+</li>
+<li>OCI(Open Container Initiative)
+<ul>
+<li>도커가 컨테이너 기반의 서비스 활성화에 기여한 것은 사실이다.</li>
+<li>그러나 특정한 솔루션에 과도하게 의존하는 것을 경계하기 위해 컨테이너 포맷과 런타임에 대한 개방형 표준을 만들었다.</li>
+<li>OCI 표준을 따르는 런타임으로 CRI-O(Container Runtime Interface-OCI)가 개발되었다.</li>
+<li>초기 컨테이너 런타임은 도커만 있었지만, CRI-O, RKT, Containerd가 등장했다.</li>
+<li>컨테이너 런타임을 제어하는 것을 오케스트레이션이라고 한다.<br />
+<em>이에 대한 표준을 따르는 구현체가 바로 쿠버네티스이다.</em></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="-vs--1">컨테이너 vs 가상머신</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">(<span style="color:#ae81ff">1</span>) 머신 가상화
+App1      App2      App3
+Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</span>Lib
+게스트 OS   게스트 OS   게스트 OS
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 하이퍼바이저 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 인프라스트럭처 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">(<span style="color:#ae81ff">2</span>) 컨테이너
+App1      App2      App3
+Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</span>Lib
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 컨테이너 엔진 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 운영체제 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 인프라스트럭처 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+</code></pre></div><ul>
+<li>컨테이너는 가상화인가? <em>Not Exactly</em></li>
+<li>컨테이너에서 동작하는 앱이 독립된 환경에서 실행되고 다른 컨테이너 앱에 영향을 미치지 않는다는 점은 가상화와 유사하다.</li>
+<li>그러나 컨테이너는 가상화처럼 가상머신별 독립된 운영체제가 동작할 수 없다. (ex. VMWare)</li>
+<li>컨테이너는 운영체제를 분리하는 게 아니라, 앱을 운영체제로부터 독립시킨다.
+<ul>
+<li>x86 리눅스는 x86 리눅스 컨테이너를, x86 윈도우 운영체제는 x86 윈도우 컨테이너를 써야 한다.</li>
+<li>즉, 서로 다른 운영체제 기반의 컨테이너는 단일 머신에서 실행될 수 없다.</li>
+</ul>
+</li>
+<li>가상화는 하이퍼바이저를 이용해 여러 개의 운영체제를 실행하기 때문에 컨테이너처럼 경량 구조가 아니다.</li>
+</ul>
+<p><br /></p>
+<h3 id="---1">컨테이너가 유리한 경우</h3>
+<ul>
+<li>애플리케이션이 <code>멀티서비스(multiservice)</code> 아키텍처인 경우<br />
+<em>마이크로서비스(microservice)라고 한다.</em><br />
+<em>독립적으로 배포할 수 있는 소규모 서비스의 모음</em><br />
+<em>ex. 카카오 결제 서버 하나가 죽어도 다른 서비스들은 돌아가는 것</em></li>
+<li>애플리케이션이 동작하는 서버의 수를 최소화하고자 하는 경우</li>
+<li>클라우드 네이티브 애플리케이션을 개발하고자 하는 경우</li>
+<li>애플리케이션 개발환경이 배포환경과 유사한 경우</li>
+</ul>
+<p><br /></p>
+<h3 id="---2">가상머신이 유리한 경우</h3>
+<ul>
+<li>애플리케이션이 <code>모놀리식(monolithic)</code> 아키텍처인 경우<br />
+<em>모든 서비스(결제, 쇼핑, 스토리지 등)를 하나의 인스턴스로 관리하는 전통적인 구조</em><br />
+<em>하드웨어 메모리를 늘리는 식으로 업그레이드를 할 수밖에 없다.</em></li>
+<li>서로 다른 운영체제가 필요한 경우</li>
+<li>플랫폼에 고정된 스토리지 시스템이 필요한 경우</li>
+<li>운영체제의 많은 기능이 필요한 경우</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="-docker">도커 (Docker)</h2>
+<ul>
+<li>응용프로그램을 컨테이너로 실행하고 관리할 수 있는 오픈소스 프로젝트이다.</li>
+<li>도커를 이용해 앱이 수행될 인프라스트럭처와 앱을 분리할 수 있고 쉽고 빠르게 배포할 수 있다.</li>
+<li>리눅스에서 운영체제 수준의 가상화를 제공하는 <code>PaaS</code> 제품이라고 볼 수 있다.</li>
+<li>컨테이너 안의 소프트웨어들은 동작에 필요한 모든 파일들을 포함하고 있다.</li>
+<li>도커는 실행되는 시스템의 제약을 받지 않으므로 물리머신 혹은 가상머신에서도 실행될 수 있다.</li>
+<li>컨테이너는 이미지로 저장된다.<br />
+<em>이미지는 실행가능한 패키지이고, 코드/런타임/라이브러리/환경변수/설정파일이 들어 있다.</em><br />
+<em>생성되는 컨테이너는 <code>docker ps</code> 명령어로 도커 컨테이너를 확인할 수 있다.</em></li>
+</ul>
+<p><br /></p>
+<h3 id="-">구동 방식</h3>
+<ul>
+<li>도커 컨테이너를 실행하기 위해서는 도커 엔진이 필요하다.</li>
+<li>도커 엔진은 클라이언트-서버 애플리케이션이다.<br />
+<em>도커 데몬, REST API, CLI 3가지 컴포넌트로 구성된다.</em></li>
+<li>docker CLI를 통해 도커 컨테이너, 이미지, 네트워크, 데이터 볼륨 등을 관리한다.</li>
+<li>docker CLI는 REST API를 통해 도커 데몬과 통신을 하는 구조이다.<br />
+<em><code>데몬(demon)</code>은 background process를 의미한다고 이해하면 쉽다.</em></li>
+</ul>
+<p><br /></p>
+<h3 id="--1">도커 아키텍처</h3>
+<ul>
+<li>클라이언트-서버 아키텍처이다.</li>
+<li>도커 클라이언트에서 도커 데몬과 REST API를 통해 통신하여 컨테이너를 생성/실행/배포한다.</li>
+<li>서버와 클라이언트가 동일한 시스템에서 설치되거나 혹은 각각 별도의 시스템에서 설치될 수 있다.</li>
+<li>도커 데몬은 레지스트리에서 이미지를 도커 호스트로 내려받아 컨테이너 인스턴스를 생성한다.<br />
+<em>생성되는 도커 이미지, 컨테이너, 네트워크, 볼륨 등을 <code>도커 오브젝트(docker object)</code>라고 한다.</em></li>
+</ul>
+<p><br /></p>
+<h3 id="---">구조와 관련된 주요 컴포넌트</h3>
+<ul>
+<li><strong>도커 데몬</strong>: 도커 호스트에서 동작하는 데몬 프로세스로, 도커 오브젝트들을 관리한다.</li>
+<li><strong>도커 클라이언트</strong>: <code>docker run</code>과 같은 명령어를 도커 데몬에 요청하는 역할을 한다.</li>
+<li><strong>도커 레지스트리</strong>: 도커 이미지를 저장하는 역할로, 도커 허브로 혹은 프라이빗으로도 구축할 수 있다.</li>
+<li><strong>도커 이미지</strong>
+<ul>
+<li>읽기전용 템플릿으로, 동작에 필요한 파일들을 포함하고 레지스트리에 등록해 배포할 수 있다.</li>
+<li><code>Dockerfile</code>을 이용해 사용자의 커스텀 이미지를 생성할 수도 있다.</li>
+<li>Dockerfile을 변경해 이미지를 재빌드하면 수정된 레이어들만 재빌드된다.</li>
+<li>따라서 도커 이미지가 가상머신에 비해 가볍고 크기가 작으며 빠르게 빌드되는 것이다.</li>
+</ul>
+</li>
+<li><strong>도커 컨테이너</strong>
+<ul>
+<li>도커 이미지의 실행 버전, 즉 인스턴스이다.</li>
+<li>도커 사용자는 컨테이너에 여러 개의 네트워크 인터페이스를 통해 접근 가능하다.</li>
+<li>현재 실행 중인 컨테이너를 기반으로 새로운 도커 이미지를 생성할 수도 있다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="------">도커 클라이언트가 도커 데몬에 보내는 명령 수행과정</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run -i -t ubuntu /bin/bash
+</code></pre></div><p>(1) 우분투 이미지가 로컬에 없다면 기본 레지스트리인 도커 허브에서 우분투를 로컬로 다운로드한다.<br />
+(2) 도커는 다운로드된 이미지로부터 새로운 컨테이너를 생성한다.<br />
+(3) 도커는 파일시스템을 생성된 컨테이너에 최상위 레이어로 할당한다.<br />
+(4) 컨테이너에 네트워크 인터페이스를 생성해 추가하고 기본 네트워크에 연결한다. (IP 주소도 할당됨)<br />
+(5) 컨테이너를 시작하고 <code>/bin/bash</code>를 실행한다.<br />
+(6) exit 명령을 입력하면 컨테이너가 중지된다. (삭제는 아니므로 재실행 혹은 삭제할 수 있음)</p>
+<p><br /></p>
+<h4 id="-------">도커 기반 서비스가 배포될 때 관여되는 주요 컴포넌트</h4>
+<ul>
+<li><strong>인프라스트럭처</strong>: 호스트머신들의 집합으로 네트워크, 저장시스템 등을 모두 포함한다.</li>
+<li><strong>호스트 OS</strong>: 인프라스트럭처에 설치된 리눅스와 같은 운영체제이다.</li>
+<li><strong>도커</strong>: 도커 데몬을 의미하며 클라이언트에서 들어온 다양한 도커 명령을 수행한다.</li>
+<li><strong>노드</strong>: 컨테이너가 수행되는 시스템으로(worker), 독립적인 물리시스템 혹은 가상머신일 수도 있다.</li>
+<li><strong>스웜</strong>
+<ul>
+<li>도커 노드들을 클러스터로 묶어주는 컨테이너 오케스트레이션 도구이다.</li>
+<li>워커노드와 매니저노드(스웜 클러스터를 제어하고 워커노드에 적절한 컨테이너 배치)로 구분된다.</li>
+<li>워커노드에서 도커 컨테이너가 실행된다.</li>
+</ul>
+</li>
+<li><strong>서비스</strong>
+<ul>
+<li>동일한 목적을 위해 구성된 애플리케이션들의 집합이다.</li>
+<li>동일한 서비스 내에 속한 앱들은 컨테이너로 실행되고 스웜 워커노드들에 분산 배치된다.</li>
+<li>동일한 서비스 내의 컨테이너는 모두 동일한 이미지에서 생성된다.</li>
+<li>그러나 동일한 서비스에 포함된 컨테이너들이 동일한 노드에 있을 필요는 없다.</li>
+</ul>
+</li>
+<li><strong>스택</strong>: 서비스들을 그루핑한 것으로, 스택 내 서비스들은 상호 연계되어 있다.</li>
+</ul>
+<p><br /></p>
+<h3 id="---3">도커 기반 기술</h3>
+<ul>
+<li>Go 언어로 작성되었고, 리눅스 커널이 제공하는 네임스페이스나 유니온 파일 시스템 등을 제공한다.</li>
+<li>유니온 파일 시스템은 물리적으로 서로 다른 파일시스템이더라도 사용자에게는 하나로 보인다.<br />
+<em>즉, 하나의 디렉터리에서 서로 다른 파일시스템 내용을 통합해 보여준다.</em></li>
+<li>도커는 리눅스에서 제공하는 기능들을 <strong>컨테이너 포맷</strong>으로 만들어 단일 파일로 생성해낸다.</li>
+<li>도커 이미지는 레이어로 구성된 파일인데 레이어를 단계적으로 쌓아 최종 도커 이미지를 빌드한다.
+<ul>
+<li>따라서 최상위 레이어는 하단에 있는 레이어에 의존성을 갖게 된다.</li>
+<li>각 레이어는 파일과 디렉터리로 구성되고 읽기전용이어서 수정하려면 쓰기 권한을 가진 레이어를 생성해야 한다.</li>
+<li>빌드될 때는 기존 이미지와의 차이(diff)를 새로운 레이어로 생성한다.</li>
+<li>컨테이너가 실행될 때 생성되는 새로운 파일이나 디렉터리 등의 결과물도 새로운 레이어가 된다.</li>
+<li><strong>새로운 레이어가 생성되면 커밋(commit)되었다고 말한다.</strong></li>
+<li>도커는 새로운 레이어가 생성될 때마다 이미지를 만든다.</li>
+<li>최하단의 레이어가 가장 근간이 되는 레이어이고 다른 레이어들은 이를 기반으로 빌드된다.</li>
+<li>따라서 빈번히 수정되는 레이어는 최상단에 오도록 구성해야 한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="heading-1">설치해보기</h2>
+<ul>
+<li><a href="https://docs.docker.com/desktop/install/mac-install/">도커 데스크톱</a></li>
+<li>도커가 설치되었는지 확인<br />
+<code>docker --version</code></li>
+</ul>
+<p><br /></p>
+<h3 id="----1"><em>튜토리얼 진행해보기</em></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --name repo alpine/git clone https://github.com/docker/getting-started.git
+$ docker build -t docker101tutorial .
+$ docker run -d -p 80:80 --name docker-tutorial docker101tutorial
+$ docker tag docker101tutorial roomyhan/docker101tutorial
+
+</code></pre></div><ul>
+<li>Clone container</li>
+<li>Build image</li>
+<li>Run container</li>
+<li>Save and share image</li>
+</ul>
+<p><br /></p>
+<h3 id="----"><em>도커 명령어 실행해보기</em></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run -d -p 80:80 docker/getting-started
+// 위 명령어는 튜토리얼을 진행했다면 안해도 됨
+
+$ docker --version
+$ docker image ls
+$ docker container ls
+$ docker container ls --all
+</code></pre></div><ul>
+<li><code>docker image ls</code> 현재 도커가 관리하고 있는 이미지 확인</li>
+<li><code>docker container ls</code> 이미지로부터 생성된 현재 도커 컨테이너 확인<br />
+<em><code>--all</code> 옵션을 주면 이전에 수행되었던 컨테이너들을 확인할 수 있다.</em></li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
