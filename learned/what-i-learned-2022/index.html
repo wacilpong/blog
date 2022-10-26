@@ -154,7 +154,19 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2022-09-14"><strong>2022-09-14</strong></h2>
+    <div align="start" class="content"><h2 id="2022-10-26"><strong>2022-10-26</strong></h2>
+<ul>
+<li>실제로 서빙되고 있는데도 <code>lsof -i :{port}</code>로 아무것도 뜨지 않을 때?
+<ul>
+<li>80 기본포트로 도커 컨테이너를 서빙했다가 정지 및 삭제했는데 죽지 않아 강제로 kill하려고 했으나 pid가 뜨지 않았다.</li>
+<li><code>lsof -P | grep ':80'</code>로 포트 서비스명 대신 포트번호를 출력했더니 떴다.</li>
+<li><code>lsof -P | grep ':80' | awk '{print $2}'</code>까지 해주면 pid만 뽑을 수 있다.</li>
+<li><code>kill -9 {pid}</code>하면 된다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="2022-09-14"><strong>2022-09-14</strong></h2>
 <ul>
 <li>분명 git이 설치되어 있는데도 vscode에서 <code>git(extension)</code>을 찾을 수 없다고 뜰 때?
 <ul>
