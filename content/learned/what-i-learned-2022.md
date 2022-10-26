@@ -6,6 +6,16 @@ og_description: "About what I learned at 2022"
 draft: false
 ---
 
+## **2022-10-26**
+
+- 실제로 서빙되고 있는데도 `lsof -i :{port}`로 아무것도 뜨지 않을 때?
+  - 80 기본포트로 도커 컨테이너를 서빙했다가 정지 및 삭제했는데 죽지 않아 강제로 kill하려고 했으나 pid가 뜨지 않았다.
+  - `lsof -P | grep ':80'`로 포트 서비스명 대신 포트번호를 출력했더니 떴다.
+  - `lsof -P | grep ':80' | awk '{print $2}'`까지 해주면 pid만 뽑을 수 있다.
+  - `kill -9 {pid}`하면 된다.
+
+<br />
+
 ## **2022-09-14**
 
 - 분명 git이 설치되어 있는데도 vscode에서 `git(extension)`을 찾을 수 없다고 뜰 때?
