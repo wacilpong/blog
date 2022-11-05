@@ -6,6 +6,41 @@ og_description: "About what I learned at 2022"
 draft: false
 ---
 
+## **2022-11-5**
+
+- `[oh-my-zsh] Insecure completion-dependent directories detected:...`
+
+  - /usr/local 경로의 모든 파일에 대한 소유 권한을 초기화할 일이 있었다.
+    ```sh
+    $ sudo chown -R $(whoami):admin /usr/local/*\
+    $ && sudo chmod -R g+rwx /usr/local/*
+    ```
+  - /usr/local은 개인 컴퓨터에서 지역적으로 생성되는 시스템 파일이다.
+  - /usr/local/bin는 참고로 기본 프로그램이 아닌 경우 주로 설치되는 경로이다.
+  - 그런데 /usr/local/share 경로까지 모두 초기화되어서 zsh 소유권 문제가 발생해버렸다. _앗 내 실수!_
+  - 따라서 아래 명령어를 수행해 해결해주었다.
+
+    ```sh
+    $ compaudit
+
+    There are insecure directories
+    /usr/local/share/zsh/site-functions
+    /usr/local/share/zsh
+
+    $ chmod 755 /usr/local/share/zsh/site-functions
+    $ chmod 755 /usr/local/share/zsh
+    ```
+
+- 리눅스 `/usr` 디렉토리 이해
+  - 여기는 시스템이 아닌 사용자가 실행할 프로그램들이 저장된다.
+  - `bin`: 일반적인 유틸리티나 프로그래밍 도구 및 대부분의 사용자 명령어가 위치함 _cd, python, curl..._
+  - `lib`: 라이브러리들이 위치함 _cron_
+  - `local`: 기본 os에서는 필요하지 않는 실행가능한 파일들과 라이브러리들이 위치 _homebrew_
+  - `share`: 아키텍처에서 독립된 데이터 파일들이 위치함 _vim, zsh..._
+  - `include`: C 프로그램에 포함되는 헤더파일들이 위치한다.
+
+<br />
+
 ## **2022-10-26**
 
 - 실제로 서빙되고 있는데도 `lsof -i :{port}`로 아무것도 뜨지 않을 때?
