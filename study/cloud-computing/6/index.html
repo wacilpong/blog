@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="모두를 위한 클라우드 컴퓨팅 6" />
+<meta property="og:site_name" content="모두를 위한 클라우드 컴퓨팅 6" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/cloud-computing/6/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="모두를 위한 클라우드 컴퓨팅 6" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>모두를 위한 클라우드 컴퓨팅 6</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">모두를 위한 클라우드 컴퓨팅 6</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>모두를 위한 클라우드 컴퓨팅 6</h2>
+        <h5></h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="kubernetes--">쿠버네티스(Kubernetes) 등장 배경</h2>
+<p><br /></p>
+<h4 id="---">소프트웨어 배포 방식의 변화</h4>
+<ul>
+<li>전통적 배포 방식
+<ul>
+<li><strong>한 대의 물리서버에 여러 애플리케이션이 동작</strong></li>
+<li>각 애플리케이션 리소스 제약이 있고 서로의 성능 저하를 유발</li>
+<li>물리 서버의 수를 증설할 수 있지만 운영/비용 문제 발생</li>
+</ul>
+</li>
+<li>가상화 기반 배포 방식
+<ul>
+<li><strong>단일 물리서버에 여러 가상머신을 생성하고 각 가상머신에 애플리케이션 탑재</strong></li>
+<li>가상머신에 할당된 리소스 제한 가능, 가상머신이 독립적으로 운영되어 애플리케이션 간 간섭 제거</li>
+<li>하지만 애플리케이션을 실행하기 위해 가상머신마다 운영체제를 설치하는 오버헤드 발생</li>
+</ul>
+</li>
+<li>컨테이너 기반 배포 방식
+<ul>
+<li><strong>운영체제 위에 컨테이너 플랫폼을 올리고 그 위에 컨테이너 애플리케이션 동작</strong></li>
+<li>독립적인 파일시스템/CPU/메모리 등의 리소스 제약으로 상호 간섭 없이 독립적으로 운영</li>
+<li>애플리케이션 추가 시 애플리케이션 자체 용량만 필요하므로 빠른 확장/축소 가능</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="--">도커 그 이후&hellip;</h4>
+<ul>
+<li>코드 작성 → 빌드(도커 이미지 생성) → ship(이미지를 도커허브 같은 저장소에 올림) → run</li>
+<li>도커 이미지로 만들기만 하면, 저장하고 사용하는 방식은 모두 동일</li>
+<li>모든 것을 컨테이너로 만들기 시작 → 컨테이너가 수십, 수백 개로 늘어나면&hellip; 이걸 다 어떻게 관리할까?
+<ul>
+<li>도커 서버 여러 대에 각각 ssh 접속하여 docker run 실행?</li>
+<li>모든 컨테이너 롤아웃/롤백하려면?</li>
+<li>각 컨테이너에 접근하기 위한 네트워크 설정?</li>
+<li>컨테이너가 갑자기 죽거나 부하를 많이 받아 응답 속도가 느려지면?</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="-">컨테이너 오케스트레이션</h4>
+<ul>
+<li>복잡한 컨테이너 환경을 효과적으로 관리하기 위한 도구(서버 관리자가 하는 일을 대신 수행)</li>
+<li>노드를 하나하나 관리하는 것이 아니라, <strong>마스터 서버에 명령어를 던지면 알아서 각 노드에 실행</strong></li>
+<li>원하는 개수의 애플리케이션을 자동으로 실행</li>
+<li>각 서버의 상태를 체크하여 적합한 서버에 컨테이너를 배포하거나 새로운 서버 실행</li>
+<li>자동 배포 버전관리 (Rollout/Rollback)</li>
+<li>노드 내부에 접근하기 위한 IP 주소 등록 및 조회</li>
+</ul>
+<p><br /></p>
+<h4 id="---1">대표적인 도구: 쿠버네티스</h4>
+<ul>
+<li>컨테이너화된 애플리케이션을 자동으로 배포, 스케일링 및 관리해주는 오픈소스 시스템</li>
+<li>컨테이너 오케스트레이션의 &ldquo;De facto&rdquo; (사실상의 표준)</li>
+<li>Kubernetes는 그리스어로 &lsquo;조타수&rsquo;, &lsquo;파일럿&rsquo; 의미, <code>K8s</code>로 표기하기도 한다.</li>
+<li>구글에서 2015년 7월 출시, Cloud Native Computing Foundation(CNCF)에 기부, 오픈소스화</li>
+<li>장점
+<ol>
+<li><strong>대규모 확장성</strong>: 수십억 개 이상의 컨테이너 관리할 수 있도록 설계</li>
+<li><strong>무한한 유연성</strong>: 사용자의 복잡하고 다양한 요구사항을 반영하여 애플리케이션을 끊김없이 쉽게 제공</li>
+<li><strong>어디에서나 실행</strong>: 온 프레미스, 프라이빗, 퍼블릭, 또는 하이브리드 클라우드 어디에서든지 실행 가능
+<ul>
+<li>EKS(Elastic Kubernetes Service)</li>
+<li>ACS(Azure Container Service)</li>
+<li>GKE(Google Kubernetes Engine)</li>
+<li>등등&hellip;</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="kubernetes-">쿠버네티스(Kubernetes) 구조</h2>
+<ul>
+<li>쿠버네티스 클러스터
+<ul>
+<li>쿠버네티스 배포 시 생성된다.</li>
+<li>컨테이너화된 애플리케이션을 실행하는 <code>노드</code>라고 불리는 워커 머신의 집합이다.</li>
+<li>모든 클러스터는 최소 한 개의 워커 노드를 갖는다.</li>
+</ul>
+</li>
+<li>컨트롤 플레인
+<ul>
+<li>클러스터에 대한 전체적인 상태를 점검한다.</li>
+<li>정의된 상태가 아닐 경우 정의된 상태가 되도록 클러스터를 관리한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="master--"><strong>Master (컨트롤 플레인)</strong></h3>
+<h4 id="1-etcd-">(1) etcd (엣시디)</h4>
+<ul>
+<li>쿠버네티스 클러스터와 관련된 모든 상태와 데이터를 저장하는 저장공간</li>
+<li>분산 시스템으로 구성하여 안정성 높임 (고가용성)</li>
+<li>가볍고 빠르면서 정확하게 설계 (일관성)</li>
+<li><code>key(directory)-value</code> 형태로 데이터 저장</li>
+<li>백업 필수</li>
+</ul>
+<p><br /></p>
+<h4 id="2-api-server">(2) API Server</h4>
+<ul>
+<li>마스터와 노드 간 통신을 담당, 상태를 바꾸거나 조회하는 역할</li>
+<li>etcd와 통신하는 유일한 모듈</li>
+<li>REST API 형태로 제공 (<code>kubectl</code>)</li>
+<li>권한을 체크해 적절한 권한이 없으면 요청을 차단</li>
+<li>관리자 요청 뿐 아니라 다양한 내부 모듈과 통신</li>
+</ul>
+<p><br /></p>
+<h4 id="3-scheduler">(3) Scheduler</h4>
+<ul>
+<li>컨테이너를 담고 있는 Pod가 생성될 때 이를 실행할 노드 선택<br />
+<em>어떤 노드에 어떤 컨테이너를 실행할지</em></li>
+<li>노드의 현재 상태와 Pod의 요구사항 등을 확인하여 배치</li>
+</ul>
+<p><br /></p>
+<h4 id="4-controller">(4) Controller</h4>
+<ul>
+<li>클러스터가 요구되는 상태가 되도록 API 서버와 통신</li>
+<li>끊임없이 상태를 체크하고 원하는 상태를 유지</li>
+<li>복잡성을 낮추기 위해 하나의 프로세스로 실행</li>
+<li>논리적으로 다양한 컨트롤러 존재
+<ul>
+<li>노드 컨트롤러: 노드가 다운되었을 때 통지/대응</li>
+<li>레플리케이션 컨트롤러: 클러스터에 생성되어야 할 레플리케이션 수에 맞게 Pod를 유지</li>
+<li>엔드포인트 컨트롤러: 서비스와 파드 연결</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="node"><strong>Node</strong></h3>
+<h4 id="1-kubelet">(1) kubelet</h4>
+<ul>
+<li>클러스터의 각 워커 노드에서 실행하며, Pod를 실행/중지하고 상태를 체크</li>
+<li>쿠버네티스에 의해 생성되지 않은 컨테이너는 관리하지 않음</li>
+</ul>
+<p><br /></p>
+<h4 id="2-kube-proxy">(2) kube-proxy</h4>
+<ul>
+<li>각 워커 노드에서 실행되는 네트워크 및 로드 밸런싱 프록시 (내/외부 통신)</li>
+<li>Pod 내에서 실행 중인 컨테이너를 외부로 노출시켜 <strong>외부에서 컨테이너에 접근하게 함</strong></li>
+<li>iptables 또는 IPVS를 사용하여 설정 관리</li>
+</ul>
+<p><br /></p>
+<h4 id="3--">(3) 컨테이너 런타임</h4>
+<ul>
+<li>컨테이너 실행을 담당하는 소프트웨어</li>
+<li>docker, Containerd, CRI-O 등의 컨테이너 런타임 지원</li>
+</ul>
+<p><br /></p>
+<h3 id="heading"><strong>오브젝트</strong></h3>
+<ul>
+<li>쿠버네티스는 클러스터의 상태를 나타내기 위해 오브젝트를 이용한다.</li>
+<li>오브젝트를 생성하면 쿠버네티스 시스템은 그 오브젝트 생성을 보장하기 위해 지속적으로 작동할 것이다.</li>
+<li>따라서 쿠버네티스 시스템에서 영속성을 가지며, 일종의 <code>의도를 담은 레코드</code>이다.</li>
+</ul>
+<p><br /></p>
+<h4 id="1-pod">(1) Pod</h4>
+<ul>
+<li>가장 작은 배포 단위로, 한 개 이상의 컨테이너로 구성된다.</li>
+<li>쿠버네티스는 파드 단위로 노드에 할당한다.<br />
+<em>즉, 스케줄링의 기본 단위</em></li>
+<li>각 파드마다 IP 주소가 할당된다.</li>
+</ul>
+<p><br /></p>
+<h4 id="2-replicaset">(2) ReplicaSet</h4>
+<ul>
+<li>신규 <code>Pod</code>를 생성하거나 기존 Pod를 제거하여 원하는 수(Replicas)를 유지한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="3-deployment">(3) Deployment</h4>
+<ul>
+<li>애플리케이션을 배포하기 위한 설정이다.</li>
+<li>쿠버네티스가 애플리케이션의 인스턴스를 어떻게 생성하고 업데이트해야 하는지 지시한다.</li>
+<li>내부적으로 <code>ReplicaSet</code>을 이용한다.</li>
+</ul>
+<p><br /></p>
+<h4 id="4-service">(4) Service</h4>
+<ul>
+<li>동적으로 변하는 Pod에 고정적으로 접근할 때 사용하는 방법이나 정책을 정의한 것이다.</li>
+<li>서비스를 사용하면 Pod가 클러스터 내부 어디에 있든 고정 주소를 이용해 접근할 수 있다.</li>
+<li>클러스터 외부에서 클러스터 안의 Pod에 접근할 수도 있다.</li>
+<li>서비스 타입
+<ol>
+<li>ClusterIP: 클러스터 내부 IP에 대해 서비스 노출, 외부에서 접근 불가</li>
+<li>NodePort: <code>&lt;NodeIP&gt;:&lt;NodePort&gt;</code>로 클러스터 외부로부터 서비스 접근 가능, CluterIP의 상위 집합</li>
+<li>LoadBalancer</li>
+</ol>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="5-ingress">(5) Ingress</h4>
+<ul>
+<li>IP 포트가 아닌 도메인 또는 경로별로 라우팅하여 내부 ClusterIP 접근 가능</li>
+</ul>
+<p><br /></p>
+<pre><code>```s
+[일반적인 구성]
+- Deployment를 생성 (ReplicaSet, Pod 순차적으로 생성)
+- 여기에 Service(Cluster IP) 붙임
+- 여기에 Ingress 붙임 (NodePort, LoadBalancer 자동으로 따라 붙음)
+
+[오브젝트 기술하기]
+- 쿠버네티스 오브젝트 생성 시, 오브젝트에 대한 기본정보와 함께 의도한 상태를 기술한 spec을 제시함
+- 오브젝트 spec을 yaml 파일로 작성하고, 이를 통해 쿠버네티스 API를 이용함
+
+[예시]
+apiVersion: apps/v1
+kind: Deployment     # Pod, Service, Ingress, ...
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
+```
+</code></pre>
+<p><br /></p>
+<h4 id="api--">API 호출 방식</h4>
+<ul>
+<li>원하는 상태(desired state)를</li>
+<li>다양한 오브젝트(object)로 정의(spec)하고</li>
+<li>API 서버에 yaml 형식으로 전달한다.</li>
+</ul>
+<p><br /></p>
+<hr />
+<h2 id="minikube">Minikube</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># minikube 설치</span>
+brew install minikube
+
+<span style="color:#75715e"># minikube 버전 확인</span>
+minikube version
+
+<span style="color:#75715e"># Docker Desktop을 실행한 후 (docker 드라이버 사용)</span>
+<span style="color:#75715e"># 가상머신을 띄우고 쿠버네티스 클러스터 생성</span>
+minikube start
+
+<span style="color:#75715e"># 상태 확인</span>
+minikube status
+
+<span style="color:#75715e"># 쿠버네티스 대시보드 실행</span>
+minikube dashboard
+
+<span style="color:#75715e"># kubectl - 쿠버네티스 CLI. 쿠버네티스 API를 통해 클러스터와 상호작용</span>
+<span style="color:#75715e"># kubectl 버전 확인 (clientVersion: kubectl 버전, serverVersion: 쿠버네티스 버전)</span>
+kubectl version
+kubectl version --output<span style="color:#f92672">=</span>json
+
+<span style="color:#75715e"># 클러스터 정보 확인</span>
+kubectl cluster-info
+
+<span style="color:#75715e"># 클러스터 내 노드 확인</span>
+<span style="color:#75715e"># 상태가 Ready라면, 애플리케이션 배포 가능한 상태를 의미</span>
+kubectl get nodes
+
+<span style="color:#75715e">##### 앱 배포하기 #####</span>
+
+<span style="color:#75715e"># 디플로이먼트 생성 - 디플로이먼트 이름, 앱 이미지 위치 포함</span>
+<span style="color:#75715e"># 앱 인스턴스가 실행할 수 있는 노드를 찾아서 스케줄링</span>
+kubectl create deployment kubernetes-bootcamp --image<span style="color:#f92672">=</span>gcr.io/google-samples/kubernetes-bootcamp:v1
+
+<span style="color:#75715e"># 디플로이먼트 확인</span>
+<span style="color:#75715e"># NAME - 클러스터 내 디플로이먼트 이름</span>
+<span style="color:#75715e"># READY - 현재 replica 수 / 원하는(desired) replica 수</span>
+<span style="color:#75715e"># UP-TO-DATE - desired 상태를 달성하기 위해 업데이트한 replica 수</span>
+<span style="color:#75715e"># AVAILABLE - 사용 가능한 replica 수</span>
+<span style="color:#75715e"># AGE - 애플리케이션 실행 시간</span>
+kubectl get deployments
+
+<span style="color:#75715e"># 프록시 생성 - 클러스터 접근 가능하도록 포워딩 (파드는 독립된 내부망 사용)</span>
+<span style="color:#75715e"># (터미널 새 탭에서 실행)</span>
+kubectl proxy
+
+<span style="color:#75715e"># 호스트에서 쿠버네티스 클러스터에 접근 가능, API 확인 및 실행</span>
+curl http://localhost:8001
+curl http://localhost:8001/version
+
+<span style="color:#75715e">##### 앱 조사하기 #####</span>
+
+<span style="color:#75715e"># kubectl get      - 자원 나열</span>
+<span style="color:#75715e"># kubectl describe - 자원에 대한 상세 정보 확인</span>
+<span style="color:#75715e"># kubectl logs     - 파드 내 컨테이너 로그 출력</span>
+<span style="color:#75715e"># kubectl exec     - 파드 내 컨테이너에 명령어 실행</span>
+
+<span style="color:#75715e"># 파드 확인</span>
+kubectl get pods
+
+<span style="color:#75715e"># 파드 상세 정보 확인 (e.g. 컨테이너, 이미지)</span>
+kubectl describe pods
+
+<span style="color:#75715e"># 파드 이름 저장 및 출력</span>
+export POD_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get pods -o go-template --template <span style="color:#e6db74">&#39;{{range .items}}{{.metadata.name}}{{&#34;\n&#34;}}{{end}}&#39;</span><span style="color:#66d9ef">)</span>
+echo Name of the Pod: $POD_NAME
+
+<span style="color:#75715e"># 파드 내 컨테이너 로그 출력 (컨테이너가 1개이므로 컨테이너명 생략)</span>
+kubectl logs $POD_NAME
+
+<span style="color:#75715e"># 파드 내 컨테이너 환경변수 목록 출력</span>
+kubectl exec $POD_NAME -- env
+
+<span style="color:#75715e"># 컨테이너 bash 실행</span>
+kubectl exec -ti $POD_NAME -- bash
+
+<span style="color:#75715e"># 컨테이너 bash - 코드 확인</span>
+cat server.js
+
+<span style="color:#75715e"># 컨테이너 bash - 애플리케이션 실행 확인</span>
+curl localhost:8080
+
+<span style="color:#75715e"># 컨테이너 bash 종료</span>
+exit
+
+<span style="color:#75715e">##### 앱 스케일링하기 #####</span>
+
+<span style="color:#75715e"># 디플로이먼트 확인</span>
+kubectl get deployments
+
+<span style="color:#75715e"># 디플로이먼트가 생성한 ReplicaSet 확인</span>
+<span style="color:#75715e"># NAME - ReplicaSet 이름 ([디플로이먼트이름]-[랜덤문자열])</span>
+<span style="color:#75715e"># DESIRED - 애플리케이션의 원하는 replica 수</span>
+<span style="color:#75715e"># CURRENT - 현재 실행 중인 replica 수</span>
+kubectl get rs
+
+<span style="color:#75715e"># replica를 4개로 스케일링</span>
+kubectl scale deployments/kubernetes-bootcamp --replicas<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+
+<span style="color:#75715e"># 디플로이먼트 확인 -&gt; replica 4개로 변경됨</span>
+kubectl get deployments
+
+<span style="color:#75715e"># 파드 정보 조회 - 각 파드마다 ip 주소 할당</span>
+kubectl get pods -o wide
+
+<span style="color:#75715e"># 디플로이먼트 상세 정보 - Event에 로그 추가됨</span>
+kubectl describe deployments/kubernetes-bootcamp
+
+<span style="color:#75715e"># replica 2개로 스케일 다운</span>
+kubectl scale deployments/kubernetes-bootcamp --replicas<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+
+<span style="color:#75715e"># 디플로이먼트 확인 -&gt; replica 2개로 변경됨</span>
+kubectl get deployments
+
+<span style="color:#75715e"># 파드 정보 조회 - 2개의 파드가 종료됨</span>
+kubectl get pods -o wide
+
+<span style="color:#75715e">##### 앱 업데이트하기 #####</span>
+
+<span style="color:#75715e"># 디플로이먼트 확인</span>
+kubectl get deployments
+
+<span style="color:#75715e"># 파드 확인</span>
+kubectl get pods
+
+<span style="color:#75715e"># 파드 상세 정보에서 현재 이미지 버전 확인 (Image 필드)</span>
+kubectl describe pods
+
+<span style="color:#75715e"># set image 명령어로 이미지 업데이트 (디플로이먼트 이름, 이미지 버전 전달)</span>
+kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp<span style="color:#f92672">=</span>jocatalin/kubernetes-bootcamp:v2
+
+<span style="color:#75715e"># 파드 확인</span>
+kubectl get pods
+
+<span style="color:#75715e"># rollout 상태 확인</span>
+kubectl rollout status deployments/kubernetes-bootcamp
+
+<span style="color:#75715e"># 파드 상세 정보에서 현재 이미지 버전 확인 -&gt; v2로 업데이트됨</span>
+kubectl describe pods
+
+<span style="color:#75715e"># v10 태그 이미지로 업데이트해보기</span>
+kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp<span style="color:#f92672">=</span>gcr.io/google-samples/kubernetes-bootcamp:v10
+
+<span style="color:#75715e"># 파드 확인 - ErrImagePull 또는 ImagePullBackOff 상태 발생</span>
+kubectl get pods
+
+<span style="color:#75715e"># 파드 상세 정보에서 에러 확인 (Events) - v10 버전이 존재하지 않음</span>
+kubectl describe pods
+
+<span style="color:#75715e"># rollout 되돌리기</span>
+kubectl rollout undo deployments/kubernetes-bootcamp
+
+<span style="color:#75715e"># 파드 확인</span>
+kubectl get pods
+
+
+<span style="color:#75715e"># minikube 클러스터 정지</span>
+minikube stop
+
+<span style="color:#75715e"># minikube 클러스터 삭제</span>
+minikube delete
+</code></pre></div></div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

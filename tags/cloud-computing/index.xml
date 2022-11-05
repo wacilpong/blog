@@ -6,10 +6,19 @@
     <description>Recent content in cloud-computing on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sat, 15 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Oct 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/cloud-computing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>모두를 위한 클라우드 컴퓨팅 6</title>
+      <link>https://wacilpong.github.io/blog/study/cloud-computing/6/</link>
+      <pubDate>Fri, 28 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/cloud-computing/6/</guid>
+      <description>쿠버네티스(Kubernetes) 등장 배경 소프트웨어 배포 방식의 변화 전통적 배포 방식 한 대의 물리서버에 여러 애플리케이션이 동작 각 애플리케이션 리소스 제</description>
+    </item>
     
     <item>
       <title>모두를 위한 클라우드 컴퓨팅 5</title>
