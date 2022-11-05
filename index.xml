@@ -305,7 +305,7 @@
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2022/</guid>
-      <description>2022-10-26 실제로 서빙되고 있는데도 lsof -i :{port}로 아무것도 뜨지 않을 때? 80 기본포트로 도커 컨테이너를 서빙했다가 정지 및 삭제했는데 죽지 않아 강제로 kill하</description>
+      <description>2022-11-5 [oh-my-zsh] Insecure completion-dependent directories detected:... /usr/local 경로의 모든 파일에 대한 소유 권한을 초기화할 일이 있었다. $ sudo chown -R $(whoami):admin /usr/local/*\ $ &amp;amp;&amp;amp; sudo chmod -R g+rwx /usr/local/* /usr/local은 개인 컴퓨터에서 지역적으로 생성</description>
     </item>
     
     <item>
