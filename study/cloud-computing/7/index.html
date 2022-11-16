@@ -181,58 +181,58 @@
 </li>
 <li>
 <p>둘다 인스턴스 터미널에 접속해 도커 설치</p>
-<pre><code>$ curl -fsSl https://get.docker.com -o get-docker.sh
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ curl -fsSl https://get.docker.com -o get-docker.sh
 
-// 슈퍼유저 권한으로 실행
+<span style="color:#75715e"># 슈퍼유저 권한으로 실행</span>
 $ sudo sh get-docker.sh
 
-// 현재 계정을 docker 그룹에 추가
-// centos 접속 상태로 docker 명령어를 sudo 없이 수행 가능해짐
-// 참고로 현재 터미널 세션에는 적용되지 않으므로 껐켰 ㄱㄱ
+<span style="color:#75715e"># 현재 계정을 docker 그룹에 추가</span>
+<span style="color:#75715e"># centos 접속 상태로 docker 명령어를 sudo 없이 수행 가능해짐</span>
+<span style="color:#75715e"># 참고로 현재 터미널 세션에는 적용되지 않으므로 껐켰 ㄱㄱ</span>
 $ sudo usermod -aG docker centos
 
-// 도커 실행 및 인스턴스 재부팅되어도 자동 실행되도록 함
+<span style="color:#75715e"># 도커 실행 및 인스턴스 재부팅되어도 자동 실행되도록 함</span>
 $ sudo systemctl start docker
 $ sudo systemctl enable docker
 
 $ docker ps
-</code></pre></li>
+</code></pre></div></li>
 <li>
 <p>젠킨스도 설치</p>
-<pre><code>// 권한 문제가 뜨면 소유권을 centos로 변경해야 함
-$ docker run -v /var/run/docker.sock:/var/run/docker.sock \
--v /srv/jenkins/home:/var/jenkins_home \
--p 8080:8080 --name jenkins jenkins/jenkins
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 권한 문제가 뜨면 소유권을 centos로 변경해야 함</span>
+$ docker run -v /var/run/docker.sock:/var/run/docker.sock <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /srv/jenkins/home:/var/jenkins_home <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-p 8080:8080 --name jenkins jenkins/jenkins
 
 $ ls -l /srv/jenkins
-total 0
-drwxr-xr-x. 2 root root 6 Nov 15 11:06 home
+total <span style="color:#ae81ff">0</span>
+drwxr-xr-x. <span style="color:#ae81ff">2</span> root root <span style="color:#ae81ff">6</span> Nov <span style="color:#ae81ff">15</span> 11:06 home
 
 $ sudo chown -R centos:centos /srv/jenkins/home/
-total 0
-drwxr-xr-x. 2 centos centos 6 Nov 15 11:06 home
+total <span style="color:#ae81ff">0</span>
+drwxr-xr-x. <span style="color:#ae81ff">2</span> centos centos <span style="color:#ae81ff">6</span> Nov <span style="color:#ae81ff">15</span> 11:06 home
 
-// 종료상태인 젠킨스 컨테이너 제거 후 다시 실행
-// 젠킨스 최초 접속 시 필요한 패스워드니까 기록해두기
+<span style="color:#75715e"># 종료상태인 젠킨스 컨테이너 제거 후 다시 실행</span>
+<span style="color:#75715e"># 젠킨스 최초 접속 시 필요한 패스워드니까 기록해두기</span>
 $ docker rm jenkins
-$ docker run -v /var/run/docker.sock:/var/run/docker.sock \
--v /srv/jenkins/home:/var/jenkins_home \
--p 8080:8080 --name jenkins jenkins/jenkins
+$ docker run -v /var/run/docker.sock:/var/run/docker.sock <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /srv/jenkins/home:/var/jenkins_home <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-p 8080:8080 --name jenkins jenkins/jenkins
 
 Jenkins initial setup is required. An admin user has been created and a password generated.
 Please use the following password to proceed to installation:
 
-{password}
+<span style="color:#f92672">{</span>password<span style="color:#f92672">}</span>
 
 This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 
-// 백그라운드로 실행하는 d 옵션을 추가해 젠킨스 컨테이너 실행
+<span style="color:#75715e"># 백그라운드로 실행하는 d 옵션을 추가해 젠킨스 컨테이너 실행</span>
 $ docker rm jenkins
-$ docker run -v /var/run/docker.sock:/var/run/docker.sock \
--v /srv/jenkins/home:/var/jenkins_home \
--p 8080:8080 -d --name jenkins jenkins/jenkins
-</code></pre></li>
+$ docker run -v /var/run/docker.sock:/var/run/docker.sock <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /srv/jenkins/home:/var/jenkins_home <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-p 8080:8080 -d --name jenkins jenkins/jenkins
+</code></pre></div></li>
 <li>
 <p>콘솔에서 centOS &gt; manage &gt; networing 이동</p>
 <ul>
@@ -242,40 +242,39 @@ $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
 </li>
 <li>
 <p>컨테이너 내부에서 도커 명령어 사용할 수 있게 설정</p>
-<pre><code>$ cat /etc/group | grep docker
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cat /etc/group | grep docker
 docker:x:994:centos
 
-// 도커 컨테이너 루트로 접속함
-// -u 0 옵션은 사용자를 루트로 접속시키라는 의미
-$ docker exec -it -u 0 jenkins bash
-root@~~~:/#
+<span style="color:#75715e"># 도커 컨테이너 루트로 접속함</span>
+<span style="color:#75715e"># -u 0 옵션은 사용자를 루트로 접속시키라는 의미</span>
+$ docker exec -it -u <span style="color:#ae81ff">0</span> jenkins bash
+root@~~~:
 
-// 이때 도커 바이너리는 본인에게 설치된 버전 링크로 복붙
-root@~~~:/# curl -fsSl https://download.docker.com/linux/static/stable/x86_64/dock
-er-20.10.21.tgz -o docker-20.10.21.tgz
-root@~~~:/# ls -l docker-20.10.21.tgz
--rw-r--r--. 1 root root 65976998 Nov 15 11:36 docker-20.10.21.tgz
+<span style="color:#75715e"># 이때 도커 바이너리는 본인에게 설치된 버전 링크로 복붙</span>
+root@~~~: curl -fsSl https://download.docker.com/linux/static/stable/x86_64/docker-20.10.21.tgz -o docker-20.10.21.tgz
+root@~~~: ls -l docker-20.10.21.tgz
+-rw-r--r--. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">65976998</span> Nov <span style="color:#ae81ff">15</span> 11:36 docker-20.10.21.tgz
 
-// 다운로드한 바이너리 파일 압축해제
-root@~~~:/# tar xvfz docker-20.10.21.tgz
-root@~~~:/# cp ./docker/docker /usr/bin
-root@~~~:/# ls -l /usr/bin/docker
--rwxr-xr-x. 1 root root 48047088 Nov 15 11:38 /usr/bin/docker
+<span style="color:#75715e"># 다운로드한 바이너리 파일 압축해제</span>
+root@~~~: tar xvfz docker-20.10.21.tgz
+root@~~~: cp ./docker/docker /usr/bin
+root@~~~: ls -l /usr/bin/docker
+-rwxr-xr-x. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">48047088</span> Nov <span style="color:#ae81ff">15</span> 11:38 /usr/bin/docker
 
-// 젠킨스 컨테이너 내부에 docker 그룹 추가
-// centOS-1의 docker 그룹과 동일한 ID(994) 추가
-root@~~~:/# groupadd -g 994 docker
-root@~~~:/# cat /etc/group | grep docker
+<span style="color:#75715e"># 젠킨스 컨테이너 내부에 docker 그룹 추가</span>
+<span style="color:#75715e"># centOS-1의 docker 그룹과 동일한 ID(994) 추가</span>
+root@~~~: groupadd -g <span style="color:#ae81ff">994</span> docker
+root@~~~: cat /etc/group | grep docker
 
-// 젠킨스 컨테이너 내부에 jenkins 계정 추가
-root@~~~:/# usermod -aG docker jenkins
-root@~~~:/# id jenkins
-uid=1000(jenkins) gid=1000(jenkins) groups=1000(jenkins),994(docker)
+<span style="color:#75715e"># 젠킨스 컨테이너 내부에 jenkins 계정 추가</span>
+root@~~~: usermod -aG docker jenkins
+root@~~~: id jenkins
+uid<span style="color:#f92672">=</span>1000<span style="color:#f92672">(</span>jenkins<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>1000<span style="color:#f92672">(</span>jenkins<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>1000<span style="color:#f92672">(</span>jenkins<span style="color:#f92672">)</span>,994<span style="color:#f92672">(</span>docker<span style="color:#f92672">)</span>
 
-root@~~~:/# exit
+root@~~~: exit
 
-// 젠킨스 계정으로 젠킨스 컨테이너에 접속
-// 본인 도커허브 로그인할 때 이메일 말고 ID 써야함
+<span style="color:#75715e"># 젠킨스 계정으로 젠킨스 컨테이너에 접속</span>
+<span style="color:#75715e"># 본인 도커허브 로그인할 때 이메일 말고 ID 써야함</span>
 $ docker exec -it jenkins bash
 $ docker ps
 $ docker login
@@ -283,7 +282,7 @@ $ docker login
 Login Succeeded
 $ exit
 $ docker restart jenkins
-</code></pre></li>
+</code></pre></div></li>
 </ul>
 <p><br /></p>
 <h3 id="-github---">실습: github와 젠킨스 연동 설정</h3>
@@ -319,7 +318,7 @@ $ docker restart jenkins
 </ul>
 <p><br /></p>
 <h3 id="-nginx----develop--">실습: nginx 예제 프로젝트 가져와 develop 브랜치에 푸시하기</h3>
-<pre><code>$ wget https://github.com/startbootstrap/startbootstrap-freelancer/archive/gh-pages.zip
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ wget https://github.com/startbootstrap/startbootstrap-freelancer/archive/gh-pages.zip
 $ unzip gh-pages.zip
 $ cp -r startbootstrap-freelancer-gh-pages/* ./
 $ rm -rf gh-pages.zip startbootstrap-freelancer-gh-pages/
@@ -328,24 +327,128 @@ FROM nginx:latest
 COPY . /usr/share/nginx/html
 
 $ vi container_check.sh
-NGINX_CONTAINER_ID=`docker ps -aq --filter 'name=nginx'`
+NGINX_CONTAINER_ID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>docker ps -aq --filter <span style="color:#e6db74">&#39;name=nginx&#39;</span><span style="color:#e6db74">`</span>
 
-if [ -n &quot;$NGINX_CONTAINER_ID&quot; ];
-  then
-      echo &quot;nginx container exist&quot;
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$NGINX_CONTAINER_ID<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>;
+  <span style="color:#66d9ef">then</span>
+      echo <span style="color:#e6db74">&#34;nginx container exist&#34;</span>
       docker stop $NGINX_CONTAINER_ID
       docker rm $NGINX_CONTAINER_ID
       docker run -d -p 80:80 --name nginx nginx:test
-  else
-      echo &quot;nginx container not exist&quot;
+  <span style="color:#66d9ef">else</span>
+      echo <span style="color:#e6db74">&#34;nginx container not exist&#34;</span>
       docker run -d -p 80:80 --name nginx nginx:test
-fi
+<span style="color:#66d9ef">fi</span>
 
 $ ga .
-$ g commit -m &quot;ADD test files&quot;
+$ g commit -m <span style="color:#e6db74">&#34;ADD test files&#34;</span>
 $ gp -u origin develop
-</code></pre><ul>
+</code></pre></div><ul>
 <li>이후 본인 centOS-1 public IP 접속하면 화면이 보일 것이다. (80이므로 포트 생략가능)</li>
+<li>jenkins에 main 브랜치용 item을 하나 더 생성
+<ul>
+<li>execute shell 체크하고 아래 명령 작성</li>
+<li><code>docker build -t roomyhan/nginx:prod . &amp;&amp; docker push roomyhan/nginx:prod</code></li>
+<li>이외에 모든 설정은 develop과 같음</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h3 id="-------">실습: 빌드된 도커 이미지가 도커허브에 푸시되면 자동 실행</h3>
+<ul>
+<li>
+<p><strong>jenkins 관리 &gt; 플러그인 관리 &gt; Available plugins</strong></p>
+<ul>
+<li><code>publish over SSH</code>, <code>CloudBase docker hub/registry noti</code> 설치</li>
+<li>이후 jenkins 껐켰 or 도커 컨테이너 지우고 다시 띄우기</li>
+<li>시스템 설정 가보면 Publish over SSH 탭이 생긴다.</li>
+<li>Key에 centOS 인스턴스 생성 시 설정한 default key를 복사한다.
+<ul>
+<li><code>cat ~/Downloads/LightsailDefaultKey-ap-northeast-2.pem</code></li>
+<li><code>--BEGIN~</code>부터 끝까지 다 복사해야 한다.</li>
+</ul>
+</li>
+<li>SSH servers 추가
+<ul>
+<li>hostname은 centOS-2 public IP를 입력한다.</li>
+<li>username은 <code>centos</code>이다.</li>
+<li>이후 Test Configuration을 클릭해 테스트가 성공하면 최종 저장한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>본인 도커허브의 nginx 레포 &gt; Webhook &gt; Add Webhook</strong></p>
+<ul>
+<li>name: <code>nginx-production-server-common</code></li>
+<li>url: <code>http://{lightsail public IP}:8080/dockerhub-webhook/notify</code></li>
+</ul>
+</li>
+<li>
+<p><strong>jenkins에 도커허브용 item 생성</strong></p>
+<ul>
+<li>빌드 유발 &gt; <code>monitor docker hub...</code> 하위 모두 체크</li>
+<li>repo에는 <code>{본인도커허브ID}/nginx</code> 입력</li>
+<li>Build Steps &gt; send files&hellip; &gt; exec command에 아래 명령을 입력한다.
+<ul>
+<li><code>docker pull roomyhan/nginx:prod &amp;&amp; sh container_check.sh</code></li>
+<li>도커허브에 새로운 이미지가 업로드되면 nginx:prod를 로컬로 다운로드하고 sh 실행시킨다.</li>
+<li>해당 sh은 새로 갱신된 이미지를 기반으로 컨테이너를 실행시킨다.</li>
+<li>즉, 가장 최근에 도커허브로 전달된 이미지로 컨테이너가 배포된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>centOS-2 루트에 container_check 스크립트를 생성한다.</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#/bin/sh</span>
+
+NGINX_CONTAINER_ID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>docker ps -aq --filter <span style="color:#e6db74">&#39;name=nginx&#39;</span><span style="color:#e6db74">`</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$NGINX_CONTAINER_ID<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>;
+  <span style="color:#66d9ef">then</span>
+    echo <span style="color:#e6db74">&#34;nginx container exist&#34;</span>
+    docker stop $NGINX_CONTAINER_ID
+docker rm $NGINX_CONTAINER_ID
+    docker run -d -p 80:80 --name nginx roomyhan/nginx:prod
+  <span style="color:#66d9ef">else</span>
+    echo <span style="color:#e6db74">&#34;nginx container not exist&#34;</span>
+    docker run -d -p 80:80 --name nginx roomyhan/nginx:prod
+<span style="color:#66d9ef">fi</span>
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<h3 id="-----1">지금까지의 설정을 통해 수행되는 일들</h3>
+<ul>
+<li>develop에 푸시하면 github 웹훅에 의해 centOS-1에서 동작하는 젠킨스가 develop의 코드를 받아온다.</li>
+<li>받아온 코드를 기반으로 nginx 이미지를 생성하고 nginx 컨테이너를 실행시킨다.</li>
+<li>centOS-1의 public IP로 접속하면 수정사항이 반영되어 있다.</li>
+<li>develop을 main으로 머지하면 nginx 이미지를 생성해 도커허브에 업로드한다.</li>
+<li>도커허브에서 젠킨스에 웹훅을 보내 새로운 이미지를 centOS-2에서 컨테이너로 실행한다.
+<ul>
+<li>즉, 젠킨스는 SSH를 통해 centOS-2 도커허브에서 이미지를 받아온다.</li>
+<li>그리고 container_check 스크립트를 실행해 갱신된 이미지 기반의 컨테이너를 실행한다.</li>
+</ul>
+</li>
+<li>centOS-2의 public IP로 접속하면 수정사항이 반영되어 있음을 알 수 있다.</li>
+</ul>
+<p><br /></p>
+<h2 id="heading">시행착오</h2>
+<ul>
+<li><code>/tmp/jenkins12655071034461658190.sh: 2: docker: not found</code> 빌드에러
+<ul>
+<li>centOS-1에서 젠킨스 계정으로 도커 루트로 들어간다.<br />
+(docker exec -it -u 0 jenkins bash)</li>
+<li>젠킨스 컨테이너 내부에 docker 그룹을 다시 추가했다.</li>
+</ul>
+</li>
+<li><code>if [ -n &quot;$NGINX_CONTAINER_ID&quot;];</code>
+<ul>
+<li>위처럼 맨 끝 괄호 띄어쓰기를 붙여서 작성하면 안된다.</li>
+<li>이거 못찾아서 30분이나 헤맸다.</li>
+<li>sh 작성할 때는 띄어쓰기 같은 사소한 것들을 주의하자.</li>
+</ul>
+</li>
 </ul>
 </div>
 
