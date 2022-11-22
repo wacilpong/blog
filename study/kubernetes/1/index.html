@@ -4,13 +4,13 @@
         <meta name="description" content="" />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="cloud-computing" />
-<meta property="og:site_name" content="cloud-computing" />
+<meta property="og:title" content="kube 1" />
+<meta property="og:site_name" content="kube 1" />
 <meta property="og:description" content="" />
-<meta property="og:url" content="https://wacilpong.github.io/blog/tags/cloud-computing/" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/kubernetes/1/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="cloud-computing" />
+<meta name="twitter:title" content="kube 1" />
 <meta name="twitter:description" content="" />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>cloud-computing</title>
+        <title>kube 1</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -91,9 +91,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.62.0" />
         
-            <link href="/blog/tags/cloud-computing/index.xml" rel="alternate" type="application/rss&#43;xml" title="Roomy" />
-            <link href="/blog/tags/cloud-computing/index.xml" rel="feed" type="application/rss&#43;xml" title="Roomy" />
-        
 
         
 
@@ -111,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">cloud-computing</a>
+                    <a class="navbar-brand visible-xs" href="#">kube 1</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -150,78 +147,81 @@
 
 <main>
 
-    <h2>cloud-computing</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/3/">모두를 위한 클라우드 컴퓨팅 3</a></h4>
-    <h5>2022-10-03</h5>
-    
+    <div>
+        <h2>kube 1</h2>
+        <h5></h5>
+        
 <a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
 
 
+    </div>
 
+    <div align="start" class="content"><h2 id="1">1</h2>
+<ul>
+<li>도커 컨테이너에서 기본 사용자는 root, 호스트 이름은 무작위 16진수 해시값이다.</li>
+<li><code>docker run</code> 컨테이너 생성 시 <code>-i</code>로 상호입출력, <code>-t</code>로 tty 활성화하여 bash를 사용하도록 한다.</li>
+<li>도커의 모든 명령어는 접두어인 docker 다음에 특정 구성단위를 명시해 제어할 수 있다.
+<ul>
+<li>ex) docker container/image/volume inspect</li>
+<li>위 명령어는 컨테이너/이미지/볼륨의 정보를 출력한다.</li>
+</ul>
+</li>
+<li><code>docker volume prune</code>은 사용하지 않는 도커 볼륨을 한번에 삭제한다.</li>
+<li>모든 컨테이너는 이미지를 기반으로 생성된다.</li>
+<li><a href="https://hub.docker.com/">도커허브</a>에서 도커 이미지 각 태그들 의미
+<ul>
+<li><code>alpine</code>: Alpine images are based on the Alpine Linux Project</li>
+<li><code>stretch/buster/jessie</code>: for Debian releases</li>
+<li><code>-slim</code>: a paired down version of the full image. This image generally only installs the minimal packages needed to run your particular tool.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2">2</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">FROM nginx
+
+<span style="color:#75715e"># nginx의 default.conf를 삭제</span>
+RUN rm <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d<span style="color:#f92672">/</span>default.conf
+
+<span style="color:#75715e"># host pc의 nginx.conf를 아래 경로에 복사</span>
+COPY ./nginx.config <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d
+
+<span style="color:#75715e"># 80 포트 오픈</span>
+EXPOSE <span style="color:#ae81ff">80</span>
+
+<span style="color:#75715e"># container 실행 시 자동으로 실행할 command. nginx 시작함</span>
+CMD nginx <span style="color:#f92672">-</span>g <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">daemon off;&#39;</span>
+</code></pre></div><ul>
+<li>
+<p>내 리액트앱을 도커이미지로 만드는 Dockerfile이다.</p>
+</li>
+<li>
+<p>SPA라서 static파일을 서빙하면 끝이므로 사실 nginx 디폴트 설정을 그대로 써도 된다.<br />
+<em>물론 복사만 해서 이미지를 만드는 것이므로 로컬에 build결과물을 미리 만들어두어야 함</em></p>
+</li>
+<li>
+<p><a href="https://hub.docker.com/_/nginx">nginx 공식이미지 도커허브</a>를 가보면 80포트와 실행 cm가 모두 설정되어 있어서 그대로 써도 된다.</p>
+</li>
+<li>
+<p>그래서 사실 아래 두줄이면 된다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># 미리 build 결과물 만든 후 실행</span>
+FROM nginx
+COPY build <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
+</code></pre></div></li>
+<li>
+<p>이후 아래 커맨드 실행</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 특정 파일명을 가진 도커파일로 local 태그를 달아 도커이미지 빌드</span>
+docker build -t todo:local -f Dockerfile-client .
+docker images
+
+<span style="color:#75715e"># local 태그를 가진 todo 이미지를 기반으로 컨테이너 실행</span>
+<span style="color:#75715e"># 이후 localhost:3000에서 접속되는 것을 확인</span>
+docker run -d --name todo -p 3000:80 todo:local
+docker ㅔㄴ
+</code></pre></div></li>
+</ul>
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/2/">모두를 위한 클라우드 컴퓨팅 2</a></h4>
-    <h5>2022-09-26</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/1/">모두를 위한 클라우드 컴퓨팅 1</a></h4>
-    <h5>2022-09-19</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
- 
 
 </main>
-
-
-
-<div class="pages">
-
-    
-        <a class="icon pages-icon" href="/blog/tags/cloud-computing/" rel="prev">
-            <i class="fa fa-arrow-left"></i>
-        </a>
-    
-
-    
-
-</div>
-
-
 
         <footer>
             <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
