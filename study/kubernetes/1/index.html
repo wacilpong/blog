@@ -149,7 +149,7 @@
 
     <div>
         <h2>kube 1</h2>
-        <h5></h5>
+        <h5>Build docker image</h5>
         
 <a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
 
@@ -176,6 +176,7 @@
 </ul>
 </li>
 </ul>
+<p><br /></p>
 <h2 id="2">2</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">FROM nginx
 
@@ -216,8 +217,40 @@ docker images
 <span style="color:#75715e"># local 태그를 가진 todo 이미지를 기반으로 컨테이너 실행</span>
 <span style="color:#75715e"># 이후 localhost:3000에서 접속되는 것을 확인</span>
 docker run -d --name todo -p 3000:80 todo:local
-docker ㅔㄴ
+docker ps
 </code></pre></div></li>
+</ul>
+<p><br /></p>
+<h2 id="3">3</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># Build Stage Start</span>
+<span style="color:#75715e"># Specify a base image</span>
+FROM node<span style="color:#f92672">:</span>alpine as builder
+
+<span style="color:#75715e"># Specify a working directory</span>
+WORKDIR <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/app&#39;</span>
+
+<span style="color:#75715e"># Copy the dependencies file</span>
+COPY package.json .
+
+<span style="color:#75715e"># Install dependencies</span>
+RUN npm install
+
+<span style="color:#75715e"># Copy remaining files</span>
+COPY . .
+
+<span style="color:#75715e"># Build the project for production</span>
+RUN npm run build
+
+<span style="color:#75715e"># Run Stage Start</span>
+FROM nginx
+
+<span style="color:#75715e"># Copy production build files from builder phase to nginx</span>
+COPY <span style="color:#f92672">-</span><span style="color:#f92672">-</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
+</code></pre></div><ul>
+<li>위처럼 컨테이너 이미지애는 필요 없지만 이미지를 빌드할 때만 필요한 경우 <code>multi stage</code> 방식으로 만들 수 있다.</li>
+<li>node 스테이지에서 필요한 파일과 dependency 모두 컨테이너로 카피하고, build 명령을 돌린다.</li>
+<li>nginx 스테이지에서는 빌드 결과물을 가져와서(<code>as builder</code>) nginx 컨테이너로 카피한다.</li>
+<li><a href="https://docs.docker.com/build/building/multi-stage/">https://docs.docker.com/build/building/multi-stage/</a></li>
 </ul>
 </div>
 
