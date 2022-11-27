@@ -44,7 +44,7 @@
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/kubernetes/1/</guid>
-      <description>1 도커 컨테이너에서 기본 사용자는 root, 호스트 이름은 무작위 16진수 해시값이다. docker run 컨테이너 생성 시 -i로 상호입출력, -t로 tty 활성화하여 bash를 사용하</description>
+      <description>~ 도커 컨테이너에서 기본 사용자는 root, 호스트 이름은 무작위 16진수 해시값이다. docker run 컨테이너 생성 시 -i로 상호입출력, -t로 tty 활성화하여 bash를 사용하</description>
     </item>
     
     <item>
