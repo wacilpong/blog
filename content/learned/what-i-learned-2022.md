@@ -6,7 +6,25 @@ og_description: "About what I learned at 2022"
 draft: false
 ---
 
-## **2022-11-5**
+## **2022-11-29**
+
+- `[oh-my-zsh] To fix your permissions you can do so by disabling...`
+
+  - 해당 디렉터리의 owner가 현재 user와 다른 경우 발생한다.
+  - 계정이 2개일 수 있어서 그냥 에러 메시지를 무시해주기로 했다.
+
+    ```sh
+    $ vi ~/.zshrc
+
+    # source 전에 해줘야 한다.
+    ZSH_DISABLE_COMPFIX="true"
+
+    source $ZSH/oh-my-zsh.sh
+    ```
+
+<br />
+
+## **2022-11-05**
 
 - `[oh-my-zsh] Insecure completion-dependent directories detected:...`
 
