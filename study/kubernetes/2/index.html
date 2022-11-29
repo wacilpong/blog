@@ -4,13 +4,13 @@
         <meta name="description" content="" />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="" />
-<meta property="og:site_name" content="" />
+<meta property="og:title" content="kube 2" />
+<meta property="og:site_name" content="kube 2" />
 <meta property="og:description" content="" />
-<meta property="og:url" content="https://wacilpong.github.io/blog/study/" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/kubernetes/2/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="" />
+<meta name="twitter:title" content="kube 2" />
 <meta name="twitter:description" content="" />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Studies</title>
+        <title>kube 2</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -91,9 +91,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.62.0" />
         
-            <link href="/blog/study/index.xml" rel="alternate" type="application/rss&#43;xml" title="Roomy" />
-            <link href="/blog/study/index.xml" rel="feed" type="application/rss&#43;xml" title="Roomy" />
-        
 
         
 
@@ -111,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Studies</a>
+                    <a class="navbar-brand visible-xs" href="#">kube 2</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -150,116 +147,69 @@
 
 <main>
 
-    <h2>Studies</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-4/">After reading Rust book chapter 4</a></h4>
-    <h5>2022-04-13</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
+    <div>
+        <h2>kube 2</h2>
+        <h5>Minikube</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
 
 
+    </div>
 
+    <div align="start" class="content"><h2 id="--6-">시작하세요! 도커/쿠버네티스 6장 읽기</h2>
+<ul>
+<li>쿠버네티스는 대부분의 리소스를 &lsquo;오브젝트'라고 불리는 형태로 관리한다.
+<ul>
+<li>컨테이너의 집합(Pods), Pods를 관리하는 컨트롤러(Replica Set), 사용자(Service Account), 노드(Node)&hellip;</li>
+<li><code>kubectl explain {이름 ex. pod}</code>으로 특정 오브젝트의 간단한 설명을 볼 수 있다.</li>
+</ul>
+</li>
+<li>쿠버네티스를 잘 사용하는 방법을 한마디로 표현하자면 YAML 파일을 잘 작성하는 것이다.</li>
+<li>쿠버네티스를 구성하는 여러 컴포넌트들은 기본적으로 컨테이너로서 실행되고 있다.</li>
+</ul>
+<p><br /></p>
+<h4 id="pod----">파드(Pod): 컨테이너를 다루는 기본 단위</h4>
+<ul>
+<li>
+<p>컨테이너 애플리케이션을 배포하기 위한 기본 단위이다.</p>
+</li>
+<li>
+<p>1개의 파드에는 1+a개의 컨테이너가 존재할 수 있다.<br />
+<em>ex. 동일한 nginx 컨테이너를 여러 개 생성하려면 1개 nginx 컨테이너가 담긴 파드를 여러 개 생성</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># nginx-pod.yaml</span>
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx-pod
+spec:
+  containers:
+    - name: my-nginx-container
+      image: nginx:latest
+      ports:
+        - containerPort: <span style="color:#ae81ff">80</span>
+          protocol: TCP
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 파드 생성</span>
+$ kubectl apply -f pod.yaml
+
+<span style="color:#75715e"># 현재 쿠버네티스에 존재하는 파드 목록</span>
+$ kubectl get pods
+
+<span style="color:#75715e"># IP를 포함한 파드 정보 출력</span>
+<span style="color:#75715e"># 이때 IP는 클러스터 내부에서만 접근 가능한 상태</span>
+$ kubectl describe pods my-nginx-pod
+
+<span style="color:#75715e"># 파드 컨테이너 내부로 진입</span>
+$ kubectl exec -it my-nginx-pod bash
+root@my-nginx-pod:/# ls /etc/nginx
+root@my-nginx-pod:/# exit
+
+<span style="color:#75715e"># 쿠버네티스 오브젝트는 쉽게 삭제 가능</span>
+$ kubectl delete -f pod.yaml
+</code></pre></div></li>
+</ul>
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-3/">After reading Rust book chapter 3</a></h4>
-    <h5>2022-04-05</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-2/">After reading Rust book chapter 2</a></h4>
-    <h5>2022-04-03</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/rust/rust-1/">After reading Rust book chapter 1</a></h4>
-    <h5>2022-03-25</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/rust"><kbd class="item-tag">rust</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/blockchain/blockchain-10/">Mushroomy&#39;s Last Blockcahin Story</a></h4>
-    <h5>2018-10-26</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/blockchain"><kbd class="item-tag">blockchain</kbd></a>
-
-
-
-</div>
- 
 
 </main>
-
-
-
-<div class="pages">
-
-    
-        <a class="icon pages-icon" href="/blog/study/page/5/" rel="prev">
-            <i class="fa fa-arrow-left"></i>
-        </a>
-    
-
-    
-        <a class="icon pages-icon" href="/blog/study/page/7/" rel="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    
-
-</div>
-
-
 
         <footer>
             <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>

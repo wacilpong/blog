@@ -154,7 +154,28 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2022-11-5"><strong>2022-11-5</strong></h2>
+    <div align="start" class="content"><h2 id="2022-11-29"><strong>2022-11-29</strong></h2>
+<ul>
+<li>
+<p><code>[oh-my-zsh] To fix your permissions you can do so by disabling...</code></p>
+<ul>
+<li>
+<p>해당 디렉터리의 owner가 현재 user와 다른 경우 발생한다.</p>
+</li>
+<li>
+<p>계정이 2개일 수 있어서 그냥 에러 메시지를 무시해주기로 했다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ vi ~/.zshrc
+
+<span style="color:#75715e"># source 전에 해줘야 한다.</span>
+ZSH_DISABLE_COMPFIX<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>
+
+source $ZSH/oh-my-zsh.sh
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="2022-11-05"><strong>2022-11-05</strong></h2>
 <ul>
 <li>
 <p><code>[oh-my-zsh] Insecure completion-dependent directories detected:...</code></p>
