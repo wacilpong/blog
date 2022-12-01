@@ -176,8 +176,7 @@
 <li>
 <p>1개의 파드에는 1+a개의 컨테이너가 존재할 수 있다.<br />
 <em>ex. 동일한 nginx 컨테이너를 여러 개 생성하려면 1개 nginx 컨테이너가 담긴 파드를 여러 개 생성</em></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># nginx-pod.yaml</span>
-apiVersion: v1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
 kind: Pod
 metadata:
   name: my-nginx-pod
@@ -206,6 +205,125 @@ root@my-nginx-pod:/# exit
 <span style="color:#75715e"># 쿠버네티스 오브젝트는 쉽게 삭제 가능</span>
 $ kubectl delete -f pod.yaml
 </code></pre></div></li>
+<li>
+<p>파드 내부의 컨테이너들은 네트워크와 같은 리눅스 네임스페이스를 공유한다.</p>
+</li>
+<li>
+<p>하나의 파드는 하나의 완전한 애플리케이션이다.</p>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="replica-set-----">레플리카셋(Replica Set): 일정 개수의 파드를 유지하는 컨트롤러</h4>
+<ul>
+<li>
+<p>정해진 수의 동일한 파드가 항상 실행되도록 관리한다.</p>
+</li>
+<li>
+<p>노드 장애 등의 이유로 파드를 사용할 수 없다면 다른 노드에서 파드를 다시 생성한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-nginx
+spec:
+  replicas: <span style="color:#ae81ff">3</span>
+  selector:
+    matchLabels:
+      app: my-nginx-pods-label
+  template:
+    metadata:
+      name: my-nginx-pod
+      labels:
+        app: my-nginx-pods-label
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: <span style="color:#ae81ff">80</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 레플리카셋 생성</span>
+kubectl apply -f replicaset.yaml
+
+<span style="color:#75715e"># 레플리카셋과 파드 목록 출력</span>
+kubectl get po
+kubectl get rs
+
+<span style="color:#75715e"># 이름으로 레플리카셋 삭제</span>
+kubectl delete rs replicaset-nginx
+</code></pre></div></li>
+<li>
+<p>레플리카셋과 파드는 label selector를 이용해 느슨한 연결로 유지된다.</p>
+<ul>
+<li>레플리카셋은 <code>spec.selector.matchLabel</code>에 정의된 라벨을 통해 생성할 파드를 찾는다.</li>
+<li>즉, <code>app: my-nginx-pods-label</code> 라벨을 가지는 파드의 수 !== <code>spec.replicas</code> 이면, 파드를 정의하는 파드 템플릿(template) 내용으로 파드를 생성한다.</li>
+</ul>
+</li>
+<li>
+<p>레플리카셋의 목적은 파드 생성이 아니라 일정 개수의 파드를 유지하는 것이다.</p>
+</li>
+<li>
+<p>현재 파드의 수가 replicas에 설정된 값과 다르면 레플리카셋은 동일한 수를 유지하려 시도한다.</p>
+</li>
+<li>
+<p>따라서 위 예시에서 replicas 수를 수정해서 다시 생성하면 설정이 변경되고, 개수를 조정한다.</p>
+</li>
+</ul>
+<p><br /></p>
+<h4 id="deployment---">디플로이먼트(Deployment): 레플리카셋/파드의 배포를 관리</h4>
+<ul>
+<li>
+<p>실제 쿠버 운영 환경에서는 디플로이먼트라는 오브젝트를 YAML에 정의해 사용한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx-deployment
+spec:
+  replicas: <span style="color:#ae81ff">3</span>
+  selector:
+    matchLabels:
+      app: my-nginx
+  template:
+    metadata:
+      name: my-nginx-pod
+      labels:
+        app: my-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:<span style="color:#ae81ff">1.10</span>
+          ports:
+            - containerPort: <span style="color:#ae81ff">80</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 디플로이먼트 생성</span>
+kubectl apply -f deployment.yaml
+
+<span style="color:#75715e"># 디플로이먼트 목록 출력</span>
+kubectl get deploy
+kubectl get replicaset
+kubectl get pods
+</code></pre></div></li>
+<li>
+<p>디플로이먼트를 통해 애플리케이션의 업데이트와 배포를 더 편하게 할 수 있다.</p>
+<ul>
+<li>레플리카셋의 변경사항을 저장하는 revision을 남겨 롤백을 가능하게 해준다.</li>
+<li>무중단 서비스를 위해 파드의 롤링 업데이트 전략을 지정할 수도 있다.</li>
+</ul>
+</li>
+<li>
+<p>컨테이너 애플리케이션의 버전이 업데이트되어 파드 이미지를 변경해야 할 때?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># (1)</span>
+kubectl set image deployment my-nginx-deployment nginx<span style="color:#f92672">=</span>nginx:1.11 --record
+
+<span style="color:#75715e"># (2)</span>
+kubectl rollout history deployment my-nginx-deployment
+
+<span style="color:#75715e"># (3)</span>
+kubectl rollout undo deployment my-nginx-deployment --to-revision<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><ul>
+<li>(1) 파드 템플릿의 containers에서 nginx 이름을 가진 컨테이너의 이미지를 nginx:1.11로 변경한다.</li>
+<li><code>--record</code> 옵션을 붙여야 어떤 명령으로 변경되었는지도 기록해준다.</li>
+<li>(2) 변경되는 파드의 정보들을 리비전으로 보존하는데, 이를 확인할 수 있다.</li>
+<li>(3) <code>--to-revision</code>을 통해 이전 버전의 레플리카셋으로 되돌리는 롤백을 할 수 있다.</li>
+</ul>
+</li>
 </ul>
 </div>
 
