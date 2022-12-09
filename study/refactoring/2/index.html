@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="refactoring 2: basic" />
+<meta property="og:site_name" content="refactoring 2: basic" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/refactoring/2/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="refactoring 2: basic" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>refactoring 2: basic</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">refactoring 2: basic</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>refactoring 2: basic</h2>
+        <h5>예제를 통한 리팩터링 맛보기</h5>
+        
+
+    </div>
+
+    <div align="start" class="content"><h2 id="heading">리팩터링이란?</h2>
+<ul>
+<li>리팩터링은 <code>소프트웨어의 동작은 유지한 채, 코드를 이해하고 수정하기 쉽도록 내부 구조를 변경하는 것</code>이다.</li>
+<li>리팩터링을 하는 동안에는 코드가 항상 정상 작동하므로 전체 작업이 끝나지 않아도 언제든 멈출 수 있다.
+<ul>
+<li>누군가 리팩터링하다가 코드가 깨졌다고 말한다면, 십중팔구 리팩터링한 것이 아니다.</li>
+<li>리팩터링하다 발견한 버그는 리팩터링 후에도 그대로 남아 있어야 한다.</li>
+<li>단, 아무도 발견하지 못한 숨은 버그는 수정해도 괜찮다. <em>하하!</em></li>
+</ul>
+</li>
+<li>기능추가와 리팩터링 두 모자를 두고, 개발하는 동안 자주 바꿔 쓰자.<br />
+<em>따라서 작업 중에 리팩터링할 것이 있으면 그때그때 짧게 PR 날리기</em></li>
+</ul>
+<p><br /></p>
+<h2 id="---">리팩터링은 왜 해야 하는가?</h2>
+<ul>
+<li>소프트웨어 설계(아키텍처)가 좋아진다.</li>
+<li>소프트웨어를 이해하기 쉬워진다.</li>
+<li>버그를 쉽게 찾을 수 있다.</li>
+<li>프로그래밍 속도를 높일 수 있다.
+<ul>
+<li>기존에 작성한 코드를 최대한 활용하면서 새 기능을 더 빨리 추가하게 된다.</li>
+<li>내부 품질이 뛰어난 코드베이스는 새 기능 구축을 돕는 견고한 토대가 된다.</li>
+<li>저자는 이러한 효과를 <code>Design Stamina Hypothesis</code>라고 표현했다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="----1">리팩터링은 언제 해야 하는가?</h2>
+<ul>
+<li>3의 법칙: 그냥 한다, 비슷한 일을 두 번째로 해도 일단 진행한다, 세 번째 하게 되면 리팩터링한다.</li>
+<li><strong>준비를 위한 리팩터링: 기능을 쉽게 추가하게 만들기</strong>
+<ul>
+<li>리팩터링하기 가장 좋은 시점은 코드베이스에 기능을 새로 추가하기 직전이다.</li>
+<li>구조를 살짝 바꾸면 다른 작업을 하기 쉬워질 만한 부분을 찾아 수정한다.</li>
+</ul>
+</li>
+<li><strong>이해를 위한 리팩터링: 코드를 이해하기 쉽게 만들기</strong>
+<ul>
+<li>리팩터링하면 머리로 이해한 것을 코드에 옮겨 담을 수 있다.</li>
+<li>내가 이해한 것을 코드에 반영하면 더 오래 보존하고 동료들도 더 쉽게 알 수 있게 된다.</li>
+</ul>
+</li>
+<li><strong>쓰레기 줍기 리팩터링</strong>
+<ul>
+<li>원래 하려던 작업과 관련 없는 일에 너무 많은 시간을 뺏길 수는 없다.</li>
+<li>그렇다고 쓰레기를 방치해서 나중에 일을 방해하도록 내버려두는 것도 좋지 않다.</li>
+<li>이때 간단히 수정할 수 있는 것은 즉시 고치고, 시간이 걸리는 일은 짧게 메모를 남기고 다음에 처리한다.</li>
+</ul>
+</li>
+<li><strong>계획된 리팩터링과 수시로 하는 리팩터링</strong>
+<ul>
+<li>오랫동안 사람들은 소프트웨어 개발을 무언가 &ldquo;추가&quot;하는 과정으로 여겼다.</li>
+<li>하지만 뛰어난 개발자는 새 기능을 추가하기 쉽도록 코드를 &ldquo;수정&quot;한다.</li>
+<li>계획된 리팩터링을 하는 일을 최소한으로 줄여야 한다.</li>
+<li>즉, 리팩터링 작업 대부분은 드러나지 않게, 기회가 될 때마다 해야 한다.<br />
+<em>오늘 할 리팩터링을 내일로 미루지 말자!</em></li>
+</ul>
+</li>
+<li><strong>오래 걸리는 리팩터링</strong>
+<ul>
+<li>그동안 작업하면서 쌓여온 골치 아픈 의존성을 정리하는 작업 등은 굉장히 오래 걸린다.</li>
+<li>저자는 그런 상황이더라도 팀 전체가 리팩터링에 매달리는 것은 회의적이라고 한다.</li>
+<li>그보다는 몇 주에 걸쳐 조금씩 해결해가는 편이 효과적일 때가 많다.</li>
+<li><strong>리팩터링이 코드를 깨트리지 않는다는 장점을 활용하는 것이다.</strong></li>
+</ul>
+</li>
+<li><strong>코드 리뷰에 리팩터링 활용하기</strong>
+<ul>
+<li>새로운 아이디어가 떠오르면 리팩터링하여 쉽게 구현할 수 있는지 살펴보고, 실제로 리팩터링한다.</li>
+<li>이를 통해 코드리뷰를 하다보면 훨씬 큰 성취감도 얻을 수 있다.</li>
+</ul>
+</li>
+<li><strong>리팩터링하지 말아야 할 때</strong>
+<ul>
+<li>지저분한 코드를 발견해도 굳이 수정할 필요가 없다면 하지 않는다.<br />
+<em>ex. 외부 API 다루듯 호출해서 쓰는 코드</em></li>
+<li>내부 동작을 이해해야 할 시점에 리팩터링해야 효과를 제대로 볼 수 있다.</li>
+<li>리팩터링하는 것보다 처음부터 새로 작성하는 게 쉬울 때도 하지 않는다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="----2">리팩터링 시 고려할 문제</h2>
+<ul>
+<li>새 기능 개발 속도 저하
+<ul>
+<li>내가 직접 건드릴 일이 거의 없거나, 불편 정도가 심하지 않다고 판단되면 리팩터링 하지 않는다.</li>
+<li>빠지기 쉬운 오류는 <strong>리팩터링을 클린코드나 바람직한 엔지니어링 습관처럼 도덕적 이유로 정당화하는 것이다.</strong></li>
+<li>리팩터링의 본질은 코드베이스를 예쁘게 꾸미는 것이 아니라, 오로지 경제적인 이유로 해야 한다.</li>
+</ul>
+</li>
+<li>코드 소유권
+<ul>
+<li>바꾸려는 함수가 공개된 인터페이스라면 바꾸기 쉽지 않다.</li>
+<li>이런 식으로 코드 소유권이 나뉘어 있다면 기존 함수를 유지하면서 변경해야 한다.</li>
+<li>따라서 저자는 코드 소유권을 나눠 엄격히 관리하는 데에는 반대한다고 한다.</li>
+</ul>
+</li>
+<li>브랜치
+<ul>
+<li>독립 브랜치로 작업하는 기간이 길어질수록 작업 결과를 마스터로 통합하기 어려워진다.</li>
+<li>따라서 머지와 통합을 명확히 구분한다.</li>
+<li>마스터를 브랜치로 &ldquo;머지&quot;하는 작업은 단방향이므로, 브랜치만 바뀌고 마스터는 그대로다.</li>
+<li><strong>반면 &ldquo;통합&quot;은 마스터를 개인 브랜치로 pull해서 다시 마스터에 올리는 양방향 처리다.</strong></li>
+</ul>
+</li>
+<li>테스팅
+<ul>
+<li>핵심은 테스트가 실패한다면 가장 최근에 통과한 버전에서 무엇이 달라졌는지 볼 수 있다는 점이다.</li>
+<li>문제를 일으킨 부분이 그 몇 줄 안에 있기 때문에 버그를 훨씬 쉽게 찾을 수 있다.</li>
+</ul>
+</li>
+<li>레거시 코드
+<ul>
+<li>관련된 부분끼리 나눠서 하나씩 공략해야 한다.</li>
+<li>코드의 한 부분을 훑고 넘어갈 때마다 예전보다 조금이라도 개선하려고 노력한다.</li>
+</ul>
+</li>
+</ul>
+<p><br /></p>
+<h2 id="you-arent-going-to-need-it">You aren't going to need it</h2>
+<ul>
+<li>당장 필요한 기능만으로 최대한 간결하게 만들어라!</li>
+<li>문자 그대로 해석해도 되지만, 아키텍처를 전혀 고려하지 말라는 뜻은 아니다.</li>
+<li>리팩터링으로는 변경하기 어려워서 미리 생각해두면 시간이 절약되는 경우도 얼마든지 있다.</li>
+<li>저자는 나중에 문제를 더 깊이 이해하게 됐을 때 처리하는 쪽이 낫다고 생각하는 편이다.</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

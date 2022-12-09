@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 05 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Dec 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -36,6 +36,15 @@
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>refactoring 2: basic</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/2/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/2/</guid>
+      <description>리팩터링이란? 리팩터링은 소프트웨어의 동작은 유지한 채, 코드를 이해하고 수정하기 쉽도록 내부 구조를 변경하는 것이다. 리팩터링을 하는 동안에는 코드가 항상 정</description>
     </item>
     
     <item>
