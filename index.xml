@@ -350,7 +350,7 @@
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2022/</guid>
-      <description>2022-11-29 [oh-my-zsh] To fix your permissions you can do so by disabling... 해당 디렉터리의 owner가 현재 user와 다른 경우 발생한다. 계정이 2개일 수 있어서 그냥 에러 메시지를 무시해주기로 했다. $ vi</description>
+      <description>2022-12-13 vscode Rename Symbol 함수나 변수에 우클릭 &amp;gt; Rename Symbol 하면 쓰는 모든 곳에서 전체 수정 가능하다. 단, 앵귤러 템플릿과 같은 곳에서 쓰는 건 안바뀐다. 2022-11-29 [oh-my-zsh] To fix your permissions you can do so by disabling... 해당</description>
     </item>
     
     <item>
