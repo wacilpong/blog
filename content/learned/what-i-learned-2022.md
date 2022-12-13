@@ -6,6 +6,13 @@ og_description: "About what I learned at 2022"
 draft: false
 ---
 
+## **2022-12-13**
+
+- vscode `Rename Symbol`
+  - 함수나 변수에 우클릭 > Rename Symbol 하면 쓰는 모든 곳에서 전체 수정 가능하다.
+  - 단, 앵귤러 템플릿과 같은 곳에서 쓰는 건 안바뀐다.
+    <br />
+
 ## **2022-11-29**
 
 - `[oh-my-zsh] To fix your permissions you can do so by disabling...`
