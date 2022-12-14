@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="kube 3" />
+<meta property="og:site_name" content="kube 3" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/kubernetes/3/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="kube 3" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>kube 3</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">kube 3</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>kube 3</h2>
+        <h5>ingress</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h3 id="ingress---">인그레스(Ingress) 오브젝트의 기본 기능</h3>
+<ul>
+<li><code>외부 요청의 라우팅</code>: 특정 경로로 들어온 요청을 어떤 서비스로 전달할지 정의하는 라우팅 규칙 설정 가능</li>
+<li><code>가상 호스트 기반의 요청 처리</code>: 같은 IP에 대해 다른 도메인 이름으로 요청이 오면, 어떻게 처리할 것인지 정의 가능</li>
+<li><code>SSL/TLS 보안 연결 처리</code>: 여러 서비스로 요청을 라우팅할 때, 인증서를 쉽게 적용할 수 있음</li>
+</ul>
+<p><br /></p>
+<h3 id="-">사용하는 이유</h3>
+<ul>
+<li>3개의 디플로이먼트를 외부에 노출해야 한다면?</li>
+<li>NodePort, LoadBalancer 타입 서비스 3개를 생성하는 방법이 있다.</li>
+<li>위 방식은 서비스마다 디플로이먼트에 일일이 설정을 해야만 한다.</li>
+<li>이때 인그레스를 사용하면 URL 엔드포인트를 하나만 생성하면 된다.</li>
+<li>따라서 클라이언트는 인그레스의 URL로만 접근하고, 그 요청은 적절히 처리되어 디플로이먼트의 파드로 전달된다.</li>
+<li>외부 요청에 대한 처리 규칙을 쿠버네티스 기능으로 관리할 수 있는 것이 핵심이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="heading">예제</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-example
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: <span style="color:#e6db74">&#34;nginx&#34;</span>
+spec:
+  rules:
+    - host: alicek106.example.com <span style="color:#75715e"># [1]</span>
+      http:
+        paths:
+          - path: /echo-hostname <span style="color:#75715e"># [2]</span>
+            pathType: Prefix
+            backend:
+              service:
+                name: hostname-service <span style="color:#75715e"># [3]</span>
+                port:
+                  number: <span style="color:#ae81ff">80</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl apply -f ingress-example.yaml
+$ kubectl get ing
+</code></pre></div><ul>
+<li>인그레스를 정의하는 YAML 파일 중에서 annotation 항목을 통해 인그레스의 추가 기능을 사용할 수 있다.</li>
+<li>host: 해당 도메인 이름으로 접근하는 요청에 대해서 처리 규칙을 적용한다.</li>
+<li>path: 해당 경로에 들어온 요청을 어느 서비스로 전달할 것인지 정의한다.</li>
+<li>name, port: path로 들어온 요청이 전달될 서비스와 포트이다.</li>
+<li><strong>인그레스는 요청을 처리하는 규칙을 정의하는 오브젝트일 뿐이므로, 인그레스 컨트롤러라는 특수한 서버가 필요하다.</strong></li>
+</ul>
+<h3 id="--ingress-controller">인그레스 컨트롤러 (ingress controller)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/aws/deploy.yaml
+
+<span style="color:#75715e"># ingress-nginx 네임스페이스의 디플로이먼트와 파드를</span>
+<span style="color:#75715e"># 확인해보면 nginx 웹서버가 생성됨</span>
+$ kubectl get pods,deployment -n ingress-nginx
+
+<span style="color:#75715e"># 외부에서 nginx 인그레스 컨트롤러에 접근하기 위한 서비스도 생성됨</span>
+$ kubectl get svc -n ingress-nginx
+</code></pre></div><ul>
+<li>ex. nginx 웹서버 인그레스 컨트롤러</li>
+<li>쿠버네티스에서 공식 개발되고 있어서 컨트롤러와 관련된 모든 리소스를 한번에 설치할 수 있다.</li>
+<li>설치하면 자동으로 생성되는 서비스는 LoadBalancer 타입이다.</li>
+<li>실제 환경에서는 LoadBalancer 타입에 DNS 이름을 할당해 컨트롤러에 접근한다.</li>
+<li>지금은 자동으로 부여된 DNS 이름(a20..2.elb.amazonaws.com)을 사용한다.<br />
+<strong><em>참고로 저자는 aws 인스턴스에서 해서 저렇게 부여된 것임</em></strong><br />
+<strong><em>이런 식으로 외부에서 접근 가능한 공인 IP가 필요함</em></strong></li>
+<li>온프레미스 환경이면 NodePort 타입의 서비스를 생성해 사용한다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ingress-nginx
+  name: ingress-nginx-controller-nodeport
+  namespace: ingress-nginx
+spec:
+  ports:
+    - name: http
+      nodePort: <span style="color:#ae81ff">31000</span>
+      port: <span style="color:#ae81ff">80</span>
+      protocol: TCP
+      targetPort: http
+    - name: https
+      nodePort: <span style="color:#ae81ff">32000</span>
+      port: <span style="color:#ae81ff">443</span>
+      protocol: TCP
+      targetPort: https
+  selector:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
+  type: NodePort
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl apply -f ingress-nginx-svc-nodeport.yaml
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl apply -f hostname-deployment.yaml
+$ kubectl apply -f hostname-service.yaml
+</code></pre></div><ul>
+<li>인그레스의 종착점이 될 테스트용 디플로이먼트와 서비스를 생성했다.</li>
+<li>이제 nginx 인그레스 컨트롤러로 들어오는 요청은 이 디플로이먼트 파드들로 분산될 것이다.</li>
+</ul>
+<p><br /></p>
+<h3 id="---">인그레스 컨트롤러의 동작 원리</h3>
+<ol>
+<li>공식 깃허브에서 제공되는 YAML 파일로 nginx 인그레스 컨트롤러를 생성한다.</li>
+<li>nginx 인그레스 컨트롤러를 외부로 노출하기 위한 서비스를 생성한다.</li>
+<li>요청 처리 규칙을 정의하는 인그레스 오브젝트를 생성한다.</li>
+<li>nginx 인그레스 컨트롤러로 들어온 요청은 인그레스 규칙에 따라 적절한 서비스로 전달된다.</li>
+</ol>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># ENDPOINTS 항목에 출력된 지점으로 요청이 전달된다.</span>
+$ kubectl get endpoints
+</code></pre></div><ul>
+<li>nginx 인그레스 컨트롤러는 서비스에 의해 생성된 엔드포인트로 요청을 직접 전달한다.</li>
+<li>즉, 서비스의 ClusterIP가 아닌 엔드포인트의 종착 지점들로 요청이 전달된다.</li>
+<li><strong>서비스를 거치지 않고 파드로 직접 요청이 전달되므로 바이패스(bypass)라고 부른다.</strong></li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
