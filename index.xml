@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 14 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Dec 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -36,6 +36,15 @@
       
       <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>refactoring 3: bad smell?</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/3/</link>
+      <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/3/</guid>
+      <description>기이한 이름 (Mysterious Name) 이름만 잘 지어도 나중에 문맥 파악하느라 헤매는 시간을 크게 절약할 수 있다. 마땅한 이름이 떠오르지 않는다면 설계에 더 근본적인 문제가 있을 가능성이</description>
     </item>
     
     <item>

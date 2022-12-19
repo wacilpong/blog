@@ -304,7 +304,9 @@ kubectl get pods
 <p>디플로이먼트를 통해 애플리케이션의 업데이트와 배포를 더 편하게 할 수 있다.</p>
 <ul>
 <li>레플리카셋의 변경사항을 저장하는 revision을 남겨 롤백을 가능하게 해준다.</li>
-<li>무중단 서비스를 위해 파드의 롤링 업데이트 전략을 지정할 수도 있다.</li>
+<li>무중단 서비스를 위해 파드의 롤링 업데이트 전략을 지정할 수도 있다.<br />
+<em>여러 인스턴스가 있어도 업데이트가 멈춤 없이 된다고 해서 <code>롤링</code> 업데이트라고 부름</em><br />
+<em>롤링 업, 롤링 다운 -&gt; 버저닝을 자연스럽게 해줌</em></li>
 </ul>
 </li>
 <li>
@@ -325,6 +327,8 @@ kubectl rollout undo deployment my-nginx-deployment --to-revision<span style="co
 </ul>
 </li>
 </ul>
+<p><br /></p>
+<h4 id="service----">서비스(Service): 파드를 연결하고 외부에 노출</h4>
 </div>
 
 </main>
