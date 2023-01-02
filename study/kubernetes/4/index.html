@@ -4,13 +4,13 @@
         <meta name="description" content="" />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="cloud-computing" />
-<meta property="og:site_name" content="cloud-computing" />
+<meta property="og:title" content="kube 4" />
+<meta property="og:site_name" content="kube 4" />
 <meta property="og:description" content="" />
-<meta property="og:url" content="https://wacilpong.github.io/blog/tags/cloud-computing/" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/kubernetes/4/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="cloud-computing" />
+<meta name="twitter:title" content="kube 4" />
 <meta name="twitter:description" content="" />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>cloud-computing</title>
+        <title>kube 4</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -91,9 +91,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.62.0" />
         
-            <link href="/blog/tags/cloud-computing/index.xml" rel="alternate" type="application/rss&#43;xml" title="Roomy" />
-            <link href="/blog/tags/cloud-computing/index.xml" rel="feed" type="application/rss&#43;xml" title="Roomy" />
-        
 
         
 
@@ -111,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">cloud-computing</a>
+                    <a class="navbar-brand visible-xs" href="#">kube 4</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -150,116 +147,88 @@
 
 <main>
 
-    <h2>cloud-computing</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/6/">모두를 위한 클라우드 컴퓨팅 6</a></h4>
-    <h5>2022-10-28</h5>
-    
+    <div>
+        <h2>kube 4</h2>
+        <h5>persistent volume</h5>
+        
 <a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
 
 
+    </div>
 
+    <div align="start" class="content"><h2 id="-pv---pvc">퍼시스턴트 볼륨(PV), 퍼시스턴트 볼륨 클레임(PVC)</h2>
+<ul>
+<li>퍼시스턴트 볼륨은 워커 노드들이 네트워크상에서 스토리지를 마운트해 영속적으로 데이터를 저장할 수 있는 볼륨이다.</li>
+<li>따라서 파드에 장애가 생겨 다른 노드로 옮겨가더라도 해당 노드에서 PV에 네트워크로 연결해 데이터를 계속 사용할 수 있다.</li>
+<li>NFS, AWS의 EBS, Ceph, GlusterFS&hellip;</li>
+</ul>
+<p><br /></p>
+<h3 id="-hostpath-emptydir">로컬볼륨: hostPath, emptyDir</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># hostPath</span>
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath-pod
+spec:
+  containers:
+    - name: my-container
+      image: busybox
+      args: [<span style="color:#e6db74">&#34;tail&#34;</span>, <span style="color:#e6db74">&#34;-f&#34;</span>, <span style="color:#e6db74">&#34;/dev/null&#34;</span>]
+      volumeMounts:
+        - name: my-hostpath-volume
+          mountPath: /etc/data
+  volumes:
+    - name: my-hostpath-volume
+      hostPath:
+        path: /tmp
+</code></pre></div><ul>
+<li>hostPath는 호스트와 볼륨을 공유하기 위해 사용한다.</li>
+<li>위 예시는 볼륨에 hostPath를 정의해 호스트의 /tmp를 파드의 /etc/data에 마운트했다.</li>
+<li>파드를 생성한 뒤 파드의 컨테이너 내부로 들어가 /etc/data 디렉터리에 파일을 생성하면 호스트의 /tmp 디렉터리에 파일이 저장된다.</li>
+<li>이제 파드 컨테이너의 /etc/data와 호스트의 /tmp는 동일한 디렉터리로써 사용된다.</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-pod
+spec:
+  containers:
+    - name: content-creator
+      image: alicek106/alpine-wget:latest
+      args: [<span style="color:#e6db74">&#34;tail&#34;</span>, <span style="color:#e6db74">&#34;-f&#34;</span>, <span style="color:#e6db74">&#34;/dev/null&#34;</span>]
+      volumeMounts:
+        - name: my-emptydir-volume
+          <span style="color:#75715e"># 1. 이 컨테이너가 /data 에 파일을 생성하면</span>
+          mountPath: /data
+
+    - name: apache-webserver
+      image: httpd:<span style="color:#ae81ff">2</span>
+      volumeMounts:
+        - name: my-emptydir-volume
+          <span style="color:#75715e"># 2. 아파치 웹 서버에서 접근 가능합니다.</span>
+          mountPath: /usr/local/apache2/htdocs/
+
+  volumes:
+    - name: my-emptydir-volume
+      <span style="color:#75715e"># 포드 내에서 파일을 공유하는 emptyDir</span>
+      emptyDir: {}
+</code></pre></div><ul>
+<li>emptyDir은 파드의 컨테이너 간에 볼륨을 공유하기 위해 사용한다.</li>
+<li>emptyDir 볼륨은 파드의 데이터를 영속적으로 보존하기 위해 외부 볼륨을 사용하지 않고, 파드가 실행되는 도중에만 필요한 휘발성 데이터를 각 컨테이너가 함께 사용할 수 있도록 임시 저장 공간을 생성한다.</li>
+</ul>
+<p><br /></p>
+<h3 id="pv-pvc--">PV, PVC 사용하는 이유</h3>
+<ul>
+<li>NFS 서버를 yaml 파일에 네트워크 볼륨으로 고정적으로 명시하면, 이를 관리해야 하는 불편이 있다.</li>
+<li>게다가 데이터 보관을 위해 iSCSI나 GlusterFS를 사용하려면 해당 네트워크 볼륨 타입을 명시하는 별도 yaml을 여러 개 만들어 배포해야 한다.</li>
+<li>즉, 볼륨과 애플리케이션의 정의가 서로 밀접하게 연관돼 있어 서로 분리할 수 없게 된다.</li>
+<li>PV, PVC 오브젝트를 사용하면 파드가 볼륨의 세부적인 사항을 몰라도 볼륨을 사용할 수 있도록 추상화해준다.<br />
+<em>파드를 생성하는 yaml 입장에서 네트워크 볼륨이 NFS인지, EBS인지 상관없이 볼륨을 사용할 수 있게 해줌</em></li>
+</ul>
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/5/">모두를 위한 클라우드 컴퓨팅 5</a></h4>
-    <h5>2022-10-15</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/4/">모두를 위한 클라우드 컴퓨팅 4</a></h4>
-    <h5>2022-10-10</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/3/">모두를 위한 클라우드 컴퓨팅 3</a></h4>
-    <h5>2022-10-03</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/2/">모두를 위한 클라우드 컴퓨팅 2</a></h4>
-    <h5>2022-09-26</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
- 
 
 </main>
-
-
-
-<div class="pages">
-
-    
-        <a class="icon pages-icon" href="/blog/tags/cloud-computing/" rel="prev">
-            <i class="fa fa-arrow-left"></i>
-        </a>
-    
-
-    
-        <a class="icon pages-icon" href="/blog/tags/cloud-computing/page/3/" rel="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    
-
-</div>
-
-
 
         <footer>
             <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
