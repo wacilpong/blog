@@ -437,18 +437,51 @@ docker rm $NGINX_CONTAINER_ID
 <p><br /></p>
 <h2 id="heading">시행착오</h2>
 <ul>
-<li><code>/tmp/jenkins12655071034461658190.sh: 2: docker: not found</code> 빌드에러
+<li>
+<p><code>/tmp/jenkins12655071034461658190.sh: 2: docker: not found</code> 빌드에러</p>
 <ul>
 <li>centOS-1에서 젠킨스 계정으로 도커 루트로 들어간다.<br />
 (docker exec -it -u 0 jenkins bash)</li>
 <li>젠킨스 컨테이너 내부에 docker 그룹을 다시 추가했다.</li>
 </ul>
 </li>
-<li><code>if [ -n &quot;$NGINX_CONTAINER_ID&quot;];</code>
+<li>
+<p><code>if [ -n &quot;$NGINX_CONTAINER_ID&quot;];</code></p>
 <ul>
 <li>위처럼 맨 끝 괄호 띄어쓰기를 붙여서 작성하면 안된다.</li>
 <li>이거 못찾아서 30분이나 헤맸다.</li>
 <li>sh 작성할 때는 띄어쓰기 같은 사소한 것들을 주의하자.</li>
+</ul>
+</li>
+<li>
+<p><code>도커로 띄운 젠킨스 id, password 까먹음</code></p>
+<ul>
+<li>
+<p>그래서 띄운 lightsail centos 인스턴스 터미널 진입해서 아래와 같이 실행</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 도커로 띄운 jenkins 컨테이너 터미널 진입</span>
+$ docker exec -it -u <span style="color:#ae81ff">0</span> jenkins bash
+
+<span style="color:#75715e"># 젠킨스 홈 디렉터리 확인</span>
+root@~~~: <span style="color:#e6db74">${</span>JENKINS_HOME<span style="color:#e6db74">}</span>
+bash: /var/jenkins_home: Is a directory
+
+<span style="color:#75715e"># config.xml 편집 (vim이 없다면 설치하자)</span>
+<span style="color:#75715e"># apt-get update | apt-get install vim</span>
+root@~~~: vim /var/jenkins_home/config.xml
+
+<span style="color:#75715e"># 에디터에서 &lt;useSecurity&gt;를 false</span>
+<span style="color:#75715e"># authorizationStrategy 부분을 주석(&lt;!--...--&gt;)</span>
+<span style="color:#75715e"># 이후 컨테이너 터미널에서 나와서 컨테이너를 다시 띄우기</span>
+$ docker stop jenkins
+$ docker rm jenkins
+$ docker run -v /var/run/docker.sock:/var/run/docker.sock <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /srv/jenkins/home:/var/jenkins_home <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-p 8080:8080 -d --name jenkins jenkins/jenkins
+
+<span style="color:#75715e"># 그리고 얼른 보안 관리 가서 아래처럼 다시 설정해주자</span>
+<span style="color:#75715e"># Security Realm: jenkins&#39; own user database</span>
+<span style="color:#75715e"># Authorization: Logged-in users can do anything</span>
+</code></pre></div></li>
 </ul>
 </li>
 </ul>
