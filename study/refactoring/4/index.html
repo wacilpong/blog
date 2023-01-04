@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="refactoring 4: Test" />
+<meta property="og:site_name" content="refactoring 4: Test" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/refactoring/4/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="refactoring 4: Test" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>refactoring 4: Test</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">refactoring 4: Test</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>refactoring 4: Test</h2>
+        <h5>테스트 구축하기</h5>
+        
+
+    </div>
+
+    <div align="start" class="content"><p>리팩터링을 제대로 하려면 불가피하게 저지르는 실수를 잡아주는 견고한 테스트 스위트(test suite)가 뒷바침 되어야한다.<br />
+<br /><br />
+리팩터링을 위해 하지않더라도 좋은 테스트를 작성하는 일은 개발 효율을 높여준다.<br />
+<br /></p>
+<h1 id="41---">4.1 자가 테스트코드의 가치</h1>
+<h2 id="-----">디버깅의 시간을 줄이면 생산성이 급 상승한다.</h2>
+<ul>
+<li>실제 코드를 작성하는 시간의 비중보다 디버깅 하는데에 시간을 더 오래 쓴 경험이 누구라도 있다.
+<ul>
+<li>저자의 테스트 코드의 깨달음을 얻은 실전 후기
+<ul>
+<li>코드 반복 개발 주기가 끝나면 테스트코드를 추가함</li>
+<li>테스트 코드가 콘솔에 출력되면 그 값이 일치하는지 눈으로 일일히 확인하여 통과 여부 판단</li>
+<li>직접 판단하는게 귀찮아서 컴퓨터가 판단하도록 수정하여 모든 테스트가 통과하면 OK 가 보이도록 수정</li>
+<li>편해져서 컴파일 할때마다 테스트도 함께함.</li>
+<li>생산성이 급상승했다 &gt; 디버깅시간이 크게 줄었기 때문</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>테스트를 자주하는 습관이 곧 버그를 찾는 강력한 도구가 된다.</li>
+<li>직전까지 테스트가 성공했는데 이번에 테스트가 실패했다면, 최근 작성한 코드에서 버그가 발생했음을 알 수 있다.</li>
+<li>코드 작성 후 테스트를 한다면 의심되는 코드양이 많지 않고 기억이 생생하니 버그를 쉽게 찾을 수 있다.</li>
+<li>함수 몇 개만 작성해도 테스트를 곧바로 추가 하자.</li>
+<li>**회귀 버그(regression bug)**를 잡는데 몇 분 이상 걸린적이 없게 된다.
+<ul>
+<li>회귀 버그란 잘 작동하던 기능에서 문제가 생기는 현상. 일반적으로 프로그램 변경하는 중 뜻하지않게 발생한다. 같은 맥락에서 잘 작동하던 기능이 여전히 잘 작동하는지 확인하는 테스트를 회귀 테스트라 한다.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>어차피 모든 버그를 잡아낼 수 없다고 생각하여 테스트를 작성하지 않는다면 대다수의 버그를 잡을 수 있는 기회를 날리는 셈이다.</strong><br />
+<br /></p>
+</blockquote>
+<h3 id="tdd-test-driven-development-----">TDD: Test-Driven Development - 테스트 주도 개발</h3>
+<ul>
+<li>테스트 - 코딩 - 리팩터링</li>
+<li>테스트를 추가하기 가장 좋은 시점은 프로그래밍 전이다.</li>
+<li>테스트를 작성하다보면 원하는 기능을 추가하기 위해 무엇이 필요한지 고민하게된다.</li>
+<li>구현보다 인터페이스에 집중하게 된다는 장점도 있다.</li>
+<li>코딩이 완료되는 시점을 정확하게 판단할 수 있다.</li>
+<li><em>테스트를 모두 통과한 시점이 바로 코드를 완성한 시점이다.</em><br />
+<br /></li>
+</ul>
+<h2 id="------1">테스트가 갖춰지지않은 코드를 리팩터링 해야할 때,</h2>
+<p>곧바로 리팩토링을 하지않고 자가 테스트 코드부터 작성하라.</p>
+<ul>
+<li>리팩터링에는 반드시 테스트가 필요하다.<br />
+<br /></li>
+</ul>
+<h1 id="4246----">4.2~4.6 테스트 코드 생성부터 수정까지</h1>
+<ul>
+<li>예제 모카 라이브러리<br />
+<br /></li>
+</ul>
+<h2 id="--">테스트 기본 구조</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;지역전체 클래스 검사&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;부족분&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">asia</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Province</span>(<span style="color:#a6e22e">sampleProvinceData</span>()); <span style="color:#75715e">// step 1
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">shortfall</span>, <span style="color:#ae81ff">5</span>); <span style="color:#75715e">// step 2
+</span><span style="color:#75715e"></span>  });
+});
+</code></pre></div><ul>
+<li>블록단위로 나눠서 각 블록에 테스트 스위트를 담는다.</li>
+<li>describe 블록과 it 블록에는 부연 설명용 문자열을 써넣는다.
+<ul>
+<li>테스트가 무엇을 검사하는지 설명하거나 명확한 코드에는 주석이 필요없듯 그냥 비워두기도함.</li>
+</ul>
+</li>
+<li>step1: 테스트에 필요한 데이터와 객체를 뜻하는 픽스처(fixture)를 설정한다.</li>
+<li>step2: 이 픽스처의 속성들을 검증한다.(chai 라이브러리에 존재하는 assert 함수를 이용하여 검증)</li>
+<li>결과확인: 주어진 초기값에 기초하여 지역전체 클래스에서 생산부족분이 5이면 테스트 성공 아니면 실패<br />
+<br /></li>
+</ul>
+<h2 id="---">테스트 코드 작성 팁</h2>
+<ul>
+<li>
+<p>실패해야할 상황에서는 실패하는지도 확인한다.</p>
+<ul>
+<li>일시적으로 코드에 오류를 주입하여 실패하는지도 테스트하여 테스트 코드가 의도대로 동작하는지 확인한다.</li>
+</ul>
+</li>
+<li>
+<p>자주 테스트하라.</p>
+</li>
+<li>
+<p>명심하자. 테스트는 위험 요인을 중심으로 작성하자!!!</p>
+</li>
+<li>
+<p>적은 수의 테스트만으로 큰 효과를 얻자!</p>
+</li>
+<li>
+<p>테스트코드에서도 중복은 의심하자.</p>
+</li>
+<li>
+<p>테스트끼리 상호작용하게 하는 공유 픽스처는 생성하지말자.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#75715e">// 💩 CASE
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">describe</span>(<span style="color:#a6e22e">description</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">asia</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Province</span>(<span style="color:#a6e22e">sampleProvinceData</span>()); <span style="color:#75715e">//💩
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// 참조가 바뀔 경우 다른 테스트가 실패할 가능성이 있다!!
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케1&#39;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케2&#39;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
+});
+
+<span style="color:#75715e">// 👍🏻 CASE
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">describe</span>(<span style="color:#a6e22e">description</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#75715e">/* 픽스처(초기 준비 작업 중 공통되는 부분) 작성 */</span>
+  <span style="color:#a6e22e">beforeEach</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
+
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케1&#39;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케2&#39;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
+});
+</code></pre></div><ul>
+<li>beforeEach 구문은 각각의 테스트 바로전에 실행되어 asia를 초기화하기 때문에 모든 테스트가 자신만의 새로운 asia를 사용하게 된다.</li>
+<li>beforeEach블록: 표준 픽스처를 사용한다는 사실을 알려준다.</li>
+<li>it 구문 하나당 검증도 하나씩 하는 것이 좋다.</li>
+</ul>
+</li>
+<li>
+<p>it 구문은 하나당 검증도 하나씩 하는 것이 좋다. 하지만 밀접하다고 생각되면 묶어서 작성해도된다.</p>
+<ul>
+<li>복잡한 <code>setter</code>를 테스트해 보는 case
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;change production&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">producers</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">production</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+  <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">profit</span>, <span style="color:#ae81ff">292</span>);
+  <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">shortfall</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">6</span>);
+});
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>문제가 생길 가능성이 있는 경계조건을 생각해보고 경계 조건도 반드시 검사해본다.</p>
+<ul>
+<li>빈 값이나 음수와 같은 경계조건</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;no producers&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">noProducers</span>;
+  <span style="color:#a6e22e">beforeEach</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;no producers&#34;</span>,
+      <span style="color:#a6e22e">producers</span><span style="color:#f92672">:</span> [],
+      <span style="color:#a6e22e">demand</span>: <span style="color:#66d9ef">30</span>,
+      <span style="color:#a6e22e">price</span>: <span style="color:#66d9ef">20</span>,
+    };
+    <span style="color:#a6e22e">noProducers</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Province</span>(<span style="color:#a6e22e">data</span>);
+  });
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;shortfall&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">noProducers</span>.<span style="color:#a6e22e">shortfall</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#ae81ff">30</span>);
+  });
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;profit&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">noProducers</span>.<span style="color:#a6e22e">profit</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#ae81ff">0</span>);
+  });
+});
+
+<span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;negative demand&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">demand</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">shortfall</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">26</span>);
+  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">profit</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>);
+});
+</code></pre></div><ul>
+<li>입력칸이 비어있을때도 잘 처리되는지 확인해본다.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;empty string demand&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">demand</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">shortfall</span>).<span style="color:#66d9ef">NaN</span>;
+  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">profit</span>).<span style="color:#66d9ef">NaN</span>;
+});
+</code></pre></div><ul>
+<li>타입이 다른 경우도 테스트해본다(배열이 들어와야하는데 문자열넣었을때)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;string for producers&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;String producers&#34;</span>,
+      <span style="color:#a6e22e">producers</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+      <span style="color:#a6e22e">demand</span>: <span style="color:#66d9ef">30</span>,
+      <span style="color:#a6e22e">price</span>: <span style="color:#66d9ef">20</span>,
+    };
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">prov</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Province</span>(<span style="color:#a6e22e">data</span>);
+    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">prov</span>.<span style="color:#a6e22e">shortfall</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#ae81ff">0</span>);
+  });
+});
+</code></pre></div><ul>
+<li>이런 경우 예외처리나 로그를 추가하는 코드를 수정하거나, 에러를 그대로 놔둬도 된다.</li>
+<li>유효성검사가 너무많으면 중복검사이니 유의해야한다.</li>
+<li>리팩터링할때에는 겉보기 동작에 영향을 주지 않아야하므로 경계조건에 대응하는 동작이 리팩터링때문에 변하는지는 신경쓰지말자.</li>
+</ul>
+</li>
+<li>
+<p>외부에서 JSON 으로 들어온 객체는 유효한지 확인해야하므로 항상 테스트한다.</p>
+</li>
+<li>
+<p><code>객체가 유효하다</code> 는 말의 뜻?</p>
+<ul>
+<li>합의된 인터페이스대로 왔는가?</li>
+<li>합의: <code>{id: number; value?: string}</code></li>
+<li>실제로 넘어온 값: <code>{id: 1, value: ‘haha’, title: null}</code></li>
+<li>⇒ 이러면 합의된 인터페이스가 깨진 것이므로 유효하지 않다!<br />
+<br /></li>
+</ul>
+</li>
+</ul>
+<h2 id="------2"><strong>테스트 코드는 어느 수준까지 작성해야 할까?</strong></h2>
+<ul>
+<li>아무리 테스트코드를 작성을해도 버그없는 완벽한 프로그램을 만들수없다.</li>
+<li>수확체감법칙</li>
+<li>너무많이 작성하다보면 의욕이 떨어진다.</li>
+<li>위험한 부분에 집중하자</li>
+<li>처리 과정이 복잡한 부분을 찾자</li>
+</ul>
+<p><br /></p>
+<h1 id="47---">4.7 끝나지 않은 여정</h1>
+<blockquote>
+<p><strong>모든 버그를 걸러주지는 못할지라도, 안심하고 리팩터링할 수 있는 보호막은 되어준다.</strong></p>
+</blockquote>
+<p>리팩터링하는 동안에도 계속 테스트를 추가하자.</p>
+<p>테스트 용이성을 아키텍처 평가 기준으로 활용하는 사례도 많다.<br />
+<br /></p>
+<h3 id="---1">다양한 유형의 테스트</h3>
+<ul>
+<li>단위테스트<br />
+코드의 작은 영역만을 대상으로 빠르게 실행되도록 설계된 테스트, 자가 테스트 코드의 핵심이자, 자가테스트 시스템의 대부분이다.</li>
+<li>컴포넌트 사이의 상호작용에 집중하는 테스트</li>
+<li>소프트웨어의 다양한 계층의 연동을 검사하는 테스트</li>
+<li>성능 테스트</li>
+</ul>
+<p><br /></p>
+<h3 id="------3">테스트의 품질 향상 및 평가 기준</h3>
+<ul>
+<li>한 번에 완벽한 테스트를 갖추기는 어려우므로 테스트 스위트를 지속해서 보강한다. 기존 테스트가 명확한지, 이해하기 쉽게 리팩터링할 수 없는지, 제대로 검사하는지 등을 확인한다.</li>
+<li>버그리포트를 받으면 가장 먼저 그 버그를 드러내는 단위 테스트부터 작성하는 습관을 들이자.</li>
+<li>테스트 커버리지 분석은 코드에서 테스트하지 않는 영역을 찾는 데만 도움될 뿐, 테스트 스위트의 품질과는 크게 상관없다.</li>
+<li>테스트가 충분한지 평가하는 기준은 주관적이다.</li>
+<li>테스트를 너무 많이 작성할 가능성이 있다. 개발 속도가 느려진다고 생각이 되면 테스트를 과하게 작성하는 것이 아닌지 의심하자.</li>
+</ul>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

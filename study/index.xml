@@ -6,10 +6,19 @@
     <description>Recent content in Studies on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>refactoring 4: Test</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/4/</link>
+      <pubDate>Wed, 04 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/4/</guid>
+      <description>리팩터링을 제대로 하려면 불가피하게 저지르는 실수를 잡아주는 견고한 테스트 스위트(test suite)가 뒷바침 되어야한다. 리팩터링을 위해 하지않더라도</description>
+    </item>
     
     <item>
       <title>kube 4</title>
