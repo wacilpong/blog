@@ -82,7 +82,7 @@ og_description: "분기별로 내가 뭘 했는지 기록해보자."
 
 <br />
 
-![판매내역](/blog/images/book-sell.png)
+![판매내역](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTE8gdsolT-h_n2pQLo5JqPf_M7Zs2ayLCWvC1_aARgA7AmOtmqT7TJw_-uOcJ5xhSWU4Q7phoDrGDFcr5Bh70rbQ_uYx6MoXMklgb4w3kj8DYzZ4VsFVfHj41DsfYfBwILNdT4sLSNgcbAzwLhv51Q7YxvKFNlvB4vp_y4IZQG7XjndlDiGbNbXng/s2312/book-sell.png)
 
 <br />
 
