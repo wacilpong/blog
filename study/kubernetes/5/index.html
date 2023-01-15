@@ -230,6 +230,8 @@ spec:
       targetPort: <span style="color:#ae81ff">8080</span>
   selector:
     app: todo-api
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 이제 todo-api는 external-ip로 접근 가능하다.</span>
+$ kubectl get service
 </code></pre></div><p><br /></p>
 <h2 id="configmap-kubernetes-secret">configMap, kubernetes secret</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
