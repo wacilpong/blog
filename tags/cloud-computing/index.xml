@@ -6,10 +6,19 @@
     <description>Recent content in cloud-computing on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/cloud-computing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>kube 5</title>
+      <link>https://wacilpong.github.io/blog/study/kubernetes/5/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/kubernetes/5/</guid>
+      <description>az postgres 만들고 deployment, service 생성 # 애저에서 postgres database 만든 상태에서 # postgres 로컬에서 확인하기 위한 pgadmin 띄움 # 이후 pgadmin 화면에서 Servers &amp;gt; register &amp;gt; Host name/address # 만들어둔 db의 서버이름(ex. roomypg.postgres.database.azure.com) 지정</description>
+    </item>
     
     <item>
       <title>kube 4</title>

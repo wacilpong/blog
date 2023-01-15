@@ -4,13 +4,13 @@
         <meta name="description" content="" />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="cloud-computing" />
-<meta property="og:site_name" content="cloud-computing" />
+<meta property="og:title" content="kube 5" />
+<meta property="og:site_name" content="kube 5" />
 <meta property="og:description" content="" />
-<meta property="og:url" content="https://wacilpong.github.io/blog/tags/cloud-computing/" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/kubernetes/5/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="cloud-computing" />
+<meta name="twitter:title" content="kube 5" />
 <meta name="twitter:description" content="" />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>cloud-computing</title>
+        <title>kube 5</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -91,9 +91,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.62.0" />
         
-            <link href="/blog/tags/cloud-computing/index.xml" rel="alternate" type="application/rss&#43;xml" title="Roomy" />
-            <link href="/blog/tags/cloud-computing/index.xml" rel="feed" type="application/rss&#43;xml" title="Roomy" />
-        
 
         
 
@@ -111,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">cloud-computing</a>
+                    <a class="navbar-brand visible-xs" href="#">kube 5</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -150,116 +147,115 @@
 
 <main>
 
-    <h2>cloud-computing</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/7/">모두를 위한 클라우드 컴퓨팅 7</a></h4>
-    <h5>2022-11-15</h5>
-    
+    <div>
+        <h2>kube 5</h2>
+        <h5>azur postgres connection with configMap and kubernetes secret </h5>
+        
 <a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
 
 
+    </div>
 
+    <div align="start" class="content"><h2 id="az-postgres--deployment-service-">az postgres 만들고 deployment, service 생성</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 애저에서 postgres database 만든 상태에서</span>
+<span style="color:#75715e"># postgres 로컬에서 확인하기 위한 pgadmin 띄움</span>
+<span style="color:#75715e"># 이후 pgadmin 화면에서 Servers &gt; register &gt; Host name/address</span>
+<span style="color:#75715e"># 만들어둔 db의 서버이름(ex. roomypg.postgres.database.azure.com) 지정</span>
+$ docker run -itd -p 80:80 -e TZ<span style="color:#f92672">=</span>Asia/Seoul -e PGADMIN_DEFAULT_EMAIL<span style="color:#f92672">=</span>admin@gmail.com -e PGADMIN_DEFAULT_PASSWORD<span style="color:#f92672">=</span>postgres --name pgadmin dpage/pgadmin4
+
+<span style="color:#75715e"># 미리 만들어둔 이미지의 태그를</span>
+<span style="color:#75715e"># 보기 편하도록 컨테이너 레지스트리 이름으로 바꿔봄</span>
+$ docker tag kcdhbp/todoapi:latest roomycontainer.azurecr.io/todoapi:v1
+
+<span style="color:#75715e"># 애져 컨테이너 레지스트리 login</span>
+$ az acr login --name roomycontainer
+
+<span style="color:#75715e"># 미리 만둘어둔 gradle 빌드해놈</span>
+$ ./gradlew jibDockerBuild
+
+<span style="color:#75715e"># 애저로 이미지 올림 (로컬 대신 애져 acr 연결된 상태)</span>
+$ docker push roomycontainer.azurecr.io/todoapi:v1
+
+<span style="color:#75715e"># 아래 yaml파일로 deployment, service 생성</span>
+$ kubectl apply -f app.yml
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-api-deployment
+spec:
+  replicas: <span style="color:#ae81ff">1</span>
+  selector:
+    matchLabels:
+      app: todo-api
+  template:
+    metadata:
+      name: todo-api-pod
+      labels:
+        app: todo-api
+    spec:
+      containers:
+        - name: todo-api
+          image: roomycontainer.azurecr.io/todoapi:v1
+          ports:
+            - containerPort: <span style="color:#ae81ff">8080</span>
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production
+            - name: TODO_DATASOURCE
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-datasource-config
+                  key: todo_datasource
+            - name: TODO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: todo-datasource-credentials
+                  key: POSTGRES_USER
+            - name: TODO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: todo-datasource-credentials
+                  key: POSTGRES_PASSWORD
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-api
+spec:
+  type: LoadBalancer
+  ports:
+    - port: <span style="color:#ae81ff">80</span>
+      targetPort: <span style="color:#ae81ff">8080</span>
+  selector:
+    app: todo-api
+</code></pre></div><p><br /></p>
+<h2 id="configmap-kubernetes-secret">configMap, kubernetes secret</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: todo-datasource-config
+data:
+  todo_datasource: postgres:<span style="color:#ae81ff">5432</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Secret
+metadata:
+  name: todo-datasource-credentials
+type: Opaque
+data:
+  POSTGRES_DB: dG9kbw==
+  POSTGRES_USER: dG9kbw==
+  POSTGRES_PASSWORD: dG9kbw==
+</code></pre></div><ul>
+<li>공개되면 안되는 정보들을 설정하는 거라고 보면 된다.<br />
+<em>적혀있는 password 같은 것들은 암호화된 것임</em></li>
+<li>생성해둔 쿠버 클러스터 &gt; 구성 &gt; 맵/시크릿 &gt; 만들기를 통해 설정한다.</li>
+<li>위 yaml을 입력하면 알아서 이 클러스터를 사용하는 postgres:5432로 연결시킨다.</li>
+</ul>
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/6/">모두를 위한 클라우드 컴퓨팅 6</a></h4>
-    <h5>2022-10-28</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/5/">모두를 위한 클라우드 컴퓨팅 5</a></h4>
-    <h5>2022-10-15</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/4/">모두를 위한 클라우드 컴퓨팅 4</a></h4>
-    <h5>2022-10-10</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/study/cloud-computing/3/">모두를 위한 클라우드 컴퓨팅 3</a></h4>
-    <h5>2022-10-03</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/cloud-computing"><kbd class="item-tag">cloud-computing</kbd></a>
-
-
-
-</div>
- 
 
 </main>
-
-
-
-<div class="pages">
-
-    
-        <a class="icon pages-icon" href="/blog/tags/cloud-computing/" rel="prev">
-            <i class="fa fa-arrow-left"></i>
-        </a>
-    
-
-    
-        <a class="icon pages-icon" href="/blog/tags/cloud-computing/page/3/" rel="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    
-
-</div>
-
-
 
         <footer>
             <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
