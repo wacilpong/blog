@@ -6,10 +6,19 @@
     <description>Recent content in Studies on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>refactoring 6: Basic refactoring way 2</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/6/</link>
+      <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/6/</guid>
+      <description>6.9 여러 함수를 클래스로 묶기 6.9 목표 as-is function base(aReading) {...} function taxableCharge(aReading) {...} function calculateBaseCharge(aReading) {...} to-be class Reading { base(){...} taxableCharge() {...} calculateBaseCharge() {...} } 배경 클래스는 데이터와 함수를 하나의 공유 환경으로 묶은후, 다른 프로그램 요소와</description>
+    </item>
     
     <item>
       <title>kube 5</title>
@@ -21,12 +30,21 @@
     </item>
     
     <item>
+      <title>refactoring 5: Basic refactoring way</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/5/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/5/</guid>
+      <description>가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링 1. 함수 추출하기 가장 빈번하게 사용되는 리팩터링 중 하나로, 코드조각을 찾아 무슨 일을 하는지 파악한 다</description>
+    </item>
+    
+    <item>
       <title>refactoring 4: Test</title>
       <link>https://wacilpong.github.io/blog/study/refactoring/4/</link>
       <pubDate>Wed, 04 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/refactoring/4/</guid>
-      <description>리팩터링을 제대로 하려면 불가피하게 저지르는 실수를 잡아주는 견고한 테스트 스위트(test suite)가 뒷바침 되어야한다. 리팩터링을 위해 하지않더라도</description>
+      <description>리팩터링을 제대로 하려면 불가피하게 저지르는 실수를 잡아주는 견고한 테스트 스위트(test suite)가 뒷받침 되어야한다. 리팩터링을 위해 하지않더라도</description>
     </item>
     
     <item>
@@ -39,7 +57,7 @@
     </item>
     
     <item>
-      <title>refactoring 3: bad smell?</title>
+      <title>refactoring 3: Bad smell?</title>
       <link>https://wacilpong.github.io/blog/study/refactoring/3/</link>
       <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
       

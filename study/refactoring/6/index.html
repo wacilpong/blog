@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="refactoring 6: Basic refactoring way 2" />
+<meta property="og:site_name" content="refactoring 6: Basic refactoring way 2" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/refactoring/6/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="refactoring 6: Basic refactoring way 2" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>refactoring 6: Basic refactoring way 2</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">refactoring 6: Basic refactoring way 2</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>refactoring 6: Basic refactoring way 2</h2>
+        <h5>가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링 2</h5>
+        
+
+    </div>
+
+    <div align="start" class="content"><h1 id="69----">6.9 여러 함수를 클래스로 묶기</h1>
+<hr />
+<h2 id="69-">6.9 목표</h2>
+<hr />
+<p>as-is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">base</span>(<span style="color:#a6e22e">aReading</span>) {...}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">taxableCharge</span>(<span style="color:#a6e22e">aReading</span>) {...}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">aReading</span>) {...}
+</code></pre></div><p>to-be</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Reading</span> {
+  <span style="color:#a6e22e">base</span>(){...}
+  <span style="color:#a6e22e">taxableCharge</span>() {...}
+  <span style="color:#a6e22e">calculateBaseCharge</span>() {...}
+}
+</code></pre></div><h2 id="heading">배경</h2>
+<hr />
+<ul>
+<li>클래스는 데이터와 함수를 하나의 공유 환경으로 묶은후, 다른 프로그램 요소와 어우러질 수 있도록 그중 일부를 외부에 제공한다.</li>
+<li>클래스는 객체 지향 언어의 기본인 동시에 다른 패러다임 언어에도 유용하다.</li>
+</ul>
+<h3 id="----">여러 함수를 클래스로 묶기의 장점</h3>
+<ul>
+<li>클래스로 묶으면 이 함수들이 공유하는 공통 환경을 더 명확하게 표현할 수 있다.</li>
+<li>각 함수에 전달되는 인수를 줄여서 객체 안에서의 함수 호출을 간결하게 만들 수 있다.</li>
+<li>객체를 시스템의 다른 부분에 전달하기 위한 참조를 제공할 수 있다.</li>
+<li>클라이언트가 객체의 핵심 데이터를 변경할 수 있고, 파생 객체들을 일관되게 관리할 수 있다.</li>
+</ul>
+<h3 id="--">함수를 객체처럼 패턴</h3>
+<ul>
+<li>클래스를 지원하지 않는 언어를 사용할때 사용되는 패턴</li>
+<li>일급 함수와 클로저 지원 필요 (일급 함수와 클로저를 이용하여 구성) → <del>*(**Module Pattern 같다…)***</del></li>
+<li><a href="https://martinfowler.com/bliki/FunctionAsObject.html">https://martinfowler.com/bliki/FunctionAsObject.html</a></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createPerson</span>(<span style="color:#a6e22e">name</span>) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">birthday</span>;
+  <span style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> () =&gt; <span style="color:#a6e22e">name</span>,
+    <span style="color:#a6e22e">setName</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">aString</span>) =&gt; (<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aString</span>),
+    <span style="color:#a6e22e">birthday</span><span style="color:#f92672">:</span> () =&gt; <span style="color:#a6e22e">birthday</span>,
+    <span style="color:#a6e22e">setBirthday</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">aLocalDate</span>) =&gt; (<span style="color:#a6e22e">birthday</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aLocalDate</span>),
+    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">age</span>,
+    <span style="color:#a6e22e">canTrust</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">canTrust</span>,
+  };
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">age</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">birthday</span>.<span style="color:#a6e22e">until</span>(<span style="color:#a6e22e">clock</span>.<span style="color:#a6e22e">today</span>(), <span style="color:#a6e22e">ChronoUnit</span>.<span style="color:#a6e22e">YEARS</span>);
+  }
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">canTrust</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">age</span>() <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">30</span>;
+  }
+}
+
+<span style="color:#75715e">// 사용
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">kent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createPerson</span>(<span style="color:#e6db74">&#34;kent&#34;</span>);
+<span style="color:#a6e22e">kent</span>.<span style="color:#a6e22e">setBirthday</span>(<span style="color:#a6e22e">LocalDate</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;1961-03-31&#34;</span>));
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">youngEnoughToTrust</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">kent</span>.<span style="color:#a6e22e">canTrust</span>();
+</code></pre></div><h2 id="heading-1">절차</h2>
+<hr />
+<ol>
+<li>함수들이 공유하는 공통 데이터 레코드를 캡슐화 한다.</li>
+</ol>
+<ul>
+<li>공통 데이터가 레코드 구조로 묶여 있지 않다면 사전 작업으로 <strong><em>매개변수 객체 만들기 진행(6.8절)</em></strong></li>
+</ul>
+<ol start="2">
+<li>공통 레코드를 사용하는 함수 각각을 새 클래스로 옮긴다 (함수 옮기기 8.1절)</li>
+</ol>
+<ul>
+<li>공통 레코드의 맴버는 함수 호출문의 인수 목록에서 제거</li>
+</ul>
+<ol start="3">
+<li>데이터를 조작하는 로직들은 함수로 추출해서(6.1절) 새 클래스로 옮긴다.</li>
+</ol>
+<h2 id="heading-2">예시</h2>
+<hr />
+<p>수돗물처럼 차 계량기를 읽어서 측정값을 기록하는 로직</p>
+<p>기본 코드의 1번 클라이언트</p>
+<blockquote>
+<p>1번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">quantity</span>;
+</code></pre></div><p>세금 부과를 위한 코드가 추가된 2번 클라이언트</p>
+<blockquote>
+<p>2번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">base</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">quantity</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">base</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>));
+</code></pre></div><p>1번 클라이언트와 2번 클라이언트의 공동된 계산식을 함수로 추출(6.1절)한 것과 같은 3번 클라이언트의 <code>calculateBaseCharge()</code> 가 존재한다.</p>
+<blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basicChargeAmount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">aReading</span>);
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * [기본 요금 계산 함수]
+</span><span style="color:#75715e"> * 1번 클라이언트, 2번 클라이언트에 공통된 계산식 존재
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">aReading</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">quantity</span>;
+}
+</code></pre></div><p>1번 클라이언트와 2번 클라이언트도 해당 함수를 사용할 수 있지만, 최상위 함수로 두면 못 보고 지나치기 쉬운 문제가 발생한다.</p>
+<p>→ 함수를 데이터 처리 코드 가까이에 두기 위한 데이터를 클래스로 변환 한다.</p>
+<h3 id="1-------">1. 함수들이 공유하는 공통 데이터 레코드를 캡슐화 한다.</h3>
+<p>레코드를 클래스로 변환하기 위해 레코드를 캡슐화(7.1절) 한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Reading</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">data</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_customer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">customer</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_quantity</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">quantity</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_month</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">month</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_year</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">year</span>;
+  }
+
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">customer</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_customer</span>;
+  }
+
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">customer</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_quantity</span>;
+  }
+
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">month</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_month</span>;
+  }
+
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">year</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_year</span>;
+  }
+}
+</code></pre></div><h3 id="2-----------81">2. 공통 레코드를 사용하는 함수 각각을 새 클래스로 옮긴다 (함수 옮기기 8.1절)</h3>
+<p>새 클래스를 사용하려면 데이터를 얻자마자 객체로 만들어야 한다.</p>
+<blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Reading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basicChargeAmount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">aReading</span>);
+</code></pre></div><p>이미 만들어져 있는 <code>calculateBaseCharge()</code>를 새로 만든 클래스로 옮긴다.(함수 옮기긱 8.1절)</p>
+<blockquote>
+<p>Reading 클래스</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Reading</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">data</span>) {...}
+
+  <span style="color:#75715e">//사전에 만든 getter 들...
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">calculateBaseCharge</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_month</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_year</span>) <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_quantity</span>;
+  }
+}
+</code></pre></div><blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Reading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basicChargeAmount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">calculateBaseCharge</span>;
+</code></pre></div><p><code>calculateBaseCharge</code>를 조금 더 명확한 이름으로 변경한다. (함수 이름 바꾸기 6.5절)</p>
+<blockquote>
+<p>Reading 클래스</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Reading</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">data</span>) {...}
+
+  <span style="color:#75715e">//사전에 만든 getter 들...
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">baseCharge</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">month</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">year</span>) <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantity</span>;
+  }
+}
+
+</code></pre></div><blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Reading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basicChargeAmount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">baseCharge</span>;
+</code></pre></div><p><code>baseCharge</code>로 이름을 변경하면 Reading 클래스를 사용하는 클라이언트는 baseCharge가 필드인지, 계산된 값을 return하는 함수 호출인지 구분 할 수 없으며, 이는 **<em>단일 접근 원칙</em>**을 따르므로 권장하는 방식이다.</p>
+<h3 id="---uniform-access-principle">단일 접근 원칙이란? (Uniform Access Principle)</h3>
+<p>이 원칙의 핵심은 person 객체가 있고, 그 객체의 나이값을 알고 싶을 때 나이가 객체 내의 필드에 저장되어 있든 계산된 값이든 상관없이 같은 방식으로 접근해야 한다는 것이다. 이는 person 객체를 사용하는 클라이언트가 나이가 저장된 것인지 계산된 것인지 신경 쓸 필요도, 알 필요도 없어야 한다는 것을 의미한다.</p>
+<p>1번, 2번 클라이언트도 Reading 클래스를 사용할 수 있도록 변경해준다.</p>
+<blockquote>
+<p>2번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Reading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">max</span>(
+  <span style="color:#ae81ff">0</span>,
+  <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>)
+);
+</code></pre></div><h3 id="3-----61---">3. 데이터를 조작하는 로직들은 함수로 추출해서(6.1절) 새 클래스로 옮긴다.</h3>
+<p>세금을 부과할 소비량을 계산하는 코드를 함수로 추출(6.1절)한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">taxableChargeFn</span>(<span style="color:#a6e22e">aReading</span>) {
+  <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>));
+}
+</code></pre></div><p>추출한 함수를 클라이언트에 적용한다.</p>
+<blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Reading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">taxableChargeFn</span>(<span style="color:#a6e22e">aReading</span>);
+</code></pre></div><p>완벽히 작동한다면, 추출한 함수를 Reading 클래스로 옮긴다 (함수 옮기기 8.1절)</p>
+<blockquote>
+<p>Reading 클래스</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Reading</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">data</span>) {...}
+
+  <span style="color:#75715e">//사전에 만든 getter 들...
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">taxableCharge</span>() {
+    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">year</span>))
+  }
+}
+</code></pre></div><blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Reading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">taxableCharge</span>;
+</code></pre></div><h2 id="heading-3">완성</h2>
+<hr />
+<ul>
+<li>파생 데이터를 모두 필요한 시점에 계산하게 되었다. -&gt; 저장된 데이터를 갱신하더라도 문제없다.</li>
+<li>프로그램의 다른 부분에서 데이터를 갱신할 가능성이 높을때는 클래스로 묶어 사용하면 도움이 된다.</li>
+</ul>
+<h1 id="610-----">6.10 여러 함수를 변환 함수로 묶기</h1>
+<hr />
+<h2 id="610-">6.10 목표</h2>
+<hr />
+<p>as-is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">base</span>(<span style="color:#a6e22e">aReading</span>) {...}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">taxableCharge</span>(<span style="color:#a6e22e">aReading</span>) {...}
+</code></pre></div><p>to-be</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">argReading</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">cloneDeep</span>(<span style="color:#a6e22e">argReading</span>);
+
+  <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">base</span>(<span style="color:#a6e22e">aReading</span>);
+  <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">taxableCharge</span>(<span style="color:#a6e22e">aReading</span>);
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">aReading</span>;
+}
+</code></pre></div><h2 id="heading-4">배경</h2>
+<hr />
+<ul>
+<li>소프트웨어는 데이터를 입력받아서 여러 정보를 도출한다.</li>
+<li>도출된 정보는 여러 곳에서 참조 가능하며, 해당 정보가 사용되는 곳 마다 같은 도출 로직이 반복될 수 있다.</li>
+<li>이러한 도출 로직을 한곳에 모아두면 검색과 갱신을 일관된 곳에서 처리하고 중복을 방지할 수 있다.</li>
+</ul>
+<h3 id="-">변환 함수</h3>
+<p>변환 함수는 도출을 위한 로직을 한곳에 처리하기 위한 방법으로,</p>
+<p>원본 데이터를 입력받아서 필요한 정보를 모두 도출한 뒤, 각각을 출력 데이터의 필드에 넣어 반환한다.</p>
+<h3 id="---69-">함수를 클래스로 묶기 (6.9절)과 비교</h3>
+<ul>
+<li>원본 데이터가 코드에서 갱신될 경우 클래스로 묶는 방법이 좋다.<br />
+변환 함수로 묶으면 가공한 데이터를 새로운 레코드에 저장한다. 이는 원본 데이터가 수정되면 일관성이 깨질 수 있다.</li>
+<li>여러 함수를 변환 함수로 묶는 이유는 도출 로직의 중복을 피하기 위함이다.</li>
+</ul>
+<h2 id="heading-5">절차</h2>
+<hr />
+<ol>
+<li>변환할 레코드를 입력받아서 값을 그대로 반환하는 변환 함수를 만든다.</li>
+</ol>
+<ul>
+<li>이 작업은 대체로 깊은 복사로 처리한다. 변환 함수가 원본 레코드를 바꾸지 않는지 검사하는 테스트를 마련해 두면 도움이 된다.</li>
+</ul>
+<ol start="2">
+<li>묶을 함수 중 함수 하나를 골라서 본문 코드를 변환 함수로 옮기고, 처리 결과를 레코드에 새 필드로 기록한다. 그런 다음 클라이언트 코드가 이 필드를 사용하도록 수정한다.</li>
+</ol>
+<ul>
+<li>로직이 복잡하면 함수 추출하기(6.1절) 진행</li>
+</ul>
+<ol start="3">
+<li>테스트 진행</li>
+<li>나머지 관련 함수도 위 과정에 따라 처리한다.</li>
+</ol>
+<h2 id="heading-6">예시</h2>
+<hr />
+<p>차를 제공하는 서비스에서 매달 사용자가 마신 차의 양을 측정 하는 로직</p>
+<p>기본 코드의 1번 클라이언트</p>
+<blockquote>
+<p>1번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">quantity</span>;
+</code></pre></div><p>세금을 부과할 소비량을 계산하는 코드 추가된 2번 클라이언트</p>
+<blockquote>
+<p>2번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">base</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">quantity</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">base</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>));
+</code></pre></div><p>중복 코드는 나중에 로직 수정에 골치 동반할 수 있다. 중복 코드라면 함수 추출하기 (6.1절)로 처리 가능하지만, 추출한 함수들이 프로그램 곳곳에 흩어진다면 그것도 문제를 야기한다.</p>
+<blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basicChargeAmount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">aReading</span>);
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * [기본 요금 계산 함수]
+</span><span style="color:#75715e"> * 1번 클라이언트, 2번 클라이언트에 공통된 계산식 존재
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">aReading</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">quantity</span>;
+}
+</code></pre></div><p>이를 해결하는 방법으로, 다양한 파생 정보 계산 로직을 모두 하나의 변환 단계로 모을 수 있다.</p>
+<p>변환 단계에서 미가공 측정값을 입력받아서 다양한 가공 정보를 덧붙여 반환하는 것이다.</p>
+<h3 id="1---------">1. 변환할 레코드를 입력받아서 값을 그대로 반환하는 변환 함수를 만든다.</h3>
+<p>입력 객체를 그대로 복사해 반환하는 변환 함수로 만든다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">original</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">cloneDeep</span>(<span style="color:#a6e22e">original</span>); <span style="color:#75715e">// lodash 사용
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+}
+</code></pre></div><h3 id="2-------------------------">2. 묶을 함수 중 함수 하나를 골라서 본문 코드를 변환 함수로 옮기고, 처리 결과를 레코드에 새 필드로 기록한다. 그런 다음 클라이언트 코드가 이 필드를 사용하도록 수정한다.</h3>
+<p>변경하려는 계산 로직중 하나를 고른다. 이 계산 로직에 측정값을 전달하기 전에 부가 정보를 덧붙인다.</p>
+<blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>(); <span style="color:#75715e">// 미가공 측정값
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basicChargeAmount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">aReading</span>);
+</code></pre></div><p><code>calculateBaseCharge()</code>를 부가 정보를 덧붙이는 코드 근처로 옮긴다 (함수 옮기기 (8.1절))</p>
+<blockquote>
+<p>enrichReading()</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">original</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">cloneDeep</span>(<span style="color:#a6e22e">original</span>);
+  <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">// 미가공 측정값에 부가 정보를 덧붙임
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+}
+</code></pre></div><p>변환 함수 안에서는 결과 객체를 매번 복제할 필요 없이 마음껏 변경해도 된다.</p>
+<p>불변 데이터가 안정적이긴 하지만 유효범위가 좁을 때는 큰 상관이 없다.</p>
+<p>클라이언트가 부가 정보를 담은 필드를 사용하도록 수정한다.</p>
+<blockquote>
+<p>3번 클라이언트</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basicChargeAmount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">baseCharge</span>;
+</code></pre></div><p><code>calculateBaseCharge()</code>를 호출하는 코드를 모두 수정했다면, 이 함수를 <code>enrichReading()</code>안에 중첩 시킬수 있습니다. -&gt; <em><del>(무슨말이야???)</del></em></p>
+<p>이렇게 변환하면 &lsquo;기본요금을 이용하는 클라이언트는 변환된 레코드를 사용해야 한다.&rsquo; 라는 의도를 명확히 표현할 수 있습니다.</p>
+<h3 id="3-">3. 테스트</h3>
+<p><code>enrichReading()</code>처럼 정보를 추가해 반환할 때 원본 측정값 레코드는 변경하지 않아야 한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;check reading unchanged&#34;</span>, <span style="color:#66d9ef">function</span> () {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">baseReading</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">customer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ivan&#34;</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">15</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">year</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2017</span> };
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">oracle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">cloneDeep</span>(<span style="color:#a6e22e">baseReading</span>);
+
+  <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">baseReading</span>);
+
+  <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">deepEqual</span>(<span style="color:#a6e22e">baseReading</span>, <span style="color:#a6e22e">oracle</span>);
+});
+</code></pre></div><h3 id="4-------">4. 나머지 관련 함수도 위 과정에 따라 처리한다.</h3>
+<p>기본요금을 옮겼으니 이제 세금을 부과할 소비량 계산도 옮기도록 한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">base</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">baseRate</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">quantity</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">base</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>));
+</code></pre></div><p>base 를 <code>enrichReading()</code>값인 <code>baseCharge</code>로 변경한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">base</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">baseCharge</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">base</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>));
+</code></pre></div><p>base변수를 인라인한다.(6.4절)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">rawReading</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">max</span>(
+  <span style="color:#ae81ff">0</span>,
+  <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">year</span>)
+);
+</code></pre></div><p>taxableCharge 계산 코드를 변환 함수로 옮긴다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">original</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">cloneDeep</span>(<span style="color:#a6e22e">original</span>);
+  <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateBaseCharge</span>(<span style="color:#a6e22e">result</span>);
+  <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">max</span>(
+    <span style="color:#ae81ff">0</span>,
+    <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">baseCharge</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">taxThreshold</span>(<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">year</span>)
+  );
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+}
+</code></pre></div><h1 id="611--">6.11 단계 쪼개기</h1>
+<hr />
+<h2 id="611-">6.11 목표</h2>
+<hr />
+<p>as-is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">orderData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">orderString</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">/\\s+/</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">productPrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">priceList</span>[<span style="color:#a6e22e">orderData</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;-&#34;</span>)[<span style="color:#ae81ff">1</span>]];
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">orderPrice</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">orderData</span>[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> <span style="color:#a6e22e">productPrice</span>;
+</code></pre></div><p>to-be</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">orderRecord</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parseOrder</span>(<span style="color:#a6e22e">order</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">orderPrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">orderRecord</span>, <span style="color:#a6e22e">priceList</span>);
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">parseOrder</span>(<span style="color:#a6e22e">aString</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">values</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aString</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">/\\s+/</span>);
+
+  <span style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">productId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">values</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;-&#34;</span>)[<span style="color:#ae81ff">1</span>],
+    <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">values</span>[<span style="color:#ae81ff">1</span>]),
+  };
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">order</span>, <span style="color:#a6e22e">priceList</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">priceList</span>[<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">productId</span>];
+}
+</code></pre></div><h2 id="heading-7">배경</h2>
+<hr />
+<p>서로 다른 두 대상을 한꺼번에 다루는 코드는 각각을 별개 모듈로 나누면 좋다.</p>
+<ul>
+<li>코드를 수정해야 할 때 두 대상을 동시에 고민할 필요가 사라진다.</li>
+<li>모듈이 잘 분리되어 있다면, 다른 모듈의 상세 내용은 몰라도 상관없다.</li>
+<li>가장 대표적인 예는 컴파일러</li>
+<li>컴파일러는 텍스트 토큰화, 토큰 파싱 등 여러 단계를 거친 다음 마지막으로 목적 코드 생성</li>
+</ul>
+<h2 id="heading-8">절차</h2>
+<hr />
+<ol>
+<li>두 번째 단계에 해당하는 코드를 독립 함수로 추출한다.</li>
+<li>테스트한다.</li>
+<li>중간 데이터 구조를 만들어서 앞에서 추출한 함수의 임수로 추가한다.</li>
+<li>테스트한다.</li>
+<li>추출한 두 번째 단계 함수의 매개변수를 하나씩 검토한다. 그중 첫 번째 단계에서 사용되는 것은 중간 데이터 구조로 옮긴다. 하나씩 올길 때마다 테스트한다.</li>
+</ol>
+<ul>
+<li>간혹 두 번째 단계에서 사용하면 안 되는 매개변수가 있다. 이럴 때는 각 매개변수를 사용한 결과를 중간 데이터 구조의 필드로 추출하고, 이 필드의 값을 설정하는 문장을 호출한 곳으로 옮긴다.(8.4절)</li>
+</ul>
+<ol start="6">
+<li>첫 번째 단계 코드를 함수로 추출(6.1절) 하면서 중간 데이터 구조를 반환하도록 만든다.</li>
+</ol>
+<ul>
+<li>이때 첫 번째 단계를 변환기 객체로 추출해도 좋다.</li>
+</ul>
+<h2 id="heading-9">예시</h2>
+<hr />
+<p>상품의 결제 금액을 계산하는 코드</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">priceOrder</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">quantity</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">=</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingPerCase</span> <span style="color:#f92672">=</span>
+    <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountThreshold</span>
+      <span style="color:#f92672">?</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountFee</span>
+      <span style="color:#f92672">:</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">feePerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingCost</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">shippingPerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shippingCost</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+</code></pre></div><p>앞 부분 코드는 상품 정보를 이용해서 결제 금액 중 상품 가격을 계산한다.</p>
+<p>뒷 부분 코드는 배송 정보를 이용하여 결제 금액중 배송비를 계산한다.</p>
+<h3 id="1--------">1. 두 번째 단계에 해당하는 코드를 독립 함수로 추출한다.</h3>
+<p>배송비 계산 부분을 함수로 추출한다.(6.1절)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">priceOrder</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">quantity</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">=</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">shippingMethod</span>, <span style="color:#a6e22e">discount</span>);
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+
+<span style="color:#75715e">// 두 번째 단계를 처리하는 함수
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">shippingMethod</span>, <span style="color:#a6e22e">discount</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingPerCase</span> <span style="color:#f92672">=</span>
+    <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountThreshold</span>
+      <span style="color:#f92672">?</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountFee</span>
+      <span style="color:#f92672">:</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">feePerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingCost</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">shippingPerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shippingCost</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+</code></pre></div><p>두 번째 단계에 필요한 데이터를 모두 개별 매개변수로 전달했다.</p>
+<h3 id="2-">2. 테스트한다.</h3>
+<h3 id="3---------">3. 중간 데이터 구조를 만들어서 앞에서 추출한 함수의 임수로 추가한다.</h3>
+<p>첫 번째 단계와 두 번째 단계가 주고받을 중간 데이터 구조를 만든다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">priceOrder</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">quantity</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">=</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> {}; <span style="color:#75715e">// 중간 데이터 구조
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">shippingMethod</span>, <span style="color:#a6e22e">discount</span>);
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">shippingMethod</span>, <span style="color:#a6e22e">discount</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingPerCase</span> <span style="color:#f92672">=</span>
+    <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountThreshold</span>
+      <span style="color:#f92672">?</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountFee</span>
+      <span style="color:#f92672">:</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">feePerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingCost</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">shippingPerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shippingCost</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+</code></pre></div><h3 id="4--">4. 테스트 한다.</h3>
+<h3 id="5----------------------">5. 추출한 두 번째 단계 함수의 매개변수를 하나씩 검토한다. 그중 첫 번째 단계에서 사용되는 것은 중간 데이터 구조로 옮긴다. 하나씩 올길 때마다 테스트한다.</h3>
+<p><code>applyShipping()</code>에 전달 되는 다양한 매개변수 중에서 basePrice는 첫 번째 단계를 수행하는 코드에서 생성된다.</p>
+<p>basePrice를 중간 데이터 구조로 옮기고 매개변수 목록에서 제거한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">priceOrder</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">quantity</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">=</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">basePrice</span> };
+  <span style="color:#75715e">// basePrice 매개변수에서 제거
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span>);
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+
+<span style="color:#75715e">// basePrice 매개변수에서 제거
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingPerCase</span> <span style="color:#f92672">=</span>
+    <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountThreshold</span>
+      <span style="color:#f92672">?</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountFee</span>
+      <span style="color:#f92672">:</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">feePerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingCost</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">shippingPerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shippingCost</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+</code></pre></div><p>shippingMethod 매개변수는 첫 번째 단계에서는 사용하지 않으니 그대로 둔다.</p>
+<p>quantity와 discount는 basePrice와 같은 방식으로 처리한다.</p>
+<p>quantity는 첫 번째 단계에서 사용되지만 첫 번째 단계에서 생성된 것은 아니나, 최대한 중간 데이터 구조로 담는 걸 추천한다. (마틴파울러님 선호)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">priceOrder</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">quantity</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">=</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span> };
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>);
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingPerCase</span> <span style="color:#f92672">=</span>
+    <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountThreshold</span>
+      <span style="color:#f92672">?</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountFee</span>
+      <span style="color:#f92672">:</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">feePerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingCost</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">shippingPerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">discount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shippingCost</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+</code></pre></div><h3 id="6------61------">6. 첫 번째 단계 코드를 함수로 추출(6.1절) 하면서 중간 데이터 구조를 반환하도록 만든다.</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">priceOrder</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculatePricingData</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>);
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>);
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+
+<span style="color:#75715e">// 첫 번째 단계를 처리 하는 함수
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculatePricingData</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">quantity</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">=</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
+
+  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span> };
+}
+
+<span style="color:#75715e">// 두 번째 단계를 처리 하는 함수
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingPerCase</span> <span style="color:#f92672">=</span>
+    <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountThreshold</span>
+      <span style="color:#f92672">?</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountFee</span>
+      <span style="color:#f92672">:</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">feePerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingCost</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">shippingPerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">discount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shippingCost</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
+}
+</code></pre></div><p>최종 결과를 담은 상수 price도 정리하면 완료.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">priceOrder</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculatePricingData</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>);
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>);
+}
+
+<span style="color:#75715e">// 첫 번째 단계를 처리 하는 함수
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculatePricingData</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">quantity</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">discount</span> <span style="color:#f92672">=</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
+    <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
+
+  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span> };
+}
+
+<span style="color:#75715e">// 두 번째 단계를 처리 하는 함수
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingPerCase</span> <span style="color:#f92672">=</span>
+    <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountThreshold</span>
+      <span style="color:#f92672">?</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">discountFee</span>
+      <span style="color:#f92672">:</span> <span style="color:#a6e22e">shippingMethod</span>.<span style="color:#a6e22e">feePerCase</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shippingCost</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">shippingPerCase</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">priceData</span>.<span style="color:#a6e22e">discount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shippingCost</span>;
+}
+</code></pre></div></div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="refactoring 5: Basic refactoring way" />
+<meta property="og:site_name" content="refactoring 5: Basic refactoring way" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/study/refactoring/5/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="refactoring 5: Basic refactoring way" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>refactoring 5: Basic refactoring way</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">refactoring 5: Basic refactoring way</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>refactoring 5: Basic refactoring way</h2>
+        <h5>가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링</h5>
+        
+
+    </div>
+
+    <div align="start" class="content"><h2 id="--------">가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링</h2>
+<h2 id="1--">1. 함수 추출하기</h2>
+<hr />
+<blockquote>
+<p>가장 빈번하게 사용되는 리팩터링 중 하나로, 코드조각을 찾아 무슨 일을 하는지 파악한 다음, 독립된 함수로 추출하고 목적에 맞는 이름을 붙인다.</p>
+</blockquote>
+<p><strong>배경</strong></p>
+<ul>
+<li>코드의 길이 혹은 재사용성, 코드의 시인성에 따라서 수행</li>
+<li>‘목적과 구현을 분리’ ⇒ 코드를 보고 그 코드가 무슨일을 하는지 파악하는게 오래 걸린다면, 그 코드를 별도의 함수로 빼서 적절한 이름을 붙힘으로써 나중에 그 코드를 읽을때 함수의 이름으로 목적을 파악 하기 쉬움</li>
+<li>함수를 짧게, 여러개 만들면 성능에 악영향을 끼치지 않을까?
+<ul>
+<li>⇒ 응 아니야</li>
+<li>오히려 함수가 짧으면 캐싱하기가 더 쉽기 때문에 컴파일러가 최적화 하는데 유리할 때가 많다.</li>
+</ul>
+</li>
+</ul>
+<p><strong>절차</strong></p>
+<ul>
+<li>함수를 새로 만들고 목적을 잘 드러내는 이름을 붙인다(’어떻게’가 아닌 ‘무엇을’ 하는지가 드러나는 이름)</li>
+<li>추출할 코드를 원본함수에서 복사하여 새 함수에 붙여넣는다.</li>
+<li>추출한 코드중 지역변수를 참조하거나 유효범위를 벗어나는 변수는 없는지 확인한다.</li>
+<li>컴파일</li>
+<li>원본코드를 새로만든 함수로 대치한다.</li>
+<li>테스트한다.</li>
+<li>추가한 함수와 동일하거나 비슷한 일을 하는 코드가 있는지 검토한다.</li>
+</ul>
+<p><strong>예시</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
+	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**고객채무**&#39;</span>);
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
+...
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
+	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+	<span style="color:#a6e22e">printBanner</span>(); =&gt; <span style="color:#a6e22e">배너</span> <span style="color:#a6e22e">출력</span> <span style="color:#a6e22e">로직을</span> <span style="color:#a6e22e">함수로</span> <span style="color:#a6e22e">추출</span>
+...
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printBanner</span>() {
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**고객채무**&#39;</span>);
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
+};
+</code></pre></div><p><strong>예시: 지역변수의 값을 변경할 때*</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+  <span style="color:#75715e">// 미해결 채무(outstanding)를 계산한다
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">o</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">orders</span>) {
+    <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">amount</span>;
+  }
+
+  <span style="color:#a6e22e">printBanner</span>();
+  <span style="color:#a6e22e">recordDueDate</span>(<span style="color:#a6e22e">invoice</span>);
+  <span style="color:#a6e22e">printDetails</span>(<span style="color:#a6e22e">invoice</span>, <span style="color:#a6e22e">outstanding</span>);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
+  <span style="color:#a6e22e">printBanner</span>();
+
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateOutstanding</span>(<span style="color:#a6e22e">invoice</span>); <span style="color:#75715e">// 함수 추출 완료. 추출한 함수가 반환한 값을 원래 변수에 저장
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">recordDueDate</span>(<span style="color:#a6e22e">invoice</span>);
+  <span style="color:#a6e22e">printDetails</span>(<span style="color:#a6e22e">invoice</span>, <span style="color:#a6e22e">outstanding</span>);
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateOutstanding</span>(<span style="color:#a6e22e">invoice</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">orders</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">o</span>) =&gt; {
+    <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">amount</span>;
+  });
+}
+</code></pre></div><hr />
+<h2 id="2---">2. 함수 인라인 하기</h2>
+<hr />
+<blockquote>
+<p>6.1의 ‘함수 추출하기’의 반대 리팩터링으로, 함수 본문을 코드로 인라인하여 불필요한 함수들을 줄이는 리팩터링이다.</p>
+</blockquote>
+<p><strong>배경</strong></p>
+<ul>
+<li>때로는 함수 본문이 이름만큼 명확한 경우도 있다.</li>
+<li>간접 호출을 너무 과하게 사용해서 위임관계가 복잡하게 얽히면 코드가독성이 떨어진다.</li>
+<li>리팩터링 중 잘못 추출된 함수들이 존재하는 경우, 함수 인라인을 수행한다.</li>
+</ul>
+<p><strong>절차</strong></p>
+<ul>
+<li>인라인 가능한 함수인지 검토한다.
+<ul>
+<li>서브클래스에서 오버라이드하는 다형 메서드는 인라인 하지 않는다.</li>
+<li>인라인 할 함수를 호출하는 곳을 모두 찾아서 인라인이 적절한지 검토한다.</li>
+</ul>
+</li>
+<li>각 호출문을 함수 본문으로 교체한다.</li>
+<li>교체 후 테스트 한다.</li>
+<li>함수 정의(원래함수)를 삭제한다.</li>
+</ul>
+<p><strong>예시</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">rating</span>(<span style="color:#a6e22e">aDriver</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">moreThanFiveLateDeliveries</span>(<span style="color:#a6e22e">aDriver</span>) <span style="color:#f92672">?</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>;
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">moreThanFiveLateDeliveries</span>(<span style="color:#a6e22e">aDriver</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">aDriver</span>.<span style="color:#a6e22e">numberOfLateDeliveries</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>;
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">rating</span>(<span style="color:#a6e22e">aDriver</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">aDriver</span>.<span style="color:#a6e22e">numberOfLateDeliveries</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>;
+}
+</code></pre></div><p>아주아주 <strong>조금 더 복잡한 예시</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reportLines</span>(<span style="color:#a6e22e">aCustomer</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lines</span> <span style="color:#f92672">=</span> [];
+  <span style="color:#a6e22e">gatherCustomerData</span>(<span style="color:#a6e22e">lines</span>, <span style="color:#a6e22e">aCustomer</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lines</span>;
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">gatherCustomerData</span>(<span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">aCustomer</span>) {
+  <span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">name</span>]);
+  <span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;location&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">location</span>]);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reportLines</span>(<span style="color:#a6e22e">aCustomer</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lines</span> <span style="color:#f92672">=</span> [];
+
+  <span style="color:#a6e22e">lines</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">name</span>]);
+  <span style="color:#a6e22e">lines</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;location&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">location</span>]);
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lines</span>;
+}
+</code></pre></div><aside>
+💡 핵심은 항상 단계를 잘게 나눠서 처리하는데 있다. 한 문장을 처리하는데도 얼마든지 복잡해 질 수 있기때문에, 리팩터링을 진행할때는 작은단위의 코드를 리팩터링하는 것을 습관화 하고, 익숙해졌다면 그 범위를 조금씩 넓혀나가는 방식으로 한다.
+</aside>
+<hr />
+<h2 id="3--">3. 변수 추출하기</h2>
+<hr />
+<blockquote>
+<p>지역변수를 활용하여 코드를 잘게 쪼개서 관리하면 복잡한 로직을 구성하는 단계마다 이름을 붙일 수 있어서 코드의 목적을 훨씬 명확하게 드러낼 수 있다.</p>
+</blockquote>
+<p><strong>배경</strong></p>
+<ul>
+<li>표현식이 너무 복잡해서 이해하기 어려운 경우가 있다.</li>
+<li>변수를 추가하면 중단점으로 활용할 수 있기 때문에 디버깅하기도 쉬워진다.</li>
+<li>변수를 추출하려면 문맥을 살펴서 추출방식을 선택한다.
+<ul>
+<li>한정된 영역 또는 문맥에서만 활용된다면 지역변수로 추출</li>
+<li>넓은 문맥 혹은 동일한 코드가 존재한다면 함수로 추출</li>
+</ul>
+</li>
+</ul>
+<p><strong>절차</strong></p>
+<ul>
+<li>추출하려는 표현식에 부작용은 없는지 확인한다.</li>
+<li>불변 변수를 하나 선언하고 이름을 붙일 표현식의 <strong>복제본</strong>을 대입한다.</li>
+<li>원본 표현식을 새로 만든 변수로 교체한다.</li>
+<li>테스트</li>
+<li>표현식을 여러 곳에서 사용한다면 각각을 새로 만든 변수로 교체한다.</li>
+</ul>
+<p><strong>예시*</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">order</span>) {
+  <span style="color:#75715e">// 가격(price) = 기본 가격 - 수량 할인 + 배송비
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> (
+    <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">-</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">ordre</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span> <span style="color:#f92672">+</span>
+    Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>)
+  );
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">order</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">=</span>
+    Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shipping</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>);
+
+  <span style="color:#75715e">// 가격(price) = 기본 가격 - 수량 할인 + 배송비
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shipping</span>;
+}
+</code></pre></div><p><strong>클래스 안에서의 예시</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">aRecord</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aRecord</span>;
+  }
+
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">itemPrice</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">itemPrice</span>;
+  }
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">price</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shipping</span>;
+  }
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">basePrice</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">itemPrice</span>;
+  }
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">quantityDiscount</span>() {
+    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span>;
+  }
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">shipping</span>() {
+    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>);
+  }
+}
+</code></pre></div><aside>
+💡 이 예제처럼 간단한 경우라면 효과가 크지 않지만, 덩치가 큰 클래스에서 공통 동작을 별도 이름으로 뽑아내서 추상화 해두면 그 객체를 다룰때 쉽게 활용할 수 있어서 매우 유용하다.
+</aside>
+<hr />
+<h2 id="4--">4. 변수 인라인하기</h2>
+<hr />
+<blockquote>
+<p>6.3의 ‘변수 추출하기’의 반대 리팩터링으로, 별도의 변수로 두지 않고 인라인 하는 리팩터링</p>
+</blockquote>
+<p><strong>배경</strong></p>
+<ul>
+<li>변수를 사용하는 것은 대체로 긍정적이지만, 문맥상 별도의 변수가 필요 없는 경우도 있다.</li>
+<li>해당 변수가 주변 리팩터링을 진행하는 데에 방해가 될 수도 있다.</li>
+</ul>
+<p><strong>절차</strong></p>
+<ul>
+<li>대입문의 우변(표현식)에서 부작용이 생기지 않는지 검토한다.</li>
+<li>변수가 불변으로 선언되지 않았다면 불변으로 만든 후 테스트한다.
+<ul>
+<li>변수에 값이 단 한번만 대입되었는지 확인</li>
+</ul>
+</li>
+<li>이 변수를 가장 처음 사용하는 코드를 찾아서 대입문 우변의 코드로 바꾼다.</li>
+<li>테스트한다.</li>
+<li>변수를 사용하는 모든부분을 교체하면서 테스트를 반복한다.</li>
+<li>변수를 지운다.</li>
+</ul>
+<p><strong>예시</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getBasePrice</span>(<span style="color:#a6e22e">anOrder</span>) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">anOrder</span>.<span style="color:#a6e22e">basePrice</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>;
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getBasePrice</span>(<span style="color:#a6e22e">anOrder</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">anOrder</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>;
+}
+</code></pre></div><hr />
+<h2 id="5---">5. 함수 선언 바꾸기</h2>
+<hr />
+<blockquote>
+<p>함수 선언과 호출문들의 이름, 매개변수들을 추가/삭제 함으로써 코드를 개선하는 리팩터링</p>
+</blockquote>
+<p><strong>배경</strong></p>
+<ul>
+<li>함수 선언은 각 부분이 서로 맞물리는 방식을 표현하며, 건축과 마찬가지로 소프트웨어도 이러한 연결부에 상당히 의존한다.</li>
+<li>이러한 연결부(함수)는 이름에 상당히 의존한다.</li>
+<li>한번에 완벽한 이름을 지을 수는 없다. 코드를 보다가 함수의 이름이 와닿지 않는다면, 그때그때 더 나은 이름으로 바꿀 수 있는지 검토한다.
+<ul>
+<li>Tip: 주석을 이용해 함수의 역할을 설명해보고 해당 주석을 통하여 함수 이름을 결정한다.</li>
+</ul>
+</li>
+<li><strong>매개변수</strong>는 함수가 외부 세계와 어우러지는 방식을 정의하기 때문에, 매개변수의 선택에 따라 함수의 활용범위, 캡슐화 정도가 달라진다(ex. 전화번호를 포맷팅하는 함수의 매개변수로 사람을 받을 것인가? 번호만 받을것인가?)</li>
+</ul>
+<p><strong>간단한 절차</strong></p>
+<ul>
+<li>만약 매개변수를 제거하려거든 먼저 함수 본문에서 제거 대상 매개변수를 참조하는 곳은 없는지 확인한다.</li>
+<li>메서드 선언을 원하는 형태로 바꾼다.</li>
+<li>기존 메서드 선언을 참조하는 부분을 모두 찾아서 바뀐 형태로 수정한다.</li>
+<li>테스트</li>
+</ul>
+<p><strong>마이그레이션 절차(이름 변경 &amp; 매개변수 추가를 모두 할 경우)</strong></p>
+<ul>
+<li>먼저 함수의 본문을 적절히 리팩터링한다.</li>
+<li>함수 본문을 새로운 함수로 추출한다.(임시이름으로)</li>
+<li>추출한 함수에 매개변수를 추가해야 한다면 ‘간단한 절차’를 따라 추가한다.</li>
+<li>테스트</li>
+<li>기존 함수를 인라인한다.</li>
+<li>임시 이름을 원래대로 돌린다.</li>
+<li>이름부터 바꾸고 &gt; 테스트하고 &gt; 매개변수를 수정하고 &gt; 테스트한다</li>
+</ul>
+<p><strong>예시: 함수이름 바꾸기</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">cuircum</span>(<span style="color:#a6e22e">radius</span>);
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>);
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>);
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>);
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
+}
+</code></pre></div><p><strong>예시: 매개변수 추가하기(클래스에서)</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx">...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
+<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>);
+
+<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>){
+	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx">...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
+<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>);
+
+<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>){
+	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#66d9ef">false</span>);
+}
+
+<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#a6e22e">isPriority</span>){
+	<span style="color:#a6e22e">assert</span>(<span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>);
+
+	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx">...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
+<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#66d9ef">false</span>);
+
+<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#a6e22e">isPriority</span>){
+	<span style="color:#a6e22e">assert</span>(<span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>);
+
+	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
+}
+</code></pre></div><aside>
+💡 assert 모듈은 특정 조건이 참인지 거짓인지, 값이 0인지 아닌지를 체크해주는 모듈로써 테스트들을 작성하는 가장 기본적인 방법. 테스트 중에 어떠한 문제도 발생하지 않을 경우에는 아무런 피드백도 주지 않는다. 즉, assert 모듈을 사용할 때 아무런 문제가 없다면 아무런 반응없이 그냥 지나간다.
+<p>assert(state)<br />
+⇒ state이 true하면 통과</p>
+<p>assert.equal(actual, expected[, message])<br />
+⇒ == 명령어를 통한 얕은 동일성 비교</p>
+<p>assert.deepEqual(actual, expected[, message])<br />
+⇒ == 명령어를 통한 primitive 값들의 깊은 동일성 비교. 오브젝트의 프로토타입들은 고려하지 않는다.</p>
+<p><a href="https://nodejs.org/api/assert.html#assert_assert_fail_actual_expected_message_operator">[nodejs assert api 문서]</a></p>
+</aside>
+<p><strong>예시: 매개변수를 속성으로 바꾸기*</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">aCustomer</span>) {
+  <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;MA&#34;</span>, <span style="color:#e6db74">&#34;CT&#34;</span>, <span style="color:#e6db74">&#34;ME&#34;</span>, <span style="color:#e6db74">&#34;VT&#34;</span>, <span style="color:#e6db74">&#34;NH&#34;</span>, <span style="color:#e6db74">&#34;RI&#34;</span>].<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">state</span>);
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEnglanders</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">someCustomers</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">c</span>) =&gt; <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">c</span>));
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">stateCode</span>) {
+  <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;MA&#34;</span>, <span style="color:#e6db74">&#34;CT&#34;</span>, <span style="color:#e6db74">&#34;ME&#34;</span>, <span style="color:#e6db74">&#34;VT&#34;</span>, <span style="color:#e6db74">&#34;NH&#34;</span>, <span style="color:#e6db74">&#34;RI&#34;</span>].<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">stateCode</span>);
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEnglanders</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">someCustomers</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">c</span>) =&gt;
+  <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">stateCode</span>)
+);
+</code></pre></div><hr />
+<h2 id="6---">6. 변수 캡슐화 하기</h2>
+<hr />
+<blockquote>
+<p>데이터 변수에 대한 접근 및 변경을 캡슐화하여 그 데이터로의 접근을 독점하고, 데이터를 변경하고 사용하는 코드를 감시할 수 있도록 하는 리팩터링</p>
+</blockquote>
+<p><strong>배경</strong></p>
+<ul>
+<li>데이터 관련 리팩터링은 함수와 달리 데이터를 참조하는 모든 부분을 한 번에 바꿔야 제대로 동작한다.</li>
+<li>짧은 함수 안의 임시 변수처럼 유효범위가 좁으면 상관없지만, 데이터가 사용되는 유효범위가 넓어질 수록 데이터를 다루기가 어려워진다.</li>
+<li>데이터의 범위가 넓을 수록 캡슐화하여 데이터에 대한 결합도를 낮추는 것이 좋다.</li>
+<li>객체지향에서는 데이터를 private하게 유지하여 getter와 setter로 접근하게 하는것이 좋다.</li>
+<li>불변데이터는 원본 데이터를 참조하는 코드를 변경할 필요가 없고, 데이터를 변형시키는 코드를 걱정할 일도 없기때문에 캡슐화할 이유가 적다.</li>
+</ul>
+<p><strong>절차</strong></p>
+<ul>
+<li>변수로의 접근과 갱신을 전담하는 캡슐화 함수들을 만든다.</li>
+<li>변수를 직접 참조하던 부분을 모두 적절한 캡슐화 함수 호출로 바꾼다.</li>
+<li>테스트</li>
+<li>변수의 접근 범위를 제한하여 결합도를 낮춘다.
+<ul>
+<li>별도의 js파일로 관리, 이름 변경 등</li>
+</ul>
+</li>
+</ul>
+<p><strong>예시*</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span> };
+
+<span style="color:#a6e22e">spaceship</span>.<span style="color:#a6e22e">owner</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defaultOwner</span>;
+
+<span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;레베카&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span> };
+</code></pre></div><p><strong>복제본을 반환하도록 하여 캡슐화</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span> };
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defaultOwner</span>() {
+  <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">assign</span>({}, <span style="color:#a6e22e">_defaultOwnerData</span>);
+}
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDefaultOwner</span>(<span style="color:#a6e22e">arg</span>) {
+  <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;
+}
+</code></pre></div><p><strong>레코드 캡슐화하기</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwnerData</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span> };
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defaultOwner</span>() {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">defaultOwnerData</span>);
+}
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDefaultOwner</span>(<span style="color:#a6e22e">arg</span>) {
+  <span style="color:#a6e22e">defaultOwnerData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">data</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_lastName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">lastName</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_firstName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">firstName</span>;
+  }
+
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">lastName</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_lastName</span>;
+  }
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">firstName</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_firstName</span>;
+  }
+}
+</code></pre></div><aside>
+💡 게터에서 복제본을 사용할지, 세터에서 복제본을 사용할지는 원본 데이터의 모든 변경을 그대로 반영할 수 있도록 원본으로의 링크를 유지해야 하는지에 따라 다르다. 이런 복제가 성능에 주는 영향은 대체로 미미한 반면, 원본을 그대로 사용하면 나중에 디버깅하기 어렵고 시간도 오래 걸릴 위험이 있다.
+데이터의 사용 범위가 넓을수록 적절히 캡슐화하는 것이 좋다.
+</aside>
+<hr />
+<h2 id="7---">7. 변수 이름 바꾸기</h2>
+<hr />
+<blockquote>
+<p>코드의 목적과 역할, 흐름에 어울리는 더욱 적절한 변수의 이름을 바꾸는 리팩토링</p>
+</blockquote>
+<p><strong>배경</strong></p>
+<ul>
+<li>명확한 프로그래밍의 핵심은 이름짓기이며, 변수는 프로그래머가 하려는 일에 관해 많은 것을 설명해 준다.</li>
+<li>문제에 대한 이해도가 높아져서, 혹은 사용자의 요구가 달라져서 목적이 달라진다면, 이에 따른 새로운 이름을 지어줄지에도 고민이 필요하다.</li>
+<li>함수 호출 한 번으로 끝나지 않고 값이 영속되는 필드라면 이름에 더 신경써야 한다.</li>
+</ul>
+<p><strong>절차</strong></p>
+<ul>
+<li>폭넓게 쓰이는 변수라면 변수 캡슐화 하기를 고려한다.</li>
+<li>이름을 바꿀 변수를 참조하는 곳을 모두 찾아서, 하나씩 변경한다.
+<ul>
+<li>다른 코드 베이스에서 참조하는 변수는 외부에 공개된 변수이므로 이 리팩터링을 적용할 수 없다.</li>
+<li>변수 값이 변하지 않는다면 다른 이름으로 복제본을 만들어서 하나씩 점진적으로 변경하며 테스트 한다.</li>
+</ul>
+</li>
+</ul>
+<p><strong>예시</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">untitled</span><span style="color:#960050;background-color:#1e0010">’</span>;
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;h1&gt;${tpHd}&lt;/h1&gt;&#39;</span>; <span style="color:#75715e">// tpHd 변수를 읽는데만 사용
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#39;articleTitle&#39;</span>]; <span style="color:#75715e">// tpHd값을 수정
+</span></code></pre></div><p><strong>변수 캡슐화 하기</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;h1&gt;${tpHd}&lt;/h1&gt;&#39;</span>;
+
+<span style="color:#a6e22e">setTitle</span>(<span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#39;articleTitle&#39;</span>]);
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">title</span>() {<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">tpHd</span>;} <span style="color:#75715e">// tpHd 변수의 getter
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setTitle</span>(<span style="color:#a6e22e">arg</span>) {<span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;} <span style="color:#75715e">// tpHd 변수의 setter
+</span></code></pre></div><hr />
+<h2 id="8---">8. 매개변수 객체 만들기</h2>
+<hr />
+<blockquote>
+<p>몰려다니는 여러개의 매개변수들을 하나의 데이터 구조로 변경하여 데이터 사이의 관계를 명확히 하고 코드를 근본적으로 관리하도록 하는 리팩터링</p>
+</blockquote>
+<p><strong>배경</strong></p>
+<ul>
+<li>매개변수의 수를 줄이면 코드가 명확해지고, 일관성이 높아진다.</li>
+<li>새로 만든 데이터 구조가 문제 영역을 훨씬 간결하게 표현하는 새로운 추상 개념으로 격상된다.</li>
+</ul>
+<p><strong>절차</strong></p>
+<ul>
+<li>적당한 데이터 구조가 아직 마련되어 있지 않다면 새로 만든다.
+<ul>
+<li>객체 또는 클래스</li>
+</ul>
+</li>
+<li>함수 선언 바꾸기로 새 데이터 구조를 매개 변수로 추가한다.</li>
+<li>함수 호출 시 새로운 데이터 구조 인스턴스를 넘기도록 수정한다. 하나씩 수정할 때마다 테스트 한다.</li>
+<li>기존 매개 변수를 사용하던 코드를 새 데이터 구조의 원소를 사용하도록 바꾼다.</li>
+<li>다 바꿨다면 기존 매개변수를 제거하고 테스트 한다.</li>
+</ul>
+<p><strong>예시*</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">station</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ZB1&#34;</span>,
+  <span style="color:#a6e22e">readings</span><span style="color:#f92672">:</span> [
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+  ],
+};
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">station</span>, <span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">station</span>.<span style="color:#a6e22e">readings</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">r</span>) =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">max</span>);
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">alerts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">readingsOutsideRange</span>(
+  <span style="color:#a6e22e">staion</span>,
+  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureFloor</span>,
+  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureCeiling</span>
+);
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">station</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ZB1&#34;</span>,
+  <span style="color:#a6e22e">readings</span><span style="color:#f92672">:</span> [
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+  ],
+};
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">station</span>, <span style="color:#a6e22e">range</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">station</span>.<span style="color:#a6e22e">readings</span>.<span style="color:#a6e22e">filter</span>(
+    (<span style="color:#a6e22e">r</span>) =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">range</span>.<span style="color:#a6e22e">min</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">range</span>.<span style="color:#a6e22e">max</span>
+  );
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">range</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">NumberRange</span>(
+  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureFloor</span>,
+  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureCeiling</span>
+);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">alerts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">staion</span>, <span style="color:#a6e22e">range</span>);
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberRange</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">min</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">max</span> };
+  }
+
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">min</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">min</span>;
+  }
+  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">max</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">max</span>;
+  }
+}
+</code></pre></div></div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
