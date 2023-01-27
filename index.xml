@@ -6,7 +6,7 @@
     <description>Recent content on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 18 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -39,12 +39,21 @@
     </item>
     
     <item>
+      <title>refactoring 7: Encapsulation</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/7/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/7/</guid>
+      <description>시작하며 각 모듈이 드러내지 않아야 할 비밀을 얼마나 잘 숨기느냐 ⇒ 모듈을 분리하는 가장 중요한 기준 클래스는 본래 정보를 숨기는 용도로 설계되었다. 클래스는 내부 정</description>
+    </item>
+    
+    <item>
       <title>refactoring 6: Basic refactoring way 2</title>
       <link>https://wacilpong.github.io/blog/study/refactoring/6/</link>
       <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/refactoring/6/</guid>
-      <description>6.9 여러 함수를 클래스로 묶기 6.9 목표 as-is function base(aReading) {...} function taxableCharge(aReading) {...} function calculateBaseCharge(aReading) {...} to-be class Reading { base(){...} taxableCharge() {...} calculateBaseCharge() {...} } 배경 클래스는 데이터와 함수를 하나의 공유 환경으로 묶은후, 다른 프로그램 요소와</description>
+      <description>6.9 여러 함수를 클래스로 묶기 목표 as-is function base(aReading) {...} function taxableCharge(aReading) {...} function calculateBaseCharge(aReading) {...} to-be class Reading { base(){...} taxableCharge() {...} calculateBaseCharge() {...} } 배경 클래스는 데이터와 함수를 하나의 공유 환경으로 묶은후, 다른 프로그램 요소와 어</description>
     </item>
     
     <item>

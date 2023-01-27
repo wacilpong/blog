@@ -156,7 +156,7 @@
 
     <div align="start" class="content"><h1 id="69----">6.9 여러 함수를 클래스로 묶기</h1>
 <hr />
-<h2 id="69-">6.9 목표</h2>
+<h2 id="heading">목표</h2>
 <hr />
 <p>as-is</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">base</span>(<span style="color:#a6e22e">aReading</span>) {...}
@@ -168,7 +168,7 @@
   <span style="color:#a6e22e">taxableCharge</span>() {...}
   <span style="color:#a6e22e">calculateBaseCharge</span>() {...}
 }
-</code></pre></div><h2 id="heading">배경</h2>
+</code></pre></div><h2 id="heading-1">배경</h2>
 <hr />
 <ul>
 <li>클래스는 데이터와 함수를 하나의 공유 환경으로 묶은후, 다른 프로그램 요소와 어우러질 수 있도록 그중 일부를 외부에 제공한다.</li>
@@ -209,24 +209,26 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">kent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createPerson</span>(<span style="color:#e6db74">&#34;kent&#34;</span>);
 <span style="color:#a6e22e">kent</span>.<span style="color:#a6e22e">setBirthday</span>(<span style="color:#a6e22e">LocalDate</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;1961-03-31&#34;</span>));
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">youngEnoughToTrust</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">kent</span>.<span style="color:#a6e22e">canTrust</span>();
-</code></pre></div><h2 id="heading-1">절차</h2>
+</code></pre></div><h2 id="heading-2">절차</h2>
 <hr />
 <ol>
-<li>함수들이 공유하는 공통 데이터 레코드를 캡슐화 한다.</li>
+<li>
+<dl>
+<dt>함수들이 공유하는 공통 데이터 레코드를 캡슐화 한다.</dt>
+<dd>공통 데이터가 레코드 구조로 묶여 있지 않다면 사전 작업으로 <strong><em>매개변수 객체 만들기 진행(6.8절)</em></strong></dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt>공통 레코드를 사용하는 함수 각각을 새 클래스로 옮긴다 (함수 옮기기 8.1절)</dt>
+<dd>공통 레코드의 맴버는 함수 호출문의 인수 목록에서 제거</dd>
+</dl>
+</li>
+<li>
+<p>데이터를 조작하는 로직들은 함수로 추출해서(6.1절) 새 클래스로 옮긴다.</p>
+</li>
 </ol>
-<ul>
-<li>공통 데이터가 레코드 구조로 묶여 있지 않다면 사전 작업으로 <strong><em>매개변수 객체 만들기 진행(6.8절)</em></strong></li>
-</ul>
-<ol start="2">
-<li>공통 레코드를 사용하는 함수 각각을 새 클래스로 옮긴다 (함수 옮기기 8.1절)</li>
-</ol>
-<ul>
-<li>공통 레코드의 맴버는 함수 호출문의 인수 목록에서 제거</li>
-</ul>
-<ol start="3">
-<li>데이터를 조작하는 로직들은 함수로 추출해서(6.1절) 새 클래스로 옮긴다.</li>
-</ol>
-<h2 id="heading-2">예시</h2>
+<h2 id="heading-3">예시</h2>
 <hr />
 <p>수돗물처럼 차 계량기를 읽어서 측정값을 기록하는 로직</p>
 <p>기본 코드의 1번 클라이언트</p>
@@ -375,15 +377,16 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rawReading</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acquireReading</span>();
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aReading</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Reading</span>(<span style="color:#a6e22e">rawReading</span>);
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taxableCharge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aReading</span>.<span style="color:#a6e22e">taxableCharge</span>;
-</code></pre></div><h2 id="heading-3">완성</h2>
+</code></pre></div><h2 id="heading-4">완성</h2>
 <hr />
 <ul>
 <li>파생 데이터를 모두 필요한 시점에 계산하게 되었다. -&gt; 저장된 데이터를 갱신하더라도 문제없다.</li>
 <li>프로그램의 다른 부분에서 데이터를 갱신할 가능성이 높을때는 클래스로 묶어 사용하면 도움이 된다.</li>
 </ul>
+<p><br /></p>
 <h1 id="610-----">6.10 여러 함수를 변환 함수로 묶기</h1>
 <hr />
-<h2 id="610-">6.10 목표</h2>
+<h2 id="heading-5">목표</h2>
 <hr />
 <p>as-is</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">base</span>(<span style="color:#a6e22e">aReading</span>) {...}
@@ -397,7 +400,7 @@
 
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">aReading</span>;
 }
-</code></pre></div><h2 id="heading-4">배경</h2>
+</code></pre></div><h2 id="heading-6">배경</h2>
 <hr />
 <ul>
 <li>소프트웨어는 데이터를 입력받아서 여러 정보를 도출한다.</li>
@@ -413,25 +416,26 @@
 변환 함수로 묶으면 가공한 데이터를 새로운 레코드에 저장한다. 이는 원본 데이터가 수정되면 일관성이 깨질 수 있다.</li>
 <li>여러 함수를 변환 함수로 묶는 이유는 도출 로직의 중복을 피하기 위함이다.</li>
 </ul>
-<h2 id="heading-5">절차</h2>
+<h2 id="heading-7">절차</h2>
 <hr />
 <ol>
-<li>변환할 레코드를 입력받아서 값을 그대로 반환하는 변환 함수를 만든다.</li>
+<li>
+<dl>
+<dt>변환할 레코드를 입력받아서 값을 그대로 반환하는 변환 함수를 만든다.</dt>
+<dd>이 작업은 대체로 깊은 복사로 처리한다. 변환 함수가 원본 레코드를 바꾸지 않는지 검사하는 테스트를 마련해 두면 도움이 된다.</dd>
+</dl>
+</li>
+<li>
+<p>묶을 함수 중 함수 하나를 골라서 본문 코드를 변환 함수로 옮기고, 처리 결과를 레코드에 새 필드로 기록한다. 그런 다음 클라이언트 코드가 이 필드를 사용하도록 수정한다. (로직이 복잡하면 함수 추출하기(6.1절) 진행)</p>
+</li>
+<li>
+<p>테스트 진행</p>
+</li>
+<li>
+<p>나머지 관련 함수도 위 과정에 따라 처리한다.</p>
+</li>
 </ol>
-<ul>
-<li>이 작업은 대체로 깊은 복사로 처리한다. 변환 함수가 원본 레코드를 바꾸지 않는지 검사하는 테스트를 마련해 두면 도움이 된다.</li>
-</ul>
-<ol start="2">
-<li>묶을 함수 중 함수 하나를 골라서 본문 코드를 변환 함수로 옮기고, 처리 결과를 레코드에 새 필드로 기록한다. 그런 다음 클라이언트 코드가 이 필드를 사용하도록 수정한다.</li>
-</ol>
-<ul>
-<li>로직이 복잡하면 함수 추출하기(6.1절) 진행</li>
-</ul>
-<ol start="3">
-<li>테스트 진행</li>
-<li>나머지 관련 함수도 위 과정에 따라 처리한다.</li>
-</ol>
-<h2 id="heading-6">예시</h2>
+<h2 id="heading-8">예시</h2>
 <hr />
 <p>차를 제공하는 서비스에서 매달 사용자가 마신 차의 양을 측정 하는 로직</p>
 <p>기본 코드의 1번 클라이언트</p>
@@ -540,7 +544,7 @@
 }
 </code></pre></div><h1 id="611--">6.11 단계 쪼개기</h1>
 <hr />
-<h2 id="611-">6.11 목표</h2>
+<h2 id="heading-9">목표</h2>
 <hr />
 <p>as-is</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">orderData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">orderString</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">/\\s+/</span>);
@@ -562,7 +566,7 @@
 <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">order</span>, <span style="color:#a6e22e">priceList</span>) {
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">priceList</span>[<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">productId</span>];
 }
-</code></pre></div><h2 id="heading-7">배경</h2>
+</code></pre></div><h2 id="heading-10">배경</h2>
 <hr />
 <p>서로 다른 두 대상을 한꺼번에 다루는 코드는 각각을 별개 모듈로 나누면 좋다.</p>
 <ul>
@@ -571,7 +575,7 @@
 <li>가장 대표적인 예는 컴파일러</li>
 <li>컴파일러는 텍스트 토큰화, 토큰 파싱 등 여러 단계를 거친 다음 마지막으로 목적 코드 생성</li>
 </ul>
-<h2 id="heading-8">절차</h2>
+<h2 id="heading-11">절차</h2>
 <hr />
 <ol>
 <li>두 번째 단계에 해당하는 코드를 독립 함수로 추출한다.</li>
@@ -589,7 +593,7 @@
 <ul>
 <li>이때 첫 번째 단계를 변환기 객체로 추출해도 좋다.</li>
 </ul>
-<h2 id="heading-9">예시</h2>
+<h2 id="heading-12">예시</h2>
 <hr />
 <p>상품의 결제 금액을 계산하는 코드</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">priceOrder</span>(<span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">shippingMethod</span>) {
