@@ -102,6 +102,15 @@
     </item>
     
     <item>
+      <title>2023</title>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</guid>
+      <description>2023-04-05 web API의 stopPropagation() 메서드는 같은 이벤트일 때만 상위 요소로의 전파를 막는 메서드이다. 어떤 요소의 click 이벤트에서 stopPropagation()을 호출했다고</description>
+    </item>
+    
+    <item>
       <title>refactoring 3: Bad smell?</title>
       <link>https://wacilpong.github.io/blog/study/refactoring/3/</link>
       <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>

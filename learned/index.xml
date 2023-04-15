@@ -6,10 +6,19 @@
     <description>Recent content in Learneds on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/learned/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2023</title>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</guid>
+      <description>2023-04-05 web API의 stopPropagation() 메서드는 같은 이벤트일 때만 상위 요소로의 전파를 막는 메서드이다. 어떤 요소의 click 이벤트에서 stopPropagation()을 호출했다고</description>
+    </item>
     
     <item>
       <title>2022</title>
