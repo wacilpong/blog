@@ -154,7 +154,34 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2023-04-05"><strong>2023-04-05</strong></h2>
+    <div align="start" class="content"><h2 id="2023-05-14"><strong>2023-05-14</strong></h2>
+<ul>
+<li>js의 <code>exec()</code> 메서드는 주어진 문자열에서 일치하는지 여부를 배열 혹은 null로 반환해준다.
+<ul>
+<li>이때 exec()에 플래그를 설정(/foo/g, /foo/y 등)하면 이전 일치의 인덱스를 저장하게 된다.</li>
+<li>문서에 따르면 아래와 같다.
+<blockquote>
+<p>Each call to <code>exec()</code> will update its lastIndex property, so that the next call to exec() will start at the next character.</p>
+</blockquote>
+</li>
+<li>즉, exec()를 호출할 때마다 lastIndex 속성이 업데이트 된다.</li>
+<li>그러면 다음 exec()가 호출되면 다음 문자에서 시작되므로 주의해야 한다.</li>
+<li>더 이상 맞는 것을 찾지 못하면 null을 반환한다.</li>
+<li>아래처럼 null이 반환되고, 또 다시 호출하면 다시 처음부터 실행한다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 예시
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Helloworld!&#34;</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pattern</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/([A-Za-z]+)|([ !])/g</span>;
+
+<span style="color:#75715e">// [&#34;Helloworld&#34;, &#34;Helloworld&#34;, undefined]
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">pattern</span>.<span style="color:#a6e22e">exec</span>(<span style="color:#a6e22e">str</span>);
+
+<span style="color:#75715e">// null
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">pattern</span>.<span style="color:#a6e22e">exec</span>(<span style="color:#a6e22e">str</span>);
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="2023-04-05"><strong>2023-04-05</strong></h2>
 <ul>
 <li>web API의 <code>stopPropagation()</code> 메서드는 같은 이벤트일 때만 상위 요소로의 전파를 막는 메서드이다.
 <ul>

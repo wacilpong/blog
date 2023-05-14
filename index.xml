@@ -107,7 +107,7 @@
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</guid>
-      <description>2023-04-05 web API의 stopPropagation() 메서드는 같은 이벤트일 때만 상위 요소로의 전파를 막는 메서드이다. 어떤 요소의 click 이벤트에서 stopPropagation()을 호출했다고</description>
+      <description>2023-05-14 js의 exec() 메서드는 주어진 문자열에서 일치하는지 여부를 배열 혹은 null로 반환해준다. 이때 exec()에 플래그를 설정(/foo/g, /foo/y 등)하면 이전</description>
     </item>
     
     <item>
