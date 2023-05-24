@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="kr-ko">
+    <head>
+        <meta name="description" content="" />
+
+<meta name="og:type" content="website" />
+<meta property="og:title" content="HTML attribute vs DOM properties" />
+<meta property="og:site_name" content="HTML attribute vs DOM properties" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/javascript-html-css/attribute-vs-property/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="HTML attribute vs DOM properties" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
+<meta
+  property="twitter:image:src"
+  content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512"
+/>
+
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-171393148-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-171393148-1");
+</script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>HTML attribute vs DOM properties</title>
+        
+            <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #469160;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://wacilpong.github.io/blog/css/main.css">
+
+
+ <link rel="stylesheet" href="https://wacilpong.github.io/blog/css/custom.css"> 
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.62.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">HTML attribute vs DOM properties</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/blog/">Home</a></li>
+                            
+                                <li><a href="/blog/tags/">Category</a></li>
+                            
+                                <li><a href="/blog/post/">Posts</a></li>
+                            
+                                <li><a href="/blog/project/">Projects</a></li>
+                            
+                                <li><a href="/blog/learned/">What I Learned</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/wacilpong/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/areum-han-a10645118/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>HTML attribute vs DOM properties</h2>
+        <h5>2023-05-24</h5>
+        
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h3 id="q---input-disabled---">Q. 앵귤러 템플릿에서 input disabled을 동적 처리하고 싶어요.</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// ts
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">isDisabled</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item_radio&#34;</span> <span style="color:#960050;background-color:#1e0010">*</span><span style="color:#a6e22e">ngFor</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;let item of list&#34;</span>&gt;
+  &lt;<span style="color:#f92672">input</span>
+    <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span>
+    <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type{{ item.value }}&#34;</span>
+    <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;inp_radio&#34;</span>
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type&#34;</span>
+    <span style="color:#a6e22e">formControlName</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type&#34;</span>
+    <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#a6e22e">value</span><span style="color:#960050;background-color:#1e0010">]</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">item</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">value</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+    <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#a6e22e">disabled</span><span style="color:#960050;background-color:#1e0010">]</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">isDisabled</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+  /&gt;
+  ...
+&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><p>결과적으로 위 코드는 disabled를 동적 처리하지 못한다. 실제 DOM 트리의 해당 요소를 보면 disabled 대신 <code>ng-reflect-is-disabled=&quot;true&quot;</code>만 생성되어 있다. ng-reflect-is-disabled는 앵귤러 프로덕션 빌드에서는 보이지 않는 단순 디버깅용으로 쓰이는 요소로, 결국 disabled 처리는 되지 않는다.</p>
+<p>아래는 이 현상에 대해 앵귤러팀이 해준 답변이다.</p>
+<p><br /></p>
+<blockquote>
+<p>This is working as designed. Binding syntax (using square brackets <code>[disabled]</code>) <strong>binds an expression to a DOM property, not an attribute</strong>. Static values are added to elements as attributes, hence the difference between <code>input disabled</code> and <code>input [disabled]</code>. The ng-reflect-is-disabled is for debugging purposes and will not be present in production.</p>
+</blockquote>
+<blockquote>
+<p>If you need to set the disabled attribute, using <code>[attr.disabled]</code> is the correct way to go here.</p>
+</blockquote>
+<p><code>[disabled]=&quot;&quot;</code> 혹은 <code>disabled=&quot;{{}}&quot;</code> 문법은 attribute가 아닌 DOM property로 바인딩되므로 이것이 올바른 동작이라고 한다. 따라서 attribute에 직접 바인딩하는 <code>[attr.disabled]</code> 를 쓰라고 권장한다.</p>
+<p>그렇다면 attribute와 property의 차이는 무엇인가?</p>
+<p><br /></p>
+<h3 id="1-attribute-vs-property">1. attribute vs property</h3>
+<ul>
+<li>HTML attribute는 대소문자를 가리지 않고, 모두 문자열이다.</li>
+<li>DOM property는 대소문자를 가리며, 어떤 타입의 값이든 올 수 있다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">body</span> <span style="color:#a6e22e">something</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;non-standard&#34;</span>&gt;
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#75715e">// OK 1: attribute
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;Something&#39;</span>));
+    <span style="color:#a6e22e">alert</span>(document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;something&#39;</span>));
+
+    <span style="color:#75715e">// OK 2: property
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Element</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayHi</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;hi&#39;</span>);
+    document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">sayHi</span>();
+
+    <span style="color:#75715e">// ERROR:
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// DOM property not created, because it&#39;s non-standard
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">something</span>)
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+</code></pre></div></li>
+<li>attribute를 바꾸면 property도 업데이트되지만, property를 바꿔도 attribute가 바뀌진 않는다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 😄 attribute </span><span style="color:#75715e">-</span><span style="color:#75715e">&gt; property </span><span style="color:#75715e">--&gt;</span>
+&lt;<span style="color:#f92672">input</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;input&#39;</span>);
+
+  <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;roomy&#39;</span>);
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">id</span>) <span style="color:#75715e">// roomy
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;newRoomy&#39;</span>;
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;id&#39;</span>)) <span style="color:#75715e">// newRoomy
+</span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 😢 property </span><span style="color:#75715e">-</span><span style="color:#75715e">&gt; attribute </span><span style="color:#75715e">--&gt;</span>
+&lt;<span style="color:#f92672">input</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;input&#39;</span>);
+
+  <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;value&#39;</span>, <span style="color:#e6db74">&#39;roomy&#39;</span>);
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span>) <span style="color:#75715e">// roomy
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;newRoomy&#39;</span>;
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;value&#39;</span>)) <span style="color:#75715e">// roomy
+</span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div></li>
+<li>표준 HTML attribute를 통해 DOM property가 생성된다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">body</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;test&#34;</span> <span style="color:#a6e22e">something</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;non-standard&#34;</span>&gt;
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#75715e">// OK
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">id</span>);
+
+    <span style="color:#75715e">// ERROR
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">something</span>)
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<h3 id="2---disabled---">2. 음&hellip; 그래서 [disabled]=&quot;&ldquo;가 동작하지 않은 이유?</h3>
+<p>disabled는 input태그의 표준 attribute이므로 property로도 접근 가능하다. 그래서 앵귤러쪽의 답변이 썩 속시원하지가 않았다. 표준 태그니까 property 바인딩이 되어야 하는 것 아니야? 그래서 더 찾아보니 아래의 두 글을 발견했다.</p>
+<ul>
+<li><a href="https://github.com/angular/angular/issues/48350">Bug: setting [disabled] attribute no longer works with formControlName</a></li>
+<li><a href="https://stackoverflow.com/questions/40494968/reactive-forms-disabled-attribute">Reactive forms - disabled attribute</a></li>
+</ul>
+<p>결론만 말하면 <strong>ReactiveFormsModule(ex. formControl)은 <code>[disabled]</code> 바인딩을 함께 사용할 수 없다.</strong> 앵귤러에서는 반응형 폼 모듈을 쓸 때 disabled를 아래처럼 동작시키기를 권장하고 있다.</p>
+<p><br /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// 폼컨트롤에 disabled 옵션 처리
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">formBuilder</span>.<span style="color:#a6e22e">control</span>({<span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ALL&#39;</span>, <span style="color:#a6e22e">disabled</span>: <span style="color:#66d9ef">true</span>});
+
+<span style="color:#75715e">// 메서드를 통해 disabled 제어
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">controls</span>[<span style="color:#e6db74">&#39;id&#39;</span>].<span style="color:#a6e22e">enabled</span>();
+<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">controls</span>[<span style="color:#e6db74">&#39;id&#39;</span>].<span style="color:#a6e22e">disabled</span>();
+</code></pre></div><p>즉, 반응형 폼은 formBuilder를 통해 만들어지므로 FormControlState 옵션에 disabled 속성을 지정하지 않으면, HTML attribute 자체가 생기지 않는 것이다. <strong>그러면 당연히 DOM에도 없으니 property 접근도 불가하다.</strong> <em>이런 내용을 앵귤러 측에서 다 생략해버려서 속시원하지가 않았던 거라고!</em></p>
+<p><br /></p>
+<h3 id="3-formcontrol---disable-">3. formControl을 템플릿 기반으로 disable 처리하려면?</h3>
+<p>이벤트 기반이 아니라 모종의 이유(초기에만 disabled 처리를 한다든지)로 <strong>enable/disable 메서드로 제어하고 싶지 않을 때는, 여전히 template-driven한 방식으로 disabled 처리를 할 수 있다.</strong></p>
+<p>바로 <code>[attr.disabled]</code>이다. 이건 아예 disabled라는 속성을 DOM에 직접 만들어주고 직접 제어하는 것이므로 지정한 formControl과는 상관 없이 동작할 수 있다.</p>
+<p><br /></p>
+<h2 id="4-">4. 결론</h2>
+<ul>
+<li>formControl과 <code>[disalbed]</code>는 공존할 수 없다.</li>
+<li>formBuilder로 formControl을 정의할 때 disabled 옵션을 지정하든가, <code>[attr.disabled]</code>로 쓰자.</li>
+</ul>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript-html-css/ts-mixin/">Typescript mixins in Angular</a></h4>
+    <h5>2022-01-16</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript-html-css/rxjs-marble-testing/">Rxjs marble testing with jasmine-marbles</a></h4>
+    <h5>2020-08-09</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/javascript-html-css/closure-especially-in-javascript/">Closure, especially in javascript</a></h4>
+    <h5>2020-04-18</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

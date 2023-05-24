@@ -6,10 +6,19 @@
     <description>Recent content in javascript/html/css on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 16 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/javascript/html/css/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTML attribute vs DOM properties</title>
+      <link>https://wacilpong.github.io/blog/post/javascript-html-css/attribute-vs-property/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/javascript-html-css/attribute-vs-property/</guid>
+      <description>Q. 앵귤러 템플릿에서 input disabled을 동적 처리하고 싶어요. // ts isDisabled = true; &amp;lt;div class=&amp;#34;item_radio&amp;#34; *ngFor=&amp;#34;let item of list&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;radio&amp;#34; id=&amp;#34;type{{ item.value }}&amp;#34; class=&amp;#34;inp_radio&amp;#34; name=&amp;#34;type&amp;#34; formControlName=&amp;#34;type&amp;#34; [value]=&amp;#34;item.value&amp;#34; [disabled]=&amp;#34;isDisabled&amp;#34; /&amp;gt; ... &amp;lt;/div&amp;gt; 결과적으로 위 코드는 disabled</description>
+    </item>
     
     <item>
       <title>Typescript mixins in Angular</title>
