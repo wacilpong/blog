@@ -12,6 +12,7 @@ og_description: ""
 // ts
 isDisabled = true;
 ```
+
 ```html
 <div class="item_radio" *ngFor="let item of list">
   <input
@@ -47,51 +48,60 @@ isDisabled = true;
 
 - HTML attribute는 대소문자를 가리지 않고, 모두 문자열이다.
 - DOM property는 대소문자를 가리며, 어떤 타입의 값이든 올 수 있다.
+
   ```html
   <body something="non-standard">
     <script>
       // OK 1: attribute
-      alert(document.body.getAttribute('Something'));
-      alert(document.body.getAttribute('something'));
+      alert(document.body.getAttribute("Something"));
+      alert(document.body.getAttribute("something"));
 
       // OK 2: property
-      Element.prototype.sayHi = () => console.log('hi');
+      Element.prototype.sayHi = () => console.log("hi");
       document.body.sayHi();
 
       // ERROR:
       // DOM property not created, because it's non-standard
-      alert(document.body.something)
+      alert(document.body.something);
     </script>
   </body>
   ```
-- attribute를 바꾸면 property도 업데이트되지만, property를 바꿔도 attribute가 바뀌진 않는다.
+
+- ~~attribute를 바꾸면 property도 업데이트되지만, property를 바꿔도 attribute가 바뀌진 않는다.~~
+- (2023-08-02 수정) 표준 attribute를 바꾸면 property도 자동으로 동기화되며, property를 바꿨을 때도 표준 attribute는 같이 바뀌는 것이 맞다.
+
   ```html
   <!-- 😄 attribute -> property -->
-  <input>
+  <input />
   <script>
-    let input = document.querySelector('input');
+    let input = document.querySelector("input");
 
-    input.setAttribute('id', 'roomy');
-    console.log(input.id) // roomy
+    input.setAttribute("id", "roomy");
+    console.log(input.id); // roomy
 
-    input.id = 'newRoomy';
-    console.log(input.getAttribute('id')) // newRoomy
+    input.id = "newRoomy";
+    console.log(input.getAttribute("id")); // newRoomy
   </script>
   ```
+
+- (2023-08-02 수정) 다만, `value`처럼 attr에서 prop 방향으로만 동기화되는 예외상황도 존재한다!
+
   ```html
   <!-- 😢 property -> attribute -->
-  <input>
+  <input />
   <script>
-    let input = document.querySelector('input');
+    let input = document.querySelector("input");
 
-    input.setAttribute('value', 'roomy');
-    console.log(input.value) // roomy
+    input.setAttribute("value", "roomy");
+    console.log(input.value); // roomy
 
-    input.value = 'newRoomy';
-    console.log(input.getAttribute('value')) // roomy
+    input.value = "newRoomy";
+    console.log(input.getAttribute("value")); // roomy
   </script>
   ```
+
 - 표준 HTML attribute를 통해 DOM property가 생성된다.
+
   ```html
   <body id="test" something="non-standard">
     <script>
@@ -99,7 +109,7 @@ isDisabled = true;
       alert(document.body.id);
 
       // ERROR
-      alert(document.body.something)
+      alert(document.body.something);
     </script>
   </body>
   ```
@@ -107,6 +117,7 @@ isDisabled = true;
 <br />
 
 ### 2. 음... 그래서 [disabled]=""가 동작하지 않은 이유?
+
 disabled는 input태그의 표준 attribute이므로 property로도 접근 가능하다. 그래서 앵귤러쪽의 답변이 썩 속시원하지가 않았다. 표준 태그니까 property 바인딩이 되어야 하는 것 아니야? 그래서 더 찾아보니 아래의 두 글을 발견했다.
 
 - [Bug: setting [disabled] attribute no longer works with formControlName](https://github.com/angular/angular/issues/48350)
@@ -118,11 +129,11 @@ disabled는 input태그의 표준 attribute이므로 property로도 접근 가�
 
 ```ts
 // 폼컨트롤에 disabled 옵션 처리
-formBuilder.control({value: 'ALL', disabled: true});
+formBuilder.control({value: "ALL", disabled: true});
 
 // 메서드를 통해 disabled 제어
-form.controls['id'].enabled();
-form.controls['id'].disabled();
+form.controls["id"].enabled();
+form.controls["id"].disabled();
 ```
 
 즉, 반응형 폼은 formBuilder를 통해 만들어지므로 FormControlState 옵션에 disabled 속성을 지정하지 않으면, HTML attribute 자체가 생기지 않는 것이다. **그러면 당연히 DOM에도 없으니 property 접근도 불가하다.** _이런 내용을 앵귤러 측에서 다 생략해버려서 속시원하지가 않았던 거라고!_
@@ -130,6 +141,7 @@ form.controls['id'].disabled();
 <br />
 
 ### 3. formControl을 템플릿 기반으로 disable 처리하려면?
+
 이벤트 기반이 아니라 모종의 이유(초기에만 disabled 처리를 한다든지)로 **enable/disable 메서드로 제어하고 싶지 않을 때는, 여전히 template-driven한 방식으로 disabled 처리를 할 수 있다.**
 
 바로 `[attr.disabled]`이다. 이건 아예 disabled라는 속성을 DOM에 직접 만들어주고 직접 제어하는 것이므로 지정한 formControl과는 상관 없이 동작할 수 있다.
@@ -137,5 +149,6 @@ form.controls['id'].disabled();
 <br />
 
 ## 4. 결론
+
 - formControl과 `[disalbed]`는 공존할 수 없다.
 - formBuilder로 formControl을 정의할 때 disabled 옵션을 지정하든가, `[attr.disabled]`로 쓰자.
