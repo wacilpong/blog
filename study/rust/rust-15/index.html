@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -170,7 +170,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="1-boxt-----">1. Box<T>를 이용한 힙 메모리의 데이터 참조</h2>
+<h2 id="1-boxt를-이용한-힙-메모리의-데이터-참조">1. Box<T>를 이용한 힙 메모리의 데이터 참조</h2>
 <ul>
 <li>Box는 데이터를 힙 메모리에 저장하고, 데이터를 가리키는 포인터만 스택에 저장한다.</li>
 <li>Box를 주로 사용하는 예시:
@@ -182,7 +182,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="1-1-----">1-1. 힙 메모리에 박스 데이터 저장하기</h3>
+<h3 id="1-1-힙-메모리에-박스-데이터-저장하기">1-1. 힙 메모리에 박스 데이터 저장하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> b <span style="color:#f92672">=</span> Box::new(<span style="color:#ae81ff">5</span>);
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;b = {}&#34;</span>, b);
@@ -193,14 +193,14 @@
 <li>즉, 스택에 저장된 박스와 힙에 저장된 박스가 가리키는 데이터의 메모리가 모두 해제된다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1-2----">1-2. 박스와 재귀 타입 활용하기</h3>
+<h3 id="1-2-박스와-재귀-타입-활용하기">1-2. 박스와 재귀 타입 활용하기</h3>
 <ul>
 <li>컴파일 타임에 크기를 알 수 없는 타입 중 하나는 재귀 타입(recursive type)이다.</li>
 <li>재귀 타입이란 같은 타입의 다른 값을 자신의 일부에 포함하는 값이다.</li>
 <li>값을 중첩하면 이론적으로는 무한할 수 있어서 러스트는 재귀 타입 값에 필요한 공간을 판단할 수 없다.</li>
 </ul>
 <p><br /></p>
-<h4 id="1---cons-list-construction-list">(1) 리스트 생성자 (cons list, construction list)</h4>
+<h4 id="1-리스트-생성자-cons-list-construction-list">(1) 리스트 생성자 (cons list, construction list)</h4>
 <ul>
 <li>콘스 리스트는 리스프(Lisp) 언어에 도입된 데이터 구조다.</li>
 <li>하나의 값과 값의 쌍으로 구성된 두 인수를 이용해 새로운 쌍을 생성한다.</li>
@@ -230,7 +230,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="2-----">(2) 비재귀 타입의 크기를 계산하는 방법</h4>
+<h4 id="2-비재귀-타입의-크기를-계산하는-방법">(2) 비재귀 타입의 크기를 계산하는 방법</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Message</span> {
     Quit,
     Move { x: <span style="color:#66d9ef">i32</span>, y: <span style="color:#66d9ef">i32</span> },
@@ -251,7 +251,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="3-boxt----">(3) Box<T>로 재귀 타입의 크기 결정하기</h4>
+<h4 id="3-boxt로-재귀-타입의-크기-결정하기">(3) Box<T>로 재귀 타입의 크기 결정하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span>help: <span style="color:#a6e22e">insert</span> some indirection (e.g., a <span style="color:#960050;background-color:#1e0010">`</span>Box<span style="color:#960050;background-color:#1e0010">`</span>, <span style="color:#960050;background-color:#1e0010">`</span>Rc<span style="color:#960050;background-color:#1e0010">`</span>, or <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">`</span>) to make <span style="color:#960050;background-color:#1e0010">`</span>List<span style="color:#960050;background-color:#1e0010">`</span> representable
   <span style="color:#f92672">|</span>
@@ -278,7 +278,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="2-deref-----">2. <code>Deref</code> 트레이트로 스마트 포인터를 참조처럼 취급하기</h2>
+<h2 id="2-deref-트레이트로-스마트-포인터를-참조처럼-취급하기">2. <code>Deref</code> 트레이트로 스마트 포인터를 참조처럼 취급하기</h2>
 <ul>
 <li>해당 트레이트를 구현하면
 <ul>
@@ -289,7 +289,7 @@
 <li>이를 위해 역참조 연산자가 참조를 어떻게 처리하는지부터 알아야 한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="2-1------">2-1. 역참조 연산자로 포인터가 가리키는 값 읽어오기</h3>
+<h3 id="2-1-역참조-연산자로-포인터가-가리키는-값-읽어오기">2-1. 역참조 연산자로 포인터가 가리키는 값 읽어오기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
     <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>x;
@@ -302,14 +302,14 @@
 <li><strong>변수 y를 검증하려면 역참조 연산자를 붙여서 가리키는 값의 참조를 따라가야 한다.</strong></li>
 <li>따라서 *y를 통해 y가 가리키는 값 5에 접근할 수 있다.</li>
 <li>만약 <code>assert_eq!(5, y)</code>라고 작성하면 에러를 낸다.<br />
-<em>error[E0277]: can't compare <code>{integer}</code> with <code>&amp;{integer}</code></em>
+<em>error[E0277]: can&rsquo;t compare <code>{integer}</code> with <code>&amp;{integer}</code></em>
 <ul>
 <li>숫자와 숫자에 대한 참조는 다른 타입이므로 둘을 비교할 수 없기 때문이다.</li>
 </ul>
 </li>
 </ul>
 <p><br /></p>
-<h3 id="2-2-boxt--">2-2. Box<T>를 참조처럼 사용하기</h3>
+<h3 id="2-2-boxt를-참조처럼-사용하기">2-2. Box<T>를 참조처럼 사용하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
     <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> Box::new(x);
@@ -322,7 +322,7 @@
 <li>박스 타입을 직접 구현하면서 박스가 어떻게 역참조 연산자를 지원하는지 알아보아야 한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="2-3----">2-3. 직접 구현하는 스마트 포인터</h3>
+<h3 id="2-3-직접-구현하는-스마트-포인터">2-3. 직접 구현하는 스마트 포인터</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyBox</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(T);
 
 <span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
@@ -359,16 +359,16 @@
   <span style="color:#f92672">-</span>-&gt; <span style="color:#a6e22e">src</span><span style="color:#f92672">/</span>main.rs:<span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">19</span>
    <span style="color:#f92672">|</span>
 <span style="color:#ae81ff">14</span> <span style="color:#f92672">|</span>     assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">5</span>, <span style="color:#f92672">*</span>y);
-   <span style="color:#f92672">|</span>                   <span style="color:#f92672">^</span><span style="color:#f92672">^</span>
+   <span style="color:#f92672">|</span>                   <span style="color:#f92672">^^</span>
 
-For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">-</span><span style="color:#f92672">-</span>explain E0614<span style="color:#960050;background-color:#1e0010">`</span>.
+For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">--</span>explain E0614<span style="color:#960050;background-color:#1e0010">`</span>.
 error: <span style="color:#a6e22e">could</span> not compile <span style="color:#960050;background-color:#1e0010">`</span>deref<span style="color:#f92672">-</span>example<span style="color:#960050;background-color:#1e0010">`</span> due to previous error
 </code></pre></div><ul>
 <li><code>MyBox</code> 구조체는 아직 <code>Deref</code> 트레이트를 구현하지 않았기 때문에, 역참조가 발생하면 오류가 난다.</li>
 <li>실제로 Rust 컴파일러는 <code>*y</code>_ 를 <code>_(y.deref())</code> 로 변환하여 실행한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="2-4-deref----">2-4. Deref 트레이트로 참조같은 타입 구현하기</h3>
+<h3 id="2-4-deref-트레이트로-참조같은-타입-구현하기">2-4. Deref 트레이트로 참조같은 타입 구현하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::ops::Deref;
 
 <span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Deref <span style="color:#66d9ef">for</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
@@ -402,7 +402,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 <li><code>&amp;self.0</code>는 튜플 구조체의 첫번째 아이템을 반환한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="2-5-----">2-5. 함수와 메서드에서 묵시적 강제 역참조</h3>
+<h3 id="2-5-함수와-메서드에서-묵시적-강제-역참조">2-5. 함수와 메서드에서 묵시적 강제 역참조</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::ops::Deref;
 
 <span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Deref <span style="color:#66d9ef">for</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
@@ -442,7 +442,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 </li>
 </ul>
 <p><br /></p>
-<h4 id="--">[강제 역참조가 없었다면?]</h4>
+<h4 id="강제-역참조가-없었다면">[강제 역참조가 없었다면?]</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> m <span style="color:#f92672">=</span> MyBox::new(String::from(<span style="color:#e6db74">&#34;Rust&#34;</span>));
     hello(<span style="color:#f92672">&amp;</span>(<span style="color:#f92672">*</span>m)[..]);
@@ -451,7 +451,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 <li>가독성이 매우 떨어진다.</li>
 </ul>
 <p><br /></p>
-<h3 id="2-6---">2-6. 강제 역참조와 가변성</h3>
+<h3 id="2-6-강제-역참조와-가변성">2-6. 강제 역참조와 가변성</h3>
 <ul>
 <li>불변참조에 <code>Deref</code> 트레이트를 사용했던 것처럼 가변참조에는 <code>DerefMut</code> 를 사용할 수 있다.</li>
 <li>Rust 는 3가지 경우에 대한 강제 역참조를 수행한다.
@@ -465,13 +465,13 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 <li>3번째는 <strong>가변→불변</strong>으로의 강제 역참조인데 이는 <strong>단방향으로써 참조 규칙을 위반하지 않기 위해서</strong>이다.</li>
 </ul>
 <p><br /></p>
-<h4 id="---">[다시 살펴보는 참조 규칙]</h4>
+<h4 id="다시-살펴보는-참조-규칙">[다시 살펴보는 참조 규칙]</h4>
 <ul>
 <li>항상 하나의 가변참조, 혹은 다수의 불변 참조만 있어야 한다.</li>
 <li>참조 변수는 항상 유효해야 한다.</li>
 </ul>
 <p><br /></p>
-<h2 id="3-drop----">3. Drop 트레이트로 클린업 코드 실행하기</h2>
+<h2 id="3-drop-트레이트로-클린업-코드-실행하기">3. Drop 트레이트로 클린업 코드 실행하기</h2>
 <ul>
 <li><code>Drop</code> 트레이트는 스마트 포인터가 <strong>스코프 밖으로 나갈때</strong> 클린업 작업을 실행한다.</li>
 <li>ex) 파일이나 네트워크 연결시에 후작업을 하여 메모리나 다른 리소스를 해제하여 프로세스 과부하가 발생하지 않게 한다.</li>
@@ -510,7 +510,7 @@ Dropping CustomSmartPointer with data <span style="color:#960050;background-colo
 <li>c, d 포인터가 스코프 밖으로 나갈때 d, c 순으로 drop 메서드를 호출한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="3-1-stdmemdrop---">3-1. <code>std::mem::drop</code> 으로 조기 해제하기</h3>
+<h3 id="3-1-stdmemdrop-으로-조기-해제하기">3-1. <code>std::mem::drop</code> 으로 조기 해제하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">CustomSmartPointer</span> {
     data: String,
 }
@@ -537,12 +537,12 @@ Dropping CustomSmartPointer with data <span style="color:#960050;background-colo
   <span style="color:#f92672">-</span>-&gt; <span style="color:#a6e22e">src</span><span style="color:#f92672">/</span>main.rs:<span style="color:#ae81ff">16</span>:<span style="color:#ae81ff">7</span>
    <span style="color:#f92672">|</span>
 <span style="color:#ae81ff">16</span> <span style="color:#f92672">|</span>     c.drop();
-   <span style="color:#f92672">|</span>     <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+   <span style="color:#f92672">|</span>     <span style="color:#f92672">--^^^^--</span>
    <span style="color:#f92672">|</span>     <span style="color:#f92672">|</span> <span style="color:#f92672">|</span>
    <span style="color:#f92672">|</span>     <span style="color:#f92672">|</span> explicit destructor calls not allowed
    <span style="color:#f92672">|</span>     help: <span style="color:#a6e22e">consider</span> using <span style="color:#960050;background-color:#1e0010">`</span>drop<span style="color:#960050;background-color:#1e0010">`</span> function: <span style="color:#960050;background-color:#1e0010">`</span>drop(c)<span style="color:#960050;background-color:#1e0010">`</span>
 
-For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">-</span><span style="color:#f92672">-</span>explain E0040<span style="color:#960050;background-color:#1e0010">`</span>.
+For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">--</span>explain E0040<span style="color:#960050;background-color:#1e0010">`</span>.
 error: <span style="color:#a6e22e">could</span> not compile <span style="color:#960050;background-color:#1e0010">`</span>drop<span style="color:#f92672">-</span>example<span style="color:#960050;background-color:#1e0010">`</span> due to previous error
 </code></pre></div><ul>
 <li><code>drop</code> 을 강제로 조기에 호출해야할 경우가 있다.<br />
@@ -586,7 +586,7 @@ CustomSmartPointer dropped before the end of main.
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="4-rct----">4. Rc<T>, 참조 카운터 스마트 포인터</h2>
+<h2 id="4-rct-참조-카운터-스마트-포인터">4. Rc<T>, 참조 카운터 스마트 포인터</h2>
 <ul>
 <li>하나의 값을 여러 변수가 소유하는 때는 값에 대한 해제가 어렵다.
 <ul>
@@ -598,7 +598,7 @@ CustomSmartPointer dropped before the end of main.
 <li>Rc<T> 타입은 프로그램의 여러 부분에서 데이터를 읽을 수 있게 힙 메모리에 저장할 때 사용한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="4-1-rct----">4-1. Rc<T> 타입을 이용해 데이터 공유하기</h3>
+<h3 id="4-1-rct-타입을-이용해-데이터-공유하기">4-1. Rc<T> 타입을 이용해 데이터 공유하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">List</span> {
     Cons(<span style="color:#66d9ef">i32</span>, Box<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;</span>),
     Nil,
@@ -623,7 +623,7 @@ CustomSmartPointer dropped before the end of main.
 <span style="color:#ae81ff">11</span> <span style="color:#f92672">|</span>     <span style="color:#66d9ef">let</span> c <span style="color:#f92672">=</span> Cons(<span style="color:#ae81ff">4</span>, Box::new(a));
    <span style="color:#f92672">|</span>                              <span style="color:#f92672">^</span> value used here after <span style="color:#66d9ef">move</span>
 
-For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">-</span><span style="color:#f92672">-</span>explain E0382<span style="color:#960050;background-color:#1e0010">`</span>.
+For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">--</span>explain E0382<span style="color:#960050;background-color:#1e0010">`</span>.
 error: <span style="color:#a6e22e">could</span> not compile <span style="color:#960050;background-color:#1e0010">`</span>cons<span style="color:#f92672">-</span>list<span style="color:#960050;background-color:#1e0010">`</span> due to previous error
 </code></pre></div><ul>
 <li>Cons 열거값은 자신이 저장한 데이터를 소유하고 있다.</li>
@@ -657,7 +657,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 </li>
 </ul>
 <p><br /></p>
-<h3 id="4-2-rct----">4-2. Rc<T>의 복제는 참조 카운트를 증가시킨다.</h3>
+<h3 id="4-2-rct의-복제는-참조-카운트를-증가시킨다">4-2. Rc<T>의 복제는 참조 카운트를 증가시킨다.</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> Rc::new(Cons(<span style="color:#ae81ff">5</span>, Rc::new(Cons(<span style="color:#ae81ff">10</span>, Rc::new(Nil)))));
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;count after creating a = {}&#34;</span>, Rc::strong_count(<span style="color:#f92672">&amp;</span>a));
@@ -678,7 +678,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="5-refcellt----">5. RefCell<T> 타입과 내부 가변성 패턴</h2>
+<h2 id="5-refcellt-타입과-내부-가변성-패턴">5. RefCell<T> 타입과 내부 가변성 패턴</h2>
 <ul>
 <li>내부 가변성(Interior mutability)
 <ul>
@@ -691,7 +691,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 </li>
 </ul>
 <p><br /></p>
-<h3 id="5-1-refcellt-----">5-1. RefCell<T> 타입으로 런타임에 대여 규칙 강제하기</h3>
+<h3 id="5-1-refcellt-타입으로-런타임에-대여-규칙-강제하기">5-1. RefCell<T> 타입으로 런타임에 대여 규칙 강제하기</h3>
 <ul>
 <li>Rc<T>와 달리 자신이 보유한 데이터에 대한 단일 소유권을 표현한다.</li>
 <li>참조와 Box<T> 타입은 대여 규칙의 불변성질이 컴파일 타임에 평가된다.</li>
@@ -712,7 +712,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 <li>Rc<T> 타입과 마찬가지로 RefCell<T>도 단일 스레드 환경에서만 사용해야 한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="5-2-------">5-2. 내부 가변성: 불변 값에 대한 가변 대여</h3>
+<h3 id="5-2-내부-가변성-불변-값에-대한-가변-대여">5-2. 내부 가변성: 불변 값에 대한 가변 대여</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
     <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> x;
@@ -725,9 +725,9 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>     <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
   <span style="color:#f92672">|</span>         <span style="color:#f92672">-</span> help: <span style="color:#a6e22e">consider</span> changing this to be mutable: <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#66d9ef">mut</span> x<span style="color:#960050;background-color:#1e0010">`</span>
 <span style="color:#ae81ff">3</span> <span style="color:#f92672">|</span>     <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> x;
-  <span style="color:#f92672">|</span>             <span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span> cannot borrow <span style="color:#66d9ef">as</span> mutable
+  <span style="color:#f92672">|</span>             <span style="color:#f92672">^^^^^^</span> cannot borrow <span style="color:#66d9ef">as</span> mutable
 
-For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">-</span><span style="color:#f92672">-</span>explain E0596<span style="color:#960050;background-color:#1e0010">`</span>.
+For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">--</span>explain E0596<span style="color:#960050;background-color:#1e0010">`</span>.
 error: <span style="color:#a6e22e">could</span> not compile <span style="color:#960050;background-color:#1e0010">`</span>borrowing<span style="color:#960050;background-color:#1e0010">`</span> due to previous error
 </code></pre></div><ul>
 <li>대여 규칙에 따르면 위 코드는 컴파일되지 않는다.</li>
@@ -735,14 +735,14 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 <li>이때 RefCell<T>를 사용하며, 이 타입은 대여 규칙을 우회하는 것이 아니다.</li>
 </ul>
 <p><br /></p>
-<h4 id="1-----mock-objects">(1) 내부 가변성의 활용 예: Mock Objects</h4>
+<h4 id="1-내부-가변성의-활용-예-mock-objects">(1) 내부 가변성의 활용 예: Mock Objects</h4>
 <ul>
 <li>러스트에는 객체라는 개념이 없어, 표준 라이브러리로 mock 객체를 지원하지 않는다.</li>
 <li>따라서 그러한 역할을 하는 구조체를 직접 정의하면 된다.</li>
 </ul>
 <p><br /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 현재 값이 최대값에 얼마나 가까워지는지 추적하여
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 일정 수준이 되면 경고를 보내는 라이브러리
+</span><span style="color:#75715e">// 일정 수준이 되면 경고를 보내는 라이브러리
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Messenger {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">send</span>(<span style="color:#f92672">&amp;</span>self, msg: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>);
 }
@@ -770,12 +770,12 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 
         <span style="color:#66d9ef">let</span> percentage_of_max <span style="color:#f92672">=</span> self.value <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">f64</span> <span style="color:#f92672">/</span> self.max <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">f64</span>;
 
-        <span style="color:#66d9ef">if</span> percentage_of_max <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> {
+        <span style="color:#66d9ef">if</span> percentage_of_max <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1.0</span> {
             self.messenger.send(<span style="color:#e6db74">&#34;Error: You are over your quota!&#34;</span>);
-        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> percentage_of_max <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span> {
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> percentage_of_max <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0.9</span> {
             self.messenger
                 .send(<span style="color:#e6db74">&#34;Urgent warning: You&#39;ve used up over 90% of your quota!&#34;</span>);
-        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> percentage_of_max <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0.75</span> {
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> percentage_of_max <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0.75</span> {
             self.messenger
                 .send(<span style="color:#e6db74">&#34;Warning: You&#39;ve used up over 75% of your quota!&#34;</span>);
         }
@@ -786,7 +786,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
 <li>테스트를 위해 원하는 메시지로 send 메서드가 호출되는지 확인할 mock 객체가 필요하다.</li>
 </ul>
 <p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[cfg(test)]</span>
 <span style="color:#66d9ef">mod</span> tests {
     <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
 
@@ -808,7 +808,7 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
         }
     }
 
-    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#75715e">#[test]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">it_sends_an_over_75_percent_warning_message</span>() {
         <span style="color:#66d9ef">let</span> mock_messenger <span style="color:#f92672">=</span> MockMessenger::new();
         <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> limit_tracker <span style="color:#f92672">=</span> LimitTracker::new(<span style="color:#f92672">&amp;</span>mock_messenger, <span style="color:#ae81ff">100</span>);
@@ -829,12 +829,12 @@ error: <span style="color:#a6e22e">could</span> not compile <span style="color:#
   <span style="color:#f92672">-</span>-&gt; <span style="color:#a6e22e">src</span><span style="color:#f92672">/</span>lib.rs:<span style="color:#ae81ff">58</span>:<span style="color:#ae81ff">13</span>
    <span style="color:#f92672">|</span>
 <span style="color:#ae81ff">2</span>  <span style="color:#f92672">|</span>     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">send</span>(<span style="color:#f92672">&amp;</span>self, msg: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>);
-   <span style="color:#f92672">|</span>             <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> help: <span style="color:#a6e22e">consider</span> changing that to be a mutable reference: <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self<span style="color:#960050;background-color:#1e0010">`</span>
+   <span style="color:#f92672">|</span>             <span style="color:#f92672">-----</span> help: <span style="color:#a6e22e">consider</span> changing that to be a mutable reference: <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self<span style="color:#960050;background-color:#1e0010">`</span>
 ...
 <span style="color:#ae81ff">58</span> <span style="color:#f92672">|</span>             self.sent_messages.push(String::from(message));
-   <span style="color:#f92672">|</span>             <span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span> <span style="color:#960050;background-color:#1e0010">`</span>self<span style="color:#960050;background-color:#1e0010">`</span> is a <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">`</span> reference, so the data it refers to cannot be borrowed <span style="color:#66d9ef">as</span> mutable
+   <span style="color:#f92672">|</span>             <span style="color:#f92672">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span> <span style="color:#960050;background-color:#1e0010">`</span>self<span style="color:#960050;background-color:#1e0010">`</span> is a <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">&amp;</span><span style="color:#960050;background-color:#1e0010">`</span> reference, so the data it refers to cannot be borrowed <span style="color:#66d9ef">as</span> mutable
 
-For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">-</span><span style="color:#f92672">-</span>explain E0596<span style="color:#960050;background-color:#1e0010">`</span>.
+For more information about this error, try <span style="color:#960050;background-color:#1e0010">`</span>rustc <span style="color:#f92672">--</span>explain E0596<span style="color:#960050;background-color:#1e0010">`</span>.
 error: <span style="color:#a6e22e">could</span> not compile <span style="color:#960050;background-color:#1e0010">`</span>limit<span style="color:#f92672">-</span>tracker<span style="color:#960050;background-color:#1e0010">`</span> due to previous error
 warning: <span style="color:#a6e22e">build</span> failed, waiting <span style="color:#66d9ef">for</span> other jobs to finish...
 error: <span style="color:#a6e22e">build</span> failed
@@ -845,13 +845,13 @@ error: <span style="color:#a6e22e">build</span> failed
 <li>sent_messages 필드를 RefCell<T> 타입으로 선언해보자.</li>
 </ul>
 <p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[cfg(test)]</span>
 <span style="color:#66d9ef">mod</span> tests {
     <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
     <span style="color:#66d9ef">use</span> std::cell::RefCell;
 
     <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MockMessenger</span> {
-        sent_messages: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>,
+        sent_messages: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;&gt;</span>,
     }
 
     <span style="color:#66d9ef">impl</span> MockMessenger {
@@ -868,7 +868,7 @@ error: <span style="color:#a6e22e">build</span> failed
         }
     }
 
-    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#75715e">#[test]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">it_sends_an_over_75_percent_warning_message</span>() {
         <span style="color:#75715e">// --snip--
 </span><span style="color:#75715e"></span>
@@ -880,7 +880,7 @@ error: <span style="color:#a6e22e">build</span> failed
 <li><strong>RefCell 타입의 borrow 메서드를 호출해 벡터에 대한 불변 참조를 가져와 검증할 수 있다.</strong></li>
 </ul>
 <p><br /></p>
-<h4 id="2-refcellt----">(2) RefCell<T> 이용해 런타임에 대여 검사하기</h4>
+<h4 id="2-refcellt-이용해-런타임에-대여-검사하기">(2) RefCell<T> 이용해 런타임에 대여 검사하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 같은 스코프에서 두 가변 참조를 생성함
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">impl</span> Messenger <span style="color:#66d9ef">for</span> MockMessenger {
@@ -893,7 +893,7 @@ error: <span style="color:#a6e22e">build</span> failed
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">failures:
-<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> tests::it_sends_an_over_75_percent_warning_message stdout <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#f92672">----</span> tests::it_sends_an_over_75_percent_warning_message stdout <span style="color:#f92672">----</span>
 thread <span style="color:#a6e22e">&#39;main</span><span style="color:#960050;background-color:#1e0010">&#39;</span> panicked at <span style="color:#a6e22e">&#39;already</span> borrowed: <span style="color:#a6e22e">BorrowMutError</span><span style="color:#960050;background-color:#1e0010">&#39;</span>, src<span style="color:#f92672">/</span>lib.rs:<span style="color:#ae81ff">60</span>:<span style="color:#ae81ff">53</span>
 note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;background-color:#1e0010">`</span>RUST_BACKTRACE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">`</span> environment variable to display a backtrace
 </code></pre></div><ul>
@@ -913,10 +913,10 @@ note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;bac
 <li><strong>따라서 일반적인 참조보다 더 많은 기능이 필요하면 손실을 감수하고 RefCell<T> 타입을 쓰면 된다.</strong></li>
 </ul>
 <p><br /></p>
-<h3 id="5-3-rct-refcellt------">5-3. Rc<T>와 RefCell<T> 조합해 가변 데이터에 다중 소유권 적용하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug)</span><span style="color:#75715e">]</span>
+<h3 id="5-3-rct와-refcellt-조합해-가변-데이터에-다중-소유권-적용하기">5-3. Rc<T>와 RefCell<T> 조합해 가변 데이터에 다중 소유권 적용하기</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[derive(Debug)]</span>
 <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">List</span> {
-    Cons(Rc<span style="color:#f92672">&lt;</span>RefCell<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>, Rc<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;</span>),
+    Cons(Rc<span style="color:#f92672">&lt;</span>RefCell<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;&gt;</span>, Rc<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;</span>),
     Nil,
 }
 
@@ -932,7 +932,7 @@ note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;bac
     <span style="color:#66d9ef">let</span> b <span style="color:#f92672">=</span> Cons(Rc::new(RefCell::new(<span style="color:#ae81ff">3</span>)), Rc::clone(<span style="color:#f92672">&amp;</span>a));
     <span style="color:#66d9ef">let</span> c <span style="color:#f92672">=</span> Cons(Rc::new(RefCell::new(<span style="color:#ae81ff">4</span>)), Rc::clone(<span style="color:#f92672">&amp;</span>a));
 
-    <span style="color:#f92672">*</span>value.borrow_mut() <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+    <span style="color:#f92672">*</span>value.borrow_mut() <span style="color:#f92672">+=</span> <span style="color:#ae81ff">10</span>;
 
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;a after = {:?}&#34;</span>, a);
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;b after = {:?}&#34;</span>, b);
@@ -953,7 +953,7 @@ note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;bac
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="6----">6. 순환참조는 메모리 누수를 일으킨다.</h2>
+<h2 id="6-순환참조는-메모리-누수를-일으킨다">6. 순환참조는 메모리 누수를 일으킨다.</h2>
 <ul>
 <li>아무리 러스트가 메모리 안전성을 보장해도 실수로 메모리를 해제하지 않으면 메모리 누수가 일어난다.</li>
 <li>러스트가 컴파일의 데이터 경합을 완전히 막지 않듯이 메모리 누수도 마찬가지다.
@@ -965,22 +965,22 @@ note: <span style="color:#a6e22e">run</span> with <span style="color:#960050;bac
 </li>
 </ul>
 <p><br /></p>
-<h3 id="6-1--">6-1. 순환참조 생성하기</h3>
+<h3 id="6-1-순환참조-생성하기">6-1. 순환참조 생성하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> <span style="color:#66d9ef">crate</span>::List::{Cons, Nil};
 <span style="color:#66d9ef">use</span> std::cell::RefCell;
 <span style="color:#66d9ef">use</span> std::rc::Rc;
 
-<span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug)</span><span style="color:#75715e">]</span>
+<span style="color:#75715e">#[derive(Debug)]</span>
 <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">List</span> {
-    Cons(<span style="color:#66d9ef">i32</span>, RefCell<span style="color:#f92672">&lt;</span>Rc<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>),
+    Cons(<span style="color:#66d9ef">i32</span>, RefCell<span style="color:#f92672">&lt;</span>Rc<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;&gt;</span>),
     Nil,
 }
 
 <span style="color:#66d9ef">impl</span> List {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">tail</span>(<span style="color:#f92672">&amp;</span>self) -&gt; Option<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span>RefCell<span style="color:#f92672">&lt;</span>Rc<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">tail</span>(<span style="color:#f92672">&amp;</span>self) -&gt; Option<span style="color:#f92672">&lt;&amp;</span>RefCell<span style="color:#f92672">&lt;</span>Rc<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&gt;&gt;&gt;</span> {
         <span style="color:#66d9ef">match</span> self {
-            Cons(_, item) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Some(item),
-            Nil <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> None,
+            Cons(_, item) <span style="color:#f92672">=&gt;</span> Some(item),
+            Nil <span style="color:#f92672">=&gt;</span> None,
         }
     }
 }
@@ -1038,7 +1038,7 @@ a rc count after changing a <span style="color:#f92672">=</span> <span style="co
 <li>이때 러스트는 순환참조를 생성하는 순간 프로그램을 중단시킨다.</li>
 </ul>
 <p><br /></p>
-<h3 id="6-2---rct--weakt-">6-2. 순환참조 방지: Rc<T> 대신 Weak<T> 활용하기</h3>
+<h3 id="6-2-순환참조-방지-rct-대신-weakt-활용하기">6-2. 순환참조 방지: Rc<T> 대신 Weak<T> 활용하기</h3>
 <ul>
 <li><code>Rc::clone</code>은 Rc<T> 인스턴스의 string_count 값을 증가시키고, 이 값이 0인 인스턴스만 해제한다.</li>
 <li><code>Rc::downgrade</code> 메서드는 Rc<T> 인스턴스의 weak_count 값을 증가시키고, 0이 아니어도 해제된다.</li>
@@ -1052,19 +1052,19 @@ a rc count after changing a <span style="color:#f92672">=</span> <span style="co
 </li>
 </ul>
 <p><br /></p>
-<h4 id="1-------">(1) 트리 데이터 구조: 자식 노드를 갖는 노드</h4>
+<h4 id="1-트리-데이터-구조-자식-노드를-갖는-노드">(1) 트리 데이터 구조: 자식 노드를 갖는 노드</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::cell::RefCell;
 <span style="color:#66d9ef">use</span> std::rc::Rc;
 
 <span style="color:#75715e">// Node는
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 1. 자식 노드에 대한 소유권을 가져야 함
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 2. 저장할 변수가 트리의 각 노드에 접근하게 소유권을 변수와 공유해야 함
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 3. 각 노드는 다른 노드의 자식 노드를 변경할 수 있어야 함
-</span><span style="color:#75715e"></span><span style="color:#75715e">// =&gt; RefCell&lt;Vec&lt;Rc&lt;Node&gt;&gt;&gt;
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug)</span><span style="color:#75715e">]</span>
+</span><span style="color:#75715e">// 1. 자식 노드에 대한 소유권을 가져야 함
+</span><span style="color:#75715e">// 2. 저장할 변수가 트리의 각 노드에 접근하게 소유권을 변수와 공유해야 함
+</span><span style="color:#75715e">// 3. 각 노드는 다른 노드의 자식 노드를 변경할 수 있어야 함
+</span><span style="color:#75715e">// =&gt; RefCell&lt;Vec&lt;Rc&lt;Node&gt;&gt;&gt;
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[derive(Debug)]</span>
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Node</span> {
     value: <span style="color:#66d9ef">i32</span>,
-    children: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span>Rc<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>,
+    children: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span>Rc<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">&gt;&gt;&gt;</span>,
 }
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
@@ -1085,19 +1085,19 @@ a rc count after changing a <span style="color:#f92672">=</span> <span style="co
 <li>따라서 leaf 인스턴스가 branch 인스턴스를 부모 노드로 인식하게 만들어야 한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="2------">(2) 부모 노드의 참조를 자식 노드에 추가하기</h4>
+<h4 id="2-부모-노드의-참조를-자식-노드에-추가하기">(2) 부모 노드의 참조를 자식 노드에 추가하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::cell::RefCell;
 <span style="color:#66d9ef">use</span> std::rc::{Rc, Weak};
 
 <span style="color:#75715e">// parent 필드가 Rc&lt;T&gt; 타입이라면:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 1.leaf.parent는 branch를 가리킴
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 2. branch.children은 leaf를 가리킴
-</span><span style="color:#75715e"></span><span style="color:#75715e">// =&gt; 순환참조 발생
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug)</span><span style="color:#75715e">]</span>
+</span><span style="color:#75715e">// 1.leaf.parent는 branch를 가리킴
+</span><span style="color:#75715e">// 2. branch.children은 leaf를 가리킴
+</span><span style="color:#75715e">// =&gt; 순환참조 발생
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[derive(Debug)]</span>
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Node</span> {
     value: <span style="color:#66d9ef">i32</span>,
-    parent: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>Weak<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>,
-    children: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span>Rc<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>,
+    parent: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>Weak<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">&gt;&gt;</span>,
+    children: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span>Rc<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">&gt;&gt;&gt;</span>,
 }
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
@@ -1131,7 +1131,7 @@ children: <span style="color:#a6e22e">RefCell</span> { value: [] } }] } })
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h4 id="3-strong-count-weak-count--">(3) strong_count와 weak_count 값 확인하기</h4>
+<h4 id="3-strong_count와-weak_count-값-확인하기">(3) strong_count와 weak_count 값 확인하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> leaf <span style="color:#f92672">=</span> Rc::new(Node {
         value: <span style="color:#ae81ff">3</span>,

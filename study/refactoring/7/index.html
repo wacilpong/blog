@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -154,7 +154,7 @@
 
     </div>
 
-    <div align="start" class="content"><h3 id="heading">시작하며</h3>
+    <div align="start" class="content"><h3 id="시작하며">시작하며</h3>
 <ul>
 <li>각 모듈이 드러내지 않아야 할 비밀을 얼마나 잘 숨기느냐 ⇒ 모듈을 분리하는 가장 중요한 기준</li>
 <li>클래스는 본래 정보를 숨기는 용도로 설계되었다.</li>
@@ -162,12 +162,12 @@
 <li>함수 또한 구현을 캡슐화한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="71---encapsulate-record">7.1 레코드 캡슐화하기 Encapsulate Record</h3>
+<h3 id="71-레코드-캡슐화하기-encapsulate-record">7.1 레코드 캡슐화하기 Encapsulate Record</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// **AS-IS: 레코드(객체 리터럴)**
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">organization</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;루미&#34;</span>, <span style="color:#a6e22e">country</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;KR&#34;</span> };
 
 <span style="color:#75715e">// **TO-BE: 클래스(책에서 말하는 &#39;객체&#39; 예시)**
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 레코드를 캡슐화하는 목적은 변수 자체는 물론, 내용을 조작하는 방식도 통제하기 위함
+</span><span style="color:#75715e">// 레코드를 캡슐화하는 목적은 변수 자체는 물론, 내용을 조작하는 방식도 통제하기 위함
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Organization</span> {
   <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">data</span>) {
     <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">name</span>;
@@ -199,8 +199,8 @@
 </ul>
 <hr />
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// **AS-IS: 중첩된 레코드**
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 중첩 정도가 심할수록 체이닝이 심해진다.
-</span><span style="color:#75715e"></span><span style="color:#75715e">// data[id].usages[year][month]...
+</span><span style="color:#75715e">// 중첩 정도가 심할수록 체이닝이 심해진다.
+</span><span style="color:#75715e">// data[id].usages[year][month]...
 </span><span style="color:#75715e"></span><span style="color:#e6db74">&#39;1994&#39;</span><span style="color:#f92672">:</span> {
 	<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;루미&#39;</span>,
 	<span style="color:#a6e22e">usages</span><span style="color:#f92672">:</span> {
@@ -213,8 +213,8 @@
 ...
 
 <span style="color:#75715e">// **TO-BE:**
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 아래에서 rawData 메서드를 통해 내부 데이터를 복제해 사용하므로,
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 사용하는 개발자(클라이언트)가 데이터를 직접 수정할 수는 없게 된다.
+</span><span style="color:#75715e">// 아래에서 rawData 메서드를 통해 내부 데이터를 복제해 사용하므로,
+</span><span style="color:#75715e">// 사용하는 개발자(클라이언트)가 데이터를 직접 수정할 수는 없게 된다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomerData</span> {
 	<span style="color:#a6e22e">get</span> <span style="color:#a6e22e">rawData</span>() {
 		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">cloneDeep</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>);
@@ -278,18 +278,18 @@
 <p>위 예시는 아주 큰 레코드에 한해서 클래스로 빼서 캡슐화하는 게 좋다고 생각한다.</p>
 </aside>
 <hr />
-<h3 id="72---encapsulate-collection">7.2 컬렉션 캡슐화하기 Encapsulate Collection</h3>
+<h3 id="72-컬렉션-캡슐화하기-encapsulate-collection">7.2 컬렉션 캡슐화하기 Encapsulate Collection</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// AS-IS:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// getter가 컬렉션 자체를 반환하기 때문에
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 클래스가 눈치채지 못한 상태에서 컬렉션의 원소들이 바뀔 수 있다.
+</span><span style="color:#75715e">// getter가 컬렉션 자체를 반환하기 때문에
+</span><span style="color:#75715e">// 클래스가 눈치채지 못한 상태에서 컬렉션의 원소들이 바뀔 수 있다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
 	<span style="color:#a6e22e">get</span> <span style="color:#a6e22e">courses</span>() { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_courses</span>; }
 	<span style="color:#a6e22e">set</span> <span style="color:#a6e22e">courses</span>(<span style="color:#a6e22e">list</span>) { <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_courses</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>; }
 }
 
 <span style="color:#75715e">// TO-BE:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// getter가 컬렉션의 복제본을 만들어 반환한다.
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 컬렉션을 소유한 클래스를 통해서만 원소를 변경하게 만들 수 있다.
+</span><span style="color:#75715e">// getter가 컬렉션의 복제본을 만들어 반환한다.
+</span><span style="color:#75715e">// 컬렉션을 소유한 클래스를 통해서만 원소를 변경하게 만들 수 있다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
 	<span style="color:#a6e22e">get</span> <span style="color:#a6e22e">courses</span>() { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_courses</span>.<span style="color:#a6e22e">slice</span>(); }
 	<span style="color:#a6e22e">addCourse</span>(<span style="color:#a6e22e">course</span>) { ... }
@@ -309,13 +309,13 @@
 <p>원본을 바꾸면 기대하지 않은 동작이 발생하기 쉽다. 그리고 객체를 deep copy 방식으로 통째로 비교하면 비용이 상당히 든다. 따라서 최근 프론트엔드 개발 도구도 그렇고, 책의 저자도 그냥 객체의 복제본을 다시 생성해 그 객체의 주소값을 새로이 부여하는 편이 낫다고 말하는 것일듯.</p>
 </aside>
 <hr />
-<h3 id="73----replace-primitive-with-query">7.3 기본형을 객체로 바꾸기 Replace Primitive with Query</h3>
+<h3 id="73-기본형을-객체로-바꾸기-replace-primitive-with-query">7.3 기본형을 객체로 바꾸기 Replace Primitive with Query</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// AS-IS:
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">orders</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">o</span>) =&gt; <span style="color:#e6db74">&#34;high&#34;</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">priority</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;rush&#34;</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">priority</span>).<span style="color:#a6e22e">length</span>;
 
 <span style="color:#75715e">// TO-BE:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// Order를 통해서 Priority 객체를 제공받도록 해서 Priority를 직접 건드리지 않는다.
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 우선순위 값들 또한 Priority의 메서드로만 조작해 반환하도록 한다.
+</span><span style="color:#75715e">// Order를 통해서 Priority 객체를 제공받도록 해서 Priority를 직접 건드리지 않는다.
+</span><span style="color:#75715e">// 우선순위 값들 또한 Priority의 메서드로만 조작해 반환하도록 한다.
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">orders</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">o</span>) =&gt; <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">priority</span>.<span style="color:#a6e22e">higherThan</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Priority</span>(<span style="color:#e6db74">&#34;normal&#34;</span>))).<span style="color:#a6e22e">length</span>;
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span> {
@@ -368,11 +368,11 @@
 <p>커질 소지가 분명한 정보들(거래소 코드를 조합해 다양한 상태를 만든다거나, 상품옵션 조작하기 등 N개의 경우의 수가 생길만한)이 아니라면 일단 기본형과 객체리터럴 정도로만 갖고 있는 편이 낫지 않을까?</p>
 </aside>
 <hr />
-<h3 id="74------replace-temp-with-query">7.4 임시 변수를 질의 함수로 바꾸기 Replace Temp with Query</h3>
+<h3 id="74-임시-변수를-질의-함수로-바꾸기-replace-temp-with-query">7.4 임시 변수를 질의 함수로 바꾸기 Replace Temp with Query</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// (Order class 내부)
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// AS-IS:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 여기서 임시 변수는 basePrice와 discountFactor이다.
+</span><span style="color:#75715e">// 여기서 임시 변수는 basePrice와 discountFactor이다.
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">get</span> <span style="color:#a6e22e">price</span>() {
 	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_quantity</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_item</span>.<span style="color:#a6e22e">price</span>;
 	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">discountFactor</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.98</span>;
@@ -383,7 +383,7 @@
 }
 
 <span style="color:#75715e">// TO-BE:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 이제 다른 곳에서도 basePrice, discountFactor를 사용할 수 있다.
+</span><span style="color:#75715e">// 이제 다른 곳에서도 basePrice, discountFactor를 사용할 수 있다.
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">get</span> <span style="color:#a6e22e">basePrice</span>() {
 	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_quantity</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_item</span>.<span style="color:#a6e22e">price</span>;
 }
@@ -407,7 +407,7 @@
 <li><strong>변수에 값을 한 번 대입한 후, 더 복잡한 코드에서 여러 번 다시 대입하고, 변수가 다음번에 사용될 때 수행해도 똑같은 결과를 내야 할 때</strong>만 유효한 리팩터링 기법이다.</li>
 </ul>
 <hr />
-<h3 id="75---extract-class">7.5 클래스 추출하기 Extract Class</h3>
+<h3 id="75-클래스-추출하기-extract-class">7.5 클래스 추출하기 Extract Class</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// AS-IS:
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
   <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">officeAreaCode</span>() {
@@ -419,7 +419,7 @@
 }
 
 <span style="color:#75715e">// TO-BE:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 이제 전화번호를 회사 뿐만 아니라 다른 곳에서도 사용할 수 있다.
+</span><span style="color:#75715e">// 이제 전화번호를 회사 뿐만 아니라 다른 곳에서도 사용할 수 있다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
   <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">officeAreaCode</span>() {
     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_telephoneNumber</span>.<span style="color:#a6e22e">areaCode</span>;
@@ -442,7 +442,7 @@
 ⇒ 특정 데이터/메서드 일부를 제거했을 때 다른 곳에서 논리적으로 문제가 없다면 분리할 수 있다는 뜻. - 일부 데이터와 메서드를 따로 묶을 수 있을 때 - 함께 변경되는 일이 많거나 서로 의존하는 데이터들일 때</li>
 </ul>
 <hr />
-<h3 id="76---inline-class">7.6 클래스 인라인하기 Inline Class</h3>
+<h3 id="76-클래스-인라인하기-inline-class">7.6 클래스 인라인하기 Inline Class</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// AS-IS:
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
   <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">officeAreaCode</span>() {
@@ -454,7 +454,7 @@
 }
 
 <span style="color:#75715e">// TO-BE:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// telephoneNumber를 회사번호로만 사용하고 있다면 아래처럼 합치는 편이 낫다.
+</span><span style="color:#75715e">// telephoneNumber를 회사번호로만 사용하고 있다면 아래처럼 합치는 편이 낫다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
   <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">officeAreaCode</span>() {
     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_officeAreaCode</span>;
@@ -474,7 +474,7 @@
 </li>
 </ul>
 <hr />
-<h3 id="77---hide-delegate">7.7 위임 숨기기 Hide Delegate</h3>
+<h3 id="77-위임-숨기기-hide-delegate">7.7 위임 숨기기 Hide Delegate</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// AS-IS:
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">manager</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aPerson</span>.<span style="color:#a6e22e">department</span>.<span style="color:#a6e22e">manager</span>;
 
@@ -502,7 +502,7 @@
 <p>잘 파악해야겠다.</p>
 </aside>
 <hr />
-<h3 id="78---remove-middle-man">7.8 중개자 제거하기 Remove Middle Man</h3>
+<h3 id="78-중개자-제거하기-remove-middle-man">7.8 중개자 제거하기 Remove Middle Man</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// AS-IS:
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">manager</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aPerson</span>.<span style="color:#a6e22e">manager</span>;
 
@@ -527,7 +527,7 @@
 <p>여기서는 모두 서버와의 예시를 들었지만, 프론트단에서도 유효한 리팩터링 기법이라고 생각한다. 위 예시처럼 department가 늘 person에 포함되어야 한다면 차라리 두 객체를 데이터 뭉치로 들고다니는 편이 낫다.</p>
 </aside>
 <hr />
-<h3 id="79---substitue-algorithm">7.9 알고리즘 교체하기 Substitue Algorithm</h3>
+<h3 id="79-알고리즘-교체하기-substitue-algorithm">7.9 알고리즘 교체하기 Substitue Algorithm</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// AS-IS:
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">foundPerson</span>(<span style="color:#a6e22e">people</span>) {
   <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">people</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {

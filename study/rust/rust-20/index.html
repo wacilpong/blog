@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -182,7 +182,7 @@
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// The second `unwrap` handles the `Result` and has the same effect as the unwrap that was in the map.
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> request_line <span style="color:#f92672">=</span> buf_reader.lines().next().unwrap().unwrap();
 
-    <span style="color:#66d9ef">let</span> (status_line, filename) <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> request_line <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> {
+    <span style="color:#66d9ef">let</span> (status_line, filename) <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> request_line <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> {
         (<span style="color:#e6db74">&#34;HTTP/1.1 200 OK&#34;</span>, <span style="color:#e6db74">&#34;src/hello.html&#34;</span>)
     } <span style="color:#66d9ef">else</span> {
         (<span style="color:#e6db74">&#34;HTTP/1.1 404 NOT FOUND&#34;</span>, <span style="color:#e6db74">&#34;src/404.html&#34;</span>)
@@ -219,7 +219,7 @@ Connection established!
     <span style="color:#66d9ef">for</span> stream <span style="color:#66d9ef">in</span> listener.incoming() {
         <span style="color:#66d9ef">let</span> stream <span style="color:#f92672">=</span> stream.unwrap();
 
-        thread::spawn(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+        thread::spawn(<span style="color:#f92672">||</span> {
             handle_connection(stream);
         });
     }
@@ -230,12 +230,12 @@ Connection established!
     <span style="color:#66d9ef">let</span> request_line <span style="color:#f92672">=</span> buf_reader.lines().next().unwrap().unwrap();
 
     <span style="color:#66d9ef">let</span> (status_line, filename) <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> <span style="color:#f92672">&amp;</span>request_line[..] {
-        <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> (<span style="color:#e6db74">&#34;HTTP/1.1 200 OK&#34;</span>, <span style="color:#e6db74">&#34;src/hello.html&#34;</span>),
-        <span style="color:#e6db74">&#34;GET /sleep HTTP/1.1&#34;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#f92672">=&gt;</span> (<span style="color:#e6db74">&#34;HTTP/1.1 200 OK&#34;</span>, <span style="color:#e6db74">&#34;src/hello.html&#34;</span>),
+        <span style="color:#e6db74">&#34;GET /sleep HTTP/1.1&#34;</span> <span style="color:#f92672">=&gt;</span> {
             thread::sleep(Duration::from_secs(<span style="color:#ae81ff">5</span>));
             (<span style="color:#e6db74">&#34;HTTP/1.1 200 OK&#34;</span>, <span style="color:#e6db74">&#34;src/hello.html&#34;</span>)
         }
-        _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> (<span style="color:#e6db74">&#34;HTTP/1.1 404 NOT FOUND&#34;</span>, <span style="color:#e6db74">&#34;src/404.html&#34;</span>),
+        _ <span style="color:#f92672">=&gt;</span> (<span style="color:#e6db74">&#34;HTTP/1.1 404 NOT FOUND&#34;</span>, <span style="color:#e6db74">&#34;src/404.html&#34;</span>),
     };
 
     <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(filename).unwrap();
@@ -274,7 +274,7 @@ Connection established!
     <span style="color:#66d9ef">for</span> stream <span style="color:#66d9ef">in</span> listener.incoming() {
         <span style="color:#66d9ef">let</span> stream <span style="color:#f92672">=</span> stream.unwrap();
 
-        pool.execute(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> {
+        pool.execute(<span style="color:#f92672">||</span> {
             handle_connection(stream);
         });
     }
@@ -285,12 +285,12 @@ Connection established!
     <span style="color:#66d9ef">let</span> request_line <span style="color:#f92672">=</span> buf_reader.lines().next().unwrap().unwrap();
 
     <span style="color:#66d9ef">let</span> (status_line, filename) <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> <span style="color:#f92672">&amp;</span>request_line[..] {
-        <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> (<span style="color:#e6db74">&#34;HTTP/1.1 200 OK&#34;</span>, <span style="color:#e6db74">&#34;src/hello.html&#34;</span>),
-        <span style="color:#e6db74">&#34;GET /sleep HTTP/1.1&#34;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#f92672">=&gt;</span> (<span style="color:#e6db74">&#34;HTTP/1.1 200 OK&#34;</span>, <span style="color:#e6db74">&#34;src/hello.html&#34;</span>),
+        <span style="color:#e6db74">&#34;GET /sleep HTTP/1.1&#34;</span> <span style="color:#f92672">=&gt;</span> {
             thread::sleep(Duration::from_secs(<span style="color:#ae81ff">5</span>));
             (<span style="color:#e6db74">&#34;HTTP/1.1 200 OK&#34;</span>, <span style="color:#e6db74">&#34;src/hello.html&#34;</span>)
         }
-        _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> (<span style="color:#e6db74">&#34;HTTP/1.1 404 NOT FOUND&#34;</span>, <span style="color:#e6db74">&#34;src/404.html&#34;</span>),
+        _ <span style="color:#f92672">=&gt;</span> (<span style="color:#e6db74">&#34;HTTP/1.1 404 NOT FOUND&#34;</span>, <span style="color:#e6db74">&#34;src/404.html&#34;</span>),
     };
 
     <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(filename).unwrap();
@@ -348,8 +348,8 @@ Connection established!
 
 
 <span style="color:#66d9ef">impl</span> Worker {
-  <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(id: <span style="color:#66d9ef">usize</span>, receiver: <span style="color:#a6e22e">Arc</span><span style="color:#f92672">&lt;</span>Mutex<span style="color:#f92672">&lt;</span>mpsc::Receiver<span style="color:#f92672">&lt;</span>Job<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>) -&gt; <span style="color:#a6e22e">Worker</span> {
-      <span style="color:#66d9ef">let</span> thread <span style="color:#f92672">=</span> thread::spawn(<span style="color:#66d9ef">move</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> <span style="color:#66d9ef">loop</span> {
+  <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(id: <span style="color:#66d9ef">usize</span>, receiver: <span style="color:#a6e22e">Arc</span><span style="color:#f92672">&lt;</span>Mutex<span style="color:#f92672">&lt;</span>mpsc::Receiver<span style="color:#f92672">&lt;</span>Job<span style="color:#f92672">&gt;&gt;&gt;</span>) -&gt; <span style="color:#a6e22e">Worker</span> {
+      <span style="color:#66d9ef">let</span> thread <span style="color:#f92672">=</span> thread::spawn(<span style="color:#66d9ef">move</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">loop</span> {
           <span style="color:#66d9ef">let</span> job <span style="color:#f92672">=</span> receiver.lock().unwrap().recv().unwrap();
 
           println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Worker {id} got a job; executing.&#34;</span>);

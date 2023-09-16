@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -299,7 +299,7 @@
 };
 
 <span style="color:#75715e">// 프로미스는 fulfilled 상태의 객체로 가지고 있으며
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 완료여부만 모를뿐 내부 로직 모두 수행한 상태
+</span><span style="color:#75715e">// 완료여부만 모를뿐 내부 로직 모두 수행한 상태
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">promise2</span>();
 
 <span style="color:#75715e">// resolve/reject된 값을 출력함
@@ -342,12 +342,12 @@
 </li>
 <li>
 <p>아래처럼 문자열에서 어떤 값이 반복되어 사용될 때 활용할 수 있겠다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">PlusFriend</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">_FRIEND</span><span style="color:#e6db74">`</span>;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">PlusFriend</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">_FRIEND`</span>;
 </code></pre></div></li>
 <li>
 <p>완전 확장하면 어떤 문자열의 첫번째 문자를 추론하는 타입을 만들 수도 있다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// First의 타입은 &#39;a&#39;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">FirstLetter</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">S</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">S</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">infer</span> <span style="color:#a6e22e">C</span><span style="color:#e6db74">}</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">C</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">FirstLetter</span>&lt;<span style="color:#f92672">S</span>&gt; <span style="color:#f92672">=</span> <span style="color:#a6e22e">S</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">infer</span> <span style="color:#a6e22e">C</span><span style="color:#e6db74">}${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">C</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>;
 <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">First</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">FirstLetter</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#34;abcde&#34;</span><span style="color:#f92672">&gt;</span>;
 </code></pre></div></li>
 </ul>
@@ -393,7 +393,7 @@
 <li>
 <p>javascript의 <code>throw</code>에 대하여</p>
 <blockquote>
-<p>Execution of the current function will stop (the statements after throw won't be executed), and control will be passed to the first catch block in the call stack. If no catch block exists among caller functions, the program will terminate.</p>
+<p>Execution of the current function will stop (the statements after throw won&rsquo;t be executed), and control will be passed to the first catch block in the call stack. If no catch block exists among caller functions, the program will terminate.</p>
 </blockquote>
 <ul>
 <li>
@@ -421,9 +421,9 @@
 <span style="color:#a6e22e">testPromise</span>();
 
 <span style="color:#75715e">// 출력결과
-</span><span style="color:#75715e"></span><span style="color:#75715e">// excuted
-</span><span style="color:#75715e"></span><span style="color:#75715e">// Uncaught error
-</span><span style="color:#75715e"></span><span style="color:#75715e">// Uncaught (in promise) 헹
+</span><span style="color:#75715e">// excuted
+</span><span style="color:#75715e">// Uncaught error
+</span><span style="color:#75715e">// Uncaught (in promise) 헹
 </span></code></pre></div></li>
 </ul>
 </li>
@@ -471,11 +471,11 @@
 <p>따라서 trackBy는 고유한 값이어야 한다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">@Component</span>({
   <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;my-app&#34;</span>,
-  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
 </span><span style="color:#e6db74">    &lt;li *ngFor=&#34;let item of list; trackBy: trackKey&#34;&gt;
 </span><span style="color:#e6db74">      {{ item.name }}
 </span><span style="color:#e6db74">    &lt;/li&gt;
-</span><span style="color:#e6db74">  </span><span style="color:#e6db74">`</span>,
+</span><span style="color:#e6db74">  `</span>,
 })
 <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> {
   <span style="color:#a6e22e">list</span><span style="color:#f92672">:</span> [

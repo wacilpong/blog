@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -209,8 +209,8 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="--">제네릭 데이터 타입</h2>
-<h4 id="-">함수에서의 사용</h4>
+<h2 id="제네릭-데이터-타입">제네릭 데이터 타입</h2>
+<h4 id="함수에서의-사용">함수에서의 사용</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest_i32</span>(list: <span style="color:#66d9ef">&amp;</span>[<span style="color:#66d9ef">i32</span>]) -&gt; <span style="color:#66d9ef">i32</span> {...}
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest_char</span>(list: <span style="color:#66d9ef">&amp;</span>[char]) -&gt; <span style="color:#a6e22e">char</span> {...}
@@ -222,7 +222,7 @@
 <li>(2)는 largest 함수가 어떤 타입 T를 일반화한 함수라는 의미이다.</li>
 </ul>
 <p><br /></p>
-<h4 id="--1">구조체에서의 사용</h4>
+<h4 id="구조체에서의-사용">구조체에서의 사용</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) 타입 T를 일반화한 구조체
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     x: <span style="color:#a6e22e">T</span>,
@@ -249,7 +249,7 @@
 <li><strong>즉, 제네릭 타입이 많아진다는 것은 코드를 더 작은 부분으로 재구성해야함을 뜻한다.</strong></li>
 </ul>
 <p><br /></p>
-<h4 id="--2">열거자에서의 사용</h4>
+<h4 id="열거자에서의-사용">열거자에서의 사용</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     Some(T),
@@ -265,7 +265,7 @@
 <li>(2)처럼 코드에서 여러 개의 구조체나 열거자가 오직 저장하는 값의 타입만 다를 때 유용하다.</li>
 </ul>
 <p><br /></p>
-<h4 id="--3">메서드에서의 사용</h4>
+<h4 id="메서드에서의-사용">메서드에서의 사용</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     x: <span style="color:#a6e22e">T</span>,
@@ -322,7 +322,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="--4">제네릭의 성능</h4>
+<h4 id="제네릭의-성능">제네릭의 성능</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> integer <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
 <span style="color:#66d9ef">let</span> float <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5.0</span>);
@@ -351,14 +351,14 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="trait-defining-shared-behavior">트레이트(trait): Defining Shared Behavior</h2>
+<h2 id="트레이트trait-defining-shared-behavior">트레이트(trait): Defining Shared Behavior</h2>
 <ul>
 <li>트레이트는 공유 가능한 동작을 추상화하여 정의하는 방법이다.</li>
 <li>트레이트에 제네릭을 결합해 모든 타입에 특정 동작을 공유할 수도 있다.</li>
 <li>약간 차이점이 있지만 다른 언어에서의 <code>인터페이스(interface)</code>와 유사하다.</li>
 </ul>
 <p><br /></p>
-<h3 id="--5">트레이트 선언하기</h3>
+<h3 id="트레이트-선언하기">트레이트 선언하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Summary {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String;
 }
@@ -375,7 +375,7 @@
 <li>하나의 트레이트에 여러 개의 메서드를 정의할 수도 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="---1">타입에 트레이트 구현하기</h3>
+<h3 id="타입에-트레이트-구현하기">타입에 트레이트 구현하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">NewsArticle</span> {
     <span style="color:#66d9ef">pub</span> headline: String,
@@ -437,7 +437,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="---default-implementations">트레이트 기본 구현 (Default Implementations)</h3>
+<h3 id="트레이트-기본-구현-default-implementations">트레이트 기본 구현 (Default Implementations)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Summary {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize_author</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String;
@@ -470,7 +470,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>이때 같은 메서드를 오버라이딩하면서 기본 구현 코드를 호출할 수는 없다.</li>
 </ul>
 <p><br /></p>
-<h3 id="--traits-as-parameters">트레이트 매개변수 (Traits as Parameters)</h3>
+<h3 id="트레이트-매개변수-traits-as-parameters">트레이트 매개변수 (Traits as Parameters)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(item: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">impl</span> Summary) {
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Breaking news! {}&#34;</span>, item.summarize());
 }
@@ -493,7 +493,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>제네릭 타입에 콜론으로 지정할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h4 id="2------">(2) + 문법으로 여러 트레이트 경계 정의하기</h4>
+<h4 id="2--문법으로-여러-트레이트-경계-정의하기">(2) + 문법으로 여러 트레이트 경계 정의하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(item: <span style="color:#66d9ef">&amp;</span>(<span style="color:#66d9ef">impl</span> Summary <span style="color:#f92672">+</span> Display)) {...}
 
@@ -504,7 +504,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>매개변수에 Summary와 Display 트레이트를 모두 구현해야 한다면 + 문법을 사용한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="3-where----">(3) where 이용해 트레이트 경계 정리하기</h4>
+<h4 id="3-where-이용해-트레이트-경계-정리하기">(3) where 이용해 트레이트 경계 정리하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">some_function</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Display</span> <span style="color:#f92672">+</span> Clone, U: Clone <span style="color:#f92672">+</span> Debug<span style="color:#f92672">&gt;</span>(t: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">T</span>, u: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">U</span>) -&gt; <span style="color:#66d9ef">i32</span> {...}
 
@@ -518,7 +518,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>(2)처럼 where clause를 이용해 함수 시그니처를 훨씬 간결하게 유지할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="----">반환값에 트레이트 구현 값 사용하기</h3>
+<h3 id="반환값에-트레이트-구현-값-사용하기">반환값에 트레이트 구현 값 사용하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_summarizable</span>() -&gt; <span style="color:#a6e22e">impl</span> Summary {
     Tweet {
         username: String::from(<span style="color:#e6db74">&#34;horse_ebooks&#34;</span>),
@@ -538,7 +538,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <em>17장에서 더 자세히 다룰 것임</em></li>
 </ul>
 <p><br /></p>
-<h4 id="---largest-">트레이트 경계 예제: largest 함수</h4>
+<h4 id="트레이트-경계-예제-largest-함수">트레이트 경계 예제: largest 함수</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">largest</span><span style="color:#f92672">&lt;</span>T: PartialOrd<span style="color:#f92672">&gt;</span>(list: <span style="color:#66d9ef">&amp;</span>[T]) -&gt; <span style="color:#a6e22e">T</span> {...}
 
@@ -604,7 +604,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 </li>
 </ul>
 <p><br /></p>
-<h4 id="--blanket-implementations">덮개 구현 (blanket implementations)</h4>
+<h4 id="덮개-구현-blanket-implementations">덮개 구현 (blanket implementations)</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">Display</span><span style="color:#f92672">&gt;</span> ToString <span style="color:#66d9ef">for</span> T {
     <span style="color:#75715e">// --snip--
@@ -620,7 +620,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="lifetimes----">수명(Lifetimes)을 이용힌 참조 유효성 검사</h2>
+<h2 id="수명lifetimes을-이용힌-참조-유효성-검사">수명(Lifetimes)을 이용힌 참조 유효성 검사</h2>
 <ul>
 <li>참조값의 스코프이며, 대부분 암시적으로 처리되지만 조건에 따라 명시해야 하는 경우도 있다.</li>
 <li>러스트는 <code>borrow checker</code>를 통해 수명을 검사한다.</li>
@@ -662,7 +662,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 </code></pre></div><p><br /></p>
 <h3 id="lifetime-annotations-in-function-signatures">Lifetime Annotations in Function Signatures</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e"></span><span style="color:#75715e">// longest 함수 수정
+</span><span style="color:#75715e">// longest 함수 수정
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> string1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;abcd&#34;</span>);
     <span style="color:#66d9ef">let</span> string2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xyz&#34;</span>;
@@ -702,9 +702,9 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>(2) 예제에서는 <code>string2</code> 와 같은 스코프를 가지기 때문에 에러가 발생한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="lifetime---">Lifetime은 함수에서 언제 사용할까?</h3>
+<h3 id="lifetime은-함수에서-언제-사용할까">Lifetime은 함수에서 언제 사용할까?</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// y에는 &#39;a를 사용하지 않음
-</span><span style="color:#75715e"></span><span style="color:#75715e">// x와도, 반환타입과도 관련이 없기 때문
+</span><span style="color:#75715e">// x와도, 반환타입과도 관련이 없기 때문
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">longest</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(x: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>, y: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span> {
     x
 }
@@ -794,7 +794,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 n
 <li>다른 방법으로 해결하기 어려울 때만 사용하자.</li>
 </ul>
 <p><br /></p>
-<h3 id="-------">모두 합치기: 제네릭 타입 인자, 트레이트 경계, 수명</h3>
+<h3 id="모두-합치기-제네릭-타입-인자-트레이트-경계-수명">모두 합치기: 제네릭 타입 인자, 트레이트 경계, 수명</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fmt::Display;
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">longest_with_an_announcement</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span>, T<span style="color:#f92672">&gt;</span>(

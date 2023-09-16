@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -163,7 +163,7 @@
 <br /><br /></p>
 <p>There is execution context that is the sort of environment, executed code knows. The ways of creating execution context are such as global context or function call.</p>
 <p>Javascript engine records VariableEnvironment and LexicalEnvironment object whenever context executed. That is, they already know about identifiers (like variables) and outer environment in context. But VariableEnvironment is just initialized snapshot, LexicalEnvironment is created for every execution context.</p>
-<p>Both records identifier information in <code>environmentRecord</code>. Javascript engine records all these and then execute the code. So it actually already knows all identifiers before code is really execetued in case of that context. At this time, we can start the discussion about <code>hoisting</code>. The description about hoisting in mdn doc, <code>JavaScript only hoists declarations, not initializations.</code>, can be, becuase of this javascript engine's proccess.<br />
+<p>Both records identifier information in <code>environmentRecord</code>. Javascript engine records all these and then execute the code. So it actually already knows all identifiers before code is really execetued in case of that context. At this time, we can start the discussion about <code>hoisting</code>. The description about hoisting in mdn doc, <code>JavaScript only hoists declarations, not initializations.</code>, can be, becuase of this javascript engine&rsquo;s proccess.<br />
 <br /><br /><hr></p>
 <h3 id="simple-example-of-hoisting">Simple example of Hoisting</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>() {

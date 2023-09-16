@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -159,7 +159,7 @@
     <div align="start" class="content"><p>by 이웅모</p>
 <p>무려 900쪽이 넘는 엄청난 분량으로, 읽다가 <em>오?</em> 했던 것만 한번 정리해본다.</p>
 <p><br /></p>
-<h2 id="-">기본적인 개념</h2>
+<h2 id="기본적인-개념">기본적인 개념</h2>
 <ul>
 <li>리터럴(literal)
 <ul>
@@ -230,7 +230,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="heading">클래스</h2>
+<h2 id="클래스">클래스</h2>
 <ul>
 <li>생성자 함수와 클래스는 프로토타입 기반의 객체지향을 구현했다는 점에서 유사하나, extends와 super 키워드는 상속 관계 구현을 더 명료하게 한다. 따라서 syntax sugar보다는 새로운 객체 생성 메커니즘으로 보는 것이 좀더 합당하다.</li>
 <li>클래스에 contructor를 생략하면 빈 constructor가 암묵적으로 정의된다.</li>
@@ -275,7 +275,7 @@
 <li>클래스 필드에 화살표 함수를 할당해서 함수 내부 this가 인스턴스를 가리키게 의도할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h2 id="es6---">ES6 함수의 추가 기능</h2>
+<h2 id="es6-함수의-추가-기능">ES6 함수의 추가 기능</h2>
 <ul>
 <li>ES6부터 일반함수는 constructor이지만, 메서드와 화살표 함수는 non-constructor이다.</li>
 <li>ES6 메서드는 본연의 기능(super)을 추가하고 의미상 맞지 않는 기능(constructor)는 제거되었다.</li>
@@ -284,7 +284,7 @@
 <li>일반 매개변수와 rest 파라미터는 함께 사용할 수 있고, 순차적으로 할당된다.</li>
 </ul>
 <p><br /></p>
-<h2 id="heading-1">배열</h2>
+<h2 id="배열">배열</h2>
 <ul>
 <li><strong>배열은 인덱스를 나타내는 문자열을 프로퍼티 키로 갖는 객체다.</strong>
 <ul>
@@ -313,7 +313,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="heading-2">정규식</h2>
+<h2 id="정규식">정규식</h2>
 <ul>
 <li>정규 표현식은 일정한 규칙(패턴)을 가진 문자열의 집합을 표현하기 위한 형식 언어다.</li>
 <li><code>RegExp.prototype.exec</code>은 g 플래그 지정해도 첫번째 매칭 결과만 반환한다.</li>
@@ -336,7 +336,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="-iterable">이터러블 (iterable)</h2>
+<h2 id="이터러블-iterable">이터러블 (iterable)</h2>
 <ul>
 <li>
 <p><code>이터러블 프로토콜</code></p>
@@ -372,9 +372,9 @@
 <li>
 <p>즉, 데이터가 필요한 순간 데이터를 생성한다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// 피보나치 수열 구현
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 1. Symbol.iterator 메서드 및 next 소유하도록 구현 -&gt; 이터러블 프로토콜
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 2. next 메서드는 value, done을 갖는 객체를 반환 -&gt; 이터레이터 프로토콜
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 3. 둘을 동시에 충족하면 이터러블이면서 이터레이터로 만들 수 있다.
+</span><span style="color:#75715e">// 1. Symbol.iterator 메서드 및 next 소유하도록 구현 -&gt; 이터러블 프로토콜
+</span><span style="color:#75715e">// 2. next 메서드는 value, done을 갖는 객체를 반환 -&gt; 이터레이터 프로토콜
+</span><span style="color:#75715e">// 3. 둘을 동시에 충족하면 이터러블이면서 이터레이터로 만들 수 있다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fibonacci</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">max</span>) {
   <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">pre</span>, <span style="color:#a6e22e">cur</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>];
 

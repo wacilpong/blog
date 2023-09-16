@@ -20,22 +20,12 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
-    <lastmod>2023-05-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wacilpong.github.io/blog/post/</loc>
     <lastmod>2023-05-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/</loc>
-    <lastmod>2023-05-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/</loc>
     <lastmod>2023-05-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -61,6 +51,11 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/study/kubernetes/5/</loc>
+    <lastmod>2023-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -521,6 +516,10 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
   </url>
   
   <url>

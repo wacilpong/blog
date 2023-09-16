@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -156,9 +156,9 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="kubernetes--">쿠버네티스(Kubernetes) 등장 배경</h2>
+    <div align="start" class="content"><h2 id="쿠버네티스kubernetes-등장-배경">쿠버네티스(Kubernetes) 등장 배경</h2>
 <p><br /></p>
-<h4 id="---">소프트웨어 배포 방식의 변화</h4>
+<h4 id="소프트웨어-배포-방식의-변화">소프트웨어 배포 방식의 변화</h4>
 <ul>
 <li>전통적 배포 방식
 <ul>
@@ -183,7 +183,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="--">도커 그 이후&hellip;</h4>
+<h4 id="도커-그-이후">도커 그 이후&hellip;</h4>
 <ul>
 <li>코드 작성 → 빌드(도커 이미지 생성) → ship(이미지를 도커허브 같은 저장소에 올림) → run</li>
 <li>도커 이미지로 만들기만 하면, 저장하고 사용하는 방식은 모두 동일</li>
@@ -197,7 +197,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="-">컨테이너 오케스트레이션</h4>
+<h4 id="컨테이너-오케스트레이션">컨테이너 오케스트레이션</h4>
 <ul>
 <li>복잡한 컨테이너 환경을 효과적으로 관리하기 위한 도구(서버 관리자가 하는 일을 대신 수행)</li>
 <li>노드를 하나하나 관리하는 것이 아니라, <strong>마스터 서버에 명령어를 던지면 알아서 각 노드에 실행</strong></li>
@@ -207,7 +207,7 @@
 <li>노드 내부에 접근하기 위한 IP 주소 등록 및 조회</li>
 </ul>
 <p><br /></p>
-<h4 id="---1">대표적인 도구: 쿠버네티스</h4>
+<h4 id="대표적인-도구-쿠버네티스">대표적인 도구: 쿠버네티스</h4>
 <ul>
 <li>컨테이너화된 애플리케이션을 자동으로 배포, 스케일링 및 관리해주는 오픈소스 시스템</li>
 <li>컨테이너 오케스트레이션의 &ldquo;De facto&rdquo; (사실상의 표준)</li>
@@ -230,7 +230,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="kubernetes-">쿠버네티스(Kubernetes) 구조</h2>
+<h2 id="쿠버네티스kubernetes-구조">쿠버네티스(Kubernetes) 구조</h2>
 <ul>
 <li>쿠버네티스 클러스터
 <ul>
@@ -247,8 +247,8 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="master--"><strong>Master (컨트롤 플레인)</strong></h3>
-<h4 id="1-etcd-">(1) etcd (엣시디)</h4>
+<h3 id="master-컨트롤-플레인"><strong>Master (컨트롤 플레인)</strong></h3>
+<h4 id="1-etcd-엣시디">(1) etcd (엣시디)</h4>
 <ul>
 <li>쿠버네티스 클러스터와 관련된 모든 상태와 데이터를 저장하는 저장공간</li>
 <li>분산 시스템으로 구성하여 안정성 높임 (고가용성)</li>
@@ -301,13 +301,13 @@
 <li>iptables 또는 IPVS를 사용하여 설정 관리</li>
 </ul>
 <p><br /></p>
-<h4 id="3--">(3) 컨테이너 런타임</h4>
+<h4 id="3-컨테이너-런타임">(3) 컨테이너 런타임</h4>
 <ul>
 <li>컨테이너 실행을 담당하는 소프트웨어</li>
 <li>docker, Containerd, CRI-O 등의 컨테이너 런타임 지원</li>
 </ul>
 <p><br /></p>
-<h3 id="heading"><strong>오브젝트</strong></h3>
+<h3 id="오브젝트"><strong>오브젝트</strong></h3>
 <ul>
 <li>쿠버네티스는 클러스터의 상태를 나타내기 위해 오브젝트를 이용한다.</li>
 <li>오브젝트를 생성하면 쿠버네티스 시스템은 그 오브젝트 생성을 보장하기 위해 지속적으로 작동할 것이다.</li>
@@ -387,7 +387,7 @@ spec:
 ```
 </code></pre>
 <p><br /></p>
-<h4 id="api--">API 호출 방식</h4>
+<h4 id="api-호출-방식">API 호출 방식</h4>
 <ul>
 <li>원하는 상태(desired state)를</li>
 <li>다양한 오브젝트(object)로 정의(spec)하고</li>

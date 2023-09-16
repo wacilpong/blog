@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -156,7 +156,7 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="az-postgres--deployment-service-">az postgres 만들고 deployment, service 생성</h2>
+    <div align="start" class="content"><h2 id="az-postgres-만들고-deployment-service-생성">az postgres 만들고 deployment, service 생성</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 애저에서 postgres database 만든 상태에서</span>
 <span style="color:#75715e"># postgres 로컬에서 확인하기 위한 pgadmin 띄움</span>
 <span style="color:#75715e"># 이후 pgadmin 화면에서 Servers &gt; register &gt; Host name/address</span>
@@ -178,77 +178,77 @@ $ docker push roomycontainer.azurecr.io/todoapi:v1
 
 <span style="color:#75715e"># 아래 yaml파일로 deployment, service 생성</span>
 $ kubectl apply -f app.yml
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: todo-api-deployment
-spec:
-  replicas: <span style="color:#ae81ff">1</span>
-  selector:
-    matchLabels:
-      app: todo-api
-  template:
-    metadata:
-      name: todo-api-pod
-      labels:
-        app: todo-api
-    spec:
-      containers:
-        - name: todo-api
-          image: roomycontainer.azurecr.io/todoapi:v1
-          ports:
-            - containerPort: <span style="color:#ae81ff">8080</span>
-              protocol: TCP
-          env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: production
-            - name: TODO_DATASOURCE
-              valueFrom:
-                configMapKeyRef:
-                  name: todo-datasource-config
-                  key: todo_datasource
-            - name: TODO_USER
-              valueFrom:
-                secretKeyRef:
-                  name: todo-datasource-credentials
-                  key: POSTGRES_USER
-            - name: TODO_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: todo-datasource-credentials
-                  key: POSTGRES_PASSWORD
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: apps/v1
+<span style="color:#66d9ef">kind</span>: Deployment
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: todo-api-deployment
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">matchLabels</span>:
+      <span style="color:#66d9ef">app</span>: todo-api
+  <span style="color:#66d9ef">template</span>:
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">name</span>: todo-api-pod
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">app</span>: todo-api
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">containers</span>:
+        - <span style="color:#66d9ef">name</span>: todo-api
+          <span style="color:#66d9ef">image</span>: roomycontainer.azurecr.io/todoapi:v1
+          <span style="color:#66d9ef">ports</span>:
+            - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">8080</span>
+              <span style="color:#66d9ef">protocol</span>: TCP
+          <span style="color:#66d9ef">env</span>:
+            - <span style="color:#66d9ef">name</span>: SPRING_PROFILES_ACTIVE
+              <span style="color:#66d9ef">value</span>: production
+            - <span style="color:#66d9ef">name</span>: TODO_DATASOURCE
+              <span style="color:#66d9ef">valueFrom</span>:
+                <span style="color:#66d9ef">configMapKeyRef</span>:
+                  <span style="color:#66d9ef">name</span>: todo-datasource-config
+                  <span style="color:#66d9ef">key</span>: todo_datasource
+            - <span style="color:#66d9ef">name</span>: TODO_USER
+              <span style="color:#66d9ef">valueFrom</span>:
+                <span style="color:#66d9ef">secretKeyRef</span>:
+                  <span style="color:#66d9ef">name</span>: todo-datasource-credentials
+                  <span style="color:#66d9ef">key</span>: POSTGRES_USER
+            - <span style="color:#66d9ef">name</span>: TODO_PASSWORD
+              <span style="color:#66d9ef">valueFrom</span>:
+                <span style="color:#66d9ef">secretKeyRef</span>:
+                  <span style="color:#66d9ef">name</span>: todo-datasource-credentials
+                  <span style="color:#66d9ef">key</span>: POSTGRES_PASSWORD
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: todo-api
-spec:
-  type: LoadBalancer
-  ports:
-    - port: <span style="color:#ae81ff">80</span>
-      targetPort: <span style="color:#ae81ff">8080</span>
-  selector:
-    app: todo-api
+<span style="color:#66d9ef">apiVersion</span>: v1
+<span style="color:#66d9ef">kind</span>: Service
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: todo-api
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">type</span>: LoadBalancer
+  <span style="color:#66d9ef">ports</span>:
+    - <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">80</span>
+      <span style="color:#66d9ef">targetPort</span>: <span style="color:#ae81ff">8080</span>
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">app</span>: todo-api
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 이제 todo-api는 external-ip로 접근 가능하다.</span>
 $ kubectl get service
 </code></pre></div><p><br /></p>
 <h2 id="configmap-kubernetes-secret">configMap, kubernetes secret</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: todo-datasource-config
-data:
-  todo_datasource: postgres:<span style="color:#ae81ff">5432</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
-kind: Secret
-metadata:
-  name: todo-datasource-credentials
-type: Opaque
-data:
-  POSTGRES_DB: dG9kbw==
-  POSTGRES_USER: dG9kbw==
-  POSTGRES_PASSWORD: dG9kbw==
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: v1
+<span style="color:#66d9ef">kind</span>: ConfigMap
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: todo-datasource-config
+<span style="color:#66d9ef">data</span>:
+  <span style="color:#66d9ef">todo_datasource</span>: postgres:<span style="color:#ae81ff">5432</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: v1
+<span style="color:#66d9ef">kind</span>: Secret
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: todo-datasource-credentials
+<span style="color:#66d9ef">type</span>: Opaque
+<span style="color:#66d9ef">data</span>:
+  <span style="color:#66d9ef">POSTGRES_DB</span>: dG9kbw==
+  <span style="color:#66d9ef">POSTGRES_USER</span>: dG9kbw==
+  <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: dG9kbw==
 </code></pre></div><ul>
 <li>공개되면 안되는 정보들을 설정하는 거라고 보면 된다.<br />
 <em>적혀있는 password 같은 것들은 암호화된 것임</em></li>

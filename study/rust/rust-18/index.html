@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -159,13 +159,13 @@
     <div align="start" class="content"><h2 id="all-the-places-patterns-can-be-used">All the Places Patterns Can Be Used</h2>
 <h3 id="1-1-match-arms">1-1. match Arms</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">match</span> VALUE {
-    PATTERN <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> EXPRESSION,
-    PATTERN <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> EXPRESSION,
-    PATTERN <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> EXPRESSION,
+    PATTERN <span style="color:#f92672">=&gt;</span> EXPRESSION,
+    PATTERN <span style="color:#f92672">=&gt;</span> EXPRESSION,
+    PATTERN <span style="color:#f92672">=&gt;</span> EXPRESSION,
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">match</span> x {
-    None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> None,
-    Some(i) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Some(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
+    None <span style="color:#f92672">=&gt;</span> None,
+    Some(i) <span style="color:#f92672">=&gt;</span> Some(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
 }
 </code></pre></div><ul>
 <li>match 표현식에 사용된 값에 대한 모든 가능성을 반드시 처리해야 한다.</li>
@@ -175,7 +175,7 @@
 <p><br /></p>
 <h3 id="1-2-conditional-if-let-expressions">1-2. Conditional <code>if let</code> Expressions</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> favorite_color: Option<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> None;
+    <span style="color:#66d9ef">let</span> favorite_color: Option<span style="color:#f92672">&lt;&amp;</span><span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> None;
     <span style="color:#66d9ef">let</span> is_tuesday <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
     <span style="color:#66d9ef">let</span> age: Result<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span>, _<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;34&#34;</span>.parse();
 
@@ -258,7 +258,7 @@ stack.push(<span style="color:#ae81ff">3</span>);
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="refutability----">Refutability: 패턴 매칭에 실패할까, 아닐까?</h2>
+<h2 id="refutability-패턴-매칭에-실패할까-아닐까">Refutability: 패턴 매칭에 실패할까, 아닐까?</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> some_option_value: Option<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> None;
 
@@ -285,35 +285,35 @@ stack.push(<span style="color:#ae81ff">3</span>);
 <p><br /></p>
 <hr />
 <h2 id="pattern-syntax">Pattern Syntax</h2>
-<h3 id="3-1--">3-1. 리터럴과 매칭하기</h3>
+<h3 id="3-1-리터럴과-매칭하기">3-1. 리터럴과 매칭하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 
 <span style="color:#75715e">// 패턴은 리터럴에 직접 비교할 수 있다.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">match</span> <span style="color:#f92672">*</span><span style="color:#f92672">*</span>x<span style="color:#f92672">*</span><span style="color:#f92672">*</span> {
-    <span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;하나&#34;</span>),
-    <span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;둘&#34;</span>),
-    <span style="color:#ae81ff">3</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;셋&#34;</span>),
-    _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;나머지&#34;</span>),
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">match</span> <span style="color:#f92672">**</span>x<span style="color:#f92672">**</span> {
+    <span style="color:#ae81ff">1</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;하나&#34;</span>),
+    <span style="color:#ae81ff">2</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;둘&#34;</span>),
+    <span style="color:#ae81ff">3</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;셋&#34;</span>),
+    _ <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;나머지&#34;</span>),
 </code></pre></div><p><br /></p>
-<h3 id="3-2---">3-2. 명명된 변수와 매칭하기</h3>
+<h3 id="3-2-명명된-변수와-매칭하기">3-2. 명명된 변수와 매칭하기</h3>
 <ul>
 <li>명명된 변수는 모든 값과 일치하는 패턴이므로 match 표현식에서 사용하는 것은 복잡하다.</li>
 <li>match 표현식은 새 스코프를 생성하므로 패턴으로 선언한 변수는 표현식 바깥에 선언된 같은 이름의 변수를 shadowing한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="--">출력 결과 예측하기?</h4>
+<h4 id="출력-결과-예측하기">출력 결과 예측하기?</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
     <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
 
     <span style="color:#66d9ef">match</span> x {
-        Some(<span style="color:#ae81ff">50</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;50&#34;</span>),
+        Some(<span style="color:#ae81ff">50</span>) <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;50&#34;</span>),
 
         <span style="color:#75715e">// 변수 y는 앞서 10을 대입한 변수 y가 아니라 새로운 변수
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// y는 Some 값에 저장된 모든 값과 일치
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// y에 Some 값 안에 저장된 변수 x의 값이 바인딩된다.
-</span><span style="color:#75715e"></span>        Some(y) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치, y = {:?}&#34;</span>, y),
-        _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치하지 않음, x = {:?}&#34;</span>, x),
+</span><span style="color:#75715e"></span>        Some(y) <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치, y = {:?}&#34;</span>, y),
+        _ <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치하지 않음, x = {:?}&#34;</span>, x),
     }
 
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;결과: x = {:?}, y = {:?}&#34;</span>, x, y);
@@ -324,34 +324,34 @@ stack.push(<span style="color:#ae81ff">3</span>);
 <li>shadow 변수를 생성하지 않고 외부의 변수 x와 y의 값을 비교하기 위한 match 표현식을 생성하려면 매치 가드(match guard)를 대신 사용하면 된다.</li>
 </ul>
 <p><br /></p>
-<h3 id="3-3--">3-3. 다중 패턴</h3>
+<h3 id="3-3-다중-패턴">3-3. 다중 패턴</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 
 <span style="color:#66d9ef">match</span> x {
-    <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 또는 2&#34;</span>),
-    <span style="color:#ae81ff">3</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;3&#34;</span>),
-    _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;그 외 나머지 값&#34;</span>),
+    <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;1 또는 2&#34;</span>),
+    <span style="color:#ae81ff">3</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;3&#34;</span>),
+    _ <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;그 외 나머지 값&#34;</span>),
 }
 </code></pre></div><ul>
 <li>match 표현식에는 or의 의미가 있는 | 문법을 이용해 여러개의 패턴을 비교할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="3-4-----">3-4. <code>..=</code> 문법으로 범위 값과 매칭하기</h3>
+<h3 id="3-4--문법으로-범위-값과-매칭하기">3-4. <code>..=</code> 문법으로 범위 값과 매칭하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
 
     <span style="color:#66d9ef">match</span> x {
-        <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;one through five&#34;</span>),
-        _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;something else&#34;</span>),
+        <span style="color:#ae81ff">1</span>..<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;one through five&#34;</span>),
+        _ <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;something else&#34;</span>),
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;c&#39;</span>;
 
     <span style="color:#66d9ef">match</span> x {
-        <span style="color:#e6db74">&#39;a&#39;</span>..<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;j&#39;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;early ASCII letter&#34;</span>),
-        <span style="color:#e6db74">&#39;k&#39;</span>..<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;z&#39;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;late ASCII letter&#34;</span>),
-        _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;something else&#34;</span>),
+        <span style="color:#e6db74">&#39;a&#39;</span>..<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;j&#39;</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;early ASCII letter&#34;</span>),
+        <span style="color:#e6db74">&#39;k&#39;</span>..<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;z&#39;</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;late ASCII letter&#34;</span>),
+        _ <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;something else&#34;</span>),
     }
 }
 </code></pre></div><ul>
@@ -361,12 +361,12 @@ stack.push(<span style="color:#ae81ff">3</span>);
 <li>범위가 비어있는지 러스트가 판단할 수 있는 타입은 char 타입과 숫자 뿐이다.</li>
 </ul>
 <p><br /></p>
-<h3 id="3-5---destructuring">3-5. 값을 분리하여 Destructuring</h3>
+<h3 id="3-5-값을-분리하여-destructuring">3-5. 값을 분리하여 Destructuring</h3>
 <ul>
 <li>패턴은 구조체, 열거자, 튜플, 그리고 참조 destructuring 용도로 사용할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h4 id="-">구조체의 해체</h4>
+<h4 id="구조체의-해체">구조체의 해체</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span> {
     x: <span style="color:#66d9ef">i32</span>,
     y: <span style="color:#66d9ef">i32</span>,
@@ -376,7 +376,7 @@ stack.push(<span style="color:#ae81ff">3</span>);
     <span style="color:#66d9ef">let</span> p <span style="color:#f92672">=</span> Point {x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">7</span> };
 
     <span style="color:#75715e">// 변수 p에 저장된 구조체의 x와 y필드값에 일치하는 변수 a와 b를 생성한다.
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> Point {x: <span style="color:#f92672">*</span><span style="color:#f92672">*</span>a<span style="color:#f92672">*</span><span style="color:#f92672">*</span>, y: <span style="color:#f92672">*</span><span style="color:#f92672">*</span>b<span style="color:#f92672">*</span><span style="color:#f92672">*</span> } <span style="color:#f92672">=</span> p;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> Point {x: <span style="color:#f92672">**</span>a<span style="color:#f92672">**</span>, y: <span style="color:#f92672">**</span>b<span style="color:#f92672">**</span> } <span style="color:#f92672">=</span> p;
     assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">0</span>, a);
     assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">7</span>, b);
 }
@@ -394,7 +394,7 @@ stack.push(<span style="color:#ae81ff">3</span>);
     <span style="color:#66d9ef">let</span> p <span style="color:#f92672">=</span> Point {x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">7</span> };
 
     <span style="color:#75715e">// let Point { x: x, y: y } = p; 대신
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> Point { <span style="color:#f92672">*</span><span style="color:#f92672">*</span>x, y<span style="color:#f92672">*</span><span style="color:#f92672">*</span> } <span style="color:#f92672">=</span> p;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> Point { <span style="color:#f92672">**</span>x, y<span style="color:#f92672">**</span> } <span style="color:#f92672">=</span> p;
     assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">0</span>, a);
     assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">7</span>, b);
 }
@@ -412,15 +412,15 @@ stack.push(<span style="color:#ae81ff">3</span>);
 
     <span style="color:#a6e22e">match</span> p {
         <span style="color:#75715e">// y 필드값이 0 이면서 x 필드값은 어떤 값이든 일치하는 경우, 변수 x를 생성
-</span><span style="color:#75715e"></span>        Point { x, y: <span style="color:#ae81ff">0</span> } <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x 축 {}에 위치하는 점&#34;</span>, x),
+</span><span style="color:#75715e"></span>        Point { x, y: <span style="color:#ae81ff">0</span> } <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x 축 {}에 위치하는 점&#34;</span>, x),
         <span style="color:#75715e">// x 필드값이 0 이면서 y 필드값은 어떤 값이든 일치하는 경우, 변수 y를 생성
-</span><span style="color:#75715e"></span>        Point { x: <span style="color:#ae81ff">0</span>, y } <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;y 축 {}에 위치하는 점&#34;</span>, y),
+</span><span style="color:#75715e"></span>        Point { x: <span style="color:#ae81ff">0</span>, y } <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;y 축 {}에 위치하는 점&#34;</span>, y),
         <span style="color:#75715e">// 위의 두 경우 제외한 모든 경우, 변수 x, y 모두 생성
-</span><span style="color:#75715e"></span>        Point { x, y } <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;좌표 ({}, {})에 위치하는 점&#34;</span>, x, y),
+</span><span style="color:#75715e"></span>        Point { x, y } <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;좌표 ({}, {})에 위치하는 점&#34;</span>, x, y),
     }
 }
 </code></pre></div><p><br /></p>
-<h4 id="--1">열거자의 해체</h4>
+<h4 id="열거자의-해체">열거자의 해체</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// p.123
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Message</span> {
     Quit, <span style="color:#75715e">// 연관 데이터를 전혀 갖지 않는다.
@@ -433,11 +433,11 @@ stack.push(<span style="color:#ae81ff">3</span>);
     <span style="color:#66d9ef">let</span> msg <span style="color:#f92672">=</span> Message::ChangeColor(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">160</span>, <span style="color:#ae81ff">255</span>);
 
     <span style="color:#66d9ef">match</span> msg {
-        Message::Quit <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+        Message::Quit <span style="color:#f92672">=&gt;</span> {
             <span style="color:#75715e">// 데이터가 없는 열것값은 어떤 값도 해체할 수 없다. Message::Quit 리터럴 값에만 일치하므로 패턴에 변수도 포함하지 않는다.
 </span><span style="color:#75715e"></span>            println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Quit: 해체할 값이 없습니다.&#34;</span>)
         },
-        Message::Move { x, y } <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+        Message::Move { x, y } <span style="color:#f92672">=&gt;</span> {
             <span style="color:#75715e">// 구조체와 유사한 형태의 열것값은 구조체를 사용할 때와 유사한 패턴을 사용할 수 있다.
 </span><span style="color:#75715e"></span>            println<span style="color:#f92672">!</span>(
                 <span style="color:#e6db74">&#34;Move: x = {}, y = {}&#34;</span>,
@@ -445,8 +445,8 @@ stack.push(<span style="color:#ae81ff">3</span>);
                 y
             );
         },
-        Message::Write(text) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Write: {}&#34;</span>, text),
-        Message::ChangeColor(r, g, b) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+        Message::Write(text) <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Write: {}&#34;</span>, text),
+        Message::ChangeColor(r, g, b) <span style="color:#f92672">=&gt;</span> {
             println<span style="color:#f92672">!</span>(
                 <span style="color:#e6db74">&#34;ChangeColor: R = {}, G = {}, B = {}&#34;</span>,
                 r,
@@ -460,7 +460,7 @@ stack.push(<span style="color:#ae81ff">3</span>);
 <li>열거자를 해체하기 위한 패턴은 열거자에 데이터를 저장하는 방법을 정의한 것과 같아야 한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="---">중첩된 구조체와 열거자의 해체</h4>
+<h4 id="중첩된-구조체와-열거자의-해체">중첩된 구조체와 열거자의 해체</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// ChangeColor 메시지가 RGB와 HSV 색상을 지원한다면
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Color</span> {
     Rgb(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>),
@@ -471,14 +471,14 @@ stack.push(<span style="color:#ae81ff">3</span>);
     Quit,
     Move { x: <span style="color:#66d9ef">i32</span>, y: <span style="color:#66d9ef">i32</span> },
     Write(String),
-    ChangeColor(<span style="color:#f92672">*</span><span style="color:#f92672">*</span>Color<span style="color:#f92672">*</span><span style="color:#f92672">*</span>),
+    ChangeColor(<span style="color:#f92672">**</span>Color<span style="color:#f92672">**</span>),
 }
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> msg <span style="color:#f92672">=</span> Message::ChangeColor(Color::Hsv(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">160</span>, <span style="color:#ae81ff">255</span>));
 
     <span style="color:#66d9ef">match</span> msg {
-        Message::ChangeColor(Color::Rgb(r, g, b)) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+        Message::ChangeColor(Color::Rgb(r, g, b)) <span style="color:#f92672">=&gt;</span> {
             println<span style="color:#f92672">!</span>(
                 <span style="color:#e6db74">&#34;ChangeColor: R = {}, G = {}, B = {}&#34;</span>,
                 r,
@@ -486,7 +486,7 @@ stack.push(<span style="color:#ae81ff">3</span>);
                 b
             );
         },
-        Message::ChangeColor(Color::Hsv(h, s, v)) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+        Message::ChangeColor(Color::Hsv(h, s, v)) <span style="color:#f92672">=&gt;</span> {
             println<span style="color:#f92672">!</span>(
                 <span style="color:#e6db74">&#34;ChangeColor: H = {}, S = {}, V = {}&#34;</span>,
                 h,
@@ -494,22 +494,22 @@ stack.push(<span style="color:#ae81ff">3</span>);
                 v
             )
         },
-        _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {}
+        _ <span style="color:#f92672">=&gt;</span> {}
     },
 }
 </code></pre></div><p><br /></p>
-<h4 id="---1">구조체와 튜플의 해체</h4>
+<h4 id="구조체와-튜플의-해체">구조체와 튜플의 해체</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> ((feet, inches), Point {x, y}) <span style="color:#f92672">=</span> ((<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">10</span>), Point { x: <span style="color:#ae81ff">3</span>, y: <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span> });
 </code></pre></div><ul>
 <li>헤체패턴은 더 복잡한 방법으로 섞거나 중첩할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="3-6---">3-6. 패턴의 값 무시하기</h3>
+<h3 id="3-6-패턴의-값-무시하기">3-6. 패턴의 값 무시하기</h3>
 <ul>
 <li>패턴의 값 전체를 무시할 수도 있고, 일부만 무시할 수도 있다.</li>
 </ul>
 <p><br /></p>
-<h4 id="-----"><code>_</code> 패턴으로 값 전체 무시하기</h4>
+<h4 id="_-패턴으로-값-전체-무시하기"><code>_</code> 패턴으로 값 전체 무시하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">foo</span>(_: <span style="color:#66d9ef">i32</span>, y: <span style="color:#66d9ef">i32</span>) {
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;이 함수는 y 매개변수만 사용한다: {}&#34;</span>, y);
 }
@@ -522,17 +522,17 @@ stack.push(<span style="color:#ae81ff">3</span>);
 <li>ex. 어떤 트레이트의 시그너처를 구현하는데 함수의 본문에서 해당 매개변수가 필요치 않을 때</li>
 </ul>
 <p><br /></p>
-<h4 id="------1"><code>_</code>를 중첩해서 값의 일부만 무시하기</h4>
+<h4 id="_를-중첩해서-값의-일부만-무시하기"><code>_</code>를 중첩해서 값의 일부만 무시하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> setting_value <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">5</span>);
 <span style="color:#66d9ef">let</span> new_setting_value <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">10</span>);
 
 <span style="color:#66d9ef">match</span> (setting_value, new_setting_value) {
     <span style="color:#75715e">// 두 Some값에 저장된 실제 값은 사용하지 않지만, 모두 Some 값을 가지고 있는지만 검사한다.
-</span><span style="color:#75715e"></span>    (Some(_), Some(_)) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+</span><span style="color:#75715e"></span>    (Some(_), Some(_)) <span style="color:#f92672">=&gt;</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;이미 설정된 값을 덮어쓸 수 없습니다.&#34;</span>);
     }
     <span style="color:#75715e">// 그 외의 경우: 둘 중 하나가 None
-</span><span style="color:#75715e"></span>    _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+</span><span style="color:#75715e"></span>    _ <span style="color:#f92672">=&gt;</span> {
         setting_value <span style="color:#f92672">=</span> new_setting_value;
     }
 }
@@ -542,12 +542,12 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;현
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> numbers <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">32</span>);
 
 <span style="color:#66d9ef">match</span> numbers {
-    (first, _, third, _, fifth) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    (first, _, third, _, fifth) <span style="color:#f92672">=&gt;</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치하는 숫자: {}, {}, {}&#34;</span>, first, third, fifth)
     },
 }
 </code></pre></div><p><br /></p>
-<h4 id="--------">변수 이름을 <code>_</code>로 시작해 사용하지 않는 변수 무시하기</h4>
+<h4 id="변수-이름을-_로-시작해-사용하지-않는-변수-무시하기">변수 이름을 <code>_</code>로 시작해 사용하지 않는 변수 무시하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> _x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
     <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">// y에 대해서만 경고가 출력된다.
@@ -574,7 +574,7 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:?
 
 println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:?}&#34;</span>, s); <span style="color:#75715e">// 변수 s 사용 가능
 </span></code></pre></div><p><br /></p>
-<h4 id="----"><code>..</code>를 이용해 값의 나머지를 무시하기</h4>
+<h4 id="를-이용해-값의-나머지를-무시하기"><code>..</code>를 이용해 값의 나머지를 무시하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span> {
     x: <span style="color:#66d9ef">i32</span>,
     y: <span style="color:#66d9ef">i32</span>,
@@ -584,19 +584,19 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:?
 <span style="color:#66d9ef">let</span> origin <span style="color:#f92672">=</span> Point { x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>, z: <span style="color:#ae81ff">0</span> };
 
 <span style="color:#66d9ef">match</span> origin {
-    Point { x, .. } <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x = {}&#34;</span>, x),
+    Point { x, .. } <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x = {}&#34;</span>, x),
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> numbers <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">32</span>);
 
 <span style="color:#66d9ef">match</span> numbers {
-    (first, .., last) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    (first, .., last) <span style="color:#f92672">=&gt;</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;first = {}, last = {}&#34;</span>, first, last);
     },
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> numbers <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">32</span>);
 
 <span style="color:#66d9ef">match</span> numbers {
-    (.., second, ..) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    (.., second, ..) <span style="color:#f92672">=&gt;</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;second = {}&#34;</span>, second);
     },
 }
@@ -607,14 +607,14 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:?
 <li>러스트 관점에서 second 변수에 일치하는 값을 찾기 전/후 몇 개의 값을 무시해야 하는지 모른다.</li>
 </ul>
 <p><br /></p>
-<h3 id="3-7-----">3-7. 매치 가드를 이용한 추가 조건</h3>
+<h3 id="3-7-매치-가드를-이용한-추가-조건">3-7. 매치 가드를 이용한 추가 조건</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> num <span style="color:#f92672">=</span> Some(<span style="color:#ae81ff">4</span>);
 
 <span style="color:#66d9ef">match</span> num {
     <span style="color:#75715e">// 패턴만으로는 if x &lt; 5를 표현할 수 없으므로 매치가드는 로직의 표현력을 한층 더 높여준다
-</span><span style="color:#75715e"></span>    Some(x) <span style="color:#f92672">*</span><span style="color:#f92672">*</span><span style="color:#66d9ef">if</span> x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span><span style="color:#f92672">*</span><span style="color:#f92672">*</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;5보다 작은 값: {}&#34;</span>, x),
-    Some(x) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, x),
-    None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> (),
+</span><span style="color:#75715e"></span>    Some(x) <span style="color:#f92672">**</span><span style="color:#66d9ef">if</span> x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span><span style="color:#f92672">**</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;5보다 작은 값: {}&#34;</span>, x),
+    Some(x) <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, x),
+    None <span style="color:#f92672">=&gt;</span> (),
 }
 </code></pre></div><ul>
 <li>매치 가드는 match 표현식의 가지에 일치해야 할 패턴 외에도 추가적인 if 조건을 지정해서 그 조건이 일치할 때만 해당 가지의 코드를 실행한다.</li>
@@ -626,11 +626,11 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:?
     <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
 
     <span style="color:#66d9ef">match</span> x {
-        Some(<span style="color:#ae81ff">50</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;50&#34;</span>),
+        Some(<span style="color:#ae81ff">50</span>) <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;50&#34;</span>),
         <span style="color:#75715e">// 새 변수 n을 생성해서 y(10)를 가리지 않고 값을 비교할 수 있다.
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// 매치가드 n == y는 패턴이 아니며 그래서 새로운 변수를 생성하지 않는다.
-</span><span style="color:#75715e"></span>        Some(<span style="color:#f92672">*</span><span style="color:#f92672">*</span>n<span style="color:#f92672">*</span><span style="color:#f92672">*</span>) <span style="color:#f92672">*</span><span style="color:#f92672">*</span><span style="color:#66d9ef">if</span> n <span style="color:#f92672">=</span><span style="color:#f92672">=</span> y<span style="color:#f92672">*</span><span style="color:#f92672">*</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치, y = {:?}&#34;</span>, y),
-        _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치하지 않음, x = {:?}&#34;</span>, x),
+</span><span style="color:#75715e"></span>        Some(<span style="color:#f92672">**</span>n<span style="color:#f92672">**</span>) <span style="color:#f92672">**</span><span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> y<span style="color:#f92672">**</span> <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치, y = {:?}&#34;</span>, y),
+        _ <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;일치하지 않음, x = {:?}&#34;</span>, x),
     }
 
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;결과: x = {:?}, y = {:?}&#34;</span>, x, y);
@@ -643,14 +643,14 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:?
 <span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
 
 <span style="color:#66d9ef">match</span> x {
-    <span style="color:#f92672">*</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">6</span><span style="color:#f92672">*</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">if</span> y <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;예&#34;</span>),
-    _ <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;아니오&#34;</span>),
+    <span style="color:#f92672">**</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">6</span><span style="color:#f92672">**</span> <span style="color:#66d9ef">if</span> y <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;예&#34;</span>),
+    _ <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;아니오&#34;</span>),
 }
 </code></pre></div><ul>
 <li>(4 | 5 | 6) if y …로 동작하고 4 | 5 | (6 if y)… 처럼 동작하지 않는다.</li>
 </ul>
 <p><br /></p>
-<h3 id="3-8--">3-8. <code>@</code> 바인딩</h3>
+<h3 id="3-8--바인딩">3-8. <code>@</code> 바인딩</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Message</span> {
     Helllo { id: <span style="color:#66d9ef">i32</span> },
 }
@@ -658,17 +658,17 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:?
 <span style="color:#66d9ef">let</span> msg <span style="color:#f92672">=</span> Message::Hello { id: <span style="color:#ae81ff">5</span> };
 
 <span style="color:#66d9ef">match</span> msg {
-    Message::Hello { id: <span style="color:#a6e22e">id_variable</span> <span style="color:#f92672">@</span> <span style="color:#ae81ff">3</span>...<span style="color:#ae81ff">7</span> } <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    Message::Hello { id: <span style="color:#a6e22e">id_variable</span> <span style="color:#f92672">@</span> <span style="color:#ae81ff">3</span>...<span style="color:#ae81ff">7</span> } <span style="color:#f92672">=&gt;</span> {
         <span style="color:#75715e">// 값이 범위 패턴과 일치하는지 확인하는 동시에
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// 일치하는 값을 변수에 바인딩한다.
 </span><span style="color:#75715e"></span>        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;id를 범위에서 찾았습니다: {}&#34;</span>, id_variable)
     },
-    Message::Hello { id: <span style="color:#ae81ff">10</span>...<span style="color:#ae81ff">12</span> } <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    Message::Hello { id: <span style="color:#ae81ff">10</span>...<span style="color:#ae81ff">12</span> } <span style="color:#f92672">=&gt;</span> {
         <span style="color:#75715e">// 패턴에 명시된 범위에 속하는지만 검사하며
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// id 필드의 실제 값을 가진 변수를 선언하지 않는다.
 </span><span style="color:#75715e"></span>        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;id를 다른 범위에서 찾았습니다.&#34;</span>)
     },
-    Message::Hello { id } <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+    Message::Hello { id } <span style="color:#f92672">=&gt;</span> {
         <span style="color:#75715e">// (구조체 필드를 간략하게 표기하는 문법을 사용해서)
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// 변수를 범위없이 선언했으므로 id라는 이름의 변수로 그 값을 사용할 수 있고,
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// id 필드값을 비교하지 않으며 어떤 값이든 이 패턴과 일치하게 된다.

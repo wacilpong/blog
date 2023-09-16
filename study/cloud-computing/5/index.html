@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -156,7 +156,7 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="heading">컨테이너</h2>
+    <div align="start" class="content"><h2 id="컨테이너">컨테이너</h2>
 <ul>
 <li>샌드박스(sandbox)화된 런타임 환경
 <ul>
@@ -166,7 +166,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="--packaging-technology">패키징 기술 (Packaging technology)</h3>
+<h3 id="패키징-기술-packaging-technology">패키징 기술 (Packaging technology)</h3>
 <ul>
 <li>컨테이너 기술은 패키징(packaging) 기술로 간단히 표현할 수 있다.</li>
 <li>패키징의 대상은 애플리케이션과 이것이 동작할 수 있는 환경이다.</li>
@@ -181,7 +181,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="-vs-">가상화 vs 컨테이너</h3>
+<h3 id="가상화-vs-컨테이너">가상화 vs 컨테이너</h3>
 <ul>
 <li>가상화에서는 물리적 컴퓨터 시스템 전체를 가상머신으로 만들고 그 운영체제를 가상머신에 설치한 상태로 배포한다.<br />
 <em>ex. VMWare 머신 위에서 운영체제를 여러 개 띄운다.</em>
@@ -199,7 +199,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="--">컨테이너 기술의 역사</h3>
+<h3 id="컨테이너-기술의-역사">컨테이너 기술의 역사</h3>
 <ul>
 <li>컨테이너의 핵심 기술은 분리(isolation)에 기반을 둔다.</li>
 <li>Unix V7: chroot를 통해 프로세스 간 분리를 할 수 있게됨</li>
@@ -246,19 +246,19 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="-vs--1">컨테이너 vs 가상머신</h3>
+<h3 id="컨테이너-vs-가상머신">컨테이너 vs 가상머신</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">(<span style="color:#ae81ff">1</span>) 머신 가상화
 App1      App2      App3
 Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</span>Lib
 게스트 OS   게스트 OS   게스트 OS
-<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 하이퍼바이저 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
-<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 인프라스트럭처 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#f92672">---------</span> 하이퍼바이저 <span style="color:#f92672">---------</span>
+<span style="color:#f92672">--------</span> 인프라스트럭처 <span style="color:#f92672">--------</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">(<span style="color:#ae81ff">2</span>) 컨테이너
 App1      App2      App3
 Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</span>Lib
-<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 컨테이너 엔진 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
-<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 운영체제 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
-<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span> 인프라스트럭처 <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#f92672">--------</span> 컨테이너 엔진 <span style="color:#f92672">--------</span>
+<span style="color:#f92672">----------</span> 운영체제 <span style="color:#f92672">----------</span>
+<span style="color:#f92672">--------</span> 인프라스트럭처 <span style="color:#f92672">--------</span>
 </code></pre></div><ul>
 <li>컨테이너는 가상화인가? <em>Not Exactly</em></li>
 <li>컨테이너에서 동작하는 앱이 독립된 환경에서 실행되고 다른 컨테이너 앱에 영향을 미치지 않는다는 점은 가상화와 유사하다.</li>
@@ -272,7 +272,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 <li>가상화는 하이퍼바이저를 이용해 여러 개의 운영체제를 실행하기 때문에 컨테이너처럼 경량 구조가 아니다.</li>
 </ul>
 <p><br /></p>
-<h3 id="---1">컨테이너가 유리한 경우</h3>
+<h3 id="컨테이너가-유리한-경우">컨테이너가 유리한 경우</h3>
 <ul>
 <li>애플리케이션이 <code>멀티서비스(multiservice)</code> 아키텍처인 경우<br />
 <em>마이크로서비스(microservice)라고 한다.</em><br />
@@ -283,7 +283,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 <li>애플리케이션 개발환경이 배포환경과 유사한 경우</li>
 </ul>
 <p><br /></p>
-<h3 id="---2">가상머신이 유리한 경우</h3>
+<h3 id="가상머신이-유리한-경우">가상머신이 유리한 경우</h3>
 <ul>
 <li>애플리케이션이 <code>모놀리식(monolithic)</code> 아키텍처인 경우<br />
 <em>모든 서비스(결제, 쇼핑, 스토리지 등)를 하나의 인스턴스로 관리하는 전통적인 구조</em><br />
@@ -294,7 +294,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="-docker">도커 (Docker)</h2>
+<h2 id="도커-docker">도커 (Docker)</h2>
 <ul>
 <li>응용프로그램을 컨테이너로 실행하고 관리할 수 있는 오픈소스 프로젝트이다.</li>
 <li>도커를 이용해 앱이 수행될 인프라스트럭처와 앱을 분리할 수 있고 쉽고 빠르게 배포할 수 있다.</li>
@@ -306,7 +306,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 <em>생성되는 컨테이너는 <code>docker ps</code> 명령어로 도커 컨테이너를 확인할 수 있다.</em></li>
 </ul>
 <p><br /></p>
-<h3 id="-">구동 방식</h3>
+<h3 id="구동-방식">구동 방식</h3>
 <ul>
 <li>도커 컨테이너를 실행하기 위해서는 도커 엔진이 필요하다.</li>
 <li>도커 엔진은 클라이언트-서버 애플리케이션이다.<br />
@@ -316,7 +316,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 <em><code>데몬(demon)</code>은 background process를 의미한다고 이해하면 쉽다.</em></li>
 </ul>
 <p><br /></p>
-<h3 id="--1">도커 아키텍처</h3>
+<h3 id="도커-아키텍처">도커 아키텍처</h3>
 <ul>
 <li>클라이언트-서버 아키텍처이다.</li>
 <li>도커 클라이언트에서 도커 데몬과 REST API를 통해 통신하여 컨테이너를 생성/실행/배포한다.</li>
@@ -325,7 +325,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 <em>생성되는 도커 이미지, 컨테이너, 네트워크, 볼륨 등을 <code>도커 오브젝트(docker object)</code>라고 한다.</em></li>
 </ul>
 <p><br /></p>
-<h3 id="---">구조와 관련된 주요 컴포넌트</h3>
+<h3 id="구조와-관련된-주요-컴포넌트">구조와 관련된 주요 컴포넌트</h3>
 <ul>
 <li><strong>도커 데몬</strong>: 도커 호스트에서 동작하는 데몬 프로세스로, 도커 오브젝트들을 관리한다.</li>
 <li><strong>도커 클라이언트</strong>: <code>docker run</code>과 같은 명령어를 도커 데몬에 요청하는 역할을 한다.</li>
@@ -347,7 +347,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 </li>
 </ul>
 <p><br /></p>
-<h3 id="------">도커 클라이언트가 도커 데몬에 보내는 명령 수행과정</h3>
+<h3 id="도커-클라이언트가-도커-데몬에-보내는-명령-수행과정">도커 클라이언트가 도커 데몬에 보내는 명령 수행과정</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run -i -t ubuntu /bin/bash
 </code></pre></div><p>(1) 우분투 이미지가 로컬에 없다면 기본 레지스트리인 도커 허브에서 우분투를 로컬로 다운로드한다.<br />
 (2) 도커는 다운로드된 이미지로부터 새로운 컨테이너를 생성한다.<br />
@@ -356,7 +356,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 (5) 컨테이너를 시작하고 <code>/bin/bash</code>를 실행한다.<br />
 (6) exit 명령을 입력하면 컨테이너가 중지된다. (삭제는 아니므로 재실행 혹은 삭제할 수 있음)</p>
 <p><br /></p>
-<h4 id="-------">도커 기반 서비스가 배포될 때 관여되는 주요 컴포넌트</h4>
+<h4 id="도커-기반-서비스가-배포될-때-관여되는-주요-컴포넌트">도커 기반 서비스가 배포될 때 관여되는 주요 컴포넌트</h4>
 <ul>
 <li><strong>인프라스트럭처</strong>: 호스트머신들의 집합으로 네트워크, 저장시스템 등을 모두 포함한다.</li>
 <li><strong>호스트 OS</strong>: 인프라스트럭처에 설치된 리눅스와 같은 운영체제이다.</li>
@@ -380,7 +380,7 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 <li><strong>스택</strong>: 서비스들을 그루핑한 것으로, 스택 내 서비스들은 상호 연계되어 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="---3">도커 기반 기술</h3>
+<h3 id="도커-기반-기술">도커 기반 기술</h3>
 <ul>
 <li>Go 언어로 작성되었고, 리눅스 커널이 제공하는 네임스페이스나 유니온 파일 시스템 등을 제공한다.</li>
 <li>유니온 파일 시스템은 물리적으로 서로 다른 파일시스템이더라도 사용자에게는 하나로 보인다.<br />
@@ -400,14 +400,14 @@ Bins<span style="color:#f92672">/</span>Lib  Bins<span style="color:#f92672">/</
 </li>
 </ul>
 <p><br /></p>
-<h2 id="heading-1">설치해보기</h2>
+<h2 id="설치해보기">설치해보기</h2>
 <ul>
 <li><a href="https://docs.docker.com/desktop/install/mac-install/">도커 데스크톱</a></li>
 <li>도커가 설치되었는지 확인<br />
 <code>docker --version</code></li>
 </ul>
 <p><br /></p>
-<h3 id="----1"><em>튜토리얼 진행해보기</em></h3>
+<h3 id="_튜토리얼-진행해보기_"><em>튜토리얼 진행해보기</em></h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --name repo alpine/git clone https://github.com/docker/getting-started.git
 $ docker build -t docker101tutorial .
 $ docker run -d -p 80:80 --name docker-tutorial docker101tutorial
@@ -420,7 +420,7 @@ $ docker tag docker101tutorial roomyhan/docker101tutorial
 <li>Save and share image</li>
 </ul>
 <p><br /></p>
-<h3 id="----"><em>도커 명령어 실행해보기</em></h3>
+<h3 id="_도커-명령어-실행해보기_"><em>도커 명령어 실행해보기</em></h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run -d -p 80:80 docker/getting-started
 // 위 명령어는 튜토리얼을 진행했다면 안해도 됨
 
@@ -434,7 +434,7 @@ $ docker container ls --all
 <em><code>--all</code> 옵션을 주면 이전에 수행되었던 컨테이너들을 확인할 수 있다.</em></li>
 </ul>
 <p><br /></p>
-<h3 id="nginx-">nginx 띄워보기</h3>
+<h3 id="nginx-띄워보기">nginx 띄워보기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">// 이미지 목록 확인
 docker images
 

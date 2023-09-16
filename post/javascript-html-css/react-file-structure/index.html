@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -158,7 +158,7 @@
 
     <div align="start" class="content"><h2 id="why-i-am-considering-it">Why I am considering it</h2>
 <p><code>앵귤러 5+</code>로 프로젝트를 진행하다가 리액트를 쓰게 되었는데, 앵귤러는 처음 1.x버전부터 본인을 <code>MVW(Model-View-Whatever)</code>와 같은 패턴을 지원하는 <code>Declarative Template</code>이라고 지칭한다. 그리고 <code>angular-cli</code> 커맨드를 사용하게 되면, 컴포넌트 1개당 관련 .css/.ts/.test.js/.html 파일들이 폴더로 생성되는 구조이다. 따라서 비교적 폴더구조에 대해서는 크게 고민하지 않았는데, 리액트를 해보니 굉장히 자유도가 높았고 폴더 구조도 쓰는 사람마다 천차만별이었다. 그러다보니 이에 대해 자연스럽게 고민하고 찾아봤다.</p>
-<p>I was dealing with angular framwork that calls <code>Declarative Template</code> itself, supports the patterns like <code>MVW(Model-View-Whatever)</code>, and I recently start to managing react project. Moreover <code>angular-cli</code> command generates .css/.ts/.test.js/.html files to each components. So I didn't considering about directory structure deeply, but now I move to react and it much more depends on programmer.</p>
+<p>I was dealing with angular framwork that calls <code>Declarative Template</code> itself, supports the patterns like <code>MVW(Model-View-Whatever)</code>, and I recently start to managing react project. Moreover <code>angular-cli</code> command generates .css/.ts/.test.js/.html files to each components. So I didn&rsquo;t considering about directory structure deeply, but now I move to react and it much more depends on programmer.</p>
 <p><br /></p>
 <h2 id="what-react-says-about-it-">What React says about it ?</h2>
 <p>기본적으로 리액트는 다음과 같이 말한다.</p>
@@ -183,7 +183,7 @@
   styles<span style="color:#f92672">/</span>
   assets<span style="color:#f92672">/</span>
 </code></pre></div><p>회사에서 <code>typescript</code>를 도입해서 사용중이기 때문에 typings 폴더에서 해당 프로젝트에서 사용되는 인터페이스를 만들어 쓰고 있다. 그리고 컴포넌트 폴더에는 말 그대로 뷰부분이 들어 있는데, 컴포넌트 폴더에 <code>js</code>파일만 두고 <code>(s)css</code>파일을 모두 따로 뺀 것이 마음에 들지는 않았다. 일반적인 방식에 의해도 확장자가 같다고 한번에 모아두는 것이 좋지는 않은 것 같다고 느꼈다. 그래서 차츰차츰 아래와 같은 구조를 만들어보려고 하고 있다.</p>
-<p>It using <code>typescript</code>, so managing all types about the interfaces in this project in typings folder. I pretty happy that I am using ts, but it isn't that about all <code>js</code> files in components folder and all <code>(s)css</code> files in styles folder. I think It looks complicated, why all files set aside in same folder even if it has same file extension ? So, I gradually make this structure like this:</p>
+<p>It using <code>typescript</code>, so managing all types about the interfaces in this project in typings folder. I pretty happy that I am using ts, but it isn&rsquo;t that about all <code>js</code> files in components folder and all <code>(s)css</code> files in styles folder. I think It looks complicated, why all files set aside in same folder even if it has same file extension ? So, I gradually make this structure like this:</p>
 <p><br /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">src<span style="color:#f92672">/</span>
   api<span style="color:#f92672">/</span>

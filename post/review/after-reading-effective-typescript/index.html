@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -125,7 +125,7 @@
                             
                                 <li><a href="/blog/post/">Posts</a></li>
                             
-                                <li><a href="/blog/project/">Projects</a></li>
+                                <li><a href="/blog/study/">Study</a></li>
                             
                                 <li><a href="/blog/learned/">What I Learned</a></li>
                             
@@ -190,13 +190,13 @@
 <li>
 <p><strong>제네릭 타입은 타입을 위한 함수와 같다.</strong></p>
 <ul>
-<li>타입에 대한 DRY(Don't Repeat Yourself) 원칙의 핵심이다.</li>
+<li>타입에 대한 DRY(Don&rsquo;t Repeat Yourself) 원칙의 핵심이다.</li>
 <li>제네릭 타입에서 매핑할 수 있는 값, 즉 매개변수를 제한하려면 <code>extends</code>를 사용하자.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Name</span> {
   <span style="color:#a6e22e">first</span>: <span style="color:#66d9ef">string</span>;
   <span style="color:#a6e22e">last</span>: <span style="color:#66d9ef">string</span>;
 }
-<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">DancingDuo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">T</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Name</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">T</span>];
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">DancingDuo</span>&lt;<span style="color:#f92672">T</span> <span style="color:#a6e22e">extends</span> <span style="color:#a6e22e">Name</span>&gt; <span style="color:#f92672">=</span> [<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">T</span>];
 </code></pre></div></li>
 </ul>
 </li>
@@ -244,7 +244,7 @@
 <ul>
 <li>좀더 간결하고, async함수는 항상 프로미스를 반환하도록 강제되기 때문이다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// 반환타입은 Promise&lt;number&gt;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">42</span>;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">42</span>;
 </code></pre></div></li>
 <li>즉시 사용가능한 값에도 프로미스를 반환하는 것이 이상해 보일 수 있지만, 실제로는 비동기 함수로 통일하도록 강제하는 데 도움이 된다.</li>
 <li>함수는 항상 동기 또는 비동기로 실행되어야 하며 절대 혼용해서는 안된다.</li>
