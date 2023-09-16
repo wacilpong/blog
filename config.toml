@@ -27,7 +27,7 @@ disqusShortname = "roomy-han"
 
 [params]
     author = "Roomy Han"
-    description = "Audio, Video, Disco - 듣고, 보고, 배움."
+    description = "Audio, Video, Disco 듣고, 보고, 배움."
     githubUsername = "wacilpong"
     accent = "#469160"
     showBorder = true
@@ -56,8 +56,8 @@ disqusShortname = "roomy-han"
     weight = 3
 
 [[menu.main]]
-    url = "/project/"
-    name = "Projects"
+    url = "/study/"
+    name = "Study"
     weight = 4
     
 [[menu.main]]
