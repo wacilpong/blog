@@ -151,6 +151,8 @@
         <h2>refactoring 5: Basic refactoring way</h2>
         <h5>가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링</h5>
         
+<a href="https://wacilpong.github.io/blog/tags/refactoring"><kbd class="item-tag">refactoring</kbd></a>
+
 
     </div>
 
@@ -517,13 +519,13 @@
 </li>
 </ul>
 <p><strong>예시*</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span> };
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
 
 <span style="color:#a6e22e">spaceship</span>.<span style="color:#a6e22e">owner</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defaultOwner</span>;
 
-<span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;레베카&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span> };
+<span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;레베카&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
 </code></pre></div><p><strong>복제본을 반환하도록 하여 캡슐화</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span> };
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
 
 <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defaultOwner</span>() {
   <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">assign</span>({}, <span style="color:#a6e22e">_defaultOwnerData</span>);
@@ -532,7 +534,7 @@
   <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;
 }
 </code></pre></div><p><strong>레코드 캡슐화하기</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwnerData</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span> };
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwnerData</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
 
 <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defaultOwner</span>() {
   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">defaultOwnerData</span>);
@@ -620,11 +622,11 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">station</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ZB1&#34;</span>,
   <span style="color:#a6e22e">readings</span><span style="color:#f92672">:</span> [
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
   ],
 };
 
@@ -640,11 +642,11 @@
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">station</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ZB1&#34;</span>,
   <span style="color:#a6e22e">readings</span><span style="color:#f92672">:</span> [
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
-    { <span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span> },
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
   ],
 };
 
@@ -662,7 +664,7 @@
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberRange</span> {
   <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">min</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">max</span> };
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">min</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">max</span>};
   }
 
   <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">min</span>() {

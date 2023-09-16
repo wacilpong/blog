@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>refactoring on Roomy</title>
+    <link>https://wacilpong.github.io/blog/tags/refactoring/</link>
+    <description>Recent content in refactoring on Roomy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>kr-ko</language>
+    <lastBuildDate>Fri, 27 Jan 2023 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wacilpong.github.io/blog/tags/refactoring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>refactoring 7: Encapsulation</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/7/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/7/</guid>
+      <description>시작하며 각 모듈이 드러내지 않아야 할 비밀을 얼마나 잘 숨기느냐 ⇒ 모듈을 분리하는 가장 중요한 기준 클래스는 본래 정보를 숨기는 용도로 설계되었다. 클래스는 내부 정</description>
+    </item>
+    
+    <item>
+      <title>refactoring 6: Basic refactoring way 2</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/6/</link>
+      <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/6/</guid>
+      <description>6.9 여러 함수를 클래스로 묶기 목표 as-is function base(aReading) {...} function taxableCharge(aReading) {...} function calculateBaseCharge(aReading) {...} to-be class Reading { base(){...} taxableCharge() {...} calculateBaseCharge() {...} } 배경 클래스는 데이터와 함수를 하나의 공유 환경으로 묶은후, 다른 프로그램 요소와 어</description>
+    </item>
+    
+    <item>
+      <title>refactoring 5: Basic refactoring way</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/5/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/5/</guid>
+      <description>가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링 1. 함수 추출하기 가장 빈번하게 사용되는 리팩터링 중 하나로, 코드조각을 찾아 무슨 일을 하는지 파악한 다</description>
+    </item>
+    
+    <item>
+      <title>refactoring 4: Test</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/4/</link>
+      <pubDate>Wed, 04 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/4/</guid>
+      <description>리팩터링을 제대로 하려면 불가피하게 저지르는 실수를 잡아주는 견고한 테스트 스위트(test suite)가 뒷받침 되어야한다. 리팩터링을 위해 하지않더라도</description>
+    </item>
+    
+    <item>
+      <title>refactoring 3: Bad smell?</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/3/</link>
+      <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/3/</guid>
+      <description>기이한 이름 (Mysterious Name) 이름만 잘 지어도 나중에 문맥 파악하느라 헤매는 시간을 크게 절약할 수 있다. 마땅한 이름이 떠오르지 않는다면 설계에 더 근본적인 문제가 있을 가능성이</description>
+    </item>
+    
+    <item>
+      <title>refactoring 2: basic</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/2/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/2/</guid>
+      <description>리팩터링이란? 리팩터링은 소프트웨어의 동작은 유지한 채, 코드를 이해하고 수정하기 쉽도록 내부 구조를 변경하는 것이다. 리팩터링을 하는 동안에는 코드가 항상 정</description>
+    </item>
+    
+    <item>
+      <title>refactoring 1: let&#39;s start</title>
+      <link>https://wacilpong.github.io/blog/study/refactoring/1/</link>
+      <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/study/refactoring/1/</guid>
+      <description>함수 추출하기 프로그램이 새로운 기능을 추가하기에 편한 구조가 아니라면, 먼저 기능을 추가하기 쉬운 형태로 리팩터링하고 나서 원하는 기능을 추가하자. 한번에 너무</description>
+    </item>
+    
+  </channel>
+</rss>

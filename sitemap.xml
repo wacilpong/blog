@@ -30,12 +30,22 @@
   </url>
   
   <url>
+    <loc>https://wacilpong.github.io/blog/tags/refactoring/</loc>
+    <lastmod>2023-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wacilpong.github.io/blog/study/refactoring/7/</loc>
     <lastmod>2023-01-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wacilpong.github.io/blog/study/</loc>
+    <lastmod>2023-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/</loc>
     <lastmod>2023-01-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -51,11 +61,6 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/study/kubernetes/5/</loc>
-    <lastmod>2023-01-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url>
   

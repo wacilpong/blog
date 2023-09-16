@@ -151,6 +151,8 @@
         <h2>refactoring 7: Encapsulation</h2>
         <h5>캡슐화</h5>
         
+<a href="https://wacilpong.github.io/blog/tags/refactoring"><kbd class="item-tag">refactoring</kbd></a>
+
 
     </div>
 
@@ -164,7 +166,7 @@
 <p><br /></p>
 <h3 id="71-레코드-캡슐화하기-encapsulate-record">7.1 레코드 캡슐화하기 Encapsulate Record</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#75715e">// **AS-IS: 레코드(객체 리터럴)**
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">organization</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;루미&#34;</span>, <span style="color:#a6e22e">country</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;KR&#34;</span> };
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">organization</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;루미&#34;</span>, <span style="color:#a6e22e">country</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;KR&#34;</span>};
 
 <span style="color:#75715e">// **TO-BE: 클래스(책에서 말하는 &#39;객체&#39; 예시)**
 </span><span style="color:#75715e">// 레코드를 캡슐화하는 목적은 변수 자체는 물론, 내용을 조작하는 방식도 통제하기 위함

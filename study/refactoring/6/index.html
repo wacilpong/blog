@@ -151,6 +151,8 @@
         <h2>refactoring 6: Basic refactoring way 2</h2>
         <h5>가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링 2</h5>
         
+<a href="https://wacilpong.github.io/blog/tags/refactoring"><kbd class="item-tag">refactoring</kbd></a>
+
 
     </div>
 
@@ -506,7 +508,7 @@
 <h3 id="3-테스트">3. 테스트</h3>
 <p><code>enrichReading()</code>처럼 정보를 추가해 반환할 때 원본 측정값 레코드는 변경하지 않아야 한다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;check reading unchanged&#34;</span>, <span style="color:#66d9ef">function</span> () {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">baseReading</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">customer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ivan&#34;</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">15</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">year</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2017</span> };
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">baseReading</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">customer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ivan&#34;</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">15</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">year</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2017</span>};
   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">oracle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">cloneDeep</span>(<span style="color:#a6e22e">baseReading</span>);
 
   <span style="color:#a6e22e">enrichReading</span>(<span style="color:#a6e22e">baseReading</span>);
@@ -673,7 +675,7 @@
     Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
     <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
     <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">basePrice</span> };
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">basePrice</span>};
   <span style="color:#75715e">// basePrice 매개변수에서 제거
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span>);
 
@@ -700,7 +702,7 @@
     Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountThreshold</span>) <span style="color:#f92672">*</span>
     <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
     <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span> };
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">priceData</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span>};
   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">applyShipping</span>(<span style="color:#a6e22e">priceData</span>, <span style="color:#a6e22e">shippingMethod</span>);
 
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span>;
@@ -732,7 +734,7 @@
     <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
     <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
 
-  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span> };
+  <span style="color:#66d9ef">return</span> {<span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span>};
 }
 
 <span style="color:#75715e">// 두 번째 단계를 처리 하는 함수
@@ -761,7 +763,7 @@
     <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span>
     <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">discountRate</span>;
 
-  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span> };
+  <span style="color:#66d9ef">return</span> {<span style="color:#a6e22e">basePrice</span>, <span style="color:#a6e22e">quantity</span>, <span style="color:#a6e22e">discount</span>};
 }
 
 <span style="color:#75715e">// 두 번째 단계를 처리 하는 함수
