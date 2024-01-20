@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -159,7 +159,7 @@
     <div align="start" class="content"><p>by Alexander A. Stepanov, Daniel E. Rose</p>
 <p>알고리즘 산책을 읽고 정리해놓고 싶은 것들을 적어놓는다. 읽은 기간은 무려 2020-12-30 ~ 2021-03-31&hellip; 뒤로 갈수록 유클리드 GCD 확장, 스테빈, 뇌터까지 정말 수학을 사랑하지 않고서는 재미있게 읽을 수 없어서 넘기면서 읽었다&hellip;</p>
 <p><br /></p>
-<h4 id="자연수의-합">자연수의 합</h4>
+<h4 id="-">자연수의 합</h4>
 <ul>
 <li>삼각수는 첫 n개의 양의 정수를 나타내는 행들을 쌓아서 만들 수 있다.</li>
 <li>직사각수는 삼각수에 n을 곱한다.</li>
@@ -168,7 +168,7 @@
 <li>자신을 제외한 모든 약수의 합이 자신과 같으면 완전수이다.</li>
 </ul>
 <p><br /></p>
-<h4 id="유클리드-호제법">유클리드 호제법</h4>
+<h4 id="--1">유클리드 호제법</h4>
 <ul>
 <li>
 <p>유클리드는 최소한의 단계로 최대한 다양하게 응용될 수 있는 결과를 이끄는 증명을 선호했다.</p>
@@ -201,9 +201,9 @@
 <li>
 <p>이는 a와 b에 대해서 a &lt;= nb를 만족하는 자연수 n이 존재한다는 <code>아르키메데스의 공리</code>로 증명된다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">integer <span style="color:#a6e22e">gcd</span>(integer a, integer b) {
-    <span style="color:#66d9ef">while</span> (b <span style="color:#f92672">!=</span> interger(<span style="color:#ae81ff">0</span>)) {
+    <span style="color:#66d9ef">while</span> (b <span style="color:#f92672">!</span><span style="color:#f92672">=</span> interger(<span style="color:#ae81ff">0</span>)) {
         a <span style="color:#f92672">=</span> a <span style="color:#f92672">%</span> b;
-        std<span style="color:#f92672">::</span>swap(a, b);
+        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>swap(a, b);
     }
 
     <span style="color:#66d9ef">return</span> a;
@@ -234,7 +234,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="완전수-소수">완전수, 소수</h4>
+<h4 id="--2">완전수, 소수</h4>
 <ul>
 <li>완전수란 어떤 정수 n 자신을 제외한 모든 약수(진약수)의 합이 n인 수</li>
 <li>2^n - 1은 완전수의 원천이 되는 소수의 형태이다.</li>
@@ -257,7 +257,7 @@
 <li>코드를 일반화하는 일은 정리나 정리의 증명을 일반화하는 것과 마찬가지다.</li>
 </ul>
 <p><br /></p>
-<h4 id="이론과-모델">이론과 모델</h4>
+<h4 id="--3">이론과 모델</h4>
 <ul>
 <li>수학에서 <code>이론(theory)</code>이라는 용어는 매우 정확한 의미로 부여되고, 증명되지 않은 추측 같은 것이 아니다.</li>
 <li><code>모형(model)</code>은 이론에 있는 모든 연산이 정의되어 있고, 이론의 모든 명제가 참인 원소들의 집합이다.
@@ -270,7 +270,7 @@
 <li>공리와 명제는 이론의 제약조건이므로 많아질수록 모두 만족하는 모델은 적어질 수밖에 없다.</li>
 </ul>
 <p><br /></p>
-<h4 id="제네릭-알고리즘-유도-방법">제네릭 알고리즘 유도 방법</h4>
+<h4 id="---">제네릭 알고리즘 유도 방법</h4>
 <ul>
 <li>
 <p>좋은 코드를 만들기 위해서는 제대로 된 알고리즘을 찾고, 그것이 어떤 유형에 적용되는지 파악해야 한다.</p>
@@ -284,7 +284,7 @@
   <span style="color:#66d9ef">while</span> (true) {
     <span style="color:#66d9ef">if</span> (odd(n)) {
       r <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> a;
-      <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> r;
+      <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> r;
     }
 
     n <span style="color:#f92672">=</span> half(n);
@@ -305,7 +305,7 @@ A multiply_accumulate(A r, N n, A a) {
   <span style="color:#66d9ef">while</span> (true) {
     <span style="color:#66d9ef">if</span> (odd(n)) {
       r <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> a;
-      <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> r;
+      <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> r;
     }
 
     n <span style="color:#f92672">=</span> half(n);
@@ -338,7 +338,7 @@ A multiply_accumulate(A r, N n, A a) {
 </li>
 </ul>
 <p><br /></p>
-<h4 id="추상화">추상화</h4>
+<h4 id="heading">추상화</h4>
 <ul>
 <li>아리스토텔레스의 <code>오르가논(Organon)</code>
 <ul>
@@ -365,7 +365,7 @@ A multiply_accumulate(A r, N n, A a) {
 </li>
 </ul>
 <p><br /></p>
-<h4 id="결론">결론</h4>
+<h4 id="heading-1">결론</h4>
 <ul>
 <li>제네릭 프로그래밍에서 추상화는 추상대수에서 직접적으로 파생되었으나, 개발자 입장에서는 효율도 챙겨야 한다.</li>
 <li>특정 형에 대해서만 작동하더라도 더 빠른 알고리즘이 있다면 제네릭 알고리즘을 쓸 이유가 없다.</li>

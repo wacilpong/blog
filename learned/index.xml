@@ -17,7 +17,7 @@
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</guid>
-      <description>2023-04-05 하이드레이션(hydration) 리액트에서의 하이드레이션은 서버 측에서 생성한 HTML 페이지에 클라이언트 측에서 실행하는 js 코드를 추가해서 애플리케이션</description>
+      <description>2023-05-14 js의 exec() 메서드는 주어진 문자열에서 일치하는지 여부를 배열 혹은 null로 반환해준다. 이때 exec()에 플래그를 설정(/foo/g, /foo/y 등)하면 이전</description>
     </item>
     
     <item>

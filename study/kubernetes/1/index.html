@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -177,7 +177,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="내-리액트앱-nginx로-서빙하는-도커이미지-만들기">내 리액트앱 nginx로 서빙하는 도커이미지 만들기</h2>
+<h2 id="--nginx---">내 리액트앱 nginx로 서빙하는 도커이미지 만들기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">FROM nginx
 
 <span style="color:#75715e"># nginx의 default.conf를 삭제</span>
@@ -190,7 +190,7 @@ COPY ./nginx.config <span style="color:#f92672">/</span>etc<span style="color:#f
 EXPOSE <span style="color:#ae81ff">80</span>
 
 <span style="color:#75715e"># container 실행 시 자동으로 실행할 command. nginx 시작함</span>
-CMD nginx <span style="color:#f92672">-</span>g <span style="color:#e6db74">&#39;daemon off;&#39;</span>
+CMD nginx <span style="color:#f92672">-</span>g <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">daemon off;&#39;</span>
 </code></pre></div><ul>
 <li>
 <p>내 리액트앱을 도커이미지로 만드는 Dockerfile이다.</p>
@@ -227,7 +227,7 @@ docker ps
 FROM node<span style="color:#f92672">:</span>alpine as builder
 
 <span style="color:#75715e"># Specify a working directory</span>
-WORKDIR <span style="color:#e6db74">&#39;/app&#39;</span>
+WORKDIR <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/app&#39;</span>
 
 <span style="color:#75715e"># Copy the dependencies file</span>
 COPY package.json .
@@ -245,7 +245,7 @@ RUN npm run build
 FROM nginx
 
 <span style="color:#75715e"># Copy production build files from builder phase to nginx</span>
-COPY <span style="color:#f92672">--</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
+COPY <span style="color:#f92672">-</span><span style="color:#f92672">-</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
 </code></pre></div><ul>
 <li>위처럼 컨테이너 이미지에는 필요 없지만 이미지를 빌드할 때만 필요한 경우 <code>multi stage</code> 방식으로 만들 수 있다.</li>
 <li>node 스테이지에서 필요한 파일과 dependency 모두 컨테이너로 카피하고, build 명령을 돌린다.</li>
@@ -254,28 +254,28 @@ COPY <span style="color:#f92672">--</span>from<span style="color:#f92672">=</spa
 <li><a href="https://docs.docker.com/build/building/multi-stage/">https://docs.docker.com/build/building/multi-stage/</a></li>
 </ul>
 <p><br /></p>
-<h2 id="221127-스터디">221127 스터디</h2>
+<h2 id="221127-">221127 스터디</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># Dockerfile.apiserver</span>
 
 FROM node
 
 WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
 COPY package<span style="color:#f92672">*</span>.json <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>
-ENV NODE_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--openssl-legacy-provider&#34;</span>
+ENV NODE_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">--openssl-legacy-provider&#34;</span>
 
 RUN npm install
 COPY backend <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>backend<span style="color:#f92672">/</span>
 
 EXPOSE <span style="color:#ae81ff">3777</span>
 
-ENTRYPOINT [<span style="color:#e6db74">&#34;node&#34;</span>, <span style="color:#e6db74">&#34;/usr/src/app/backend/server.js&#34;</span>]
+ENTRYPOINT [<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">node&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/usr/src/app/backend/server.js&#34;</span>]
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># Dockerfile.front</span>
 
 FROM node as builder
 
 RUN mkdir <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
 WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
-ENV NODE_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--openssl-legacy-provider&#34;</span>
+ENV NODE_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">--openssl-legacy-provider&#34;</span>
 COPY package<span style="color:#f92672">*</span>.json <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>
 RUN npm install
 
@@ -288,10 +288,10 @@ WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</sp
 RUN rm <span style="color:#f92672">-</span>rf <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d
 COPY conf <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d<span style="color:#f92672">/</span>
 
-COPY <span style="color:#f92672">--</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build<span style="color:#f92672">/</span> .
+COPY <span style="color:#f92672">-</span><span style="color:#f92672">-</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build<span style="color:#f92672">/</span> .
 
 EXPOSE <span style="color:#ae81ff">80</span>
-CMD [<span style="color:#e6db74">&#34;nginx&#34;</span>, <span style="color:#e6db74">&#34;-g&#34;</span>, <span style="color:#e6db74">&#34;daemon off;&#34;</span>]
+CMD [<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">nginx&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-g&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">daemon off;&#34;</span>]
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># conf/default.conf</span>
 
 server {
@@ -305,7 +305,7 @@ server {
   }
 
   location <span style="color:#f92672">/</span>api {
-    proxy_pass http<span style="color:#f92672">://</span>todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span><span style="color:#ae81ff">3777</span>;
+    proxy_pass http<span style="color:#f92672">:</span><span style="color:#f92672">/</span><span style="color:#f92672">/</span>todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span><span style="color:#ae81ff">3777</span>;
   }
 
   error_page   <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">502</span> <span style="color:#ae81ff">503</span> <span style="color:#ae81ff">504</span>  <span style="color:#f92672">/</span><span style="color:#ae81ff">50</span>x.html;
@@ -315,7 +315,7 @@ server {
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># docker-compose.yml</span>
 
-version<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;3&#39;</span>
+version<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">3&#39;</span>
 services<span style="color:#f92672">:</span>
   todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span>
     container_name<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>api

@@ -4,13 +4,13 @@
         <meta name="description" content="" />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="Publish to aws s3 with s3cmd" />
-<meta property="og:site_name" content="Publish to aws s3 with s3cmd" />
+<meta property="og:title" content="백준 알고리즘을, 특히 파이썬으로 풀면서 참고할 것들 정리" />
+<meta property="og:site_name" content="백준 알고리즘을, 특히 파이썬으로 풀면서 참고할 것들 정리" />
 <meta property="og:description" content="" />
-<meta property="og:url" content="https://wacilpong.github.io/blog/post/configuration/aws-publish-to-s3/" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/post/computer-science/baekjoon-note/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Publish to aws s3 with s3cmd" />
+<meta name="twitter:title" content="백준 알고리즘을, 특히 파이썬으로 풀면서 참고할 것들 정리" />
 <meta name="twitter:description" content="" />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Publish to aws s3 with s3cmd</title>
+        <title>백준 알고리즘을, 특히 파이썬으로 풀면서 참고할 것들 정리</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -108,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Publish to aws s3 with s3cmd</a>
+                    <a class="navbar-brand visible-xs" href="#">백준 알고리즘을, 특히 파이썬으로 풀면서 참고할 것들 정리</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -148,41 +148,49 @@
 <main>
 
     <div>
-        <h2>Publish to aws s3 with s3cmd</h2>
-        <h5>2018-02-09</h5>
+        <h2>백준 알고리즘을, 특히 파이썬으로 풀면서 참고할 것들 정리</h2>
+        <h5>2024-01-20</h5>
         
-<a href="https://wacilpong.github.io/blog/tags/configuration"><kbd class="item-tag">configuration</kbd></a>
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
 
 
     </div>
 
-    <div align="start" class="content"><h3 id="1-create-s3-bucket">1. Create S3 bucket</h3>
-<p>Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with <code>index.html</code> (entry point).</p>
-<p><br /></p>
-<h3 id="2-create-cloudfront-distributions">2. Create CloudFront Distributions</h3>
-<p>Create in aws CloudFront console. And Just keep all settings.</p>
-<p><br /></p>
-<h3 id="3-connect-domain-with-cloudfront">3. Connect domain with CloudFront</h3>
-<p>If you don't have routing domain in aws Route 53 console, create it first like <code>test.example.com</code>. It just depends on your url rules. Then connect with IPv4 with the CloudFront that you created.</p>
-<p><br /></p>
-<h3 id="4-install-s3cmd">4. Install s3cmd</h3>
-<p>s3cmd is a command line for s3 client or backup in linux and mac. s3express is for windows user, check it. I installed it using homebrew.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">brew install s3cmd
-</code></pre></div><p>Type <code>s3cmd</code> on command line, then command list (help) will be appear.</p>
-<p><br /></p>
-<h3 id="5-configure-s3cmd-s3cfg">5. Configure s3cmd (.s3cfg)</h3>
-<p>We need to set aws access key to s3cmd to access s3 bucket.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">s3cmd <span style="color:#f92672">-</span><span style="color:#f92672">-</span>configure
-</code></pre></div><p>Many properties can be set. but now we just need to type aws access key and secret key that can be generated in aws. Then check s3 buckets that connected with your key.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">s3cmd ls
-</code></pre></div><p><br /></p>
-<h3 id="6-publish-to-s3-from-local">6. Publish to S3 from local</h3>
-<p>First of all, we need to build our source code. I am dealing with angular5 project, so I am using <code>ng</code> command.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">ng build <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#f92672">-</span>env prod <span style="color:#f92672">-</span><span style="color:#f92672">-</span>aot
-s3cmd { put, sync } <span style="color:#f92672">-</span><span style="color:#f92672">-</span>cf<span style="color:#f92672">-</span>invalidate <span style="color:#f92672">-</span>P <span style="color:#f92672">-</span>r project<span style="color:#f92672">-</span>path<span style="color:#f92672">/</span>dist<span style="color:#f92672">/</span><span style="color:#f92672">*</span> s3<span style="color:#f92672">:</span><span style="color:#f92672">/</span><span style="color:#f92672">/</span>test.example.com
-</code></pre></div><p><br /></p>
-<p>If you publish for the first time, use <code>put</code> command. It will publish all files and directories. And <code>sync</code> command will publish the files and directories that only be changed. And <code>:</code> means builds all our files. <code>--aot</code>(&lt;-&gt; <code>jit</code>) option means ahead-of-time;build files during the build phase before the browser downloads and runs that code. <code>--cf</code> means remove all chached files in CloudFront.</p>
-</div>
+    <div align="start" class="content"><h2 id="-">입력 참고</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">input <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>stdin<span style="color:#f92672">.</span>readline
+
+<span style="color:#75715e"># 정수 하나를 받을 때</span>
+a <span style="color:#f92672">=</span> int(input())
+
+<span style="color:#75715e"># 띄어쓰기한 두 정수를 받을 때</span>
+a, b <span style="color:#f92672">=</span> map(int, input()<span style="color:#f92672">.</span>split())
+
+<span style="color:#75715e"># 띄어쓰기한 두 정수를 받아서 마지막 수만큼 배열로 채울 때</span>
+arr <span style="color:#f92672">=</span> [list(map(int, input()<span style="color:#f92672">.</span>split())) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(b)]
+</code></pre></div><h2 id="--">파이썬 문법과 내장함수</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 파이썬은 문자열도 곱셈이 된다.</span>
+<span style="color:#f92672">&gt;&gt;</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">python</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">&gt;&gt;</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">pythonpython</span><span style="color:#e6db74">&#39;</span>
+
+<span style="color:#75715e"># 파이썬의 전개연산(ex. [...memo_result, number])은 더하면 된다.</span>
+memo_result <span style="color:#f92672">+</span> [number]
+
+<span style="color:#75715e"># 반복문에서 index, value 동시 접근하고 싶을 때: 튜플</span>
+<span style="color:#66d9ef">for</span> i, value <span style="color:#f92672">in</span> enumerate(arr):
+
+<span style="color:#75715e"># 배열 슬라이싱</span>
+<span style="color:#f92672">&gt;&gt;</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+
+<span style="color:#f92672">&gt;&gt;</span><span style="color:#f92672">&gt;</span> b <span style="color:#f92672">=</span> a[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">2</span>] <span style="color:#75715e"># 0번째부터 2번째 인덱스 전까지</span>
+[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]
+
+<span style="color:#f92672">&gt;&gt;</span><span style="color:#f92672">&gt;</span> c <span style="color:#f92672">=</span> a[:<span style="color:#ae81ff">2</span>] <span style="color:#75715e"># 2번째 인덱스 전까지 전부</span>
+[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]
+
+<span style="color:#f92672">&gt;&gt;</span><span style="color:#f92672">&gt;</span> d <span style="color:#f92672">=</span> a[<span style="color:#ae81ff">2</span>:] <span style="color:#75715e"># 2번째 인덱스부터 전부</span>
+[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</code></pre></div></div>
 
     
     
@@ -197,10 +205,12 @@ s3cmd { put, sync } <span style="color:#f92672">-</span><span style="color:#f926
     
     
 
-    <h4><a href="/blog/post/configuration/babel-polyfill-and-babel-runtime/">Babel polyfill and babel runtime</a></h4>
-    <h5>2020-01-17</h5>
+    <h4><a href="/blog/post/review/after-reading-code/">After reading &lt;code&gt;</a></h4>
+    <h5>2020-11-18</h5>
     
-<a href="https://wacilpong.github.io/blog/tags/configuration"><kbd class="item-tag">configuration</kbd></a>
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
 
 
 
@@ -214,10 +224,12 @@ s3cmd { put, sync } <span style="color:#f92672">-</span><span style="color:#f926
     
     
 
-    <h4><a href="/blog/post/configuration/untranspiled-published-external-library/">Test with jest the untranspiled external libraries</a></h4>
-    <h5>2020-01-02</h5>
+    <h4><a href="/blog/post/review/after-reading-concepts-of-programming-languages/">After reading &lt;concepts of programming languages&gt;</a></h4>
+    <h5>2020-06-28</h5>
     
-<a href="https://wacilpong.github.io/blog/tags/configuration"><kbd class="item-tag">configuration</kbd></a>
+<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
+
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
 
 
 
@@ -231,10 +243,10 @@ s3cmd { put, sync } <span style="color:#f92672">-</span><span style="color:#f926
     
     
 
-    <h4><a href="/blog/post/configuration/prerender-status-code/">Prerender Status Code</a></h4>
-    <h5>2019-10-06</h5>
+    <h4><a href="/blog/post/computer-science/algorithm-basic-3/">Algorithm basic 3</a></h4>
+    <h5>2020-05-24</h5>
     
-<a href="https://wacilpong.github.io/blog/tags/configuration"><kbd class="item-tag">configuration</kbd></a>
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
 
 
 

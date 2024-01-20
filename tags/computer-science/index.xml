@@ -6,10 +6,19 @@
     <description>Recent content in computer-science on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Wed, 18 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>백준 알고리즘을, 특히 파이썬으로 풀면서 참고할 것들 정리</title>
+      <link>https://wacilpong.github.io/blog/post/computer-science/baekjoon-note/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/post/computer-science/baekjoon-note/</guid>
+      <description>입력 참고 input = sys.stdin.readline # 정수 하나를 받을 때 a = int(input()) # 띄어쓰기한 두 정수를 받을 때 a, b = map(int, input().split()) # 띄어쓰기한 두 정수를 받아서 마지막 수만큼 배열로 채울 때 arr = [list(map(int, input().split())) for _ in range(b)]</description>
+    </item>
     
     <item>
       <title>After reading &lt;code&gt;</title>

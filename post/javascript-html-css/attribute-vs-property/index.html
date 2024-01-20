@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -156,7 +156,7 @@
 
     </div>
 
-    <div align="start" class="content"><h3 id="q-앵귤러-템플릿에서-input-disabled을-동적-처리하고-싶어요">Q. 앵귤러 템플릿에서 input disabled을 동적 처리하고 싶어요.</h3>
+    <div align="start" class="content"><h3 id="q---input-disabled---">Q. 앵귤러 템플릿에서 input disabled을 동적 처리하고 싶어요.</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// ts
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">isDisabled</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item_radio&#34;</span> <span style="color:#960050;background-color:#1e0010">*</span><span style="color:#a6e22e">ngFor</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;let item of list&#34;</span>&gt;
@@ -166,8 +166,8 @@
     <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;inp_radio&#34;</span>
     <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type&#34;</span>
     <span style="color:#a6e22e">formControlName</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type&#34;</span>
-    <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#a6e22e">value</span><span style="color:#960050;background-color:#1e0010">]=&#34;</span><span style="color:#a6e22e">item</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">value</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
-    <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#a6e22e">disabled</span><span style="color:#960050;background-color:#1e0010">]=&#34;</span><span style="color:#a6e22e">isDisabled</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+    <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#a6e22e">value</span><span style="color:#960050;background-color:#1e0010">]</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">item</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">value</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+    <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#a6e22e">disabled</span><span style="color:#960050;background-color:#1e0010">]</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">isDisabled</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
   /&gt;
   ...
 &lt;/<span style="color:#f92672">div</span>&gt;
@@ -211,7 +211,7 @@
 </li>
 <li>
 <p>(2023-08-02 수정) 표준 attribute를 바꾸면 property도 자동으로 동기화되며, property를 바꿨을 때도 표준 attribute는 같이 바뀌는 것이 맞다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 😄 attribute -&gt; property --&gt;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 😄 attribute </span><span style="color:#75715e">-</span><span style="color:#75715e">&gt; property </span><span style="color:#75715e">--&gt;</span>
 &lt;<span style="color:#f92672">input</span> /&gt;
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;input&#34;</span>);
@@ -225,7 +225,7 @@
 </code></pre></div></li>
 <li>
 <p>(2023-08-02 수정) 다만, <code>value</code>처럼 attr에서 prop 방향으로만 동기화되는 예외상황도 존재한다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 😢 property -&gt; attribute --&gt;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 😢 property </span><span style="color:#75715e">-</span><span style="color:#75715e">&gt; attribute </span><span style="color:#75715e">--&gt;</span>
 &lt;<span style="color:#f92672">input</span> /&gt;
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;input&#34;</span>);
@@ -251,7 +251,7 @@
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h3 id="2-음-그래서-disabled가-동작하지-않은-이유">2. 음&hellip; 그래서 [disabled]=&quot;&ldquo;가 동작하지 않은 이유?</h3>
+<h3 id="2---disabled---">2. 음&hellip; 그래서 [disabled]=&quot;&ldquo;가 동작하지 않은 이유?</h3>
 <p>disabled는 input태그의 표준 attribute이므로 property로도 접근 가능하다. 그래서 앵귤러쪽의 답변이 썩 속시원하지가 않았다. 표준 태그니까 property 바인딩이 되어야 하는 것 아니야? 그래서 더 찾아보니 아래의 두 글을 발견했다.</p>
 <ul>
 <li><a href="https://github.com/angular/angular/issues/48350">Bug: setting [disabled] attribute no longer works with formControlName</a></li>
@@ -267,11 +267,11 @@
 <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">controls</span>[<span style="color:#e6db74">&#34;id&#34;</span>].<span style="color:#a6e22e">disabled</span>();
 </code></pre></div><p>즉, 반응형 폼은 formBuilder를 통해 만들어지므로 FormControlState 옵션에 disabled 속성을 지정하지 않으면, HTML attribute 자체가 생기지 않는 것이다. <strong>그러면 당연히 DOM에도 없으니 property 접근도 불가하다.</strong> <em>이런 내용을 앵귤러 측에서 다 생략해버려서 속시원하지가 않았던 거라고!</em></p>
 <p><br /></p>
-<h3 id="3-formcontrol을-템플릿-기반으로-disable-처리하려면">3. formControl을 템플릿 기반으로 disable 처리하려면?</h3>
+<h3 id="3-formcontrol---disable-">3. formControl을 템플릿 기반으로 disable 처리하려면?</h3>
 <p>이벤트 기반이 아니라 모종의 이유(초기에만 disabled 처리를 한다든지)로 <strong>enable/disable 메서드로 제어하고 싶지 않을 때는, 여전히 template-driven한 방식으로 disabled 처리를 할 수 있다.</strong></p>
 <p>바로 <code>[attr.disabled]</code>이다. 이건 아예 disabled라는 속성을 DOM에 직접 만들어주고 직접 제어하는 것이므로 지정한 formControl과는 상관 없이 동작할 수 있다.</p>
 <p><br /></p>
-<h2 id="4-결론">4. 결론</h2>
+<h2 id="4-">4. 결론</h2>
 <ul>
 <li>formControl과 <code>[disalbed]</code>는 공존할 수 없다.</li>
 <li>formBuilder로 formControl을 정의할 때 disabled 옵션을 지정하든가, <code>[attr.disabled]</code>로 쓰자.</li>

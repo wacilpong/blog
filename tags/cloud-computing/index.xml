@@ -44,7 +44,7 @@
       <pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/kubernetes/2/</guid>
-      <description>시작하세요! 도커/쿠버네티스 6장 읽기 쿠버네티스는 대부분의 리소스를 &amp;lsquo;오브젝트&amp;rsquo;라고 불리는 형태로 관리한다. 컨테이너의 집합</description>
+      <description>시작하세요! 도커/쿠버네티스 6장 읽기 쿠버네티스는 대부분의 리소스를 &amp;lsquo;오브젝트&#39;라고 불리는 형태로 관리한다. 컨테이너의 집합(Pods)</description>
     </item>
     
     <item>

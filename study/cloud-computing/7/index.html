@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -156,7 +156,7 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="도커와-젠킨스를-이용한-cicd-파이프라인-구성">도커와 젠킨스를 이용한 CI/CD 파이프라인 구성</h2>
+    <div align="start" class="content"><h2 id="---cicd--">도커와 젠킨스를 이용한 CI/CD 파이프라인 구성</h2>
 <h3 id="ci-continuous-integration">CI (Continuous Integration)</h3>
 <ul>
 <li>개발자가 작성한 코드가 특정 시간이 아닌 지속적으로 배포되어야 할 통합본에 통합되는 것</li>
@@ -169,7 +169,7 @@
 <li>준비된 빌드를 사람의 개입 없이 자동으로 릴리즈 함</li>
 </ul>
 <p><br /></p>
-<h3 id="실습-서버-생성하고-도커젠킨스-설정">실습: 서버 생성하고 도커/젠킨스 설정</h3>
+<h3 id="----">실습: 서버 생성하고 도커/젠킨스 설정</h3>
 <ul>
 <li>
 <p>AWS Lightsail (EC2보다 저렴하고 설정이 간단) 생성</p>
@@ -285,7 +285,7 @@ $ docker restart jenkins
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h3 id="실습-github와-젠킨스-연동-설정">실습: github와 젠킨스 연동 설정</h3>
+<h3 id="-github---">실습: github와 젠킨스 연동 설정</h3>
 <ul>
 <li>어쩌구저쩌구 깃헙 repo 하나 생성</li>
 <li>Settings &gt; Webhooks &gt; add webhook
@@ -318,7 +318,7 @@ $ docker restart jenkins
 </li>
 </ul>
 <p><br /></p>
-<h3 id="실습-nginx-예제-프로젝트-가져와-develop-브랜치에-푸시하기">실습: nginx 예제 프로젝트 가져와 develop 브랜치에 푸시하기</h3>
+<h3 id="-nginx----develop--">실습: nginx 예제 프로젝트 가져와 develop 브랜치에 푸시하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ wget https://github.com/startbootstrap/startbootstrap-freelancer/archive/gh-pages.zip
 $ unzip gh-pages.zip
 $ cp -r startbootstrap-freelancer-gh-pages/* ./
@@ -355,7 +355,7 @@ $ gp -u origin develop
 </li>
 </ul>
 <p><br /></p>
-<h3 id="실습-빌드된-도커-이미지가-도커허브에-푸시되면-자동-실행">실습: 빌드된 도커 이미지가 도커허브에 푸시되면 자동 실행</h3>
+<h3 id="-------">실습: 빌드된 도커 이미지가 도커허브에 푸시되면 자동 실행</h3>
 <ul>
 <li>
 <p><strong>jenkins 관리 &gt; 플러그인 관리 &gt; Available plugins</strong></p>
@@ -420,7 +420,7 @@ docker rm $NGINX_CONTAINER_ID
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h3 id="지금까지의-설정을-통해-수행되는-일들">지금까지의 설정을 통해 수행되는 일들</h3>
+<h3 id="-----1">지금까지의 설정을 통해 수행되는 일들</h3>
 <ul>
 <li>develop에 푸시하면 github 웹훅에 의해 centOS-1에서 동작하는 젠킨스가 develop의 코드를 받아온다.</li>
 <li>받아온 코드를 기반으로 nginx 이미지를 생성하고 nginx 컨테이너를 실행시킨다.</li>
@@ -435,7 +435,7 @@ docker rm $NGINX_CONTAINER_ID
 <li>centOS-2의 public IP로 접속하면 수정사항이 반영되어 있음을 알 수 있다.</li>
 </ul>
 <p><br /></p>
-<h2 id="시행착오">시행착오</h2>
+<h2 id="heading">시행착오</h2>
 <ul>
 <li>
 <p><code>/tmp/jenkins12655071034461658190.sh: 2: docker: not found</code> 빌드에러</p>

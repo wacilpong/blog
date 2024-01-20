@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -157,7 +157,7 @@
     </div>
 
     <div align="start" class="content"><h2 id="192-advanced-traits">19.2 Advanced Traits</h2>
-<h3 id="1921-연관-타입으로-트레이트-정의에-자리지정자-타입-선언">19.2.1 연관 타입으로 트레이트 정의에 자리지정자 타입 선언</h3>
+<h3 id="1921-------">19.2.1 연관 타입으로 트레이트 정의에 자리지정자 타입 선언</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Iterator {
     <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Item</span>;
 
@@ -170,7 +170,7 @@
 </ul>
 <p><br /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e">// Item 타입을 u32 타입으로 대체
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Item 타입을 u32 타입으로 대체
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Iterator <span style="color:#66d9ef">for</span> Counter {
     <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Item</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">u32</span>;
 
@@ -178,7 +178,7 @@
         <span style="color:#75715e">// --snip--
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// (2)
-</span><span style="color:#75715e">// 제네릭으로 선언한 가상의 Iterator
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 제네릭으로 선언한 가상의 Iterator
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Iterator<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">next</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) -&gt; Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>;
 }
@@ -192,7 +192,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="1922-기본-제네릭-타입-매개변수와-연산자-오버로딩">19.2.2 기본 제네릭 타입 매개변수와 연산자 오버로딩</h3>
+<h3 id="1922------">19.2.2 기본 제네릭 타입 매개변수와 연산자 오버로딩</h3>
 <ul>
 <li><code>자리지정자 타입 = 실제 타입</code> 문법으로 제네릭의 기본 타입을 지정할 수 있다.</li>
 <li>연산자를 오버로딩(overloading)할 때 유용하다.</li>
@@ -201,10 +201,10 @@
 </ul>
 <p><br /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// Add 트레이트를 구현하여
-</span><span style="color:#75715e">// Point 인스턴스에 대한 + 연산자 오버로딩
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Point 인스턴스에 대한 + 연산자 오버로딩
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::ops::Add;
 
-<span style="color:#75715e">#[derive(Debug, Copy, Clone, PartialEq)]</span>
+<span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug, Copy, Clone, PartialEq)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span> {
     x: <span style="color:#66d9ef">i32</span>,
     y: <span style="color:#66d9ef">i32</span>,
@@ -239,7 +239,7 @@
 </ul>
 <p><br /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// Millimeters + Meters 연산을 수행하는
-</span><span style="color:#75715e">// Add 트레이트를 Millimeters 구조체에 정의
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Add 트레이트를 Millimeters 구조체에 정의
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::ops::Add;
 
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Millimeters</span>(<span style="color:#66d9ef">u32</span>);
@@ -256,7 +256,7 @@
 <li>이때는 Meters를 더해야 하므로 Rhs 타입 매개변수에 기본 타입으로 지정해야 한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1923-불명확성-제거를-위한-완전-식별자-문법-같은-이름-메서드-호출">19.2.3 불명확성 제거를 위한 완전 식별자 문법: 같은 이름 메서드 호출</h3>
+<h3 id="1923----------">19.2.3 불명확성 제거를 위한 완전 식별자 문법: 같은 이름 메서드 호출</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">trait</span> Pilot {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fly</span>(<span style="color:#f92672">&amp;</span>self);
 }
@@ -285,7 +285,7 @@
     }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e">// *waving arms furiously*
+</span><span style="color:#75715e"></span><span style="color:#75715e">// *waving arms furiously*
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
   <span style="color:#66d9ef">let</span> person <span style="color:#f92672">=</span> Human;
 
@@ -325,19 +325,19 @@
 }
 
 <span style="color:#75715e">// (1)
-</span><span style="color:#75715e">// Spot 출력
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Spot 출력
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;A baby dog is called a {}&#34;</span>, Dog::baby_name());
 }
 
 <span style="color:#75715e">// (2)
-</span><span style="color:#75715e">// Error!
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Error!
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;A baby dog is called a {}&#34;</span>, Animal::baby_name());
 }
 
 <span style="color:#75715e">// (3)
-</span><span style="color:#75715e">// puppy 출력
+</span><span style="color:#75715e"></span><span style="color:#75715e">// puppy 출력
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;A baby dog is called a {}&#34;</span>, <span style="color:#f92672">&lt;</span>Dog <span style="color:#66d9ef">as</span> Animal<span style="color:#f92672">&gt;</span>::baby_name());
 }
@@ -355,7 +355,7 @@
 <li>이는 러스트가 어떤 메서드를 호출해야 하는지 스스로 판단할 수 없을 때만 사용한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1924-supertraits-한-트레이트에서-다른-트레이트-기능을-요청">19.2.4 Supertraits: 한 트레이트에서 다른 트레이트 기능을 요청</h3>
+<h3 id="1924-supertraits------">19.2.4 Supertraits: 한 트레이트에서 다른 트레이트 기능을 요청</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">**********
 *        *
 * <span style="color:#f92672">(</span>1, 3<span style="color:#f92672">)</span> *
@@ -402,14 +402,14 @@
 </code></pre></div><ul>
 <li>(1)처럼 Display 트레이트를 구현하지 않는 타입을 OutlinePrint에 구현하려고 하면 에러를 낸다.
 <ul>
-<li><em>error[E0277]: <code>Point</code> doesn&rsquo;t implement <code>std::fmt::Display</code></em></li>
+<li><em>error[E0277]: <code>Point</code> doesn't implement <code>std::fmt::Display</code></em></li>
 <li>해결하려면 Point 구조체에 Display 트레이트를 구현해야 한다.</li>
 </ul>
 </li>
 <li>(2)는 성공적으로 컴파일된다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1925-뉴타입-패턴으로-외부-타입에-외부-트레이트-구현">19.2.5 뉴타입 패턴으로 외부 타입에 외부 트레이트 구현</h3>
+<h3 id="1925-------">19.2.5 뉴타입 패턴으로 외부 타입에 외부 트레이트 구현</h3>
 <ul>
 <li>뉴타입 패턴은 튜플 구조체에 새로운 타입을 생성하는 것이다.</li>
 <li>튜플은 하나의 필드를 포함하고 트레이트를 구현하고자 하는 타입의 wrapper로 동작한다.</li>
@@ -450,7 +450,7 @@
 <li>
 <p>새 타입이 내부 타입과 완전히 같은 메서드를 제공하게 하려면 Deref 트레이트를 구현해야 한다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 참고
-</span><span style="color:#75715e">// 튜플의 첫번째 아이템을 반환하는 deref 메서드를 가짐
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 튜플의 첫번째 아이템을 반환하는 deref 메서드를 가짐
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::ops::Deref;
 
 <span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Deref <span style="color:#66d9ef">for</span> MyBox<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
@@ -467,7 +467,7 @@
 <p><br /></p>
 <hr />
 <h2 id="193-advanced-types">19.3 Advanced Types</h2>
-<h3 id="1931-뉴타입을-이용한-타입안전성과-추상화">19.3.1 뉴타입을 이용한 타입안전성과 추상화</h3>
+<h3 id="1931----">19.3.1 뉴타입을 이용한 타입안전성과 추상화</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Millimeters</span>(<span style="color:#66d9ef">u32</span>);
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Meters</span>(<span style="color:#66d9ef">u32</span>);
@@ -484,7 +484,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="1932-타입-별칭으로-동질의-타입-생성">19.3.2 타입 별칭으로 동질의 타입 생성</h3>
+<h3 id="1932-----">19.3.2 타입 별칭으로 동질의 타입 생성</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Kilometers</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">i32</span>;
 </code></pre></div><ul>
 <li>타입에 다른 이름을 부여하려면 type 키워드를 사용한다.</li>
@@ -493,7 +493,7 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// AS-IS
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> f: Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Box::new(<span style="color:#f92672">||</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi&#34;</span>));
+    <span style="color:#66d9ef">let</span> f: Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Box::new(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi&#34;</span>));
 
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_long_type</span>(f: Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span>) {
         <span style="color:#75715e">// --snip--
@@ -501,7 +501,7 @@
 
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_long_type</span>() -&gt; Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span> {
         <span style="color:#75715e">// --snip--
-</span><span style="color:#75715e"></span>        Box::new(<span style="color:#f92672">||</span> ())
+</span><span style="color:#75715e"></span>        Box::new(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> ())
     }
 }
 
@@ -509,7 +509,7 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Thunk</span> <span style="color:#f92672">=</span> Box<span style="color:#f92672">&lt;</span>dyn Fn() <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> &#39;static<span style="color:#f92672">&gt;</span>;
 
-    <span style="color:#66d9ef">let</span> f: <span style="color:#a6e22e">Thunk</span> <span style="color:#f92672">=</span> Box::new(<span style="color:#f92672">||</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi&#34;</span>));
+    <span style="color:#66d9ef">let</span> f: <span style="color:#a6e22e">Thunk</span> <span style="color:#f92672">=</span> Box::new(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;hi&#34;</span>));
 
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_long_type</span>(f: <span style="color:#a6e22e">Thunk</span>) {
         <span style="color:#75715e">// --snip--
@@ -517,7 +517,7 @@
 
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_long_type</span>() -&gt; <span style="color:#a6e22e">Thunk</span> {
         <span style="color:#75715e">// --snip--
-</span><span style="color:#75715e"></span>        Box::new(<span style="color:#f92672">||</span> ())
+</span><span style="color:#75715e"></span>        Box::new(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> ())
     }
 }
 </code></pre></div><ul>
@@ -542,7 +542,7 @@
 <li>(2)처럼 Result&lt;T, E&gt;에서 std::io::Error 타입을 생략해서 함수 시그니처를 작성할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1933-절대-반환하지-않는-never-타입">19.3.3 절대 반환하지 않는 never 타입</h3>
+<h3 id="1933----never-">19.3.3 절대 반환하지 않는 never 타입</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">bar</span>() -&gt; <span style="color:#f92672">!</span> {
     <span style="color:#75715e">// --snip--
 </span><span style="color:#75715e"></span>}
@@ -554,14 +554,14 @@
 <h4 id="1-continue">(1) continue</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) O
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> guess: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> guess.trim().parse() {
-    Ok(num) <span style="color:#f92672">=&gt;</span> num,
-    Err(_) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">continue</span>,
+    Ok(num) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> num,
+    Err(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">continue</span>,
 };
 
 <span style="color:#75715e">// (2) X
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> guess <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> guess.trim().parse() {
-        Ok(_) <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">5</span>,
-        Err(_) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>,
+        Ok(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>,
+        Err(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>,
     };
 </code></pre></div><ul>
 <li>match 표현식의 가지는 반드시 같은 타입을 반환해야 한다.</li>
@@ -569,12 +569,12 @@
 <li>따라서 러스트는 (1)에서 !는 절대 값을 가질 수 없으므로 guess 변수 타입을 u32로 결정한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="2-panic-매크로">(2) panic! 매크로</h4>
+<h4 id="2-panic-">(2) panic! 매크로</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">unwrap</span>(self) -&gt; <span style="color:#a6e22e">T</span> {
         <span style="color:#66d9ef">match</span> self {
-            Some(val) <span style="color:#f92672">=&gt;</span> val,
-            None <span style="color:#f92672">=&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;called `Option::unwrap()` on a `None` value&#34;</span>),
+            Some(val) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> val,
+            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;called `Option::unwrap()` on a `None` value&#34;</span>),
         }
     }
 }
@@ -594,7 +594,7 @@
 <li>그러나 break문을 추가하면 루프가 종료되므로, 그 경우에는 !가 아니다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1934-동적-크기-타입과-sized-트레이트">19.3.4 동적 크기 타입과 Sized 트레이트</h3>
+<h3 id="1934----sized-">19.3.4 동적 크기 타입과 Sized 트레이트</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 컴파일되지 않는다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> s1: <span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello there!&#34;</span>;
 <span style="color:#66d9ef">let</span> s2: <span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;How&#39;s it going?&#34;</span>;
@@ -613,7 +613,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="sized-트레이트">Sized 트레이트</h4>
+<h4 id="sized-">Sized 트레이트</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">generic</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>(t: <span style="color:#a6e22e">T</span>) {
     <span style="color:#75715e">// --snip--
@@ -633,12 +633,12 @@
 <li>이 트레이트는 컴파일에 크기가 알려진 모든 타입에 자동으로 구현된다.</li>
 <li>따라서 (1)은 실제로는 (2)처럼 작성된 것으로 취급된다.</li>
 <li>제네릭 함수는 컴파일에 크기가 알려진 타입만 사용할 수 있으나, (3) 문법으로 완화할 수 있다.</li>
-<li><code>?Sized</code> 트레이트 경계는 &lsquo;T는 Sized 트레이트를 구현할 수도 있고 아닐 수도 있다&rsquo;로 읽는다.</li>
+<li><code>?Sized</code> 트레이트 경계는 &lsquo;T는 Sized 트레이트를 구현할 수도 있고 아닐 수도 있다'로 읽는다.</li>
 <li>이 문법은 Sized 트레이트에만 적용할 수 있고, 구현하지 않을 수도 있으므로 &amp;T로 바꿔야 한다.</li>
 </ul>
 <p><br /></p>
 <h2 id="194-advanced-functions-and-closures">19.4 Advanced Functions and Closures</h2>
-<h3 id="1941-함수-포인터">19.4.1 함수 포인터</h3>
+<h3 id="1941--">19.4.1 함수 포인터</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(x: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
     x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 }
@@ -662,8 +662,8 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> list_of_numbers <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
 <span style="color:#66d9ef">let</span> list_of_strings: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> list_of_numbers.iter().map(<span style="color:#f92672">|</span>i<span style="color:#f92672">|</span> i.to_string()).collect();
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 인자로 함수를 받는 map
-</span><span style="color:#75715e">// to_string 이름의 함수가 여러 곳에 있으므로 뿌리를 명시
-</span><span style="color:#75715e">// 여기서는 ToString 트레이트의 메서드를 사용했다.
+</span><span style="color:#75715e"></span><span style="color:#75715e">// to_string 이름의 함수가 여러 곳에 있으므로 뿌리를 명시
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 여기서는 ToString 트레이트의 메서드를 사용했다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> list_of_numbers <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
 <span style="color:#66d9ef">let</span> list_of_strings: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> list_of_numbers.iter().map(ToString::to_string).collect();
 </code></pre></div><ul>
@@ -671,7 +671,7 @@
 <li>인자로 클로저를 받든 함수를 받든 모두 완전히 같은 코드로 컴파일된다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1942-클로저-반환하기">19.4.2 클로저 반환하기</h3>
+<h3 id="1942--">19.4.2 클로저 반환하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">returns_closure</span>() -&gt; <span style="color:#a6e22e">dyn</span> Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
     <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 }
@@ -680,13 +680,13 @@
 error<span style="color:#f92672">[</span>E0746<span style="color:#f92672">]</span>: <span style="color:#66d9ef">return</span> type cannot have an unboxed trait object
  --&gt; src/lib.rs:1:25
   |
-<span style="color:#ae81ff">1</span> | fn returns_closure<span style="color:#f92672">()</span> -&gt; dyn Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32 <span style="color:#f92672">{</span>
+<span style="color:#ae81ff">1</span> | fn returns_closure<span style="color:#f92672">(</span><span style="color:#f92672">)</span> -&gt; dyn Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32 <span style="color:#f92672">{</span>
   |                         ^^^^^^^^^^^ doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t have a size known at compile-time
   |
   <span style="color:#f92672">=</span> note: <span style="color:#66d9ef">for</span> information on <span style="color:#e6db74">`</span>impl Trait<span style="color:#e6db74">`</span>, see &lt;https://doc.rust-lang.org/book/ch10-02-traits.html#returning-types-that-implement-traits&gt;
 help: use <span style="color:#e6db74">`</span>impl Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32<span style="color:#e6db74">`</span> as the <span style="color:#66d9ef">return</span> type, as all <span style="color:#66d9ef">return</span> paths are of type <span style="color:#e6db74">`</span><span style="color:#f92672">[</span>closure@src/lib.rs:2:5: 2:14<span style="color:#f92672">]</span><span style="color:#e6db74">`</span>, which implements <span style="color:#e6db74">`</span>Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32<span style="color:#e6db74">`</span>
   |
-<span style="color:#ae81ff">1</span> | fn returns_closure<span style="color:#f92672">()</span> -&gt; impl Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32 <span style="color:#f92672">{</span>
+<span style="color:#ae81ff">1</span> | fn returns_closure<span style="color:#f92672">(</span><span style="color:#f92672">)</span> -&gt; impl Fn<span style="color:#f92672">(</span>i32<span style="color:#f92672">)</span> -&gt; i32 <span style="color:#f92672">{</span>
   |                         ~~~~~~~~~~~~~~~~~~~
 
 For more information about this error, try <span style="color:#e6db74">`</span>rustc --explain E0746<span style="color:#e6db74">`</span>.
@@ -713,14 +713,14 @@ error: could not compile <span style="color:#e6db74">`</span>functions-example<s
 </li>
 </ul>
 <p><br /></p>
-<h3 id="1951-매크로와-함수의-차이점">19.5.1 매크로와 함수의 차이점</h3>
+<h3 id="1951---">19.5.1 매크로와 함수의 차이점</h3>
 <ul>
 <li>매크로는 기본적으로 다른 코드를 작성하는 코드로서 메타프로그래밍(metaprogramming)이다.</li>
 <li>메타프로그래밍은 개발자가 작성하고 관리해야 하는 코드 양을 줄여준다.</li>
 <li>함수는 필요한 매개변수 개수와 타입을 선언해야 하지만, 매크로는 매개변수 개수가 가변적이다.
 <ul>
 <li>println!(&ldquo;안녕&rdquo;)</li>
-<li>println!(&ldquo;안녕 {}&rdquo;, name)</li>
+<li>println!(&ldquo;안녕 {}&quot;, name)</li>
 </ul>
 </li>
 <li>함수는 런타임에 호출되므로 컴파일에 트레이트를 구현할 수 없지만, 매크로는 가능하다.
@@ -732,7 +732,7 @@ error: could not compile <span style="color:#e6db74">`</span>functions-example<s
 <li>함수는 어느 곳에든 선언/호출할 수 있지만, 매크로는 꼭 스코프 내에 있어야 한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1952-선언적-매크로declarative-macros">19.5.2 선언적 매크로(declarative macros)</h3>
+<h3 id="1952--declarative-macros">19.5.2 선언적 매크로(declarative macros)</h3>
 <ul>
 <li>러스트에서 일반적으로 사용하는 형태의 매크로이며, match 표현식과 비슷하게 구현할 수 있다.</li>
 <li>매크로 역시 값을 관련된 코드를 실행하는 패턴과 비교한다.</li>
@@ -745,11 +745,11 @@ error: could not compile <span style="color:#e6db74">`</span>functions-example<s
 </ul>
 <p><br /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">  <span style="color:#75715e">// vec! 매크로의 간소화된 코드
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#[macro_export]</span>
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#[</span><span style="color:#75715e">macro_export</span><span style="color:#75715e">]</span>
   macro_rules<span style="color:#f92672">!</span> vec {
         <span style="color:#75715e">// $x:expr는 전달되는 표현식이며
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// $x라는 이름을 부여함
-</span><span style="color:#75715e"></span>      (<span style="color:#75715e">$(</span> <span style="color:#75715e">$x</span>:<span style="color:#a6e22e">expr</span> ),<span style="color:#f92672">*</span>) <span style="color:#f92672">=&gt;</span> {
+</span><span style="color:#75715e"></span>      (<span style="color:#75715e">$(</span> <span style="color:#75715e">$x</span>:<span style="color:#a6e22e">expr</span> ),<span style="color:#f92672">*</span>) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
           {
               <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> temp_vec <span style="color:#f92672">=</span> Vec::new();
               <span style="color:#75715e">$(</span>
@@ -783,10 +783,10 @@ error: could not compile <span style="color:#e6db74">`</span>functions-example<s
 </li>
 </ul>
 <p><br /></p>
-<h3 id="1953-절차적-매크로procedural-macros">19.5.3 절차적 매크로(procedural macros)</h3>
+<h3 id="1953--procedural-macros">19.5.3 절차적 매크로(procedural macros)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> proc_macro;
 
-<span style="color:#75715e">#[some_attribute]</span>
+<span style="color:#75715e">#[</span><span style="color:#75715e">some_attribute</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">some_name</span>(input: <span style="color:#a6e22e">TokenStream</span>) -&gt; <span style="color:#a6e22e">TokenStream</span> {
 }
 </code></pre></div><ul>
@@ -794,11 +794,11 @@ error: could not compile <span style="color:#e6db74">`</span>functions-example<s
 <li>절차적 매크로를 생성할 때는 각자의 크레이트 안에 정의해야 한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="1-custom-derive-macro-매크로">(1) Custom derive Macro 매크로</h4>
+<h4 id="1-custom-derive-macro-">(1) Custom derive Macro 매크로</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> hello_macro::HelloMacro;
 <span style="color:#66d9ef">use</span> hello_macro_derive::HelloMacro;
 
-<span style="color:#75715e">#[derive(HelloMacro)]</span>
+<span style="color:#75715e">#[</span><span style="color:#75715e">derive(HelloMacro)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Pancakes</span>;
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
@@ -825,7 +825,7 @@ quote <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0.6.
 <span style="color:#66d9ef">use</span> quote::quote;
 <span style="color:#66d9ef">use</span> syn;
 
-<span style="color:#75715e">#[proc_macro_derive(HelloMacro)]</span>
+<span style="color:#75715e">#[</span><span style="color:#75715e">proc_macro_derive(HelloMacro)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">hello_macro_derive</span>(input: <span style="color:#a6e22e">TokenStream</span>) -&gt; <span style="color:#a6e22e">TokenStream</span> {
     <span style="color:#75715e">// 러스트 코드를 파싱해 트리 구성
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> ast <span style="color:#f92672">=</span> syn::parse(input).unwrap();
@@ -864,7 +864,7 @@ hello<span style="color:#f92672">-</span><span style="color:#66d9ef">macro</span
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> hello_macro::HelloMacro;
 <span style="color:#66d9ef">use</span> hello_macro_derive::HelloMacro;
 
-<span style="color:#75715e">#[derive(HelloMacro)]</span>
+<span style="color:#75715e">#[</span><span style="color:#75715e">derive(HelloMacro)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Pancakes</span>;
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
@@ -876,13 +876,13 @@ hello<span style="color:#f92672">-</span><span style="color:#66d9ef">macro</span
 <li>#[derive(HelloMacro)] 어노테이션을 통해 트레이트의 기본 구현을 적용할 수 있게 된다.</li>
 </ul>
 <p><br /></p>
-<h4 id="2-attribute-like-매크로">(2) Attribute-like 매크로</h4>
+<h4 id="2-attribute-like-">(2) Attribute-like 매크로</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[route(GET, </span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#75715e">)]</span>
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">route(GET, </span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">/</span><span style="color:#e6db74">&#34;</span><span style="color:#75715e">)</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">index</span>() {
 
 <span style="color:#75715e">// (2)
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[proc_macro_attribute]</span>
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">proc_macro_attribute</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">route</span>(attr: <span style="color:#a6e22e">TokenStream</span>, item: <span style="color:#a6e22e">TokenStream</span>) -&gt; <span style="color:#a6e22e">TokenStream</span> {
 </code></pre></div><ul>
 <li>derive를 위한 코드가 아니라, 새로운 어트리뷰트를 생성하는 매크로다.</li>
@@ -893,12 +893,12 @@ hello<span style="color:#f92672">-</span><span style="color:#66d9ef">macro</span
 <li><code>proc-macro</code> 크레이트 타입과 함께 크레이트를 생성한 후 원하는 코드를 생성하는 함수를 구현하면 된다.</li>
 </ul>
 <p><br /></p>
-<h4 id="3-function-like-매크로">(3) Function-like 매크로</h4>
+<h4 id="3-function-like-">(3) Function-like 매크로</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> sql <span style="color:#f92672">=</span> sql<span style="color:#f92672">!</span>(SELECT <span style="color:#f92672">*</span> FROM posts WHERE id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>);
 
 <span style="color:#75715e">// (2)
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[proc_macro]</span>
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">proc_macro</span><span style="color:#75715e">]</span>
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">sql</span>(input: <span style="color:#a6e22e">TokenStream</span>) -&gt; <span style="color:#a6e22e">TokenStream</span> {
 </code></pre></div><ul>
 <li>함수 호출과 유사하지만, macro_rules! 매크로처럼 함수보다는 유연하다.</li>

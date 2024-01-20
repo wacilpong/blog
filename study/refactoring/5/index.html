@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -156,8 +156,8 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="가장-기본적이고-많이-사용해서-제일-먼저-배워야-하는-리팩터링">가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링</h2>
-<h2 id="1-함수-추출하기">1. 함수 추출하기</h2>
+    <div align="start" class="content"><h2 id="--------">가장 기본적이고 많이 사용해서 제일 먼저 배워야 하는 리팩터링</h2>
+<h2 id="1--">1. 함수 추출하기</h2>
 <hr />
 <blockquote>
 <p>가장 빈번하게 사용되는 리팩터링 중 하나로, 코드조각을 찾아 무슨 일을 하는지 파악한 다음, 독립된 함수로 추출하고 목적에 맞는 이름을 붙인다.</p>
@@ -232,7 +232,7 @@
   });
 }
 </code></pre></div><hr />
-<h2 id="2-함수-인라인-하기">2. 함수 인라인 하기</h2>
+<h2 id="2---">2. 함수 인라인 하기</h2>
 <hr />
 <blockquote>
 <p>6.1의 ‘함수 추출하기’의 반대 리팩터링으로, 함수 본문을 코드로 인라인하여 불필요한 함수들을 줄이는 리팩터링이다.</p>
@@ -289,7 +289,7 @@
 💡 핵심은 항상 단계를 잘게 나눠서 처리하는데 있다. 한 문장을 처리하는데도 얼마든지 복잡해 질 수 있기때문에, 리팩터링을 진행할때는 작은단위의 코드를 리팩터링하는 것을 습관화 하고, 익숙해졌다면 그 범위를 조금씩 넓혀나가는 방식으로 한다.
 </aside>
 <hr />
-<h2 id="3-변수-추출하기">3. 변수 추출하기</h2>
+<h2 id="3--">3. 변수 추출하기</h2>
 <hr />
 <blockquote>
 <p>지역변수를 활용하여 코드를 잘게 쪼개서 관리하면 복잡한 로직을 구성하는 단계마다 이름을 붙일 수 있어서 코드의 목적을 훨씬 명확하게 드러낼 수 있다.</p>
@@ -357,7 +357,7 @@
 💡 이 예제처럼 간단한 경우라면 효과가 크지 않지만, 덩치가 큰 클래스에서 공통 동작을 별도 이름으로 뽑아내서 추상화 해두면 그 객체를 다룰때 쉽게 활용할 수 있어서 매우 유용하다.
 </aside>
 <hr />
-<h2 id="4-변수-인라인하기">4. 변수 인라인하기</h2>
+<h2 id="4--">4. 변수 인라인하기</h2>
 <hr />
 <blockquote>
 <p>6.3의 ‘변수 추출하기’의 반대 리팩터링으로, 별도의 변수로 두지 않고 인라인 하는 리팩터링</p>
@@ -390,7 +390,7 @@
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">anOrder</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>;
 }
 </code></pre></div><hr />
-<h2 id="5-함수-선언-바꾸기">5. 함수 선언 바꾸기</h2>
+<h2 id="5---">5. 함수 선언 바꾸기</h2>
 <hr />
 <blockquote>
 <p>함수 선언과 호출문들의 이름, 매개변수들을 추가/삭제 함으로써 코드를 개선하는 리팩터링</p>
@@ -494,7 +494,7 @@
   <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">stateCode</span>)
 );
 </code></pre></div><hr />
-<h2 id="6-변수-캡슐화-하기">6. 변수 캡슐화 하기</h2>
+<h2 id="6---">6. 변수 캡슐화 하기</h2>
 <hr />
 <blockquote>
 <p>데이터 변수에 대한 접근 및 변경을 캡슐화하여 그 데이터로의 접근을 독점하고, 데이터를 변경하고 사용하는 코드를 감시할 수 있도록 하는 리팩터링</p>
@@ -561,7 +561,7 @@
 데이터의 사용 범위가 넓을수록 적절히 캡슐화하는 것이 좋다.
 </aside>
 <hr />
-<h2 id="7-변수-이름-바꾸기">7. 변수 이름 바꾸기</h2>
+<h2 id="7---">7. 변수 이름 바꾸기</h2>
 <hr />
 <blockquote>
 <p>코드의 목적과 역할, 흐름에 어울리는 더욱 적절한 변수의 이름을 바꾸는 리팩토링</p>
@@ -596,7 +596,7 @@
 <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">title</span>() {<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">tpHd</span>;} <span style="color:#75715e">// tpHd 변수의 getter
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setTitle</span>(<span style="color:#a6e22e">arg</span>) {<span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;} <span style="color:#75715e">// tpHd 변수의 setter
 </span></code></pre></div><hr />
-<h2 id="8-매개변수-객체-만들기">8. 매개변수 객체 만들기</h2>
+<h2 id="8---">8. 매개변수 객체 만들기</h2>
 <hr />
 <blockquote>
 <p>몰려다니는 여러개의 매개변수들을 하나의 데이터 구조로 변경하여 데이터 사이의 관계를 명확히 하고 코드를 근본적으로 관리하도록 하는 리팩터링</p>

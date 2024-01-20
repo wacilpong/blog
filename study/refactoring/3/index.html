@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -156,26 +156,26 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="기이한-이름-mysterious-name">기이한 이름 (Mysterious Name)</h2>
+    <div align="start" class="content"><h2 id="--mysterious-name">기이한 이름 (Mysterious Name)</h2>
 <ul>
 <li>이름만 잘 지어도 나중에 문맥 파악하느라 헤매는 시간을 크게 절약할 수 있다.</li>
 <li>마땅한 이름이 떠오르지 않는다면 설계에 더 근본적인 문제가 있을 가능성이 높다.</li>
 </ul>
 <p><br /></p>
-<h2 id="중복-코드-duplicated-code">중복 코드 (Duplicated Code)</h2>
+<h2 id="--duplicated-code">중복 코드 (Duplicated Code)</h2>
 <ul>
 <li>똑같은 코드 구조가 여러 곳에서 반복될 때 하나로 통합한다.</li>
 <li>ex. 한 클래스에 딸린 두 메서드가 똑같은 표현식을 쓰는 경우 통합하기</li>
 </ul>
 <p><br /></p>
-<h2 id="긴-함수-long-function">긴 함수 (Long Function)</h2>
+<h2 id="--long-function">긴 함수 (Long Function)</h2>
 <ul>
-<li>짧은 함수로 구성된 코드를 이해하기 쉽게 만드는 확실한 이름은 &lsquo;좋은 이름&rsquo;이다.</li>
+<li>짧은 함수로 구성된 코드를 이해하기 쉽게 만드는 확실한 이름은 &lsquo;좋은 이름'이다.</li>
 <li>이를 위해서는 적극적으로 함수를 쪼개야 한다.</li>
 <li><code>무엇을 하는지</code> 코드가 잘 설명해주지 못할수록 함수로 만드는 것이 유리하다.</li>
 </ul>
 <p><br /></p>
-<h2 id="긴-매개변수-목록-long-parameter-list">긴 매개변수 목록 (Long Parameter List)</h2>
+<h2 id="---long-parameter-list">긴 매개변수 목록 (Long Parameter List)</h2>
 <ul>
 <li>사용 중인 데이터 구조에서 값들을 뽑아 객체로 묶어 전달하면 목록을 줄일 수 있다.</li>
 <li>클래스는 특히 여러 개의 함수가 특정 매개변수를 공통으로 사용할 때 유용하다.
@@ -186,14 +186,14 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="전역-데이터-global-data">전역 데이터 (Global Data)</h2>
+<h2 id="--global-data">전역 데이터 (Global Data)</h2>
 <ul>
 <li>다른 코드애 영향을 줄 가능성이 있는 데이터를 볼 때마다 변수 캡슐화를 사용하자.</li>
 <li>이런 데이터를 함수로 감싸는 것만으로도 데이터 수정 부분을 쉽게 찾을 수 있다.</li>
 <li>더 나아가 접근자 함수들을 클래스나 모듈에 넣고 그 안에서만 사용할 수 있도록 해도 좋다.</li>
 </ul>
 <p><br /></p>
-<h2 id="가변-데이터-mutable-data">가변 데이터 (Mutable Data)</h2>
+<h2 id="--mutable-data">가변 데이터 (Mutable Data)</h2>
 <ul>
 <li>데이터를 변경하면 예상치 못한 결과나 골치 아픈 버그로 이어지는 경우가 종종 있다.</li>
 <li>따라서 함수형 프로그래밍에서는 불변 데이터를 기본으로, 수정하려면 반드시 복사본으로 반환한다.</li>
@@ -201,7 +201,7 @@
 <li>일반적으로 참조를 값으로 바꿔, 내부 필드를 직접 수정하지 않고 구조체를 통째로 교체하는 게 낫다.</li>
 </ul>
 <p><br /></p>
-<h2 id="뒤엉킨-변경-divergent-change">뒤엉킨 변경 (Divergent Change)</h2>
+<h2 id="--divergent-change">뒤엉킨 변경 (Divergent Change)</h2>
 <ul>
 <li>단일 책임 원칙(SRP)이 지켜지지 않을 때 발생한다.
 <ul>
@@ -212,21 +212,21 @@
 <li>여러 맥락의 일에 관여하는 함수가 있다면 함수를 추출해보자.</li>
 </ul>
 <p><br /></p>
-<h2 id="산탄총-수술-shotgun-surgery">산탄총 수술 (Shotgun Surgery)</h2>
+<h2 id="--shotgun-surgery">산탄총 수술 (Shotgun Surgery)</h2>
 <ul>
 <li>변경할 부분이 코드 전반에 퍼져 있다면 찾기도 어렵고 지나치기 쉽다.</li>
 <li>따라서 변경되는 대상(함수, 필드&hellip;)들을 모두 한 모듈에 묶어두면 좋다.</li>
 <li>작은 함수와 클래스에 지나칠 정도로 집착할 필요가 없다.</li>
 </ul>
 <p><br /></p>
-<h2 id="기능-편애-feature-envy">기능 편애 (Feature Envy)</h2>
+<h2 id="--feature-envy">기능 편애 (Feature Envy)</h2>
 <ul>
 <li>어떤 함수가 자기가 속한 모듈의 함수/데이터보다 다른 모듈과 상호작용할 일이 많을 때 발생하는 문제다.</li>
 <li>그 부분을 해당 데이터 근처로 함수를 옮기면 된다.</li>
 <li>함수 일부에서만 기능이 편애된다면, 그 부분만 독립 함수로 빼서 원하는 모듈로 옮긴다.</li>
 </ul>
 <p><br /></p>
-<h2 id="데이터-뭉치-data-clumps">데이터 뭉치 (Data Clumps)</h2>
+<h2 id="--data-clumps">데이터 뭉치 (Data Clumps)</h2>
 <ul>
 <li>필드 형태의 데이터 뭉치를 찾아 클래스로 추출해 하나의 객체로 묶는다.</li>
 <li>메서드 시그니처에 있는 데이터 뭉치는 매개변수를 객체로 묶어 간결하게 줄여본다.</li>
@@ -237,45 +237,45 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="기본형-집착-primitive-obsession">기본형 집착 (Primitive Obsession)</h2>
+<h2 id="--primitive-obsession">기본형 집착 (Primitive Obsession)</h2>
 <ul>
 <li>주어진 문제에 딱 맞는 기초 타입을 직접 정의하는 것을 꺼리는 사람들이 많다.</li>
 <li>하지만 화폐, 좌표, 구간 같은 타입들은 그 단위를 생각해서 처리하자.</li>
 </ul>
 <p><br /></p>
-<h2 id="반복되는-switch문">반복되는 switch문</h2>
+<h2 id="-switch">반복되는 switch문</h2>
 <ul>
 <li>모든 switch문을 다형성으로 바꾸자는 의견도 있다.</li>
 <li>중복된 switch문은 조건절을 하나 추가할 때마다 다른 switch문도 찾아서 바꿔야 한다.</li>
 <li>따라서 조건 case가 너무 많이 나온다면 다형성을 기반으로 수정해보자.</li>
 </ul>
 <p><br /></p>
-<h2 id="반복문">반복문</h2>
+<h2 id="heading">반복문</h2>
 <ul>
 <li>복잡한 반복문을 파이프라인으로 바꾸자.</li>
 <li>filter, map&hellip;</li>
 </ul>
 <p><br /></p>
-<h2 id="성의-없는-요소-lazy-element">성의 없는 요소 (Lazy Element)</h2>
+<h2 id="---lazy-element">성의 없는 요소 (Lazy Element)</h2>
 <ul>
 <li>본문 코드를 그대로 쓰는 함수나 실질 메서드가 하나 뿐인 클래스 등은 고이 보내주자.</li>
 <li>나중에 더 추가할 생각이었으나 현재는 그렇지 않으면, 어떤 사정이건 고이 보내주자.</li>
 </ul>
 <p><br /></p>
-<h2 id="추측성-일반화-speculative-generality">추측성 일반화 (Speculative Generality)</h2>
+<h2 id="--speculative-generality">추측성 일반화 (Speculative Generality)</h2>
 <ul>
-<li>&lsquo;나중에 필요할 거야&rsquo;라는 생각으로 당장은 필요 없는 모든 종류의 코드이다.</li>
+<li>&lsquo;나중에 필요할 거야'라는 생각으로 당장은 필요 없는 모든 종류의 코드이다.</li>
 <li>사용하는 곳이 없는 함수나 클래스에서 흔히 볼 수 있는 문제다.</li>
 <li>테스트 케이스부터 삭제한 뒤에 제거해야 한다.</li>
 </ul>
 <p><br /></p>
-<h2 id="임시-필드-temporary-field">임시 필드 (Temporary Field)</h2>
+<h2 id="--temporary-field">임시 필드 (Temporary Field)</h2>
 <ul>
 <li>특정 상황에서만 값이 설정되는 필드가 있을 때 볼 수 있는 문제다.</li>
 <li>임시 필드와 관련된 코드는 클래스 추출 및 함수 옮기기를 통해 옮기거나 제거하자.</li>
 </ul>
 <p><br /></p>
-<h2 id="메시지-체인-message-chains">메시지 체인 (Message Chains)</h2>
+<h2 id="--message-chains">메시지 체인 (Message Chains)</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">managerName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aPerson</span>.<span style="color:#a6e22e">department</span>.<span style="color:#a6e22e">manager</span>.<span style="color:#a6e22e">name</span>;
 
 <span style="color:#75715e">// 아래처럼 사용해서 체인을 숨길 수 있다.
@@ -287,21 +287,21 @@
 <em>흠! 개인적으로 optional chaining이 나와서 체이닝해도 괜찮다는 생각임</em></li>
 </ul>
 <p><br /></p>
-<h2 id="중개자-middle-man">중개자 (Middle Man)</h2>
+<h2 id="-middle-man">중개자 (Middle Man)</h2>
 <ul>
 <li>클래스가 제공하는 메서드 중 절반이 다른 클래스에 구현을 위임하고 있다면 문제다.</li>
 <li>중개자를 제거해서 실제로 일을 하는 객체와 직접 소통하게 해야 한다.</li>
 <li>위임 메서드 제거 후 남는 일이 거의 없다면 호출하는 쪽으로 인라인하면 된다.</li>
 </ul>
 <p><br /></p>
-<h2 id="내부자-거래-insider-trading">내부자 거래 (Insider Trading)</h2>
+<h2 id="--insider-trading">내부자 거래 (Insider Trading)</h2>
 <ul>
 <li>상속 구조에서 자식이 부모 클래스가 공개하는 것 이상으로 알려고 할 때 문제가 된다.</li>
 <li>필드가 너무 많은 것뿐만 아니라 코드량이 너무 많은 클래스도 혼동을 일으킬 여지가 크다.</li>
 <li>가장 간단한 해법은 클래스 안에서 자체적으로 중복을 제거하는 것이다.</li>
 </ul>
 <p><br /></p>
-<h2 id="서로-다른-인터페이스의-대안-클래스들">서로 다른 인터페이스의 대안 클래스들</h2>
+<h2 id="----">서로 다른 인터페이스의 대안 클래스들</h2>
 <ul>
 <li>Alternative Classes with Different Interfaces</li>
 <li>클래스를 사용할 때의 가장 큰 장점은 필요에 따라 언제든 다른 클래스로 교체할 수 있다는 점이다.</li>
@@ -309,7 +309,7 @@
 <li>따라서 메서드 시그니처를 일치시키고, 필요 동작들을 클래스 안으로 넣고, 중복이 생기면 슈퍼클래스를 추출한다.</li>
 </ul>
 <p><br /></p>
-<h2 id="데이터-클래스-data-class">데이터 클래스 (Data Class)</h2>
+<h2 id="--data-class">데이터 클래스 (Data Class)</h2>
 <ul>
 <li>데이터 필드와 게터/세터 메서드로만 구성된 클래스다.</li>
 <li>데이터 저장 용도로만 쓰이다 보니 다른 클래스가 너무 깊이 함부로 다룰 때가 많다.</li>
@@ -317,7 +317,7 @@
 <li>변경하면 안 되는 필드는 세터를 제거해서 접근을 원천 봉쇄하자.</li>
 </ul>
 <p><br /></p>
-<h2 id="상속-포기-refused-bequest">상속 포기 (Refused Bequest)</h2>
+<h2 id="--refused-bequest">상속 포기 (Refused Bequest)</h2>
 <ul>
 <li>서브클래스는 부모로부터 메서드와 데이터를 물려받는데, 부모의 유산이 필요 없다면?
 <ul>
@@ -333,7 +333,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="주석">주석</h2>
+<h2 id="heading-1">주석</h2>
 <ul>
 <li>주석은 악취가 아닌 향기인데, 문제는 탈취제처럼 사용하는 데 있다.</li>
 <li>주석을 남겨야겠다면 가장 먼저 주석이 필요 없는 코드로 리팩터링해본다.</li>

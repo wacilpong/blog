@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -273,7 +273,7 @@ $ chmod <span style="color:#ae81ff">755</span> /usr/local/share/zsh
 </li>
 <li>react hooks를 쓰더라도 여전히 트리 내 전역상태를 관리할 필요는 있다.
 <ul>
-<li>context는 사용자 권한이나 언어 같은 &lsquo;전역적&rsquo;이라고 여겨질 만한 데이터를 컴포넌트 트리에서 공유할 수 있도록 설계되었다.</li>
+<li>context는 사용자 권한이나 언어 같은 &lsquo;전역적'이라고 여겨질 만한 데이터를 컴포넌트 트리에서 공유할 수 있도록 설계되었다.</li>
 <li>자주 바뀌는 데이터가 아니며, context는 컴포넌트 재사용을 어렵게 만든다.</li>
 <li>따라서 자주 변경된다면 <strong>redux와 같은 상태를 예측 가능하도록 돕는 도구</strong>를 고려해야 한다.</li>
 </ul>
@@ -300,13 +300,13 @@ $ chmod <span style="color:#ae81ff">755</span> /usr/local/share/zsh
 <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">logged</span>(<span style="color:#a6e22e">target</span>: <span style="color:#66d9ef">any</span>, <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">descriptor</span>: <span style="color:#66d9ef">PropertyDescriptor</span>) {
   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">target</span>[<span style="color:#a6e22e">name</span>];
   <span style="color:#a6e22e">descriptor</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Calling </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">Calling </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
   };
 }
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Greeter</span>(<span style="color:#e6db74">&#34;Roomy&#34;</span>).<span style="color:#a6e22e">greet</span>());
 <span style="color:#75715e">// Calling greet
-</span><span style="color:#75715e">// hi,roomy
+</span><span style="color:#75715e"></span><span style="color:#75715e">// hi,roomy
 </span></code></pre></div></li>
 </ul>
 </li>

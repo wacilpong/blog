@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.62.0" />
         
 
         
@@ -172,7 +172,7 @@
 </ul>
 </li>
 <li>부프로그램(subprogram)은 전체 프로그램을 구성하는 조각이며, 함수 하나라고 생각할 수도 있을 것 같다.</li>
-<li>컴퓨터 과학에서 <strong>스칼라(scalar)</strong> 라고 지칭할 때는, 배열이든 문자열이든 상관없이 &lsquo;그것&rsquo;들 중의 하나를 의미한다.</li>
+<li>컴퓨터 과학에서 <strong>스칼라(scalar)</strong> 라고 지칭할 때는, 배열이든 문자열이든 상관없이 &lsquo;그것'들 중의 하나를 의미한다.</li>
 <li>프로그래밍 언어는 다음 세 가지 방법으로 구현(implementation)될 수 있다.
 <ul>
 <li>
@@ -214,13 +214,13 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="변수">변수</h2>
+<h2 id="heading">변수</h2>
 <ul>
 <li>
 <p>변수는 아래의 요소들로 구성된다.</p>
 </li>
 <li>
-<h4 id="이름name"><strong>이름(name)</strong></h4>
+<h4 id="name"><strong>이름(name)</strong></h4>
 <ul>
 <li>프로그램에서 어떤 개체를 식별하기 위해 사용되는 문자열이다.</li>
 <li>특수어(special word)는 수행될 행동들을 미리 정해 놓은 것이다.
@@ -233,26 +233,26 @@
 </ul>
 </li>
 <li>
-<h4 id="주소address"><strong>주소(address)</strong></h4>
+<h4 id="address"><strong>주소(address)</strong></h4>
 <ul>
 <li>그 변수와 연관된 기계 메모리 주소이다.</li>
 <li>두 개 이상의 변수 이름이 동일한 메모리 위치를 접근하는 데 사용되면, 그 변수들은 <code>별칭(alias)</code>이다.</li>
 </ul>
 </li>
 <li>
-<h4 id="타입type"><strong>타입(type)</strong></h4>
+<h4 id="type"><strong>타입(type)</strong></h4>
 <ul>
 <li>그 변수가 저장할 수 있는 값들의 범위와 타입에 따른 연산들의 집합을 결정한다.</li>
 </ul>
 </li>
 <li>
-<h4 id="값value"><strong>값(value)</strong></h4>
+<h4 id="value"><strong>값(value)</strong></h4>
 <ul>
 <li>그 변수에 연관된 추상적인 메모리 셀, 혹은 셀들의 내용이다.</li>
 </ul>
 </li>
 <li>
-<h4 id="바인딩binding"><strong>바인딩(binding)</strong></h4>
+<h4 id="binding"><strong>바인딩(binding)</strong></h4>
 <ul>
 <li>하나의 속성과 하나의 개체 간의 연관관게이다.
 <ul>
@@ -276,7 +276,7 @@
 </ul>
 </li>
 <li>
-<h4 id="존속기간lifetime"><strong>존속기간(lifetime)</strong></h4>
+<h4 id="lifetime"><strong>존속기간(lifetime)</strong></h4>
 <ul>
 <li>
 <p>변수가 특정 메모리 위치에 바인딩되어 있는 기간이다.</p>
@@ -309,7 +309,7 @@
 </ul>
 </li>
 <li>
-<h4 id="영역scope"><strong>영역(scope)</strong></h4>
+<h4 id="scope"><strong>영역(scope)</strong></h4>
 <ul>
 <li>그 변수를 참조할 수 있는 문장들의 범위이다.</li>
 <li>변수가 프로그램 단위나 블록 내부에 정의되면 지역적(local)이다.</li>
@@ -363,7 +363,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="데이터-타입">데이터 타입</h2>
+<h2 id="-">데이터 타입</h2>
 <ul>
 <li>
 <p>데이터 값들의 모임과 그 값들에 대해 미리 정의된 연산들을 의미한다.</p>
@@ -378,7 +378,7 @@
 <p>Numeric, Boolean, String, Enum, Array, Tuple, List, Union, Pointer, Reference</p>
 </li>
 <li>
-<h4 id="문자-스트링-타입character-string-type"><strong>문자 스트링 타입(Character string type)</strong></h4>
+<h4 id="--character-string-type"><strong>문자 스트링 타입(Character string type)</strong></h4>
 <ul>
 <li>값이 일련의 문자들로 구성된다.</li>
 <li>부분 스트링 참조는 주어진 문자열에서 부분 문자열에 대한 참조이며, 배열에서 논의될 때는 slice이다.</li>
@@ -410,7 +410,7 @@
 </ul>
 </li>
 <li>
-<h4 id="열거-타입enumeration-type"><strong>열거 타입(Enumeration type)</strong></h4>
+<h4 id="-enumeration-type"><strong>열거 타입(Enumeration type)</strong></h4>
 <ul>
 <li>이름이 있는 상수들이 열거되어, 열거 상수(enumeration constants)들을 정의하고 그룹핑하는 타입이다.</li>
 <li>값을 할당하지 않아도 전형적으로 정수 값이 묵시적으로 할당된다.
@@ -422,7 +422,7 @@
 </ul>
 </li>
 <li>
-<h4 id="배열-타입array"><strong>배열 타입(Array)</strong></h4>
+<h4 id="-array"><strong>배열 타입(Array)</strong></h4>
 <ul>
 <li>동질적인 데이터 원소의 집합이며 C, C++, Java에서 배열의 모든 원소는 동일한 타입이어야 한다.</li>
 <li>Javascript, Python, Ruby에서는 변수가 객체나 데이터 값에 대한 타입이 없는 참조이기 때문에, 배열의 원소들은 다른 타입들을 참조할 수 있다.</li>
@@ -448,7 +448,7 @@
 </ul>
 </li>
 <li>
-<h4 id="포인터-타입pointer"><strong>포인터 타입(Pointer)</strong></h4>
+<h4 id="-pointer"><strong>포인터 타입(Pointer)</strong></h4>
 <ul>
 <li>포인터는 동적으로 할당되는 힙 메모리의 한 위치를 접근하는 데 사용된다.</li>
 <li>이미 회수된 힙-동적 변수의 주소를 가리키는 문제가 있다. (dangling pointer)
@@ -460,7 +460,7 @@
 </ul>
 </li>
 <li>
-<h4 id="참조-타입reference-type"><strong>참조 타입(reference type)</strong></h4>
+<h4 id="-reference-type"><strong>참조 타입(reference type)</strong></h4>
 <ul>
 <li>포인터는 메모리의 주소를 참조하지만, 참조 변수는 메모리의 객체나 값을 참조한다.</li>
 <li>객체 지향 언어인 python, ruby, lua의 모든 변수는 참조 변수이다.</li>
@@ -481,16 +481,16 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="식과-배정문expression-and-assignment-statement">식과 배정문(Expression and assignment statement)</h2>
+<h2 id="-expression-and-assignment-statement">식과 배정문(Expression and assignment statement)</h2>
 <ul>
 <li>식(expression)은 어떠한 단일 값으로 표현될 수 있는 코드이다.</li>
 <li>문(statement)은 실행가능한 독립적인 코드 조각이다.
 <ul>
 <li>선택문(selection statement), 반복문(iterative statement)&hellip;</li>
 <li>무조건 분기문(unconditional branch statement)은 실행 제어를 프로그램상에서 명시된 위치로 이동시킨다. 보통 루프 탈출로 사용하는데, 고급언어에서는 많이 사용하지 않는다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">  :test
-  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;hi&#34;</span>
-  <span style="color:#66d9ef">goto</span> test
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">  :test<span style="color:#75715e"></span>
+  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hi</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">goto</span> test<span style="color:#75715e"></span>
   ...
 </code></pre></div></li>
 </ul>
@@ -522,7 +522,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="부프로그램subprogram">부프로그램(Subprogram)</h2>
+<h2 id="subprogram">부프로그램(Subprogram)</h2>
 <ul>
 <li>
 <p><strong>overloaded subprogram은 동일한 참조 환경에서 다른 이름을 갖는다.</strong></p>
@@ -538,12 +538,12 @@
 </span></code></pre></div></li>
 <li>
 <p><strong>generic subprogram은 호출할 때마다 다른 타입의 데이터에 게산을 수행한다.</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">T</span>&gt;(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">T</span>) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">T</span>) {
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>;
 }
 
-<span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">number</span>&gt;(<span style="color:#ae81ff">1</span>);
-<span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">boolean</span>&gt;(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">// type error
+<span style="color:#a6e22e">test</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">number</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">1</span>);
+<span style="color:#a6e22e">test</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">boolean</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">// type error
 </span></code></pre></div></li>
 <li>
 <p>부프로그램의 header는 헤더 다음에 오는 구문이 어떤 종류(특히 프로시저, 함수)인지 명시한다.</p>
@@ -566,19 +566,19 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> <span style="color:#a6e22e">power</span>(<span style="color:#66d9ef">float</span> base, <span style="color:#66d9ef">float</span> exp) {
   <span style="color:#66d9ef">float</span> result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 
-  <span style="color:#66d9ef">while</span> (exp <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-    result <span style="color:#f92672">*=</span> base;
-    <span style="color:#f92672">--</span>exp;
+  <span style="color:#66d9ef">while</span> (exp <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+    result <span style="color:#f92672">*</span><span style="color:#f92672">=</span> base;
+    <span style="color:#f92672">-</span><span style="color:#f92672">-</span>exp;
   }
 
   <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 
 result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</span> <span style="color:#f92672">*</span> power(<span style="color:#ae81ff">10.0</span>, x)
-result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10.0</span> <span style="color:#f92672">**</span> x
+result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10.0</span> <span style="color:#f92672">*</span><span style="color:#f92672">*</span> x
 </code></pre></div></li>
 <li>
-<h4 id="매개변수"><strong>매개변수</strong></h4>
+<h4 id="heading-1"><strong>매개변수</strong></h4>
 <ul>
 <li>매개변수로 전달된 데이터는 함수의 지역 변수로 접근된다.</li>
 <li>접근하는 데이터가 비지역 변수라면 함수의 호출 사이에 그 비지역 변수에 새로운 값을 할당해야 한다.<br />
@@ -606,7 +606,7 @@ result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</spa
 </ul>
 </li>
 <li>
-<h4 id="지역-참조-환경"><strong>지역 참조 환경</strong></h4>
+<h4 id="--"><strong>지역 참조 환경</strong></h4>
 <ul>
 <li>지역 변수는 함수 내부에 정의되고, 스코프가 함수의 본문에 제한된다.</li>
 <li>지역 변수가 스택-동적이면 함수가 실행될 때 메모리에 바인딩되고 끝날 때 해제된다.
@@ -620,7 +620,7 @@ result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</spa
 </ul>
 </li>
 <li>
-<h4 id="함수"><strong>함수</strong></h4>
+<h4 id="heading-2"><strong>함수</strong></h4>
 <ul>
 <li>
 <p>대부분의 언어에서 함수는 값을 전달하거나 참조 전달되는 매개변수를 갖는다.<br />
@@ -656,7 +656,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 </li>
 <li>
-<h4 id="코루틴"><strong>코루틴</strong></h4>
+<h4 id="heading-3"><strong>코루틴</strong></h4>
 <ul>
 <li>코루틴은 특별한 종류의 부프로그램이다.</li>
 <li>코루틴의 시작은 호출(call)이라기보다는 리쥼(resume)이라고 불린다.</li>
@@ -674,7 +674,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="동시성concurrency">동시성(Concurrency)</h2>
+<h2 id="concurrency">동시성(Concurrency)</h2>
 <ul>
 <li>소프트웨어에서 동시성은 다음의 4가지 수준에서 발생한다.
 <ul>
@@ -720,7 +720,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 </li>
 <li>
-<h4 id="세마포어">세마포어</h4>
+<h4 id="heading-4">세마포어</h4>
 <ul>
 <li>보호(guard)는 보호된 코드가 특정 조건에서만 실행되는 것을 허용하는 장치이다.</li>
 <li>세마포어는 이러한 보호의 구현이다.</li>
@@ -741,7 +741,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 </li>
 <li>
-<h4 id="모니터">모니터</h4>
+<h4 id="heading-5">모니터</h4>
 <ul>
 <li>공유 데이터 구조를 추상 데이터 타입으로 만들어 은폐한다.</li>
 <li>이를 통해 동기화에 대한 책임을 런타임으로 이전한다.</li>
@@ -751,7 +751,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="예외-처리와-이벤트-처리">예외 처리와 이벤트 처리</h2>
+<h2 id="---">예외 처리와 이벤트 처리</h2>
 <ul>
 <li>하드웨어로는 탐지할 수 없지만, 컴파일러가 생성한 코드 기반으로 탐지하는 오류들이 있다.</li>
 <li>배열의 첨자 범위 오류는 프로그램 실행에서 가끔 나중에 인식되는 치명적인 오류이기도 하다.</li>
@@ -795,7 +795,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="추상-데이터-타입과-캡슐화-구조">추상 데이터 타입과 캡슐화 구조</h2>
+<h2 id="----">추상 데이터 타입과 캡슐화 구조</h2>
 <ul>
 <li><strong>추상 데이터 타입</strong>
 <ul>
@@ -837,7 +837,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="객체-지향-프로그래밍">객체 지향 프로그래밍</h2>
+<h2 id="---1">객체 지향 프로그래밍</h2>
 <ul>
 <li>객체 지향 언어는 추상 데이터 타입, 상속, 메서드에 대한 메서드 호출의 동적 바인딩을 지원해야 한다.</li>
 <li><strong>상속</strong>
@@ -869,7 +869,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="함수형-프로그래밍">함수형 프로그래밍</h2>
+<h2 id="--1">함수형 프로그래밍</h2>
 <ul>
 <li>수학 함수에 기초하여 비명령형 스타일이 설계 기준이다.</li>
 <li>명령형으로 작성된 프로그램의 기본 특성 중 하나는 런타임에서 변하는 상태를 갖는다는 것이다.</li>
@@ -913,7 +913,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="논리형-프로그래밍">논리형 프로그래밍</h2>
+<h2 id="--2">논리형 프로그래밍</h2>
 <ul>
 <li>논리형 프로그램은 절차적이기보다는 선언적이다.</li>
 <li>선언적인 것은 결과를 도출하기 위한 절차가 아니라 원하는 결과의 명세가 서술된다는 것을 의미한다.</li>
@@ -950,7 +950,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 <li>아래는 bob은 아버지라는 사실과, X가 아버지라면 X는 남자라는 규칙이다.</li>
 <li>둘의 체이닝을 통해 X를 bob으로 치환하여 명제가 도출된다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">father</span>(<span style="color:#a6e22e">bob</span>)
-<span style="color:#a6e22e">man</span>(<span style="color:#a6e22e">X</span>)  <span style="color:#f92672">:-</span>  <span style="color:#a6e22e">father</span>(<span style="color:#a6e22e">X</span>).
+<span style="color:#a6e22e">man</span>(<span style="color:#a6e22e">X</span>)  <span style="color:#f92672">:</span><span style="color:#f92672">-</span>  <span style="color:#a6e22e">father</span>(<span style="color:#a6e22e">X</span>).
 </code></pre></div></li>
 </ul>
 </li>
@@ -962,6 +962,23 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
     
         <h4 class="page-header">Related</h4>
          <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/post/computer-science/baekjoon-note/">백준 알고리즘을, 특히 파이썬으로 풀면서 참고할 것들 정리</a></h4>
+    <h5>2024-01-20</h5>
+    
+<a href="https://wacilpong.github.io/blog/tags/computer-science"><kbd class="item-tag">computer-science</kbd></a>
+
+
+
+</div>
+  <div class="item">
 
     
     
@@ -989,23 +1006,6 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 
     <h4><a href="/blog/post/review/after-reading-from-programmer-to-software-architect/">After reading &lt;From Programmer to Software Architect&gt;</a></h4>
     <h5>2022-02-03</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/review/after-reading-frp/">After reading &lt;Functional Reactive Programming&gt;</a></h4>
-    <h5>2022-01-13</h5>
     
 <a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
 
