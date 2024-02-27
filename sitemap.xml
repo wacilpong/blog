@@ -40,12 +40,17 @@
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/attribute-vs-property/</loc>
-    <lastmod>2023-05-24T00:00:00+00:00</lastmod>
+    <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
+    <loc>https://wacilpong.github.io/blog/learned/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/post/javascript-html-css/attribute-vs-property/</loc>
     <lastmod>2023-05-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -106,11 +111,6 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</loc>
-    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/learned/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -531,6 +531,10 @@
   
   <url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
   </url>
   
   <url>

@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -156,7 +156,7 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="----">릴리즈 프로필을 이용한 빌드 커스터마이징</h2>
+    <div align="start" class="content"><h2 id="릴리즈-프로필을-이용한-빌드-커스터마이징">릴리즈 프로필을 이용한 빌드 커스터마이징</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// Cargo.toml
 </span><span style="color:#75715e"></span>[profile.dev]
 opt<span style="color:#f92672">-</span>level <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
@@ -169,22 +169,22 @@ opt<span style="color:#f92672">-</span>level <span style="color:#f92672">=</span
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="cratesio---">crates.io 사이트에 크레이트 발행하기</h2>
+<h2 id="cratesio-사이트에-크레이트-발행하기">crates.io 사이트에 크레이트 발행하기</h2>
 <ul>
 <li><a href="https://crates.io">crates.io</a>의 크레이트 레지스트리는 오픈소스로 작성된 코드를 주로 호스팅한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="---">유용한 문서 주석 작성하기</h3>
+<h3 id="유용한-문서-주석-작성하기">유용한 문서 주석 작성하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#e6db74">/// Adds one to the number given.
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// # Examples
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// ```
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// let arg = 5;
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// let answer = my_crate::add_one(arg);
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// assert_eq!(6, answer);
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// ```
+</span><span style="color:#e6db74">///
+</span><span style="color:#e6db74">/// # Examples
+</span><span style="color:#e6db74">///
+</span><span style="color:#e6db74">/// ```
+</span><span style="color:#e6db74">/// let arg = 5;
+</span><span style="color:#e6db74">/// let answer = my_crate::add_one(arg);
+</span><span style="color:#e6db74">///
+</span><span style="color:#e6db74">/// assert_eq!(6, answer);
+</span><span style="color:#e6db74">/// ```
 </span><span style="color:#e6db74"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(x: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
     x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 }
@@ -199,7 +199,7 @@ opt<span style="color:#f92672">-</span>level <span style="color:#f92672">=</span
 </li>
 </ul>
 <p><br /></p>
-<h4 id="1----">(1) 문서 주석에 사용하는 섹션</h4>
+<h4 id="1-문서-주석에-사용하는-섹션">(1) 문서 주석에 사용하는 섹션</h4>
 <ul>
 <li>Panics
 <ul>
@@ -220,7 +220,7 @@ opt<span style="color:#f92672">-</span>level <span style="color:#f92672">=</span
 </li>
 </ul>
 <p><br /></p>
-<h4 id="2----">(2) 문서 주석을 테스트에 활용하기</h4>
+<h4 id="2-문서-주석을-테스트에-활용하기">(2) 문서 주석을 테스트에 활용하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cargo test
 Doc-tests my_crate
 
@@ -234,23 +234,23 @@ test result: ok. <span style="color:#ae81ff">1</span> passed; <span style="color
 <li>따라서 <code>assert_eq!</code> 매크로가 패닉을 반환하도록 함수나 예제를 수정하면 실제 코드와 예제가 일치하지 않음을 알 수 있다.</li>
 </ul>
 <p><br /></p>
-<h4 id="3-----">(3) 아이템을 보유한 루트를 위한 주석</h4>
+<h4 id="3-아이템을-보유한-루트를-위한-주석">(3) 아이템을 보유한 루트를 위한 주석</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#e6db74">//! # My Crate
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">//!
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">//! `my_crate` is a collection of utilities to make performing certain
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">//! calculations more convenient.
+</span><span style="color:#e6db74">//!
+</span><span style="color:#e6db74">//! `my_crate` is a collection of utilities to make performing certain
+</span><span style="color:#e6db74">//! calculations more convenient.
 </span><span style="color:#e6db74"></span>
 <span style="color:#e6db74">/// Adds one to the number given.
 </span><span style="color:#e6db74"></span><span style="color:#75715e">// --snip--
 </span><span style="color:#75715e"></span><span style="color:#e6db74">///
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// # Examples
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// ```
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// let arg = 5;
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// let answer = my_crate::add_one(arg);
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">///
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// assert_eq!(6, answer);
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">/// ```
+</span><span style="color:#e6db74">/// # Examples
+</span><span style="color:#e6db74">///
+</span><span style="color:#e6db74">/// ```
+</span><span style="color:#e6db74">/// let arg = 5;
+</span><span style="color:#e6db74">/// let answer = my_crate::add_one(arg);
+</span><span style="color:#e6db74">///
+</span><span style="color:#e6db74">/// assert_eq!(6, answer);
+</span><span style="color:#e6db74">/// ```
 </span><span style="color:#e6db74"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(x: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
     x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 }
@@ -259,10 +259,10 @@ test result: ok. <span style="color:#ae81ff">1</span> passed; <span style="color
 <li>따라서 크레이트나 모듈 전체를 문서화하기 위해 모듈 안에 작성한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="pub-use----api-">pub use 키워드를 이용해 공개 API 발행하기</h3>
+<h3 id="pub-use-키워드를-이용해-공개-api-발행하기">pub use 키워드를 이용해 공개 API 발행하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#e6db74">//! # Art
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">//!
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">//! A library for modeling artistic concepts.
+</span><span style="color:#e6db74">//!
+</span><span style="color:#e6db74">//! A library for modeling artistic concepts.
 </span><span style="color:#e6db74"></span>
 <span style="color:#75715e">// (3)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">use</span> self::kinds::PrimaryColor;
@@ -324,13 +324,13 @@ test result: ok. <span style="color:#ae81ff">1</span> passed; <span style="color
 <li>그러면 (1)대신 (2)처럼 가져올 수 있고, 중첩된 모듈이 많을 때 유용하다.</li>
 </ul>
 <p><br /></p>
-<h3 id="crateio--">crate.io 계정 생성하기</h3>
+<h3 id="crateio-계정-생성하기">crate.io 계정 생성하기</h3>
 <ul>
 <li><a href="https://crates.io">crates.io</a> 로그인 후, API 토큰을 생성한다.</li>
 <li><code>cargo login {token}</code>을 실행하면 토큰을 ~/.cargo/credentials에 저장한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="----1">새 크레이트에 메타데이터 추가하기</h3>
+<h3 id="새-크레이트에-메타데이터-추가하기">새 크레이트에 메타데이터 추가하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[package]
 name = &#34;guessing_game&#34;
 version = &#34;0.1.0&#34;
@@ -343,13 +343,13 @@ license = &#34;MIT OR Apache-2.0&#34;
 <li>크레이트 발행은 <a href="https://crates.io">https://crates.io</a> 사이트에 특정 버전 크레이트를 업로드하는 과정이다.</li>
 </ul>
 <p><br /></p>
-<h3 id="-----1">등록한 크레이트의 새 버전 발행하기</h3>
+<h3 id="등록한-크레이트의-새-버전-발행하기">등록한 크레이트의 새 버전 발행하기</h3>
 <ul>
 <li>새 버전의 릴리즈를 준비할 때는 Cargo.toml의 버전값을 수정한다.</li>
 <li>시맨틱 버저닝(Semantic Versioning) 규칙을 이용해 적절하게 버전을 지정하자.</li>
 </ul>
 <p><br /></p>
-<h3 id="cargo-yank-cratesio--">cargo yank: crates.io에서 버전 제거하기</h3>
+<h3 id="cargo-yank-cratesio에서-버전-제거하기">cargo yank: crates.io에서 버전 제거하기</h3>
 <ul>
 <li>이전 버전의 크레이트를 삭제할 수는 없다.</li>
 <li>다른 프로젝트들이 앞으로 이전 버전을 새로 의존 목록에 추가하는 것을 막을 수는 있다.</li>
@@ -368,7 +368,7 @@ license = &#34;MIT OR Apache-2.0&#34;
 <li>이때 cargo는 여러 패키지를 관리할 수 있는 워크스페이스 기능을 제공한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="-">워크스페이스 생성하기</h3>
+<h3 id="워크스페이스-생성하기">워크스페이스 생성하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[workspace]
 
 members = [
@@ -391,7 +391,7 @@ members = [
 <li>만약 각 크레이트가 독립적인 target을 가진다면, 각 크레이트를 빌드할 때마다 의존하는 다른 크레이트들도 다시 컴파일되기 때문에 하나의 target만 공유하는 것이다.</li>
 </ul>
 <p><br /></p>
-<h3 id="-----2">워크스페이스에 두 번째 크레이트 생성하기</h3>
+<h3 id="워크스페이스에-두-번째-크레이트-생성하기">워크스페이스에 두 번째 크레이트 생성하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[workspace]
 
 members = [
@@ -435,7 +435,7 @@ add_one = { path = <span style="color:#e6db74">&#34;../add_one&#34;</span> }
 <li><code>cargo run -p adder</code>를 통해 워크스페이스에서 실행할 패키지 이름을 지정할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h4 id="1-----">(1) 워크스페이스에 외부 크레이트 의존성 추가하기</h4>
+<h4 id="1-워크스페이스에-외부-크레이트-의존성-추가하기">(1) 워크스페이스에 외부 크레이트 의존성 추가하기</h4>
 <ul>
 <li>워크스페이스는 최상위에 <em>Cargo.lock</em> 파일을 갖기 때문에, 모든 의존성에 대해 같은 버전을 적용할 수 있다.</li>
 <li>따라서 <em>adder/Cargo.toml</em>, <em>add_one/Cargo.toml</em>에 각각 rand 크레이트를 추가하면 cargo는 하나의 rand만 <em>Cargo.lock</em>에 추가한다.</li>
@@ -488,16 +488,16 @@ error<span style="color:#f92672">[</span>E0432<span style="color:#f92672">]</spa
 <li>cargo는 rand 패키지를 사용하는 워크스페이스 내 모든 크레이트가 동일한 버전을 사용하도록 하여 공간을 절약하고 워크스페이스의 크레이트가 서로 호환되도록 한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="2---">(2) 워크스페이스에 테스트 추가하기</h4>
+<h4 id="2-워크스페이스에-테스트-추가하기">(2) 워크스페이스에 테스트 추가하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">add_one</span>(x: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
     x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 }
 
-<span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
+<span style="color:#75715e">#[cfg(test)]</span>
 <span style="color:#66d9ef">mod</span> tests {
     <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
 
-    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#75715e">#[test]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">it_works</span>() {
         assert_eq<span style="color:#f92672">!</span>(<span style="color:#ae81ff">3</span>, add_one(<span style="color:#ae81ff">2</span>));
     }
@@ -560,7 +560,7 @@ test result: ok. <span style="color:#ae81ff">0</span> passed; <span style="color
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="cargo-install-cratesio--">cargo install: crates.io에서 바이너리 설치하기</h2>
+<h2 id="cargo-install-cratesio에서-바이너리-설치하기">cargo install: crates.io에서 바이너리 설치하기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo install ripgrep
     Updating crates.io index
   Downloaded ripgrep v11.0.2
@@ -580,7 +580,7 @@ test result: ok. <span style="color:#ae81ff">0</span> passed; <span style="color
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="---cargo-">사용자 정의 명령으로 cargo 확장하기</h2>
+<h2 id="사용자-정의-명령으로-cargo-확장하기">사용자 정의 명령으로 cargo 확장하기</h2>
 <ul>
 <li>$PATH 변수에 cargo-something 바이너리가 지정되어 있다면,</li>
 <li>이 바이너리는 <code>cargo something</code>처럼 cargo 하위명령으로 실행할 수 있다.</li>

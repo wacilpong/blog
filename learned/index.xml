@@ -6,10 +6,19 @@
     <description>Recent content in Learneds on Roomy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>kr-ko</language>
-    <lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wacilpong.github.io/blog/learned/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2024</title>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</guid>
+      <description>2023-02-27 position: relative &amp;gt; position: absolute에 right:0도 없는데 맨 뒤에 붙는다면? &amp;lt;ul style=&amp;#34;position: relative;&amp;#34;&amp;gt; &amp;lt;li style=&amp;#34;display: inline-block;&amp;#34;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li style=&amp;#34;display: inline-block;&amp;#34;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li style=&amp;#34;position: absolute;&amp;#34;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; 위 구조를 봤을 때, 맨 마지막 li에 따로 right: 0 스타일을 주</description>
+    </item>
     
     <item>
       <title>2023</title>

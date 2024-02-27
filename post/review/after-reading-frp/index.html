@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -158,7 +158,7 @@
 
     <div align="start" class="content"><p>by Stephen Blackheath, Anthony Jones</p>
 <p>FRP를 읽고 내맘대로 정리해보았다. java 소듐 라이브러리가 주 예제이고, 뒤로 갈수록 소듐 얘기가 너무 많아서 어려워서 날림 읽었지만 rx기반 지식을 나름대로 알 수 있어서 좋았다.</p>
-<h2 id="-">기본 개념</h2>
+<h2 id="기본-개념">기본 개념</h2>
 <blockquote>
 <p>숲에 있는 나무가 쓰러졌는데 근처의 아무도 그 소리를 듣지 못했다. 과연 그 나무는 소리를 낸 것일까?</p>
 </blockquote>
@@ -175,10 +175,10 @@
   <span style="color:#f92672">}</span>
   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> Lambda2<span style="color:#f92672">&lt;</span>Calendar<span style="color:#f92672">,</span> Calendar<span style="color:#f92672">,</span> Boolean<span style="color:#f92672">&gt;</span> f<span style="color:#f92672">;</span>
   <span style="color:#66d9ef">public</span> Cell<span style="color:#f92672">&lt;</span>Boolean<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">reify</span><span style="color:#f92672">(</span>Cell<span style="color:#f92672">&lt;</span>Calendar<span style="color:#f92672">&gt;</span> dep<span style="color:#f92672">,</span> Cell<span style="color:#f92672">&lt;</span>Calendar<span style="color:#f92672">&gt;</span> ret<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> dep<span style="color:#f92672">.</span><span style="color:#a6e22e">lift</span><span style="color:#f92672">(</span>ret<span style="color:#f92672">,</span> f<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">return</span> dep<span style="color:#f92672">.</span><span style="color:#a6e22e">lift</span><span style="color:#f92672">(</span>ret<span style="color:#f92672">,</span> f<span style="color:#f92672">);</span>
   <span style="color:#f92672">}</span>
   <span style="color:#66d9ef">public</span> Rule <span style="color:#a6e22e">and</span><span style="color:#f92672">(</span>Rule other<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Rule<span style="color:#f92672">(</span><span style="color:#f92672">(</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> other<span style="color:#f92672">.</span><span style="color:#a6e22e">f</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Rule<span style="color:#f92672">((</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">f</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> other<span style="color:#f92672">.</span><span style="color:#a6e22e">f</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>d<span style="color:#f92672">,</span> r<span style="color:#f92672">));</span>
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div></li>
@@ -202,16 +202,16 @@
 <li>FRP는 현재 실행 시점에서 구성되기 때문에 JIT(Just In Time) 컴파일러나 실행 시점 최적화에 적합하다.</li>
 </ul>
 <p><br /></p>
-<h4 id="heading">조작</h4>
+<h4 id="조작">조작</h4>
 <ul>
 <li>어떤 이벤트 하나를 새로운 트랜잭션에 넣는 것을 <strong>이벤트를 미룬다(deferring)</strong> 고 말한다.</li>
 <li>특정 조건에 따라 다른 스트림으로 뻗어나갈 때 사용할 수 있다.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// rxjs
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">defer</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> (<span style="color:#a6e22e">liked</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">dislikeObservable</span> : <span style="color:#66d9ef">likeObservable</span>)).<span style="color:#a6e22e">subscribe</span>();
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">defer</span>(() <span style="color:#f92672">=&gt;</span> (<span style="color:#a6e22e">liked</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">dislikeObservable</span> : <span style="color:#66d9ef">likeObservable</span>)).<span style="color:#a6e22e">subscribe</span>();
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h4 id="-----">참고: 이벤트 처리의 여섯 가지 재앙</h4>
+<h4 id="참고-이벤트-처리의-여섯-가지-재앙">참고: 이벤트 처리의 여섯 가지 재앙</h4>
 <blockquote>
 <p>FRP는 이 모든 것들을 해결할 수 있는 방법이다.</p>
 </blockquote>
@@ -225,7 +225,7 @@
 </ol>
 <p><br /></p>
 <hr />
-<h2 id="----">환원주의를 통한 엔지니어링에 대한 접근</h2>
+<h2 id="환원주의를-통한-엔지니어링에-대한-접근">환원주의를 통한 엔지니어링에 대한 접근</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ae81ff">1</span>. 복잡한 문제를 가지고 시작한다.
 2. 문제를 더 작은 부분으로 나눈다.
 3. 각 부분을 해결한다.
@@ -245,7 +245,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="-frp-feat-rxjs-">웹에서의 FRP, feat. rxjs (드디어!)</h2>
+<h2 id="웹에서의-frp-feat-rxjs-드디어">웹에서의 FRP, feat. rxjs (드디어!)</h2>
 <ul>
 <li><code>Observable</code>이라는 인터페이스를 중심으로 하며, 소듐의 Stream에 대응한다.
 <ul>
@@ -271,7 +271,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h2 id="rxjs--">rxjs로 프로미스 구현하기</h2>
+<h2 id="rxjs로-프로미스-구현하기">rxjs로 프로미스 구현하기</h2>
 <ul>
 <li>대부분의 언어에서 I/O 오류는 예외 메커니즘을 통해 처리되지만, FRP는 오직 값만 다룰 수 있기 때문에 일반적인 FRP 코드는 결코 예외를 던지지 않는다.</li>
 <li>Rx를 기반으로 하는 시스템에서는 오류 처리 기능이 내장되어 있다.</li>
@@ -300,7 +300,7 @@
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h2 id="tmi---">TMI, 그런데 유우머를 곁들인&hellip;</h2>
+<h2 id="tmi-그런데-유우머를-곁들인">TMI, 그런데 유우머를 곁들인&hellip;</h2>
 <ul>
 <li>마스터 요다의 언어 습관은 우리 같은 범상한 인간과는 다르다. 요다를 따라서 변수와 상수를 비교할 수 있는데, <code>if (42 == $value) {...}</code> 처럼 작성하는 것을 요다 조건문이라고 부르기도 한다.</li>
 <li>컴퓨터 과학에서 퓨처(future), 프로미스(promise), 딜레이(delay), 디퍼드(deferred)는 프로그램 실행을 동기화하려고 쓰는 구조체다. 프록시 역할을 하는 객체로 설명되며 값의 연산이 아직 이루어지지 않은 상태이므로 결과는 미리 알 수 없다.</li>

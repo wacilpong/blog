@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -182,7 +182,7 @@
 <li>작업이 큐에 제출되면 HTCondor는 워커 노드를 지정해 해당 작업을 처리한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="htcondor-htc-----">HTCondor로 HTC를 구성할 때 자주 나오는 용어</h4>
+<h4 id="htcondor로-htc를-구성할-때-자주-나오는-용어">HTCondor로 HTC를 구성할 때 자주 나오는 용어</h4>
 <ul>
 <li><code>작업(job) 또는 태스크(task)</code>
 <ul>
@@ -207,7 +207,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="--">실행 과정 예시</h4>
+<h4 id="실행-과정-예시">실행 과정 예시</h4>
 <ul>
 <li>
 <p>copy_check 프로그램</p>
@@ -240,7 +240,7 @@ queue <span style="color:#ae81ff">1</span>
 </code></pre></div><p><br /></p>
 </li>
 </ul>
-<h3 id="heading">연습문제</h3>
+<h3 id="연습문제">연습문제</h3>
 <ol start="8">
 <li>MPI 프로그래밍의 간단한 예를 찾아보고 설명해보라.</li>
 </ol>
@@ -248,16 +248,16 @@ queue <span style="color:#ae81ff">1</span>
 <li>C/C++에 있는 MPI를 사용한 원주율 계산:</li>
 <li>적분 구간을 여러개로 나눈 다음, 프로세스들에게 할당하는 방식</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">include</span><span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span><span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span><span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span><span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span><span style="color:#75715e">// MPI 헤더 파일
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span><span style="color:#75715e">&lt;mpi.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;mpi.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">int</span> n_size_;  <span style="color:#75715e">// 프로세스의 총 갯수
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> n_rank_;  <span style="color:#75715e">// 각 프로세스에 부여된 랭크
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 정밀도
+</span><span style="color:#75715e">// 정밀도
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">double</span> eps_precision <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-12</span>;
 
 <span style="color:#75715e">// 적분 대상이 되는 함수
@@ -271,11 +271,11 @@ queue <span style="color:#ae81ff">1</span>
 </span><span style="color:#75715e"></span>    MPI_Comm_size(MPI_COMM_WORLD, <span style="color:#f92672">&amp;</span>n_size_);
     MPI_Comm_rank(MPI_COMM_WORLD, <span style="color:#f92672">&amp;</span>n_rank_);
 
-    <span style="color:#66d9ef">if</span> (n_rank_ <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#66d9ef">if</span> (n_rank_ <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
         <span style="color:#75715e">// 랭크가 0 인 프로세스
 </span><span style="color:#75715e"></span>        fprintf(stdout,
-            <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">We have %d processes.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, n_size_);
-        fprintf(stdout, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+            <span style="color:#e6db74">&#34;We have %d processes.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, n_size_);
+        fprintf(stdout, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
     }
 
     <span style="color:#75715e">// 모든 프로세스가 여기에 도달할 때 까지 대기
@@ -306,50 +306,50 @@ queue <span style="color:#ae81ff">1</span>
     <span style="color:#66d9ef">int</span> istep <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
     <span style="color:#75715e">/* 지정한 정밀도 이내에서 수렴할 때 까지
 </span><span style="color:#75715e">     * 반복문 실행 */</span>
-    <span style="color:#66d9ef">while</span> (converging <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#66d9ef">while</span> (converging <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
         pi_prev <span style="color:#f92672">=</span> pi_now;
 
         pi_rank_prev <span style="color:#f92672">=</span> pi_rank;
         pi_rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>;
         <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> iu;
         <span style="color:#75715e">// 수치적분 계산
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (istep <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) {
-            <span style="color:#66d9ef">for</span> (iu <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; iu <span style="color:#f92672">&lt;</span> nbin_u; iu<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (istep <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+            <span style="color:#66d9ef">for</span> (iu <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; iu <span style="color:#f92672">&lt;</span> nbin_u; iu<span style="color:#f92672">++</span>) {
                 <span style="color:#66d9ef">double</span> u0 <span style="color:#f92672">=</span> u_min <span style="color:#f92672">+</span> delta_u <span style="color:#f92672">*</span> (<span style="color:#66d9ef">double</span>)iu;
                 <span style="color:#66d9ef">double</span> u1 <span style="color:#f92672">=</span> u0 <span style="color:#f92672">+</span> delta_u;
-                pi_rank <span style="color:#f92672">+</span><span style="color:#f92672">=</span>
+                pi_rank <span style="color:#f92672">+=</span>
                     <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> delta_u <span style="color:#f92672">*</span> (func_integrand(u0) <span style="color:#f92672">+</span>
                                      func_integrand(u1));
             }
         } <span style="color:#66d9ef">else</span> {
             pi_rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> pi_rank_prev;
-            <span style="color:#66d9ef">for</span> (iu <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; iu <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> nbin_u; iu<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
-                <span style="color:#66d9ef">if</span> (iu <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+            <span style="color:#66d9ef">for</span> (iu <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; iu <span style="color:#f92672">&lt;=</span> nbin_u; iu<span style="color:#f92672">++</span>) {
+                <span style="color:#66d9ef">if</span> (iu <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
                     <span style="color:#66d9ef">continue</span>;
                 }
 
                 <span style="color:#66d9ef">double</span> u_now <span style="color:#f92672">=</span> u_min <span style="color:#f92672">+</span> delta_u <span style="color:#f92672">*</span> (<span style="color:#66d9ef">double</span>)iu;
-                pi_rank <span style="color:#f92672">+</span><span style="color:#f92672">=</span>
+                pi_rank <span style="color:#f92672">+=</span>
                     delta_u <span style="color:#f92672">*</span> func_integrand(u_now);
             }
         }
 
         pi_now <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.</span>;
-        <span style="color:#66d9ef">if</span> (n_rank_ <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+        <span style="color:#66d9ef">if</span> (n_rank_ <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
             <span style="color:#75715e">// 랭크가 0 인 프로세스
 </span><span style="color:#75715e"></span>
             <span style="color:#75715e">/* 모든 프로세스의 기여분들을 취합하여
 </span><span style="color:#75715e">             * 원주율의 값 계산 */</span>
             pi_now <span style="color:#f92672">=</span> pi_rank;
-            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> irank <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; irank <span style="color:#f92672">&lt;</span> n_size_; irank<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> irank <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; irank <span style="color:#f92672">&lt;</span> n_size_; irank<span style="color:#f92672">++</span>) {
                 tag <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">+</span> irank;
                 <span style="color:#66d9ef">double</span> pi_add;
                 MPI_Recv(<span style="color:#f92672">&amp;</span>pi_add, <span style="color:#ae81ff">1</span>, MPI_DOUBLE, irank,
                          tag, MPI_COMM_WORLD, <span style="color:#f92672">&amp;</span>status);
-                pi_now <span style="color:#f92672">+</span><span style="color:#f92672">=</span> pi_add;
+                pi_now <span style="color:#f92672">+=</span> pi_add;
             }
             fprintf(stdout,
-                <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">    step %d : pi = %.12f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, istep, pi_now);
+                <span style="color:#e6db74">&#34;    step %d : pi = %.12f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, istep, pi_now);
         } <span style="color:#66d9ef">else</span> {
             <span style="color:#75715e">// 랭크가 0 이 아닌 프로세스
 </span><span style="color:#75715e"></span>            tag <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">+</span> n_rank_;
@@ -357,7 +357,7 @@ queue <span style="color:#ae81ff">1</span>
                      tag, MPI_COMM_WORLD);
         }
 
-        <span style="color:#66d9ef">if</span> (n_rank_ <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+        <span style="color:#66d9ef">if</span> (n_rank_ <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
             <span style="color:#75715e">// 랭크가 0 인 프로세스
 </span><span style="color:#75715e"></span>
             <span style="color:#75715e">// 수렴 체크
@@ -367,7 +367,7 @@ queue <span style="color:#ae81ff">1</span>
                 converging <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
             }
 
-            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> irank <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; irank <span style="color:#f92672">&lt;</span> n_size_; irank<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> irank <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; irank <span style="color:#f92672">&lt;</span> n_size_; irank<span style="color:#f92672">++</span>) {
                 tag <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span> <span style="color:#f92672">+</span> irank;
                 MPI_Send(<span style="color:#f92672">&amp;</span>converging, <span style="color:#ae81ff">1</span>, MPI_INT, irank,
                          tag, MPI_COMM_WORLD);
@@ -379,7 +379,7 @@ queue <span style="color:#ae81ff">1</span>
                      tag, MPI_COMM_WORLD, <span style="color:#f92672">&amp;</span>status);
         }
 
-        istep <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        istep <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
         <span style="color:#75715e">// 적분 구간의 격자 갯수를 2배로 증가
 </span><span style="color:#75715e"></span>        nbin_u <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> nbin_u;
         delta_u <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> delta_u;
@@ -388,13 +388,13 @@ queue <span style="color:#ae81ff">1</span>
     <span style="color:#75715e">// 모든 프로세스가 여기에 도달할 때 까지 대기
 </span><span style="color:#75715e"></span>    MPI_Barrier(MPI_COMM_WORLD);
 
-    <span style="color:#66d9ef">if</span> (n_rank_ <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#66d9ef">if</span> (n_rank_ <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
         <span style="color:#75715e">// 랭크가 0 인 프로세스
-</span><span style="color:#75715e"></span>        fprintf(stdout, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-        fprintf(stdout, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">pi from numerical integration</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-        fprintf(stdout, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">  &gt; pi = %.12f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, pi_now);
-        fprintf(stdout, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">pi from C math library</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-        fprintf(stdout, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">  &gt; pi = %.12f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, M_PI);
+</span><span style="color:#75715e"></span>        fprintf(stdout, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        fprintf(stdout, <span style="color:#e6db74">&#34;pi from numerical integration</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        fprintf(stdout, <span style="color:#e6db74">&#34;  &gt; pi = %.12f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, pi_now);
+        fprintf(stdout, <span style="color:#e6db74">&#34;pi from C math library</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        fprintf(stdout, <span style="color:#e6db74">&#34;  &gt; pi = %.12f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, M_PI);
     }
 
     <span style="color:#75715e">// MPI 종료
@@ -421,7 +421,7 @@ queue <span style="color:#ae81ff">1</span>
 <li>kubernetes
 <ul>
 <li>컨테이너화된 애플리케이션의 자동 배포나 스케일링을 제공하는 관리 시스템<br />
-<em>즉, 도커는 컨테이너에 띄우고 실행하는 기술'이고 쿠버네티스는 도커를 관리하는 툴인 셈</em></li>
+<em>즉, 도커는 컨테이너에 띄우고 실행하는 기술&rsquo;이고 쿠버네티스는 도커를 관리하는 툴인 셈</em></li>
 </ul>
 </li>
 </ul>

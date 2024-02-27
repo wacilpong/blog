@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -159,8 +159,8 @@
     <div align="start" class="content"><p>리팩터링을 제대로 하려면 불가피하게 저지르는 실수를 잡아주는 견고한 테스트 스위트(test suite)가 뒷받침 되어야한다.<br />
 리팩터링을 위해 하지않더라도 좋은 테스트를 작성하는 일은 개발 효율을 높여준다.<br />
 <br /></p>
-<h1 id="41---">4.1 자가 테스트코드의 가치</h1>
-<h2 id="-----">디버깅의 시간을 줄이면 생산성이 급 상승한다.</h2>
+<h1 id="41-자가-테스트코드의-가치">4.1 자가 테스트코드의 가치</h1>
+<h2 id="디버깅의-시간을-줄이면-생산성이-급-상승한다">디버깅의 시간을 줄이면 생산성이 급 상승한다.</h2>
 <ul>
 <li>실제 코드를 작성하는 시간의 비중보다 디버깅 하는데에 시간을 더 오래 쓴 경험이 누구라도 있다.
 <ul>
@@ -188,7 +188,7 @@
 <blockquote>
 <p><strong>어차피 모든 버그를 잡아낼 수 없다고 생각하여 테스트를 작성하지 않는다면 대다수의 버그를 잡을 수 있는 기회를 날리는 셈이다.</strong> &gt; <br /></p>
 </blockquote>
-<h3 id="tdd-test-driven-development-----">TDD: Test-Driven Development - 테스트 주도 개발</h3>
+<h3 id="tdd-test-driven-development---테스트-주도-개발">TDD: Test-Driven Development - 테스트 주도 개발</h3>
 <ul>
 <li>테스트 - 코딩 - 리팩터링</li>
 <li>테스트를 추가하기 가장 좋은 시점은 프로그래밍 전이다.</li>
@@ -198,20 +198,20 @@
 <li><em>테스트를 모두 통과한 시점이 바로 코드를 완성한 시점이다.</em><br />
 <br /></li>
 </ul>
-<h2 id="------1">테스트가 갖춰지지않은 코드를 리팩터링 해야할 때,</h2>
+<h2 id="테스트가-갖춰지지않은-코드를-리팩터링-해야할-때">테스트가 갖춰지지않은 코드를 리팩터링 해야할 때,</h2>
 <p>곧바로 리팩토링을 하지않고 자가 테스트 코드부터 작성하라.</p>
 <ul>
 <li>리팩터링에는 반드시 테스트가 필요하다.<br />
 <br /></li>
 </ul>
-<h1 id="4246----">4.2~4.6 테스트 코드 생성부터 수정까지</h1>
+<h1 id="4246-테스트-코드-생성부터-수정까지">4.2~4.6 테스트 코드 생성부터 수정까지</h1>
 <ul>
 <li>예제 모카 라이브러리<br />
 <br /></li>
 </ul>
-<h2 id="--">테스트 기본 구조</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;지역전체 클래스 검사&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;부족분&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<h2 id="테스트-기본-구조">테스트 기본 구조</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;지역전체 클래스 검사&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;부족분&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">asia</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Province</span>(<span style="color:#a6e22e">sampleProvinceData</span>()); <span style="color:#75715e">// step 1
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">shortfall</span>, <span style="color:#ae81ff">5</span>); <span style="color:#75715e">// step 2
 </span><span style="color:#75715e"></span>  });
@@ -228,7 +228,7 @@
 <li>결과확인: 주어진 초기값에 기초하여 지역전체 클래스에서 생산부족분이 5이면 테스트 성공 아니면 실패<br />
 <br /></li>
 </ul>
-<h2 id="---">테스트 코드 작성 팁</h2>
+<h2 id="테스트-코드-작성-팁">테스트 코드 작성 팁</h2>
 <ul>
 <li>
 <p>실패해야할 상황에서는 실패하는지도 확인한다.</p>
@@ -251,22 +251,22 @@
 <li>
 <p>테스트끼리 상호작용하게 하는 공유 픽스처는 생성하지말자.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#75715e">// 💩 CASE
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">describe</span>(<span style="color:#a6e22e">description</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">describe</span>(<span style="color:#a6e22e">description</span>, () <span style="color:#f92672">=&gt;</span> {
   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">asia</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Province</span>(<span style="color:#a6e22e">sampleProvinceData</span>()); <span style="color:#75715e">//💩
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// 참조가 바뀔 경우 다른 테스트가 실패할 가능성이 있다!!
 </span><span style="color:#75715e"></span>
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케1&#39;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케2&#39;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케1&#39;</span>, () <span style="color:#f92672">=&gt;</span> { ... });
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케2&#39;</span>, () <span style="color:#f92672">=&gt;</span> { ... });
 });
 
 <span style="color:#75715e">// 👍🏻 CASE
 </span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">describe</span>(<span style="color:#a6e22e">description</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<span style="color:#a6e22e">describe</span>(<span style="color:#a6e22e">description</span>, () <span style="color:#f92672">=&gt;</span> {
   <span style="color:#75715e">/* 픽스처(초기 준비 작업 중 공통되는 부분) 작성 */</span>
-  <span style="color:#a6e22e">beforeEach</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
+  <span style="color:#a6e22e">beforeEach</span>(() <span style="color:#f92672">=&gt;</span> { ... });
 
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케1&#39;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케2&#39;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> { ... });
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케1&#39;</span>, () <span style="color:#f92672">=&gt;</span> { ... });
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;테케2&#39;</span>, () <span style="color:#f92672">=&gt;</span> { ... });
 });
 </code></pre></div><ul>
 <li>beforeEach 구문은 각각의 테스트 바로전에 실행되어 asia를 초기화하기 때문에 모든 테스트가 자신만의 새로운 asia를 사용하게 된다.</li>
@@ -278,7 +278,7 @@
 <p>it 구문은 하나당 검증도 하나씩 하는 것이 좋다. 하지만 밀접하다고 생각되면 묶어서 작성해도된다.</p>
 <ul>
 <li>복잡한 <code>setter</code>를 테스트해 보는 case
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;change production&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;change production&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
   <span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">producers</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">production</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
   <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">profit</span>, <span style="color:#ae81ff">292</span>);
   <span style="color:#a6e22e">assert</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">shortfall</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">6</span>);
@@ -291,9 +291,9 @@
 <ul>
 <li>빈 값이나 음수와 같은 경계조건</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;no producers&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;no producers&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">noProducers</span>;
-  <span style="color:#a6e22e">beforeEach</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#a6e22e">beforeEach</span>(() <span style="color:#f92672">=&gt;</span> {
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
       <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;no producers&#34;</span>,
       <span style="color:#a6e22e">producers</span><span style="color:#f92672">:</span> [],
@@ -302,15 +302,15 @@
     };
     <span style="color:#a6e22e">noProducers</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Province</span>(<span style="color:#a6e22e">data</span>);
   });
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;shortfall&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;shortfall&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">noProducers</span>.<span style="color:#a6e22e">shortfall</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#ae81ff">30</span>);
   });
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;profit&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;profit&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">noProducers</span>.<span style="color:#a6e22e">profit</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#ae81ff">0</span>);
   });
 });
 
-<span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;negative demand&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;negative demand&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
   <span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">demand</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
   <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">shortfall</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">26</span>);
   <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">profit</span>).<span style="color:#a6e22e">equal</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>);
@@ -318,7 +318,7 @@
 </code></pre></div><ul>
 <li>입력칸이 비어있을때도 잘 처리되는지 확인해본다.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;empty string demand&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;empty string demand&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
   <span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">demand</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
   <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">shortfall</span>).<span style="color:#66d9ef">NaN</span>;
   <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">asia</span>.<span style="color:#a6e22e">profit</span>).<span style="color:#66d9ef">NaN</span>;
@@ -326,8 +326,8 @@
 </code></pre></div><ul>
 <li>타입이 다른 경우도 테스트해본다(배열이 들어와야하는데 문자열넣었을때)</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;string for producers&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;&#34;</span>, () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;string for producers&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;&#34;</span>, () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
       <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;String producers&#34;</span>,
       <span style="color:#a6e22e">producers</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
@@ -358,7 +358,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="------2"><strong>테스트 코드는 어느 수준까지 작성해야 할까?</strong></h2>
+<h2 id="테스트-코드는-어느-수준까지-작성해야-할까"><strong>테스트 코드는 어느 수준까지 작성해야 할까?</strong></h2>
 <ul>
 <li>아무리 테스트코드를 작성을해도 버그없는 완벽한 프로그램을 만들수없다.</li>
 <li>수확체감법칙</li>
@@ -367,14 +367,14 @@
 <li>처리 과정이 복잡한 부분을 찾자</li>
 </ul>
 <p><br /></p>
-<h1 id="47---">4.7 끝나지 않은 여정</h1>
+<h1 id="47-끝나지-않은-여정">4.7 끝나지 않은 여정</h1>
 <blockquote>
 <p><strong>모든 버그를 걸러주지는 못할지라도, 안심하고 리팩터링할 수 있는 보호막은 되어준다.</strong></p>
 </blockquote>
 <p>리팩터링하는 동안에도 계속 테스트를 추가하자.</p>
 <p>테스트 용이성을 아키텍처 평가 기준으로 활용하는 사례도 많다.<br />
 <br /></p>
-<h3 id="---1">다양한 유형의 테스트</h3>
+<h3 id="다양한-유형의-테스트">다양한 유형의 테스트</h3>
 <ul>
 <li>단위테스트<br />
 코드의 작은 영역만을 대상으로 빠르게 실행되도록 설계된 테스트, 자가 테스트 코드의 핵심이자, 자가테스트 시스템의 대부분이다.</li>
@@ -383,7 +383,7 @@
 <li>성능 테스트</li>
 </ul>
 <p><br /></p>
-<h3 id="------3">테스트의 품질 향상 및 평가 기준</h3>
+<h3 id="테스트의-품질-향상-및-평가-기준">테스트의 품질 향상 및 평가 기준</h3>
 <ul>
 <li>한 번에 완벽한 테스트를 갖추기는 어려우므로 테스트 스위트를 지속해서 보강한다. 기존 테스트가 명확한지, 이해하기 쉽게 리팩터링할 수 없는지, 제대로 검사하는지 등을 확인한다.</li>
 <li>버그리포트를 받으면 가장 먼저 그 버그를 드러내는 단위 테스트부터 작성하는 습관을 들이자.</li>

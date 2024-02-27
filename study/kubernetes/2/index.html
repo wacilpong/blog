@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -156,9 +156,9 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="--6-">시작하세요! 도커/쿠버네티스 6장 읽기</h2>
+    <div align="start" class="content"><h2 id="시작하세요-도커쿠버네티스-6장-읽기">시작하세요! 도커/쿠버네티스 6장 읽기</h2>
 <ul>
-<li>쿠버네티스는 대부분의 리소스를 &lsquo;오브젝트'라고 불리는 형태로 관리한다.
+<li>쿠버네티스는 대부분의 리소스를 &lsquo;오브젝트&rsquo;라고 불리는 형태로 관리한다.
 <ul>
 <li>컨테이너의 집합(Pods), Pods를 관리하는 컨트롤러(Replica Set), 사용자(Service Account), 노드(Node)&hellip;</li>
 <li><code>kubectl explain {이름 ex. pod}</code>으로 특정 오브젝트의 간단한 설명을 볼 수 있다.</li>
@@ -168,7 +168,7 @@
 <li>쿠버네티스를 구성하는 여러 컴포넌트들은 기본적으로 컨테이너로서 실행되고 있다.</li>
 </ul>
 <p><br /></p>
-<h4 id="pod----">파드(Pod): 컨테이너를 다루는 기본 단위</h4>
+<h4 id="파드pod-컨테이너를-다루는-기본-단위">파드(Pod): 컨테이너를 다루는 기본 단위</h4>
 <ul>
 <li>
 <p>컨테이너 애플리케이션을 배포하기 위한 기본 단위이다.</p>
@@ -176,17 +176,17 @@
 <li>
 <p>1개의 파드에는 1+a개의 컨테이너가 존재할 수 있다.<br />
 <em>ex. 동일한 nginx 컨테이너를 여러 개 생성하려면 1개 nginx 컨테이너가 담긴 파드를 여러 개 생성</em></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: my-nginx-pod
-spec:
-  containers:
-    - name: my-nginx-container
-      image: nginx:latest
-      ports:
-        - containerPort: <span style="color:#ae81ff">80</span>
-          protocol: TCP
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: v1
+<span style="color:#66d9ef">kind</span>: Pod
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: my-nginx-pod
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">containers</span>:
+    - <span style="color:#66d9ef">name</span>: my-nginx-container
+      <span style="color:#66d9ef">image</span>: nginx:latest
+      <span style="color:#66d9ef">ports</span>:
+        - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">80</span>
+          <span style="color:#66d9ef">protocol</span>: TCP
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 파드 생성</span>
 $ kubectl apply -f pod.yaml
 
@@ -213,33 +213,33 @@ $ kubectl delete -f pod.yaml
 </li>
 </ul>
 <p><br /></p>
-<h4 id="replica-set-----">레플리카셋(Replica Set): 일정 개수의 파드를 유지하는 컨트롤러</h4>
+<h4 id="레플리카셋replica-set-일정-개수의-파드를-유지하는-컨트롤러">레플리카셋(Replica Set): 일정 개수의 파드를 유지하는 컨트롤러</h4>
 <ul>
 <li>
 <p>정해진 수의 동일한 파드가 항상 실행되도록 관리한다.</p>
 </li>
 <li>
 <p>노드 장애 등의 이유로 파드를 사용할 수 없다면 다른 노드에서 파드를 다시 생성한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: replicaset-nginx
-spec:
-  replicas: <span style="color:#ae81ff">3</span>
-  selector:
-    matchLabels:
-      app: my-nginx-pods-label
-  template:
-    metadata:
-      name: my-nginx-pod
-      labels:
-        app: my-nginx-pods-label
-    spec:
-      containers:
-        - name: nginx
-          image: nginx:latest
-          ports:
-            - containerPort: <span style="color:#ae81ff">80</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: apps/v1
+<span style="color:#66d9ef">kind</span>: ReplicaSet
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: replicaset-nginx
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">3</span>
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">matchLabels</span>:
+      <span style="color:#66d9ef">app</span>: my-nginx-pods-label
+  <span style="color:#66d9ef">template</span>:
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">name</span>: my-nginx-pod
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">app</span>: my-nginx-pods-label
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">containers</span>:
+        - <span style="color:#66d9ef">name</span>: nginx
+          <span style="color:#66d9ef">image</span>: nginx:latest
+          <span style="color:#66d9ef">ports</span>:
+            - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">80</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 레플리카셋 생성</span>
 kubectl apply -f replicaset.yaml
 
@@ -268,30 +268,30 @@ kubectl delete rs replicaset-nginx
 </li>
 </ul>
 <p><br /></p>
-<h4 id="deployment---">디플로이먼트(Deployment): 레플리카셋/파드의 배포를 관리</h4>
+<h4 id="디플로이먼트deployment-레플리카셋파드의-배포를-관리">디플로이먼트(Deployment): 레플리카셋/파드의 배포를 관리</h4>
 <ul>
 <li>
 <p>실제 쿠버 운영 환경에서는 디플로이먼트라는 오브젝트를 YAML에 정의해 사용한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-nginx-deployment
-spec:
-  replicas: <span style="color:#ae81ff">3</span>
-  selector:
-    matchLabels:
-      app: my-nginx
-  template:
-    metadata:
-      name: my-nginx-pod
-      labels:
-        app: my-nginx
-    spec:
-      containers:
-        - name: nginx
-          image: nginx:<span style="color:#ae81ff">1.10</span>
-          ports:
-            - containerPort: <span style="color:#ae81ff">80</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: apps/v1
+<span style="color:#66d9ef">kind</span>: Deployment
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: my-nginx-deployment
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">3</span>
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">matchLabels</span>:
+      <span style="color:#66d9ef">app</span>: my-nginx
+  <span style="color:#66d9ef">template</span>:
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">name</span>: my-nginx-pod
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">app</span>: my-nginx
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">containers</span>:
+        - <span style="color:#66d9ef">name</span>: nginx
+          <span style="color:#66d9ef">image</span>: nginx:<span style="color:#ae81ff">1.10</span>
+          <span style="color:#66d9ef">ports</span>:
+            - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">80</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 디플로이먼트 생성</span>
 kubectl apply -f deployment.yaml
 
@@ -328,7 +328,7 @@ kubectl rollout undo deployment my-nginx-deployment --to-revision<span style="co
 </li>
 </ul>
 <p><br /></p>
-<h4 id="service----">서비스(Service): 파드를 연결하고 외부에 노출</h4>
+<h4 id="서비스service-파드를-연결하고-외부에-노출">서비스(Service): 파드를 연결하고 외부에 노출</h4>
 </div>
 
 </main>

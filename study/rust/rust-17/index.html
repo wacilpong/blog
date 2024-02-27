@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -156,14 +156,14 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="--">객체지향 언어의 특징</h2>
-<h3 id="1-1----">1-1. 데이터와 행위를 정의하는 객체</h3>
+    <div align="start" class="content"><h2 id="객체지향-언어의-특징">객체지향 언어의 특징</h2>
+<h3 id="1-1-데이터와-행위를-정의하는-객체">1-1. 데이터와 행위를 정의하는 객체</h3>
 <ul>
 <li>객체는 데이터와 그 데이터를 운영하는 절차(메서드)를 모아둔 개념이다.</li>
 <li>구조체/열거자는 impl 블록을 통해 메서드를 제공하기 때문에 러스트는 객체지향이다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1-2-">1-2. 캡슐화</h3>
+<h3 id="1-2-캡슐화">1-2. 캡슐화</h3>
 <ul>
 <li>객체의 상세 구현에 접근하지 못하도록 한다.</li>
 <li>공개API에 의존하여 객체를 다룰 수 있다.</li>
@@ -184,11 +184,11 @@
     <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">remove</span>(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self) -&gt; Option<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> {
         <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> self.list.pop();
         <span style="color:#66d9ef">match</span> result {
-            Some(value) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+            Some(value) <span style="color:#f92672">=&gt;</span> {
                 self.update_average();
                 Some(value)
             }
-            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> None,
+            None <span style="color:#f92672">=&gt;</span> None,
         }
     }
 
@@ -206,13 +206,13 @@
 <li><code>list</code>, <code>average</code> 필드는 비공개이므로 외부에서 필드값을 변경할 수 없다.</li>
 </ul>
 <p><br /></p>
-<h3 id="13-------">1.3. 타입 시스템으로서의 상속, 코드 공유를 위한 상속</h3>
+<h3 id="13-타입-시스템으로서의-상속-코드-공유를-위한-상속">1.3. 타입 시스템으로서의 상속, 코드 공유를 위한 상속</h3>
 <ul>
 <li>객체가 다른 객체의 데이터와 행위를 물려받는 메커니즘이다.</li>
 <li>러스트에는 부모 구조체의 필드와 메서드 구현을 물려받는 구조체를 정의하는 <strong>상속</strong>의 개념은 없다.</li>
 </ul>
 <p><br /></p>
-<h4 id="---1">상속을 택하는 이유?</h4>
+<h4 id="상속을-택하는-이유">상속을 택하는 이유?</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">  <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Summary {
       <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">summarize</span>(<span style="color:#f92672">&amp;</span>self) -&gt; String {
           String::from(<span style="color:#e6db74">&#34;(lRead more...)&#34;</span>)
@@ -269,16 +269,16 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="----">다른 타입을 허용하는 트레이트 객체</h2>
-<h3 id="2-1----">2-1. 트레이트: 공통 행위를 정의</h3>
+<h2 id="다른-타입을-허용하는-트레이트-객체">다른 타입을 허용하는 트레이트 객체</h2>
+<h3 id="2-1-트레이트-공통-행위를-정의">2-1. 트레이트: 공통 행위를 정의</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Draw {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">draw</span>(<span style="color:#f92672">&amp;</span>self);
 }
 
 <span style="color:#75715e">// (1) 트레이트만을 활용한 객체
-</span><span style="color:#75715e"></span><span style="color:#75715e">// : 여러 타입을 저장할 수 있다.
+</span><span style="color:#75715e">// : 여러 타입을 저장할 수 있다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Screen</span> {
-    <span style="color:#66d9ef">pub</span> components: Vec<span style="color:#f92672">&lt;</span>Box<span style="color:#f92672">&lt;</span>dyn Draw<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>,
+    <span style="color:#66d9ef">pub</span> components: Vec<span style="color:#f92672">&lt;</span>Box<span style="color:#f92672">&lt;</span>dyn Draw<span style="color:#f92672">&gt;&gt;</span>,
 }
 
 <span style="color:#66d9ef">impl</span> Screen {
@@ -290,19 +290,19 @@
 }
 
 <span style="color:#75715e">// (2) 제네릭과 트레이트 경계를 활용한 객체
-</span><span style="color:#75715e"></span><span style="color:#75715e">// : 같은 종류의 타입에 대한 컬렉션을 지원한다.
-</span><span style="color:#75715e"></span><span style="color:#75715e">// pub struct Screen&lt;T: Draw&gt; {
-</span><span style="color:#75715e"></span><span style="color:#75715e">//     pub components: Vec&lt;T&gt;
-</span><span style="color:#75715e"></span><span style="color:#75715e">// }
+</span><span style="color:#75715e">// : 같은 종류의 타입에 대한 컬렉션을 지원한다.
+</span><span style="color:#75715e">// pub struct Screen&lt;T: Draw&gt; {
+</span><span style="color:#75715e">//     pub components: Vec&lt;T&gt;
+</span><span style="color:#75715e">// }
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// impl&lt;T&gt; Screen&lt;T&gt;
-</span><span style="color:#75715e"></span><span style="color:#75715e">//     where T: Draw {
-</span><span style="color:#75715e"></span><span style="color:#75715e">//     pub fn run(&amp;self) {
-</span><span style="color:#75715e"></span><span style="color:#75715e">//         for component in self.components.iter() {
-</span><span style="color:#75715e"></span><span style="color:#75715e">//             component.draw();
-</span><span style="color:#75715e"></span><span style="color:#75715e">//         }
-</span><span style="color:#75715e"></span><span style="color:#75715e">//     }
-</span><span style="color:#75715e"></span><span style="color:#75715e">// }
+</span><span style="color:#75715e">//     where T: Draw {
+</span><span style="color:#75715e">//     pub fn run(&amp;self) {
+</span><span style="color:#75715e">//         for component in self.components.iter() {
+</span><span style="color:#75715e">//             component.draw();
+</span><span style="color:#75715e">//         }
+</span><span style="color:#75715e">//     }
+</span><span style="color:#75715e">// }
 </span></code></pre></div><ul>
 <li>트레이트 객체는 <code>&amp;</code> 참조, <code>Box&lt;T&gt;</code> 스마트 포인터 등의 포인터를 이용해 생성해야 하고, <code>dyn</code> 키워드와 함께 트레이트를 명시해야 한다.</li>
 <li>다른 언어에서는 데이터와 행위를 <strong>객체</strong>라는 하나의 개념으로 칭한다.</li>
@@ -311,13 +311,13 @@
 <em>트레이트 객체의 목적: 공통된 행위에 대한 추상화를 제공한다.</em></li>
 </ul>
 <p><br /></p>
-<h3 id="2-2--">2-2. 트레이트 구현</h3>
+<h3 id="2-2-트레이트-구현">2-2. 트레이트 구현</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Draw {
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">draw</span>(<span style="color:#f92672">&amp;</span>self);
 }
 
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Screen</span> {
-    <span style="color:#66d9ef">pub</span> components: Vec<span style="color:#f92672">&lt;</span>Box<span style="color:#f92672">&lt;</span>dyn Draw<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#66d9ef">pub</span> components: Vec<span style="color:#f92672">&lt;</span>Box<span style="color:#f92672">&lt;</span>dyn Draw<span style="color:#f92672">&gt;&gt;</span>
 }
 
 <span style="color:#66d9ef">impl</span> Screen {
@@ -330,7 +330,7 @@
 
 
 <span style="color:#75715e">// Button이 아닌 다른 구조체일 경우 다른 필드가 정의될 수 있다.
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 다른 타입이여도 Draw 트레이트를 구현하고 있다.
+</span><span style="color:#75715e">// 다른 타입이여도 Draw 트레이트를 구현하고 있다.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Button</span> {
     <span style="color:#66d9ef">pub</span> width: <span style="color:#66d9ef">u32</span>,
     <span style="color:#66d9ef">pub</span> height: <span style="color:#66d9ef">u32</span>,
@@ -405,7 +405,7 @@
 </code></pre></div></li>
 </ul>
 <p><br /></p>
-<h3 id="2-3-----">2-3. 동적 호출을 수행하는 트레이트 객체</h3>
+<h3 id="2-3-동적-호출을-수행하는-트레이트-객체">2-3. 동적 호출을 수행하는 트레이트 객체</h3>
 <ul>
 <li><code>정적 호출 (static dispatch)</code>
 <ul>
@@ -429,7 +429,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="2-4-----">2-4. 객체 안전성을 요구하는 트레이트 객체</h3>
+<h3 id="2-4-객체-안전성을-요구하는-트레이트-객체">2-4. 객체 안전성을 요구하는 트레이트 객체</h3>
 <ul>
 <li>러스트는 트레이트를 구현하는 실제 타입을 알 수 없으므로 객체 안전성이 보장되어야 한다.</li>
 <li>트레이트 객체는 <strong>객체 안전성</strong>을 가진 트레이트만 사용할 수 있다.</li>
@@ -442,8 +442,8 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="---">객체지향 디자인 패턴 구현</h2>
-<h4 id="--state-pattern"><strong>상태 패턴 (state pattern)</strong></h4>
+<h2 id="객체지향-디자인-패턴-구현">객체지향 디자인 패턴 구현</h2>
+<h4 id="상태-패턴-state-pattern"><strong>상태 패턴 (state pattern)</strong></h4>
 <ul>
 <li>
 <p>객체지향 디자인 패턴</p>
@@ -453,10 +453,10 @@
 <p><br /></p>
 </li>
 </ul>
-<h3 id="3-15-blog-post---">3-1~5. Blog, Post 상태 패턴 구현해보기</h3>
+<h3 id="3-15-blog-post-상태-패턴-구현해보기">3-1~5. Blog, Post 상태 패턴 구현해보기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// lib.rs
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Post</span> {
-    state: Option<span style="color:#f92672">&lt;</span>Box<span style="color:#f92672">&lt;</span>dyn State<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>,
+    state: Option<span style="color:#f92672">&lt;</span>Box<span style="color:#f92672">&lt;</span>dyn State<span style="color:#f92672">&gt;&gt;</span>,
     content: String,
 }
 
@@ -565,7 +565,7 @@
     assert_eq<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;나는 오늘 점심으로 샐러드를 먹었다.&#34;</span>, post.content());
 }
 </code></pre></div><p><br /></p>
-<h3 id="3-6----">3-6. 상태 패턴의 트레이드 오프</h3>
+<h3 id="3-6-상태-패턴의-트레이드-오프">3-6. 상태 패턴의 트레이드 오프</h3>
 <ul>
 <li>상태 패턴의 장/단점
 <ul>

@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -162,7 +162,7 @@
 <li>IAM(Identity and Access Management) 계정은 특정한 권한에 대한 제약을 갖는다.</li>
 </ul>
 <p><br /></p>
-<h3 id="-">가상머신 만들기</h3>
+<h3 id="가상머신-만들기">가상머신 만들기</h3>
 <ul>
 <li>서비스 &gt; EC2 &gt; 인스턴스 시작 &gt; Amazon Linux 2 AMI(HVM), SSD Volume type &gt;<br />
 <em>Free tier eligible로 표시되어 있으면 아마존이 무료로 제공되는 가상머신이다.</em></li>
@@ -172,7 +172,7 @@
 <li>인스턴스 시작 &gt; 모든 인스턴스 보기 &gt; 연결 &gt; SSH 클라이언트</li>
 </ul>
 <p><br /></p>
-<h3 id="--1">가상머신 접속</h3>
+<h3 id="가상머신-접속">가상머신 접속</h3>
 <pre><code>$ chmod 400 cloud-test.pem
 $ ssh -i &quot;cloud-test.pem&quot; ec2-user@어쩌구저쩌구
 
@@ -185,7 +185,7 @@ $ hostnamectl
 <li><code>hostnamectil</code>을 통해 호스트 정보를 확인할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="--">가상머신 인스턴스 중지</h3>
+<h3 id="가상머신-인스턴스-중지">가상머신 인스턴스 중지</h3>
 <ul>
 <li>AWS 콘솔 &gt; 인스턴스 상태 &gt; 중지<br />
 <em>SSH 연결은 끊긴다.</em><br />

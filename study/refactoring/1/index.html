@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -156,7 +156,7 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="-">함수 추출하기</h2>
+    <div align="start" class="content"><h2 id="함수-추출하기">함수 추출하기</h2>
 <ul>
 <li>프로그램이 새로운 기능을 추가하기에 편한 구조가 아니라면, 먼저 기능을 추가하기 쉬운 형태로 리팩터링하고 나서 원하는 기능을 추가하자.</li>
 <li>한번에 너무 많이 수정하려다 실수를 저지르면 디버깅하기 어려워 결과적으로 작업 시간이 늘어난다.</li>
@@ -165,7 +165,7 @@
 <li>저자는 함수의 반환 값에는 항상 <code>result</code>라는 이름을 쓴다고 한다.</li>
 </ul>
 <p><br /></p>
-<h2 id="------">임시 변수를 질의 함수로 바꾸기, 변수 인라인하기</h2>
+<h2 id="임시-변수를-질의-함수로-바꾸기-변수-인라인하기">임시 변수를 질의 함수로 바꾸기, 변수 인라인하기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">playFor</span>(<span style="color:#a6e22e">aPerformance</span>) {
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">plays</span>[<span style="color:#a6e22e">aPerformance</span>.<span style="color:#a6e22e">playID</span>];
 }
@@ -184,11 +184,11 @@
 <li>스코프를 신경 써야 할 대상이 줄어들기 때문이다.</li>
 </ul>
 <p><br /></p>
-<h2 id="--1">반복문 쪼개기</h2>
+<h2 id="반복문-쪼개기">반복문 쪼개기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">statement</span>(<span style="color:#a6e22e">invoice</span>, <span style="color:#a6e22e">plays</span>) {
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">totalAmount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">volumeCredits</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">청구 내역 (고객명: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">customer</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`청구 내역 (고객명: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">customer</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
 
   <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">perf</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">performances</span>) {
     <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#f92672">~</span>;
@@ -209,7 +209,7 @@
 <em><a href="https://www.developerway.com/posts/how-to-use-memo-use-callback">리액트 useMemo, useCallback과 같은 기법에 대해서도 정확히 메모이제이션이 필요한지 아는 경우가 아니면 쓰지 않는 게 낫다는 글들</a>이 있는데 그 글들의 요지도 성능 개선을 먼저 생각하지 말고 다른 버그들이 나지 않도록 로직적으로 더 개선하라는 것</em></li>
 </ul>
 <p><br /></p>
-<h2 id="--">반복문을 파이프라인으로 바꾸기</h2>
+<h2 id="반복문을-파이프라인으로-바꾸기">반복문을 파이프라인으로 바꾸기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">totalAmount</span>(<span style="color:#a6e22e">data</span>) {
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">performances</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">total</span>, <span style="color:#a6e22e">p</span>) =&gt; <span style="color:#a6e22e">total</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">amount</span>, <span style="color:#ae81ff">0</span>);
 }
@@ -218,12 +218,12 @@
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">performances</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">total</span>, <span style="color:#a6e22e">p</span>) =&gt; <span style="color:#a6e22e">total</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">volumeCredits</span>, <span style="color:#ae81ff">0</span>);
 }
 </code></pre></div><p><br /></p>
-<h2 id="---">조건부 로직을 다형성으로 바꾸기</h2>
+<h2 id="조건부-로직을-다형성으로-바꾸기">조건부 로직을 다형성으로 바꾸기</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createPerformanceCaculator</span>(<span style="color:#a6e22e">aPerforamnce</span>, <span style="color:#a6e22e">aPlay</span>) {
   <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">aPlay</span>.<span style="color:#a6e22e">type</span>) {
     <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;tragedy&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TragedyCaculator</span>(<span style="color:#a6e22e">aPerforamnce</span>, <span style="color:#a6e22e">aPlay</span>);
     <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;comedy&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ComedyCaculator</span>(<span style="color:#a6e22e">aPerforamnce</span>, <span style="color:#a6e22e">aPlay</span>);
-    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`</span><span style="color:#e6db74">알 수 없는 장르: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">aPlay</span>.<span style="color:#a6e22e">type</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`알 수 없는 장르: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">aPlay</span>.<span style="color:#a6e22e">type</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
   }
 }
 
@@ -251,7 +251,7 @@
 <li>amount와 volumeCredits 계산하는 조건부 로직을 생성함수 쪽으로 옮겼는데, 같은 타입의 다형성을 기반으로 실행되는 함수가 많을수록 이렇게 구성하는 편이 유리하다.</li>
 </ul>
 <p><br /></p>
-<h2 id="heading">마무리</h2>
+<h2 id="마무리">마무리</h2>
 <ul>
 <li>리팩터링은 대부분 코드가 하는 일을 파악하는 데서 시작한다.</li>
 <li><strong>좋은 코드를 가늠하는 확실한 방법은 <code>얼마나 수정하기 쉬운가</code>다.</strong></li>

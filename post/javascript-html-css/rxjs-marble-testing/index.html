@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -173,15 +173,15 @@
 </ul>
 <p><br /></p>
 <h2 id="example">Example</h2>
-<p>(1) source 옵저버블이 일어날 때마다 startWith로 최초 시작한 후 항상 &lsquo;done'이라는 값을 방출하는 옵저버블 테스트</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-a-b-|&#34;</span>);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;ab-c-|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>});
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">source</span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">pipe</span>(
+<p>(1) source 옵저버블이 일어날 때마다 startWith로 최초 시작한 후 항상 &lsquo;done&rsquo;이라는 값을 방출하는 옵저버블 테스트</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-a-b-|&#34;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;ab-c-|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>, <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;done&#34;</span>});
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">source$</span>.<span style="color:#a6e22e">pipe</span>(
   <span style="color:#a6e22e">startWith</span>({}),
-  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">of</span>(<span style="color:#e6db74">&#34;done&#34;</span>))
+  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">of</span>(<span style="color:#e6db74">&#34;done&#34;</span>))
 );
 
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">result</span><span style="color:#a6e22e">$</span>).<span style="color:#a6e22e">toBeObservable</span>(<span style="color:#a6e22e">expected</span><span style="color:#a6e22e">$</span>);
+<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">result$</span>).<span style="color:#a6e22e">toBeObservable</span>(<span style="color:#a6e22e">expected$</span>);
 </code></pre></div><p><br /></p>
 <p>(2) hot 옵저버블에 대한 기본적인 테스트 (구독한 후 a를 방출하고 10ms 후에 종료)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hot</span>(<span style="color:#e6db74">&#34;-^a-|&#34;</span>, {<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">5</span>});
@@ -196,12 +196,12 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">eventCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;--a--b|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;y&#34;</span>});
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s1</span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">tap</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">eventCount</span><span style="color:#f92672">++</span>));
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s1</span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">tap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">eventCount</span><span style="color:#f92672">++</span>));
 
 <span style="color:#a6e22e">expectObservable</span>(<span style="color:#a6e22e">result</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;--a--b|&#34;</span>, [<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#e6db74">&#34;y&#34;</span>]);
 
 <span style="color:#75715e">// run &#39;virtual time&#39;
-</span><span style="color:#75715e"></span><span style="color:#75715e">// to complete all outstanding hot or cold observables
+</span><span style="color:#75715e">// to complete all outstanding hot or cold observables
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">flush</span>();
 
 <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">eventCount</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#ae81ff">2</span>);
@@ -209,9 +209,9 @@
 <li>
 <p>API call<br />
 <code>getTestScheduler</code> will inject a virtual time to the jasmine cold matcher function which will be executed immediately when we flush it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected</span><span style="color:#a6e22e">$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-----a|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> [{<span style="color:#a6e22e">first</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;roomy&#34;</span>}]});
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected$</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cold</span>(<span style="color:#e6db74">&#34;-----a|&#34;</span>, {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> [{<span style="color:#a6e22e">first</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;roomy&#34;</span>}]});
 
-<span style="color:#a6e22e">userApi</span>.<span style="color:#a6e22e">searchUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">expected</span><span style="color:#a6e22e">$</span>);
+<span style="color:#a6e22e">userApi</span>.<span style="color:#a6e22e">searchUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">expected$</span>);
 
 <span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">search</span>(<span style="color:#e6db74">&#34;roomy&#34;</span>);
 

@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -163,7 +163,7 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="-">에러의 종류</h2>
+<h2 id="에러의-종류">에러의 종류</h2>
 <h4 id="1-recoverable-error"><strong>1. recoverable error</strong></h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">enum</span> Result<span style="color:#f92672">&lt;</span>T, E<span style="color:#f92672">&gt;</span> {
 	Ok(T),
@@ -191,13 +191,13 @@
 <li>유효하지 않거나 잘못된 값을 계속 사용하지 못하도록 프로세스를 종료한다.</li>
 </ul>
 <p><br /></p>
-<h2 id="unrecoverable-errors-with-panic-">Unrecoverable Errors with <code>panic!</code> 매크로</h2>
+<h2 id="unrecoverable-errors-with-panic-매크로">Unrecoverable Errors with <code>panic!</code> 매크로</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) panic! 매크로 직접 호출하기
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;crash and burn&#34;</span>);
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2) panic! 발생하는 예:
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 벡터의 크기를 벗어난 인덱스로 값을 읽는 경우
+</span><span style="color:#75715e">// 벡터의 크기를 벗어난 인덱스로 값을 읽는 경우
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
   <span style="color:#66d9ef">let</span> v <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>];
 
@@ -239,7 +239,7 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 <p><br /></p>
 <hr />
 <h2 id="recoverable-errors-with-result-enum">Recoverable Errors with <code>Result</code> enum</h2>
-<h4 id="match----result---">match 표현식을 이용해 리턴된 Result 타입의 리턴값 처리</h4>
+<h4 id="match-표현식을-이용해-리턴된-result-타입의-리턴값-처리">match 표현식을 이용해 리턴된 Result 타입의 리턴값 처리</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs::File;
 
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
@@ -247,8 +247,8 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>);
 
   <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> f {
-      Ok(file) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> file,
-      Err(error) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+      Ok(file) <span style="color:#f92672">=&gt;</span> file,
+      Err(error) <span style="color:#f92672">=&gt;</span> {
           panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일 열기 실패: {:?}&#34;</span>, error);
       }
   };
@@ -263,12 +263,12 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 <li>Result 열거자와 값이 prelude에 의해 자동으로 임포트된다.</li>
 <li>파일이 없는 경우 에러 메시지는 다음과 같다.
 <ul>
-<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;파일 열기 실패: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }', src/main.rs:10:13</em></li>
+<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;파일 열기 실패: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }&rsquo;, src/main.rs:10:13</em></li>
 </ul>
 </li>
 </ul>
 <p><br /></p>
-<h4 id="match-----">match 표현식으로 여러 종류의 에러 처리하기</h4>
+<h4 id="match-표현식으로-여러-종류의-에러-처리하기">match 표현식으로 여러 종류의 에러 처리하기</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs::File;
 <span style="color:#66d9ef">use</span> std::io::ErrorKind;
 
@@ -277,18 +277,18 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>);
 
   <span style="color:#e6db74">/**
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">    </span><span style="color:#e6db74">*</span><span style="color:#e6db74"> 파일 열기 시도 실패 시
-</span><span style="color:#e6db74">    </span><span style="color:#e6db74">*</span><span style="color:#e6db74"> =&gt; error.kind가 NotFound 인지 확인
-</span><span style="color:#e6db74">    </span><span style="color:#e6db74">*</span><span style="color:#e6db74"> =&gt; 파일 생성 =&gt; 파일 생성 성공 </span><span style="color:#e6db74">/</span><span style="color:#e6db74"> 실패 따른 처리
-</span><span style="color:#e6db74">    </span><span style="color:#e6db74">*/</span>
+</span><span style="color:#e6db74">    * 파일 열기 시도 실패 시
+</span><span style="color:#e6db74">    * =&gt; error.kind가 NotFound 인지 확인
+</span><span style="color:#e6db74">    * =&gt; 파일 생성 =&gt; 파일 생성 성공 / 실패 따른 처리
+</span><span style="color:#e6db74">    */</span>
   <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> f {
-      Ok(file) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> file,
-      Err(<span style="color:#66d9ef">ref</span> error) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">match</span> error.kind() {
-          ErrorKind::NotFound <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">match</span> File::create(<span style="color:#e6db74">&#34;hello.txt&#34;</span>) {
-              Ok(fc) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> fc,
-              Err(e) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일을 생성하지 못했습니다: {:?}&#34;</span>, e),
+      Ok(file) <span style="color:#f92672">=&gt;</span> file,
+      Err(<span style="color:#66d9ef">ref</span> error) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">match</span> error.kind() {
+          ErrorKind::NotFound <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">match</span> File::create(<span style="color:#e6db74">&#34;hello.txt&#34;</span>) {
+              Ok(fc) <span style="color:#f92672">=&gt;</span> fc,
+              Err(e) <span style="color:#f92672">=&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일을 생성하지 못했습니다: {:?}&#34;</span>, e),
           },
-          other_error <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일을 열지 못했습니다: {:?}&#34;</span>, other_error),
+          other_error <span style="color:#f92672">=&gt;</span> panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일을 열지 못했습니다: {:?}&#34;</span>, other_error),
       },
   };
 }
@@ -310,7 +310,7 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 <li>Result 타입의 값이 Ok이면 저장된 값을 반환하고, Err라면 panic! 매크로를 호출한다.</li>
 <li>에러메시지
 <ul>
-<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;called Result::unwrap() on an Err value: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }', src/main.rs:4:37</em></li>
+<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;called Result::unwrap() on an Err value: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }&rsquo;, src/main.rs:4:37</em></li>
 </ul>
 </li>
 </ul>
@@ -326,13 +326,13 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 <li>에러 메시지와 함께 panic! 매크로를 호출한다.</li>
 <li>에러메시지:
 <ul>
-<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;파일을 열 수 없습니다.: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }', src/main.rs:4:37</em></li>
+<li><em>thread &lsquo;main&rsquo; panicked at &lsquo;파일을 열 수 없습니다.: Os { code: 2, kind: NotFound, message: &ldquo;No such file or directory&rdquo; }&rsquo;, src/main.rs:4:37</em></li>
 </ul>
 </li>
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="--1">에러 전파하기</h2>
+<h2 id="에러-전파하기">에러 전파하기</h2>
 <h4 id="1-return-erre"><strong>1. return Err(e)</strong></h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs::File;
 <span style="color:#66d9ef">use</span> std::io;
@@ -342,14 +342,14 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
   <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read_username_from_file</span>() -&gt; Result<span style="color:#f92672">&lt;</span>String, io::Error<span style="color:#f92672">&gt;</span> {
       <span style="color:#66d9ef">let</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>);
       <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> f <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> f {
-          Ok(file) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> file,
-          Err(e) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">return</span> Err(e), <span style="color:#75715e">// 함수 실행 조기 중단, 에러값을 호출자에 리턴
+          Ok(file) <span style="color:#f92672">=&gt;</span> file,
+          Err(e) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">return</span> Err(e), <span style="color:#75715e">// 함수 실행 조기 중단, 에러값을 호출자에 리턴
 </span><span style="color:#75715e"></span>      };
       <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::new();
       <span style="color:#75715e">// read_to_string: 파일의 내용을 변수에 기록, Result 타입 리턴
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">match</span> f.read_to_string(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s) {
-          Ok(_) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Ok(s),
-          Err(e) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Err(e), <span style="color:#75715e">// 함수의 마지막 표현식이므로 return 키워드 명시 X
+          Ok(_) <span style="color:#f92672">=&gt;</span> Ok(s),
+          Err(e) <span style="color:#f92672">=&gt;</span> Err(e), <span style="color:#75715e">// 함수의 마지막 표현식이므로 return 키워드 명시 X
 </span><span style="color:#75715e"></span>      }
   }
 }
@@ -357,7 +357,7 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 <li>return 키워드로 함수를 조기 중단하고 에러값을 반환한다.</li>
 </ul>
 <p><br /></p>
-<h4 id="2--"><strong>2. ? 연산자</strong></h4>
+<h4 id="2--연산자"><strong>2. ? 연산자</strong></h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">read_username_from_file</span>() -&gt; Result<span style="color:#f92672">&lt;</span>String, io::Error<span style="color:#f92672">&gt;</span> {
 		<span style="color:#75715e">// ok, err값을 다르게 처리하면서 에러발생시 에러를 반환하고 종료
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> f <span style="color:#f92672">=</span> File::open(<span style="color:#e6db74">&#34;hello.txt&#34;</span>)<span style="color:#f92672">?</span>;
@@ -372,7 +372,7 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="-panic--">언제 panic! 매크로를 사용하는가?</h2>
+<h2 id="언제-panic-매크로를-사용하는가">언제 panic! 매크로를 사용하는가?</h2>
 <ul>
 <li>
 <p>실패할 가능성이 있는 함수는 대체로 Result 타입 리턴을 권장한다.</p>
@@ -399,7 +399,7 @@ panic = <span style="color:#e6db74">&#39;abort&#39;</span>
 <span style="color:#66d9ef">impl</span> Guess {
     <span style="color:#75715e">// new 연관 함수 구현
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(value: <span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#a6e22e">Guess</span> {
-        <span style="color:#66d9ef">if</span> value <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> value <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> {
+        <span style="color:#66d9ef">if</span> value <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> value <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> {
             panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Guess value must be between 1 and 100, got {}.&#34;</span>, value);
         }
 

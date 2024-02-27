@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="kr-ko">
     <head>
-        <meta name="description" content="" />
+        <meta name="description" content="About what I learned at 2024" />
 
 <meta name="og:type" content="website" />
-<meta property="og:title" content="" />
-<meta property="og:site_name" content="" />
-<meta property="og:description" content="" />
-<meta property="og:url" content="https://wacilpong.github.io/blog/post/" />
+<meta property="og:title" content="2024" />
+<meta property="og:site_name" content="2024" />
+<meta property="og:description" content="About what I learned at 2024" />
+<meta property="og:url" content="https://wacilpong.github.io/blog/learned/what-i-learned-2024/" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="" />
-<meta name="twitter:description" content="" />
+<meta name="twitter:title" content="2024" />
+<meta name="twitter:description" content="About what I learned at 2024" />
 
 <meta property="og:image" content="https://ca.slack-edge.com/T17RWEQDQ-UHVBKS9HA-41689aac3b87-512" />
 <meta
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
+        <title>2024</title>
         
             <link rel="icon" href="https://wacilpong.github.io/blog/favicon.ico">
         
@@ -91,9 +91,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.73.0" />
         
-            <link href="/blog/post/index.xml" rel="alternate" type="application/rss&#43;xml" title="Roomy" />
-            <link href="/blog/post/index.xml" rel="feed" type="application/rss&#43;xml" title="Roomy" />
-        
 
         
 
@@ -111,7 +108,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Posts</a>
+                    <a class="navbar-brand visible-xs" href="#">2024</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -150,116 +147,34 @@
 
 <main>
 
-    <h2>Posts</h2>
+    <div>
+        <h2>2024</h2>
+        <h5>About what I learned at 2024</h5>
+        
 
-     <div class="item">
+    </div>
 
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/javascript-html-css/scroll-restoration/">Scroll restoration</a></h4>
-    <h5>2020-02-23</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
-
-
-
+    <div align="start" class="content"><h2 id="2023-02-27"><strong>2023-02-27</strong></h2>
+<ul>
+<li>position: relative &gt; position: absolute에 right:0도 없는데 맨 뒤에 붙는다면?
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;position: relative;&#34;</span>&gt;
+  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: inline-block;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: inline-block;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;position: absolute;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;/<span style="color:#f92672">ul</span>&gt;
+</code></pre></div><ul>
+<li>위 구조를 봤을 때, 맨 마지막 li에 따로 <code>right: 0</code> 스타일을 주지 않았으므로 ul 아래 맨 왼쪽에 붙을 줄 알았다.</li>
+<li>그러나 현실은 각 li들을 지나서 맨 오른쪽에 붙었다.</li>
+<li><code>position: absolute</code>로 설정한 요소는 위치를 결정하기 위해 상위 요소 중에서 <code>position: relative</code>, <code>position: absolute</code>, <code>position: fixed</code> 중 하나를 기준으로 삼는다.</li>
+<li>위 상황에서 마지막 외의 다른 li 요소들에는 명시적으로 position 속성을 주지 않았으므로, 주어지지 않았으므로, 기본적으로 문서 흐름에 따라 배치되는 static 위치를 갖는다. 그래서 마지막 li 요소가 <code>position: absolute</code>로 설정되어 있어도 다른 요소들과 겹치지 않게 하지 않는다.</li>
+<li>참고로 <code>display: inline-block</code>으로 설정된 요소는 기본적으로 텍스트 흐름에 따라 배치된다.</li>
+<li>따라서 마지막을 제외한 li들이 static이면서 좌-우, 위-아래로 흐름에 따라 배치되므로 마지막 li는 오른쪽 끝에 붙는다.</li>
+</ul>
+</li>
+</ul>
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/javascript-html-css/currying-vs-partial-function/">Partial function and currying in javascript</a></h4>
-    <h5>2020-02-09</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/javascript/html/css"><kbd class="item-tag">javascript/html/css</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/configuration/babel-polyfill-and-babel-runtime/">Babel polyfill and babel runtime</a></h4>
-    <h5>2020-01-17</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/configuration"><kbd class="item-tag">configuration</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/configuration/untranspiled-published-external-library/">Test with jest the untranspiled external libraries</a></h4>
-    <h5>2020-01-02</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/configuration"><kbd class="item-tag">configuration</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/blog/post/review/good-bye-2019/">Good bye 2019</a></h4>
-    <h5>2019-12-27</h5>
-    
-<a href="https://wacilpong.github.io/blog/tags/review"><kbd class="item-tag">review</kbd></a>
-
-
-
-</div>
- 
 
 </main>
-
-
-
-<div class="pages">
-
-    
-        <a class="icon pages-icon" href="/blog/post/page/4/" rel="prev">
-            <i class="fa fa-arrow-left"></i>
-        </a>
-    
-
-    
-        <a class="icon pages-icon" href="/blog/post/page/6/" rel="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    
-
-</div>
-
-
 
         <footer>
             <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>

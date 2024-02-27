@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.62.0" />
+ <meta name="generator" content="Hugo 0.73.0" />
         
 
         
@@ -156,15 +156,15 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="closures----">클로저(Closures): 주변 환경을 캡처하는 익명함수</h2>
+    <div align="start" class="content"><h2 id="클로저closures-주변-환경을-캡처하는-익명함수">클로저(Closures): 주변 환경을 캡처하는 익명함수</h2>
 <ul>
 <li><strong>러스트의 클로저는 변수에 저장하거나 다른 함수에 인자로 전달하는 익명함수다.</strong></li>
 <li>일반 함수와 달리 클로저는 자신이 정의된 스코프 내의 값들을 캡처한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="1---environment-">(1) 클로저를 이용한 environment 캡처</h3>
+<h3 id="1-클로저를-이용한-environment-캡처">(1) 클로저를 이용한 environment 캡처</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// 예시: 무료 셔츠 나눔
-</span><span style="color:#75715e"></span><span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug, PartialEq, Copy, Clone)</span><span style="color:#75715e">]</span>
+</span><span style="color:#75715e"></span><span style="color:#75715e">#[derive(Debug, PartialEq, Copy, Clone)]</span>
 <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">ShirtColor</span> {
     Red,
     Blue,
@@ -178,7 +178,7 @@
     <span style="color:#75715e">// 선호하는 색상이 있다면 -&gt; 그 색상 셔츠 나눔
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// 없다면 -&gt; 회사에서 가장 많이 팔리는 셔츠 나눔
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">giveaway</span>(<span style="color:#f92672">&amp;</span>self, user_preference: Option<span style="color:#f92672">&lt;</span>ShirtColor<span style="color:#f92672">&gt;</span>) -&gt; <span style="color:#a6e22e">ShirtColor</span> {
-        user_preference.unwrap_or_else(<span style="color:#f92672">|</span><span style="color:#f92672">|</span> self.most_stocked())
+        user_preference.unwrap_or_else(<span style="color:#f92672">||</span> self.most_stocked())
     }
 
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">most_stocked</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#a6e22e">ShirtColor</span> {
@@ -187,8 +187,8 @@
 
         <span style="color:#66d9ef">for</span> color <span style="color:#66d9ef">in</span> <span style="color:#f92672">&amp;</span>self.shirts {
             <span style="color:#66d9ef">match</span> color {
-                ShirtColor::Red <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> num_red <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
-                ShirtColor::Blue <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> num_blue <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
+                ShirtColor::Red <span style="color:#f92672">=&gt;</span> num_red <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>,
+                ShirtColor::Blue <span style="color:#f92672">=&gt;</span> num_blue <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>,
             }
         }
         <span style="color:#66d9ef">if</span> num_red <span style="color:#f92672">&gt;</span> num_blue {
@@ -234,7 +234,7 @@
 <li>vertical pipe(<code>|</code>)로 클로저를 명시하며, <a href="https://wiki.c2.com/?SmalltalkBlocksAndClosures">smalltalk</a>와 <a href="https://www.geeksforgeeks.org/closures-in-ruby/">ruby</a>도 같은 문법이다.</li>
 </ul>
 <p><br /></p>
-<h3 id="2----">(2) 클로저의 타입 추론과 어노테이션</h3>
+<h3 id="2-클로저의-타입-추론과-어노테이션">(2) 클로저의 타입 추론과 어노테이션</h3>
 <ul>
 <li>클로저는 일반함수처럼 매개변수와 반환값의 타입을 지정할 필요가 없다.</li>
 <li>함수의 타입 어노테이션을 지정하는 이유는 호출할 대상에 노출되는 인터페이스이기 때문이다.</li>
@@ -243,7 +243,7 @@
 <li><strong>컴파일러는 변수의 타입을 추론하는 것과 같은 방법으로 클로저의 매개변수와 반환타입을 추론한다.</strong></li>
 </ul>
 <p><br /></p>
-<h4 id="--">타입을 명시한 클로저</h4>
+<h4 id="타입을-명시한-클로저">타입을 명시한 클로저</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> expensive_closure <span style="color:#f92672">=</span> <span style="color:#f92672">|</span>num: <span style="color:#66d9ef">u32</span><span style="color:#f92672">|</span> -&gt; <span style="color:#66d9ef">u32</span> {
         println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;calculating slowly...&#34;</span>);
         thread::sleep(Duration::from_secs(<span style="color:#ae81ff">2</span>));
@@ -254,7 +254,7 @@
 <li>함수와 비슷해보이지만 다르다.</li>
 </ul>
 <p><br /></p>
-<h4 id="-">함수와 클로저</h4>
+<h4 id="함수와-클로저">함수와 클로저</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span>  <span style="color:#a6e22e">add_one_v1</span>   (x: <span style="color:#66d9ef">u32</span>) -&gt; <span style="color:#66d9ef">u32</span> { x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> }
 <span style="color:#66d9ef">let</span> add_one_v2 <span style="color:#f92672">=</span> <span style="color:#f92672">|</span>x: <span style="color:#66d9ef">u32</span><span style="color:#f92672">|</span> -&gt; <span style="color:#66d9ef">u32</span> { x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> };
 <span style="color:#66d9ef">let</span> add_one_v3 <span style="color:#f92672">=</span> <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span>             { x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> };
@@ -267,7 +267,7 @@
 <li>v3과 v4는 컴파일하려면 클로저 호출이 필요한데, 어떻게 사용되는지에 따라 타입이 추론되기 때문이다.</li>
 </ul>
 <p><br /></p>
-<h4 id="----">다른 타입으로 하나의 클로저를 호출하면?</h4>
+<h4 id="다른-타입으로-하나의-클로저를-호출하면">다른 타입으로 하나의 클로저를 호출하면?</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> example_closure <span style="color:#f92672">=</span> <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x;
 
 <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> example_closure(String::from(<span style="color:#e6db74">&#34;hello&#34;</span>));
@@ -278,14 +278,14 @@
 <em>error[E0308]: mismatched types</em></li>
 </ul>
 <p><br /></p>
-<h3 id="3-----">(3) 참조 캡처하기, 혹은 소유권 이동</h3>
+<h3 id="3-참조-캡처하기-혹은-소유권-이동">(3) 참조 캡처하기, 혹은 소유권 이동</h3>
 <h4 id="borrow">borrow</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) immutable
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> list <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Before defining closure: {:?}&#34;</span>, list);
 
-    <span style="color:#66d9ef">let</span> only_borrows <span style="color:#f92672">=</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;From closure: {:?}&#34;</span>, list);
+    <span style="color:#66d9ef">let</span> only_borrows <span style="color:#f92672">=</span> <span style="color:#f92672">||</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;From closure: {:?}&#34;</span>, list);
 
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Before calling closure: {:?}&#34;</span>, list);
     only_borrows();
@@ -296,7 +296,7 @@
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> list <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Before defining closure: {:?}&#34;</span>, list);
 
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> borrows_mutably <span style="color:#f92672">=</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> list.push(<span style="color:#ae81ff">7</span>);
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> borrows_mutably <span style="color:#f92672">=</span> <span style="color:#f92672">||</span> list.push(<span style="color:#ae81ff">7</span>);
 
     <span style="color:#75715e">// 에러: immutable borrow occurs here
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// println!(&#34;After calling closure: {:?}&#34;, list);
@@ -318,8 +318,8 @@
 <em>동시성에 대해 이야기하는 16장에서 자세히 다룰 것</em></li>
 </ul>
 <p><br /></p>
-<h3 id="4--fn-traits---">(4) 클로저와 <code>Fn</code> Traits로부터 캡쳐한 값들 이동시키기</h3>
-<h4 id="-----1">클로저가 구현할 수 있는 트레이트</h4>
+<h3 id="4-클로저와-fn-traits로부터-캡쳐한-값들-이동시키기">(4) 클로저와 <code>Fn</code> Traits로부터 캡쳐한 값들 이동시키기</h3>
+<h4 id="클로저가-구현할-수-있는-트레이트">클로저가 구현할 수 있는 트레이트</h4>
 <ul>
 <li>클로저에서는
 <ul>
@@ -355,15 +355,15 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="1-fnonce">예시1: FnOnce</h4>
+<h4 id="예시1-fnonce">예시1: FnOnce</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Option<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
     <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">unwrap_or_else</span><span style="color:#f92672">&lt;</span>F<span style="color:#f92672">&gt;</span>(self, f: <span style="color:#a6e22e">F</span>) -&gt; <span style="color:#a6e22e">T</span>
     <span style="color:#66d9ef">where</span>
         F: FnOnce() -&gt; <span style="color:#a6e22e">T</span>
     {
         <span style="color:#66d9ef">match</span> self {
-            Some(x) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> x,
-            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> f(),
+            Some(x) <span style="color:#f92672">=&gt;</span> x,
+            None <span style="color:#f92672">=&gt;</span> f(),
         }
     }
 }
@@ -379,8 +379,8 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="2-fnmut">예시2: FnMut</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug)</span><span style="color:#75715e">]</span>
+<h4 id="예시2-fnmut">예시2: FnMut</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[derive(Debug)]</span>
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
     width: <span style="color:#66d9ef">u32</span>,
     height: <span style="color:#66d9ef">u32</span>,
@@ -419,7 +419,7 @@
     <span style="color:#75715e">// (3) O
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> num_sort_operations <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     list.sort_by_key(<span style="color:#f92672">|</span>r<span style="color:#f92672">|</span> {
-        num_sort_operations <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        num_sort_operations <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
         r.width
     });
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{:#?}, sorted in {num_sort_operations} operations&#34;</span>, list);
@@ -442,8 +442,8 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="iterator----">Iterator를 이용한 일련의 요소 처리</h2>
-<h3 id="iterator-">Iterator 생성하기</h3>
+<h2 id="iterator를-이용한-일련의-요소-처리">Iterator를 이용한 일련의 요소 처리</h2>
+<h3 id="iterator-생성하기">Iterator 생성하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> v1 <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
 
@@ -460,7 +460,7 @@
 <li>즉, v1_iter를 for 루프에서 비로소 사용할 때 의미가 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="iterator--next-">Iterator 트레이트와 next 메서드</h3>
+<h3 id="iterator-트레이트와-next-메서드">Iterator 트레이트와 next 메서드</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Iterator {
     <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Item</span>;
 
@@ -475,7 +475,7 @@
 <em><code>type Item</code>과 <code>Self::Item</code>은 연관타입으로, 19장에서 자세히 다룸</em></li>
 </ul>
 <p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[test]</span>
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">iterator_demonstration</span>() {
     <span style="color:#66d9ef">let</span> v1 <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
 
@@ -506,10 +506,10 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="---sum">반복자를 소비하는 메서드: <code>sum</code></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
+<h3 id="반복자를-소비하는-메서드-sum">반복자를 소비하는 메서드: <code>sum</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[cfg(test)]</span>
 <span style="color:#66d9ef">mod</span> tests {
-    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#75715e">#[test]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">iterator_sum</span>() {
         <span style="color:#66d9ef">let</span> v1 <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
         <span style="color:#66d9ef">let</span> v1_iter <span style="color:#f92672">=</span> v1.iter();
@@ -526,7 +526,7 @@
 <li>sum 메서드를 호출한 후에는 v1_iter 변수의 소유권이 없으므로 더 이상 사용할 수 없다.</li>
 </ul>
 <p><br /></p>
-<h3 id="----map">다른 반복자를 생성하는 메서드: <code>map</code></h3>
+<h3 id="다른-반복자를-생성하는-메서드-map">다른 반복자를 생성하는 메서드: <code>map</code></h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> v1: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
 
@@ -549,26 +549,26 @@
 <li><strong>(2)는 반복자를 실행한 결과값을 컬렉션에 담아 반환하는 collect 메서드를 사용했다.</strong></li>
 </ul>
 <p><br /></p>
-<h3 id="----filter">환경을 캡처하는 클로저 활용: <code>filter</code></h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">derive(PartialEq, Debug)</span><span style="color:#75715e">]</span>
+<h3 id="환경을-캡처하는-클로저-활용-filter">환경을 캡처하는 클로저 활용: <code>filter</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[derive(PartialEq, Debug)]</span>
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Shoe</span> {
     size: <span style="color:#66d9ef">u32</span>,
     style: String,
 }
 
 <span style="color:#75715e">// shoes에 저장된 벡터와 shoe_size 매개변수의 소유권을 가지고
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 지정된 크기의 신발 리스트를 저장한 벡터를 반환함
+</span><span style="color:#75715e">// 지정된 크기의 신발 리스트를 저장한 벡터를 반환함
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">shoes_in_size</span>(shoes: Vec<span style="color:#f92672">&lt;</span>Shoe<span style="color:#f92672">&gt;</span>, shoe_size: <span style="color:#66d9ef">u32</span>) -&gt; Vec<span style="color:#f92672">&lt;</span>Shoe<span style="color:#f92672">&gt;</span> {
     <span style="color:#75715e">// into_iter로 벡터의 소유권을 가지는 반복자를 생성함
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// filter 인자로 shoe_size 변수를 캡처하는 클로저 전달
-</span><span style="color:#75715e"></span>    shoes.into_iter().filter(<span style="color:#f92672">|</span>s<span style="color:#f92672">|</span> s.size <span style="color:#f92672">=</span><span style="color:#f92672">=</span> shoe_size).collect()
+</span><span style="color:#75715e"></span>    shoes.into_iter().filter(<span style="color:#f92672">|</span>s<span style="color:#f92672">|</span> s.size <span style="color:#f92672">==</span> shoe_size).collect()
 }
 
-<span style="color:#75715e">#[</span><span style="color:#75715e">cfg(test)</span><span style="color:#75715e">]</span>
+<span style="color:#75715e">#[cfg(test)]</span>
 <span style="color:#66d9ef">mod</span> tests {
     <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
 
-    <span style="color:#75715e">#[</span><span style="color:#75715e">test</span><span style="color:#75715e">]</span>
+    <span style="color:#75715e">#[test]</span>
     <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">filters_by_size</span>() {
         <span style="color:#66d9ef">let</span> shoes <span style="color:#f92672">=</span> vec<span style="color:#f92672">!</span>[
             Shoe {
@@ -609,10 +609,10 @@
 </ul>
 <p><br /></p>
 <hr />
-<h2 id="12-io--">12장의 I/O 프로젝트 개선</h2>
-<h3 id="-confignew-clone--">기존 Config::new의 clone이 필요한 이유?</h3>
+<h2 id="12장의-io-프로젝트-개선">12장의 I/O 프로젝트 개선</h2>
+<h3 id="기존-confignew의-clone이-필요한-이유">기존 Config::new의 clone이 필요한 이유?</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// minigrep
-</span><span style="color:#75715e"></span><span style="color:#75715e">// src/lib.rs
+</span><span style="color:#75715e">// src/lib.rs
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Config {
     <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
         <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
@@ -638,7 +638,7 @@
 <li>그러면 새로운 메모리 할당을 수행하는 대신, 반복자로부터 String값을 Config 인스턴스로 이동할 수 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="-----2">리팩터링: 반환된 반복자를 직접 사용하기</h3>
+<h3 id="리팩터링-반환된-반복자를-직접-사용하기">리팩터링: 반환된 반복자를 직접 사용하기</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// AS-IS
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
@@ -679,7 +679,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h3 id="---iterator---">리팩터링: 인덱스 대신 Iterator 트레이트 메서드 활용</h3>
+<h3 id="리팩터링-인덱스-대신-iterator-트레이트-메서드-활용">리팩터링: 인덱스 대신 Iterator 트레이트 메서드 활용</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// AS-IS
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Config {
     <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
@@ -703,13 +703,13 @@
 </span><span style="color:#75715e"></span>        args.next();
 
         <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> args.next() {
-            Some(arg) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> arg,
-            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;Didn&#39;t get a query string&#34;</span>),
+            Some(arg) <span style="color:#f92672">=&gt;</span> arg,
+            None <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;Didn&#39;t get a query string&#34;</span>),
         };
 
         <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> args.next() {
-            Some(arg) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> arg,
-            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;Didn&#39;t get a file name&#34;</span>),
+            Some(arg) <span style="color:#f92672">=&gt;</span> arg,
+            None <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;Didn&#39;t get a file name&#34;</span>),
         };
 
         ...
@@ -720,9 +720,9 @@
 <li>각 값들에 대한 성공/실패 여부 동작을 위해 match 표현식을 사용한다.</li>
 </ul>
 <p><br /></p>
-<h3 id="-iterator-adaptors----">리팩터링: Iterator adaptors를 사용해 깔끔한 코드 작성</h3>
+<h3 id="리팩터링-iterator-adaptors를-사용해-깔끔한-코드-작성">리팩터링: Iterator adaptors를 사용해 깔끔한 코드 작성</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// AS-IS
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
     <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
 
     <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
@@ -734,7 +734,7 @@
     results
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// TO-BE
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
     contents
         .lines()
         .filter(<span style="color:#f92672">|</span>line<span style="color:#f92672">|</span> line.contains(query))
@@ -746,7 +746,7 @@
 <li>루프를 실행하면서 새로운 벡터를 생성하는 대신, 루프의 목적을 고수준의 메서드로 퉁칠 수 있다.</li>
 </ul>
 <p><br /></p>
-<h3 id="-minigrep--">리팩터링: minigrep 최종 코드</h3>
+<h3 id="리팩터링-minigrep-최종-코드">리팩터링: minigrep 최종 코드</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// main.rs
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::env;
 <span style="color:#66d9ef">use</span> std::process;
@@ -783,13 +783,13 @@
         args.next();
 
         <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> args.next() {
-            Some(arg) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> arg,
-            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;Didn&#39;t get a query string&#34;</span>),
+            Some(arg) <span style="color:#f92672">=&gt;</span> arg,
+            None <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;Didn&#39;t get a query string&#34;</span>),
         };
 
         <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> args.next() {
-            Some(arg) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> arg,
-            None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;Didn&#39;t get a file name&#34;</span>),
+            Some(arg) <span style="color:#f92672">=&gt;</span> arg,
+            None <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;Didn&#39;t get a file name&#34;</span>),
         };
 
         <span style="color:#66d9ef">let</span> ignore_case <span style="color:#f92672">=</span> env::var(<span style="color:#e6db74">&#34;IGNORE_CASE&#34;</span>).is_ok();
@@ -802,7 +802,7 @@
     }
 }
 
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span>dyn Error<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> {
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span>dyn Error<span style="color:#f92672">&gt;&gt;</span> {
   <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
 
   <span style="color:#66d9ef">let</span> results <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> config.ignore_case {
@@ -818,7 +818,7 @@
   Ok(())
 }
 
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
     contents
         .lines()
         .filter(<span style="color:#f92672">|</span>line<span style="color:#f92672">|</span> line.contains(query))
@@ -828,7 +828,7 @@
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search_case_insensitive</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(
   query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
   contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>,
-) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
   <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> query.to_lowercase();
 
   contents
@@ -839,7 +839,7 @@
 }
 </code></pre></div><p><br /></p>
 <hr />
-<h2 id="--loops-vs-iterators">성능 비교: Loops vs Iterators</h2>
+<h2 id="성능-비교-loops-vs-iterators">성능 비교: Loops vs Iterators</h2>
 <ul>
 <li><code>The Adventures of Sherlock Holmes</code>에서 원하는 단어를 찾는 벤치마크 결과:<br />
 <em>test benchSearchFor bench: 19,620,300 ns/iter (+/- 915,700)</em><br />
@@ -857,7 +857,7 @@
 </li>
 </ul>
 <p><br /></p>
-<h4 id="---1">예시: 오디오 디코더</h4>
+<h4 id="예시-오디오-디코더">예시: 오디오 디코더</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> buffer: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> [<span style="color:#66d9ef">i32</span>];
 <span style="color:#66d9ef">let</span> coefficients: [<span style="color:#66d9ef">i64</span>; <span style="color:#ae81ff">12</span>];
 <span style="color:#66d9ef">let</span> qlp_shift: <span style="color:#66d9ef">i16</span>;
@@ -870,7 +870,7 @@
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> prediction <span style="color:#f92672">=</span> coefficients.iter()
                                  .zip(<span style="color:#f92672">&amp;</span>buffer[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">12</span>..i])
                                  .map(<span style="color:#f92672">|</span>(<span style="color:#f92672">&amp;</span>c, <span style="color:#f92672">&amp;</span>s)<span style="color:#f92672">|</span> c <span style="color:#f92672">*</span> s <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">i64</span>)
-                                 .sum::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i64</span><span style="color:#f92672">&gt;</span>() <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> qlp_shift;
+                                 .sum::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i64</span><span style="color:#f92672">&gt;</span>() <span style="color:#f92672">&gt;&gt;</span> qlp_shift;
     <span style="color:#66d9ef">let</span> delta <span style="color:#f92672">=</span> buffer[i];
     buffer[i] <span style="color:#f92672">=</span> prediction <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">i32</span> <span style="color:#f92672">+</span> delta;
 }

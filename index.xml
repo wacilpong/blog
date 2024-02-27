@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>2024</title>
+      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</guid>
+      <description>2023-02-27 position: relative &amp;gt; position: absolute에 right:0도 없는데 맨 뒤에 붙는다면? &amp;lt;ul style=&amp;#34;position: relative;&amp;#34;&amp;gt; &amp;lt;li style=&amp;#34;display: inline-block;&amp;#34;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li style=&amp;#34;display: inline-block;&amp;#34;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li style=&amp;#34;position: absolute;&amp;#34;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; 위 구조를 봤을 때, 맨 마지막 li에 따로 right: 0 스타일을 주</description>
+    </item>
+    
+    <item>
       <title>HTML attribute vs DOM properties</title>
       <link>https://wacilpong.github.io/blog/post/javascript-html-css/attribute-vs-property/</link>
       <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
@@ -170,7 +179,7 @@
       <pubDate>Tue, 29 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/kubernetes/2/</guid>
-      <description>시작하세요! 도커/쿠버네티스 6장 읽기 쿠버네티스는 대부분의 리소스를 &amp;lsquo;오브젝트&#39;라고 불리는 형태로 관리한다. 컨테이너의 집합(Pods)</description>
+      <description>시작하세요! 도커/쿠버네티스 6장 읽기 쿠버네티스는 대부분의 리소스를 &amp;lsquo;오브젝트&amp;rsquo;라고 불리는 형태로 관리한다. 컨테이너의 집합</description>
     </item>
     
     <item>
@@ -782,7 +791,7 @@
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/study/blockchain/blockchain-2/</guid>
-      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&#39;의 목적을 모두 충족하면서 암호화된 화폐이다. - Bitcoin</description>
+      <description>Cryptocurrency !== &amp;lsquo;가상화폐&amp;rsquo; 교환수단, 사회적 약속, 통화량 조절가능한 &amp;lsquo;돈&amp;rsquo;의 목적을 모두 충족하면서 암호화된 화</description>
     </item>
     
     <item>
@@ -830,7 +839,7 @@ Change permission of file I will change mode of key file and connect to ssh with
 
 2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
 
-3. Connect domain with CloudFront If you don&#39;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
+3. Connect domain with CloudFront If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
     </item>
     
     <item>
@@ -839,7 +848,7 @@ Change permission of file I will change mode of key file and connect to ssh with
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</guid>
-      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&#39;t configure anything in AWS console. So, connect</description>
+      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect</description>
     </item>
     
     <item>
