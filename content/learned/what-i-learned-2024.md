@@ -6,6 +6,38 @@ og_description: "About what I learned at 2024"
 draft: false
 ---
 
+## **2024-07-03**
+- providers 배열에 useClass를 사용하여 서비스를 토큰으로 등록한 경우?
+  - 해당 서비스를 컴포넌트로 주입(DI)할 때는 등록한 토큰 이름으로 가져와야 한다.
+  - `APP_TOKEN`으로 `ServiceA`를 provider로 등록했다면, `inject(APP_TOKEN)`으로 주입해야 한다.
+  ```ts
+  import { NgModule } from '@angular/core';
+
+  @NgModule({
+    providers: [
+      { provide: APP_TOKEN, useClass: ServiceA }
+    ]
+  })
+  export class AppModule {}
+  ```
+  ```ts
+  import { Component, Inject } from '@angular/core';
+
+  @Component({
+    selector: 'app-root',
+    template: `Value: {{ value }}`
+  })
+  export class AppComponent {
+    value: string;
+
+    constructor(@Inject(APP_TOKEN) private myService: ServiceA) {
+      this.value = this.myService.getValue();
+    }
+  }
+  ```
+
+<br />
+
 ## **2024-03-15**
 
 - Not Allowed Attribute Filtered 이슈를 만났다!
@@ -15,6 +47,8 @@ draft: false
   - 서버에서 html을 저장하는 과정에서 xss 방어를 위한 라이브러리를 사용중이었는데, 거기서 막고 있는 경우였다.
   - 걸어놓은 링크에 _script_ 라는 단어가 포함되어 있었다... (정확히는 _description_ 이었음)
   - 그래서 파악한 원인을 서버와 논의하여 해결할 수 있었다. 굿.
+
+<br />
 
 ## **2024-02-27**
 
