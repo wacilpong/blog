@@ -154,7 +154,20 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2023-02-27"><strong>2023-02-27</strong></h2>
+    <div align="start" class="content"><h2 id="2024-03-15"><strong>2024-03-15</strong></h2>
+<ul>
+<li>Not Allowed Attribute Filtered 이슈를 만났다!
+<ul>
+<li>a태그에 특정 링크를 걸어 서버를 한번 거쳐 저장을 한 후 프론트에서 노출하고 있었다.</li>
+<li>그런데 막상 프론트에 노출된 화면을 보니 태그에 링크가 걸려 있지 않고, a태그 위에 아래 문구가 주석으로 있었다.<br />
+<code>Not Allowed Attribute Filtered</code></li>
+<li>서버에서 html을 저장하는 과정에서 xss 방어를 위한 라이브러리를 사용중이었는데, 거기서 막고 있는 경우였다.</li>
+<li>걸어놓은 링크에 <em>script</em> 라는 단어가 포함되어 있었다&hellip; (정확히는 <em>description</em> 이었음)</li>
+<li>그래서 파악한 원인을 서버와 논의하여 해결할 수 있었다. 굿.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2024-02-27"><strong>2024-02-27</strong></h2>
 <ul>
 <li>position: relative &gt; position: absolute에 right:0도 없는데 맨 뒤에 붙는다면?
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;position: relative;&#34;</span>&gt;
