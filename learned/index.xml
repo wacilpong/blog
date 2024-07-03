@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</guid>
-      <description>2024-03-15 Not Allowed Attribute Filtered 이슈를 만났다! a태그에 특정 링크를 걸어 서버를 한번 거쳐 저장을 한 후 프론트에서 노출하고 있었다. 그런데 막상 프론트에 노출된 화면을 보니 태그에 링크</description>
+      <description>2024-07-03 providers 배열에 useClass를 사용하여 서비스를 토큰으로 등록한 경우? 해당 서비스를 컴포넌트로 주입(DI)할 때는 등록한 토큰 이름으로 가져와야 한다. AP</description>
     </item>
     
     <item>

@@ -154,7 +154,38 @@
 
     </div>
 
-    <div align="start" class="content"><h2 id="2024-03-15"><strong>2024-03-15</strong></h2>
+    <div align="start" class="content"><h2 id="2024-07-03"><strong>2024-07-03</strong></h2>
+<ul>
+<li>providers 배열에 useClass를 사용하여 서비스를 토큰으로 등록한 경우?
+<ul>
+<li>해당 서비스를 컴포넌트로 주입(DI)할 때는 등록한 토큰 이름으로 가져와야 한다.</li>
+<li><code>APP_TOKEN</code>으로 <code>ServiceA</code>를 provider로 등록했다면, <code>inject(APP_TOKEN)</code>으로 주입해야 한다.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">NgModule</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
+
+<span style="color:#66d9ef">@NgModule</span>({
+  <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [
+    { <span style="color:#a6e22e">provide</span>: <span style="color:#66d9ef">APP_TOKEN</span>, <span style="color:#a6e22e">useClass</span>: <span style="color:#66d9ef">ServiceA</span> }
+  ]
+})
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppModule</span> {}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Component</span>, <span style="color:#a6e22e">Inject</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
+
+<span style="color:#66d9ef">@Component</span>({
+  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app-root&#39;</span>,
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Value: {{ value }}`</span>
+})
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> {
+  <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>;
+
+  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">@Inject</span>(<span style="color:#a6e22e">APP_TOKEN</span>) <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">myService</span>: <span style="color:#66d9ef">ServiceA</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">myService</span>.<span style="color:#a6e22e">getValue</span>();
+  }
+}
+</code></pre></div></li>
+</ul>
+<p><br /></p>
+<h2 id="2024-03-15"><strong>2024-03-15</strong></h2>
 <ul>
 <li>Not Allowed Attribute Filtered 이슈를 만났다!
 <ul>
@@ -167,6 +198,7 @@
 </ul>
 </li>
 </ul>
+<p><br /></p>
 <h2 id="2024-02-27"><strong>2024-02-27</strong></h2>
 <ul>
 <li>position: relative &gt; position: absolute에 right:0도 없는데 맨 뒤에 붙는다면?
