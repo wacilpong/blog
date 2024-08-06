@@ -9,6 +9,7 @@ draft: false
 ## **2023-05-14**
 
 - js의 `exec()` 메서드는 주어진 문자열에서 일치하는지 여부를 배열 혹은 null로 반환해준다.
+
   - 이때 exec()에 플래그를 설정(/foo/g, /foo/y 등)하면 이전 일치의 인덱스를 저장하게 된다.
   - 문서에 따르면 아래와 같다.
     > Each call to `exec()` will update its lastIndex property, so that the next call to exec() will start at the next character.
@@ -16,6 +17,7 @@ draft: false
   - 그러면 다음 exec()가 호출되면 다음 문자에서 시작되므로 주의해야 한다.
   - 더 이상 맞는 것을 찾지 못하면 null을 반환한다.
   - 아래처럼 null이 반환되고, 또 다시 호출하면 다시 처음부터 실행한다.
+
     ```js
     // 예시
     const str = "Helloworld!";
@@ -29,8 +31,10 @@ draft: false
     ```
 
 <br />
+<hr />
 
 ## **2023-04-05**
+
 - `하이드레이션(hydration)`
   - 리액트에서의 하이드레이션은 서버 측에서 생성한 HTML 페이지에 클라이언트 측에서 실행하는 js 코드를 추가해서 애플리케이션 상태를 관리하고 렌더링하는 기법이다.
   - 즉, 서버 측에서 HTML을 생성하고 js를 통해 클라이언트가 동적으로 렌더링할 수 있게 된다.
@@ -38,6 +42,7 @@ draft: false
   - 이 점이 물과 물에 섞인 물질이 한데 어우러져 하나의 문자처럼 보이는 것과 비슷해 하이드레이션이라 불린다.
 
 <br />
+<hr />
 
 ## **2023-04-05**
 
