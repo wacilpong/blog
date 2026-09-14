@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -167,7 +167,7 @@
 <li>컴포넌트가 의존하는 그래프에 순환이 있으면 안된다. 순환이 생기면 그 순환 속에 있는 모든 컴포넌트가 동일한 릴리즈를 사용해야 한다. 그러나 프로젝트 초기부터 설계할 수 있는 대상이 아니기 때문에, 여러 순환 고리가 생기는 시점에 드디어 재사용성(!)을 고려해서 순환을 끊어야 한다.</li>
 <li>더 안정적인 컴포넌트에 의존하자.</li>
 </ul>
-<p><br /></p>
+<br />
 <p><strong>안정성 지표</strong></p>
 <ul>
 <li><code>불안정성(I) = out / (in + out)</code></li>
@@ -180,13 +180,9 @@
 </ul>
 </li>
 </ul>
-<dl>
-<dt><br /></dt>
-<dd>
-<p>모든 컴포넌트가 안정적인 것은 불가능하다. 즉, 목적성을 따져서 불안정한 것과 안정적인 컴포넌트들을 잘 결합시키자.<br />
+<br />
+<p>: 모든 컴포넌트가 안정적인 것은 불가능하다. 즉, 목적성을 따져서 불안정한 것과 안정적인 컴포넌트들을 잘 결합시키자.<br />
 <br /><br /><hr></p>
-</dd>
-</dl>
 <h3 id="좋은-아키텍트"><strong>좋은 아키텍트</strong></h3>
 <h4 id="1-세부사항에-대한-결정을-가능한-오래-미룬다">1. 세부사항에 대한 결정을 가능한 오래 미룬다.</h4>
 <blockquote>
@@ -272,31 +268,6 @@
 
 </div>
  
-    
-
-    
-    
-        <h4 class="page-header">Comments</h4>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
 
 </main>

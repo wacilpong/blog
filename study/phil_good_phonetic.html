@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phil Good Phonetics: English Pronunciation Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .playing-pulse {
+            animation: pulse-border 1.2s infinite;
+        }
+        @keyframes pulse-border {
+            0% { border-color: #3b82f6; box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            70% { border-color: #2563eb; box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); }
+            100% { border-color: #3b82f6; box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-16">
+
+    <!-- Header Section -->
+    <header class="bg-indigo-950 text-white py-6 px-4 shadow-lg sticky top-0 z-20 border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm">🇦🇺 Australian English</span>
+                </div>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-white mt-1">
+                    Phil Good Phonetics: English Pronunciation Guide
+                </h1>
+                <p class="text-indigo-200 text-sm mt-0.5">
+                    Click the symbol badge to explore three tenses or click the word button to listen to audio.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 mt-8 space-y-12">
+
+        <!-- Vowel Sounds Section (Pink Theme) -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-3 border-b-2 border-pink-200 pb-2">
+                <div class="w-4 h-8 bg-pink-500 rounded-md"></div>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-pink-950">1. Vowel Sounds (Monophthongs & Diphthongs)</h2>
+                    <p class="text-sm text-slate-500">Vowels are voiced sounds produced with an open vocal tract. (shape of mouth)</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
+                <table class="w-full text-left border-collapse min-w-[768px]">
+                    <thead>
+                        <tr class="bg-pink-50/80 border-b border-pink-100 text-pink-950 text-sm font-bold uppercase tracking-wider">
+                            <th class="p-4 w-1/5">Category</th>
+                            <th class="p-4">Phonetic Symbols & Target Words</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <!-- Short Vowels -->
+                        <tr>
+                            <td class="p-4 font-bold text-slate-700 bg-slate-50/60">
+                                Short Vowels
+                                <span class="block text-xs font-normal text-slate-500 mt-0.5">Produced quickly without glide</span>
+                            </td>
+                            <td class="p-4">
+                                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3" id="vowel-short"></div>
+                            </td>
+                        </tr>
+                        <!-- Long Vowels -->
+                        <tr>
+                            <td class="p-4 font-bold text-slate-700 bg-slate-50/60">
+                                Long Vowels
+                                <span class="block text-xs font-normal text-slate-500 mt-0.5">Elongated sound duration (:)</span>
+                            </td>
+                            <td class="p-4">
+                                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3" id="vowel-long"></div>
+                            </td>
+                        </tr>
+                        <!-- Diphthongs -->
+                        <tr>
+                            <td class="p-4 font-bold text-slate-700 bg-slate-50/60">
+                                Diphthongs
+                                <span class="block text-xs font-normal text-slate-500 mt-0.5">Gliding from one vowel to another</span>
+                            </td>
+                            <td class="p-4">
+                                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3" id="vowel-diphthong"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="p-4 overflow-hidden w-[420px] max-w-full mx-auto flex flex-col items-center justify-center">
+            <img src="/blog/images/phil-classmates.jpeg" alt="Phonetic Guide Banner" class="w-full h-72 object-cover object-bottom rounded-xl shadow-inner mx-auto">
+        </div>
+
+        <!-- Consonant Sounds Section (Navy Theme) -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-3 border-b-2 border-indigo-300 pb-2">
+                <div class="w-4 h-8 bg-indigo-900 rounded-md"></div>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-indigo-950">2. Consonant Sounds (Voiced & Unvoiced)</h2>
+                    <p class="text-sm text-slate-500">Consonants are articulated by obstructing the flow of air. (Using teeth, tongue, lips)</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
+                <table class="w-full text-left border-collapse min-w-[768px]">
+                    <thead>
+                        <tr class="bg-indigo-950 border-b border-indigo-900 text-white text-sm font-bold uppercase tracking-wider">
+                            <th class="p-4 w-1/5">Category</th>
+                            <th class="p-4">Phonetic Symbols & Target Words</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <!-- Unvoiced Consonants -->
+                        <tr>
+                            <td class="p-4 font-bold text-slate-700 bg-slate-50/60">
+                                <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 mr-1.5"></span>
+                                Unvoiced Consonants
+                                <span class="block text-xs font-normal text-slate-500 mt-0.5">Vocal cords do not vibrate</span>
+                            </td>
+                            <td class="p-4">
+                                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3" id="consonant-unvoiced"></div>
+                            </td>
+                        </tr>
+                        <!-- Voiced Consonants -->
+                        <tr>
+                            <td class="p-4 font-bold text-slate-700 bg-slate-50/60">
+                                <span class="inline-block w-2.5 h-2.5 rounded-full bg-indigo-600 mr-1.5"></span>
+                                Voiced Consonants
+                                <span class="block text-xs font-normal text-slate-500 mt-0.5">Vocal cords vibrate during sound</span>
+                            </td>
+                            <td class="p-4">
+                                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3" id="consonant-voiced"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Sentence Modal -->
+    <div id="sentence-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-all duration-200">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 transform scale-95 transition-all duration-200 space-y-5" id="modal-container">
+            <div class="flex justify-between items-start border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <span id="modal-symbol" class="text-3xl font-extrabold px-3.5 py-1 bg-pink-100 text-pink-700 rounded-xl border border-pink-200 shadow-sm"></span>
+                    <div>
+                        <h3 id="modal-word" class="text-xl font-bold text-slate-900"></h3>
+                        <p class="text-xs text-slate-500">Click any sentence below to listen to its pronunciation.</p>
+                    </div>
+                </div>
+                <button id="close-modal" class="text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full w-8 h-8 flex items-center justify-center transition font-bold">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Sentences List without Tense Labels -->
+            <div class="space-y-3">
+                <!-- Present Tense Sentence -->
+                <div class="sentence-card p-3.5 bg-slate-50 hover:bg-pink-50 border border-slate-200 hover:border-pink-300 rounded-xl cursor-pointer transition flex items-center justify-between group" id="card-present">
+                    <p id="sent-present" class="text-sm font-medium text-slate-800"></p>
+                    <span class="text-pink-600 bg-pink-100 p-2 rounded-lg group-hover:bg-pink-600 group-hover:text-white transition-colors shrink-0 ml-3">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </span>
+                </div>
+
+                <!-- Past Tense Sentence -->
+                <div class="sentence-card p-3.5 bg-slate-50 hover:bg-pink-50 border border-slate-200 hover:border-pink-300 rounded-xl cursor-pointer transition flex items-center justify-between group" id="card-past">
+                    <p id="sent-past" class="text-sm font-medium text-slate-800"></p>
+                    <span class="text-pink-600 bg-pink-100 p-2 rounded-lg group-hover:bg-pink-600 group-hover:text-white transition-colors shrink-0 ml-3">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </span>
+                </div>
+
+                <!-- Past Participle Sentence -->
+                <div class="sentence-card p-3.5 bg-slate-50 hover:bg-pink-50 border border-slate-200 hover:border-pink-300 rounded-xl cursor-pointer transition flex items-center justify-between group" id="card-pp">
+                    <p id="sent-pp" class="text-sm font-medium text-slate-800"></p>
+                    <span class="text-pink-600 bg-pink-100 p-2 rounded-lg group-hover:bg-pink-600 group-hover:text-white transition-colors shrink-0 ml-3">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Phonetic Data Definition with English sentences
+        const phoneticData = {
+            vowelShort: [
+                { symbol: 'ɪ', word: 'sit', type: 'vowel', present: 'I sit on the chair every morning.', past: 'I sat on the chair yesterday.', pp: 'I\'ve sat on this chair for two hours.' },
+                { symbol: 'e', word: 'get', type: 'vowel', present: 'I get a cup of coffee every morning.', past: 'I got a cup of coffee every morning.', pp: 'I\'ve gotten a cup of coffee every morning.' },
+                { symbol: 'æ', word: 'catch', type: 'vowel', present: 'I always catch a cold when the season changes.', past: 'I caught a cold because it was chilly yesterday.', pp: 'I\'ve caught a cold, so I can\'t go out today.'},
+                { symbol: 'ʌ', word: 'run', type: 'vowel', present: 'I run a small cafe near the beach.', past: 'I ran a small cafe near the beach.', pp: 'I\'ve run a small cafe near the beach for three years.' },
+                { symbol: 'ɒ', word: 'hot', type: 'vowel', present: 'The sun heats the water hot.', past: 'The soup stayed hot during lunch.', pp: 'The oven has been hot for an hour.' },
+                { symbol: 'ʊ', word: 'book', type: 'vowel', present: 'I book a table for dinner.', past: 'I booked a flight to Sydney yesterday.', pp: 'I\'ve booked all the tickets online.' },
+                { symbol: 'ə', word: 'about', type: 'vowel', present: 'We talk about our daily goals.', past: 'We talked about our travel plans.', pp: 'We\'ve talked about this topic often.' }
+            ],
+            vowelLong: [
+                { symbol: 'iː', word: 'see', type: 'vowel', present: 'I see a rainbow in the sky.', past: 'I saw a movie last night.', pp: 'I\'ve seen that beautiful sunset before.' },
+                { symbol: 'ɑː', word: 'start', type: 'vowel', present: 'I start a new project today.', past: 'I started a new project yesterday.', pp: 'I\'ve just started a new project.' },
+                { symbol: 'ɔː', word: 'walk', type: 'vowel', present: 'I walk to the park every morning.', past: 'I walked to the park yesterday.', pp: 'I\'ve walked ten thousand steps today.' },
+                { symbol: 'uː', word: 'too', type: 'vowel', present: 'She chooses to go there too.', past: 'She chose the blue dress too.', pp: 'She\'s chosen her favorite option too.' },
+                { symbol: 'ɜː', word: 'turn', type: 'vowel', present: 'Leaves turn yellow in autumn.', past: 'Leaves turned yellow last month.', pp: 'The leaves have turned yellow now.' }
+            ],
+            vowelDiphthongs: [
+                { symbol: 'eɪ', word: 'say', type: 'vowel', present: 'They say hello to everyone.', past: 'They said goodbye at the station.', pp: 'They\'ve said everything clearly.' },
+                { symbol: 'aɪ', word: 'my', type: 'vowel', present: 'I write in my private journal.', past: 'I wrote in my journal last week.', pp: 'I\'ve written in my journal regularly.' },
+                { symbol: 'ɔɪ', word: 'enjoy', type: 'vowel', present: 'The boy enjoys playing football.', past: 'The boy enjoyed the birthday party.', pp: 'The boy has enjoyed his holidays.' },
+                { symbol: 'əʊ', word: 'go', type: 'vowel', present: 'We go to the park on Sundays.', past: 'We went to Melbourne last month.', pp: 'We\'ve gone to that restaurant twice.' },
+                { symbol: 'aʊ', word: 'now', type: 'vowel', present: 'The crowd shouts out loud now.', past: 'The audience shouted with joy.', pp: 'They\'ve shouted for their team.' },
+                { symbol: 'ɪə', word: 'near', type: 'vowel', present: 'She lives near the beach.', past: 'She lived near the park as a child.', pp: 'She\'s lived near the river for years.' },
+                { symbol: 'eə', word: 'hair', type: 'vowel', present: 'She brushes her long hair.', past: 'She brushed her hair before leaving.', pp: 'She\'s brushed her hair three times.' },
+                { symbol: 'ʊə', word: 'poor', type: 'vowel', present: 'She is poor now.', past: 'She was poor for a long time.', pp: 'She\'s been poor for a long time.' }
+            ],
+            consonantUnvoiced: [
+                { symbol: 'p', word: 'pen', type: 'consonant', present: 'I pen down my thoughts daily.', past: 'I penned a note for him.', pp: 'I\'ve penned my final answers.' },
+                { symbol: 't', word: 'tea', type: 'consonant', present: 'We drink hot tea together.', past: 'We drank green tea yesterday.', pp: 'We\'ve drunk tea every morning.' },
+                { symbol: 'k', word: 'cat', type: 'consonant', present: 'They keep a friendly cat.', past: 'They kept a cat for many years.', pp: 'They\'ve kept cats all their lives.' },
+                { symbol: 'f', word: 'fish', type: 'consonant', present: 'Fishermen fish near the coast.', past: 'They fished for salmon yesterday.', pp: 'They\'ve fished here since morning.' },
+                { symbol: 'θ', word: 'think', type: 'consonant', present: 'I think about the future.', past: 'I thought about the problem deeply.', pp: 'I\'ve thought of a great solution.' },
+                { symbol: 's', word: 'sun', type: 'consonant', present: 'The sun shines brightly today.', past: 'The sun shone through the clouds.', pp: 'The sun has shone all afternoon.' },
+                { symbol: 'ʃ', word: 'she', type: 'consonant', present: 'She sings a lovely melody.', past: 'She sang at the concert.', pp: 'She\'s sung in many choirs.' },
+                { symbol: 'tʃ', word: 'chair', type: 'consonant', present: 'He chairs the weekly meeting.', past: 'He chaired the meeting yesterday.', pp: 'He\'s chaired the board for a year.' }
+            ],
+            consonantVoiced: [
+                { symbol: 'b', word: 'bad', type: 'consonant', present: 'Bad weather causes delays.', past: 'Bad weather caused the accident.', pp: 'Bad conditions have delayed the flight.' },
+                { symbol: 'd', word: 'dog', type: 'consonant', present: 'The dog barks at strangers.', past: 'The dog barked all night long.', pp: 'The dog has barked at every visitor.' },
+                { symbol: 'g', word: 'good', type: 'consonant', present: 'Good news makes us happy.', past: 'Good luck followed them.', pp: 'Good results have pleased the team.' },
+                { symbol: 'v', word: 'van', type: 'consonant', present: 'He drives a delivery van.', past: 'He drove the van to Brisbane.', pp: 'He\'s driven that van for miles.' },
+                { symbol: 'ð', word: 'this', type: 'consonant', present: 'I choose this option now.', past: 'I chose this option yesterday.', pp: 'I\'ve chosen this path carefully.' },
+                { symbol: 'z', word: 'zoo', type: 'consonant', present: 'Families visit the city zoo.', past: 'Families visited the zoo on Sunday.', pp: 'Families have visited the zoo often.' },
+                { symbol: 'ʒ', word: 'vision', type: 'consonant', present: 'He shares his clear vision.', past: 'He shared his vision last night.', pp: 'He\'s shared his vision with us.' },
+                { symbol: 'dʒ', word: 'jelly', type: 'consonant', present: 'She makes sweet fruit jelly.', past: 'She made homemade jelly yesterday.', pp: 'She\'s made delicious jelly.' },
+                { symbol: 'm', word: 'man', type: 'consonant', present: 'The man works at the office.', past: 'The man worked late last night.', pp: 'The man has worked here for a decade.' },
+                { symbol: 'n', word: 'now', type: 'consonant', present: 'We start our project now.', past: 'We started our project yesterday.', pp: 'We\'ve started three new projects.' },
+                { symbol: 'ŋ', word: 'sing', type: 'consonant', present: 'They sing songs in harmony.', past: 'They sang songs by the campfire.', pp: 'They\'ve sung that song many times.' },
+                { symbol: 'h', word: 'hat', type: 'consonant', present: 'He wears a wide hat.', past: 'He wore a black hat yesterday.', pp: 'He\'s worn that hat all summer.' },
+                { symbol: 'l', word: 'leg', type: 'consonant', present: 'He stretches his right leg.', past: 'He stretched his leg after running.', pp: 'He\'s stretched his legs thoroughly.' },
+                { symbol: 'r', word: 'red', type: 'consonant', present: 'She paints the wall red.', past: 'She painted the door red.', pp: 'She\'s painted the entire room red.' },
+                { symbol: 'w', word: 'wet', type: 'consonant', present: 'Rain drops make us wet.', past: 'The sudden storm got us wet.', pp: 'The clothes have gotten wet outside.' },
+                { symbol: 'j', word: 'yes', type: 'consonant', present: 'She says yes to the offer.', past: 'She said yes to the invitation.', pp: 'She\'s said yes to our proposal.' }
+            ]
+        };
+
+        let selectedVoice = null;
+
+        // Initialize SpeechSynthesis Engine silently with en-AU target
+        function initVoices() {
+            if (!('speechSynthesis' in window)) return;
+
+            const updateVoice = () => {
+                const voices = window.speechSynthesis.getVoices();
+                selectedVoice = voices.find(v => v.lang === 'en-AU' || v.lang === 'en_AU') || 
+                                voices.find(v => v.lang.startsWith('en')) || 
+                                null;
+            };
+
+            updateVoice();
+            if (window.speechSynthesis.onvoiceschanged !== undefined) {
+                window.speechSynthesis.onvoiceschanged = updateVoice;
+            }
+        }
+
+        // Play TTS audio
+        function speakText(text, targetElement = null) {
+            if (!('speechSynthesis' in window)) return;
+
+            window.speechSynthesis.cancel(); // Stop current speech
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-AU';
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            }
+
+            if (targetElement) {
+                targetElement.classList.add('playing-pulse');
+                utterance.onend = () => targetElement.classList.remove('playing-pulse');
+                utterance.onerror = () => targetElement.classList.remove('playing-pulse');
+            }
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Create Card Element with themed colors
+        function createCard(item) {
+            const cell = document.createElement('div');
+            const isVowel = item.type === 'vowel';
+            
+            const symbolBgClass = isVowel 
+                ? 'bg-pink-50 hover:bg-pink-100 text-pink-700 border-pink-200' 
+                : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-900 border-indigo-200';
+
+            const symbolTextClass = isVowel ? 'text-pink-500 group-hover:text-pink-700' : 'text-indigo-600 group-hover:text-indigo-900';
+
+            cell.className = `p-2 bg-white border border-slate-200 rounded-xl flex flex-col items-stretch gap-1.5 shadow-sm hover:border-slate-300 hover:shadow transition-all`;
+            
+            cell.innerHTML = `
+                <!-- Top Button: Open Sentences Modal -->
+                <button type="button" class="btn-symbol w-full py-1.5 px-2 ${symbolBgClass} rounded-lg flex items-center justify-between transition group border" title="Click to view example sentences">
+                    <span class="text-xl font-bold tracking-wide">/${item.symbol}/</span>
+                    <span class="text-[10px] font-semibold ${symbolTextClass} flex items-center gap-0.5">
+                        📖 
+                    </span>
+                </button>
+
+                <!-- Bottom Button: Listen Word Audio -->
+                <button type="button" class="btn-audio w-full py-1 px-2 bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 rounded-lg flex items-center justify-between transition border border-slate-100 hover:border-emerald-200" title="Click to listen to word audio">
+                    <span class="text-xs font-semibold capitalize truncate">${item.word}</span>
+                    <span class="text-xs text-slate-400 hover:text-emerald-600">🔊</span>
+                </button>
+            `;
+
+            // Event handlers
+            const symbolBtn = cell.querySelector('.btn-symbol');
+            const audioBtn = cell.querySelector('.btn-audio');
+
+            symbolBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(item);
+            });
+
+            audioBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                speakText(item.word, audioBtn);
+            });
+
+            return cell;
+        }
+
+        function renderSection(elementId, items) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = '';
+            items.forEach(item => {
+                container.appendChild(createCard(item));
+            });
+        }
+
+        let activeItem = null;
+
+        function openModal(item) {
+            activeItem = item;
+            
+            const modalSymbol = document.getElementById('modal-symbol');
+            modalSymbol.innerText = `/${item.symbol}/`;
+            
+            if (item.type === 'vowel') {
+                modalSymbol.className = "text-3xl font-extrabold px-3.5 py-1 bg-pink-100 text-pink-700 rounded-xl border border-pink-200 shadow-sm";
+            } else {
+                modalSymbol.className = "text-3xl font-extrabold px-3.5 py-1 bg-indigo-100 text-indigo-950 rounded-xl border border-indigo-200 shadow-sm";
+            }
+
+            document.getElementById('modal-word').innerText = `Word: "${item.word}"`;
+
+            document.getElementById('sent-present').innerText = item.present;
+            document.getElementById('sent-past').innerText = item.past;
+            document.getElementById('sent-pp').innerText = item.pp;
+
+            const modal = document.getElementById('sentence-modal');
+            const container = document.getElementById('modal-container');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('sentence-modal');
+            const container = document.getElementById('modal-container');
+            
+            modal.classList.add('opacity-0');
+            container.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        // Setup Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            initVoices();
+
+            // Render all sections
+            renderSection('vowel-short', phoneticData.vowelShort);
+            renderSection('vowel-long', phoneticData.vowelLong);
+            renderSection('vowel-diphthong', phoneticData.vowelDiphthongs);
+            renderSection('consonant-unvoiced', phoneticData.consonantUnvoiced);
+            renderSection('consonant-voiced', phoneticData.consonantVoiced);
+
+            // Modal sentence clicks
+            document.getElementById('card-present').addEventListener('click', function() {
+                if (activeItem) speakText(activeItem.present, this);
+            });
+
+            document.getElementById('card-past').addEventListener('click', function() {
+                if (activeItem) speakText(activeItem.past, this);
+            });
+
+            document.getElementById('card-pp').addEventListener('click', function() {
+                if (activeItem) speakText(activeItem.pp, this);
+            });
+
+            // Close modal events
+            document.getElementById('close-modal').addEventListener('click', closeModal);
+            document.getElementById('sentence-modal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('sentence-modal')) closeModal();
+            });
+        });
+    </script>
+</body>
+</html>

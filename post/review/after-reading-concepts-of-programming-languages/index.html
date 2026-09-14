@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -160,7 +160,7 @@
 
     <div align="start" class="content"><p>by Robert W. Sebesta</p>
 <p>프로그래밍 언어론을 읽고 내맘대로 정리해보았다.</p>
-<p><br /></p>
+<br />
 <p><strong>[기본적인 사항]</strong></p>
 <ul>
 <li>프로그래밍 언어의 어휘항목은 수치 리터럴, operator, 특수어를 포함한다.</li>
@@ -212,7 +212,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="변수">변수</h2>
 <ul>
@@ -335,17 +335,17 @@
 </li>
 <li><code>동적 영역(dynamic scope)</code><br />
 함수들이 배치된 관계가 아니라 호출 시퀀스에 기반하며, 실행 시간에 결정된다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">big</span>() {
-  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sub1</span>() {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>;
-  }
-  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sub2</span>() {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">z</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
-  }
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">big</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sub1</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sub2</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">z</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>위의 sub2에서 참조되는 식별자 x의 의미는 동적이며, 컴파일 시간에 결정될 수 없다.</li>
 <li>어떠한 지역 선언에 대한 탐색이 실패하면, 그 함수의 부모에서 탐색되고, 이 과정을 반복한다. 이때 어떠한 부모에서도 발견되지 않으면 <strong>실행-시간 오류</strong>이다.</li>
 <li>동적 영역은 비지역 변수에 대한 참조를 정적으로 타입 검사할 수 없다.</li>
@@ -361,7 +361,7 @@
 <p><em>(참고)</em> <strong>초기화(initialization)는 변수가 메모리에 바인딩되는 시점에 값에 대한 변수의 바인딩이다.</strong></p>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="데이터-타입">데이터 타입</h2>
 <ul>
@@ -414,11 +414,11 @@
 <ul>
 <li>이름이 있는 상수들이 열거되어, 열거 상수(enumeration constants)들을 정의하고 그룹핑하는 타입이다.</li>
 <li>값을 할당하지 않아도 전형적으로 정수 값이 묵시적으로 할당된다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Hello</span> {
-  <span style="color:#a6e22e">First</span>, <span style="color:#75715e">// 0
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Second</span>, <span style="color:#75715e">// 1
-</span><span style="color:#75715e"></span>}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Hello</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">First</span>, <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Second</span>, <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
 </li>
 <li>
@@ -479,7 +479,7 @@
 <p><em>(참고)</em> <strong>프로그래밍 언어는 타입 오류가 항상 탐지되면 강 타입 언어(strongly typed language)이다.</strong></p>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="식과-배정문expression-and-assignment-statement">식과 배정문(Expression and assignment statement)</h2>
 <ul>
@@ -488,11 +488,11 @@
 <ul>
 <li>선택문(selection statement), 반복문(iterative statement)&hellip;</li>
 <li>무조건 분기문(unconditional branch statement)은 실행 제어를 프로그램상에서 명시된 위치로 이동시킨다. 보통 루프 탈출로 사용하는데, 고급언어에서는 많이 사용하지 않는다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch">  :test
-  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;hi&#34;</span>
-  <span style="color:#66d9ef">goto</span> test
-  ...
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-batch" data-lang="batch"><span style="display:flex;"><span>  :test
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;hi&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">goto</span> test
+</span></span><span style="display:flex;"><span>  ...
+</span></span></code></pre></div></li>
 </ul>
 </li>
 <li>많은 오류가 식 평가 과정에서 발생한다.
@@ -507,11 +507,10 @@
 <ul>
 <li><strong>함수에서의 사이드 이펙트는 함수가 자신의 매개변수들 중 하나 혹은 전역 변수를 변경할 때 발생한다.</strong></li>
 <li>프로그램에서 동일한 값을 갖는 임의의 두 식이 프로그램 동작에 영향을 미치지 않으면서 임의의 위치에서 서로 다른 식으로 대체될 수 있다면, 그 프로그램은 referential transparet하다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">result1</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">a</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>) <span style="color:#f92672">/</span> (<span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">a</span>) <span style="color:#f92672">-</span> <span style="color:#a6e22e">c</span>);
-<span style="color:#a6e22e">temp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">a</span>);
-<span style="color:#a6e22e">result2</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">temp</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>) <span style="color:#f92672">/</span> (<span style="color:#a6e22e">temp</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">c</span>);
-</code></pre></div><p>위 코드에서 함수 fun이 사이드 이펙트가 없다면 result1과 result2는 동일해야 한다.</p>
-</li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">result1</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">a</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>) <span style="color:#f92672">/</span> (<span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">a</span>) <span style="color:#f92672">-</span> <span style="color:#a6e22e">c</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">temp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">a</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">result2</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">temp</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>) <span style="color:#f92672">/</span> (<span style="color:#a6e22e">temp</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">c</span>);
+</span></span></code></pre></div>위 코드에서 함수 fun이 사이드 이펙트가 없다면 result1과 result2는 동일해야 한다.</li>
 </ul>
 </li>
 <li>타입 강제 변환은 컴파일러가 수행하는 묵시적 타입 변환(implicit type conversion)이다.
@@ -520,31 +519,31 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="부프로그램subprogram">부프로그램(Subprogram)</h2>
 <ul>
 <li>
 <p><strong>overloaded subprogram은 동일한 참조 환경에서 다른 이름을 갖는다.</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">number</span>);
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">boolean</span>);
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">a</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>;
-}
-
-<span style="color:#a6e22e">test</span>(<span style="color:#ae81ff">1</span>);
-<span style="color:#a6e22e">test</span>(<span style="color:#66d9ef">true</span>);
-<span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;1&#34;</span>); <span style="color:#75715e">// No overload matches this call
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">number</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">boolean</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">a</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;1&#34;</span>); <span style="color:#75715e">// No overload matches this call
+</span></span></span></code></pre></div></li>
 <li>
 <p><strong>generic subprogram은 호출할 때마다 다른 타입의 데이터에 게산을 수행한다.</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">T</span>&gt;(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">T</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>;
-}
-
-<span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">number</span>&gt;(<span style="color:#ae81ff">1</span>);
-<span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">boolean</span>&gt;(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">// type error
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">T</span>&gt;(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">T</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">number</span>&gt;(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span>&lt;<span style="color:#f92672">boolean</span>&gt;(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">// type error
+</span></span></span></code></pre></div></li>
 <li>
 <p>부프로그램의 header는 헤더 다음에 오는 구문이 어떤 종류(특히 프로시저, 함수)인지 명시한다.</p>
 </li>
@@ -562,21 +561,21 @@
 </li>
 <li>
 <p>함수는 새로운 사용자 정의 연산자를 정의한다. 예를 들어, 어떤 언어에 지수 연산자가 없다면 이 연산을 할 수 있는 함수를 작성할 수 있다. 아래 result의 결과는 동일하다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// c++
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> <span style="color:#a6e22e">power</span>(<span style="color:#66d9ef">float</span> base, <span style="color:#66d9ef">float</span> exp) {
-  <span style="color:#66d9ef">float</span> result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-
-  <span style="color:#66d9ef">while</span> (exp <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-    result <span style="color:#f92672">*=</span> base;
-    <span style="color:#f92672">--</span>exp;
-  }
-
-  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-
-result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</span> <span style="color:#f92672">*</span> power(<span style="color:#ae81ff">10.0</span>, x)
-result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10.0</span> <span style="color:#f92672">**</span> x
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// c++
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> <span style="color:#a6e22e">power</span>(<span style="color:#66d9ef">float</span> base, <span style="color:#66d9ef">float</span> exp) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (exp <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">*=</span> base;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>exp;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</span> <span style="color:#f92672">*</span> power(<span style="color:#ae81ff">10.0</span>, x)
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10.0</span> <span style="color:#f92672">**</span> x
+</span></span></code></pre></div></li>
 <li>
 <h4 id="매개변수"><strong>매개변수</strong></h4>
 <ul>
@@ -641,16 +640,16 @@ result <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.4</spa
 <li>거의 모든 함수형 프로그래밍 언어는 클로저를 지원한다.</li>
 <li>이 언어들은 <strong>정적 스코프이며, 중첩 함수를 허용하고, 함수가 매개변수로 전달될 수 있다.</strong></li>
 <li>아래 예시에서 makeAdder가 호출될 때 생성되는 x의 존속기간은 프로그램 존속기간이 된다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeAdder</span>(<span style="color:#a6e22e">x</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">y</span>) {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>;
-  };
-}
-
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">add10</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">makeAdder</span>(<span style="color:#ae81ff">10</span>);
-
-document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">add10</span>(<span style="color:#ae81ff">20</span>));
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeAdder</span>(<span style="color:#a6e22e">x</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>;
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">add10</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">makeAdder</span>(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">add10</span>(<span style="color:#ae81ff">20</span>));
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
@@ -672,7 +671,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="동시성concurrency">동시성(Concurrency)</h2>
 <ul>
@@ -725,19 +724,19 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 <li>보호(guard)는 보호된 코드가 특정 조건에서만 실행되는 것을 허용하는 장치이다.</li>
 <li>세마포어는 이러한 보호의 구현이다.</li>
 <li><em>ex) javascript 어떤 프로미스를 동시에 1개만 실행할 때</em>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">withSemaphore</span>() {
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">count</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span>;
-
-  <span style="color:#a6e22e">test</span>();
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>() {
-  <span style="color:#a6e22e">count</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>;
-  <span style="color:#a6e22e">somePromise</span>().<span style="color:#66d9ef">finally</span>(() =&gt; (<span style="color:#a6e22e">count</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>));
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">withSemaphore</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">count</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">test</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">count</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">somePromise</span>().<span style="color:#66d9ef">finally</span>(() =&gt; (<span style="color:#a6e22e">count</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
 </li>
 <li>
@@ -749,7 +748,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="예외-처리와-이벤트-처리">예외 처리와 이벤트 처리</h2>
 <ul>
@@ -793,7 +792,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="추상-데이터-타입과-캡슐화-구조">추상 데이터 타입과 캡슐화 구조</h2>
 <ul>
@@ -835,7 +834,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="객체-지향-프로그래밍">객체 지향 프로그래밍</h2>
 <ul>
@@ -853,21 +852,21 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 <li>메시지를 메서드 정의에 동적 바인딩해서 메서드 호출에 대한 다형성을 제공해야 한다.</li>
 <li>아래 상황과 같을 때 draw 메서드가 다형 참조를 통해 호출된다면, 런타임에서 어느 메서드인지를 결정해야 한다.</li>
 <li>이것이 동적 바인딩이며 객체 지향 프로그래밍에서 반드시 설계되어야 하는 것이다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {
-  <span style="color:#a6e22e">draw() {</span>...}
-}
-    
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">A</span> {
-  <span style="color:#a6e22e">draw() {</span>...}
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">draw() {</span>...}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">A</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">draw() {</span>...}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
 </li>
 <li>다중상속의 사용은 복잡한 프로그램 구조가 되기 쉽다.</li>
 <li>Java는 단일 상속만 지원하나, 인터페이스를 제공하여 다중 상속을 간접적으로 할 수 있다.</li>
 <li>Ruby에서 모든 변수는 다형이고 메서드에 대한 메서드 호출의 모든 바인딩이 동적이다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="함수형-프로그래밍">함수형 프로그래밍</h2>
 <ul>
@@ -879,24 +878,24 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 <li>Alonzo Church가 고안한 람다 기호는 무기명 함수를 정의하는 방법이다.</li>
 <li><code>람다 표현식 (lambda expression)</code>: 매개변수와 함수와의 사상(mapping)이다.</li>
 <li>ex) <em>Haskell은 순수한 함수형 언어이다.</em>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">sub</span> <span style="color:#a6e22e">n</span>
-  <span style="color:#f92672">|</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-  <span style="color:#f92672">|</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-  <span style="color:#f92672">|</span> <span style="color:#a6e22e">otherwise</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">sub</span> <span style="color:#a6e22e">n</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">|</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">|</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">|</span> <span style="color:#a6e22e">otherwise</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
 <li>함수형에서 반복은 일반적인 순차와 반복보다는 재귀와 조건식으로 제어된다.
 <ul>
 <li>반복 구조는 변수로 제어되기 때문이다.</li>
 <li>함수의 재귀 호출이 함수의 마지막 연산이라면 <code>꼬리 재귀(tail recursive)</code>라고 한다.</li>
 <li>반복을 위해 재귀를 사용하는 많은 함수는 꼬리 재귀가 아니다.</li>
 <li>아래 함수의 마지막 연산은 곱셈이므로 꼬리 재귀가 아니다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// scheme
-</span><span style="color:#75715e"></span>(<span style="color:#a6e22e">DEFINE</span> (<span style="color:#a6e22e">factorial</span> <span style="color:#a6e22e">n</span>)
-  (<span style="color:#a6e22e">IF</span> (<span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">n</span> <span style="color:#ae81ff">1</span>)
-    <span style="color:#ae81ff">1</span>
-    (<span style="color:#f92672">*</span>  <span style="color:#a6e22e">n</span> (<span style="color:#a6e22e">factorial</span>  (<span style="color:#f92672">-</span><span style="color:#a6e22e">n</span> <span style="color:#ae81ff">1</span>)))
-))
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// scheme
+</span></span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">DEFINE</span> (<span style="color:#a6e22e">factorial</span> <span style="color:#a6e22e">n</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">IF</span> (<span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">n</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    (<span style="color:#f92672">*</span>  <span style="color:#a6e22e">n</span> (<span style="color:#a6e22e">factorial</span>  (<span style="color:#f92672">-</span><span style="color:#a6e22e">n</span> <span style="color:#ae81ff">1</span>)))
+</span></span><span style="display:flex;"><span>))
+</span></span></code></pre></div></li>
 </ul>
 </li>
 <li>프로그래밍 언어는 모든 실 매개변수가 완전히 평가되기를 요구한다면 strict하다고 한다.
@@ -911,7 +910,7 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 <li>그러나 람다표현식과 같은 무기명 함수는 js, python, ruby, C#의 일부가 되었다.</li>
 <li>최근에는 대부분의 함수형 언어를 위한 컴파일러가 있어서 명령형 언어와의 실행 속도 차이는 크지 않다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="논리형-프로그래밍">논리형 프로그래밍</h2>
 <ul>
@@ -930,18 +929,18 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 <li>같은 구조에서 새로운 결과를 도출하기 위해 순회되는 구조를 의미한다.</li>
 <li>즉, 아래 예시에 선언된 Wrapper 클래스는 functor라고 할 수 있다.</li>
 <li><em>ex) js Array, Class&hellip;</em>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Wrapper</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">v</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">v</span>;
-  }
-
-  <span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">f</span>) {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Wrapper</span>(<span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span>))
-  }
-}
-
-<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Wrapper</span>(<span style="color:#ae81ff">39</span>).<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">addThree</span>);
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Wrapper</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">v</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">v</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">f</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Wrapper</span>(<span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span>))
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Wrapper</span>(<span style="color:#ae81ff">39</span>).<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">addThree</span>);
+</span></span></code></pre></div></li>
 </ul>
 </li>
 <li>논리형 프로그래밍 언어 <code>Prolog</code>
@@ -949,9 +948,9 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 <li><strong>사실(fact)과 규칙(rules)들을 제공하여 데이터베이스를 만들고 질의를 던져서 프로그램을 수행한다.</strong></li>
 <li>아래는 bob은 아버지라는 사실과, X가 아버지라면 X는 남자라는 규칙이다.</li>
 <li>둘의 체이닝을 통해 X를 bob으로 치환하여 명제가 도출된다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">father</span>(<span style="color:#a6e22e">bob</span>)
-<span style="color:#a6e22e">man</span>(<span style="color:#a6e22e">X</span>)  <span style="color:#f92672">:-</span>  <span style="color:#a6e22e">father</span>(<span style="color:#a6e22e">X</span>).
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">father</span>(<span style="color:#a6e22e">bob</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">man</span>(<span style="color:#a6e22e">X</span>)  <span style="color:#f92672">:-</span>  <span style="color:#a6e22e">father</span>(<span style="color:#a6e22e">X</span>).
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
@@ -1013,31 +1012,6 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">ad
 
 </div>
  
-    
-
-    
-    
-        <h4 class="page-header">Comments</h4>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
 
 </main>

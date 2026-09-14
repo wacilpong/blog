@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -162,7 +162,7 @@
 <li><code>가상 호스트 기반의 요청 처리</code>: 같은 IP에 대해 다른 도메인 이름으로 요청이 오면, 어떻게 처리할 것인지 정의 가능</li>
 <li><code>SSL/TLS 보안 연결 처리</code>: 여러 서비스로 요청을 라우팅할 때, 인증서를 쉽게 적용할 수 있음</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="사용하는-이유">사용하는 이유</h3>
 <ul>
 <li>3개의 디플로이먼트를 외부에 노출해야 한다면?</li>
@@ -172,30 +172,30 @@
 <li>따라서 클라이언트는 인그레스의 URL로만 접근하고, 그 요청은 적절히 처리되어 디플로이먼트의 파드로 전달된다.</li>
 <li>외부 요청에 대한 처리 규칙을 쿠버네티스 기능으로 관리할 수 있는 것이 핵심이다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="예제">예제</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: networking.k8s.io/v1
-<span style="color:#66d9ef">kind</span>: Ingress
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: ingress-example
-  <span style="color:#66d9ef">annotations</span>:
-    <span style="color:#66d9ef">nginx.ingress.kubernetes.io/rewrite-target</span>: /
-    <span style="color:#66d9ef">kubernetes.io/ingress.class</span>: <span style="color:#e6db74">&#34;nginx&#34;</span>
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">rules</span>:
-    - <span style="color:#66d9ef">host</span>: alicek106.example.com <span style="color:#75715e"># [1]</span>
-      <span style="color:#66d9ef">http</span>:
-        <span style="color:#66d9ef">paths</span>:
-          - <span style="color:#66d9ef">path</span>: /echo-hostname <span style="color:#75715e"># [2]</span>
-            <span style="color:#66d9ef">pathType</span>: Prefix
-            <span style="color:#66d9ef">backend</span>:
-              <span style="color:#66d9ef">service</span>:
-                <span style="color:#66d9ef">name</span>: hostname-service <span style="color:#75715e"># [3]</span>
-                <span style="color:#66d9ef">port</span>:
-                  <span style="color:#66d9ef">number</span>: <span style="color:#ae81ff">80</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl apply -f ingress-example.yaml
-$ kubectl get ing
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">networking.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Ingress</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">ingress-example</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">annotations</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">nginx.ingress.kubernetes.io/rewrite-target</span>: <span style="color:#ae81ff">/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">kubernetes.io/ingress.class</span>: <span style="color:#e6db74">&#34;nginx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">host</span>: <span style="color:#ae81ff">alicek106.example.com</span> <span style="color:#75715e"># [1]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">http</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/echo-hostname</span> <span style="color:#75715e"># [2]</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">pathType</span>: <span style="color:#ae81ff">Prefix</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">backend</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">service</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hostname-service</span> <span style="color:#75715e"># [3]</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">port</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">number</span>: <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ kubectl apply -f ingress-example.yaml
+</span></span><span style="display:flex;"><span>$ kubectl get ing
+</span></span></code></pre></div><ul>
 <li>인그레스를 정의하는 YAML 파일 중에서 annotation 항목을 통해 인그레스의 추가 기능을 사용할 수 있다.</li>
 <li>host: 해당 도메인 이름으로 접근하는 요청에 대해서 처리 규칙을 적용한다.</li>
 <li>path: 해당 경로에 들어온 요청을 어느 서비스로 전달할 것인지 정의한다.</li>
@@ -203,15 +203,15 @@ $ kubectl get ing
 <li><strong>인그레스는 요청을 처리하는 규칙을 정의하는 오브젝트일 뿐이므로, 인그레스 컨트롤러라는 특수한 서버가 필요하다.</strong></li>
 </ul>
 <h3 id="인그레스-컨트롤러-ingress-controller">인그레스 컨트롤러 (ingress controller)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/aws/deploy.yaml
-
-<span style="color:#75715e"># ingress-nginx 네임스페이스의 디플로이먼트와 파드를</span>
-<span style="color:#75715e"># 확인해보면 nginx 웹서버가 생성됨</span>
-$ kubectl get pods,deployment -n ingress-nginx
-
-<span style="color:#75715e"># 외부에서 nginx 인그레스 컨트롤러에 접근하기 위한 서비스도 생성됨</span>
-$ kubectl get svc -n ingress-nginx
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/aws/deploy.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ingress-nginx 네임스페이스의 디플로이먼트와 파드를</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 확인해보면 nginx 웹서버가 생성됨</span>
+</span></span><span style="display:flex;"><span>$ kubectl get pods,deployment -n ingress-nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 외부에서 nginx 인그레스 컨트롤러에 접근하기 위한 서비스도 생성됨</span>
+</span></span><span style="display:flex;"><span>$ kubectl get svc -n ingress-nginx
+</span></span></code></pre></div><ul>
 <li>ex. nginx 웹서버 인그레스 컨트롤러</li>
 <li>쿠버네티스에서 공식 개발되고 있어서 컨트롤러와 관련된 모든 리소스를 한번에 설치할 수 있다.</li>
 <li>설치하면 자동으로 생성되는 서비스는 LoadBalancer 타입이다.</li>
@@ -220,44 +220,44 @@ $ kubectl get svc -n ingress-nginx
 <strong><em>참고로 저자는 aws 인스턴스에서 해서 저렇게 부여된 것임</em></strong><br />
 <strong><em>이런 식으로 외부에서 접근 가능한 공인 IP가 필요함</em></strong></li>
 <li>온프레미스 환경이면 NodePort 타입의 서비스를 생성해 사용한다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: v1
-<span style="color:#66d9ef">kind</span>: Service
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">labels</span>:
-    <span style="color:#66d9ef">app.kubernetes.io/component</span>: controller
-    <span style="color:#66d9ef">app.kubernetes.io/instance</span>: ingress-nginx
-    <span style="color:#66d9ef">app.kubernetes.io/managed-by</span>: Helm
-    <span style="color:#66d9ef">app.kubernetes.io/name</span>: ingress-nginx
-  <span style="color:#66d9ef">name</span>: ingress-nginx-controller-nodeport
-  <span style="color:#66d9ef">namespace</span>: ingress-nginx
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">ports</span>:
-    - <span style="color:#66d9ef">name</span>: http
-      <span style="color:#66d9ef">nodePort</span>: <span style="color:#ae81ff">31000</span>
-      <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">80</span>
-      <span style="color:#66d9ef">protocol</span>: TCP
-      <span style="color:#66d9ef">targetPort</span>: http
-    - <span style="color:#66d9ef">name</span>: https
-      <span style="color:#66d9ef">nodePort</span>: <span style="color:#ae81ff">32000</span>
-      <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">443</span>
-      <span style="color:#66d9ef">protocol</span>: TCP
-      <span style="color:#66d9ef">targetPort</span>: https
-  <span style="color:#66d9ef">selector</span>:
-    <span style="color:#66d9ef">app.kubernetes.io/component</span>: controller
-    <span style="color:#66d9ef">app.kubernetes.io/instance</span>: ingress-nginx
-    <span style="color:#66d9ef">app.kubernetes.io/name</span>: ingress-nginx
-  <span style="color:#66d9ef">type</span>: NodePort
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl apply -f ingress-nginx-svc-nodeport.yaml
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/component</span>: <span style="color:#ae81ff">controller</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/instance</span>: <span style="color:#ae81ff">ingress-nginx</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/managed-by</span>: <span style="color:#ae81ff">Helm</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">ingress-nginx</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">ingress-nginx-controller-nodeport</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">ingress-nginx</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">nodePort</span>: <span style="color:#ae81ff">31000</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">http</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">nodePort</span>: <span style="color:#ae81ff">32000</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">port</span>: <span style="color:#ae81ff">443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">https</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/component</span>: <span style="color:#ae81ff">controller</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/instance</span>: <span style="color:#ae81ff">ingress-nginx</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app.kubernetes.io/name</span>: <span style="color:#ae81ff">ingress-nginx</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ kubectl apply -f ingress-nginx-svc-nodeport.yaml
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl apply -f hostname-deployment.yaml
-$ kubectl apply -f hostname-service.yaml
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ kubectl apply -f hostname-deployment.yaml
+</span></span><span style="display:flex;"><span>$ kubectl apply -f hostname-service.yaml
+</span></span></code></pre></div><ul>
 <li>인그레스의 종착점이 될 테스트용 디플로이먼트와 서비스를 생성했다.</li>
 <li>이제 nginx 인그레스 컨트롤러로 들어오는 요청은 이 디플로이먼트 파드들로 분산될 것이다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="인그레스-컨트롤러의-동작-원리">인그레스 컨트롤러의 동작 원리</h3>
 <ol>
 <li>공식 깃허브에서 제공되는 YAML 파일로 nginx 인그레스 컨트롤러를 생성한다.</li>
@@ -265,15 +265,15 @@ $ kubectl apply -f hostname-service.yaml
 <li>요청 처리 규칙을 정의하는 인그레스 오브젝트를 생성한다.</li>
 <li>nginx 인그레스 컨트롤러로 들어온 요청은 인그레스 규칙에 따라 적절한 서비스로 전달된다.</li>
 </ol>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># ENDPOINTS 항목에 출력된 지점으로 요청이 전달된다.</span>
-$ kubectl get endpoints
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># ENDPOINTS 항목에 출력된 지점으로 요청이 전달된다.</span>
+</span></span><span style="display:flex;"><span>$ kubectl get endpoints
+</span></span></code></pre></div><ul>
 <li>nginx 인그레스 컨트롤러는 서비스에 의해 생성된 엔드포인트로 요청을 직접 전달한다.</li>
 <li>즉, 서비스의 ClusterIP가 아닌 엔드포인트의 종착 지점들로 요청이 전달된다.</li>
 <li><strong>서비스를 거치지 않고 파드로 직접 요청이 전달되므로 바이패스(bypass)라고 부른다.</strong></li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="azure">Azure</h3>
 <ul>
 <li><code>subscription</code>
@@ -291,73 +291,72 @@ $ kubectl get endpoints
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="azure-kubernetes-tutorial">Azure kubernetes tutorial</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 그전에 띄워놨던 것들 yaml파일 기반으로 다 제거</span>
-$ kubectl delete -f ./
-
-<span style="color:#75715e"># brew 최신화</span>
-$ brew update
-
-<span style="color:#75715e"># kubectl처럼 애져명령어 치기 위한 의존 설치</span>
-$ brew install azure-cli
-
-<span style="color:#75715e"># 튜토리얼 진행</span>
-$ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
-$ cd azure-voting-app-redis
-$ docker-compose up -d
-
-<span style="color:#75715e"># `todorepo`는 애져에 만든 컨테이너 레지스트리명</span>
-$ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 todorepo.azurecr.io/azure-vote-front:v1
-
-$ az acr login --name todoRepo
-$ docker push todorepo.azurecr.io/azure-vote-front:v1
-$ az acr repository list --name todoRepo --output table
-
-<span style="color:#75715e"># kubectl을 만든 쿠버네티스 클러스터를 바라보도록 연결</span>
-$ az aks get-credentials --resource-group study --name todoCluster
-$ kubectl apply -f azure-vote-all-in-one-redis.yaml
-$ kubectl get service azure-vote-front --watch
-
-<span style="color:#75715e"># 이후 EXTERNAL IP로 접근하면 튜토리얼 화면이 뜬다.</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 그전에 띄워놨던 것들 yaml파일 기반으로 다 제거</span>
+</span></span><span style="display:flex;"><span>$ kubectl delete -f ./
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># brew 최신화</span>
+</span></span><span style="display:flex;"><span>$ brew update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl처럼 애져명령어 치기 위한 의존 설치</span>
+</span></span><span style="display:flex;"><span>$ brew install azure-cli
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 튜토리얼 진행</span>
+</span></span><span style="display:flex;"><span>$ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
+</span></span><span style="display:flex;"><span>$ cd azure-voting-app-redis
+</span></span><span style="display:flex;"><span>$ docker-compose up -d
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># `todorepo`는 애져에 만든 컨테이너 레지스트리명</span>
+</span></span><span style="display:flex;"><span>$ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 todorepo.azurecr.io/azure-vote-front:v1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ az acr login --name todoRepo
+</span></span><span style="display:flex;"><span>$ docker push todorepo.azurecr.io/azure-vote-front:v1
+</span></span><span style="display:flex;"><span>$ az acr repository list --name todoRepo --output table
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># kubectl을 만든 쿠버네티스 클러스터를 바라보도록 연결</span>
+</span></span><span style="display:flex;"><span>$ az aks get-credentials --resource-group study --name todoCluster
+</span></span><span style="display:flex;"><span>$ kubectl apply -f azure-vote-all-in-one-redis.yaml
+</span></span><span style="display:flex;"><span>$ kubectl get service azure-vote-front --watch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이후 EXTERNAL IP로 접근하면 튜토리얼 화면이 뜬다.</span>
+</span></span></code></pre></div><ul>
 <li><a href="https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app">https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app</a></li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="애져-리소스그룹-삭제한-후의-로컬에서-컨텍스트-스위칭하기">애져 리소스그룹 삭제한 후의 로컬에서 컨텍스트 스위칭하기</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ kubectl config get-contexts
-$ kubectl config unset clusters.todoCluster
-$ kubectl config unset contexts.todoCluster
-$ kubectl config unset users.clusterUser_study_todoCluster
-$ kubectl config use-context docker-desktop
-$ kubectl config view
-
-<span style="color:#75715e"># 이제 config를 보면 현재 컨텍스트가 docker-desktop이다.</span>
-
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ kubectl config get-contexts
+</span></span><span style="display:flex;"><span>$ kubectl config unset clusters.todoCluster
+</span></span><span style="display:flex;"><span>$ kubectl config unset contexts.todoCluster
+</span></span><span style="display:flex;"><span>$ kubectl config unset users.clusterUser_study_todoCluster
+</span></span><span style="display:flex;"><span>$ kubectl config use-context docker-desktop
+</span></span><span style="display:flex;"><span>$ kubectl config view
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이제 config를 보면 현재 컨텍스트가 docker-desktop이다.</span>
+</span></span></code></pre></div><ul>
 <li><code>Unable to connect to the server: dial tcp i/o time out~</code></li>
 <li>내가 연결해놨던 애져 클러스터가 없어져서 이런 에러가 발생했다.</li>
 <li>이때는 컨텍스트를 바꿔주어야 한다.</li>
 <li>내 로컬 도커 데스크탑 쿠버네티스 클러스터로 바꿔주었다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="쿠버네티스-yaml-파일들-있을-때-전체-삭제하기">쿠버네티스 yaml 파일들 있을 때 전체 삭제하기</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~ kubectl delete -f ./
-
-deployment.apps <span style="color:#e6db74">&#34;hostname-deployment&#34;</span> deleted
-service <span style="color:#e6db74">&#34;hostname-service&#34;</span> deleted
-ingress.networking.k8s.io <span style="color:#e6db74">&#34;ingress-example&#34;</span> deleted
-deployment.apps <span style="color:#e6db74">&#34;todo-deployment&#34;</span> deleted
-Error from server <span style="color:#f92672">(</span>NotFound<span style="color:#f92672">)</span>: error when deleting <span style="color:#e6db74">&#34;ingress-nginx-svc-nodeport.yaml&#34;</span>: services <span style="color:#e6db74">&#34;ingress-nginx-controller-nodeport&#34;</span> not found
-Error from server <span style="color:#f92672">(</span>NotFound<span style="color:#f92672">)</span>: error when deleting <span style="color:#e6db74">&#34;todo-pod.yaml&#34;</span>: pods <span style="color:#e6db74">&#34;todo-pod&#34;</span> not found
-Error from server <span style="color:#f92672">(</span>NotFound<span style="color:#f92672">)</span>: error when deleting <span style="color:#e6db74">&#34;todo-replicaset.yaml&#34;</span>: replicasets.apps <span style="color:#e6db74">&#34;todo-replicaset&#34;</span> not found
-unable to decode <span style="color:#e6db74">&#34;.angular-config.json&#34;</span>: Object <span style="color:#e6db74">&#39;Kind&#39;</span> is missing in <span style="color:#e6db74">&#39;{
-</span><span style="color:#e6db74">  &#34;version&#34;: 1,
-</span><span style="color:#e6db74">  &#34;cli&#34;: {
-</span><span style="color:#e6db74">    &#34;analytics&#34;: false
-</span><span style="color:#e6db74">  }
-</span><span style="color:#e6db74">}&#39;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>~ kubectl delete -f ./
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>deployment.apps <span style="color:#e6db74">&#34;hostname-deployment&#34;</span> deleted
+</span></span><span style="display:flex;"><span>service <span style="color:#e6db74">&#34;hostname-service&#34;</span> deleted
+</span></span><span style="display:flex;"><span>ingress.networking.k8s.io <span style="color:#e6db74">&#34;ingress-example&#34;</span> deleted
+</span></span><span style="display:flex;"><span>deployment.apps <span style="color:#e6db74">&#34;todo-deployment&#34;</span> deleted
+</span></span><span style="display:flex;"><span>Error from server <span style="color:#f92672">(</span>NotFound<span style="color:#f92672">)</span>: error when deleting <span style="color:#e6db74">&#34;ingress-nginx-svc-nodeport.yaml&#34;</span>: services <span style="color:#e6db74">&#34;ingress-nginx-controller-nodeport&#34;</span> not found
+</span></span><span style="display:flex;"><span>Error from server <span style="color:#f92672">(</span>NotFound<span style="color:#f92672">)</span>: error when deleting <span style="color:#e6db74">&#34;todo-pod.yaml&#34;</span>: pods <span style="color:#e6db74">&#34;todo-pod&#34;</span> not found
+</span></span><span style="display:flex;"><span>Error from server <span style="color:#f92672">(</span>NotFound<span style="color:#f92672">)</span>: error when deleting <span style="color:#e6db74">&#34;todo-replicaset.yaml&#34;</span>: replicasets.apps <span style="color:#e6db74">&#34;todo-replicaset&#34;</span> not found
+</span></span><span style="display:flex;"><span>unable to decode <span style="color:#e6db74">&#34;.angular-config.json&#34;</span>: Object <span style="color:#e6db74">&#39;Kind&#39;</span> is missing in <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;version&#34;: 1,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;cli&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;analytics&#34;: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
+</span></span></code></pre></div><ul>
 <li><code>Cannot ls ~/.Trash in the Terminal~</code></li>
 <li>위 메시지와 함께 권한 문제가 발생한다면?</li>
 <li>이때는 터미널에 <code>설정 &gt; 개인 정보 보호 &gt; 전체 디스크 접근 권한</code>을 주고 실행하자.</li>

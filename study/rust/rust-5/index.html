@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -157,27 +157,27 @@
     </div>
 
     <div align="start" class="content"><h2 id="1-구조체structs-정의와-인스턴스-생성">1. 구조체(Structs) 정의와 인스턴스 생성</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">User</span> {
-    active: <span style="color:#66d9ef">bool</span>,
-    username: String,
-    email: String,
-    sign_in_count: <span style="color:#66d9ef">u64</span>,
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
-        email: String::from(<span style="color:#e6db74">&#34;someone@example.com&#34;</span>),
-        username: String::from(<span style="color:#e6db74">&#34;someusername123&#34;</span>),
-        active: <span style="color:#a6e22e">true</span>,
-        sign_in_count: <span style="color:#ae81ff">1</span>,
-    };
-
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> user2 <span style="color:#f92672">=</span> User {
-        <span style="color:#75715e">// same
-</span><span style="color:#75715e"></span>    }
-
-    user2.email <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;anotheremail@example.com&#34;</span>);
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    active: <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>    username: String,
+</span></span><span style="display:flex;"><span>    email: String,
+</span></span><span style="display:flex;"><span>    sign_in_count: <span style="color:#66d9ef">u64</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
+</span></span><span style="display:flex;"><span>        email: String::from(<span style="color:#e6db74">&#34;someone@example.com&#34;</span>),
+</span></span><span style="display:flex;"><span>        username: String::from(<span style="color:#e6db74">&#34;someusername123&#34;</span>),
+</span></span><span style="display:flex;"><span>        active: <span style="color:#a6e22e">true</span>,
+</span></span><span style="display:flex;"><span>        sign_in_count: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> user2 <span style="color:#f92672">=</span> User {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// same
+</span></span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    user2.email <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;anotheremail@example.com&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>구조체는 튜플과 비슷하나, 다음의 차이가 있다.
 <ul>
 <li>(1) 각 데이터에 이름을 부여해 의미를 더 명확하게 할 수 있다.</li>
@@ -187,24 +187,24 @@
 <li>구조체 안의 각 데이터를 필드(field)라고 한다.</li>
 <li><strong>구조체의 몇몇 필드만 가변적이라고 명시할 수 없고, 전체 인스턴스를 가변적으로 만들 수 있다.</strong></li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="구조체-데이터의-ownership">구조체 데이터의 ownership</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">User</span> {
-    active: <span style="color:#66d9ef">bool</span>,
-    username: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
-    email: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
-    sign_in_count: <span style="color:#66d9ef">u64</span>,
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
-        email: <span style="color:#e6db74">&#34;someone@example.com&#34;</span>,
-        username: <span style="color:#e6db74">&#34;someusername123&#34;</span>,
-        active: <span style="color:#a6e22e">true</span>,
-        sign_in_count: <span style="color:#ae81ff">1</span>,
-    };
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    active: <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>    username: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
+</span></span><span style="display:flex;"><span>    email: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
+</span></span><span style="display:flex;"><span>    sign_in_count: <span style="color:#66d9ef">u64</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
+</span></span><span style="display:flex;"><span>        email: <span style="color:#e6db74">&#34;someone@example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        username: <span style="color:#e6db74">&#34;someusername123&#34;</span>,
+</span></span><span style="display:flex;"><span>        active: <span style="color:#a6e22e">true</span>,
+</span></span><span style="display:flex;"><span>        sign_in_count: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>User에서 <code>&amp;str</code> 대신 String 타입을 사용하는 이유는 <strong>구조체의 각 인스턴스가 데이터의 ownership을 갖게히여 유효한 스코프 내에 존재하는 동안은 데이터 또한 유효할 수 있도록 하기 위한 의도이다.</strong></li>
 <li><strong>구조체에서 다른 변수가 소유한 데이터의 참조를 저장하려면 수명(lifetimes)이 필요하다.</strong></li>
 <li>수명은 구조체의 유효한 범위 안에서 구조체가 참조하는 데이터가 유효하다고 보장해준다.</li>
@@ -212,49 +212,49 @@
 <em><code>help: consider introducing a named lifetime parameter</code>라는 친절한 팁과 함께..</em><br />
 <em>수명에 관해서는 10장에서 자세히 다룸</em></li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="구조체에-관한-유용한-문법들">구조체에 관한 유용한 문법들</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1) shorthand
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">build_user</span>(email: String, username: String) -&gt; <span style="color:#a6e22e">User</span> {
-    User {
-        email,
-        username,
-        active: <span style="color:#a6e22e">true</span>,
-        sign_in_count: <span style="color:#ae81ff">1</span>,
-    }
-}
-
-<span style="color:#75715e">// (2) update syntax
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
-        email: String::from(<span style="color:#e6db74">&#34;someone@example.com&#34;</span>),
-        username: String::from(<span style="color:#e6db74">&#34;someusername123&#34;</span>),
-        active: <span style="color:#a6e22e">true</span>,
-        sign_in_count: <span style="color:#ae81ff">1</span>,
-    };
-
-    <span style="color:#66d9ef">let</span> user2 <span style="color:#f92672">=</span> User {
-        email: String::from(<span style="color:#e6db74">&#34;another@example.com&#34;</span>),
-        ..user1
-    };
-}
-
-<span style="color:#75715e">// (3) tuple structs
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Color</span>(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>);
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span>(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>);
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> black <span style="color:#f92672">=</span> Color(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
-    <span style="color:#66d9ef">let</span> origin <span style="color:#f92672">=</span> Point(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
-}
-
-<span style="color:#75715e">// (4) Unit-Like Structs
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AlwaysEqual</span>;
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> subject <span style="color:#f92672">=</span> AlwaysEqual;
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// (1) shorthand
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">build_user</span>(email: String, username: String) -&gt; <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    User {
+</span></span><span style="display:flex;"><span>        email,
+</span></span><span style="display:flex;"><span>        username,
+</span></span><span style="display:flex;"><span>        active: <span style="color:#a6e22e">true</span>,
+</span></span><span style="display:flex;"><span>        sign_in_count: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// (2) update syntax
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> user1 <span style="color:#f92672">=</span> User {
+</span></span><span style="display:flex;"><span>        email: String::from(<span style="color:#e6db74">&#34;someone@example.com&#34;</span>),
+</span></span><span style="display:flex;"><span>        username: String::from(<span style="color:#e6db74">&#34;someusername123&#34;</span>),
+</span></span><span style="display:flex;"><span>        active: <span style="color:#a6e22e">true</span>,
+</span></span><span style="display:flex;"><span>        sign_in_count: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> user2 <span style="color:#f92672">=</span> User {
+</span></span><span style="display:flex;"><span>        email: String::from(<span style="color:#e6db74">&#34;another@example.com&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>user1
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// (3) tuple structs
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Color</span>(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span>(<span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>, <span style="color:#66d9ef">i32</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> black <span style="color:#f92672">=</span> Color(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> origin <span style="color:#f92672">=</span> Point(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// (4) Unit-Like Structs
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AlwaysEqual</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> subject <span style="color:#f92672">=</span> AlwaysEqual;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>(1)의 구조체의 필드 초기화 단축 문법을 사용해 변수명을 일일이 입력할 필요가 없다.</li>
 <li>(2)의 구조체 갱신 문법은 <code>=</code>처럼 할당하는 것이므로 데이터가 이동된다.
 <ul>
@@ -275,79 +275,79 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2-사례-rectangles-프로그램">2. 사례: Rectangles 프로그램</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> width1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;
-    <span style="color:#66d9ef">let</span> height1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>;
-
-    println<span style="color:#f92672">!</span>(
-        <span style="color:#e6db74">&#34;The area of the rectangle is {} square pixels.&#34;</span>,
-        area(width1, height1)
-    );
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(width: <span style="color:#66d9ef">u32</span>, height: <span style="color:#66d9ef">u32</span>) -&gt; <span style="color:#66d9ef">u32</span> {
-    width <span style="color:#f92672">*</span> height
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">50</span>);
-
-    println<span style="color:#f92672">!</span>(
-        <span style="color:#e6db74">&#34;The area of the rectangle is {} square pixels.&#34;</span>,
-        area(rect1)
-    );
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(dimensions: (<span style="color:#66d9ef">u32</span>, <span style="color:#66d9ef">u32</span>)) -&gt; <span style="color:#66d9ef">u32</span> {
-    dimensions.<span style="color:#ae81ff">0</span> <span style="color:#f92672">*</span> dimensions.<span style="color:#ae81ff">1</span>
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
-    width: <span style="color:#66d9ef">u32</span>,
-    height: <span style="color:#66d9ef">u32</span>,
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
-        width: <span style="color:#ae81ff">30</span>,
-        height: <span style="color:#ae81ff">50</span>,
-    };
-
-    println<span style="color:#f92672">!</span>(
-        <span style="color:#e6db74">&#34;The area of the rectangle is {} square pixels.&#34;</span>,
-        area(<span style="color:#f92672">&amp;</span>rect1)
-    );
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(rectangle: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">u32</span> {
-    rectangle.width <span style="color:#f92672">*</span> rectangle.height
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// (1)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> width1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> height1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;The area of the rectangle is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> square pixels.&#34;</span>,
+</span></span><span style="display:flex;"><span>        area(width1, height1)
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(width: <span style="color:#66d9ef">u32</span>, height: <span style="color:#66d9ef">u32</span>) -&gt; <span style="color:#66d9ef">u32</span> {
+</span></span><span style="display:flex;"><span>    width <span style="color:#f92672">*</span> height
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// (2)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">50</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;The area of the rectangle is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> square pixels.&#34;</span>,
+</span></span><span style="display:flex;"><span>        area(rect1)
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(dimensions: (<span style="color:#66d9ef">u32</span>, <span style="color:#66d9ef">u32</span>)) -&gt; <span style="color:#66d9ef">u32</span> {
+</span></span><span style="display:flex;"><span>    dimensions.<span style="color:#ae81ff">0</span> <span style="color:#f92672">*</span> dimensions.<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
+</span></span><span style="display:flex;"><span>    width: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
+</span></span><span style="display:flex;"><span>        width: <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>        height: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;The area of the rectangle is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> square pixels.&#34;</span>,
+</span></span><span style="display:flex;"><span>        area(<span style="color:#f92672">&amp;</span>rect1)
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(rectangle: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">u32</span> {
+</span></span><span style="display:flex;"><span>    rectangle.width <span style="color:#f92672">*</span> rectangle.height
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>사각형의 면적을 구하는 프로그램으로, area 함수의 두 매개변수는 연관되어 있다.</li>
 <li>그러나 프로그램 어디에도 두 매개변수의 관계를 표현하고 있지 않다.</li>
 <li>튜플을 이용해 (2)처럼 하나의 매개변수만 전달하도록 리팩토링할 수 있다.</li>
 <li>그러나 각 요소에 이름이 없어서 계산 과정에서 튜플의 인덱스로 접근하고 있다.</li>
 <li>구조체를 이용해 (3)처럼 width, height라는 명확한 이름의 필드값으로 Rectangle 인스턴스를 계산할 수 있다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="트레이트trait로-유용한-기능-추가하기">트레이트(trait)로 유용한 기능 추가하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
-    width: <span style="color:#66d9ef">u32</span>,
-    height: <span style="color:#66d9ef">u32</span>,
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
-        width: <span style="color:#ae81ff">30</span>,
-        height: <span style="color:#ae81ff">50</span>,
-    };
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;rect1 is {}&#34;</span>, rect1);
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
+</span></span><span style="display:flex;"><span>    width: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
+</span></span><span style="display:flex;"><span>        width: <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>        height: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;rect1 is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, rect1);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>Rectangle 구조체를 디버깅하기 위해 println! 매크로를 찍은 위 코드는 에러를 낸다.<br />
 <em>Rectangle doesn&rsquo;t implement std::fmt::Display</em><br />
 <em>help: the trait std::fmt::Display is not implemented for Rectangle</em><br />
@@ -357,24 +357,24 @@
 <li>반면 구조체는 값들을 쉼표로 구분할지, 중괄호까지 보여줄지 등 불명확하다.</li>
 <li>따라서 러스트는 구조체가 Display 크레이트를 구현하지 않도록 두었다.</li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">...
-println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;rect1 is {:?}&#34;</span>, rect1);
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[derive(Debug)]</span>
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
-    width: <span style="color:#66d9ef">u32</span>,
-    height: <span style="color:#66d9ef">u32</span>,
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
-        width: <span style="color:#ae81ff">30</span>,
-        height: <span style="color:#ae81ff">50</span>,
-    };
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;rect1 is {:?}&#34;</span>, rect1);
-}
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;rect1 is </span><span style="color:#e6db74">{:?}</span><span style="color:#e6db74">&#34;</span>, rect1);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">#[derive(Debug)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
+</span></span><span style="display:flex;"><span>    width: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
+</span></span><span style="display:flex;"><span>        width: <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>        height: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;rect1 is </span><span style="color:#e6db74">{:?}</span><span style="color:#e6db74">&#34;</span>, rect1);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>에러의 친절한 팁대로 구현해도 에러를 낸다.<br />
 <em>error[E0277]: Rectangle doesn&rsquo;t implement Debug</em><br />
 <em>help: the trait Debug is not implemented for Rectangle</em><br />
@@ -384,32 +384,32 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;rec
 <li><code>#[derive(Debug)]</code>를 구조체 선언 전에 추가해주어 Debug포맷을 출력할 수 있다.</li>
 <li>{:?} 대신 <code>{:#}</code>을 이용하면 중괄호가 정돈된 형태로 출력할 수 있다.</li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[derive(Debug)]</span>
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
-    width: <span style="color:#66d9ef">u32</span>,
-    height: <span style="color:#66d9ef">u32</span>,
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> scale <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
-        width: <span style="color:#a6e22e">dbg</span><span style="color:#f92672">!</span>(<span style="color:#ae81ff">30</span> <span style="color:#f92672">*</span> scale),
-        height: <span style="color:#ae81ff">50</span>,
-    };
-
-    dbg<span style="color:#f92672">!</span>(<span style="color:#f92672">&amp;</span>rect1);
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cargo run
-    Finished dev <span style="color:#f92672">[</span>unoptimized + debuginfo<span style="color:#f92672">]</span> target<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> in 1.24s
-     Running <span style="color:#e6db74">`</span><span style="color:#f92672">{</span>mydirpath<span style="color:#f92672">}</span>/rectangles/target/debug/rectangles main.rs<span style="color:#e6db74">`</span>
-<span style="color:#f92672">[</span>src/main.rs:10<span style="color:#f92672">]</span> <span style="color:#ae81ff">30</span> * scale <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>
-<span style="color:#f92672">[</span>src/main.rs:14<span style="color:#f92672">]</span> &amp;rect1 <span style="color:#f92672">=</span> Rectangle <span style="color:#f92672">{</span>
-    width: 60,
-    height: 50,
-<span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">#[derive(Debug)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
+</span></span><span style="display:flex;"><span>    width: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> scale <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
+</span></span><span style="display:flex;"><span>        width: <span style="color:#a6e22e">dbg</span><span style="color:#f92672">!</span>(<span style="color:#ae81ff">30</span> <span style="color:#f92672">*</span> scale),
+</span></span><span style="display:flex;"><span>        height: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dbg!</span>(<span style="color:#f92672">&amp;</span>rect1);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ cargo run
+</span></span><span style="display:flex;"><span>    Finished dev <span style="color:#f92672">[</span>unoptimized + debuginfo<span style="color:#f92672">]</span> target<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> in 1.24s
+</span></span><span style="display:flex;"><span>     Running <span style="color:#e6db74">`</span><span style="color:#f92672">{</span>mydirpath<span style="color:#f92672">}</span>/rectangles/target/debug/rectangles main.rs<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>src/main.rs:10<span style="color:#f92672">]</span> <span style="color:#ae81ff">30</span> * scale <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>src/main.rs:14<span style="color:#f92672">]</span> &amp;rect1 <span style="color:#f92672">=</span> Rectangle <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    width: 60,
+</span></span><span style="display:flex;"><span>    height: 50,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
 <li><a href="https://doc.rust-lang.org/std/macro.dbg.html">dbg!</a> 매크로를 통해 파일과 라인에 결과값을 함께 출력할 수 있다.</li>
 <li>이를 통해 표현식의 결과값을 처리하고 ownership을 반환할 수 있다.</li>
 <li>따라서 dbg! 매크로는 표현식의 값에 대한 ownership을 반환하므로 <code>30 * scale</code>라는 표현식에 써도 된다.</li>
@@ -417,33 +417,33 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;rec
 <li>area 함수는 사각형의 면적을 구하므로 Rectangle 구조체에 대해서만 사용하게 만드는 것이 더 효율적이다.</li>
 <li>이때 area 함수를 Rectangle 타입의 메서드로 만들 수 있다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="3-메서드method">3. 메서드(Method)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[derive(Debug)]</span>
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
-    width: <span style="color:#66d9ef">u32</span>,
-    height: <span style="color:#66d9ef">u32</span>,
-}
-
-<span style="color:#66d9ef">impl</span> Rectangle {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">u32</span> {
-        self.width <span style="color:#f92672">*</span> self.height
-    }
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
-        width: <span style="color:#ae81ff">30</span>,
-        height: <span style="color:#ae81ff">50</span>,
-    };
-
-    println<span style="color:#f92672">!</span>(
-        <span style="color:#e6db74">&#34;The area of the rectangle is {} square pixels.&#34;</span>,
-        rect1.area()
-    );
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">#[derive(Debug)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rectangle</span> {
+</span></span><span style="display:flex;"><span>    width: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#66d9ef">u32</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Rectangle {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">u32</span> {
+</span></span><span style="display:flex;"><span>        self.width <span style="color:#f92672">*</span> self.height
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
+</span></span><span style="display:flex;"><span>        width: <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>        height: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;The area of the rectangle is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> square pixels.&#34;</span>,
+</span></span><span style="display:flex;"><span>        rect1.area()
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>area 메서드 시그니처를 보면 <code>&amp;Rectangle</code>이 아닌, <code>&amp;self</code>를 사용하고 있다.</li>
 <li>Rectangle 구조체 컨텍스트 안에 존재하므로 러스트는 이미 self가 Rectangle 타입이라는 것을 안다.</li>
 <li>&amp;self는 <code>self: &amp;Self</code>을 줄인 말이다.</li>
@@ -451,24 +451,24 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;rec
 <li>메서드는 self의 ownership을 갖거나, 이 예제처럼 self의 불변 인스턴스를 빌리거나, 매개변수들처럼 self의 가변 인스턴스를 빌려올 수 있다.</li>
 <li>위 코드에서는 구조체의 데이터를 읽을 뿐 값을 쓰지 않기 때문에 굳이 ownership을 가질 필요가 없는데, 만약 메서드를 호출한 인스턴스의 값을 변경하고자 한다면 <code>&amp;mut self</code>로 선언해야 한다. 이는 self를 다른 인스턴스로 교체하고 호출자가 더 이상 예전 인스턴스를 사용하지 못하도록 할 때 활용하는 기법이다.</li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">impl</span> Rectangle {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">width</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">bool</span> {
-        self.width <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
-    }
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
-        width: <span style="color:#ae81ff">30</span>,
-        height: <span style="color:#ae81ff">50</span>,
-    };
-
-    <span style="color:#66d9ef">if</span> rect1.width() {
-        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The rectangle has a nonzero width; it is {}&#34;</span>, rect1.width);
-    }
-}
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Rectangle {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">width</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span>        self.width <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> rect1 <span style="color:#f92672">=</span> Rectangle {
+</span></span><span style="display:flex;"><span>        width: <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>        height: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> rect1.width() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;The rectangle has a nonzero width; it is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, rect1.width);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>어떤 목적으로든 구조체에 존재하는 같은 이름의 메서드를 만들 수 있다.</li>
 <li>종종 필드의 값만 반환하고 다른 작업은 수행할 필요없을 때 사용한다.
 <ul>
@@ -478,40 +478,40 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;rec
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="특징">특징</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (1)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Rectangle {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">u32</span> {
-        self.width <span style="color:#f92672">*</span> self.height
-    }
-
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">can_hold</span>(<span style="color:#f92672">&amp;</span>self, other: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">bool</span> {
-        self.width <span style="color:#f92672">&gt;</span> other.width <span style="color:#f92672">&amp;&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
-    }
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (2)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Rectangle {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">square</span>(size: <span style="color:#66d9ef">u32</span>) -&gt; <span style="color:#a6e22e">Rectangle</span> {
-        Rectangle {
-            width: <span style="color:#a6e22e">size</span>,
-            height: <span style="color:#a6e22e">size</span>,
-        }
-    }
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// (3)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">impl</span> Rectangle {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">u32</span> {
-        self.width <span style="color:#f92672">*</span> self.height
-    }
-}
-
-<span style="color:#66d9ef">impl</span> Rectangle {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">can_hold</span>(<span style="color:#f92672">&amp;</span>self, other: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">bool</span> {
-        self.width <span style="color:#f92672">&gt;</span> other.width <span style="color:#f92672">&amp;&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
-    }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// (1)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Rectangle {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">u32</span> {
+</span></span><span style="display:flex;"><span>        self.width <span style="color:#f92672">*</span> self.height
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">can_hold</span>(<span style="color:#f92672">&amp;</span>self, other: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span>        self.width <span style="color:#f92672">&gt;</span> other.width <span style="color:#f92672">&amp;&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// (2)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Rectangle {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">square</span>(size: <span style="color:#66d9ef">u32</span>) -&gt; <span style="color:#a6e22e">Rectangle</span> {
+</span></span><span style="display:flex;"><span>        Rectangle {
+</span></span><span style="display:flex;"><span>            width: <span style="color:#a6e22e">size</span>,
+</span></span><span style="display:flex;"><span>            height: <span style="color:#a6e22e">size</span>,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// (3)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Rectangle {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">area</span>(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">u32</span> {
+</span></span><span style="display:flex;"><span>        self.width <span style="color:#f92672">*</span> self.height
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Rectangle {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">can_hold</span>(<span style="color:#f92672">&amp;</span>self, other: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">Rectangle</span>) -&gt; <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span>        self.width <span style="color:#f92672">&gt;</span> other.width <span style="color:#f92672">&amp;&amp;</span> self.height <span style="color:#f92672">&gt;</span> other.height
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>(1)처럼 메서드에 여러 매개변수를 전달하려면 self 이후에 원하는 만큼 추가하면 된다.</li>
 <li>(2)처럼 self 매개변수를 굳이 사용하지 않는 다른 함수도 정의할 수 있다,
 <ul>

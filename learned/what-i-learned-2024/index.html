@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -167,16 +167,16 @@
 </li>
 </ul>
 <h3 id="1-doctype-html은-어디까지-영향을-주는-것인가">(1) <code>&lt;!DOCTYPE html&gt;</code>은 어디까지 영향을 주는 것인가?</h3>
-<pre><code>A DOCTYPE is a required preamble.
+<pre tabindex="0"><code>A DOCTYPE is a required preamble.
 
 DOCTYPE은 필수 (맨앞)서문이다.
-</code></pre><pre><code>DOCTYPEs are required for legacy reasons. When omitted, browsers tend to use a different rendering mode that is incompatible with some specifications. Including the DOCTYPE in a document ensures that the browser makes a best-effort attempt at following the relevant specifications.
+</code></pre><pre tabindex="0"><code>DOCTYPEs are required for legacy reasons. When omitted, browsers tend to use a different rendering mode that is incompatible with some specifications. Including the DOCTYPE in a document ensures that the browser makes a best-effort attempt at following the relevant specifications.
 
 DOCTYPE은 기존 호환성 이유로 인해 필요하다. **이걸 생략하면 브라우저는 일부 사양과 호환되지 않은 다른 렌더링 모드를 사용할 수도 있다. DOCTYPE을 선언해야만 브라우저가 관련 사양을 따르기 위해 최적의 방식으로 동작한다.
 </code></pre><p>by <a href="https://html.spec.whatwg.org/multipage/syntax.html#the-doctype">HTML공식 스펙문서</a></p>
 <p>즉, 이를 선언하지 않거나 html문서 맨 앞에 쓰지 않으면 문서 전체 렌더링에 영향을 준다!!!</p>
 <h3 id="2-렌더링-모드란">(2) 렌더링 모드란?</h3>
-<pre><code>DOCTYPE은 브라우저가 문서를 렌더링 할 때 [quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode)로 바뀌지 않도록하는 것이 유일한 목적입니다.
+<pre tabindex="0"><code>DOCTYPE은 브라우저가 문서를 렌더링 할 때 [quirks mode](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode)로 바뀌지 않도록하는 것이 유일한 목적입니다.
 </code></pre><p>by <a href="https://developer.mozilla.org/ko/docs/Glossary/Doctype">MDN문서</a></p>
 <ul>
 <li><strong>Standard mode</strong>
@@ -205,7 +205,7 @@ DOCTYPE은 기존 호환성 이유로 인해 필요하다. **이걸 생략하면
 <li><code>document.compatMode</code></li>
 <li>위 값이 <code>BackCompat</code>라면 쿼크모드이고, 그 외에는 <code>CSS1Compat</code> 이다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2024-07-03"><strong>2024-07-03</strong></h2>
 <ul>
@@ -215,28 +215,28 @@ DOCTYPE은 기존 호환성 이유로 인해 필요하다. **이걸 생략하면
 <li>해당 서비스를 컴포넌트로 주입(DI)할 때는 등록한 토큰 이름으로 가져와야 한다.</li>
 <li><code>APP_TOKEN</code>으로 <code>ServiceA</code>를 provider로 등록했다면, <code>inject(APP_TOKEN)</code>으로 주입해야 한다.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">NgModule</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@angular/core&#34;</span>;
-
-<span style="color:#66d9ef">@NgModule</span>({
-  <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [{<span style="color:#a6e22e">provide</span>: <span style="color:#66d9ef">APP_TOKEN</span>, <span style="color:#a6e22e">useClass</span>: <span style="color:#66d9ef">ServiceA</span>}],
-})
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppModule</span> {}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">Component</span>, <span style="color:#a6e22e">Inject</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@angular/core&#34;</span>;
-
-<span style="color:#66d9ef">@Component</span>({
-  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;app-root&#34;</span>,
-  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Value: {{ value }}`</span>,
-})
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> {
-  <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>;
-
-  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">@Inject</span>(<span style="color:#a6e22e">APP_TOKEN</span>) <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">myService</span>: <span style="color:#66d9ef">ServiceA</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">myService</span>.<span style="color:#a6e22e">getValue</span>();
-  }
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">NgModule</span>} <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@angular/core&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@NgModule</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [{<span style="color:#a6e22e">provide</span>: <span style="color:#66d9ef">APP_TOKEN</span>, <span style="color:#a6e22e">useClass</span>: <span style="color:#66d9ef">ServiceA</span>}],
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppModule</span> {}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">Component</span>, <span style="color:#a6e22e">Inject</span>} <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@angular/core&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;app-root&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Value: {{ value }}`</span>,
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppComponent</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">@Inject</span>(<span style="color:#a6e22e">APP_TOKEN</span>) <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">myService</span>: <span style="color:#66d9ef">ServiceA</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">myService</span>.<span style="color:#a6e22e">getValue</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2024-03-15"><strong>2024-03-15</strong></h2>
 <ul>
@@ -251,17 +251,17 @@ DOCTYPE은 기존 호환성 이유로 인해 필요하다. **이걸 생략하면
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2024-02-27"><strong>2024-02-27</strong></h2>
 <ul>
 <li>position: relative &gt; position: absolute에 right:0도 없는데 맨 뒤에 붙는다면?
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;position: relative;&#34;</span>&gt;
-  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: inline-block;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: inline-block;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;position: absolute;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-&lt;/<span style="color:#f92672">ul</span>&gt;
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;position: relative;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: inline-block;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: inline-block;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;position: absolute;&#34;</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span></code></pre></div><ul>
 <li>위 구조를 봤을 때, 맨 마지막 li에 따로 <code>right: 0</code> 스타일을 주지 않았으므로 ul 아래 맨 왼쪽에 붙을 줄 알았다.</li>
 <li>그러나 현실은 각 li들을 지나서 맨 오른쪽에 붙었다.</li>
 <li><code>position: absolute</code>로 설정한 요소는 위치를 결정하기 위해 상위 요소 중에서 <code>position: relative</code>, <code>position: absolute</code>, <code>position: fixed</code> 중 하나를 기준으로 삼는다.</li>

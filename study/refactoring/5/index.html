@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -184,54 +184,54 @@
 <li>추가한 함수와 동일하거나 비슷한 일을 하는 코드가 있는지 검토한다.</li>
 </ul>
 <p><strong>예시</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
-	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-
-	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
-	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**고객채무**&#39;</span>);
-	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
-...
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
-	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-
-	<span style="color:#a6e22e">printBanner</span>(); =&gt; <span style="color:#a6e22e">배너</span> <span style="color:#a6e22e">출력</span> <span style="color:#a6e22e">로직을</span> <span style="color:#a6e22e">함수로</span> <span style="color:#a6e22e">추출</span>
-...
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printBanner</span>() {
-	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
-	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**고객채무**&#39;</span>);
-	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
-};
-</code></pre></div><p><strong>예시: 지역변수의 값을 변경할 때*</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-
-  <span style="color:#75715e">// 미해결 채무(outstanding)를 계산한다
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">o</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">orders</span>) {
-    <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">amount</span>;
-  }
-
-  <span style="color:#a6e22e">printBanner</span>();
-  <span style="color:#a6e22e">recordDueDate</span>(<span style="color:#a6e22e">invoice</span>);
-  <span style="color:#a6e22e">printDetails</span>(<span style="color:#a6e22e">invoice</span>, <span style="color:#a6e22e">outstanding</span>);
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
-  <span style="color:#a6e22e">printBanner</span>();
-
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateOutstanding</span>(<span style="color:#a6e22e">invoice</span>); <span style="color:#75715e">// 함수 추출 완료. 추출한 함수가 반환한 값을 원래 변수에 저장
-</span><span style="color:#75715e"></span>
-  <span style="color:#a6e22e">recordDueDate</span>(<span style="color:#a6e22e">invoice</span>);
-  <span style="color:#a6e22e">printDetails</span>(<span style="color:#a6e22e">invoice</span>, <span style="color:#a6e22e">outstanding</span>);
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateOutstanding</span>(<span style="color:#a6e22e">invoice</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">orders</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">o</span>) =&gt; {
-    <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">amount</span>;
-  });
-}
-</code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**고객채무**&#39;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printBanner</span>(); =&gt; <span style="color:#a6e22e">배너</span> <span style="color:#a6e22e">출력</span> <span style="color:#a6e22e">로직을</span> <span style="color:#a6e22e">함수로</span> <span style="color:#a6e22e">추출</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printBanner</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**고객채무**&#39;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;**********&#39;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>예시: 지역변수의 값을 변경할 때*</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 미해결 채무(outstanding)를 계산한다
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">o</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">orders</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">amount</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printBanner</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">recordDueDate</span>(<span style="color:#a6e22e">invoice</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printDetails</span>(<span style="color:#a6e22e">invoice</span>, <span style="color:#a6e22e">outstanding</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printOwing</span>(<span style="color:#a6e22e">invoice</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printBanner</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">outstanding</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateOutstanding</span>(<span style="color:#a6e22e">invoice</span>); <span style="color:#75715e">// 함수 추출 완료. 추출한 함수가 반환한 값을 원래 변수에 저장
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">recordDueDate</span>(<span style="color:#a6e22e">invoice</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printDetails</span>(<span style="color:#a6e22e">invoice</span>, <span style="color:#a6e22e">outstanding</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateOutstanding</span>(<span style="color:#a6e22e">invoice</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">invoice</span>.<span style="color:#a6e22e">orders</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">o</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">amount</span>;
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr />
 <h2 id="2-함수-인라인-하기">2. 함수 인라인 하기</h2>
 <hr />
 <blockquote>
@@ -256,36 +256,36 @@
 <li>함수 정의(원래함수)를 삭제한다.</li>
 </ul>
 <p><strong>예시</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">rating</span>(<span style="color:#a6e22e">aDriver</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">moreThanFiveLateDeliveries</span>(<span style="color:#a6e22e">aDriver</span>) <span style="color:#f92672">?</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>;
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">moreThanFiveLateDeliveries</span>(<span style="color:#a6e22e">aDriver</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">aDriver</span>.<span style="color:#a6e22e">numberOfLateDeliveries</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>;
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">rating</span>(<span style="color:#a6e22e">aDriver</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">aDriver</span>.<span style="color:#a6e22e">numberOfLateDeliveries</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>;
-}
-</code></pre></div><p>아주아주 <strong>조금 더 복잡한 예시</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reportLines</span>(<span style="color:#a6e22e">aCustomer</span>) {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lines</span> <span style="color:#f92672">=</span> [];
-  <span style="color:#a6e22e">gatherCustomerData</span>(<span style="color:#a6e22e">lines</span>, <span style="color:#a6e22e">aCustomer</span>);
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lines</span>;
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">gatherCustomerData</span>(<span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">aCustomer</span>) {
-  <span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">name</span>]);
-  <span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;location&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">location</span>]);
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reportLines</span>(<span style="color:#a6e22e">aCustomer</span>) {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lines</span> <span style="color:#f92672">=</span> [];
-
-  <span style="color:#a6e22e">lines</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">name</span>]);
-  <span style="color:#a6e22e">lines</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;location&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">location</span>]);
-
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lines</span>;
-}
-</code></pre></div><aside>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">rating</span>(<span style="color:#a6e22e">aDriver</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">moreThanFiveLateDeliveries</span>(<span style="color:#a6e22e">aDriver</span>) <span style="color:#f92672">?</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">moreThanFiveLateDeliveries</span>(<span style="color:#a6e22e">aDriver</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">aDriver</span>.<span style="color:#a6e22e">numberOfLateDeliveries</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">rating</span>(<span style="color:#a6e22e">aDriver</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">aDriver</span>.<span style="color:#a6e22e">numberOfLateDeliveries</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>아주아주 <strong>조금 더 복잡한 예시</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reportLines</span>(<span style="color:#a6e22e">aCustomer</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lines</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">gatherCustomerData</span>(<span style="color:#a6e22e">lines</span>, <span style="color:#a6e22e">aCustomer</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lines</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">gatherCustomerData</span>(<span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">aCustomer</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">name</span>]);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;location&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">location</span>]);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reportLines</span>(<span style="color:#a6e22e">aCustomer</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lines</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">lines</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">name</span>]);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">lines</span>.<span style="color:#a6e22e">push</span>([<span style="color:#e6db74">&#34;location&#34;</span>, <span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">location</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lines</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><aside>
 💡 핵심은 항상 단계를 잘게 나눠서 처리하는데 있다. 한 문장을 처리하는데도 얼마든지 복잡해 질 수 있기때문에, 리팩터링을 진행할때는 작은단위의 코드를 리팩터링하는 것을 습관화 하고, 익숙해졌다면 그 범위를 조금씩 넓혀나가는 방식으로 한다.
 </aside>
 <hr />
@@ -314,46 +314,46 @@
 <li>표현식을 여러 곳에서 사용한다면 각각을 새로 만든 변수로 교체한다.</li>
 </ul>
 <p><strong>예시*</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">order</span>) {
-  <span style="color:#75715e">// 가격(price) = 기본 가격 - 수량 할인 + 배송비
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> (
-    <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">-</span>
-    Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">ordre</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span> <span style="color:#f92672">+</span>
-    Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>)
-  );
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">order</span>) {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span>;
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">=</span>
-    Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span>;
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shipping</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>);
-
-  <span style="color:#75715e">// 가격(price) = 기본 가격 - 수량 할인 + 배송비
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shipping</span>;
-}
-</code></pre></div><p><strong>클래스 안에서의 예시</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">aRecord</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aRecord</span>;
-  }
-
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">itemPrice</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">itemPrice</span>;
-  }
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">price</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shipping</span>;
-  }
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">basePrice</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">itemPrice</span>;
-  }
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">quantityDiscount</span>() {
-    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span>;
-  }
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">shipping</span>() {
-    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>);
-  }
-}
-</code></pre></div><aside>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">order</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 가격(price) = 기본 가격 - 수량 할인 + 배송비
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span>    Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">ordre</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">price</span>(<span style="color:#a6e22e">order</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shipping</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 가격(price) = 기본 가격 - 수량 할인 + 배송비
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shipping</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>클래스 안에서의 예시</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Order</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">aRecord</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aRecord</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">itemPrice</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">itemPrice</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">price</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantityDiscount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">shipping</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">basePrice</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">itemPrice</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">quantityDiscount</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">500</span>) <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">itemPrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">shipping</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><aside>
 💡 이 예제처럼 간단한 경우라면 효과가 크지 않지만, 덩치가 큰 클래스에서 공통 동작을 별도 이름으로 뽑아내서 추상화 해두면 그 객체를 다룰때 쉽게 활용할 수 있어서 매우 유용하다.
 </aside>
 <hr />
@@ -381,15 +381,15 @@
 <li>변수를 지운다.</li>
 </ul>
 <p><strong>예시</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getBasePrice</span>(<span style="color:#a6e22e">anOrder</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">anOrder</span>.<span style="color:#a6e22e">basePrice</span>;
-
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>;
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getBasePrice</span>(<span style="color:#a6e22e">anOrder</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">anOrder</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>;
-}
-</code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getBasePrice</span>(<span style="color:#a6e22e">anOrder</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">anOrder</span>.<span style="color:#a6e22e">basePrice</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getBasePrice</span>(<span style="color:#a6e22e">anOrder</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">anOrder</span>.<span style="color:#a6e22e">basePrice</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr />
 <h2 id="5-함수-선언-바꾸기">5. 함수 선언 바꾸기</h2>
 <hr />
 <blockquote>
@@ -424,53 +424,53 @@
 <li>이름부터 바꾸고 &gt; 테스트하고 &gt; 매개변수를 수정하고 &gt; 테스트한다</li>
 </ul>
 <p><strong>예시: 함수이름 바꾸기</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">cuircum</span>(<span style="color:#a6e22e">radius</span>);
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>);
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>);
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>);
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
-}
-</code></pre></div><p><strong>예시: 매개변수 추가하기(클래스에서)</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx">...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
-<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>);
-
-<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>){
-	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx">...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
-<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>);
-
-<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>){
-	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#66d9ef">false</span>);
-}
-
-<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#a6e22e">isPriority</span>){
-	<span style="color:#a6e22e">assert</span>(<span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>);
-
-	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx">...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
-<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#66d9ef">false</span>);
-
-<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#a6e22e">isPriority</span>){
-	<span style="color:#a6e22e">assert</span>(<span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>);
-
-	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
-}
-</code></pre></div><aside>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">cuircum</span>(<span style="color:#a6e22e">radius</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circum</span>(<span style="color:#a6e22e">radius</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">circumference</span>(<span style="color:#a6e22e">radius</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">redius</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>예시: 매개변수 추가하기(클래스에서)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">addReservation</span>(<span style="color:#a6e22e">customer</span>){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#a6e22e">isPriority</span>){
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">assert</span>(<span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>...<span style="color:#a6e22e">book</span> <span style="color:#a6e22e">클래스</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zz_addReservation</span>(<span style="color:#a6e22e">customer</span>, <span style="color:#a6e22e">isPriority</span>){
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">assert</span>(<span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">isPriority</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reservation</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">customer</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><aside>
 💡 assert 모듈은 특정 조건이 참인지 거짓인지, 값이 0인지 아닌지를 체크해주는 모듈로써 테스트들을 작성하는 가장 기본적인 방법. 테스트 중에 어떠한 문제도 발생하지 않을 경우에는 아무런 피드백도 주지 않는다. 즉, assert 모듈을 사용할 때 아무런 문제가 없다면 아무런 반응없이 그냥 지나간다.
 <p>assert(state)<br />
 ⇒ state이 true하면 통과</p>
@@ -481,19 +481,19 @@
 <p><a href="https://nodejs.org/api/assert.html#assert_assert_fail_actual_expected_message_operator">[nodejs assert api 문서]</a></p>
 </aside>
 <p><strong>예시: 매개변수를 속성으로 바꾸기*</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">aCustomer</span>) {
-  <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;MA&#34;</span>, <span style="color:#e6db74">&#34;CT&#34;</span>, <span style="color:#e6db74">&#34;ME&#34;</span>, <span style="color:#e6db74">&#34;VT&#34;</span>, <span style="color:#e6db74">&#34;NH&#34;</span>, <span style="color:#e6db74">&#34;RI&#34;</span>].<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">state</span>);
-}
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEnglanders</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">someCustomers</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">c</span>) =&gt; <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">c</span>));
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">stateCode</span>) {
-  <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;MA&#34;</span>, <span style="color:#e6db74">&#34;CT&#34;</span>, <span style="color:#e6db74">&#34;ME&#34;</span>, <span style="color:#e6db74">&#34;VT&#34;</span>, <span style="color:#e6db74">&#34;NH&#34;</span>, <span style="color:#e6db74">&#34;RI&#34;</span>].<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">stateCode</span>);
-}
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEnglanders</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">someCustomers</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">c</span>) =&gt;
-  <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">stateCode</span>)
-);
-</code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">aCustomer</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;MA&#34;</span>, <span style="color:#e6db74">&#34;CT&#34;</span>, <span style="color:#e6db74">&#34;ME&#34;</span>, <span style="color:#e6db74">&#34;VT&#34;</span>, <span style="color:#e6db74">&#34;NH&#34;</span>, <span style="color:#e6db74">&#34;RI&#34;</span>].<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">aCustomer</span>.<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">state</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEnglanders</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">someCustomers</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">c</span>) =&gt; <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">c</span>));
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">stateCode</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;MA&#34;</span>, <span style="color:#e6db74">&#34;CT&#34;</span>, <span style="color:#e6db74">&#34;ME&#34;</span>, <span style="color:#e6db74">&#34;VT&#34;</span>, <span style="color:#e6db74">&#34;NH&#34;</span>, <span style="color:#e6db74">&#34;RI&#34;</span>].<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">stateCode</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEnglanders</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">someCustomers</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">c</span>) =&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">inNewEngland</span>(<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">stateCode</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><hr />
 <h2 id="6-변수-캡슐화-하기">6. 변수 캡슐화 하기</h2>
 <hr />
 <blockquote>
@@ -519,44 +519,44 @@
 </li>
 </ul>
 <p><strong>예시*</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
-
-<span style="color:#a6e22e">spaceship</span>.<span style="color:#a6e22e">owner</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defaultOwner</span>;
-
-<span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;레베카&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
-</code></pre></div><p><strong>복제본을 반환하도록 하여 캡슐화</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defaultOwner</span>() {
-  <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">assign</span>({}, <span style="color:#a6e22e">_defaultOwnerData</span>);
-}
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDefaultOwner</span>(<span style="color:#a6e22e">arg</span>) {
-  <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;
-}
-</code></pre></div><p><strong>레코드 캡슐화하기</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwnerData</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defaultOwner</span>() {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">defaultOwnerData</span>);
-}
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDefaultOwner</span>(<span style="color:#a6e22e">arg</span>) {
-  <span style="color:#a6e22e">defaultOwnerData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;
-}
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">data</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_lastName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">lastName</span>;
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_firstName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">firstName</span>;
-  }
-
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">lastName</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_lastName</span>;
-  }
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">firstName</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_firstName</span>;
-  }
-}
-</code></pre></div><aside>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">spaceship</span>.<span style="color:#a6e22e">owner</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defaultOwner</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">defaultOwner</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;레베카&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
+</span></span></code></pre></div><p><strong>복제본을 반환하도록 하여 캡슐화</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defaultOwner</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">assign</span>({}, <span style="color:#a6e22e">_defaultOwnerData</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDefaultOwner</span>(<span style="color:#a6e22e">arg</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">_defaultOwnerData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>레코드 캡슐화하기</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">defaultOwnerData</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;마틴&#34;</span>, <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;파울러&#34;</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defaultOwner</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">defaultOwnerData</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setDefaultOwner</span>(<span style="color:#a6e22e">arg</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">defaultOwnerData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_lastName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">lastName</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_firstName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">firstName</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">lastName</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_lastName</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">firstName</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_firstName</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><aside>
 💡 게터에서 복제본을 사용할지, 세터에서 복제본을 사용할지는 원본 데이터의 모든 변경을 그대로 반영할 수 있도록 원본으로의 링크를 유지해야 하는지에 따라 다르다. 이런 복제가 성능에 주는 영향은 대체로 미미한 반면, 원본을 그대로 사용하면 나중에 디버깅하기 어렵고 시간도 오래 걸릴 위험이 있다.
 데이터의 사용 범위가 넓을수록 적절히 캡슐화하는 것이 좋다.
 </aside>
@@ -583,19 +583,19 @@
 </li>
 </ul>
 <p><strong>예시</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">untitled</span><span style="color:#960050;background-color:#1e0010">’</span>;
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;h1&gt;${tpHd}&lt;/h1&gt;&#39;</span>; <span style="color:#75715e">// tpHd 변수를 읽는데만 사용
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#39;articleTitle&#39;</span>]; <span style="color:#75715e">// tpHd값을 수정
-</span></code></pre></div><p><strong>변수 캡슐화 하기</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;h1&gt;${tpHd}&lt;/h1&gt;&#39;</span>;
-
-<span style="color:#a6e22e">setTitle</span>(<span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#39;articleTitle&#39;</span>]);
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">title</span>() {<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">tpHd</span>;} <span style="color:#75715e">// tpHd 변수의 getter
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setTitle</span>(<span style="color:#a6e22e">arg</span>) {<span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;} <span style="color:#75715e">// tpHd 변수의 setter
-</span></code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">untitled</span><span style="color:#960050;background-color:#1e0010">’</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;h1&gt;${tpHd}&lt;/h1&gt;&#39;</span>; <span style="color:#75715e">// tpHd 변수를 읽는데만 사용
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#39;articleTitle&#39;</span>]; <span style="color:#75715e">// tpHd값을 수정
+</span></span></span></code></pre></div><p><strong>변수 캡슐화 하기</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;h1&gt;${tpHd}&lt;/h1&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">setTitle</span>(<span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#39;articleTitle&#39;</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">title</span>() {<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">tpHd</span>;} <span style="color:#75715e">// tpHd 변수의 getter
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setTitle</span>(<span style="color:#a6e22e">arg</span>) {<span style="color:#a6e22e">tpHd</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>;} <span style="color:#75715e">// tpHd 변수의 setter
+</span></span></span></code></pre></div><hr />
 <h2 id="8-매개변수-객체-만들기">8. 매개변수 객체 만들기</h2>
 <hr />
 <blockquote>
@@ -619,62 +619,62 @@
 <li>다 바꿨다면 기존 매개변수를 제거하고 테스트 한다.</li>
 </ul>
 <p><strong>예시*</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">station</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ZB1&#34;</span>,
-  <span style="color:#a6e22e">readings</span><span style="color:#f92672">:</span> [
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-  ],
-};
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">station</span>, <span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">station</span>.<span style="color:#a6e22e">readings</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">r</span>) =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">max</span>);
-}
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">alerts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">readingsOutsideRange</span>(
-  <span style="color:#a6e22e">staion</span>,
-  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureFloor</span>,
-  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureCeiling</span>
-);
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">station</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ZB1&#34;</span>,
-  <span style="color:#a6e22e">readings</span><span style="color:#f92672">:</span> [
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
-  ],
-};
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">station</span>, <span style="color:#a6e22e">range</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">station</span>.<span style="color:#a6e22e">readings</span>.<span style="color:#a6e22e">filter</span>(
-    (<span style="color:#a6e22e">r</span>) =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">range</span>.<span style="color:#a6e22e">min</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">range</span>.<span style="color:#a6e22e">max</span>
-  );
-}
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">range</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">NumberRange</span>(
-  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureFloor</span>,
-  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureCeiling</span>
-);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">alerts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">staion</span>, <span style="color:#a6e22e">range</span>);
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberRange</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">min</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">max</span>};
-  }
-
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">min</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">min</span>;
-  }
-  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">max</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">max</span>;
-  }
-}
-</code></pre></div></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">station</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ZB1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">readings</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">station</span>, <span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">station</span>.<span style="color:#a6e22e">readings</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">r</span>) =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">max</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">alerts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">readingsOutsideRange</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">staion</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureFloor</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureCeiling</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">station</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ZB1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">readings</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">47</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">58</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">53</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">temp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">51</span>, <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-11-10 09:10&#34;</span>},
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">station</span>, <span style="color:#a6e22e">range</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">station</span>.<span style="color:#a6e22e">readings</span>.<span style="color:#a6e22e">filter</span>(
+</span></span><span style="display:flex;"><span>    (<span style="color:#a6e22e">r</span>) =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">range</span>.<span style="color:#a6e22e">min</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">temp</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">range</span>.<span style="color:#a6e22e">max</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">range</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">NumberRange</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureFloor</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">operatingPlan</span>.<span style="color:#a6e22e">temperatureCeiling</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">alerts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">readingsOutsideRange</span>(<span style="color:#a6e22e">staion</span>, <span style="color:#a6e22e">range</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberRange</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">min</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">max</span>};
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">min</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">min</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">max</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">max</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 
 </main>
 

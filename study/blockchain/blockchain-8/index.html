@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -163,21 +163,21 @@
 <li><code>BIA</code>: Blockchain Interoperablility Alliance <code>ex) Aion, iCon, wanchain</code></li>
 <li><code>Cosmos</code>: internet of interchain</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="dapp">dApp</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">---------------------------</span>
-<span style="color:#f92672">-</span> [dApp] [dApp]...        <span style="color:#f92672">-</span>
-<span style="color:#f92672">-</span> <span style="color:#a6e22e">Application</span>(EVM)        <span style="color:#f92672">-</span>
-<span style="color:#f92672">-</span> Consensus               <span style="color:#f92672">-</span>
-<span style="color:#f92672">-</span> Networking              <span style="color:#f92672">-</span>
-<span style="color:#f92672">---------------------------</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#f92672">---------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span> [dApp] [dApp]...        <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span> <span style="color:#a6e22e">Application</span>(EVM)        <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span> Consensus               <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span> Networking              <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">---------------------------</span>
+</span></span></code></pre></div><ul>
 <li>이렇게 dApp을 EVM에 올려서 만들다보니 의존성이 생긴다.</li>
 <li>Networking, Consensus 레이어를 만드는 것이 힘들었다.</li>
 <li>이 레이어들은 자원을 투자한다고 빨리 만들 수 있는 부분이 아니다.</li>
 <li>따라서 코스모스는 <code>1dApp = 1Blockchain</code>을 실현시키기 위해 만들었다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h2 id="tendermint">Tendermint</h2>
 <ul>
 <li>코스모스의 엔진으로, cosmos sdk를 제공</li>
@@ -208,7 +208,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="2-ethereum-problem">2. Ethereum problem</h4>
 <p><strong><em>- Nothing-at-stake problem</em></strong></p>
 <ul>
@@ -223,16 +223,16 @@
 <li>이때 총 노드 개수가 3f+1개 이상이면 해당 네트워크에서 이루어지는 합의는 신뢰할 수 있다.</li>
 <li>이를 증명한 알고리즘이 바로 PBFT</li>
 </ul>
-<p><br /></p>
+<br />
 <p>-&gt; 그러나 코스모스를 통하면 이러한 문제점, 즉 <code>uncle blockchain</code>이 발생할 수 없다.<br><br />
 -&gt; 코스모스는 반드시 2개의 노드 중 하나만이 선택되는 구조이다.</p>
-<p><br /></p>
+<br />
 <h4 id="3-hard-spoon-개념---hard-fork">3. Hard Spoon 개념 (&lt;-&gt; Hard Fork)</h4>
 <ul>
 <li>기존의 블록체인 계정 잔고를 복제하여 새로운 암호화폐 발행</li>
 <li>즉, two chain + same ledger + but, the other consensus algorithm each other</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="4-cosmos-ecosystem">4. Cosmos Ecosystem</h4>
 <ul>
 <li>코스모스는 Pool 개념이다.</li>
@@ -248,28 +248,28 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="5-atom-token">5. Atom Token</h4>
 <ul>
 <li>코스모스 허브는 아톰토큰을 가지며, 이는 코스모스 허브의 유일한 지분토큰(staking token)이</li>
 <li>아톰은 보유자가 투표 및 검증 또는 다른 검증인들에게 위임을 하기 위해 필요</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="6-검증인-validators">6. 검증인 (Validators)</h4>
 <ul>
 <li>100명(팀)</li>
 <li>가지고 있는 <code>atom</code>코인 물량에 비례하여 선정</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="7-on-chain-governance">7. on-chain governance</h4>
 <ul>
 <li>과반수 이상의 찬성 또는 &lsquo;yea with force&rsquo; 시 제안서가 통과된다.</li>
-<li>그러나 1/3+는 &lsquo;nay with force&rsquo;를 통해 다수결을 거부할 수 있다.</li>
+<li>그러나 1/3+는 &rsquo;nay with force&rsquo;를 통해 다수결을 거부할 수 있다.</li>
 <li>이렇게 거부된 경우 모두가 <code>거부권 패널티 수수료 블록(VetoPenaltyFeeBlocks)</code>을 통해 수수료를 상실한다.</li>
 <li>따라서 &lsquo;처벌(slashing)&rsquo; 받음: 디폴트 1일 가치의 블록</li>
 <li>당사자는 <code>거부권 패널티 아톰(VetoPenaltyAtoms)</code>를 추가로 상실: 디폴트 0.1%</li>
 </ul>
-<p><br /></p>
+<br />
 <p><img src="/blog/images/cosmos-interchain.jpg" alt="cosmos-internet-of-interchain" /></p>
 </div>
 

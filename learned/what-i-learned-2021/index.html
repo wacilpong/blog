@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -188,22 +188,21 @@
 <li>“나 외의 생명체가 하나도 없다면, 윤리가 있을 수 있는가? 만일 윤리가 근본적인 무언가이어야 한다면, 세계가 주어진 것만으로는 아직 윤리적 판단을 하기에 충분하지 않다. 그런 경우 세계는 그 자체로는 선하지도 악하지도 않다.” - [전쟁일기], 16년 8월 2일, 루트비히 비트겐슈타인</li>
 <li>“내 언어의 경계는 내 세계의 경계를 의미한다.” - [전쟁일기], 15년 5월 23일, 루트비히 비트겐슈타인</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-12-08"><strong>2021-12-08</strong></h2>
 <ul>
 <li>자바스크립트의 문자열은 코드 유닛의 시퀀스이다. 따라서 두 문자열의 코드 유닛이 같다면 동일하다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstStr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secondStr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\u0068ell\u006F&#34;</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">firstStr</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">secondStr</span>); <span style="color:#75715e">// =&gt; true
-</span></code></pre></div><p>=&gt; 정규화 필요 <code>str.normalize([form])</code></p>
-</li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstStr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secondStr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\u0068ell\u006F&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">firstStr</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">secondStr</span>); <span style="color:#75715e">// =&gt; true
+</span></span></span></code></pre></div>=&gt; 정규화 필요 <code>str.normalize([form])</code></li>
 <li>정규화는 정규 표현으로 문자열을 변환하는 과정이고, 문자열이 고유한 표현을 갖도록 한다. 즉, 문자열이 결합 문자 시퀀스를 포함하는 복잡한 구조를 가질 때 표준 형식으로 정규화할 수 있다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ça va bien&#34;</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;c\u0327a va bien&#34;</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str1</span>.<span style="color:#a6e22e">normalize</span>() <span style="color:#f92672">===</span> <span style="color:#a6e22e">str2</span>.<span style="color:#a6e22e">normalize</span>()); <span style="color:#75715e">// =&gt; true
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str1</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">str2</span>); <span style="color:#75715e">// =&gt; false
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ça va bien&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;c\u0327a va bien&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str1</span>.<span style="color:#a6e22e">normalize</span>() <span style="color:#f92672">===</span> <span style="color:#a6e22e">str2</span>.<span style="color:#a6e22e">normalize</span>()); <span style="color:#75715e">// =&gt; true
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str1</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">str2</span>); <span style="color:#75715e">// =&gt; false
+</span></span></span></code></pre></div></li>
 <li>zero width joiner
 <ul>
 <li>복잡한 표기 체계의 컴퓨터에 따른 조판에서 사용되는 제어 문자</li>
@@ -213,7 +212,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-11-16"><strong>2021-11-16</strong></h2>
 <ul>
@@ -247,7 +246,7 @@
 </li>
 </ul>
 <p>개인적으로 <code>styled-component</code>처럼 스타일링 코드를 컴포넌트화해서 얻는 이점보다 단점이 더 커서 별로 좋아하지 않는다. <strong>css는 당연히 HTML요소와 강결합되는게 맞지만, 코드를 작성할 때부터 그러면 마크업 요소가 눈에 잘 들어오지 않기 때문이다.</strong> 그래서 css-in-css방식을 좋아하지만, css코드 안에서 변수/상속 등을 활용한다는 것 자체가 러닝커브이고 묘하게 이질감이 들 때가 많았는데 두가지를 적절하게 조합한 라이브러리가 나와서 기대된다. 다들 잘만 쓰길래 나만 별로인가 싶었는데, 이런 취향도 있다고!</p>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-10-01"><strong>2021-10-01</strong></h2>
 <ul>
@@ -260,7 +259,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-09-16"><strong>2021-09-16</strong></h2>
 <ul>
@@ -269,9 +268,9 @@
 <ul>
 <li>
 <p>async 함수의 반환값이 프로미스가 아니어도 프로미스로 래핑된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 반환타입은 Promise&lt;number&gt;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> () =&gt; <span style="color:#ae81ff">42</span>;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 반환타입은 Promise&lt;number&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getNumber</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> () =&gt; <span style="color:#ae81ff">42</span>;
+</span></span></code></pre></div></li>
 </ul>
 </li>
 <li>
@@ -285,33 +284,33 @@
 </li>
 <li>
 <p>즉, 아래처럼 await을 하지 않고 프로미스 함수를 실행하는 것만으로 내부 동작을 수행한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise1</span> <span style="color:#f92672">=</span> () =&gt;
-  <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;항상 출력&#34;</span>);
-    <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
-      <span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">1</span>);
-    }, <span style="color:#ae81ff">1000</span>);
-  });
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> () =&gt; {
-  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;항상 출력&#34;</span>);
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">promise1</span>();
-};
-
-<span style="color:#75715e">// 프로미스는 fulfilled 상태의 객체로 가지고 있으며
-</span><span style="color:#75715e">// 완료여부만 모를뿐 내부 로직 모두 수행한 상태
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">promise2</span>();
-
-<span style="color:#75715e">// resolve/reject된 값을 출력함
-</span><span style="color:#75715e"></span>(<span style="color:#a6e22e">async</span> () =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">promise2</span>();
-  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>);
-})();
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise1</span> <span style="color:#f92672">=</span> () =&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;항상 출력&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    }, <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;항상 출력&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">promise1</span>();
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 프로미스는 fulfilled 상태의 객체로 가지고 있으며
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 완료여부만 모를뿐 내부 로직 모두 수행한 상태
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">promise2</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// resolve/reject된 값을 출력함
+</span></span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">promise2</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>);
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-08-11"><strong>2021-08-11</strong></h2>
 <ul>
@@ -320,17 +319,17 @@
 <ul>
 <li>
 <p><code>Record</code>: 키 타입을 유연하게 지정할 수 있는 표준 제네릭</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ABC</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Record</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#66d9ef">number</span><span style="color:#f92672">&gt;</span>;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ABC</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Record</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#66d9ef">number</span><span style="color:#f92672">&gt;</span>;
+</span></span></code></pre></div></li>
 <li>
 <p><code>Mapped type</code>: 키마다 별도의 타입을 사용하여 매핑</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">ABC</span> <span style="color:#f92672">=</span> {[<span style="color:#a6e22e">k</span> <span style="color:#66d9ef">in</span> <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;c&#34;</span>]<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span>};
-<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">DEF</span> <span style="color:#f92672">=</span> {[<span style="color:#a6e22e">k</span> <span style="color:#66d9ef">in</span> <span style="color:#e6db74">&#34;d&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;e&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;f&#34;</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;e&#34;</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span>};
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ABC</span> <span style="color:#f92672">=</span> {[<span style="color:#a6e22e">k</span> <span style="color:#66d9ef">in</span> <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;c&#34;</span>]<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DEF</span> <span style="color:#f92672">=</span> {[<span style="color:#a6e22e">k</span> <span style="color:#66d9ef">in</span> <span style="color:#e6db74">&#34;d&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;e&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;f&#34;</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">&#34;e&#34;</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span>};
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-08-06"><strong>2021-08-06</strong></h2>
 <ul>
@@ -342,18 +341,18 @@
 </li>
 <li>
 <p>아래처럼 문자열에서 어떤 값이 반복되어 사용될 때 활용할 수 있겠다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">PlusFriend</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">_FRIEND`</span>;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">PlusFriend</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">_FRIEND`</span>;
+</span></span></code></pre></div></li>
 <li>
 <p>완전 확장하면 어떤 문자열의 첫번째 문자를 추론하는 타입을 만들 수도 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// First의 타입은 &#39;a&#39;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">FirstLetter</span>&lt;<span style="color:#f92672">S</span>&gt; <span style="color:#f92672">=</span> <span style="color:#a6e22e">S</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">infer</span> <span style="color:#a6e22e">C</span><span style="color:#e6db74">}${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">C</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>;
-<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">First</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">FirstLetter</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#34;abcde&#34;</span><span style="color:#f92672">&gt;</span>;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// First의 타입은 &#39;a&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">FirstLetter</span>&lt;<span style="color:#f92672">S</span>&gt; <span style="color:#f92672">=</span> <span style="color:#a6e22e">S</span> <span style="color:#66d9ef">extends</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">infer</span> <span style="color:#a6e22e">C</span><span style="color:#e6db74">}${</span><span style="color:#66d9ef">string</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">C</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">First</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">FirstLetter</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#34;abcde&#34;</span><span style="color:#f92672">&gt;</span>;
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-07-26"><strong>2021-07-26</strong></h2>
 <ul>
@@ -371,22 +370,22 @@
 </li>
 <li>
 <p>따라서 <code>NavState['key']</code>의 타입은 string이 된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">State</span> {
-  <span style="color:#a6e22e">arr</span>: <span style="color:#66d9ef">string</span>[];
-}
-
-<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">NavState</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">State</span>[<span style="color:#e6db74">&#34;arr&#34;</span>][<span style="color:#66d9ef">number</span>];
-};
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nav</span>: <span style="color:#66d9ef">NavState</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;one&#34;</span>,
-};
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">State</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">arr</span>: <span style="color:#66d9ef">string</span>[];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NavState</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">State</span>[<span style="color:#e6db74">&#34;arr&#34;</span>][<span style="color:#66d9ef">number</span>];
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nav</span>: <span style="color:#66d9ef">NavState</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;one&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-07-15"><strong>2021-07-15</strong></h2>
 <ul>
@@ -407,28 +406,28 @@
 </li>
 <li>
 <p>그리고 해당 블록의 throw 다음 구문은 실행되지 않는다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testPromise</span>() {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-    <span style="color:#a6e22e">resolve</span>();
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;excuted&#34;</span>);
-  });
-}
-
-<span style="color:#a6e22e">testPromise</span>().<span style="color:#a6e22e">then</span>(() =&gt; {
-  <span style="color:#66d9ef">throw</span> <span style="color:#e6db74">&#34;헹&#34;</span>;
-});
-<span style="color:#66d9ef">throw</span> <span style="color:#e6db74">&#34;error&#34;</span>;
-<span style="color:#a6e22e">testPromise</span>();
-
-<span style="color:#75715e">// 출력결과
-</span><span style="color:#75715e">// excuted
-</span><span style="color:#75715e">// Uncaught error
-</span><span style="color:#75715e">// Uncaught (in promise) 헹
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testPromise</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">resolve</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;excuted&#34;</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">testPromise</span>().<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">throw</span> <span style="color:#e6db74">&#34;헹&#34;</span>;
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span> <span style="color:#e6db74">&#34;error&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">testPromise</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 출력결과
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// excuted
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Uncaught error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Uncaught (in promise) 헹
+</span></span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-07-09"><strong>2021-07-09</strong></h2>
 <ul>
@@ -443,17 +442,17 @@
 </li>
 <li>
 <p>이때 튜플의 멤버는 모두 이름을 짓거나, 짓지 말아야 한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// O
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Range</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">start</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">end</span>: <span style="color:#66d9ef">number</span>];
-<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Code</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">number</span>, <span style="color:#66d9ef">number</span>];
-
-<span style="color:#75715e">// X
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Bar</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">first</span>: <span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">number</span>];
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// O
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Range</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">start</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">end</span>: <span style="color:#66d9ef">number</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Code</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">number</span>, <span style="color:#66d9ef">number</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// X
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Bar</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">first</span>: <span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">number</span>];
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li>
 <p><a href="https://angular.io/api/common/NgForOf#change-propagation">trackBy</a></p>
@@ -469,31 +468,31 @@
 </li>
 <li>
 <p>따라서 trackBy는 고유한 값이어야 한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">@Component</span>({
-  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;my-app&#34;</span>,
-  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
-</span><span style="color:#e6db74">    &lt;li *ngFor=&#34;let item of list; trackBy: trackKey&#34;&gt;
-</span><span style="color:#e6db74">      {{ item.name }}
-</span><span style="color:#e6db74">    &lt;/li&gt;
-</span><span style="color:#e6db74">  `</span>,
-})
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> {
-  <span style="color:#a6e22e">list</span><span style="color:#f92672">:</span> [
-    {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">1</span>; <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;first&#34;</span>},
-    {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">2</span>; <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;second&#34;</span>},
-    {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">3</span>; <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;third&#34;</span>},
-    {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">4</span>; <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fourth&#34;</span>}
-  ];
-
-  <span style="color:#a6e22e">trackKey</span>(<span style="color:#a6e22e">index</span>, <span style="color:#a6e22e">item</span>) {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">id</span>;
-  }
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;my-app&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;li *ngFor=&#34;let item of list; trackBy: trackKey&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      {{ item.name }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/li&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  `</span>,
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">list</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">1</span>; <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;first&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">2</span>; <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;second&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">3</span>; <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;third&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">4</span>; <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fourth&#34;</span>}
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">trackKey</span>(<span style="color:#a6e22e">index</span>, <span style="color:#a6e22e">item</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">id</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-06-30"><strong>2021-06-30</strong></h2>
 <ul>
@@ -518,7 +517,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-06-23"><strong>2021-06-23</strong></h2>
 <ul>
@@ -545,28 +544,28 @@
 </li>
 <li>
 <p>좋든 싫든 ts의 타입 시스템에서 타입은 확장될 수 있도록 &lsquo;열려&rsquo; 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Vector2D</span> {
-  <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>;
-  <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>;
-}
-
-<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NamedVector</span> {
-  <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>;
-  <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>;
-  <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>;
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">caculateLength</span>(<span style="color:#a6e22e">v</span>: <span style="color:#66d9ef">Vector2D</span>) {
-  <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">sqrt</span>(...);
-}
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">param</span>: <span style="color:#66d9ef">NamedVector</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">3</span>, <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">4</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;haha&#39;</span>}
-<span style="color:#a6e22e">caculateLength</span>(<span style="color:#a6e22e">param</span>)
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Vector2D</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NamedVector</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">caculateLength</span>(<span style="color:#a6e22e">v</span>: <span style="color:#66d9ef">Vector2D</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">sqrt</span>(...);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">param</span>: <span style="color:#66d9ef">NamedVector</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">3</span>, <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">4</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;haha&#39;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">caculateLength</span>(<span style="color:#a6e22e">param</span>)
+</span></span></code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-05-05"><strong>2021-05-05</strong></h2>
 <ul>
@@ -588,7 +587,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-04-14"><strong>2021-04-14</strong></h2>
 <ul>
@@ -607,7 +606,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-03-26"><strong>2021-03-26</strong></h2>
 <ul>
@@ -619,7 +618,7 @@
 <p><strong>각 코너에 준 값에 대한 비율을 계산해 그 중 최소비율값을 곱하면 각 radii끼리 겹치지 않게 된다.</strong> 그래서 999px, 10px, 999px, 10px 이런 식으로 주면 일정 비율을 곱하기 때문에 직사각형 왼쪽의 원이 필요한 것보다 줄어들게 된다. <a href="https://css-tricks.com/what-happens-when-border-radii-overlap/">이 문서 - what-happens-when-border-radii-overlap</a>가 설명을 잘 해놨더라.</p>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-03-24"><strong>2021-03-24</strong></h2>
 <ul>
@@ -632,70 +631,70 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-02-24"><strong>2021-02-24</strong></h2>
 <ul>
 <li>
 <p>cmd에서 작업하던 소스를 단위(hunk)별로 stage에 올리고 싶으면 <code>--patch</code> 옵션 사용하면 된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git add --patch
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ git add --patch
+</span></span></code></pre></div></li>
 <li>
 <p>반영할지 말지 선택하는 옵션들은 아래와 같다. 보통 y로 반영하고, n으로 반영하지 않는다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">y - stage this hunk
-n - do not stage this hunk
-q - quit; do not stage this hunk or any of the remaining ones
-a - stage this hunk and all later hunks in the file
-d - do not stage this hunk or any of the later hunks in the file
-g - select a hunk to go to
-/ - search for a hunk matching the given regex
-j - leave this hunk undecided, see next undecided hunk
-J - leave this hunk undecided, see next hunk
-k - leave this hunk undecided, see previous undecided hunk
-K - leave this hunk undecided, see previous hunk
-s - split the current hunk into smaller hunks
-e - manually edit the current hunk
-? - print help
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>y - stage this hunk
+</span></span><span style="display:flex;"><span>n - do not stage this hunk
+</span></span><span style="display:flex;"><span>q - quit; do not stage this hunk or any of the remaining ones
+</span></span><span style="display:flex;"><span>a - stage this hunk and all later hunks in the file
+</span></span><span style="display:flex;"><span>d - do not stage this hunk or any of the later hunks in the file
+</span></span><span style="display:flex;"><span>g - select a hunk to go to
+</span></span><span style="display:flex;"><span>/ - search for a hunk matching the given regex
+</span></span><span style="display:flex;"><span>j - leave this hunk undecided, see next undecided hunk
+</span></span><span style="display:flex;"><span>J - leave this hunk undecided, see next hunk
+</span></span><span style="display:flex;"><span>k - leave this hunk undecided, see previous undecided hunk
+</span></span><span style="display:flex;"><span>K - leave this hunk undecided, see previous hunk
+</span></span><span style="display:flex;"><span>s - split the current hunk into smaller hunks
+</span></span><span style="display:flex;"><span>e - manually edit the current hunk
+</span></span><span style="display:flex;"><span>? - print help
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-02-10"><strong>2021-02-10</strong></h2>
 <ul>
 <li>타입을 export하지 않고 있는 3rd party library 등을 ts에서 사용할 때 <code>d.ts</code> 파일에 모듈을 선언해두는 과정이 필요한데, 모호성 때문인지 이걸 Ambient declarations 부르더라. 그래서 타입스크립트 내에는 이 이름 그대로 <a href="https://github.com/microsoft/TypeScript/blob/master/scripts/types/ambient.d.ts">TypeScript/ambients.d.ts</a> 파일이 있다. 외부 모듈을 declare해서 tsc가 이해할 수 있도록 한다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2021-02-09"><strong>2021-02-09</strong></h2>
 <ul>
 <li>
 <p><a href="https://sapper.svelte.dev/">sapper</a>는 svelte로 구동시키는 웹앱 프레임워크다. 아래의 구조로 이루어진다. routes연결부분이 rails랑 비슷하다는 생각이 들었다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">src
-    client.js
-    server.js
-    service-worker.js
-    template.html
-src/routes
-    ...
-static
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>src
+</span></span><span style="display:flex;"><span>    client.js
+</span></span><span style="display:flex;"><span>    server.js
+</span></span><span style="display:flex;"><span>    service-worker.js
+</span></span><span style="display:flex;"><span>    template.html
+</span></span><span style="display:flex;"><span>src/routes
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>static
+</span></span></code></pre></div><ul>
 <li>template.html에 <code>%sapper.head%</code>와 같은 태그를 명시하여 서버에서 받은 응답을 처리할 수 있다. 동적으로 메타를 바꿔야 하므로 SSR 필수요소.</li>
 <li>src/routes에 svelte컴포넌트를 넣으면 해당 컴포넌트 자체가 하나의 라우트 엔트리가 된다.</li>
 <li>static은 리액트와 마찬가지로 static 리소스들을 몰아 넣는 곳.</li>
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li>프로젝트에 절대경로를 사용하고 싶으면 webpack, rollup같은 번들러에 alias 관련 플러그인을 설정하면 잘 되는데, 에디터에 빨간 줄이 나와도 당황하지 말자. jsconfig 혹은 tsconfig에 <code>paths</code>를 명시해서 에디터가 알 수 있도록 해주자.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">&#34;compilerOptions&#34;: {
-    ...
-    &#34;baseUrl&#34;: &#34;./&#34;,
-    &#34;paths&#34;: {
-      &#34;@/*&#34;: [&#34;src/*&#34;]
-    }
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>&#34;compilerOptions&#34;: {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    &#34;baseUrl&#34;: &#34;./&#34;,
+</span></span><span style="display:flex;"><span>    &#34;paths&#34;: {
+</span></span><span style="display:flex;"><span>      &#34;@/*&#34;: [&#34;src/*&#34;]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
 </div>
 

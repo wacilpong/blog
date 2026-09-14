@@ -1,544 +1,327 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://wacilpong.github.io/blog/project/rust-book/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/project/blockchain/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/project/dumbledore/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/tags/computer-science/</loc>
     <lastmod>2024-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/</loc>
     <lastmod>2024-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/</loc>
     <lastmod>2024-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/tags/</loc>
     <lastmod>2024-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/computer-science/baekjoon-note/</loc>
     <lastmod>2024-01-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/learned/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/attribute-vs-property/</loc>
     <lastmod>2023-05-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
+    <lastmod>2023-05-24T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/tags/refactoring/</loc>
     <lastmod>2023-01-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/refactoring/7/</loc>
     <lastmod>2023-01-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/</loc>
     <lastmod>2023-01-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/refactoring/6/</loc>
     <lastmod>2023-01-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/tags/cloud-computing/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/kubernetes/5/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/refactoring/5/</loc>
     <lastmod>2023-01-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/refactoring/4/</loc>
     <lastmod>2023-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/good-bye-2022/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/kubernetes/4/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/tags/review/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/refactoring/3/</loc>
     <lastmod>2022-12-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/kubernetes/3/</loc>
     <lastmod>2022-12-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/refactoring/2/</loc>
     <lastmod>2022-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/refactoring/1/</loc>
     <lastmod>2022-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/kubernetes/2/</loc>
     <lastmod>2022-11-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/kubernetes/1/</loc>
     <lastmod>2022-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/cloud-computing/7/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/cloud-computing/6/</loc>
     <lastmod>2022-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/cloud-computing/5/</loc>
     <lastmod>2022-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/cloud-computing/4/</loc>
     <lastmod>2022-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/cloud-computing/3/</loc>
     <lastmod>2022-10-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/cloud-computing/2/</loc>
     <lastmod>2022-09-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/cloud-computing/1/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-20/</loc>
     <lastmod>2022-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/tags/rust/</loc>
     <lastmod>2022-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-19/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-18/</loc>
     <lastmod>2022-08-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-17/</loc>
     <lastmod>2022-08-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-16/</loc>
     <lastmod>2022-08-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-15/</loc>
     <lastmod>2022-07-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-14/</loc>
     <lastmod>2022-07-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-13/</loc>
     <lastmod>2022-07-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-12/</loc>
     <lastmod>2022-06-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-11/</loc>
     <lastmod>2022-06-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-10/</loc>
     <lastmod>2022-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-9/</loc>
     <lastmod>2022-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-8/</loc>
     <lastmod>2022-05-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-7/</loc>
     <lastmod>2022-05-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-6/</loc>
     <lastmod>2022-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-5/</loc>
     <lastmod>2022-04-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-4/</loc>
     <lastmod>2022-04-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-3/</loc>
     <lastmod>2022-04-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-2/</loc>
     <lastmod>2022-04-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/rust/rust-1/</loc>
     <lastmod>2022-03-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-from-programmer-to-software-architect/</loc>
     <lastmod>2022-02-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/ts-mixin/</loc>
     <lastmod>2022-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-frp/</loc>
     <lastmod>2022-01-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2022/</loc>
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/good-bye-2021/</loc>
     <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-effective-typescript/</loc>
     <lastmod>2021-06-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-javascript-deep-dive/</loc>
     <lastmod>2021-06-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-from-mathematics-to-generic-programming/</loc>
     <lastmod>2021-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/good-bye-2020/</loc>
     <lastmod>2020-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-code/</loc>
     <lastmod>2020-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-how-js-works/</loc>
     <lastmod>2020-10-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/rxjs-marble-testing/</loc>
     <lastmod>2020-08-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-concepts-of-programming-languages/</loc>
     <lastmod>2020-06-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/computer-science/algorithm-basic-3/</loc>
     <lastmod>2020-05-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/computer-science/algorithm-basic-2/</loc>
     <lastmod>2020-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/computer-science/algorithm-basic-1/</loc>
     <lastmod>2020-05-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/closure-especially-in-javascript/</loc>
     <lastmod>2020-04-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/drag-and-drop/</loc>
     <lastmod>2020-03-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/scroll-restoration/</loc>
     <lastmod>2020-02-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/currying-vs-partial-function/</loc>
     <lastmod>2020-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/configuration/babel-polyfill-and-babel-runtime/</loc>
     <lastmod>2020-01-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/tags/configuration/</loc>
     <lastmod>2020-01-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</loc>
     <lastmod>2020-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/good-bye-2019/</loc>
     <lastmod>2019-12-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/after-reading-clean-architecture/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/hoisting-about-function/</loc>
     <lastmod>2019-12-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/splice-your-array/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/configuration/prerender-status-code/</loc>
     <lastmod>2019-10-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/react-file-structure/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/shadow-or-virtual/</loc>
     <lastmod>2018-11-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/tags/blockchain/</loc>
     <lastmod>2018-10-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-10/</loc>
     <lastmod>2018-10-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-9/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-8/</loc>
     <lastmod>2018-10-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-7/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-6/</loc>
     <lastmod>2018-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-5/</loc>
     <lastmod>2018-10-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-4/</loc>
     <lastmod>2018-10-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-3/</loc>
     <lastmod>2018-10-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-2/</loc>
     <lastmod>2018-10-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/study/blockchain/blockchain-1/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/javascript-html-css/angular-directive/</loc>
     <lastmod>2018-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/configuration/when-connect-ssh/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/configuration/aws-publish-to-s3/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/configuration/pyvenv-with-mongodb/</loc>
     <lastmod>2018-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/post/review/my-recently-interview/</loc>
     <lastmod>2017-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wacilpong.github.io/blog/tags/javascript/html/css/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://wacilpong.github.io/blog/project/</loc>
   </url>
-  
 </urlset>

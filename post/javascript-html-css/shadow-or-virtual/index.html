@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -159,9 +159,9 @@
     <div align="start" class="content"><h2 id="dom-die-or-march-">DOM, Die Or March ?</h2>
 <h3 id="p">:P</h3>
 <p><code>DOM(Document Object Model)</code>, is literally a structured model by objects. In other words, DOM represents the web-page (documents) by object-oriented. Web browsers handle the DOM, and we can interact with it using Javascript and CSS. BUT, when we manipulate the DOM, it takes long bcuz of the rendering calculation (<code>reflow</code> and <code>repaint</code>).</p>
-<p><br /></p>
+<br />
 <p>DOM은 말 그대로 오브젝트들로 구성된 모델이다. 달리 말하면, DOM은 웹페이지에 대한 객체지향적 표현이다. 웹 브라우저가 이 DOM을 조작하고, 우리는 Javascript와 CSS를 이용해 통신(조작)할 수 있다. 그런데 DOM을 조작할 때 <code>reflow</code>와 <code>repaint</code>에 대한 렌더링 계산 때문에 속도가 늦어진다.</p>
-<p><br /></p>
+<br />
 <h4 id="1-reflow">1. reflow</h4>
 <ul>
 <li>it triggerd when calculate the node size of <code>Render Tree</code>.</li>
@@ -178,7 +178,7 @@
 <li><code>display:none, visibility:hidden</code></li>
 <li>User action like scrolling and resizing the window.</li>
 </ul>
-<p><br /></p>
+<br />
 <p>So, We need to reduce DOM manipulation.<br />
 <br /></p>
 <p>그래서 위와 같은 이유로 DOM 조작 자체를 최소화해야 한다.<br />
@@ -195,12 +195,12 @@
 <li>it is a tree collects all views that are to be checked for changes.</li>
 <li>So we can also reduce the DOM manipulation.</li>
 </ul>
-<p><br /></p>
+<br />
 <h2 id="shadow-dom">Shadow DOM</h2>
 <p>This is a browser technology designed primarily for scoping variables and CSS in web components. and is mostly about encapsulation of the implementation. It refers to the ability of the browser to include a subtree of DOM elements into the rendering of a document, but not into the main document DOM tree.</p>
-<p><br /></p>
+<br />
 <p>이는 웹 컴포넌트들에서 변수들과 CSS의 범위를 지정하기 위해 설계된 브라우저 기술이다. 주로 캡슐화를 위해 사용된다. DOM 엘리먼트들의 서브 트리를 렌더링 영역에 포함시키지만, 메인 DOM 트리에는 포함시키지 않는 브라우저의 한 스킬이다.</p>
-<p><br /></p>
+<br />
 <p><a href="https://developer.mozilla.org/ko/docs/Web/Web_Components/Using_shadow_DOM">Ref: Using Shadow DOM (Javascript)</a></p>
 </div>
 
@@ -260,31 +260,6 @@
 
 </div>
  
-    
-
-    
-    
-        <h4 class="page-header">Comments</h4>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
 
 </main>

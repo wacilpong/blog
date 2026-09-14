@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -167,7 +167,7 @@
 <li>쿠버네티스를 잘 사용하는 방법을 한마디로 표현하자면 YAML 파일을 잘 작성하는 것이다.</li>
 <li>쿠버네티스를 구성하는 여러 컴포넌트들은 기본적으로 컨테이너로서 실행되고 있다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="파드pod-컨테이너를-다루는-기본-단위">파드(Pod): 컨테이너를 다루는 기본 단위</h4>
 <ul>
 <li>
@@ -176,35 +176,35 @@
 <li>
 <p>1개의 파드에는 1+a개의 컨테이너가 존재할 수 있다.<br />
 <em>ex. 동일한 nginx 컨테이너를 여러 개 생성하려면 1개 nginx 컨테이너가 담긴 파드를 여러 개 생성</em></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: v1
-<span style="color:#66d9ef">kind</span>: Pod
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: my-nginx-pod
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">containers</span>:
-    - <span style="color:#66d9ef">name</span>: my-nginx-container
-      <span style="color:#66d9ef">image</span>: nginx:latest
-      <span style="color:#66d9ef">ports</span>:
-        - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">80</span>
-          <span style="color:#66d9ef">protocol</span>: TCP
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 파드 생성</span>
-$ kubectl apply -f pod.yaml
-
-<span style="color:#75715e"># 현재 쿠버네티스에 존재하는 파드 목록</span>
-$ kubectl get pods
-
-<span style="color:#75715e"># IP를 포함한 파드 정보 출력</span>
-<span style="color:#75715e"># 이때 IP는 클러스터 내부에서만 접근 가능한 상태</span>
-$ kubectl describe pods my-nginx-pod
-
-<span style="color:#75715e"># 파드 컨테이너 내부로 진입</span>
-$ kubectl exec -it my-nginx-pod bash
-root@my-nginx-pod:/# ls /etc/nginx
-root@my-nginx-pod:/# exit
-
-<span style="color:#75715e"># 쿠버네티스 오브젝트는 쉽게 삭제 가능</span>
-$ kubectl delete -f pod.yaml
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-nginx-pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-nginx-container</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:latest</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 파드 생성</span>
+</span></span><span style="display:flex;"><span>$ kubectl apply -f pod.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 쿠버네티스에 존재하는 파드 목록</span>
+</span></span><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># IP를 포함한 파드 정보 출력</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이때 IP는 클러스터 내부에서만 접근 가능한 상태</span>
+</span></span><span style="display:flex;"><span>$ kubectl describe pods my-nginx-pod
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 파드 컨테이너 내부로 진입</span>
+</span></span><span style="display:flex;"><span>$ kubectl exec -it my-nginx-pod bash
+</span></span><span style="display:flex;"><span>root@my-nginx-pod:/# ls /etc/nginx
+</span></span><span style="display:flex;"><span>root@my-nginx-pod:/# exit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 쿠버네티스 오브젝트는 쉽게 삭제 가능</span>
+</span></span><span style="display:flex;"><span>$ kubectl delete -f pod.yaml
+</span></span></code></pre></div></li>
 <li>
 <p>파드 내부의 컨테이너들은 네트워크와 같은 리눅스 네임스페이스를 공유한다.</p>
 </li>
@@ -212,7 +212,7 @@ $ kubectl delete -f pod.yaml
 <p>하나의 파드는 하나의 완전한 애플리케이션이다.</p>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="레플리카셋replica-set-일정-개수의-파드를-유지하는-컨트롤러">레플리카셋(Replica Set): 일정 개수의 파드를 유지하는 컨트롤러</h4>
 <ul>
 <li>
@@ -220,36 +220,36 @@ $ kubectl delete -f pod.yaml
 </li>
 <li>
 <p>노드 장애 등의 이유로 파드를 사용할 수 없다면 다른 노드에서 파드를 다시 생성한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: apps/v1
-<span style="color:#66d9ef">kind</span>: ReplicaSet
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: replicaset-nginx
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">3</span>
-  <span style="color:#66d9ef">selector</span>:
-    <span style="color:#66d9ef">matchLabels</span>:
-      <span style="color:#66d9ef">app</span>: my-nginx-pods-label
-  <span style="color:#66d9ef">template</span>:
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">name</span>: my-nginx-pod
-      <span style="color:#66d9ef">labels</span>:
-        <span style="color:#66d9ef">app</span>: my-nginx-pods-label
-    <span style="color:#66d9ef">spec</span>:
-      <span style="color:#66d9ef">containers</span>:
-        - <span style="color:#66d9ef">name</span>: nginx
-          <span style="color:#66d9ef">image</span>: nginx:latest
-          <span style="color:#66d9ef">ports</span>:
-            - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">80</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 레플리카셋 생성</span>
-kubectl apply -f replicaset.yaml
-
-<span style="color:#75715e"># 레플리카셋과 파드 목록 출력</span>
-kubectl get po
-kubectl get rs
-
-<span style="color:#75715e"># 이름으로 레플리카셋 삭제</span>
-kubectl delete rs replicaset-nginx
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ReplicaSet</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">replicaset-nginx</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-nginx-pods-label</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-nginx-pod</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-nginx-pods-label</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:latest</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 레플리카셋 생성</span>
+</span></span><span style="display:flex;"><span>kubectl apply -f replicaset.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 레플리카셋과 파드 목록 출력</span>
+</span></span><span style="display:flex;"><span>kubectl get po
+</span></span><span style="display:flex;"><span>kubectl get rs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이름으로 레플리카셋 삭제</span>
+</span></span><span style="display:flex;"><span>kubectl delete rs replicaset-nginx
+</span></span></code></pre></div></li>
 <li>
 <p>레플리카셋과 파드는 label selector를 이용해 느슨한 연결로 유지된다.</p>
 <ul>
@@ -267,39 +267,39 @@ kubectl delete rs replicaset-nginx
 <p>따라서 위 예시에서 replicas 수를 수정해서 다시 생성하면 설정이 변경되고, 개수를 조정한다.</p>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="디플로이먼트deployment-레플리카셋파드의-배포를-관리">디플로이먼트(Deployment): 레플리카셋/파드의 배포를 관리</h4>
 <ul>
 <li>
 <p>실제 쿠버 운영 환경에서는 디플로이먼트라는 오브젝트를 YAML에 정의해 사용한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: apps/v1
-<span style="color:#66d9ef">kind</span>: Deployment
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: my-nginx-deployment
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">3</span>
-  <span style="color:#66d9ef">selector</span>:
-    <span style="color:#66d9ef">matchLabels</span>:
-      <span style="color:#66d9ef">app</span>: my-nginx
-  <span style="color:#66d9ef">template</span>:
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">name</span>: my-nginx-pod
-      <span style="color:#66d9ef">labels</span>:
-        <span style="color:#66d9ef">app</span>: my-nginx
-    <span style="color:#66d9ef">spec</span>:
-      <span style="color:#66d9ef">containers</span>:
-        - <span style="color:#66d9ef">name</span>: nginx
-          <span style="color:#66d9ef">image</span>: nginx:<span style="color:#ae81ff">1.10</span>
-          <span style="color:#66d9ef">ports</span>:
-            - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">80</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 디플로이먼트 생성</span>
-kubectl apply -f deployment.yaml
-
-<span style="color:#75715e"># 디플로이먼트 목록 출력</span>
-kubectl get deploy
-kubectl get replicaset
-kubectl get pods
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-nginx-deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-nginx</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-nginx-pod</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">my-nginx</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:1.10</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 디플로이먼트 생성</span>
+</span></span><span style="display:flex;"><span>kubectl apply -f deployment.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 디플로이먼트 목록 출력</span>
+</span></span><span style="display:flex;"><span>kubectl get deploy
+</span></span><span style="display:flex;"><span>kubectl get replicaset
+</span></span><span style="display:flex;"><span>kubectl get pods
+</span></span></code></pre></div></li>
 <li>
 <p>디플로이먼트를 통해 애플리케이션의 업데이트와 배포를 더 편하게 할 수 있다.</p>
 <ul>
@@ -311,15 +311,15 @@ kubectl get pods
 </li>
 <li>
 <p>컨테이너 애플리케이션의 버전이 업데이트되어 파드 이미지를 변경해야 할 때?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># (1)</span>
-kubectl set image deployment my-nginx-deployment nginx<span style="color:#f92672">=</span>nginx:1.11 --record
-
-<span style="color:#75715e"># (2)</span>
-kubectl rollout history deployment my-nginx-deployment
-
-<span style="color:#75715e"># (3)</span>
-kubectl rollout undo deployment my-nginx-deployment --to-revision<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># (1)</span>
+</span></span><span style="display:flex;"><span>kubectl set image deployment my-nginx-deployment nginx<span style="color:#f92672">=</span>nginx:1.11 --record
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (2)</span>
+</span></span><span style="display:flex;"><span>kubectl rollout history deployment my-nginx-deployment
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (3)</span>
+</span></span><span style="display:flex;"><span>kubectl rollout undo deployment my-nginx-deployment --to-revision<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><ul>
 <li>(1) 파드 템플릿의 containers에서 nginx 이름을 가진 컨테이너의 이미지를 nginx:1.11로 변경한다.</li>
 <li><code>--record</code> 옵션을 붙여야 어떤 명령으로 변경되었는지도 기록해준다.</li>
 <li>(2) 변경되는 파드의 정보들을 리비전으로 보존하는데, 이를 확인할 수 있다.</li>
@@ -327,7 +327,7 @@ kubectl rollout undo deployment my-nginx-deployment --to-revision<span style="co
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="서비스service-파드를-연결하고-외부에-노출">서비스(Service): 파드를 연결하고 외부에 노출</h4>
 </div>
 

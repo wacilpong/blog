@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -158,17 +158,17 @@
 
     <div align="start" class="content"><h2 id="accepting-command-line-arguments">Accepting Command Line Arguments</h2>
 <h3 id="reading-the-argument-values">Reading the Argument Values</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::env;
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
-    <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">1</span>];
-    <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">2</span>];
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;검색어: {}&#34;</span>, query);
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;대상 파일: {}&#34;</span>, filename);
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::env;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;검색어: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, query);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;대상 파일: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, filename);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>커맨드의 인수를 읽기 위해 표준 라이브러리의 <code>args</code> 함수를 사용해야 한다.</li>
 <li><code>collect</code> 함수는 다양한 종류의 컬렉션을 만들 수 있다.</li>
 <li>따라서 args 변수 타입을 문자열의 벡터로 명시해야 한다.</li>
@@ -177,24 +177,24 @@
 <li>위 코드에 <code>cargo run hi test.txt</code>를 실행한 결과값:<br />
 <em>검색어: hi 대상 파일: test.txt</em></li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="reading-a-file">Reading a File</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::env;
-<span style="color:#66d9ef">use</span> std::fs;
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
-    <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">1</span>];
-    <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">2</span>];
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;검색어: {}&#34;</span>, query);
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;대상 파일: {}&#34;</span>, filename);
-
-    <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(filename).expect(<span style="color:#e6db74">&#34;파일을 읽지 못했습니다.&#34;</span>);
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일 내용:\n{}&#34;</span>, contents);
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::env;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::fs;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;검색어: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, query);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;대상 파일: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, filename);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(filename).expect(<span style="color:#e6db74">&#34;파일을 읽지 못했습니다.&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;파일 내용:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, contents);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>파일 처리를 위해 표준 라이브러리 fs 모듈의 <code>read_to_string</code> 함수를 사용해야 한다.</li>
 <li>해당 함수는 파일의 내용을 <code>Result&lt;String&gt;</code> 타입으로 반환한다.</li>
 <li>해당 프로젝트 루트에 poem.txt 파일을 만들어서 실행하면 된다.</li>
@@ -207,24 +207,24 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="refactoring-to-improve-modularity-and-error-handling">Refactoring to Improve Modularity and Error Handling</h2>
 <h3 id="바이너리-프로젝트의-관심-분리">바이너리 프로젝트의 관심 분리</h3>
 <h4 id="1-인수-구문분석-분리하기">(1) 인수 구문분석 분리하기</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-  ...
-  <span style="color:#66d9ef">let</span> (query, filename) <span style="color:#f92672">=</span> parse_config(<span style="color:#f92672">&amp;</span>args);
-  ...
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">parse_config</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; (<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">str</span>, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">str</span>) {
-    <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">1</span>];
-    <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">2</span>];
-
-    (query, filename)
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> (query, filename) <span style="color:#f92672">=</span> parse_config(<span style="color:#f92672">&amp;</span>args);
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">parse_config</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; (<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">str</span>, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">str</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>args[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    (query, filename)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>main 함수가 여러 작업을 수행하는 책임 문제는 바이너리 프로젝트에서 쉽게 찾을 수 있다.</li>
 <li>러스트는 바이너리 프로그램의 main 함수의 관심을 분리하기 위한 지침을 제공한다:
 <ul>
@@ -236,26 +236,26 @@
 <li><code>parse_config</code>는 main 함수에서 인수 구문분석 로직만 추출해온 함수다.</li>
 <li>지금처럼 작은 프로그램에서는 과도하게 보이지만, 점진적 리팩토링을 위해 필요하다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="2-설정값의-그룹화">(2) 설정값의 그룹화</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-  ...
-  <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> parse_config(<span style="color:#f92672">&amp;</span>args);
-  ...
-}
-
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
-    query: String,
-    filename: String
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">parse_config</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; <span style="color:#a6e22e">Config</span> {
-    <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
-    <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
-
-    Config { query, filename }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> parse_config(<span style="color:#f92672">&amp;</span>args);
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
+</span></span><span style="display:flex;"><span>    query: String,
+</span></span><span style="display:flex;"><span>    filename: String
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">parse_config</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; <span style="color:#a6e22e">Config</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Config { query, filename }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>튜플 대신 관련있는 필드를 묶어 <code>Config</code> 구조체를 생성하고, 두 값이 연관있음을 표현한다.</li>
 <li>직접 String 값을 소유하는 Config 인스턴스를 반환하는 이유:
 <ul>
@@ -265,88 +265,88 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="3-config-구조체의-생성자">(3) Config 구조체의 생성자</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-  ...
-  <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args);
-  ...
-}
-
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
-    query: String,
-    filename: String
-}
-
-<span style="color:#66d9ef">impl</span> Config {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; <span style="color:#a6e22e">Config</span> {
-        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
-        <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
-
-        Config { query, filename }
-    }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args);
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
+</span></span><span style="display:flex;"><span>    query: String,
+</span></span><span style="display:flex;"><span>    filename: String
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Config {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; <span style="color:#a6e22e">Config</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Config { query, filename }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>생각해보면 <code>parse_config</code> 함수의 목적은 Config 인스턴스를 생성하는 것이다.</li>
 <li>따라서 더욱 보편적인 패턴에 따라 Config 구조체의 연관함수로 바꾸는 편이 낫다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="에러-처리-개선하기">에러 처리 개선하기</h3>
 <ul>
 <li>args 벡터가 3개보다 적으면 인덱스 1과 2를 참조할 때 패닉이 발생한다.<br />
 <em>index out of bounds: the len is 1 but the index is 1</em></li>
 <li>최종 사용자 입장에서는 왜 이런 에러가 발생하는지 알 수 없으므로 개선해야 한다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="1-에러-메시지-개선하기">(1) 에러 메시지 개선하기</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">impl</span> Config {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; <span style="color:#a6e22e">Config</span> {
-        <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
-            panic<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
-        }
-
-        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
-        <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
-
-        Config { query, filename }
-    }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Config {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; <span style="color:#a6e22e">Config</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">panic!</span>(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Config { query, filename }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>new 연관함수에 길이가 충분한지 검사하는 코드를 추가했다.</li>
 <li>그러나 <code>panic!</code> 매크로는 사용상의 문제보다 프로그래밍적 문제에 적합하다.</li>
 <li>따라서 작업의 성공/실패 여부를 의미하는 Result 타입을 반환하도록 하자.</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="2-panic-매크로-호출-대신-result-반환하기">(2) panic! 매크로 호출 대신 Result 반환하기</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">impl</span> Config {
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
-        <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
-            <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
-        }
-
-        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
-        <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
-
-        Ok(Config { query, filename })
-    }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Config {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Ok(Config { query, filename })
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>작업이 성공하면 Config 인스턴스를 반환하고, 그렇지 않으면 에러메시지를 반환한다.</li>
 <li>이때 <code>&amp;'static str</code>은 정적 수명을 가진 문자열 리터럴 타입이며 에러메시지를 저장하기 위함이다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="3-confignew-함수-호출하고-에러-처리하기">(3) Config::new 함수 호출하고 에러 처리하기</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::process;
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-  ...
-  <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
-      println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: {}&#34;</span>, err);
-      process::exit(<span style="color:#ae81ff">1</span>);
-  });
-  ...
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::process;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, err);
+</span></span><span style="display:flex;"><span>      process::exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>0이 아닌 상태는 프로그램을 호출한 프로세스에게 프로그램이 에러 상태여서 종료되었음을 알리는 규칙이다.</li>
 <li><code>unwrap_or_else</code>는 표준 라이브러리가 <code>Result&lt;T, E&gt;</code>타입에 정의한 메서드다.
 <ul>
@@ -357,50 +357,50 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="main-함수에서-로직-분리하기">main 함수에서 로직 분리하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
-    <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
-        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: {}&#34;</span>, err);
-        process::exit(<span style="color:#ae81ff">1</span>);
-    });
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;검색어: {}&#34;</span>, config.query);
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;대상 파일: {}&#34;</span>, config.filename);
-
-    run(config);
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) {
-    <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename).expect(<span style="color:#e6db74">&#34;파일을 읽지 못했습니다.&#34;</span>);
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일 내용:\n{}&#34;</span>, contents);
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, err);
+</span></span><span style="display:flex;"><span>        process::exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;검색어: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, config.query);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;대상 파일: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, config.filename);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    run(config);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename).expect(<span style="color:#e6db74">&#34;파일을 읽지 못했습니다.&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;파일 내용:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, contents);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>현재 작성된 코드에서 설정, 에러처리와 관련되지 않은 코드를 분리할 수 있다.</li>
 <li>main 함수를 더 쉽게 검증할 수 있으며 나머지 로직에 대한 테스트도 작성할 수 있다.</li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">...
-<span style="color:#66d9ef">use</span> std::error::Error;
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    ...
-    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Err(e) <span style="color:#f92672">=</span> run(config) {
-        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;애플리케이션 에러: {}&#34;</span>, e);
-        process::exit(<span style="color:#ae81ff">1</span>);
-    }
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span>dyn Error<span style="color:#f92672">&gt;&gt;</span> {
-    <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일 내용:\n{}&#34;</span>, contents);
-
-    Ok(())
-}
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::error::Error;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Err(e) <span style="color:#f92672">=</span> run(config) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;애플리케이션 에러: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, e);
+</span></span><span style="display:flex;"><span>        process::exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Error<span style="color:#f92672">&gt;&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;파일 내용:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, contents);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>run 함수는 원래 유닛타입을 반환했으므로 Ok인 경우 유지한다.</li>
 <li><code>Box&lt;dyn Error&gt;</code>는 트레이트 객체로 함수가 Error 트레이트를 구현하는 타입을 반환하지만, 반환될 값의 타입은 특정하지 않는다는 의미이다.</li>
 <li><strong>panic! 매크로 호출 대신 <code>?</code> 연산자를 사용하면 현재 함수의 호출자에게 에러값을 반환할 수 있다.</strong></li>
@@ -409,91 +409,91 @@
 <li>if let 구문과 기존 unwrap_or_else 함수 본문은 같다.</li>
 <li>즉, 에러메시지 출력 후 프로그램을 종료한다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="라이브러리-크레이트로-분리하기">라이브러리 크레이트로 분리하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// lib.rs
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::fs;
-<span style="color:#66d9ef">use</span> std::error::Error;
-
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
-  <span style="color:#66d9ef">pub</span> query: String,
-  <span style="color:#66d9ef">pub</span> filename: String
-}
-
-<span style="color:#66d9ef">impl</span> Config {
-  <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
-      <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
-          <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
-      }
-
-      <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
-      <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
-
-      Ok(Config { query, filename })
-  }
-}
-
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span>dyn Error<span style="color:#f92672">&gt;&gt;</span> {
-  <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
-
-  println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;파일 내용:\n{}&#34;</span>, contents);
-
-  Ok(())
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// main.rs
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> std::env;
-<span style="color:#66d9ef">use</span> std::process;
-
-<span style="color:#66d9ef">use</span> minigrep::Config;
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
-    <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
-        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: {}&#34;</span>, err);
-        process::exit(<span style="color:#ae81ff">1</span>);
-    });
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;검색어: {}&#34;</span>, config.query);
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;대상 파일: {}&#34;</span>, config.filename);
-
-    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Err(e) <span style="color:#f92672">=</span> minigrep::run(config) {
-        println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;애플리케이션 에러: {}&#34;</span>, e);
-        process::exit(<span style="color:#ae81ff">1</span>);
-    }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// lib.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::fs;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::error::Error;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">pub</span> query: String,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">pub</span> filename: String
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Config {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      Ok(Config { query, filename })
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Error<span style="color:#f92672">&gt;&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;파일 내용:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, contents);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// main.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::env;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::process;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> minigrep::Config;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, err);
+</span></span><span style="display:flex;"><span>        process::exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;검색어: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, config.query);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;대상 파일: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, config.filename);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Err(e) <span style="color:#f92672">=</span> minigrep::run(config) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;애플리케이션 에러: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, e);
+</span></span><span style="display:flex;"><span>        process::exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>이제 lib.rs는 테스트할 수 있는 공개 API를 갖게 된 셈이다.</li>
 <li>따라서 main.rs에서 스코프로 가져와서 사용할 수 있다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="테스트-주도-방법으로-라이브러리-기능-개발하기">테스트 주도 방법으로 라이브러리 기능 개발하기</h2>
 <ul>
 <li>TDD는 소프트웨어 작성법 중 하나일 뿐이지만, 코드의 디자인 또한 주도한다.</li>
 <li>여기서는 파일 내용에서 검색해 검색어를 포함하는 라인의 목록을 반환하는 기능을 작성한다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="실패하는-테스트-작성하기">실패하는 테스트 작성하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[cfg(test)]</span>
-<span style="color:#66d9ef">mod</span> tests {
-    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
-
-    <span style="color:#75715e">#[test]</span>
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">one_result</span>() {
-        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;duct&#34;</span>;
-        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">&#34;\</span>
-Rust:
-<span style="color:#a6e22e">safe</span>, fast, productive.
-Pick three.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
-
-        assert_eq<span style="color:#f92672">!</span>(vec<span style="color:#f92672">!</span>[<span style="color:#e6db74">&#34;safe, fast, productive.&#34;</span>], search(query, contents));
-    }
-}
-
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
-  vec<span style="color:#f92672">!</span>[]
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">#[cfg(test)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">mod</span> tests {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#[test]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">one_result</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;duct&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Rust:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">safe, fast, productive.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Pick three.&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">assert_eq!</span>(<span style="color:#a6e22e">vec!</span>[<span style="color:#e6db74">&#34;safe, fast, productive.&#34;</span>], search(query, contents));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vec!</span>[]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>위 테스트는 검색할 검색어와 검색 대상이 되는 텍스트를 입력받아 포함하는 줄만 반환한다.</li>
 <li>search 함수는 아직 빈 벡터를 반환하도록 구현되어 있으므로 테스트는 실패한다.</li>
 <li>이때 수명을 지정하지 않으면 러스트는 두 인수 중 어떤 것이 필요한지 알 수 없어 에러를 낸다.
@@ -504,7 +504,7 @@ Pick three.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="위-테스트-성공시키기">위 테스트 성공시키기</h3>
 <ul>
 <li>contents 인수의 각 줄을 순회한다.</li>
@@ -513,148 +513,148 @@ Pick three.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
 <li>검색어가 포함되어 있지 않으면 다음 줄로 건너뛴다.</li>
 <li>검색어를 포함하는 줄의 목록을 반환한다.</li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// lib.rs
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
-
-    <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
-        <span style="color:#66d9ef">if</span> line.contains(query) {
-            results.push(line);
-        }
-    }
-
-    results
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// lib.rs
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span>dyn Error<span style="color:#f92672">&gt;&gt;</span> {
-  <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
-
-  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> search(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents) {
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, line);
-  }
-
-  Ok(())
-}
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// lib.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> line.contains(query) {
+</span></span><span style="display:flex;"><span>            results.push(line);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    results
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// lib.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Error<span style="color:#f92672">&gt;&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> search(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, line);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li><code>lines</code> 메서드는 반복자를 반환한다.</li>
 <li><code>contains</code> 메서드로 검색어의 포함 야부를 확인한다.</li>
 <li>검색어를 포함하는 줄을 가변 벡터 <code>results</code>에 저장한다.</li>
 <li><strong>TDD로 개발한 search 함수를 run 함수에 활용하면, 이제 검색어가 포함된 줄만 출력한다.</strong></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="환경-변수-다루기">환경 변수 다루기</h2>
 <ul>
 <li>사용자가 환경 변수를 이용해 문자열 검색에 대소문자를 구분하지 않도록 설정해보자.</li>
 <li>환경 변수를 설정하면 그 터미널 세션에서는 대소문자를 구분하지 않고 검색을 계속할 수 있다.</li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> std::fs;
-<span style="color:#66d9ef">use</span> std::error::Error;
-<span style="color:#66d9ef">use</span> std::env;
-
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
-  <span style="color:#66d9ef">pub</span> query: String,
-  <span style="color:#66d9ef">pub</span> filename: String,
-  <span style="color:#66d9ef">pub</span> ignore_case: <span style="color:#66d9ef">bool</span>,
-}
-
-<span style="color:#66d9ef">impl</span> Config {
-  <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
-      <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
-          <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
-      }
-
-      <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
-      <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
-      <span style="color:#66d9ef">let</span> ignore_case <span style="color:#f92672">=</span> env::var(<span style="color:#e6db74">&#34;IGNORE_CASE&#34;</span>).is_ok();
-
-      Ok(Config {
-          query,
-          filename,
-          ignore_case,
-      })
-  }
-}
-
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span>dyn Error<span style="color:#f92672">&gt;&gt;</span> {
-  <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
-
-  <span style="color:#66d9ef">let</span> results <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> config.ignore_case {
-      search_case_insensitive(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents)
-  } <span style="color:#66d9ef">else</span> {
-      search(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents)
-  };
-
-  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> results {
-      println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, line);
-  }
-
-  Ok(())
-}
-
-<span style="color:#75715e">#[cfg(test)]</span>
-<span style="color:#66d9ef">mod</span> tests {
-    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
-
-    <span style="color:#75715e">#[test]</span>
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">case_sensitive</span>() {
-        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;duct&#34;</span>;
-        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">&#34;\</span>
-Rust:
-<span style="color:#a6e22e">safe</span>, fast, productive.
-Pick three.
-Duct tape.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
-
-        assert_eq<span style="color:#f92672">!</span>(vec<span style="color:#f92672">!</span>[<span style="color:#e6db74">&#34;safe, fast, productive.&#34;</span>], search(query, contents));
-    }
-
-    <span style="color:#75715e">#[test]</span>
-    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">case_insensitive</span>() {
-        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rUsT&#34;</span>;
-        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">&#34;\</span>
-Rust:
-<span style="color:#a6e22e">safe</span>, fast, productive.
-Pick three.
-Trust me.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
-
-        assert_eq<span style="color:#f92672">!</span>(
-            vec<span style="color:#f92672">!</span>[<span style="color:#e6db74">&#34;Rust:&#34;</span>, <span style="color:#e6db74">&#34;Trust me.&#34;</span>],
-            search_case_insensitive(query, contents)
-        );
-    }
-}
-
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
-  <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
-
-  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
-      <span style="color:#66d9ef">if</span> line.contains(query) {
-          results.push(line);
-      }
-  }
-
-  results
-}
-
-<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search_case_insensitive</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(
-  query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
-  contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>,
-) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
-  <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> query.to_lowercase();
-  <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
-
-  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
-      <span style="color:#66d9ef">if</span> line.to_lowercase().contains(<span style="color:#f92672">&amp;</span>query) {
-          results.push(line);
-      }
-  }
-
-  results
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">$ IGNORE_CASE=1 cargo run to poem.txt
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::fs;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::error::Error;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::env;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Config</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">pub</span> query: String,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">pub</span> filename: String,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">pub</span> ignore_case: <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Config {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">new</span>(args: <span style="color:#66d9ef">&amp;</span>[String]) -&gt; Result<span style="color:#f92672">&lt;</span>Config, <span style="color:#f92672">&amp;</span>&#39;static <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> args.len() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> Err(<span style="color:#e6db74">&#34;필요한 인수가 지정되지 않았습니다.&#34;</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">1</span>].clone();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> filename <span style="color:#f92672">=</span> args[<span style="color:#ae81ff">2</span>].clone();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> ignore_case <span style="color:#f92672">=</span> env::var(<span style="color:#e6db74">&#34;IGNORE_CASE&#34;</span>).is_ok();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      Ok(Config {
+</span></span><span style="display:flex;"><span>          query,
+</span></span><span style="display:flex;"><span>          filename,
+</span></span><span style="display:flex;"><span>          ignore_case,
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">run</span>(config: <span style="color:#a6e22e">Config</span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Error<span style="color:#f92672">&gt;&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> fs::read_to_string(config.filename)<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> results <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> config.ignore_case {
+</span></span><span style="display:flex;"><span>      search_case_insensitive(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents)
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      search(<span style="color:#f92672">&amp;</span>config.query, <span style="color:#f92672">&amp;</span>contents)
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> results {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, line);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[cfg(test)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">mod</span> tests {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">use</span> <span style="color:#66d9ef">super</span>::<span style="color:#f92672">*</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#[test]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">case_sensitive</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;duct&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Rust:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">safe, fast, productive.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Pick three.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Duct tape.&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">assert_eq!</span>(<span style="color:#a6e22e">vec!</span>[<span style="color:#e6db74">&#34;safe, fast, productive.&#34;</span>], search(query, contents));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#[test]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">case_insensitive</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rUsT&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> contents <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Rust:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">safe, fast, productive.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Pick three.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Trust me.&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">assert_eq!</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">vec!</span>[<span style="color:#e6db74">&#34;Rust:&#34;</span>, <span style="color:#e6db74">&#34;Trust me.&#34;</span>],
+</span></span><span style="display:flex;"><span>            search_case_insensitive(query, contents)
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> line.contains(query) {
+</span></span><span style="display:flex;"><span>          results.push(line);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  results
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">search_case_insensitive</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>  query: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>,
+</span></span><span style="display:flex;"><span>  contents: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span>,
+</span></span><span style="display:flex;"><span>) -&gt; Vec<span style="color:#f92672">&lt;&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> query <span style="color:#f92672">=</span> query.to_lowercase();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> results <span style="color:#f92672">=</span> Vec::new();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> line <span style="color:#66d9ef">in</span> contents.lines() {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> line.to_lowercase().contains(<span style="color:#f92672">&amp;</span>query) {
+</span></span><span style="display:flex;"><span>          results.push(line);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  results
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ IGNORE_CASE=1 cargo run to poem.txt
+</span></span></code></pre></div><ul>
 <li><code>search_case_insensitive</code> 함수는 &lsquo;rUsT&rsquo;라는 검색어로 &lsquo;Rust&rsquo;, &lsquo;Trust me&rsquo;를 찾아낸다.</li>
 <li><code>to_lowercase</code> 메서드는 기존 데이터를 참조하는 것이 아니라 새로운 데이터를 생성한다.</li>
 <li>따라서 query 섀도우 변수는 문자열 슬라이스가 아니라 문자열이다.</li>
@@ -663,9 +663,9 @@ Trust me.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
 <li><code>env::var</code> 함수는 환경 변수가 설정되어 있으면 Ok, 그렇지 않으면 Err를 반환하는 Result 타입이다.</li>
 <li>여기서는 환경 변수의 값보다는 어떤 값이든 설정되어 있는지 여부만 확인한다.</li>
 <li>따라서 unwrap, expect 보다는 값이 있기만 하면 false를 반환하는 <code>is_err</code>가 적합하다.</li>
-<li><strong>이제 IGNORE_CASE에 값을 설정하면 &lsquo;to&rsquo;의 검색 결과에 대문자도 포함된다.</strong></li>
+<li><strong>이제 IGNORE_CASE에 값을 설정하면 &rsquo;to&rsquo;의 검색 결과에 대문자도 포함된다.</strong></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="stderr를-이용해-에러메시지-출력">stderr를 이용해 에러메시지 출력</h2>
 <ul>
@@ -678,36 +678,36 @@ Trust me.<span style="color:#960050;background-color:#1e0010">&#34;</span>;
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="에러의-기록-여부-확인하기">에러의 기록 여부 확인하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">cargo run &gt; output.txt
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>cargo run &gt; output.txt
+</span></span></code></pre></div><ul>
 <li><code>&gt;</code>를 통해 출력 메시지를 화면이 아닌 파일에 기록하도록 한다.</li>
 <li>따라서 에러 메시지를 화면에서 확인할 수 없고, output.txt 파일에 기록되었다.</li>
 <li>하지만 에러 메시지는 다른 커맨드 프로그램처럼 터미널 화면에 보이는 편이 낫다.</li>
 <li><strong>즉, stderr로 출력해서 프로그램이 성공했을 때의 데이터만 파일에 기록되는 편이 낫다.</strong></li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="에러를-stderr로-출력하기">에러를 stderr로 출력하기</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// main.rs
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
-    <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
-        eprintln<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: {}&#34;</span>, err);
-        process::exit(<span style="color:#ae81ff">1</span>);
-    });
-
-    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Err(e) <span style="color:#f92672">=</span> minigrep::run(config) {
-        eprintln<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;애플리케이션 에러: {}&#34;</span>, e);
-        process::exit(<span style="color:#ae81ff">1</span>);
-    }
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">(1)
-$ cargo run &gt; output.txt
-
-(2)
-$ cargo run to poem.txt &gt; output.txt
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// main.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> args: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> env::args().collect();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> config <span style="color:#f92672">=</span> Config::new(<span style="color:#f92672">&amp;</span>args).unwrap_or_else(<span style="color:#f92672">|</span>err<span style="color:#f92672">|</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">eprintln!</span>(<span style="color:#e6db74">&#34;Problem parsing arguments: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, err);
+</span></span><span style="display:flex;"><span>        process::exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> Err(e) <span style="color:#f92672">=</span> minigrep::run(config) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">eprintln!</span>(<span style="color:#e6db74">&#34;애플리케이션 에러: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, e);
+</span></span><span style="display:flex;"><span>        process::exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>(1)
+</span></span><span style="display:flex;"><span>$ cargo run &gt; output.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(2)
+</span></span><span style="display:flex;"><span>$ cargo run to poem.txt &gt; output.txt
+</span></span></code></pre></div><ul>
 <li><code>eprintln!</code>는 표준 에러 스트림에 메시지를 출력하는 표준 라이브러리가 지원하는 매크로다.</li>
 <li>(1)을 다시 실행해보면 다른 커맨드 프로그램처럼 에러 메시지가 터미널 화면에 출력된다.</li>
 <li>(2)를 실행해보면 터미널에는 아무것도 출력되지 않지만, 검색 결과가 output.txt에 기록된다.</li>

@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -157,7 +157,7 @@
     </div>
 
     <div align="start" class="content"><p><strong><em>추신: 이더리움 창시자 비탈릭 부테린(Виталик Бутерин)은 31. Jan. 1994 로, 나랑 생년월일이 똑같다 헉!</em></strong></p>
-<p><br /></p>
+<br />
 <h2 id="3g-blockchain-eos">3G blockchain: EOS</h2>
 <p>: Steemit, bitshare를 만든 댄 라리머가 리딩하는 암호화폐이다.</p>
 <h4 id="1-governance-process">1. Governance Process</h4>
@@ -193,43 +193,43 @@
 <li>속도가 굉장히 빠르다. 거의 2초만에 트랜잭션 처리가 완료된다.</li>
 <li>그래서 현재 EOS메인넷인 <code>eosflare.io</code>에 있는 주사위 굴리기 <del>(도박&hellip;)</del> 게임을 이더리움으로 시작했다가 EOS로 바꾸기도 하였다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h2 id="install-guide">Install Guide</h2>
-<h4 id="1-ganache--downloadhttpstruffleframeworkcomganache">(1) Ganache : <a href="https://truffleframework.com/ganache">download</a></h4>
+<h4 id="1-ganache--download">(1) Ganache : <a href="https://truffleframework.com/ganache">download</a></h4>
 <p>: 스마트컨트랙트 개발을 위한 CLI가 아닌 GUI 도구</p>
-<p><br /></p>
-<h4 id="2-geth-geth--tools--downloadhttpsethereumgithubiogo-ethereumdownloads">(2) Geth (Geth &amp; Tools) : <a href="https://ethereum.github.io/go-ethereum/downloads/">download</a></h4>
+<br />
+<h4 id="2-geth-geth--tools--download">(2) Geth (Geth &amp; Tools) : <a href="https://ethereum.github.io/go-ethereum/downloads/">download</a></h4>
 <p>: 이더리움을 CLI로 제어, <code>golang</code>으로 쓰여졌다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">$</span> cd geth<span style="color:#f92672">-</span>alltools<span style="color:#f92672">-</span>darwin<span style="color:#f92672">-</span>amd64<span style="color:#ae81ff">-1.8.17-8</span>bbe7207<span style="color:#f92672">/</span>
-<span style="color:#f92672">$</span> pwd
-<span style="color:#f92672">$</span> vi <span style="color:#f92672">~/</span>.bash_profile
-
-<span style="color:#75715e"># geth path</span>
-export PATH<span style="color:#f92672">=$</span>PATH<span style="color:#f92672">:/</span>Users<span style="color:#f92672">/</span>roomy<span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>geth<span style="color:#f92672">/</span>geth<span style="color:#f92672">-</span>alltools<span style="color:#f92672">-</span>darwin<span style="color:#f92672">-</span>amd64<span style="color:#ae81ff">-1.8.17-8</span>bbe7207
-<span style="color:#f92672">~</span>
-<span style="color:#f92672">~</span>
-<span style="color:#f92672">~</span>
-
-<span style="color:#f92672">$</span> source <span style="color:#f92672">~/</span>.bash_profile
-</code></pre></div><p><br /></p>
-<h4 id="3-truffle--downloadhttpswwwtrufflesuitecomtruffle">(3) Truffle : <a href="https://www.trufflesuite.com/truffle">download</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#f92672">$</span> cd geth<span style="color:#f92672">-</span>alltools<span style="color:#f92672">-</span>darwin<span style="color:#f92672">-</span>amd64<span style="color:#ae81ff">-1.8.17-8</span>bbe7207<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> pwd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> vi <span style="color:#f92672">~/</span>.bash_profile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># geth path</span>
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=$</span>PATH<span style="color:#f92672">:/</span>Users<span style="color:#f92672">/</span>roomy<span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>geth<span style="color:#f92672">/</span>geth<span style="color:#f92672">-</span>alltools<span style="color:#f92672">-</span>darwin<span style="color:#f92672">-</span>amd64<span style="color:#ae81ff">-1.8.17-8</span>bbe7207
+</span></span><span style="display:flex;"><span><span style="color:#f92672">~</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">~</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">~</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> source <span style="color:#f92672">~/</span>.bash_profile
+</span></span></code></pre></div><br />
+<h4 id="3-truffle--download">(3) Truffle : <a href="https://www.trufflesuite.com/truffle">download</a></h4>
 <p>: 이더리움 개발환경부터 테스팅 및 배포까지 편하게 할 수 있도록 돕는 툴이다.</p>
 <blockquote>
 <p>A development environment, testing framework and asset pipeline for Ethereum, aiming to make life as an Ethereum developer easier. With Truffle, you get: Built-in smart contract compilation, linking, deployment and binary management.</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#f92672">$</span> npm  install  <span style="color:#f92672">-</span>g  truffle”
-<span style="color:#f92672">$</span> truffle version
-</code></pre></div><p><br /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#f92672">$</span> npm  install  <span style="color:#f92672">-</span>g  truffle”
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> truffle version
+</span></span></code></pre></div><br />
 <h4 id="4-vs-code-solidity-plugin">(4) VS Code Solidity Plugin</h4>
 <p>: Ethereum Solidity Language for Visual Studio Code, by Juan Blanco</p>
-<p><br /></p>
-<h4 id="5-metamask--downloadhttpsmetamaskio">(5) Metamask : <a href="https://metamask.io/">download</a></h4>
+<br />
+<h4 id="5-metamask--download">(5) Metamask : <a href="https://metamask.io/">download</a></h4>
 <p>: 브라우저에서 이더리움 트랜잭션을 처리하기 위한 플러그인이다. 실제 주소값을 가진 지갑이다.</p>
 <blockquote>
 <p>A bridge that allows you to visit the distributed web of tomorrow in your browser today. It allows you to run Ethereum dApps right in your browser without running a full Ethereum node.</p>
 </blockquote>
-<p><br /></p>
-<h4 id="6-mist--downloadhttpsgithubcomethereummistreleases">(6) Mist : <a href="https://github.com/ethereum/mist/releases">download</a></h4>
+<br />
+<h4 id="6-mist--download">(6) Mist : <a href="https://github.com/ethereum/mist/releases">download</a></h4>
 <p>: 이더리움은 가스비용이 있기 때문에 디버깅 및 테스트를 위해 private network에 붙어서 지갑 역할을 수행하려고 만들어진 개발자용 지갑이다.</p>
 </div>
 

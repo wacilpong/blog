@@ -1,60 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Learneds on Roomy</title>
-    <link>https://wacilpong.github.io/blog/learned/</link>
-    <description>Recent content in Learneds on Roomy</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>kr-ko</language>
-    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://wacilpong.github.io/blog/learned/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>2024</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</link>
-      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</guid>
-      <description>2024-08-06 샌드박스 환경에서만 실제로 수정하지 않은 요소의 css가 깨지는 현상이 발생했다. 젠킨스 workspace가 꼬였을지도 모르니 모두 지우고 다시 빌드해봤지</description>
-    </item>
-    
-    <item>
-      <title>2023</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</guid>
-      <description>2023-05-14 js의 exec() 메서드는 주어진 문자열에서 일치하는지 여부를 배열 혹은 null로 반환해준다. 이때 exec()에 플래그를 설정(/foo/g, /foo/y 등)하면 이전</description>
-    </item>
-    
-    <item>
-      <title>2022</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2022/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2022/</guid>
-      <description>2022-12-13 vscode Rename Symbol 함수나 변수에 우클릭 &amp;gt; Rename Symbol 하면 쓰는 모든 곳에서 전체 수정 가능하다. 단, 앵귤러 템플릿과 같은 곳에서 쓰는 건 안바뀐다. 2022-11-29 [oh-my-zsh] To fix your permissions you can do so by disabling... 해당</description>
-    </item>
-    
-    <item>
-      <title>2021</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
-      <description>2021-12-13 자바스크립트의 프로토타입에 관해 철학적으로 접근한 좋은 글을 발견하여 정리해둔다. 아래는 결정적으로 유용한 부분 발췌! 프로토타입 기반 OOP 언어의 특징은 다음</description>
-    </item>
-    
-    <item>
-      <title>2020</title>
-      <link>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</guid>
-      <description>2020-12-23 rxjs animationFrameScheduler는 window.requestAnimationFrame가 실행될 때 작업을 수행하는 오퍼레이</description>
-    </item>
-    
-  </channel>
+	<channel>
+		<title>Learneds on Roomy</title>
+		<link>https://wacilpong.github.io/blog/learned/</link>
+		<description>Recent content in Learneds on Roomy</description>
+		<generator>Hugo</generator>
+		<language>kr-ko</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://wacilpong.github.io/blog/learned/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>2024</title>
+				<link>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/learned/what-i-learned-2024/</guid>
+				<description>&lt;h2 id=&#34;2024-08-06&#34;&gt;&lt;strong&gt;2024-08-06&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;샌드박스 환경에서만 실제로 수정하지 않은 요소의 css가 깨지는 현상이 발생했다.&lt;/li&gt;&#xA;&lt;li&gt;젠킨스 workspace가 꼬였을지도 모르니 모두 지우고 다시 빌드해봤지만 여전히 발생했다.&lt;/li&gt;&#xA;&lt;li&gt;깨지는 css 내용을 각 phase마다 비교해보았지만 똑같았다.&lt;/li&gt;&#xA;&lt;li&gt;빌드된 css가 제대로 매핑되어 있는지 &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;태그를 확인한 순간,&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;!DOCTYPE&lt;/code&gt; 위에 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 태그가 있는 것을 발견했다.&lt;/li&gt;&#xA;&lt;li&gt;(서버에서 페이지 html문서를 서빙해줄 때 태그를 바깥에 그려서 주고 있었음)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;1-doctype-html은-어디까지-영향을-주는-것인가&#34;&gt;(1) &lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt;은 어디까지 영향을 주는 것인가?&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;A DOCTYPE is a required preamble.&#xA;&#xA;DOCTYPE은 필수 (맨앞)서문이다.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;DOCTYPEs are required for legacy reasons. When omitted, browsers tend to use a different rendering mode that is incompatible with some specifications. Including the DOCTYPE in a document ensures that the browser makes a best-effort attempt at following the relevant specifications.&#xA;&#xA;DOCTYPE은 기존 호환성 이유로 인해 필요하다. **이걸 생략하면 브라우저는 일부 사양과 호환되지 않은 다른 렌더링 모드를 사용할 수도 있다. DOCTYPE을 선언해야만 브라우저가 관련 사양을 따르기 위해 최적의 방식으로 동작한다.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;by &lt;a href=&#34;https://html.spec.whatwg.org/multipage/syntax.html#the-doctype&#34;&gt;HTML공식 스펙문서&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>2023</title>
+				<link>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</link>
+				<pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/learned/what-i-learned-2023/</guid>
+				<description>&lt;h2 id=&#34;2023-05-14&#34;&gt;&lt;strong&gt;2023-05-14&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;js의 &lt;code&gt;exec()&lt;/code&gt; 메서드는 주어진 문자열에서 일치하는지 여부를 배열 혹은 null로 반환해준다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;이때 exec()에 플래그를 설정(/foo/g, /foo/y 등)하면 이전 일치의 인덱스를 저장하게 된다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>2022</title>
+				<link>https://wacilpong.github.io/blog/learned/what-i-learned-2022/</link>
+				<pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/learned/what-i-learned-2022/</guid>
+				<description>&lt;h2 id=&#34;2022-12-13&#34;&gt;&lt;strong&gt;2022-12-13&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;vscode &lt;code&gt;Rename Symbol&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;함수나 변수에 우클릭 &amp;gt; Rename Symbol 하면 쓰는 모든 곳에서 전체 수정 가능하다.&lt;/li&gt;&#xA;&lt;li&gt;단, 앵귤러 템플릿과 같은 곳에서 쓰는 건 안바뀐다.&lt;br /&gt;&#xA;&lt;br /&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;2022-11-29&#34;&gt;&lt;strong&gt;2022-11-29&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;code&gt;[oh-my-zsh] To fix your permissions you can do so by disabling...&lt;/code&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>2021</title>
+				<link>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</link>
+				<pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/learned/what-i-learned-2021/</guid>
+				<description>&lt;h2 id=&#34;2021-12-13&#34;&gt;&lt;strong&gt;2021-12-13&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://medium.com/@limsungmook/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%8A%94-%EC%99%9C-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%EC%9D%84-%EC%84%A0%ED%83%9D%ED%96%88%EC%9D%84%EA%B9%8C-997f985adb42&#34;&gt;자바스크립트의 프로토타입에 관해 철학적으로 접근한 좋은 글&lt;/a&gt;을 발견하여 정리해둔다. 아래는 결정적으로 유용한 부분 발췌!&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;프로토타입 기반 OOP 언어의 특징은 다음과 같습니다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;개별 객체(instance) 수준에서 메소드와 변수를 추가&lt;/li&gt;&#xA;&lt;li&gt;객체 생성은 일반적으로 복사를 통해 이루어짐&lt;/li&gt;&#xA;&lt;li&gt;확장(extends)은 클래스가 아니라 위임(delegation)&lt;/li&gt;&#xA;&lt;li&gt;현재 객체가 메시지에 반응하지 못할 때 다른 객체로 메시지를 전달할 수 있게 하여 상속의 본질을 지원&lt;/li&gt;&#xA;&lt;li&gt;개별 객체 수준에서 객체를 수정하고 발전시키는 능력은 선험적 분류의 필요성을 줄이고 반복적인 프로그래밍 및 디자인 스타일을 장려&lt;/li&gt;&#xA;&lt;li&gt;프로토타입 프로그래밍은 일반적으로 분류하지 않고 유사성을 활용하도록 선택&lt;/li&gt;&#xA;&lt;li&gt;결과적으로 설계는 맥락에 의해 평가&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Javascript 에 익숙하다면 별다른 설명 없이도 이해되는 부분이 있을 것으로 보입니다.&lt;br /&gt;&#xA;다시 한번 가장 중요하다 생각되는 부분을 정리해보면&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>2020</title>
+				<link>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</link>
+				<pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/learned/what-i-learned-2020/</guid>
+				<description>&lt;h2 id=&#34;2020-12-23&#34;&gt;&lt;strong&gt;2020-12-23&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;rxjs &lt;code&gt;animationFrameScheduler&lt;/code&gt;는 window.requestAnimationFrame가 실행될 때 작업을 수행하는 오퍼레이터이다. 이를 활용해 브라우저가 repaint 하기 전에 스타일을 지정할 수도 있다.&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;animationFrameScheduler&lt;/span&gt; } &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rxjs&amp;#39;&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;observeOn&lt;/span&gt; } &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rxjs/operators&amp;#39;&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;someObservable&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;pipe&lt;/span&gt;(&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;observeOn&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;animationFrameScheduler&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;subscribe&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;v&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;someDiv&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;v&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;px`&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;})&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;&#xA;&lt;li&gt;다른 rxjs의 스케줄러는 아래와 같다.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;asapScheduler&lt;/code&gt;: 비동기 작업들 중에서 높은 우선순위를 가져간다. microtask와 동일한 큐로 스케줄링한다.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;asyncScheduler&lt;/code&gt;: 일반적인 setTimeout(task, duration)처럼 작업을 수행한다.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;queueScheduler&lt;/code&gt;: 동기적인 방식으로 스케줄링한다. async / await를 생각하면 쉽다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;debounceTime, delay, throttleTime, timeInterval, windowTime과 같은 시간 관련 오퍼레이터들이 마지막 인자로 스케줄러를 받을 수 있다.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;지정하지 않을 경우 asyncScheduler를 기본으로 사용한다.&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;br /&gt;&#xA;&lt;hr /&gt;&#xA;&lt;h2 id=&#34;2020-12-03&#34;&gt;&lt;strong&gt;2020-12-03&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;http request의 &lt;code&gt;Referer&lt;/code&gt; 헤더는 실제 단어 referrer의 오타이다. 이를 &lt;a href=&#34;https://tools.ietf.org/html/rfc1945#section-10.13&#34;&gt;정의할 때 철자를 빼먹어서&lt;/a&gt; 그대로 표준이 되었다. 그래서 document객체는 &lt;code&gt;document.referrer&lt;/code&gt;라고 명시되어 있다. 표준은 한번 정해지면 함부로 바꿀 수 없는 것의 좋은 예시이기도 하다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;br /&gt;&#xA;&lt;hr /&gt;&#xA;&lt;h2 id=&#34;2020-11-25&#34;&gt;&lt;strong&gt;2020-11-25&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;타입스크립트 컴파일러가 이해하기 쉽게 코드를 작성하면(Easy-to-Compile), ts 성능을 높일 수도 있다.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

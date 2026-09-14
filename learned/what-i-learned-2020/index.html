@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -157,15 +157,15 @@
     <div align="start" class="content"><h2 id="2020-12-23"><strong>2020-12-23</strong></h2>
 <ul>
 <li>rxjs <code>animationFrameScheduler</code>는 window.requestAnimationFrame가 실행될 때 작업을 수행하는 오퍼레이터이다. 이를 활용해 브라우저가 repaint 하기 전에 스타일을 지정할 수도 있다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">animationFrameScheduler</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;rxjs&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">observeOn</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;rxjs/operators&#39;</span>;
-
-<span style="color:#a6e22e">someObservable</span>.<span style="color:#a6e22e">pipe</span>(
-  <span style="color:#a6e22e">observeOn</span>(<span style="color:#a6e22e">animationFrameScheduler</span>)
-).<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">v</span> <span style="color:#f92672">=&gt;</span> {
-  <span style="color:#a6e22e">someDiv</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">v</span><span style="color:#e6db74">}</span><span style="color:#e6db74">px`</span>;
-})
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">animationFrameScheduler</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;rxjs&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">observeOn</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;rxjs/operators&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">someObservable</span>.<span style="color:#a6e22e">pipe</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">observeOn</span>(<span style="color:#a6e22e">animationFrameScheduler</span>)
+</span></span><span style="display:flex;"><span>).<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">v</span> <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">someDiv</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">v</span><span style="color:#e6db74">}</span><span style="color:#e6db74">px`</span>;
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div></li>
 <li>다른 rxjs의 스케줄러는 아래와 같다.
 <ul>
 <li><code>asapScheduler</code>: 비동기 작업들 중에서 높은 우선순위를 가져간다. microtask와 동일한 큐로 스케줄링한다.</li>
@@ -179,13 +179,13 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-12-03"><strong>2020-12-03</strong></h2>
 <ul>
 <li>http request의 <code>Referer</code> 헤더는 실제 단어 referrer의 오타이다. 이를 <a href="https://tools.ietf.org/html/rfc1945#section-10.13">정의할 때 철자를 빼먹어서</a> 그대로 표준이 되었다. 그래서 document객체는 <code>document.referrer</code>라고 명시되어 있다. 표준은 한번 정해지면 함부로 바꿀 수 없는 것의 좋은 예시이기도 하다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-11-25"><strong>2020-11-25</strong></h2>
 <ul>
@@ -197,7 +197,7 @@
 </li>
 <li>
 <p>인터섹션 타입(intersection type)보다는 인터페이스(interface)로 작성하자.</p>
-<pre><code>- type Foo = Bar &amp; Baz &amp; {
+<pre tabindex="0"><code>- type Foo = Bar &amp; Baz &amp; {
 -     someProp: string;
 - }
 
@@ -207,87 +207,87 @@
 </code></pre></li>
 <li>
 <p>타입 어노테이션, 특히 메서드 등이 반환할 타입을 지정해주면 컴파일러의 비용을 절약할 수 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">otherType</span> {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">otherFunc</span>();
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">otherType</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">otherFunc</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 <li>
 <p>유니온(Unions)을 만들기 보다는 서브타입(subtypes)을 만들자. 유니온으로 명시된 타입의 중복 멤버를 제거하려면 쌍으로 비교해야 하므로 비용이 많이 들기 때문이다. 아래처럼 간단한 것은 상관 없지만 12개 이상을 가진 유니온은 체감하는 속도에도 영향을 준다고 한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// before
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeekdaySchedule</span> {
-  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Monday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Tuesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Wednesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Thursday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Friday&#34;</span>;
-  <span style="color:#a6e22e">wake</span>: <span style="color:#66d9ef">Time</span>;
-  <span style="color:#a6e22e">startWork</span>: <span style="color:#66d9ef">Time</span>;
-  <span style="color:#a6e22e">endWork</span>: <span style="color:#66d9ef">Time</span>;
-  <span style="color:#a6e22e">sleep</span>: <span style="color:#66d9ef">Time</span>;
-}
-
-<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeekendSchedule</span> {
-  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Saturday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Sunday&#34;</span>;
-  <span style="color:#a6e22e">wake</span>: <span style="color:#66d9ef">Time</span>;
-  <span style="color:#a6e22e">familyMeal</span>: <span style="color:#66d9ef">Time</span>;
-  <span style="color:#a6e22e">sleep</span>: <span style="color:#66d9ef">Time</span>;
-}
-
-<span style="color:#66d9ef">declare</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printSchedule</span>(<span style="color:#a6e22e">schedule</span>: <span style="color:#66d9ef">WeekdaySchedule</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">WeekendSchedule</span>);
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// after
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Schedule</span> {
-  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Monday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Tuesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Wednesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Thursday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Friday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Saturday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Sunday&#34;</span>;
-  <span style="color:#a6e22e">wake</span>: <span style="color:#66d9ef">Time</span>;
-  <span style="color:#a6e22e">sleep</span>: <span style="color:#66d9ef">Time</span>;
-}
-
-<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeekdaySchedule</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Schedule</span> {
-  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Monday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Tuesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Wednesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Thursday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Friday&#34;</span>;
-  <span style="color:#a6e22e">startWork</span>: <span style="color:#66d9ef">Time</span>;
-  <span style="color:#a6e22e">endWork</span>: <span style="color:#66d9ef">Time</span>;
-}
-
-<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeekendSchedule</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Schedule</span> {
-  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Saturday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Sunday&#34;</span>;
-  <span style="color:#a6e22e">familyMeal</span>: <span style="color:#66d9ef">Time</span>;
-}
-
-<span style="color:#66d9ef">declare</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printSchedule</span>(<span style="color:#a6e22e">schedule</span>: <span style="color:#66d9ef">Schedule</span>);
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// before
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeekdaySchedule</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Monday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Tuesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Wednesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Thursday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Friday&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">wake</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">startWork</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">endWork</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sleep</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeekendSchedule</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Saturday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Sunday&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">wake</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">familyMeal</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sleep</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">declare</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printSchedule</span>(<span style="color:#a6e22e">schedule</span>: <span style="color:#66d9ef">WeekdaySchedule</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">WeekendSchedule</span>);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// after
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Schedule</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Monday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Tuesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Wednesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Thursday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Friday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Saturday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Sunday&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">wake</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sleep</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeekdaySchedule</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Schedule</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Monday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Tuesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Wednesday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Thursday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Friday&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">startWork</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">endWork</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WeekendSchedule</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Schedule</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">day</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Saturday&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Sunday&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">familyMeal</span>: <span style="color:#66d9ef">Time</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">declare</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printSchedule</span>(<span style="color:#a6e22e">schedule</span>: <span style="color:#66d9ef">Schedule</span>);
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-11-12"><strong>2020-11-12</strong></h2>
 <ul>
 <li>리액트의 <code>setState()</code> 메서드는 <strong>state의 변경 사항을 대기열에 넣어</strong> 상태를 변경하라고 React에 요청한다. 따라서 즉시 state를 변경하지 않으므로 상태를 변경하고 그 상태를 바로 호출하면 의도한 대로 동작하지 않는다. 같은 setState를 한번에 여러번 호출하면 안되는 이유이기도 하다. 아래는 setData를 count만큼 실행하고 있는데, map 메서드를 통해 다음 data를 받아서 setData를 한번만 호출하도록 바꾸는 것이 낫겠다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getRandom</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">max</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=&gt;</span> Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">getRandom</span>(<span style="color:#ae81ff">100</span>));
-
-<span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">setData</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">IData</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
-  
-<span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">count</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
-    <span style="color:#a6e22e">setData</span>((<span style="color:#a6e22e">prevState</span>) <span style="color:#f92672">=&gt;</span> [
-      ...<span style="color:#a6e22e">prevState</span>,
-      {
-        <span style="color:#a6e22e">totalCount</span>: <span style="color:#66d9ef">Math.floor</span>(<span style="color:#a6e22e">getRandom</span>(<span style="color:#ae81ff">1500</span>)),
-        <span style="color:#a6e22e">satisfaction</span>: <span style="color:#66d9ef">getRandom</span>(<span style="color:#ae81ff">5</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>),
-      },
-    ]);
-  }
-}, []);
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getRandom</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">max</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=&gt;</span> Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">max</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">getRandom</span>(<span style="color:#ae81ff">100</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">setData</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">IData</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">count</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setData</span>((<span style="color:#a6e22e">prevState</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      ...<span style="color:#a6e22e">prevState</span>,
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">totalCount</span>: <span style="color:#66d9ef">Math.floor</span>(<span style="color:#a6e22e">getRandom</span>(<span style="color:#ae81ff">1500</span>)),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">satisfaction</span>: <span style="color:#66d9ef">getRandom</span>(<span style="color:#ae81ff">5</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>),
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ]);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}, []);
+</span></span></code></pre></div></li>
 <li>리액트 훅은 함수형 컴포넌트의 최상위에서만 호출해야 한다. 반복문, 조건문, 혹은 중첩된 함수 내에서 호출하면 안된다. 리액트는 hook이 호출되는 순서에 의존하기 때문이다. <a href="https://medium.com/humanscape-tech/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%81%B4%EB%A1%9C%EC%A0%80%EB%A1%9C-hooks%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-3ba74e11fda7">React hooks를 자바스크립트로 구현한 예제</a>를 참고해보자.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-09-23"><strong>2020-09-23</strong></h2>
 <ul>
 <li>rxjs에서 어떠한 이벤트 스트림의 inner 옵저버블을 그저 특정 순서에 실행하고 구독했을 때 순서를 보장한 채로 값을 emit하려면 pipe 내에 필요한 위치에 <code>concatMapTo</code>를 사용하자. 아래는 구독여부에 관한 옵저버블을 실행 후 emit된 값이 <code>true</code>인 경우만 구독 옵저버블을 실행한다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">pipe</span>(
-  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">subscribed$</span>),
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">isTrue</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">isTrue</span>),
-  <span style="color:#a6e22e">concatMapTo</span>(<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">subscribe</span>())
-).<span style="color:#a6e22e">subscribe</span>();
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">pipe</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">switchMap</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">subscribed$</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">isTrue</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">isTrue</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">concatMapTo</span>(<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">subscribe</span>())
+</span></span><span style="display:flex;"><span>).<span style="color:#a6e22e">subscribe</span>();
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-09-14"><strong>2020-09-14</strong></h2>
 <ul>
@@ -295,137 +295,136 @@
 <ol>
 <li>
 <p><code>/etc/gitconfig</code>: 시스템의 모든 사용자와 모든 저장소에 적용된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git config --system
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ git config --system
+</span></span></code></pre></div></li>
 <li>
 <p><code>~/.gitconfig</code>: 특정 사용자에게만 적용된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git config --global
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ git config --global
+</span></span></code></pre></div></li>
 <li>
 <p><code>.git/config</code>: 특정 저장소, 혹은 현재 작업 중인 프로젝트에만 적용된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git config --local
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ git config --local
+</span></span></code></pre></div></li>
 </ol>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-09-09"><strong>2020-09-09</strong></h2>
 <ul>
 <li>
 <p><code>vscode</code> 에디터에서 갑자기 탭이 사라지고 파일 하나씩만 뜨는 경우가 있는데, 이때 아래 옵션을 확인해본다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#e6db74">&#34;workbench.editor.showTabs&#34;</span>: false
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#e6db74">&#34;workbench.editor.showTabs&#34;</span>: false
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-09-05"><strong>2020-09-05</strong></h2>
 <ul>
 <li>
 <p>rxjs에서 Subject를 프로미스로 만들고 싶다면 아래처럼 <code>take</code>, <code>first</code> 등등을 통해 emit할 개수를 명시해야만 한다. 그렇지 않으면 어떠한 값도 발생되지 않는다. Subject가 옵저버블이면서 옵저버이기 때문에 멀티 리스너를 가질 수 있어서 그런 것 같다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// test.component.ts
-</span><span style="color:#75715e"></span>...
-<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">updateTest</span>();
-
-  <span style="color:#75715e">// get data after test$.next()
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">testPromise</span>()).<span style="color:#a6e22e">data</span>;
-}
-
-
-<span style="color:#75715e">// test.service.ts
-</span><span style="color:#75715e"></span>...
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test$</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Subject</span>&lt;<span style="color:#f92672">boolean</span>&gt;();
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testPromise</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">boolean</span>&gt; {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">take</span>(<span style="color:#ae81ff">1</span>)).<span style="color:#a6e22e">toPromise</span>();
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateTest</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">httpClient</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/test&#34;</span>).<span style="color:#a6e22e">subscribe</span>(
-    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">next</span>(<span style="color:#a6e22e">data</span>),
-    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">data</span>)
-  );
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// test.component.ts
+</span></span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">updateTest</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// get data after test$.next()
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">testService</span>.<span style="color:#a6e22e">testPromise</span>()).<span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// test.service.ts
+</span></span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test$</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Subject</span>&lt;<span style="color:#f92672">boolean</span>&gt;();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testPromise</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">boolean</span>&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">take</span>(<span style="color:#ae81ff">1</span>)).<span style="color:#a6e22e">toPromise</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateTest</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">httpClient</span>.<span style="color:#66d9ef">get</span>(<span style="color:#e6db74">&#34;/test&#34;</span>).<span style="color:#a6e22e">subscribe</span>(
+</span></span><span style="display:flex;"><span>    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">next</span>(<span style="color:#a6e22e">data</span>),
+</span></span><span style="display:flex;"><span>    (<span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">test$</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li>위에 내용에 대해 버그가 아니냐고 issue에 올라오고 있고, Rxjs v7부터 <code>toPromise</code>가 deprecated되어 v8에서는 사라진다고 하니 최신 버전에서는 <code>firstValueFrom</code>, <code>lastValueFrom</code>으로 쉽게 async await 패턴을 사용할 수 있겠다. 근데 지금 날짜 기준으로는 v7도 베타인 상태다. 관련 문서는 <a href="https://indepth.dev/rxjs-heads-up-topromise-is-being-deprecated/">여기!</a></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-08-09"><strong>2020-08-09</strong></h2>
 <ul>
 <li>
 <p>크롬 콘솔에서 lodash와 같은 라이브러리를 테스트하고 싶으면, 직접 script injection 하면 된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">el</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;script&#34;</span>);
-
-<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js&#34;</span>;
-document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#34;head&#34;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">el</span>);
-
-<span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">VERSION</span>;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">el</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;script&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js&#34;</span>;
+</span></span><span style="display:flex;"><span>document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#34;head&#34;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">el</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">VERSION</span>;
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-07-26"><strong>2020-07-26</strong></h2>
 <ul>
 <li>
 <p>현재 작업중이었던 브랜치를 특정 브랜치를 기준으로 log를 쌓고 싶을 때는 <code>git rebase</code>를 통해 하며, 리베이스 도중 충돌이 일어나면 머지 마킹하고 <code>git rebase --continue</code>를 통해 계속 진행한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Q. master &lt;- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 새로 딴 브랜치로 옮기고 싶다면?
-
-git pull master
-git checkout hotfix/test
-git rebase master
-(after resolve conflicts)
-git rebase --continue
-git log --graph --decorate
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Q. master &lt;- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 새로 딴 브랜치로 옮기고 싶다면?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git pull master
+</span></span><span style="display:flex;"><span>git checkout hotfix/test
+</span></span><span style="display:flex;"><span>git rebase master
+</span></span><span style="display:flex;"><span>(after resolve conflicts)
+</span></span><span style="display:flex;"><span>git rebase --continue
+</span></span><span style="display:flex;"><span>git log --graph --decorate
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-07-17"><strong>2020-07-17</strong></h2>
 <ul>
 <li>
 <p><code>ln</code> 리눅스 명령을 통해 어떤 파일의 바로가기를 만들 수 있다. <code>-s</code> 옵션을 지정하면 symlink(symbolic link)를 만들어준다. 이것이 일반적으로 의미하는 바로가기이며, <strong>원본이 지워지면 해당 파일도 접근할 수 없다.</strong> 아래 예시에서 hello.txt에 쓴 텍스트는 dest.txt에서도 보인다. hello.txt 원본을 지우면 hard link 방식일 때는 dest.txt에 접근할 수 있지만, soft link 방식일 때는 접근할 수 없다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ touch hello.txt
-
-<span style="color:#75715e"># 1. hard link</span>
-$ ln hello.txt dest.txt
-
-<span style="color:#75715e"># 2. soft link</span>
-<span style="color:#75715e"># -f means, If the target file exists, then unlink.</span>
-$ ln -fs hello.txt dest.txt
-
-$ echo hello &gt; hello.txt
-$ cat dest.txt
-$ rm hello.txt
-
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ touch hello.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. hard link</span>
+</span></span><span style="display:flex;"><span>$ ln hello.txt dest.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. soft link</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -f means, If the target file exists, then unlink.</span>
+</span></span><span style="display:flex;"><span>$ ln -fs hello.txt dest.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ echo hello &gt; hello.txt
+</span></span><span style="display:flex;"><span>$ cat dest.txt
+</span></span><span style="display:flex;"><span>$ rm hello.txt
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-07-15"><strong>2020-07-15</strong></h2>
 <ul>
 <li>
 <p><code>git cherry-pick</code> 명령을 통해 특정 커밋을 반영해올 때, <code>--no-commit, -n</code> 옵션을 붙이면 커밋을 하지 않는다. 따라서 어떠한 커밋에서 특정 파일들만 반영하고 나머지는 이전으로 되돌린 후에 반영할 수 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Q. master &lt;- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 딴 브랜치로 옮기고 싶다면?
-
-1. master에서 temp 브랜치를 새로 딴다.
-2. temp에서 hotfix/test의 커밋들을 cherry-pick 한다.
-3. cherry-pick 하는 도중 충돌이 일어난 커밋들이 있다!
-4. 3번의 커밋들은 git cherry-pick -n {hash} 으로 가져온다.
-5. 충돌이 일어났거나 반영하고 싶지 않은 파일들은 이전 상태로 돌린다.
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Q. master &lt;- hotfix/test PR에 충돌이 많아서, 현재 기준의 master에서 딴 브랜치로 옮기고 싶다면?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1. master에서 temp 브랜치를 새로 딴다.
+</span></span><span style="display:flex;"><span>2. temp에서 hotfix/test의 커밋들을 cherry-pick 한다.
+</span></span><span style="display:flex;"><span>3. cherry-pick 하는 도중 충돌이 일어난 커밋들이 있다!
+</span></span><span style="display:flex;"><span>4. 3번의 커밋들은 git cherry-pick -n {hash} 으로 가져온다.
+</span></span><span style="display:flex;"><span>5. 충돌이 일어났거나 반영하고 싶지 않은 파일들은 이전 상태로 돌린다.
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-07-08"><strong>2020-07-08</strong></h2>
 <ul>
 <li><code>JSON</code>은 데이터 포맷이지 자바스크립트만의 문법이 아니다. <code>YAML</code>과 비슷하지만, JSON에는 주석을 달 수 없다. (by Douglas Crockford)</li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li><strong>VSync (Vertical synchronization)</strong>
 <ul>
@@ -445,7 +444,7 @@ $ rm hello.txt
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li><strong>Browser rendering pipeline</strong>
 <ul>
@@ -459,8 +458,8 @@ $ rm hello.txt
 <li><strong>참고로 Paint 과정에서 GPU Rasterization을 사용하면 빨라진다.</strong>
 <ul>
 <li>크롬 브라우저에서 <code>&lt;meta&gt;</code> viewport를 설정하거나, css <code>@viewport</code>를 설정해 사용할 수 있다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, minimum-scale=1.0&#34;</span> /&gt;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, minimum-scale=1.0&#34;</span> /&gt;
+</span></span></code></pre></div></li>
 <li><code>minimum-scale</code>를 &ldquo;yes&quot;로 설정하면 안되고, &ldquo;1.0&quot;으로 해야 한다.</li>
 <li><code>initial-scale</code>과 <code>user-scalable</code>는 고려 대상이 아니라서 상관없다.</li>
 </ul>
@@ -471,35 +470,35 @@ $ rm hello.txt
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-07-03"><strong>2020-07-03</strong></h2>
 <ul>
 <li>
 <p>webpack 번들에는 if~else 혹은 switch 구문으로 dynamic import해도, 번들에는 모두 포함된다. 관련 분석 도구는 <a href="https://coryrylan.com/blog/analyzing-bundle-size-with-the-angular-cli-and-webpack">webpack-bundle-analyzer</a>를 참고하자. 번들링 결과는 stats.json 파일로 확인할 수 있고, 참고로 앵귤러에서는 <code>npx ng build --statsJson</code>를 통해 확인 가능하다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 지연 로딩될 뿐, 모두 번들링에 포함된다.
-</span><span style="color:#75715e">// just lazy loaded, all included in bundle.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">production</span>) {
-  <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;path/sdk.prod.js&#34;</span>);
-} <span style="color:#66d9ef">else</span> {
-  <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;path/sdk.dev.js&#34;</span>);
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 지연 로딩될 뿐, 모두 번들링에 포함된다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// just lazy loaded, all included in bundle.
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">production</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;path/sdk.prod.js&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;path/sdk.dev.js&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li>
 <p>ssh 접속할 때 그 호스트의 FingerPrint를 등록할 것인지 물어보는데, yes를 하면 그 호스트는 <code>~/.ssh/known_hosts</code> 파일에 등록된다. 예를 들면 github에 처음 접근(checkout, commit&hellip;)할 때도 그렇다. 만약 기록이 없는데 미리 등록하려면 해당 파일에 직접 호스트를 추가해주거나, 접근할 주소를 안다면 터미널을 강제 할당할 수도 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 1. 직접 호스트명 추가</span>
-$ ssh-keyscan -t rsa host명 &gt;&gt; ~/.ssh/known_host
-
-<span style="color:#75715e"># 2. 터미널 강제 할당 (-T 옵션)</span>
-<span style="color:#75715e"># -&gt; 접근하는 ssh의 터미널에 명령어를 보내고 받는 등, interactive scripts(shell) 허용</span>
-$ ssh -vT git@github.******.com
-$ vim ~/.ssh/known_hosts
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 1. 직접 호스트명 추가</span>
+</span></span><span style="display:flex;"><span>$ ssh-keyscan -t rsa host명 &gt;&gt; ~/.ssh/known_host
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 터미널 강제 할당 (-T 옵션)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -&gt; 접근하는 ssh의 터미널에 명령어를 보내고 받는 등, interactive scripts(shell) 허용</span>
+</span></span><span style="display:flex;"><span>$ ssh -vT git@github.******.com
+</span></span><span style="display:flex;"><span>$ vim ~/.ssh/known_hosts
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="2020-07-01"><strong>2020-07-01</strong></h2>
 <ul>
@@ -508,83 +507,83 @@ $ vim ~/.ssh/known_hosts
 <dt><strong>/etc/hosts</strong></dt>
 <dd><code>cat /etc/hosts</code>를 실행하면 본인(host)의 컴퓨터에서 매핑된 ip주소와 도메인 이름을 확인할 수 있다. 브라우저나 터미널에서 도메인 이름을 치면 네임서버에서 ip를 얻게 되는데, 호스트 컴퓨터가 네임서버에 접근할 수 없는 상황에서는 해당 파일에 매핑된 도메인 이름과 ip주소를 이용한다.</dd>
 </dl>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">##</span>
-<span style="color:#75715e"># Host Database</span>
-#
-<span style="color:#75715e"># localhost is used to configure the loopback interface</span>
-<span style="color:#75715e"># when the system is booting.  Do not change this entry.</span>
-<span style="color:#75715e">##</span>
-127.0.0.1       localhost
-255.255.255.255 broadcasthost
-::1             localhost
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">##</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Host Database</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># localhost is used to configure the loopback interface</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># when the system is booting.  Do not change this entry.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##</span>
+</span></span><span style="display:flex;"><span>127.0.0.1       localhost
+</span></span><span style="display:flex;"><span>255.255.255.255 broadcasthost
+</span></span><span style="display:flex;"><span>::1             localhost
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li>
 <p>현재 터미널에 특정 스크립트를 실행해 환경변수 등을 적용하는 <code>source</code> 커맨드는 <code>.</code>와 같다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ source ~/.zshrc
-$ . ~/.zshrc
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ source ~/.zshrc
+</span></span><span style="display:flex;"><span>$ . ~/.zshrc
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li>
 <p>oh my zsh을 사용할 때 git 관련 명령어를 alias로 사용할 수 있는 이유는 수많은 플러그인 덕분이다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vim .oh-my-zsh/plugins/git/git.plugin.zsh
-
-#
-<span style="color:#75715e"># Functions</span>
-#
-
-<span style="color:#75715e"># The name of the current branch</span>
-<span style="color:#75715e"># Back-compatibility wrapper for when this function was defined here in</span>
-<span style="color:#75715e"># the plugin, before being pulled in to core lib/git.zsh as git_current_branch()</span>
-<span style="color:#75715e"># to fix the core -&gt; git plugin dependency.</span>
-<span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-  git_current_branch
-<span style="color:#f92672">}</span>
-
-<span style="color:#75715e"># Pretty log messages</span>
-<span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(){</span>
-  <span style="color:#66d9ef">if</span> ! <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-    git log --pretty<span style="color:#f92672">=</span>$1
-  <span style="color:#66d9ef">fi</span>
-<span style="color:#f92672">}</span>
-compdef _git _git_log_prettily<span style="color:#f92672">=</span>git-log
-
-<span style="color:#75715e"># Warn if the current branch is a WIP</span>
-<span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-  <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">$(</span>git log -n <span style="color:#ae81ff">1</span> 2&gt;/dev/null | grep -q -c <span style="color:#e6db74">&#34;\-\-wip\-\-&#34;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">then</span>
-    echo <span style="color:#e6db74">&#34;WIP!!&#34;</span>
-  <span style="color:#66d9ef">fi</span>
-<span style="color:#f92672">}</span>
-
-#
-<span style="color:#75715e"># Aliases</span>
-<span style="color:#75715e"># (sorted alphabetically)</span>
-#
-
-alias g<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git&#39;</span>
-
-alias ga<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add&#39;</span>
-alias gaa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add --all&#39;</span>
-alias gapa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add --patch&#39;</span>
-...
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vim .oh-my-zsh/plugins/git/git.plugin.zsh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Functions</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The name of the current branch</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Back-compatibility wrapper for when this function was defined here in</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># the plugin, before being pulled in to core lib/git.zsh as git_current_branch()</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># to fix the core -&gt; git plugin dependency.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> current_branch<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  git_current_branch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pretty log messages</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> _git_log_prettily<span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ! <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    git log --pretty<span style="color:#f92672">=</span>$1
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>compdef _git _git_log_prettily<span style="color:#f92672">=</span>git-log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Warn if the current branch is a WIP</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> work_in_progress<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">$(</span>git log -n <span style="color:#ae81ff">1</span> 2&gt;/dev/null | grep -q -c <span style="color:#e6db74">&#34;\-\-wip\-\-&#34;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;WIP!!&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Aliases</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (sorted alphabetically)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>alias g<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>alias ga<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add&#39;</span>
+</span></span><span style="display:flex;"><span>alias gaa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add --all&#39;</span>
+</span></span><span style="display:flex;"><span>alias gapa<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;git add --patch&#39;</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <ul>
 <li>
 <dl>
 <dt><strong>angular entryComponent</strong></dt>
 <dd>진입 컴포넌트로, 2가지 상황에서 사용된다. 앵귤러는 <code>@NgModule.bootstrap</code>에 지정된 컴포넌트를 자동으로 인식하고 진입 컴포넌트로 등록하기 때문에 직접 지정해줄 필요는 없지만, 모듈을 동적으로 로드 하는 경우에는 <code>entryComponents</code> 배열에 지정해야 한다.</dd>
 </dl>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1. NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)
-2. 라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. NgModule이 시작될 때 (부트스트랩 되는 컴포넌트, AppComponent)
+</span></span><span style="display:flex;"><span>2. 라우팅 되면서 접속 주소가 변경될 때 (라우팅 대상 컴포넌트)
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 </div>
 

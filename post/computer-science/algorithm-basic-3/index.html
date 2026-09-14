@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -158,20 +158,20 @@
 
     <div align="start" class="content"><p>칸아카데미의 알고리즘 코스를 들으며 정리해본 알고리즘 기초.<br />
 <a href="https://ko.khanacademy.org/computing/computer-science/algorithms">https://ko.khanacademy.org/computing/computer-science/algorithms</a></p>
-<p><br /></p>
+<br />
 <h2 id="그래프-표현">그래프 표현</h2>
 <ul>
 <li>그래프는 순환여부에 따라 순환, 비순환 그래프가 있다.</li>
 <li>그래프는 방향여부에 따라 방향, 무방향 그래프가 있다.</li>
 </ul>
-<p><br /></p>
+<br />
 <p><strong>[그래프에 대한 기본 용어]</strong></p>
 <ul>
 <li><code>정점(vertex)</code>: 그래프를 이루고 있는 어떠한 꼭짓점, 노드(node)</li>
 <li><code>변(edge)</code>: vertex를 연결하는 선, 간선</li>
 <li><code>차수(degree)</code>: edge의 수</li>
 </ul>
-<p><br /></p>
+<br />
 <p><strong>[트리는 무엇인지?]</strong></p>
 <ul>
 <li>자료구조 중 <code>트리(tree)</code>는 그래프의 한 종류로써, 방향 비순환 그래프이다.
@@ -184,36 +184,36 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <p><img src="https://cdn.kastatic.org/ka-cs-algorithms/directed_graph_for_challenge.png" alt="graph" /></p>
 <p>이러한 그래프가 있다고 하면, 변수에 저장할 때 3가지 방식으로 할 수 있겠다.</p>
-<p><br /></p>
+<br />
 <h5 id="1-엣지리스트-edge-list">1. <strong>엣지리스트 (Edge List)</strong></h5>
 <p>엣지리스트는 두 vertex을 연결하는 edge의 개수만큼의 배열로 그래프를 저장하는 방식이다. 매우 간단한 방식이지만 아무런 순서 없이 무작위로 들어가 있다면, 특정 edge를 찾기 위해 선형 검색을 해야 하고 이는 O(N)만큼의 복잡도를 지닌다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">edgeList</span> <span style="color:#f92672">=</span> [
-  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>],
-  [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>],
-  [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
-  [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>],
-  [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>],
-  [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>],
-];
-</code></pre></div><p><br /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">edgeList</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>],
+</span></span><span style="display:flex;"><span>];
+</span></span></code></pre></div><br />
 <h5 id="2-인접행렬">2. <strong>인접행렬</strong></h5>
 <p>인접행렬은 모든 vertex에 인접한 각 vertex를 0으로 표시하고 edge가 있는 경우 1로 표시한 배열로 그래프를 저장하는 방식이다. 즉, vertex by vertex로써 저장되므로 edge가 별로 없는 희소 그래프이더라도 공간을 N^2만큼 차지한다. 게다가 특정 <code>i</code>의 인접한 <code>j</code>를 찾기 위해서는 i행의 모든 vertex를 검색해야 한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">adjMatrix</span> <span style="color:#f92672">=</span> [
-  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
-  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
-  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>],
-  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
-  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
-  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
-];
-</code></pre></div><p><br /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">adjMatrix</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>];
+</span></span></code></pre></div><br />
 <h5 id="3-인접리스트">3. <strong>인접리스트</strong></h5>
 <p>인접리스트는 각 vertex의 edge로 연결된 vertex로 이루어진 배열로 그래프를 저장하는 방식이다. 따라서 edge <code>(i, j)</code>가 그래프에 있는지 찾으려면 <code>graph[i][j]</code>로 검색해야 한다. 이 검색은 최악의 경우에는 정점 i의 edge 개수만큼 걸린다. 즉, O(degree)만큼의 복잡도를 지닌다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">adjList</span> <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">5</span>], [<span style="color:#ae81ff">5</span>], []];
-</code></pre></div><p><br /><hr /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">adjList</span> <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">5</span>], [<span style="color:#ae81ff">5</span>], []];
+</span></span></code></pre></div><p><br /><hr /></p>
 <h2 id="너비우선탐색-거대한-그래프-횡단해보기">너비우선탐색, 거대한 그래프 횡단해보기</h2>
 <ul>
 <li>너비우선탐색은 주어진 소스 정점에서 다른 모든 정점에 이르기까지 거치는 edge의 수를 계산해 가장 짧은 경로를 찾는 알고리즘</li>
@@ -225,9 +225,9 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <p><img src="https://cdn.kastatic.org/ka-perseus-images/3545933c2fca71e45a03f1bb1bf2933b75c60e02.png" alt="bfs" /></p>
-<p><br /></p>
+<br />
 <ul>
 <li>소스 정점 3부터 시작, 정점 3의 거리는 0</li>
 <li>정점 2와 6에서 거리를 1로, 선행 정점을 정점 3으로 설정 (소스에서 거리가 0)</li>
@@ -236,10 +236,10 @@
 <li>정점 0으로 가서 거리를 4로, 선행 정점을 정점 1로 설정 (소스에서 거리가 3)</li>
 <li>소스에서 거리가 4인 정점은 정점 0과 1뿐인데 이미 방문했으니 끝!</li>
 </ul>
-<p><br /></p>
+<br />
 <p><strong><em>Q1. 어떤 정점에 이미 갔는지 여부를 어떻게 결정하는가?</em></strong><br />
 방문하기 전에는 정점의 거리가 null일 것이고 가보게 되면 거리에 따라 값이 할당된다. 따라서 어떤 정점의 이웃 정점을 검사할 때 그 거리가 현재 null인 정점만 방문하면 된다.</p>
-<p><br /></p>
+<br />
 <p><strong><em>Q2. 어떤 정점에 이미 갔으나, 거기서 출발했는지 여부를 어떻게 확인하는가?</em></strong></p>
 <ul>
 <li>선입선출(first in, first out)로 작동하는 <code>큐(queue)</code>를 사용하면 된다.
@@ -312,31 +312,6 @@
 
 </div>
  
-    
-
-    
-    
-        <h4 class="page-header">Comments</h4>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
 
 </main>

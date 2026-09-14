@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -172,7 +172,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="숫자">숫자</h2>
 <ul>
@@ -192,7 +192,7 @@
 <li>1950년대 하드웨어는 밑수가 2인 부동소수점 시스템과 잘 맞았으나, <strong>무어의 법칙</strong> 덕분에 이제는 상관없다.</li>
 <li>js 자체의 능력을 활용하면 되므로, 새로운 숫자형을 추가할 필요는 없다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="boolean">Boolean</h2>
 <ul>
@@ -202,7 +202,7 @@
 <li><code>falsy</code>: <strong>false, null, undefined, 빈 문자열(&quot;&quot;), 0, NaN</strong></li>
 <li><code>truthy</code>: <strong>&ldquo;false&quot;나 &ldquo;0&quot;같은 문자열도 포함된다.</strong></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="배열">배열</h2>
 <ul>
@@ -223,7 +223,7 @@
 <li><strong>forEach나 find는 배열의 끝에 도달하기 전에 종료할 수 있지만, map, reduce, filter는 아니다.</strong></li>
 <li><code>sort</code>는 추가 메모리 공간을 사용하지 않고 배열 자체를 수정하므로 공유 중인 배열을 정렬하면 위험하다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="객체">객체</h2>
 <ul>
@@ -235,7 +235,7 @@
 <li><strong>객체의 속성에 값을 대입하면 가장 새로운 객체, 즉 프로토타입 체인의 가장 위쪽에 있는 객체만 변경된다.</strong></li>
 <li><code>WeakMap</code>은 문자열을 제외한 다른 객체를 키로 쓰고, 존재하는 키의 사본이 없다면 해당 키의 속성은 자동으로 삭제되기 때문에 js의 가비지 컬렉터와 잘 맞는다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="문자열">문자열</h2>
 <ul>
@@ -245,7 +245,7 @@
 <li>템플릿 문자열 리터럴은 <code>interpoloation(${})</code>을 제공하는데 이는 XSS같은 보안에 취약하다.</li>
 <li>템플릿 문자열 리터럴을 함수로 전달해서 인코딩 후 조립해서 반환하면 어느정도 위험을 완화할 수는 있다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="statement">Statement</h2>
 <ul>
@@ -256,27 +256,27 @@
 <li>반복문을 만드는 가장 좋은 방법은 꼬리재귀(tail recursion)을 사용하는 것이다.</li>
 <li>js에는 <strong>break, continue, throw, return 4가지 중단문이 있는데 이들은 모두 goto가 아니다.</strong> (<em>그러니 안심하자!</em>)</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="함수">함수</h2>
 <ul>
 <li>최초의 프로그램은 루틴이라고 불렸고, 같은 루틴을 서브루틴으로 만들었다.</li>
 <li>유용한 여러 서브루틴을 묶어서 라이브러리라고 부르기 시작했다.</li>
 <li>확산 연산자(&hellip;)를 인자 목록에서 쓰면 전개(spread)문라고 부르고, 매개변수 목록에서 쓰면 나머지(rest)문이 된다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// rest
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func</span>(...<span style="color:#a6e22e">args</span>) {
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
-}
-
-<span style="color:#75715e">// spread
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">func</span>(...<span style="color:#a6e22e">a</span>);
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// rest
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func</span>(...<span style="color:#a6e22e">args</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// spread
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">func</span>(...<span style="color:#a6e22e">a</span>);
+</span></span></code></pre></div></li>
 <li>함수가 호출되면 활성 객체(activation object)가 만들어진다.</li>
 <li><strong>js의 활성 객체는 다른 객체와 마찬가지로 힙에 저장되고 가비지 컬렉터에 의해 처리된다.</strong></li>
 <li>함수 실행 코드뿐 아니라 함수 객체가 생성되는 시점에 활성화된 활성 객체에 대한 참조가 있기 때문에 비로소 클로저를 사용할 수 있는 것이다.</li>
 <li>함수 객체가 외부 함수에 대한 활성 객체의 참조를 가지는 방식을 <code>클로저</code>라고 한다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="예외">예외</h2>
 <ul>
@@ -296,7 +296,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="프로그램">프로그램</h2>
 <ul>
@@ -317,7 +317,7 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="this-그리고-클래스-없는-자바스크립트">this 그리고 클래스 없는 자바스크립트</h2>
 <ul>
@@ -332,21 +332,21 @@
 </li>
 <li>js는 클래스가 없이도 클래스 형태의 프로그램을 만들 수 있다.</li>
 <li>js의 더 좋은 구조는 <code>함수 컴포지션(functional composition)</code>이다.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test_constructor</span>(<span style="color:#a6e22e">spec</span>) {
-  <span style="color:#66d9ef">let</span> {<span style="color:#a6e22e">memeber</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">sepc</span>;
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reuse</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">other_constructor</span>(<span style="color:#a6e22e">sepc</span>);
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-    <span style="color:#75715e">// 이 스코프에서 spec, member, reuse, method를 사용가능
-</span><span style="color:#75715e"></span>  };
-
-  <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">freeze</span>({
-    <span style="color:#a6e22e">method</span>,
-    <span style="color:#a6e22e">goodness</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reuse</span>.<span style="color:#a6e22e">goodness</span>
-  });
-}
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test_constructor</span>(<span style="color:#a6e22e">spec</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> {<span style="color:#a6e22e">memeber</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">sepc</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reuse</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">other_constructor</span>(<span style="color:#a6e22e">sepc</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 이 스코프에서 spec, member, reuse, method를 사용가능
+</span></span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">freeze</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">goodness</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reuse</span>.<span style="color:#a6e22e">goodness</span>
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="heading">~</h2>
 <ul>
@@ -378,7 +378,7 @@
 <li>빠르지만 이상하게 동작하는 것은 아무런 도움이 되지 못한다.</li>
 <li><code>트랜스파일링(transpiling)</code>은 하나의 프로그래밍 언어를 다른 언어로 컴파일하는 특별한 형태이다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h4 id="다음-세대-언어는">다음 세대 언어는</h4>
 <ul>
@@ -459,31 +459,6 @@
 
 </div>
  
-    
-
-    
-    
-        <h4 class="page-header">Comments</h4>
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "roomy-han" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
 
 </main>

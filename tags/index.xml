@@ -1,87 +1,73 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on Roomy</title>
-    <link>https://wacilpong.github.io/blog/tags/</link>
-    <description>Recent content in Tags on Roomy</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>kr-ko</language>
-    <lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://wacilpong.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>computer-science</title>
-      <link>https://wacilpong.github.io/blog/tags/computer-science/</link>
-      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/computer-science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>refactoring</title>
-      <link>https://wacilpong.github.io/blog/tags/refactoring/</link>
-      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/refactoring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>cloud-computing</title>
-      <link>https://wacilpong.github.io/blog/tags/cloud-computing/</link>
-      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/cloud-computing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>review</title>
-      <link>https://wacilpong.github.io/blog/tags/review/</link>
-      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rust</title>
-      <link>https://wacilpong.github.io/blog/tags/rust/</link>
-      <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/rust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>configuration</title>
-      <link>https://wacilpong.github.io/blog/tags/configuration/</link>
-      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/configuration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blockchain</title>
-      <link>https://wacilpong.github.io/blog/tags/blockchain/</link>
-      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/blockchain/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>javascript/html/css</title>
-      <link>https://wacilpong.github.io/blog/tags/javascript/html/css/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/tags/javascript/html/css/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
+	<channel>
+		<title>Tags on Roomy</title>
+		<link>https://wacilpong.github.io/blog/tags/</link>
+		<description>Recent content in Tags on Roomy</description>
+		<generator>Hugo</generator>
+		<language>kr-ko</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://wacilpong.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Computer-Science</title>
+				<link>https://wacilpong.github.io/blog/tags/computer-science/</link>
+				<pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/tags/computer-science/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Javascript/Html/Css</title>
+				<link>https://wacilpong.github.io/blog/tags/javascript/html/css/</link>
+				<pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/tags/javascript/html/css/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Refactoring</title>
+				<link>https://wacilpong.github.io/blog/tags/refactoring/</link>
+				<pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/tags/refactoring/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Cloud-Computing</title>
+				<link>https://wacilpong.github.io/blog/tags/cloud-computing/</link>
+				<pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/tags/cloud-computing/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Review</title>
+				<link>https://wacilpong.github.io/blog/tags/review/</link>
+				<pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/tags/review/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Rust</title>
+				<link>https://wacilpong.github.io/blog/tags/rust/</link>
+				<pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/tags/rust/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Configuration</title>
+				<link>https://wacilpong.github.io/blog/tags/configuration/</link>
+				<pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/tags/configuration/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Blockchain</title>
+				<link>https://wacilpong.github.io/blog/tags/blockchain/</link>
+				<pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/tags/blockchain/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>

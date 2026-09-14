@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -176,22 +176,22 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h2 id="내-리액트앱-nginx로-서빙하는-도커이미지-만들기">내 리액트앱 nginx로 서빙하는 도커이미지 만들기</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s">FROM nginx
-
-<span style="color:#75715e"># nginx의 default.conf를 삭제</span>
-RUN rm <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d<span style="color:#f92672">/</span>default.conf
-
-<span style="color:#75715e"># host pc의 nginx.conf를 아래 경로에 복사</span>
-COPY ./nginx.config <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d
-
-<span style="color:#75715e"># 80 포트 오픈</span>
-EXPOSE <span style="color:#ae81ff">80</span>
-
-<span style="color:#75715e"># container 실행 시 자동으로 실행할 command. nginx 시작함</span>
-CMD nginx <span style="color:#f92672">-</span>g <span style="color:#e6db74">&#39;daemon off;&#39;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span>FROM nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># nginx의 default.conf를 삭제</span>
+</span></span><span style="display:flex;"><span>RUN rm <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d<span style="color:#f92672">/</span>default.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># host pc의 nginx.conf를 아래 경로에 복사</span>
+</span></span><span style="display:flex;"><span>COPY ./nginx.config <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 80 포트 오픈</span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># container 실행 시 자동으로 실행할 command. nginx 시작함</span>
+</span></span><span style="display:flex;"><span>CMD nginx <span style="color:#f92672">-</span>g <span style="color:#e6db74">&#39;daemon off;&#39;</span>
+</span></span></code></pre></div><ul>
 <li>
 <p>내 리액트앱을 도커이미지로 만드는 Dockerfile이다.</p>
 </li>
@@ -204,142 +204,142 @@ CMD nginx <span style="color:#f92672">-</span>g <span style="color:#e6db74">&#39
 </li>
 <li>
 <p>그래서 사실 아래 두줄이면 된다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># 미리 build 결과물 만든 후 실행</span>
-FROM nginx
-COPY build <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#75715e"># 미리 build 결과물 만든 후 실행</span>
+</span></span><span style="display:flex;"><span>FROM nginx
+</span></span><span style="display:flex;"><span>COPY build <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
+</span></span></code></pre></div></li>
 <li>
 <p>이후 아래 커맨드 실행</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 특정 파일명을 가진 도커파일로 local 태그를 달아 도커이미지 빌드</span>
-docker build -t todo:local -f Dockerfile-client .
-docker images
-
-<span style="color:#75715e"># local 태그를 가진 todo 이미지를 기반으로 컨테이너 실행</span>
-<span style="color:#75715e"># 이후 localhost:3000에서 접속되는 것을 확인</span>
-docker run -d --name todo -p 3000:80 todo:local
-docker ps
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 특정 파일명을 가진 도커파일로 local 태그를 달아 도커이미지 빌드</span>
+</span></span><span style="display:flex;"><span>docker build -t todo:local -f Dockerfile-client .
+</span></span><span style="display:flex;"><span>docker images
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># local 태그를 가진 todo 이미지를 기반으로 컨테이너 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이후 localhost:3000에서 접속되는 것을 확인</span>
+</span></span><span style="display:flex;"><span>docker run -d --name todo -p 3000:80 todo:local
+</span></span><span style="display:flex;"><span>docker ps
+</span></span></code></pre></div></li>
 </ul>
-<p><br /></p>
+<br />
 <h2 id="multi-stage">multi stage</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># Build Stage Start</span>
-<span style="color:#75715e"># Specify a base image</span>
-FROM node<span style="color:#f92672">:</span>alpine as builder
-
-<span style="color:#75715e"># Specify a working directory</span>
-WORKDIR <span style="color:#e6db74">&#39;/app&#39;</span>
-
-<span style="color:#75715e"># Copy the dependencies file</span>
-COPY package.json .
-
-<span style="color:#75715e"># Install dependencies</span>
-RUN npm install
-
-<span style="color:#75715e"># Copy remaining files</span>
-COPY . .
-
-<span style="color:#75715e"># Build the project for production</span>
-RUN npm run build
-
-<span style="color:#75715e"># Run Stage Start</span>
-FROM nginx
-
-<span style="color:#75715e"># Copy production build files from builder phase to nginx</span>
-COPY <span style="color:#f92672">--</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#75715e"># Build Stage Start</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Specify a base image</span>
+</span></span><span style="display:flex;"><span>FROM node<span style="color:#f92672">:</span>alpine as builder
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Specify a working directory</span>
+</span></span><span style="display:flex;"><span>WORKDIR <span style="color:#e6db74">&#39;/app&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Copy the dependencies file</span>
+</span></span><span style="display:flex;"><span>COPY package.json .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install dependencies</span>
+</span></span><span style="display:flex;"><span>RUN npm install
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Copy remaining files</span>
+</span></span><span style="display:flex;"><span>COPY . .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build the project for production</span>
+</span></span><span style="display:flex;"><span>RUN npm run build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run Stage Start</span>
+</span></span><span style="display:flex;"><span>FROM nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Copy production build files from builder phase to nginx</span>
+</span></span><span style="display:flex;"><span>COPY <span style="color:#f92672">--</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
+</span></span></code></pre></div><ul>
 <li>위처럼 컨테이너 이미지에는 필요 없지만 이미지를 빌드할 때만 필요한 경우 <code>multi stage</code> 방식으로 만들 수 있다.</li>
 <li>node 스테이지에서 필요한 파일과 dependency 모두 컨테이너로 카피하고, build 명령을 돌린다.</li>
 <li>nginx 스테이지에서는 빌드 결과물을 가져와서(<code>as builder</code>) nginx 컨테이너로 카피한다.</li>
 <li>위 예시에서 결론적으로 컨테이너를 띄우는 것은 nginx이다.</li>
 <li><a href="https://docs.docker.com/build/building/multi-stage/">https://docs.docker.com/build/building/multi-stage/</a></li>
 </ul>
-<p><br /></p>
+<br />
 <h2 id="221127-스터디">221127 스터디</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># Dockerfile.apiserver</span>
-
-FROM node
-
-WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
-COPY package<span style="color:#f92672">*</span>.json <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>
-ENV NODE_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--openssl-legacy-provider&#34;</span>
-
-RUN npm install
-COPY backend <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>backend<span style="color:#f92672">/</span>
-
-EXPOSE <span style="color:#ae81ff">3777</span>
-
-ENTRYPOINT [<span style="color:#e6db74">&#34;node&#34;</span>, <span style="color:#e6db74">&#34;/usr/src/app/backend/server.js&#34;</span>]
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># Dockerfile.front</span>
-
-FROM node as builder
-
-RUN mkdir <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
-WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
-ENV NODE_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--openssl-legacy-provider&#34;</span>
-COPY package<span style="color:#f92672">*</span>.json <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>
-RUN npm install
-
-COPY . <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
-RUN npm run build
-
-FROM nginx
-
-WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
-RUN rm <span style="color:#f92672">-</span>rf <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d
-COPY conf <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d<span style="color:#f92672">/</span>
-
-COPY <span style="color:#f92672">--</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build<span style="color:#f92672">/</span> .
-
-EXPOSE <span style="color:#ae81ff">80</span>
-CMD [<span style="color:#e6db74">&#34;nginx&#34;</span>, <span style="color:#e6db74">&#34;-g&#34;</span>, <span style="color:#e6db74">&#34;daemon off;&#34;</span>]
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># conf/default.conf</span>
-
-server {
-  listen <span style="color:#ae81ff">80</span>;
-  <span style="color:#75715e"># listen [::]:80;</span>
-
-  location <span style="color:#f92672">/</span> {
-    root   <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html;
-    index  index.html index.htm;
-    try_files <span style="color:#f92672">$</span>uri <span style="color:#f92672">$</span>uri<span style="color:#f92672">/</span> <span style="color:#f92672">/</span>index.html;
-  }
-
-  location <span style="color:#f92672">/</span>api {
-    proxy_pass http<span style="color:#f92672">://</span>todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span><span style="color:#ae81ff">3777</span>;
-  }
-
-  error_page   <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">502</span> <span style="color:#ae81ff">503</span> <span style="color:#ae81ff">504</span>  <span style="color:#f92672">/</span><span style="color:#ae81ff">50</span>x.html;
-  location <span style="color:#f92672">=</span> <span style="color:#f92672">/</span><span style="color:#ae81ff">50</span>x.html {
-    root   <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html;
-  }
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#75715e"># docker-compose.yml</span>
-
-version<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;3&#39;</span>
-services<span style="color:#f92672">:</span>
-  todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span>
-    container_name<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>api
-    image<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span>latest
-    networks<span style="color:#f92672">:</span>
-     <span style="color:#f92672">-</span> default
-
-  todo<span style="color:#f92672">-</span>app<span style="color:#f92672">:</span>
-    container_name<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>app
-    image<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>app<span style="color:#f92672">:</span>latest
-    networks<span style="color:#f92672">:</span>
-     <span style="color:#f92672">-</span> default
-    ports<span style="color:#f92672">:</span>
-     <span style="color:#f92672">-</span> <span style="color:#ae81ff">80</span><span style="color:#f92672">:</span><span style="color:#ae81ff">80</span>
-    links<span style="color:#f92672">:</span>
-     <span style="color:#f92672">-</span> todo<span style="color:#f92672">-</span>api
-
-networks<span style="color:#f92672">:</span>
-  default<span style="color:#f92672">:</span>
-    external<span style="color:#f92672">:</span>
-      name<span style="color:#f92672">:</span> todoapp
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker-compose up -d
-$ docker-compose down
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#75715e"># Dockerfile.apiserver</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM node
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
+</span></span><span style="display:flex;"><span>COPY package<span style="color:#f92672">*</span>.json <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>ENV NODE_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--openssl-legacy-provider&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN npm install
+</span></span><span style="display:flex;"><span>COPY backend <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>backend<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">3777</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ENTRYPOINT [<span style="color:#e6db74">&#34;node&#34;</span>, <span style="color:#e6db74">&#34;/usr/src/app/backend/server.js&#34;</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#75715e"># Dockerfile.front</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM node as builder
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN mkdir <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
+</span></span><span style="display:flex;"><span>WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
+</span></span><span style="display:flex;"><span>ENV NODE_OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--openssl-legacy-provider&#34;</span>
+</span></span><span style="display:flex;"><span>COPY package<span style="color:#f92672">*</span>.json <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>RUN npm install
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>COPY . <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app
+</span></span><span style="display:flex;"><span>RUN npm run build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>WORKDIR <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html
+</span></span><span style="display:flex;"><span>RUN rm <span style="color:#f92672">-</span>rf <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d
+</span></span><span style="display:flex;"><span>COPY conf <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>conf.d<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>COPY <span style="color:#f92672">--</span>from<span style="color:#f92672">=</span>builder <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>build<span style="color:#f92672">/</span> .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>CMD [<span style="color:#e6db74">&#34;nginx&#34;</span>, <span style="color:#e6db74">&#34;-g&#34;</span>, <span style="color:#e6db74">&#34;daemon off;&#34;</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#75715e"># conf/default.conf</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server {
+</span></span><span style="display:flex;"><span>  listen <span style="color:#ae81ff">80</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># listen [::]:80;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  location <span style="color:#f92672">/</span> {
+</span></span><span style="display:flex;"><span>    root   <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html;
+</span></span><span style="display:flex;"><span>    index  index.html index.htm;
+</span></span><span style="display:flex;"><span>    try_files <span style="color:#f92672">$</span>uri <span style="color:#f92672">$</span>uri<span style="color:#f92672">/</span> <span style="color:#f92672">/</span>index.html;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  location <span style="color:#f92672">/</span>api {
+</span></span><span style="display:flex;"><span>    proxy_pass http<span style="color:#f92672">://</span>todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span><span style="color:#ae81ff">3777</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  error_page   <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">502</span> <span style="color:#ae81ff">503</span> <span style="color:#ae81ff">504</span>  <span style="color:#f92672">/</span><span style="color:#ae81ff">50</span>x.html;
+</span></span><span style="display:flex;"><span>  location <span style="color:#f92672">=</span> <span style="color:#f92672">/</span><span style="color:#ae81ff">50</span>x.html {
+</span></span><span style="display:flex;"><span>    root   <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>nginx<span style="color:#f92672">/</span>html;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-s" data-lang="s"><span style="display:flex;"><span><span style="color:#75715e"># docker-compose.yml</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>version<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;3&#39;</span>
+</span></span><span style="display:flex;"><span>services<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    container_name<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>api
+</span></span><span style="display:flex;"><span>    image<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>api<span style="color:#f92672">:</span>latest
+</span></span><span style="display:flex;"><span>    networks<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">-</span> default
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  todo<span style="color:#f92672">-</span>app<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    container_name<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>app
+</span></span><span style="display:flex;"><span>    image<span style="color:#f92672">:</span> todo<span style="color:#f92672">-</span>app<span style="color:#f92672">:</span>latest
+</span></span><span style="display:flex;"><span>    networks<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">-</span> default
+</span></span><span style="display:flex;"><span>    ports<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">-</span> <span style="color:#ae81ff">80</span><span style="color:#f92672">:</span><span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>    links<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">-</span> todo<span style="color:#f92672">-</span>api
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>networks<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  default<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    external<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      name<span style="color:#f92672">:</span> todoapp
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ docker-compose up -d
+</span></span><span style="display:flex;"><span>$ docker-compose down
+</span></span></code></pre></div><ul>
 <li><code>conf/default.conf</code>의 내용은 리버스 프록시를 담고 있다.
 <ul>
 <li>리버스 프록시란 클라이언트 요청을 대신 받아 내부 서버로 전달해주는 것이다.</li>

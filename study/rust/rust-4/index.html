@@ -89,7 +89,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.73.0" />
+ <meta name="generator" content="Hugo 0.166.0">
         
 
         
@@ -175,24 +175,24 @@
 <li><strong>코드의 어느 부분이 힙 메모리에 저장된 데이터를 사용하는지 추적하고 힙에 저장되는 데이터의 중복을 최소화해 사용하지 않는 데이터를 힙 메모리에서 제거하면 메모리 부족 문제를 해소할 수 있다.</strong></li>
 <li>=&gt; rust ownership은 위 문제를 해결하기 위한 방법이다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="규칙">규칙</h3>
 <ul>
 <li>rust에서 다루는 각각의 값은 owner라고 불리우는 변수를 가지고 있다.</li>
 <li>특정 시점에 값의 owner는 단 하나뿐이다.</li>
 <li>owner가 범위를 벗어나면 그 값은 제거된다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="사례-string-타입">사례: String 타입</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
-<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span></code></pre></div><ul>
 <li>s는 문자열 리터럴로, 불변하며 코드 작성 시점에 필요한 모든 문자열값을 알 수 없다.</li>
 <li>s2는 String 타입으로, 힙에 할당되므로 컴파일 시점에 알 수 없는 크기의 문자열을 저장할 수 있다.</li>
 <li><strong>s2는 from 함수를 통해 문자열 리터럴을 이용해 생성시킨 String 인스턴스이다.</strong></li>
 <li><strong>String 타입은 변경할 수 있지만, 문자열 리터럴은 변경할 수 없는 이유는 메모리 차이이다.</strong></li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="string-타입에서의-메모리-할당">String 타입에서의 메모리 할당</h4>
 <blockquote>
 <p>해당 메모리는 반드시 런타임에 운영체제에 요청해야 하고, String 타입의 사용이 완료되면 이 메모리를 운영체제에 다시 돌려줄 방법이 필요하다.</p>
@@ -206,43 +206,43 @@
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="1-변수-데이터가-상호작용하는-방식-이동move">(1) 변수-데이터가 상호작용하는 방식: 이동(move)</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
-<span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> x;
-
-println<span style="color:#f92672">!</span>(println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, x);
-
-<span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> s1;
-
-<span style="color:#75715e">// value used here after move
-</span><span style="color:#75715e"></span>println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, s1);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, x);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> s1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// value used here after move
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, s1);
+</span></span></code></pre></div><ul>
 <li>정수와 달리 스트링 타입은 포인터, 길이, 용량을 스택에 저장하고 힙에 저장되는 데이터를 다루기 때문에 메모리 해제(free)가 필요하다.</li>
 <li>rust는 <code>let s2 = s1;</code> 라인 이후에 변수 s1을 무효화시킨다.</li>
 <li>따라서 s1은 스코프 범위를 벗어나도 변수를 더이상 메모리에서 해제(free)할 대상이 아니다.</li>
 <li>얕은 복사가 아닌 무효화 처리이기 때문에 이동(move)했다고 표현한다.</li>
 <li>이로써 위 코드에서 s2만 유효하기 때문에 두 변수가 스코프를 벗어나도 s2만 메모리를 해제한다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="2-변수-데이터가-상호작용하는-방식-복제clone">(2) 변수-데이터가 상호작용하는 방식: 복제(clone)</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-<span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> s1.clone();
-
-println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;s1 = {}, s2 = {}&#34;</span>, s1, s2);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> s1.clone();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;s1 = </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, s2 = </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, s1, s2);
+</span></span></code></pre></div><ul>
 <li>스택 데이터가 아닌 힙 메모리에 저장된 String 데이터를 깊은 복사해야 한다면 <code>clone</code>을 쓴다.</li>
 <li>복사하는 메모리의 크기에 따라 무거운 작업이 될 수도 있다.</li>
 <li>자세한 사항은 5장에서 다룬다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h4 id="3-스택-전용-데이터-복사copy">(3) 스택 전용 데이터: 복사(copy)</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
-<span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> x;
-
-println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x = {}, y = {}&#34;</span>, x, y);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> y <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;x = </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, y = </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, x, y);
+</span></span></code></pre></div><ul>
 <li>그럼 위 코드는 clone하지도 않았고 변수 y로 move하지도 않았는데 왜 동작할까?</li>
 <li>정수형 같은 타입은 컴파일 시점에 이미 크기를 알 수 있어 온전히 스택에 저장된다.</li>
 <li>즉, 실제 값을 복사하는 것이 성능에 부담을 주지 않는다.</li>
@@ -257,69 +257,69 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x =
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="ownership-and-functions">Ownership and Functions</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-
-    takes_ownership(s);
-
-    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
-
-    makes_copy(x);
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_ownership</span>(some_string: String) {
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, some_string);
-}
-<span style="color:#75715e">// Here, some_string goes out of scope and `drop` is called. The backing
-</span><span style="color:#75715e">// memory is freed.
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">makes_copy</span>(some_integer: <span style="color:#66d9ef">i32</span>) {
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, some_integer);
-}
-<span style="color:#75715e">// Here, some_integer goes out of scope. Nothing special happens.
-</span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    takes_ownership(s);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    makes_copy(x);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_ownership</span>(some_string: String) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, some_string);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Here, some_string goes out of scope and `drop` is called. The backing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// memory is freed.
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">makes_copy</span>(some_integer: <span style="color:#66d9ef">i32</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, some_integer);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Here, some_integer goes out of scope. Nothing special happens.
+</span></span></span></code></pre></div><ul>
 <li>함수에 값을 전달하는 것은, 변수에 값을 대입하는 것과 유사하다.</li>
 <li>위 코드에서 takes_ownership 메서드 호출 후 변수 s를 사용하려고 하면 컴파일 에러가 뜰 것이다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="return-values-and-scope">Return Values and Scope</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> gives_ownership();
-    <span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-    <span style="color:#66d9ef">let</span> s3 <span style="color:#f92672">=</span> takes_and_gives_back(s2);
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">gives_ownership</span>() -&gt; String {
-    <span style="color:#66d9ef">let</span> some_string <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;yours&#34;</span>);
-
-    some_string
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_and_gives_back</span>(a_string: String) -&gt; String {
-    a_string
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> gives_ownership();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> s2 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> s3 <span style="color:#f92672">=</span> takes_and_gives_back(s2);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">gives_ownership</span>() -&gt; String {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> some_string <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;yours&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    some_string
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">takes_and_gives_back</span>(a_string: String) -&gt; String {
+</span></span><span style="display:flex;"><span>    a_string
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>함수의 반환값 또한 ownership을 이전하고, 스코프를 벗어날 때 drop 함수에 의해 제거된다.</li>
 <li>함수에 값을 전달할 때 ownership을 이전하고 싶지 않다면 어떻게 해야 할까?</li>
 <li>함수에 전달했던 변수를 다시 사용하기 위해 매번 그 변수를 실제 반환값과 함께 다시 반환해야 하는 것은 번거롭다.</li>
 <li>이를 위해 rust는 참조(references)를 지원한다.</li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="references-and-borrowing">References and Borrowing</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-    <span style="color:#66d9ef">let</span> len <span style="color:#f92672">=</span> calculate_length(<span style="color:#f92672">&amp;</span>s1);
-
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;The length of &#39;{}&#39; is {}.&#34;</span>, s1, len);
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">calculate_length</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">usize</span> {
-    s.len()
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> s1 <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> len <span style="color:#f92672">=</span> calculate_length(<span style="color:#f92672">&amp;</span>s1);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;The length of &#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39; is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">.&#34;</span>, s1, len);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">calculate_length</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">usize</span> {
+</span></span><span style="display:flex;"><span>    s.len()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>값의 ownership을 이동시키는 대신, 매개변수로 전달된 객체의 참조를 이용하도록 할 수 있다.</li>
 <li><strong>앰퍼샌드(&amp;) 기호가 바로 참조이며, ownership을 가져오지 않고도 값을 참조할 수 있다.</strong></li>
 <li><code>&amp;s1</code>은 변수 s1의 값은 읽을 수 있지만 ownership은 없는 참조인 상태를 의미한다.</li>
@@ -328,23 +328,23 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;x =
 <li>함수의 매개변수로 참조를 전달하는 것을 <code>borrowing</code>이라고 한다.</li>
 <li>빌려온 매개변수, 즉 참조는 불변하므로 변경할 수 없다.</li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="가변-참조-mutable-references">가변 참조 (Mutable References)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-
-    change(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s);
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">change</span>(some_string: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> String) {
-    some_string.push_str(<span style="color:#e6db74">&#34;, world&#34;</span>);
-}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-<span style="color:#66d9ef">let</span> r1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s;
-<span style="color:#66d9ef">let</span> r2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s;
-
-println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}, {}&#34;</span>, r1, r2);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    change(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">change</span>(some_string: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> String) {
+</span></span><span style="display:flex;"><span>    some_string.push_str(<span style="color:#e6db74">&#34;, world&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> r1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> r2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, r1, r2);
+</span></span></code></pre></div><ul>
 <li><strong>(1) 특정 스코프 내의 특정 데이터에 대한 가변 참조는 하나만 허용된다.</strong>
 <ul>
 <li>첫번째 코드처럼 가변 참조를 전달받으면 변경할 수 있다.</li>
@@ -353,24 +353,24 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{},
 </ul>
 </li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-
-<span style="color:#66d9ef">let</span> r1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> r2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> r3 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s; <span style="color:#75715e">// BIG PROBLEM
-</span><span style="color:#75715e"></span>
-println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}, {}, and {}&#34;</span>, r1, r2, r3);
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-
-<span style="color:#66d9ef">let</span> r1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> r2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
-</span><span style="color:#75715e"></span>println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{} and {}&#34;</span>, r1, r2);
-<span style="color:#75715e">// variables r1 and r2 will not be used after this point
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">let</span> r3 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s; <span style="color:#75715e">// no problem
-</span><span style="color:#75715e"></span>println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, r3);
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> r1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> r2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> r3 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s; <span style="color:#75715e">// BIG PROBLEM
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, and </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, r1, r2, r3);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> r1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> r2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s; <span style="color:#75715e">// no problem
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> and </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, r1, r2);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// variables r1 and r2 will not be used after this point
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> r3 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> s; <span style="color:#75715e">// no problem
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, r3);
+</span></span></code></pre></div><ul>
 <li><strong>(2) 불변 참조를 이미 사용중일 때도 가변 참조를 생성할 수 없다.</strong>
 <ul>
 <li>데이터를 읽는 동작은 아무 영향이 없으므로 불변 참조는 여러 개 생성해도 된다.</li>
@@ -379,17 +379,17 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{},
 </ul>
 </li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> reference_to_nothing <span style="color:#f92672">=</span> dangle();
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">dangle</span>() -&gt; <span style="color:#66d9ef">&amp;</span>String {
-    <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-
-    <span style="color:#f92672">&amp;</span>s
-}
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> reference_to_nothing <span style="color:#f92672">=</span> dangle();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">dangle</span>() -&gt; <span style="color:#66d9ef">&amp;</span>String {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;</span>s
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li><strong>(3) 참조는 항상 유효해야 한다.</strong>
 <ul>
 <li>rust는 죽은 참조가 일어나지 않도록 컴파일러가 보장한다.</li>
@@ -400,20 +400,20 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{},
 </ul>
 </li>
 </ul>
-<p><br /></p>
+<br />
 <hr />
 <h2 id="slice-type">Slice Type</h2>
 <h3 id="1-문자열-슬라이스">(1) 문자열 슬라이스</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello world&#34;</span>);
-    <span style="color:#66d9ef">let</span> word <span style="color:#f92672">=</span> first_word(<span style="color:#f92672">&amp;</span>s);
-
-    s.clear();
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word_length</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">usize</span> {...}
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">second_word_length</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; (<span style="color:#66d9ef">usize</span>, <span style="color:#66d9ef">usize</span>) {...}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello world&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> word <span style="color:#f92672">=</span> first_word(<span style="color:#f92672">&amp;</span>s);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    s.clear();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word_length</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">usize</span> {<span style="color:#f92672">..</span>.}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">second_word_length</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; (<span style="color:#66d9ef">usize</span>, <span style="color:#66d9ef">usize</span>) {<span style="color:#f92672">..</span>.}
+</span></span></code></pre></div><ul>
 <li>슬라이스 또한 ownership을 갖지 않는 타입이다.</li>
 <li><strong>슬라이스를 통해 컬렉션 전체가 아닌, 컬렉션의 연속된 요소들을 참조할 수 있다.</strong></li>
 <li>first_word_length 함수의 usize타입 반환값은 String 타입과 별개이므로 나중에도 값이 유효할 것이라 보장 X</li>
@@ -422,81 +422,81 @@ println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{},
 <li><strong>즉, word변수는 더이상 s변수와 데이터 싱크가 맞지 않아 버그를 유발할 수 있다.</strong></li>
 <li>=&gt; 이 문제를 해결하기 위해 slice를 이용할 수 있다.</li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello world&#34;</span>);
-
-<span style="color:#66d9ef">let</span> hello <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">5</span>];
-<span style="color:#66d9ef">let</span> world <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">6</span>..<span style="color:#ae81ff">11</span>];
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
-<span style="color:#66d9ef">let</span> len <span style="color:#f92672">=</span> s.len();
-
-<span style="color:#75715e">// (1)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span>..<span style="color:#ae81ff">2</span>];
-<span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[..<span style="color:#ae81ff">2</span>];
-
-<span style="color:#75715e">// (2)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">3</span>..len];
-<span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">3</span>..];
-
-<span style="color:#75715e">// (3)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span>..len];
-<span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[..];
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello world&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> hello <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span><span style="color:#f92672">..</span><span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> world <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">6</span><span style="color:#f92672">..</span><span style="color:#ae81ff">11</span>];
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> len <span style="color:#f92672">=</span> s.len();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// (1)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span><span style="color:#f92672">..</span><span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#f92672">..</span><span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// (2)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">3</span><span style="color:#f92672">..</span>len];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">3</span><span style="color:#f92672">..</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// (3)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span><span style="color:#f92672">..</span>len];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#f92672">..</span>];
+</span></span></code></pre></div><ul>
 <li>위 방식을 통해 String 일부에 대한 참조를 얻게 된다.</li>
 <li><code>[시작인덱스..끝인덱스]</code> 형태로, world변수는 7번째 문자로부터 5개 문자를 참조한다.</li>
 <li>위 (1),(2),(3)은 각각 동일하게 동작한다.</li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello world&#34;</span>);
-    <span style="color:#66d9ef">let</span> word <span style="color:#f92672">=</span> first_word(<span style="color:#f92672">&amp;</span>s);
-
-    s.clear(); <span style="color:#75715e">// error!
-</span><span style="color:#75715e"></span>
-    println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;the first word is: {}&#34;</span>, word);
-}
-
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {
-    <span style="color:#66d9ef">let</span> bytes <span style="color:#f92672">=</span> s.as_bytes();
-
-    <span style="color:#66d9ef">for</span> (i, <span style="color:#f92672">&amp;</span>item) <span style="color:#66d9ef">in</span> bytes.iter().enumerate() {
-        <span style="color:#66d9ef">if</span> item <span style="color:#f92672">==</span> <span style="color:#e6db74">b&#39; &#39;</span> {
-            <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span>..i];
-        }
-    }
-
-    <span style="color:#f92672">&amp;</span>s[..]
-}
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> s <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;hello world&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> word <span style="color:#f92672">=</span> first_word(<span style="color:#f92672">&amp;</span>s);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    s.clear(); <span style="color:#75715e">// error!
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;the first word is: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, word);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> bytes <span style="color:#f92672">=</span> s.as_bytes();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i, <span style="color:#f92672">&amp;</span>item) <span style="color:#66d9ef">in</span> bytes.iter().enumerate() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> item <span style="color:#f92672">==</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39; &#39;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span>s[<span style="color:#ae81ff">0</span><span style="color:#f92672">..</span>i];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;</span>s[<span style="color:#f92672">..</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>이제 first_word 함수는 String 타입에 대한 참조가 유효성을 컴파일러가 보장해준다.</li>
 <li><em>cannot borrow <code>s</code> as mutable because it is also borrowed as immutable</em></li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, world!&#34;</span>;
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, world!&#34;</span>;
+</span></span></code></pre></div><ul>
 <li><strong>문자열 리터럴은 slice 타입이다.</strong></li>
 <li>문자열 리터럴 s변수의 타입은 <code>&amp;str</code>이며, 바이너리의 어느 한 부분을 가리키는 슬라이스라는 뜻이다.</li>
 <li>따라서 문자열 리터럴은 항상 불변하다.</li>
 <li>&amp;str타입의 참조 포인터는 스택에, 리터럴 값은 바이너리로 존재한다.</li>
 <li><strong><em>즉, 데이터 자체는 스택/힙이 아니라 런타임에 프로그램이 할당되는 메모리 영역에 존재할 것이다!</em></strong></li>
 </ul>
-<p><br /></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">// AS-IS
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {}
-
-<span style="color:#75715e">// TO-BE
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span>(s: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {}
-</code></pre></div><ul>
+<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// AS-IS
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span>(s: <span style="color:#66d9ef">&amp;</span>String) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// TO-BE
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">first_word</span>(s: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) -&gt; <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> {}
+</span></span></code></pre></div><ul>
 <li>AS-IS 함수는 String 타입의 값만 넘길 수 있다.</li>
 <li>TO-BE 함수는 String과 &amp;str 모두 적용할 수 있다.</li>
 <li>왜냐하면 String 타입을 전달해야 한다면 전체 문자열 슬라이스를 넘기면 된다.</li>
 <li>즉, <strong>String 타입에 대한 참조대신 문자열 슬라이스를 매개변수로 사용하면 같은 기능을 유지하면서 더 보편적인 API 형태가 된다.</strong></li>
 </ul>
-<p><br /></p>
+<br />
 <h3 id="2-그외-타입-슬라이스">(2) 그외 타입 슬라이스</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
-<span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a[<span style="color:#ae81ff">1</span>..<span style="color:#ae81ff">3</span>];
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> slice <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a[<span style="color:#ae81ff">1</span><span style="color:#f92672">..</span><span style="color:#ae81ff">3</span>];
+</span></span></code></pre></div><ul>
 <li>위 슬라이스는 <code>&amp;[i32]</code>타입이다.</li>
 <li>슬라이스는 문자열에 특화되어 있으나, 모든 종류의 컬렉션에 활용할 수 있다.</li>
 <li><em>컬렉션은 벡터(vectors)를 소개하는 8장에서 자세히 다룸</em></li>

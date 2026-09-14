@@ -1,41 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Projects on Roomy</title>
-    <link>https://wacilpong.github.io/blog/project/</link>
-    <description>Recent content in Projects on Roomy</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>kr-ko</language>
-    
-	<atom:link href="https://wacilpong.github.io/blog/project/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Reading rust-lang book</title>
-      <link>https://wacilpong.github.io/blog/project/rust-book/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/project/rust-book/</guid>
-      <description>Capters  Getting Started Guessing Game Common Programming Concepts Understanding Ownership Using Structs to Structure Related Data Enums and Pattern Matching Managing Growing Projects with Packages, Crates, and Modules Common Collections Error Handling Generic Types, Traits, and Lifetimes Writing Automated Tests An I/O Project: Building a Command Line Program Functional Language Features: Iterators and Closures More About Cargo and Crates.io Smart Pointers Fearless Concurrency Object-Oriented Programming Features of Rust Patterns and Matching Advanced Features Patterns and Matching  </description>
-    </item>
-    
-    <item>
-      <title>Mushroomy&#39;s dapping blockchain story</title>
-      <link>https://wacilpong.github.io/blog/project/blockchain/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
-      <description>Lectures  What is Blockchain? Bitcoin? Altcoin? ICO? 3rd Generation Blockchain &amp;amp; Just Starting Blockchain ! Just Make Your Genesis Block &amp;amp; Blockchain Coding Solidity Blockchain MUST BE associated with Open Source My token economy example project: Toon Hub Cosmos Blockchain: internet of interchain Truffle with ganache Truffle Tutorial: Pet Shop  </description>
-    </item>
-    
-    <item>
-      <title>SlackBot: Dumbledore</title>
-      <link>https://wacilpong.github.io/blog/project/dumbledore/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
+	<channel>
+		<title>Projects on Roomy</title>
+		<link>https://wacilpong.github.io/blog/project/</link>
+		<description>Recent content in Projects on Roomy</description>
+		<generator>Hugo</generator>
+		<language>kr-ko</language>
+		
+		
+		
+		
+			<atom:link href="https://wacilpong.github.io/blog/project/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Reading rust-lang book</title>
+				<link>https://wacilpong.github.io/blog/project/rust-book/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/project/rust-book/</guid>
+				<description>&lt;h2 id=&#34;capters&#34;&gt;Capters&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-1/&#34;&gt;Getting Started&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-2/&#34;&gt;Guessing Game&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-3/&#34;&gt;Common Programming Concepts&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-4/&#34;&gt;Understanding Ownership&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-5/&#34;&gt;Using Structs to Structure Related Data&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-6/&#34;&gt;Enums and Pattern Matching&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-7/&#34;&gt;Managing Growing Projects with Packages, Crates, and Modules&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-8/&#34;&gt;Common Collections&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-9/&#34;&gt;Error Handling&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-10/&#34;&gt;Generic Types, Traits, and Lifetimes&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-11/&#34;&gt;Writing Automated Tests&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-12/&#34;&gt;An I/O Project: Building a Command Line Program&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-13/&#34;&gt;Functional Language Features: Iterators and Closures&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-14/&#34;&gt;More About Cargo and Crates.io&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-15/&#34;&gt;Smart Pointers&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-16/&#34;&gt;Fearless Concurrency&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-17/&#34;&gt;Object-Oriented Programming Features of Rust&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-18/&#34;&gt;Patterns and Matching&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-19/&#34;&gt;Advanced Features&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/rust/rust-20/&#34;&gt;Patterns and Matching&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+			</item>
+			<item>
+				<title>Mushroomy&#39;s dapping blockchain story</title>
+				<link>https://wacilpong.github.io/blog/project/blockchain/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/project/blockchain/</guid>
+				<description>&lt;h2 id=&#34;lectures&#34;&gt;Lectures&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-1/&#34;&gt;What is Blockchain?&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-2/&#34;&gt;Bitcoin? Altcoin? ICO?&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-3/&#34;&gt;3rd Generation Blockchain &amp;amp; Just Starting Blockchain !&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-4/&#34;&gt;Just Make Your Genesis Block &amp;amp; Blockchain&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-5/&#34;&gt;Coding Solidity&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-6/&#34;&gt;Blockchain MUST BE associated with Open Source&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/wacilpong/toon-hub&#34;&gt;My token economy example project: Toon Hub&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-8/&#34;&gt;Cosmos Blockchain: internet of interchain&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-9/&#34;&gt;Truffle with ganache&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://wacilpong.github.io/blog/study/blockchain/blockchain-10/&#34;&gt;Truffle Tutorial: Pet Shop&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+			</item>
+			<item>
+				<title>SlackBot: Dumbledore</title>
+				<link>https://wacilpong.github.io/blog/project/dumbledore/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/project/dumbledore/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>

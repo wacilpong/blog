@@ -1,86 +1,66 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>configuration on Roomy</title>
-    <link>https://wacilpong.github.io/blog/tags/configuration/</link>
-    <description>Recent content in configuration on Roomy</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>kr-ko</language>
-    <lastBuildDate>Fri, 17 Jan 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://wacilpong.github.io/blog/tags/configuration/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Babel polyfill and babel runtime</title>
-      <link>https://wacilpong.github.io/blog/post/configuration/babel-polyfill-and-babel-runtime/</link>
-      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/configuration/babel-polyfill-and-babel-runtime/</guid>
-      <description>Babel ? 바벨은 Javascript ES6+ 문법을 ES5로 변환해서 ES6+ 문법을 지원하지 않는 브라우저에서도 동작하도록 만들어주는 컴파일러 이다. 그리고 Javascript라는 같은 언</description>
-    </item>
-    
-    <item>
-      <title>Test with jest the untranspiled external libraries</title>
-      <link>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</link>
-      <pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</guid>
-      <description>jest in CRA // react-scripts/config/jest/babelTransform.js const babelJest = require(&amp;#34;babel-jest&amp;#34;); module.exports = babelJest.createTransformer({ presets: [require.resolve(&amp;#34;babel-preset-react-app&amp;#34;)], babelrc: false, configFile: false }); create-react-app 로 만들어진 리액트 프로젝트에는 jest가 이미 적용되어 있는데, react-scripts 의 jest 설정부분을 보면 알 수 있다. 그런데 jes</description>
-    </item>
-    
-    <item>
-      <title>Prerender Status Code</title>
-      <link>https://wacilpong.github.io/blog/post/configuration/prerender-status-code/</link>
-      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/configuration/prerender-status-code/</guid>
-      <description>재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다. SSR(Server Side Rendering)을</description>
-    </item>
-    
-    <item>
-      <title>When we connect ssh with .pem</title>
-      <link>https://wacilpong.github.io/blog/post/configuration/when-connect-ssh/</link>
-      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/configuration/when-connect-ssh/</guid>
-      <description>We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.
-
-flow  Generate .pem key (I am using AWS). Change mode of .pem file to 400 to read it. Identify file and connect to ssh (AWS linux for me). DONE  
-
-Change permission of file I will change mode of key file and connect to ssh with it.</description>
-    </item>
-    
-    <item>
-      <title>Publish to aws s3 with s3cmd</title>
-      <link>https://wacilpong.github.io/blog/post/configuration/aws-publish-to-s3/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/configuration/aws-publish-to-s3/</guid>
-      <description>1. Create S3 bucket Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with index.html (entry point).
-
-2. Create CloudFront Distributions Create in aws CloudFront console. And Just keep all settings.
-
-3. Connect domain with CloudFront If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like test.example.com. It just depends on your url rules.</description>
-    </item>
-    
-    <item>
-      <title>To configure https with AWS</title>
-      <link>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</guid>
-      <description>flow Request a certification for SSL/TLS in ACM (AWS Certificate Manager). Create ELB (Elastic Load Balancer) from EC2 management console. Create EC2 instance, and connect to ELB. Create record set or new hosted zone, and set alias the ELB in Route53. Access SSH with the keypair that can be generated while creating EC2 instance. Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect</description>
-    </item>
-    
-    <item>
-      <title>To set virtual python environment with mongoDB</title>
-      <link>https://wacilpong.github.io/blog/post/configuration/pyvenv-with-mongodb/</link>
-      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wacilpong.github.io/blog/post/configuration/pyvenv-with-mongodb/</guid>
-      <description>Step 1. Install python and mongoDB I am using homebrew. So it can be possible to use brew command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it. 맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로</description>
-    </item>
-    
-  </channel>
+	<channel>
+		<title>Configuration on Roomy</title>
+		<link>https://wacilpong.github.io/blog/tags/configuration/</link>
+		<description>Recent content in Configuration on Roomy</description>
+		<generator>Hugo</generator>
+		<language>kr-ko</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 17 Jan 2020 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://wacilpong.github.io/blog/tags/configuration/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Babel polyfill and babel runtime</title>
+				<link>https://wacilpong.github.io/blog/post/configuration/babel-polyfill-and-babel-runtime/</link>
+				<pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/post/configuration/babel-polyfill-and-babel-runtime/</guid>
+				<description>&lt;h3 id=&#34;babel-&#34;&gt;Babel ?&lt;/h3&gt;&#xA;&lt;p&gt;바벨은 Javascript ES6+ 문법을 ES5로 변환해서 ES6+ 문법을 지원하지 않는 브라우저에서도 동작하도록 만들어주는 &lt;code&gt;컴파일러&lt;/code&gt; 이다. 그리고 Javascript라는 같은 언어 내에서 소스코드를 변환하기 때문에 동등한 추상화를 거치게 되는데, 이를 &lt;code&gt;트랜스파일러&lt;/code&gt; 라고도 부른다. 그러니까&amp;hellip; &lt;code&gt;트랜스컴파일러&lt;/code&gt; 정도의 느낌? &lt;del&gt;거의 트랜스포머&lt;/del&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Test with jest the untranspiled external libraries</title>
+				<link>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</link>
+				<pubDate>Thu, 02 Jan 2020 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/post/configuration/untranspiled-published-external-library/</guid>
+				<description>&lt;h2 id=&#34;jest-in-cra&#34;&gt;jest in CRA&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// react-scripts/config/jest/babelTransform.js&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;babelJest&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;babel-jest&amp;#34;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;module&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;exports&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;babelJest&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;createTransformer&lt;/span&gt;({&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;presets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;resolve&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;babel-preset-react-app&amp;#34;&lt;/span&gt;)],&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;babelrc&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;configFile&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;});&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;create-react-app&lt;/em&gt; 로 만들어진 리액트 프로젝트에는 &lt;a href=&#34;https://jestjs.io/&#34;&gt;&lt;strong&gt;jest&lt;/strong&gt;&lt;/a&gt;가 이미 적용되어 있는데, &lt;em&gt;react-scripts&lt;/em&gt; 의 jest 설정부분을 보면 알 수 있다. 그런데 jest는 &lt;a href=&#34;https://jestjs.io/docs/en/configuration#transformignorepatterns-arraystring&#34;&gt;&lt;strong&gt;문서 - transformignorepatterns&lt;/strong&gt;&lt;/a&gt;의 다음과 같은 말을 보면 알 수 있듯이 &lt;code&gt;node_modules/&lt;/code&gt;를 트랜스파일링하지 않는다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Prerender Status Code</title>
+				<link>https://wacilpong.github.io/blog/post/configuration/prerender-status-code/</link>
+				<pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/post/configuration/prerender-status-code/</guid>
+				<description>&lt;p&gt;재직중인 회사에서 헤드리스 브라우저(headless browser)를 이용한 SEO를 다뤄보면서 여러 시행착오를 겪었다. SSR(Server Side Rendering)을 도입할 수 없는 상황이었기 때문에 CSR(Client Side Rendering)로 잘 핸들링해야 했다. 회사에서 &lt;a href=&#34;https://www.netlify.com/&#34;&gt;&lt;strong&gt;netlify&lt;/strong&gt;&lt;/a&gt;라는 static deploy 서비스를 사용중이었는데, 유료회원이면 prerender라는 내장된 서비스를 옵션으로 사용할 수 있었다. &lt;a href=&#34;https://prerender.io/&#34;&gt;&lt;strong&gt;prerender&lt;/strong&gt;&lt;/a&gt;는 헤드리스 브라우저를 통해 페이지의 정적 정보들을 저장해놓고, 크롤러가 해당 정보들을 긁어갈 수 있도록 해주는 SEO를 돕는 일종의 기술이다. netlify는 이를 내장시켜서 사용할 수 있도록 만든 것이다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>When we connect ssh with .pem</title>
+				<link>https://wacilpong.github.io/blog/post/configuration/when-connect-ssh/</link>
+				<pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/post/configuration/when-connect-ssh/</guid>
+				<description>&lt;p&gt;We sometimes need to connect to computer in other network. It is necessary the key like pem(Private Enhanced Mail) When we connect. I will just write the flow about it.&lt;/p&gt;&#xA;&lt;br /&gt;&#xA;&lt;h2 id=&#34;flow&#34;&gt;&lt;em&gt;flow&lt;/em&gt;&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Generate &lt;code&gt;.pem&lt;/code&gt; key (I am using AWS).&lt;/li&gt;&#xA;&lt;li&gt;Change mode of &lt;code&gt;.pem&lt;/code&gt; file to 400 to read it.&lt;/li&gt;&#xA;&lt;li&gt;Identify file and connect to ssh (AWS linux for me).&lt;/li&gt;&#xA;&lt;li&gt;DONE&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;br /&gt;&lt;hr&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;change-permission-of-file&#34;&gt;Change permission of file&lt;/h2&gt;&#xA;&lt;p&gt;I will change mode of key file and connect to ssh with it.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Publish to aws s3 with s3cmd</title>
+				<link>https://wacilpong.github.io/blog/post/configuration/aws-publish-to-s3/</link>
+				<pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/post/configuration/aws-publish-to-s3/</guid>
+				<description>&lt;h3 id=&#34;1-create-s3-bucket&#34;&gt;1. Create S3 bucket&lt;/h3&gt;&#xA;&lt;p&gt;Create S3 bucket with public access in aws S3 console, because it is just for testing. And add static website hosting property with &lt;code&gt;index.html&lt;/code&gt; (entry point).&lt;/p&gt;&#xA;&lt;br /&gt;&#xA;&lt;h3 id=&#34;2-create-cloudfront-distributions&#34;&gt;2. Create CloudFront Distributions&lt;/h3&gt;&#xA;&lt;p&gt;Create in aws CloudFront console. And Just keep all settings.&lt;/p&gt;&#xA;&lt;br /&gt;&#xA;&lt;h3 id=&#34;3-connect-domain-with-cloudfront&#34;&gt;3. Connect domain with CloudFront&lt;/h3&gt;&#xA;&lt;p&gt;If you don&amp;rsquo;t have routing domain in aws Route 53 console, create it first like &lt;code&gt;test.example.com&lt;/code&gt;. It just depends on your url rules. Then connect with IPv4 with the CloudFront that you created.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>To configure https with AWS</title>
+				<link>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</link>
+				<pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/post/configuration/set-https-with-aws/</guid>
+				<description>&lt;h2 id=&#34;flow&#34;&gt;&lt;em&gt;flow&lt;/em&gt;&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Request a certification for SSL/TLS in ACM (AWS Certificate Manager).&lt;/li&gt;&#xA;&lt;li&gt;Create ELB (Elastic Load Balancer) from EC2 management console.&lt;/li&gt;&#xA;&lt;li&gt;Create EC2 instance, and connect to ELB.&lt;/li&gt;&#xA;&lt;li&gt;Create record set or new hosted zone, and set alias the ELB in Route53.&lt;/li&gt;&#xA;&lt;li&gt;Access SSH with the keypair that can be generated while creating EC2 instance.&lt;/li&gt;&#xA;&lt;li&gt;Now we can access public IP if we didn&amp;rsquo;t configure anything in AWS console. So, connect that IP in shell.&lt;/li&gt;&#xA;&lt;li&gt;Create server, routing configuration and mark-up files.&lt;/li&gt;&#xA;&lt;li&gt;DONE&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;br /&gt;&lt;hr&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>To set virtual python environment with mongoDB</title>
+				<link>https://wacilpong.github.io/blog/post/configuration/pyvenv-with-mongodb/</link>
+				<pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+				<guid>https://wacilpong.github.io/blog/post/configuration/pyvenv-with-mongodb/</guid>
+				<description>&lt;h3 id=&#34;step-1-install-python-and-mongodb&#34;&gt;Step 1. Install python and mongoDB&lt;/h3&gt;&#xA;&lt;p&gt;I am using homebrew. So it can be possible to use &lt;code&gt;brew&lt;/code&gt; command. Oh, and macOS actually has a python(2.x), but I need 3.x version so I installed it.&lt;/p&gt;&#xA;&lt;p&gt;맥에는 파이썬 2.x 버전으로 이미 설치되어 있지만, 나는 3.x버전이 필요해서 따로 설치했다. 그리고 모든 설치는 homebrew로 했다.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>
