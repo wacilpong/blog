@@ -3,8 +3,6 @@ languageCode = "kr-ko"
 title = "Roomy"
 theme = "minimal"
 hasCJKLanguage = true
-disqusShortname = "roomy-han"
-
 
 # Goldmark is from Hugo 0.60 the default library used for Markdown.
 [markup]
